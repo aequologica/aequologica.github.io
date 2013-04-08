@@ -51,7 +51,9 @@
         <div class="container">
           <div id="test">
             Live Reloaded !
-          </div> <!-- /container -->
+          </div> <!-- /#test -->
+          <div id="modests">
+          </div> <!-- /#modests -->
         </div> <!-- /container -->
     </div> <!-- #wrap -->       
 
@@ -65,7 +67,41 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
     <script src="application.js"></script>
+    <script type="text/javascript">
+    _.templateSettings = {
+        interpolate: /\<\@\=(.+?)\@\>/gim,
+        evaluate: /\<\@(.+?)\@\>/gim,
+        escape: /\<\@\-(.+?)\@\>/gim
+    };
+
+    var Modest = Backbone.Model.extend({
+      defaults: {
+        title: 'default'
+      }
+    });
+
+    var modest = new Modest({title : 'title'});
+
+    var ModestView = Backbone.View.extend({
+       tagName: 'h1',
+      render: function() {
+        this.$el.html(this.model.get('title'));
+        return this;
+      }
+    });
+
+    var modestView =  new ModestView({model : modest});
+
+    jQuery(document).ready(function($) {
+      modest.set({title : 'and Backboned !'});
+      modestView.render();
+      $('#modests').html(modestView.el);
+    });
+
+    </script>
   </body>
 </html>
