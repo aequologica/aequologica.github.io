@@ -49,10 +49,17 @@
         </div>
 
         <div class="container">
+        <!--
+      	 <a href="https://cft.wdf.sap.corp/virtualmachines/views/">VIM</a>
+      	 <a href="http://vep4infra003.dhcp.wdf.sap.corp:8080/latest/project">rest4perforce</a>
+         -->
+
           <div id="test">
             Live Reloaded !
           </div> <!-- /#test -->
           <div id="modests">
+          </div> <!-- /#modests -->
+          <div id="coffeescript-meet-backbonejs">
           </div> <!-- /#modests -->
         </div> <!-- /container -->
     </div> <!-- #wrap -->       
@@ -63,20 +70,27 @@
       </div>
     </div>
 
+
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+    <!--script src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.1-bundled/backbone.marionette.min.js"></script-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.js"></script>
     <script src="application.js"></script>
+    <script src="script.js"></script>
     <script type="text/javascript">
+    /*
     _.templateSettings = {
         interpolate: /\<\@\=(.+?)\@\>/gim,
         evaluate: /\<\@(.+?)\@\>/gim,
         escape: /\<\@\-(.+?)\@\>/gim
     };
+    */
 
     var Modest = Backbone.Model.extend({
       defaults: {
@@ -101,7 +115,6 @@
       modestView.render();
       $('#modests').html(modestView.el);
     });
-
     </script>
   </body>
 </html>

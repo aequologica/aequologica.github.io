@@ -3,5 +3,4 @@ $ ->
   	'background-color':'gray'
   	'color':'lightgray'
 
-  $('#test').html 'CoffeeScripted and LiveReloaded!'
-
+  $('#test').html 'CoffeeScripted!'

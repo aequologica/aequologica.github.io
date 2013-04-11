@@ -6,7 +6,7 @@
       'background-color': 'gray',
       'color': 'lightgray'
     });
-    return $('#test').html('CoffeeScripted and LiveReloaded!');
+    return $('#test').html('CoffeeScripted!');
   });
 
 }).call(this);
