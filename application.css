@@ -49,3 +49,10 @@ body {
 .container .credit {
   margin: 20px 0;
 }
+#github_ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  padding-top: 41px;
+}
