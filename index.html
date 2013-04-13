@@ -22,21 +22,23 @@
   </head>
 
   <body>
+    <div>    <!--  id="wrap" -->
 
-    <a href="https://github.com/aequologica/aequologica.github.io"><img id="github_ribbon" src="assets/images/forkme_light_background.png" alt="Fork me on GitHub"></a>
+      <a href="https://github.com/aequologica/aequologica.github.io"><img id="github_ribbon" src="assets/images/forkme_light_background.png" alt="Fork me on GitHub" /></a>
 
-    <!-- Part 1: Wrap all page content here -->
-    <div id="wrap">    
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
-          <div class="navbar-inner">
-            <div class="container">
-              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="brand" href="#">aequologica</a>
+      <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="navbar-inner">
+          <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">&copy;&nbsp;aequologica&nbsp;&trade;</a>
+            <div style="display: inline-block;" class="pull-right">
+              <form class="navbar-search pull-left" action="">
+                <input type="text" class="search-query span2" placeholder="Search">
+              </form>
               <div class="nav-collapse collapse">
                 <ul class="nav">
                   <!--
@@ -49,74 +51,70 @@
             </div>
           </div>
         </div>
-
-        <div class="container">
-        <!--
-      	 <a href="https://cft.wdf.sap.corp/virtualmachines/views/">VIM</a>
-      	 <a href="http://vep4infra003.dhcp.wdf.sap.corp:8080/latest/project">rest4perforce</a>
-         -->
-
-          <div id="test">
-            Live Reloaded !
-          </div> <!-- /#test -->
-          <div id="modests">
-          </div> <!-- /#modests -->
-          <div id="coffeescript-meet-backbonejs">
-          </div> <!-- /#modests -->
-        </div> <!-- /container -->
-    </div> <!-- #wrap -->       
-
-    <div id="footer">
-      <div class="container">
-        <p class="muted credit"></p>
       </div>
-    </div>
 
+      <div class="container">
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
-    <!--script src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.1-bundled/backbone.marionette.min.js"></script-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.js"></script>
-    <script src="application.js"></script>
-    <script src="script.js"></script>
-    <script type="text/javascript">
-    /*
-    _.templateSettings = {
-        interpolate: /\<\@\=(.+?)\@\>/gim,
-        evaluate: /\<\@(.+?)\@\>/gim,
-        escape: /\<\@\-(.+?)\@\>/gim
-    };
-    */
+        <div id="livereload">
+          <h1>
+            LiveReloaded !
+          </h1>
+        </div> <!-- /#livereload -->
 
-    var Modest = Backbone.Model.extend({
-      defaults: {
-        title: 'default'
-      }
-    });
+        <div id="coffescript">
+          <h1/>
+        </div> <!-- /#coffescript -->
 
-    var modest = new Modest({title : 'title'});
+        <div id="backbone">
+        </div> <!-- /#backbone -->
 
-    var ModestView = Backbone.View.extend({
-       tagName: 'h1',
-      render: function() {
-        this.$el.html(this.model.get('title'));
-        return this;
-      }
-    });
+        <div id="la_totale">
+        </div> <!-- /#la_totale -->
 
-    var modestView =  new ModestView({model : modest});
+      </div> <!-- /.container -->
 
-    jQuery(document).ready(function($) {
-      modest.set({title : 'and Backboned !'});
-      modestView.render();
-      $('#modests').html(modestView.el);
-    });
-    </script>
+    </div> <!-- /#wrap -->       
+
   </body>
 </html>
+
+<div>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.js"></script>
+<script type="text/javascript" src="application.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" >
+
+  var Modest = Backbone.Model.extend({
+    defaults: {
+      title: 'default'
+    }
+  });
+
+  var modest = new Modest({title : 'title'});
+
+  var ModestView = Backbone.View.extend({
+    tagName: 'h1',
+    render: function() {
+      this.$el.html(this.model.get('title'));
+      return this;
+    }
+  });
+
+  var modestView =  new ModestView({model : modest});
+
+  jQuery(document).ready(function($) {
+    modest.set({title : 'Backboned !'});
+    modestView.render();
+    $('#backbone').append(modestView.el);
+  });
+</script>
+</div>
+

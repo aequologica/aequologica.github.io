@@ -35,16 +35,21 @@ body {
 /* Not required for template or sticky footer method. */
 @font-face {
   font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 400;
   src: local('Inconsolata'), url("assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff") format('woff');
 }
+@font-face {
+  font-family: 'Courier Prime';
+  src: local('Courier Prime'), url("assets/fonts/CourierPrime.woff") format('woff');
+}
 body {
-  font-family: Inconsolata;
+  font-family: 'Inconsolata';
   background-color: #e1b13c;
 }
-#wrap > .container {
-  padding-top: 60px;
+input,
+button,
+select,
+textarea {
+  font-family: 'Inconsolata';
 }
 .container .credit {
   margin: 20px 0;
@@ -54,5 +59,9 @@ body {
   top: 0;
   right: 0;
   border: 0;
-  padding-top: 41px;
+  padding-top: 0;
+}
+#la_totale {
+  border: solid 1px #fff;
+  padding: 20px 0 0 20px;
 }

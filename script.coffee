@@ -54,7 +54,7 @@ jQuery ->
 
   class ListView extends Backbone.View
 
-    el: $ '#coffeescript-meet-backbonejs'
+    el: $ '#la_totale'
 
     self = @
 

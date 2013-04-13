@@ -36,16 +36,21 @@ body
 
 @font-face 
   font-family 'Inconsolata'
-  font-style normal
-  font-weight 400
   src local('Inconsolata'), url(assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff) format('woff')
 
-body 
-  font-family Inconsolata
+@font-face 
+  font-family 'Courier Prime'
+  src local('Courier Prime'), url(assets/fonts/Courier Prime.woff) format('woff')
+
+body
+  font-family 'Inconsolata'
   background-color #E1B13C
 
+input, button, select, textarea
+  font-family 'Inconsolata'
+
 #wrap > .container 
-  padding-top 60px
+  // padding-top 60px
 
 .container .credit 
   margin 20px 0
@@ -55,5 +60,9 @@ body
   top 0
   right 0
   border 0  
-  padding-top 41px
+  padding-top 0
 
+#la_totale
+  border solid 1px white
+  padding 20px 0 0 20px
+  

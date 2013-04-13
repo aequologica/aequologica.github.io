@@ -1,6 +1,3 @@
 $ -> 
-  $('#test').css
-  	'background-color':'gray'
-  	'color':'lightgray'
+  $('#coffescript h1').html 'CoffeeScripted !'
 
-  $('#test').html 'CoffeeScripted!'

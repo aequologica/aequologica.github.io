@@ -2,11 +2,7 @@
 (function() {
 
   $(function() {
-    $('#test').css({
-      'background-color': 'gray',
-      'color': 'lightgray'
-    });
-    return $('#test').html('CoffeeScripted!');
+    return $('#coffescript h1').html('CoffeeScripted !');
   });
 
 }).call(this);
