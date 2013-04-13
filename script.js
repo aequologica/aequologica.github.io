@@ -128,7 +128,7 @@
         item_view = new ItemView({
           model: item
         });
-        return $('ol').append(item_view.render().el);
+        return $('#la_totale ol').append(item_view.render().el);
       };
 
       ListView.prototype.events = {

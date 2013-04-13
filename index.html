@@ -71,6 +71,16 @@
         <div id="la_totale">
         </div> <!-- /#la_totale -->
 
+        <div id="fragmentum">
+          <h1></h1>
+          <label>text</label>
+          <pre id="text"></pre>
+          <label>json</label>
+          <pre id="json"></pre>
+          <ol id="msg"></ol>
+        </div> <!-- /#fragmentum -->
+
+
       </div> <!-- /.container -->
 
     </div> <!-- /#wrap -->       
@@ -116,5 +126,36 @@
     $('#backbone').append(modestView.el);
   });
 </script>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function() {
+  $.ajax(
+    {
+        url: 'https://fragmentump1671404376trial.hanatrial.ondemand.com/fragmentum-web/resources/fragmentum',
+        beforeSend: function ( xhr ) {
+          xhr.setRequestHeader('Accept', 'text/plain');
+      }
+    }).done(function ( response ) {
+      $.getJSON(
+        this.url,
+        function (data) {
+          $('#fragmentum h1').html('Fragmentumed !'); 
+          $('#fragmentum pre#text').html(response); 
+          $('#fragmentum pre#json').html(JSON.stringify(data, null, 2));
+        }
+      );
+    }).fail(function ( jqXHR, textStatus, errorThrown ) {
+      $( "#fragmentum #msg" ).append( 
+          "<li>this.url = "+this.url+"</li>"+
+          "<li>jqXHR.status = "+jqXHR.status+"</li>"+
+          "<li>textStatus = "+textStatus+"</li>" +
+          "<li>errorThrown = "+errorThrown+"</li>"
+      );
+    }
+  );  
+});
+</script>
+
 </div>
 

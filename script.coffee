@@ -77,7 +77,7 @@ jQuery ->
 
     appendItem: (item) ->
       item_view = new ItemView model: item
-      $('ol').append item_view.render().el      
+      $('#la_totale ol').append item_view.render().el      
 
     events: 
       'click #add': 'addItem'
