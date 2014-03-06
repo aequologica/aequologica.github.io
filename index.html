@@ -57,7 +57,7 @@
 
         <div id="livereload">
           <h1>
-            LiveReloaded coucou Christo !
+            LiveReloaded !
           </h1>
         </div> <!-- /#livereload -->
 
@@ -73,10 +73,10 @@
 
         <div id="fragmentum">
           <h1></h1>
-          <label>text</label>
-          <pre id="text"></pre>
-          <label>json</label>
-          <pre id="json"></pre>
+          <label>URL</label>
+          <pre id="url"></pre>
+          <label>result</label>
+          <pre id="result"></pre>
           <ol id="msg"></ol>
         </div> <!-- /#fragmentum -->
 
@@ -132,17 +132,17 @@
 jQuery(document).ready(function() {
   $.ajax(
     {
-        url: 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/documents/ls/',
+        url: 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/documents/ls/', // 'http://localhost:10080/runciter/documents/ls/', // 
         beforeSend: function ( xhr ) {
-          xhr.setRequestHeader('Accept', 'text/plain');
+          xhr.setRequestHeader('Accept', 'application/json');
       }
     }).done(function ( response ) {
+      $('#fragmentum pre#url').html(this.url); 
       $.getJSON(
         this.url,
         function (data) {
           $('#fragmentum h1').html('Fragmentumed !'); 
-          $('#fragmentum pre#text').html(response); 
-          $('#fragmentum pre#json').html(JSON.stringify(data, null, 2));
+          $('#fragmentum pre#result').html(JSON.stringify(data, null, 2));
         }
       );
     }).fail(function ( jqXHR, textStatus, errorThrown ) {
