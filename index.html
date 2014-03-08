@@ -154,13 +154,8 @@ jQuery(document).ready(function() {
       }
     }).done(function ( response ) {
       $('#fragmentum pre#url').html(this.url); 
-      $.getJSON(
-        this.url,
-        function (data) {
-          $('#fragmentum h1').html('Fragmentumed !'); 
-          $('#fragmentum pre#result').html(JSON.stringify(data, null, 2));
-        }
-      );
+      $('#fragmentum h1').html('Fragmentumed !'); 
+      $('#fragmentum pre#result').html(JSON.stringify(response, null, 2));
     }).fail(function ( jqXHR, textStatus, errorThrown ) {
       $( "#fragmentum #msg" ).append( 
           "<li>this.url = "+this.url+"</li>"+
