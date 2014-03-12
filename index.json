@@ -36,7 +36,7 @@
     ,{ "name":"Travel-expenses"         , "url": "https://portal.wdf.sap.corp/go/Travel-expenses"                                                                   , "img": "euros.png"                            }
     ,{ "name":"travis-ci"               , "url": "http://travis-ci.org/#!/aequologica/hello"                                                                        , "img": "travis-ci-trans.png"                  }
     ,{ "name":"twitter"                 , "url": "https://twitter.com/"                                                                                             , "img": "twitter_t_logo_100.png"               }
-    ,{ "name":"twitter_bootstrap"       , "url": "http://twitter.github.com/bootstrap/"                                                                             , "img": "twitter_bootstrap_trans.png"          }
+    ,{ "name":"bootstrap"               , "url": "http://getbootstrap.com/"                                                                                         , "img": "bootstrap_3.1.png"          }
     ,{ "name":"veldicihudson"           , "url": "http://veldicihudson.dhcp.wdf.sap.corp:8080/hudson/job/ais/"                                                      , "img": "jenkins-logo-centre-150x150-trans.png"}
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "img": "wordpress.png"                        }
     ,{ "name":"aequologica"             , "url": "http://aequologica.net/experiments/"                                                                              , "img": "http://farm9.staticflickr.com/8114/8624626240_bbd4854e6f_q.jpg" }
