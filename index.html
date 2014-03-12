@@ -1,171 +1,485 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>aequologica</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="aequologica.net site">
-    <meta name="author" content="christophe thiebaud">
+<html>
+<head>
+<title>CT</title>
 
-    <!-- Le styles -->
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<link href="superstyles.css" rel="stylesheet" type="text/css">
 
-    <link href="application.css" rel="stylesheet">
+<style type="text/css">
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url('assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff') format('woff');
+}
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
+body {
+  font-family : Inconsolata;
+  background  : #F0AB00;
+}
 
-    <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="favicon.ico" />
+div {
+  font-size  : 12pt;
+  overflow   : hidden; /* cf. http://www.quirksmode.org/css/textoverflow.html */
+  white-space: nowrap;
+}
 
-    <style type="text/css">
-    @font-face {
-      font-family: 'ANIMT___';
-      src: local('ANIMT___'), url("assets/fonts/ANIMT___.woff") format('woff');
-    }
-    .animal {
-      font-family: 'ANIMT___';
-    }
-    </style>
-  </head>
+ul {
+  margin     : 0;
+  padding    : 0;
+  list-style : none;
+}
 
-  <body>
-    <div>    <!--  id="wrap" -->
+li {
+  white-space: nowrap;
+}
 
-      <a href="https://github.com/aequologica/aequologica.github.io"><img id="github_ribbon" src="assets/images/forkme_light_background.png" alt="Fork me on GitHub" /></a>
+a:link    {color:#efefef; text-decoration: none;}
+a:visited {color:#efefef; text-decoration: none;}
+a:hover   {color:#101010; text-decoration: none; background  : #efefef;}
+a:active  {color:#efefef; text-decoration: none;}
 
-      <div class="navbar navbar-inverse navbar-fixed-bottom">
-        <div class="navbar-inner">
-          <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="#">&copy;&nbsp;aequologica&nbsp;&trade;</a>
-            <div style="display: inline-block;" class="pull-right">
-              <form class="navbar-search pull-left" action="">
-                <input type="text" class="search-query span2" placeholder="Search">
-              </form>
-              <div class="nav-collapse collapse">
-                <ul class="nav">
-                  <!--
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#contact">Contact</a></li>
-                  -->
-                </ul>
-              </div><!--/.nav-collapse -->
-            </div>
-          </div>
-        </div>
-      </div>
+img {
+  border: none; 
+}
 
-      <div class="container">
-      <h1 class="animal">D</h1>
-      <!--
-      <h1 class="animal">0123456789</h1>
-      <h1 class="animal">@ABCDEFGHI</h1>
-      <h1 class="animal">LKLMNPQRST</h1>
-      -->
+hr {
+  margin : 0;
+  padding: 0;
+}
 
-        <div id="livereload">
-          <h1>
-            LiveReloaded !
-          </h1>
-        </div> <!-- /#livereload -->
+.image-wrap {
+  position   : relative; 
+  float      : left; 
+  display    : inline-block; 
+  visibility : hidden; 
+  margin     : 0;
+}
 
-        <div id="coffescript">
-          <h1/>
-        </div> <!-- /#coffescript -->
+.text-wrap {
+  margin  : 20px;
+  padding : 5px;
+  border  : 1px solid white;
+  border-radius:5px;
+  background-color: #101010;
+  color: white;
+  box-shadow: 8px 8px 5px #888888;
+}
+#pti li {
+  margin: 1em;
+}
+#pti {
+  background-color: #efefef;
+  color: #101010;
+}
 
-        <div id="backbone">
-        </div> <!-- /#backbone -->
+#pti a:link    {color:#101010; text-decoration: underline;}
+#pti a:visited {color:#101010; text-decoration: underline;}
+#pti a:hover   {color:#efefef; text-decoration: underline; background  : #101010;}
+#pti a:active  {color:#101010; text-decoration: underline;}
 
-        <div id="la_totale">
-        </div> <!-- /#la_totale -->
+</style>
+</head>
+<body>
 
-        <div id="fragmentum">
-          <h1></h1>
-          <label>URL</label>
-          <pre id="url"></pre>
-          <label>result</label>
-          <pre id="result"></pre>
-          <ol id="msg"></ol>
-        </div> <!-- /#fragmentum -->
+  <span class="circle" style="visibility:hidden;">
+    <span class="template box morphing-tinting"></span>
+  </span>
 
-      </div> <!-- /.container -->
+  <span id="SAP" class="text-wrap image-wrap" >
+    <ul>
+      <li><a target="blank_123" href="http://localhost:1082/nexus/nexus-restlet1x-plugin/default/docs/index.html">nexus REST API doc</a></li>
+      <hr/>
+      <li><a target="blank_070" href="http://localhost:1082/nexus">nexus @ localhost</a></li>
+      <li><a target="blank_080" href="http://vantgvmlnx232.dhcp.pgdev.sap.corp:1081/nexus/index.html">nexus @ vantgvmlnx232</a></li>
+      <li><a target="blank_090" href="http://nexus.wdf.sap.corp:8081/nexus">nexus @ wdf.sap.corp</a></li>
+      <hr/>
+      <li><a target="blank_170" href="http://vantgvmlnx232.dhcp.pgdev.sap.corp:8080/hudson/view/%CE%BF%CE%BB%CE%B9%CE%BA%CF%8C%CF%82/">hudson @ vantgvmlnx232</a></li>
+    </ul>
+  </span>
 
-    </div> <!-- /#wrap -->       
+  <!--
+  <span id="pti" class="text-wrap image-wrap" >
+    <h2>05.11.2013 <a target="pti_000"    href="https://wiki.wdf.sap.corp/wiki/display/ProductionTeams/PTI+Meeting">PTI Meeting</a>: "Hands-on <a href="http://www.sap.com/pc/tech/cloud/software/hana-cloud-platform-as-a-service/">Hana     Cloud Platform"</a></h2>
+    <ol>
+      <li>!! <a target="course_001" href="https://open.sap.com/courses">Introduction to SAP HANA Cloud Platform</a> !!</li>
+      <li>internal <a target="docs_002"   href="https://neo.ondemand.com">neo.ondemand.com</a> vs. public <a target="docs_002"   href="https://hanatrial.ondemand.com">(hana|hanatrial).ondemand.com</a>
+      <ul>
+      <li>
+        docs &hellip;
+        <a href="https://help.neo.ondemand.com/help">internal</a>
+        |
+        <a href="https://help.hana.ondemand.com/help">public</a>
+      </li>
+      <li>
+        tools &hellip;
+        <a href="https://tools.neo.ondemand.com/#cloud">internal</a>
+        |
+        <a href="https://tools.hana.ondemand.com/#cloud">public</a>
+      </li>
+      <li>
+        cockpit &hellip;
+        <a href="https://account.neo.ondemand.com/cockpit">internal</a>
+        |
+        <a href="https://account.hanatrial.ondemand.com/cockpit">public</a>
+      </li>
+      </ul>
+      </li>
+      <li><a target="wiki_003"   href="https://wiki.wdf.sap.corp/wiki/display/jpaas/JavA+platform+as+a+Service">JPAAS internal wiki</a></li>
+      <li>get your(s) HCP instance : both <a target="getyours_004"   href="https://account.neo.ondemand.com">internal</a> and <a target="getyours_005"   href="https://account.hanatrial.ondemand.com">public</a></li>
+      <li>telescreen &amp; company
+      <ul>
+      <li>
+      <a href="https://prodmyos.websocket.neo.ondemand.com/runciter/">prod</a>
+      </li>
+      <li>
+      <a href="https://devtestmyos.websocket.neo.ondemand.com/runciter/">qa</a>
+      </li>
+      <li>
+      <a href="https://devi051108sapdev.websocket.neo.ondemand.com/runciter">dev</a>
+      </li>
+        
+      </ul>
+      </li>
+      <li>hands on!</li>
+    </ol>
+  </span>
+  -->
 
-  </body>
+  <span id="€" class="text-wrap image-wrap" >
+    <ul>
+      <li><a target="blank_987" href="https://ipp.wdf.sap.corp/sap/bc/webdynpro/ehr/es_docview?ar_objects=Z9918017,Z9918018,Z9918024,Z9918025,Z9918012,Z9928017,Z9928018,Z9928024,Z9928025,Z9928012,Z9928033,Z9928034&amp;sap-language=EN#">€ € € € € €</a></li>
+    </ul>
+  </span>
+
+  <span id="internet" class="text-wrap image-wrap" >
+    <ul>
+      <li><a target="blank_150" href="https://www.artifact-listener.org/dashboard/">artifact-listener</a></li>
+      <li><a target="blank_1500" href="https://github.wdf.sap.corp/I056931/ToolsPaloAlto/">Tools Palo Alto</a></li>
+    </ul>
+  </span>
+
+  <span id="abendrot" class="text-wrap image-wrap" >
+    <ul>
+      <li><a target="blank_32135135" href="https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/">TC-BP</a></li>
+      <hr/>
+      <li><a target="blank_260" href="https://abendrotp1742770407trial.hanatrial.ondemand.com/abendrot-web/">abendrot</a></li>
+      <li><a target="blank_161" href="https://github.com/cthiebaud/abendrot">abendrot sources</a></li>
+      <li><a target="blank_162" href="http://cthiebaud.github.com/abendrot/">abendrot docs</a></li>
+      <li><a target="blank_662" href="https://travis-ci.org/cthiebaud/abendrot">abendrot builds</a></li>
+      <li><a target="blank_163" href="https://account.hanatrial.ondemand.com/">abendrot admin</a></li>
+      <li><a target="blank_164" href="http://www.google.com/accounts/ServiceLogin?service=analytics&passive=true&nui=1&hl=en&continue=https%3A%2F%2Fwww.google.com%2Fanalytics%2Fweb%2F%3Fhl%3Den&followup=https%3A%2F%2Fwww.google.com%2Fanalytics%2Fweb%2F%3Fhl%3Den">abendrot google analytics</a></li>      
+      <li><a target="blank_165" href="https://help.hana.ondemand.com/help/">SAP HANA Cloud Platform Documentation</a></li>  
+      <li><a target="blank_166" href="http://scn.sap.com/community/developer-center/cloud-platform">SAP HANA Cloud Platform Developer Center</a></li>  
+      <li><a target="blank_150" href="https://wiki.wdf.sap.corp/wiki/display/jpaas/JavA+platform+as+a+Service">JPaaS</a></li>
+      <li><a target="blank_190" href="https://wiki.wdf.sap.corp/wiki/display/leanDI/home">LeanDI</a></li>
+    </ul>
+  </span>
+</body>
+
 </html>
 
-<div>
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage.js"></script>
-<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.js"></script>
-<script type="text/javascript" src="application.js"></script>
-<script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" >
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-  var Modest = Backbone.Model.extend({
-    defaults: {
-      title: 'default'
+<script src="assets/minify/minify.json.js"          type="text/javascript"></script>
+
+<script>
+
+$(function() {
+
+  // from Paul Irish
+  // http://paulirish.com/2009/throttled-smartresize-jquery-event-handler/
+  (function($,sr){
+   
+    // debouncing function from John Hann
+    // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+    var debounce = function (func, threshold, execAsap) {
+      var timeout;
+
+      return function debounced () {
+        var obj = this, args = arguments;
+        function delayed () {
+          if (!execAsap)
+            func.apply(obj, args);
+          timeout = null; 
+        };
+
+        if (timeout)
+          clearTimeout(timeout);
+        else if (execAsap)
+          func.apply(obj, args);
+
+        timeout = setTimeout(delayed, threshold || 100); 
+      };
     }
+    // smartresize 
+    jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+   
+  })(jQuery,'smartresize');
+
+  $(window).smartresize(function() {
+    randomize(0, 0, $('body').width(), $('body').height());
   });
 
-  var modest = new Modest({title : 'title'});
+  var maxSearchIterations = 100;
+  var filled_areas = [];
+  var margin = 0;
 
-  var ModestView = Backbone.View.extend({
-    tagName: 'h1',
-    render: function() {
-      this.$el.html(this.model.get('title'));
-      return this;
+  function calc_overlap(a1) {
+    var overlap = 0;
+    var area_index;
+    for (area_index = 0; area_index < filled_areas.length; area_index++) {
+
+      var a2 = filled_areas[area_index];
+
+      // no intersection cases
+      if (a1.x + a1.width < a2.x) {
+          continue;
+      }
+      if (a2.x + a2.width < a1.x) {
+          continue;
+      }
+      if (a1.y + a1.height < a2.y) {
+          continue;
+      }
+      if (a2.y + a2.height < a1.y) {
+          continue;
+      }
+
+      // intersection exists : calculate it !
+      var x1 = Math.max(a1.x, a2.x);
+      var y1 = Math.max(a1.y, a2.y);
+      var x2 = Math.min(a1.x + a1.width, a2.x + a2.width);
+      var y2 = Math.min(a1.y + a1.height, a2.y + a2.height);
+
+      var intersection = ((x1 - x2) * (y1 - y2));
+
+      overlap += intersection;
     }
+      
+    return overlap;
+  }
+
+  function centerAll(
+    imgContainers,
+    min_x,
+    min_y,
+    max_x,
+    max_y) {
+    
+      min_x += margin;
+      min_y += margin;
+      max_x -= margin;
+      max_y -= margin;
+
+      imgContainers.each(function() {
+      var $img = $(this).find("img");
+      if ($img == undefined) {
+        return;
+      }
+      $(this).css({
+        left: (max_x-min_x-$img.width())/2,
+        top:  (max_y-min_y-$img.height())/2
+      });
+    });
+  }
+
+  function randomize(
+    min_x,
+    min_y,
+    max_x,
+    max_y) {
+    
+    min_x += margin;
+    min_y += margin;
+    max_x -= margin;
+    max_y -= margin;
+
+    // r.à.z array
+    filled_areas.splice(0, filled_areas.length);
+
+    var index = 0;
+
+    var arr = $.makeArray( $('span.image-wrap') );
+
+    function getSize(element) {
+      $element = $(element);
+      var width  = 12;
+      var height = 12;
+      var img = $element.find("img");
+      if (img.length > 0) {
+        width  = img.width ();
+        height = img.height();
+      } else {
+        width  = $element.width ();
+        height = $element.height();
+      }
+      return width * height;
+    }
+
+    function compareAreas(a, b) {
+      var aS = getSize(a);
+      var bS = getSize(b);
+      return (bS - aS );
+    }
+
+    arr.sort(compareAreas);
+
+    $.each(arr, function() {
+
+      var $this = $(this);
+
+      var rand_x = 0;
+      var rand_y = 0;
+      var rand_z = 0;
+      var smallest_overlap = 9007199254740992;
+      var best_choice;
+      var area;
+
+      var width  = 12;
+      var height = 12;
+      var isImg  = false;
+      {
+          var img = $this.find("img");
+          if (img.length > 0) {
+            isImg = true;
+            width  = img.width ();
+            height = img.height();
+          } else {
+            width  = $this.width ();
+            height = $this.height();
+          }
+      }
+  
+      min_opacity = .5;
+
+      var iter;
+      var overlap;
+      for (iter = 0; iter < maxSearchIterations; iter++) {
+
+        rand_opacity = min_opacity + (( 1.0 - min_opacity) * Math.random());
+
+        if (isImg) {
+            rand_z = Math.round(30    + (170*rand_opacity));
+        } else {
+            rand_z = width;
+        }
+
+        rand_x = Math.round(min_x + ((max_x - min_x - rand_z ) * (Math.random() % 1)));
+        rand_y = Math.round(min_y + ((max_y - min_y - height ) * (Math.random() % 1)));
+
+        area = {
+          x: rand_x,
+          y: rand_y,
+          z: rand_z,
+          width : rand_z,
+          height: height,
+          depth: 0
+        };
+        overlap = calc_overlap(area);
+        if (overlap < smallest_overlap) {
+          smallest_overlap = overlap;
+          best_choice = area;
+        }
+        if (overlap == 0) {
+          break;
+        }
+      }
+
+      filled_areas.push(best_choice);
+
+      var zIndex = Math.round((1 + min_opacity - rand_opacity)*10);
+      var oPacity = 1 + min_opacity - rand_opacity;
+      if ($(this).hasClass("text-wrap")) {
+        zIndex = 123456789;
+        oPacity = 1.0;
+      }
+
+      $this.css({
+        position: "absolute"
+        , "z-index": zIndex
+        , visibility : "visible"
+        , opacity: oPacity
+      });
+
+      $this.animate({
+        left: best_choice.x
+        ,top: best_choice.y
+        ,width: best_choice.z
+      });
+
+    });
+
+    return false;
+  }
+
+  function order() {
+      
+    $('span.image-wrap').each(function() {
+      $(this).css({position:"inherit"});
+    });
+
+    return false;
+  }
+
+  $("body").click(function(event) {
+    // do not handle events from child elements that managed to bubble here
+    if (event.target != this) {
+      return;
+    }
+    switch (event.which) {
+      case 1:
+        // Left mouse button pressed
+        $(window).resize();
+        break;
+      case 2:
+        // Middle mouse button pressed
+        order();
+        break;
+      case 3:
+        break;
+      default:
+        break;
+    }    
   });
 
-  var modestView =  new ModestView({model : modest});
-
-  jQuery(document).ready(function($) {
-    modest.set({title : 'Backboned !'});
-    modestView.render();
-    $('#backbone').append(modestView.el);
-  });
-</script>
-
-<script type="text/javascript">
-
-jQuery(document).ready(function() {
   $.ajax(
     {
-        url: 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/documents/ls/', // 'http://localhost:10080/runciter/documents/ls/', // 
-        beforeSend: function ( xhr ) {
-          xhr.setRequestHeader('Accept', 'application/json');
-      }
-    }).done(function ( response ) {
-      $('#fragmentum pre#url').html(this.url); 
-      $('#fragmentum h1').html('Fragmentumed !'); 
-      $('#fragmentum pre#result').html(JSON.stringify(response, null, 2));
-    }).fail(function ( jqXHR, textStatus, errorThrown ) {
-      $( "#fragmentum #msg" ).append( 
-          "<li>this.url = "+this.url+"</li>"+
-          "<li>jqXHR.status = "+jqXHR.status+"</li>"+
-          "<li>textStatus = "+textStatus+"</li>" +
-          "<li>errorThrown = "+errorThrown+"</li>"
-      );
+      url         : "index.json",
+      dataType    : 'json',
+      dataFilter  : function(data, type) { return JSON.minify( data ); }
+    }).done(function ( data ) {
+      var loaded = 0;
+
+      $.each(data.liens, function(index, lien) {
+        var back;
+        if (this.img.indexOf("http") == 0) {
+          back = this.img;
+        } else {
+          back = 'images/'+this.img;
+        }
+
+        $('.template').append(
+          "<a href='"+this.url+"' title='"+this.name+"' target='"+this.name+"'>"+
+            "<img src='"+back+"' style='visibility: hidden; height : auto; width: 92px; '/>"+
+          "</a>"
+        );
+        loaded++;
+      });
+
+      $("img").load(function() {
+        $(this).wrap(function(){
+          return '<span id="img'+loaded+'" class="image-wrap ' + $(this).attr('class') + '" style="background:url(' + $(this).attr('src') + ') no-repeat center center; width: ' + $(this).width() + 'px; height: ' + $(this).height() + 'px;" />';
+        });
+        $(this).css({opacity : 0});
+        if (--loaded == 0) {
+          $(window).resize();
+        }
+      });
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert(textStatus+" "+errorThrown);
     }
-  );  
+  );
+
 });
+
 </script>
-
-</div>
-
