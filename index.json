@@ -39,7 +39,7 @@
     ,{ "name":"twitter_bootstrap"       , "url": "http://twitter.github.com/bootstrap/"                                                                             , "img": "twitter_bootstrap_trans.png"          }
     ,{ "name":"veldicihudson"           , "url": "http://veldicihudson.dhcp.wdf.sap.corp:8080/hudson/job/ais/"                                                      , "img": "jenkins-logo-centre-150x150-trans.png"}
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "img": "wordpress.png"                        }
-    ,{ "name":"aequologica"             , "url": "http://aequologica.net"                                                                                           , "img": "http://farm9.staticflickr.com/8114/8624626240_bbd4854e6f_q.jpg" }
+    ,{ "name":"aequologica"             , "url": "http://aequologica.net/experiments/"                                                                              , "img": "http://farm9.staticflickr.com/8114/8624626240_bbd4854e6f_q.jpg" }
     ,{ "name":"vethica"                 , "url": "http://localhost:6540/"                                                                                           , "img": "vethica.png"                          }
 //  ,{ "name":"connectwdf05.sap.com"    , "url": "https://connectwdf05.sap.com/my.logon.php3?check=1&fromaxinstaller=1"                                             , "img": "SAP_remote_access.png"                }
 //  ,{ "name":"docs.google.com"         , "url": "https://docs.google.com/?tab=oo&authuser=0#home"                                                                  , "img": "logo-google-docs.png"                 }
