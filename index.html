@@ -11,52 +11,24 @@
 
   <link rel="shortcut icon" href="favicon2.ico">
 </head>
-<body ng-app        = "aequologicaApp"  
-      ng-controller = "IndexCtrl">
+<body ng-app="aequologicaApp" ng-controller="IndexCtrl">
 
-  <div masonry 
-       id            = "masonry"
-       ng-click      = "shuffle()" >
-
-    <div class     = "masonry-brick" 
-         ng-repeat = "brick in bricks" >
-
-      <a ng-show  = "brick.src" 
-         ng-href  = "{{brick.url}}" 
-         target   = "{{brick.name}}" 
-         ng-click = "$event.stopPropagation();">
-
-        <img ng-src = "images/{{brick.src}}" >
-
+  <div masonry id="masonry" ng-click="shuffle()" >
+    <div class="masonry-brick" ng-repeat="brick in bricks" >
+      <a ng-show="brick.src" ng-href="{{brick.url}}" target="{{brick.name}}" ng-click="$event.stopPropagation();">
+        <img ng-src = "images/{{brick.src}}">
       </a>
-
-      <ul ng-show = "brick.items" 
-          class   = "text-wrap">
-
+      <ul ng-show="brick.items" class="text-wrap">
         <h1>{{brick.name}}</h1>
-
         <hr/>
-
-        <li ng-repeat = "item in brick.items" >
-
-          <a ng-show  = "item.url" 
-             ng-href  = "{{item.url}}" 
-             target   = "{{item.name}}" 
-             ng-click = "$event.stopPropagation();">
-
+        <li ng-repeat="item in brick.items">
+          <a ng-show="item.url" ng-href="{{item.url}}" target="{{item.name}}" ng-click="$event.stopPropagation();">
             {{item.text}}
-
           </a>
-
-          <hr ng-show = "item.type" 
-              style   = "opacity: .8;"/>
-
+          <hr ng-show="item.type" style="opacity: .8;"/>
         </li>
-
       </ul>
-
     </div>
-
   </div>
 
 </body>
@@ -92,24 +64,20 @@ var shuffleArray = function(array) {
 
   return array;
 }
+
 angular.module('aequologicaApp', ['wu.masonry']).
   controller('IndexCtrl', function ($scope, $http) {
 
     $scope.bricks = [];
 
     $http.get('index.json').success( function(data) {
-
-      var tmpBricks = [];
-
       _.each(data.images, function(image){
-        tmpBricks.push(image);
+        $scope.bricks.push(image);
       });
       _.each(data.groups, function(group){
-        tmpBricks.push(group);
+        $scope.bricks.push(group);
       });
-      shuffleArray(tmpBricks);
-
-      $scope.bricks = tmpBricks;
+      shuffleArray($scope.bricks);
     });
 
     $scope.shuffle = function () {
