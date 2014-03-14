@@ -7,7 +7,7 @@
 
 body {
   font-family : Inconsolata;
-  background  : #F0AB00; // #FFF; // 
+  background  : #F0AB00; // #FFF; // ;
 }
 
 div {
@@ -67,6 +67,11 @@ hr {
   background-color: #101010;
   color: white;
   box-shadow: 8px 8px 5px #888888;
+}
+
+
+#masonry {
+  cursor: crosshair;
 }
 
 .masonry-brick {
