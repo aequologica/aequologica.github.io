@@ -11,7 +11,8 @@
 
   <link rel="shortcut icon" href="favicon2.ico">
 </head>
-<body ng-app = "aequologicaApp">
+<body ng-app        = "aequologicaApp"  
+      ng-controller = "IndexCtrl">
 
 
 
@@ -27,6 +28,25 @@
 <script type="text/javascript" >
 'use strict';
 
-angular.module('aequologicaApp', []);
+angular.module('aequologicaApp', []).
+  controller('IndexCtrl', function ($scope, $http) {
 
+    $scope.bricks = [];
+
+    $http.get('index.json').success( function(data) {
+
+      var tmpBricks = [];
+
+      _.each(data.images, function(image){
+        tmpBricks.push(image);
+		console.log(image.name);
+      });
+      _.each(data.groups, function(group){
+        tmpBricks.push(group);
+		console.log(group.name);
+      });
+      $scope.bricks = tmpBricks;
+    });
+
+  });
 </script>

@@ -1,0 +1,98 @@
+{ 
+  "images" : [
+     { "name":"aequologica", 
+        "url": "http://aequologica.net/experiments/", 
+        "src": "aequologica-trans.png", 
+        "items" : [
+            { "name" : "vethica"        ,"url":"https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/"                                                       , "text" : "TC-BP"                                       }
+        ]
+     }
+    ,{ "name":"ais"                     , "url": "https://wiki.wdf.sap.corp/wiki/display/ProductionUnits/PU+Artifact+Information+Server"                            , "src": "ais-trans.png"                                  }
+    ,{ "name":"amazon"                  , "url": "https://console.aws.amazon.com/ec2/home?&region=eu-west-1#s=Instances"                                            , "src": "amazon_trans.png"                               }
+    ,{ "name":"angular"                 , "url": "http://docs.angularjs.org/tutorial/step_02"                                                                       , "src": "angular.png"                                    }
+    ,{ "name":"appengine"               , "url": "https://appengine.google.com/"                                                                                    , "src": "google_app_engine.png"                          }
+    ,{ "name":"bootstrap"               , "url": "http://getbootstrap.com/"                                                                                         , "src": "bootstrap_3.1.png"                              }
+    ,{ "name":"buildeventhub"           , "url": "http://buildeventhub.net:3000/mainMenu"                                                                           , "src": "candle-128-trans.png"                           }
+    ,{ "name":"cloudbees"               , "url": "https://cthiebaud.ci.cloudbees.com/job/candle/"                                                                   , "src": "cloudbees.png"                                  }
+    ,{ "name":"cthiebaud@github"        , "url": "https://github.com/cthiebaud"                                                                                     , "src": "github-logo-transparent.png"                    }
+    ,{ "name":"ds3"                     , "url": "http://d3js.org/"                                                                                                 , "src": "citroen-ds3-2011-white-view_160723-160x120.png" }
+    ,{ "name":"face"                    , "url": "https://sapneth3.wdf.sap.corp/~form/handler?_APP=00200682500000002283&_EVENT=DISPLAY&00200682500000002187=i051108", "src": "i051108.png"                                    }
+    ,{ "name":"facebook.com"            , "url": "http://www.facebook.com/"                                                                                         , "src": "b_1234209334_facebook_logo.jpg"                 }
+    ,{ "name":"git"                     , "url": "http://git-scm.com/downloads"                                                                                     , "src": "Git-Icon-1788C.png"                             }
+    ,{ "name":"google.com/finance"      , "url": "http://www.google.com/finance?q=ETR:SAP"                                                                          , "src": "google_finance_logo-trans.png"                  }
+    ,{ "name":"i051108@sapgithub"       , "url": "https://github.wdf.sap.corp/i051108"                                                                              , "src": "github-enterprise-trans.png"                    }
+    ,{ "name":"ilfattoquotidiano.it"    , "url": "http://www.ilfattoquotidiano.it/"                                                                                 , "src": "il_fatto_quotidiano.png"                        }
+    ,{ "name":"jira"                    , "url": "https://sapjira.wdf.sap.corp/secure/TaskBoard.jspa"                                                               , "src": "jira_logo_smaller.png"                          }
+    ,{ "name":"job_search"              , "url": "https://rcp.wdf.sap.corp/sap/bc/bsp/rcfuix/flex_ui_int/SAPeRecruiting.html#mainView=search;popUps=0"              , "src": "ct@sap.png"                                     }
+    ,{ "name":"jsfiddle"                , "url": "http://jsfiddle.net/"                                                                                             , "src": "jsfiddle-logo1.png"                             }
+    ,{ "name":"lemonde.fr"              , "url": "http://www.lemonde.fr/"                                                                                           , "src": "le_monde_02.png"                                }
+    ,{ "name":"lequipe.fr"              , "url": "http://www.lequipe.fr/"                                                                                           , "src": "lequipe.gif"                                    }
+    ,{ "name":"liberation.fr"           , "url": "http://www.liberation.fr/"                                                                                        , "src": "logo-liberation-trans.png"                      }
+    ,{ "name":"linkedin.com"            , "url": "http://www.linkedin.com/"                                                                                         , "src": "LinkedIn-Logo-trans.png"                        }
+    ,{ "name":"loggly"                  , "url": "https://aequologica.loggly.com/"                                                                                  , "src": "loggly-logo-trans.png"                          }
+    ,{ "name":"mail@gandi"              , "url": "https://webmail.eu.com/?_task=mail"                                                                               , "src": "roundcube_logo.png"                             }
+    ,{ "name":"mavenCentral"            , "url": "http://search.maven.org/"                                                                                         , "src": "mavenCentral_logo.png"                          }
+    ,{ "name":"ohloh"                   , "url": "https://www.ohloh.net/"                                                                                           , "src": "ohlohlogo100.png"                               }
+    ,{ "name":"payslip"                 , "url": "https://ipp.wdf.sap.corp/sap/bc/webdynpro/sap/hress_a_payslip?sap-language=EN&sap-wd-configId=HRESS_AC_PAYSLIP#"  , "src": "euro-trans.png"                                 }
+    ,{ "name":"portal.wdf.sap.corp"     , "url": "https://portal.wdf.sap.corp/home"                                                                                 , "src": "sap_portal.png"                                 }
+    ,{ "name":"projectportal"           , "url": "https://projectportal.wdf.sap.corp/projects?query=i051108"                                                        , "src": "project_portal_logo_medium-trans.png"           }
+    ,{ "name":"putty_and_tortoise"      , "url": "http://www.mono-project.com/Putty_and_TortoiseSVN"                                                                , "src": "putty.png"                                      }
+    ,{ "name":"site@github.wdf.sap.corp", "url": "https://github.wdf.sap.corp/pages/TIP-Production-Delivery-Team-Standards/PU_Team_Standards/"                      , "src": "beh-semi-trans.png"                             }
+    ,{ "name":"sofoot.com"              , "url": "http://www.sofoot.com/"                                                                                           , "src": "745958so_foot_logo-trans.png"                   }
+    ,{ "name":"splunkstorm"             , "url": "https://www.splunkstorm.com/storm/deployment/list"                                                                , "src": "splunk-trans.png"                               }
+    ,{ "name":"stanford"                , "url": "https://class.coursera.org/hci-2012-002/lecture/index"                                                            , "src": "SU_altSigSeal_2col_pos.png"                     }
+    ,{ "name":"torch@localhost"         , "url": "http://wdfn00262777a.dhcp.wdf.sap.corp:8080/beh/test.jsp"                                                         , "src": "home.png"                                       }
+    ,{ "name":"Travel-expenses"         , "url": "https://portal.wdf.sap.corp/go/Travel-expenses"                                                                   , "src": "euros.png"                                      }
+    ,{ "name":"travis-ci"               , "url": "http://travis-ci.org/#!/aequologica/hello"                                                                        , "src": "travis-ci-trans.png"                            }
+    ,{ "name":"twitter"                 , "url": "https://twitter.com/"                                                                                             , "src": "twitter_t_logo_100.png"                         }
+    ,{ "name":"veldicihudson"           , "url": "http://veldicihudson.dhcp.wdf.sap.corp:8080/hudson/job/ais/"                                                      , "src": "jenkins-logo-centre-150x150-trans.png"          }
+    ,{ "name":"vethica"                 , "url": "http://localhost:6540/"                                                                                           , "src": "vethica.png"                                    }
+    ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "src": "wordpress.png"                                  }
+  ],
+  "groups" : [
+    { "name" : "SAP", 
+      "ulr"  : "SAP",  
+      "items" : [
+        { "name" : "nexus_rest",      "url":"http://localhost:1082/nexus/nexus-restlet1x-plugin/default/docs/index.html",                        "text" : "nexus REST API doc"      },
+        { "type" : "separator" },
+        { "name" : "nexus_at_local",  "url":"http://localhost:1082/nexus",                                                                       "text" : "nexus @ localhost"       },
+        { "name" : "nexus_at_van",    "url":"http://vantgvmlnx232.dhcp.pgdev.sap.corp:1081/nexus/index.html",                                    "text" : "nexus @ vantgvmlnx232"   },
+        { "name" : "nexus_at_wdf",    "url":"http://nexus.wdf.sap.corp:8081/nexus",                                                              "text" : "nexus @ wdf.sap.corp"    },
+        { "type" : "separator" },
+        { "name" : "hudson_at_van",   "url":"http://vantgvmlnx232.dhcp.pgdev.sap.corp:8080/hudson/view/%CE%BF%CE%BB%CE%B9%CE%BA%CF%8C%CF%82/",   "text" : "hudson @ vantgvmlnx232"  }
+
+      ]
+    },
+    { "name" : "€", 
+      "url"  : "€", 
+      "items" : [
+        { "name" : "SAP_stock",      "url":"https://ipp.wdf.sap.corp/sap/bc/webdynpro/ehr/es_docview?ar_objects=Z9918017,Z9918018,Z9918024,Z9918025,Z9918012,Z9928017,Z9928018,Z9928024,Z9928025,Z9928012,Z9928033,Z9928034&amp;sap-language=EN#", "text" : "€ € € € € €"}
+      ]
+    },
+    { "name" : "internet",
+      "url"  : "internet",
+      "items" : [
+        { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/",       "text" : "artifact-listener"  }
+      ]
+    },
+    { "name" : "abendrot",
+      "url"  : "abendrot",
+      "items" : [
+        { "name" : "blank_260",      "url":"https://abendrotp1742770407trial.hanatrial.ondemand.com/abendrot-web/",           "text" : "abendrot"                                 },
+        { "name" : "blank_161",      "url":"https://github.com/cthiebaud/abendrot",                                           "text" : "abendrot sources"                         },
+        { "name" : "blank_162",      "url":"http://cthiebaud.github.com/abendrot/",                                           "text" : "abendrot docs"                            },
+        { "name" : "blank_662",      "url":"https://travis-ci.org/cthiebaud/abendrot",                                        "text" : "abendrot builds"                          },
+        { "name" : "blank_163",      "url":"https://account.hanatrial.ondemand.com/",                                         "text" : "abendrot admin"                           },
+        { "name" : "blank_164",      "url":"http://www.google.com/accounts/ServiceLogin?service=analytics&passive=true&nui=1&hl=en&continue=https%3A%2F%2Fwww.google.com%2Fanalytics%2Fweb%2F%3Fhl%3Den&followup=https%3A%2F%2Fwww.google.com%2Fanalytics%2Fweb%2F%3Fhl%3Den", 
+                                                                                                                              "text" : "abendrot google analytics"                },
+        { "type" : "separator" },
+        { "name" : "blank_165",      "url":"https://help.hana.ondemand.com/help/",                                            "text" : "SAP HANA Cloud Platform Documentation"    },
+        { "name" : "blank_166",      "url":"http://scn.sap.com/community/developer-center/cloud-platform",                    "text" : "SAP HANA Cloud Platform Developer Center" },
+        { "name" : "blank_150",      "url":"https://wiki.wdf.sap.corp/wiki/display/jpaas/JavA+platform+as+a+Service",         "text" : "JPaaS"                                    },
+        { "name" : "blank_190",      "url":"https://wiki.wdf.sap.corp/wiki/display/leanDI/home",                              "text" : "LeanDI"                                   },
+        { "type" : "separator" },
+        { "name" : "tools_palo_alto", "url":"https://github.wdf.sap.corp/I056931/ToolsPaloAlto/",                                                "text" : "Tools Palo Alto"    }
+      ]
+    }
+  ]
+}
