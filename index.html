@@ -7,128 +7,14 @@
   <title>æquologica</title>
 
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css" >
-  <link rel="stylesheet" type="text/css" href="superstyles.css">
-
-  <link rel="shortcut icon" href="favicon2.ico?QWE"> <!-- ?123 : defeat browser cache -->
 
 </head>
-<body ng-app        = "aequologicaApp"  
-      ng-controller = "IndexCtrl">
 
-  <div masonry 
-       id            = "masonry"
-       ng-click      = "shuffle()" >
+<body class="container">
 
-    <div class     = "masonry-brick" 
-         ng-repeat = "brick in bricks" >
-
-      <a ng-show  = "brick.src" 
-         ng-href  = "{{brick.url}}" 
-         target   = "{{brick.name}}" 
-         ng-click = "$event.stopPropagation();">
-
-        <img ng-src = "images/{{brick.src}}" >
-
-      </a>
-
-      <ul ng-show = "brick.items" 
-          class   = "text-wrap">
-
-        <h1>{{brick.name}}</h1>
-
-        <hr/>
-
-        <li ng-repeat = "item in brick.items" >
-
-          <a ng-show  = "item.url" 
-             ng-href  = "{{item.url}}" 
-             target   = "{{item.name}}" 
-             ng-click = "$event.stopPropagation();">
-
-            {{item.text}}
-
-          </a>
-
-          <hr ng-show = "item.type" 
-              style   = "opacity: .8;"/>
-
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
+<h1>æquologica</h1>
 
 </body>
 
 </html>
 
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js" ></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"             ></script>
-<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"           ></script>
-<script type="text/javascript" src="http://masonry.desandro.com/masonry.pkgd.min.js"                         ></script>
-<script type="text/javascript" src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"               ></script>
-<script type="text/javascript" src="http://code.angularjs.org/1.2.14/angular.min.js"                         ></script>
-<script type="text/javascript" src="http://passy.github.io/angular-masonry/angular-masonry.min.js"           ></script>
-
-<script type="text/javascript" >
-'use strict';
-
-// http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
-// -> Fisher–Yates shuffle algorithm
-var shuffleArray = function(array) {
-  var m = array.length, t, i;
-
-  // While there remain elements to shuffle
-  while (m) {
-    // Pick a remaining element…
-    i = Math.floor(Math.random() * m--);
-
-    // And swap it with the current element.
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
-  }
-
-  return array;
-}
-
-var tellAngular = function() {
-    var domElt = document.getElementById('masonry');
-    var scope = angular.element(domElt).scope();
-    if (typeof scope !== "undefined" && scope != null) {
-      scope.$apply(function() {
-        shuffleArray(scope.bricks);
-      });
-    }
-}
-
-angular.module('aequologicaApp', ['wu.masonry']).
-  controller('IndexCtrl', function ($scope, $http) {
-
-    $scope.bricks = [];
-
-    $http.get('index.json').success( function(data) {
-
-      var tmpBricks = [];
-
-      _.each(data.images, function(image){
-        tmpBricks.push(image);
-      });
-      _.each(data.groups, function(group){
-        tmpBricks.push(group);
-      });
-      shuffleArray(tmpBricks);
-
-      $scope.bricks = tmpBricks;
-    });
-
-    $scope.shuffle = function () {
-      shuffleArray($scope.bricks);
-    }
-
-  });
-
-</script>
