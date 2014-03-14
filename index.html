@@ -16,7 +16,7 @@
 
   <div masonry 
        id            = "masonry"
-	   >
+       ng-click      = "shuffle()" >
 
     <div class     = "masonry-brick" 
          ng-repeat = "brick in bricks" >
@@ -103,15 +103,18 @@ angular.module('aequologicaApp', ['wu.masonry']).
 
       _.each(data.images, function(image){
         tmpBricks.push(image);
-		console.log(image.name);
       });
       _.each(data.groups, function(group){
         tmpBricks.push(group);
-		console.log(group.name);
       });
       shuffleArray(tmpBricks);
+
       $scope.bricks = tmpBricks;
     });
+
+    $scope.shuffle = function () {
+      shuffleArray($scope.bricks);
+    }
 
   });
 </script>
