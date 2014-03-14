@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<title>Hello Strapdown</title>
+
+<xmp theme="united" style="display:none;">
+cf. [Updating Applications with Zero Downtime](https://help.hana.ondemand.com/help/frameset.htm?a10f6c2071b443698eb7dfc411d0ed6d.html)
+
+## 0. prologue 
+
+    set HTTP_PROXY_HOST=proxy
+    set HTTP_PROXY_PORT=8080
+    set HTTPS_PROXY_HOST=proxy
+    set HTTPS_PROXY_PORT=8080
+    set HTTP_NON_PROXY_HOSTS="localhost"
+
+    
+assuming neo is installed in     
+
+#### unix 
+
+    /usr/local/neo
+
+#### windows 
+
+    C:\usr\local\neo
+
+## 1. neo status
+
+### unix 
+
+    /usr/local/neo/tools/neo.sh status -h hanatrial.ondemand.com -a p1630844092trial -u p1630844092 -b tcb
+
+### windows 
+
+    C:\usr\local\neo\tools\neo.bat status -h hanatrial.ondemand.com -a p1630844092trial -u p1630844092 -b tcb
+
+## 2. neo deploy
+
+### unix 
+
+    /usr/local/neo/tools/neo.sh deploy \ 
+      --host              hanatrial.ondemand.com \
+      --account           p1630844092trial \
+      --user              p1630844092 \
+      --application       tcb \
+      --source            ROOT.war \
+      --maximum-processes 2
+
+### windows 
+
+    C:\usr\local\neo\tools\neo.bat deploy ^ 
+      --host              hanatrial.ondemand.com ^
+      --account           p1630844092trial ^
+      --user              p1630844092 ^
+      --application       tcb ^
+      --source            ROOT.war ^
+      --maximum-processes 2
+
+## 3. neo start
+
+### unix 
+
+    /usr/local/neo/tools/neo.sh start -h hanatrial.ondemand.com -a p1630844092trial -u p1630844092 -b tcb
+
+### windows 
+
+    C:\usr\local\neo\tools\neo.bat start -h hanatrial.ondemand.com -a p1630844092trial -u p1630844092 -b tcb
+
+
+## 3. neo disable
+
+(replace xxxxxxx by the process id returned by step 1. neo status )
+
+### unix 
+
+    /usr/local/neo/tools/neo.sh disable \
+      --host hanatrial.ondemand.com \
+      --user p1630844092 \
+      --application-process-id xxxxxxx
+
+### windows 
+
+    C:\usr\local\neo\tools\neo.bat disable ^
+      --host hanatrial.ondemand.com ^
+      --user p1630844092 ^
+      --application-process-id xxxxxxx
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
