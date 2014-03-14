@@ -15,7 +15,44 @@
       ng-controller = "IndexCtrl">
 
 
+    <div class     = "masonry-brick" 
+         ng-repeat = "brick in bricks" >
 
+      <a ng-show  = "brick.src" 
+         ng-href  = "{{brick.url}}" 
+         target   = "{{brick.name}}" 
+         ng-click = "$event.stopPropagation();">
+
+        <img ng-src = "images/{{brick.src}}" >
+
+      </a>
+
+      <ul ng-show = "brick.items" 
+          class   = "text-wrap">
+
+        <h1>{{brick.name}}</h1>
+
+        <hr/>
+
+        <li ng-repeat = "item in brick.items" >
+
+          <a ng-show  = "item.url" 
+             ng-href  = "{{item.url}}" 
+             target   = "{{item.name}}" 
+             ng-click = "$event.stopPropagation();">
+
+            {{item.text}}
+
+          </a>
+
+          <hr ng-show = "item.type" 
+              style   = "opacity: .8;"/>
+
+        </li>
+
+      </ul>
+
+    </div>
 </body>
 
 </html>
