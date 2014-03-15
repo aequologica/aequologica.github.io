@@ -36,10 +36,10 @@ a img {
 
 li a:link    {color:#efefef; text-decoration: none;}
 li a:visited {color:#efefef; text-decoration: none;}
-li a:hover   {color:#101010; text-decoration: none; background  : #efefef;}
+li a:hover   {color:#101010; text-decoration: none; background  : #F0AB00;}
 li a:active  {color:#efefef; text-decoration: none;}
 
-a img:hover {text-decoration: none; background  : #efefef;}
+a img:hover {text-decoration: none; background: #F0AB00;}
 
 img {
   border: none; 
