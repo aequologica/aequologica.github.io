@@ -46,7 +46,6 @@
     ,{ "name":"travis-ci"               , "url": "http://travis-ci.org/#!/aequologica/hello"                                                                        , "src": "travis-ci-trans.png"                            }
     ,{ "name":"twitter"                 , "url": "https://twitter.com/"                                                                                             , "src": "twitter_t_logo_100.png"                         }
     ,{ "name":"veldicihudson"           , "url": "http://veldicihudson.dhcp.wdf.sap.corp:8080/hudson/job/ais/"                                                      , "src": "jenkins-logo-centre-150x150-trans.png"          }
-    ,{ "name":"vethica"                 , "url": "http://localhost:6540/"                                                                                           , "src": "vethica.png"                                    }
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "src": "wordpress.png"                                  }
   ],
   "groups" : [
