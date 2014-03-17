@@ -10,7 +10,6 @@
     ,{ "name":"ais"                     , "url": "https://wiki.wdf.sap.corp/wiki/display/ProductionUnits/PU+Artifact+Information+Server"                            , "src": "ais-trans.png"                                  }
     ,{ "name":"amazon"                  , "url": "https://console.aws.amazon.com/ec2/home?&region=eu-west-1#s=Instances"                                            , "src": "amazon_trans.png"                               }
     ,{ "name":"angular"                 , "url": "http://docs.angularjs.org/tutorial/step_02"                                                                       , "src": "angular.png"                                    }
-    ,{ "name":"appengine"               , "url": "https://appengine.google.com/"                                                                                    , "src": "google_app_engine.png"                          }
     ,{ "name":"bootstrap"               , "url": "http://getbootstrap.com/"                                                                                         , "src": "bootstrap_3.1.png"                              }
     ,{ "name":"buildeventhub"           , "url": "http://buildeventhub.net:3000/mainMenu"                                                                           , "src": "candle-128-trans.png"                           }
     ,{ "name":"cloudbees"               , "url": "https://cthiebaud.ci.cloudbees.com/job/candle/"                                                                   , "src": "cloudbees.png"                                  }
