@@ -40,7 +40,6 @@
     ,{ "name":"site@github.wdf.sap.corp", "url": "https://github.wdf.sap.corp/pages/TIP-Production-Delivery-Team-Standards/PU_Team_Standards/"                      , "src": "beh-semi-trans.png"                             }
     ,{ "name":"sofoot.com"              , "url": "http://www.sofoot.com/"                                                                                           , "src": "745958so_foot_logo-trans.png"                   }
     ,{ "name":"splunkstorm"             , "url": "https://www.splunkstorm.com/storm/deployment/list"                                                                , "src": "splunk-trans.png"                               }
-    ,{ "name":"stanford"                , "url": "https://class.coursera.org/hci-2012-002/lecture/index"                                                            , "src": "SU_altSigSeal_2col_pos.png"                     }
     ,{ "name":"torch@localhost"         , "url": "http://wdfn00262777a.dhcp.wdf.sap.corp:8080/beh/test.jsp"                                                         , "src": "home.png"                                       }
     ,{ "name":"Travel-expenses"         , "url": "https://portal.wdf.sap.corp/go/Travel-expenses"                                                                   , "src": "euros.png"                                      }
     ,{ "name":"travis-ci"               , "url": "http://travis-ci.org/#!/aequologica/hello"                                                                        , "src": "travis-ci-trans.png"                            }
