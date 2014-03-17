@@ -32,7 +32,6 @@
     ,{ "name":"loggly"                  , "url": "https://aequologica.loggly.com/"                                                                                  , "src": "loggly-logo-trans.png"                          }
     ,{ "name":"mail@gandi"              , "url": "https://webmail.eu.com/?_task=mail"                                                                               , "src": "roundcube_logo.png"                             }
     ,{ "name":"mavenCentral"            , "url": "http://search.maven.org/"                                                                                         , "src": "mavenCentral_logo.png"                          }
-    ,{ "name":"ohloh"                   , "url": "https://www.ohloh.net/"                                                                                           , "src": "ohlohlogo100.png"                               }
     ,{ "name":"payslip"                 , "url": "https://ipp.wdf.sap.corp/sap/bc/webdynpro/sap/hress_a_payslip?sap-language=EN&sap-wd-configId=HRESS_AC_PAYSLIP#"  , "src": "euro-trans.png"                                 }
     ,{ "name":"portal.wdf.sap.corp"     , "url": "https://portal.wdf.sap.corp/home"                                                                                 , "src": "sap_portal.png"                                 }
     ,{ "name":"projectportal"           , "url": "https://projectportal.wdf.sap.corp/projects?query=i051108"                                                        , "src": "project_portal_logo_medium-trans.png"           }
