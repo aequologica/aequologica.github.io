@@ -15,6 +15,7 @@
     ,{ "name":"cloudbees"               , "url": "https://cthiebaud.ci.cloudbees.com/job/candle/"                                                                   , "src": "cloudbees.png"                                  }
     ,{ "name":"cthiebaud@github"        , "url": "https://github.com/cthiebaud"                                                                                     , "src": "github-logo-transparent.png"                    }
     ,{ "name":"csi"                     , "url": "http://www.csibologna.it/showpage.php?cat_id=10"                                                                  , "src": "csi.png"                                        }
+    ,{ "name":"dropbox"                 , "url": "https://www.dropbox.com/home/aequologica"                                                                         , "src": "dropbox.png"                                    }
     ,{ "name":"ds3"                     , "url": "http://d3js.org/"                                                                                                 , "src": "citroen-ds3-2011-white-view_160723-160x120.png" }
     ,{ "name":"face"                    , "url": "https://sapneth3.wdf.sap.corp/~form/handler?_APP=00200682500000002283&_EVENT=DISPLAY&00200682500000002187=i051108", "src": "i051108.png"                                    }
     ,{ "name":"facebook.com"            , "url": "http://www.facebook.com/"                                                                                         , "src": "facebook_logo.png"                              }
