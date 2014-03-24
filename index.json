@@ -18,7 +18,7 @@
     ,{ "name":"dropbox"                 , "url": "https://www.dropbox.com/home/aequologica"                                                                         , "src": "dropbox.png"                                    }
     ,{ "name":"ds3"                     , "url": "http://d3js.org/"                                                                                                 , "src": "citroen-ds3-2011-white-view_160723-160x120.png" }
     ,{ "name":"face"                    , "url": "https://sapneth3.wdf.sap.corp/~form/handler?_APP=00200682500000002283&_EVENT=DISPLAY&00200682500000002187=i051108", "src": "i051108.png"                                    }
-    ,{ "name":"facebook.com"            , "url": "http://www.facebook.com/"                                                                                         , "src": "facebook_logo.png"                              }
+    ,{ "name":"facebook.com"            , "url": "https://www.facebook.com/christophe.thiebaud"                                                                     , "src": "facebook_logo.png"                              }
     ,{ "name":"git"                     , "url": "http://git-scm.com/downloads"                                                                                     , "src": "Git-Icon-1788C.png"                             }
     ,{ "name":"google.com/finance"      , "url": "http://www.google.com/finance?q=ETR:SAP"                                                                          , "src": "google_finance_logo-trans.png"                  }
     ,{ "name":"i051108@sapgithub"       , "url": "https://github.wdf.sap.corp/i051108"                                                                              , "src": "github-enterprise-trans.png"                    }
@@ -29,7 +29,7 @@
     ,{ "name":"lemonde.fr"              , "url": "http://www.lemonde.fr/"                                                                                           , "src": "le_monde_02.png"                                }
     ,{ "name":"lequipe.fr"              , "url": "http://www.lequipe.fr/"                                                                                           , "src": "lequipe.gif"                                    }
     ,{ "name":"liberation.fr"           , "url": "http://www.liberation.fr/"                                                                                        , "src": "logo-liberation-trans.png"                      }
-    ,{ "name":"linkedin.com"            , "url": "http://www.linkedin.com/"                                                                                         , "src": "LinkedIn-Logo-trans.png"                        }
+    ,{ "name":"linkedin.com"            , "url": "https://www.linkedin.com/in/cthiebaud"                                                                             , "src": "LinkedIn-Logo-trans.png"                        }
     ,{ "name":"loggly"                  , "url": "https://aequologica.loggly.com/"                                                                                  , "src": "loggly-logo-trans.png"                          }
     ,{ "name":"mail@gandi"              , "url": "https://webmail.eu.com/?_task=mail"                                                                               , "src": "roundcube_logo.png"                             }
     ,{ "name":"mavenCentral"            , "url": "http://search.maven.org/"                                                                                         , "src": "mavenCentral_logo.png"                          }
@@ -43,7 +43,7 @@
     ,{ "name":"torch@localhost"         , "url": "http://wdfn00262777a.dhcp.wdf.sap.corp:8080/beh/test.jsp"                                                         , "src": "home.png"                                       }
     ,{ "name":"Travel-expenses"         , "url": "https://portal.wdf.sap.corp/go/Travel-expenses"                                                                   , "src": "euros.png"                                      }
     ,{ "name":"travis-ci"               , "url": "http://travis-ci.org/#!/aequologica/hello"                                                                        , "src": "travis-ci-trans.png"                            }
-    ,{ "name":"twitter"                 , "url": "https://twitter.com/"                                                                                             , "src": "twitter_t_logo_100.png"                         }
+    ,{ "name":"twitter"                 , "url": "https://twitter.com/cthiebaud"                                                                                    , "src": "twitter_t_logo_100.png"                         }
     ,{ "name":"veldicihudson"           , "url": "http://veldicihudson.dhcp.wdf.sap.corp:8080/hudson/job/ais/"                                                      , "src": "jenkins-logo-centre-150x150-trans.png"          }
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "src": "wordpress.png"                                  }
   ],

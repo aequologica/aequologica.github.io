@@ -27,13 +27,19 @@
 </head>
 <body ng-app="aequologicaApp" ng-controller="IndexCtrl">
 
+  <img id="loadinfo" class="loading-image" src="ajax-loader.gif" ng-show="!done" />
+
   <div masonry id="masonry" ng-click="shuffle()">
-    <div class="masonry-brick" ng-repeat="brick in bricks"  style="display:none; background: rgba(0,0,0,.03);">
+    <div class="masonry-brick" 
+         ng-repeat="brick in bricks" 
+         ng-if="!outOfOffice || !(brick.url.indexOf('sap.corp')!=-1)"
+         style="display:none; background: rgba(0,0,0,.03);">
       <a ng-show="brick.src" ng-href="{{brick.url}}" target="{{brick.name}}" ng-click="$event.stopPropagation();">
         <img ng-src = "images/{{brick.src}}">
       </a>
       <ul ng-show="brick.items" class="text-wrap">
-        <li ng-repeat="item in brick.items">
+        <li ng-repeat="item in brick.items"
+            ng-if="!outOfOffice || !(item.url.indexOf('sap.corp')!=-1) || item.type">
           <a ng-show="item.url" ng-href="{{item.url}}" target="{{item.name}}" ng-click="$event.stopPropagation();">
             {{item.text}}
           </a>
@@ -76,24 +82,39 @@ var shuffleArray = function(array) {
   return array;
 }
 
+
 angular.module( 'aequologicaApp', ['wu.masonry'])
   .controller( 'IndexCtrl', function ($scope, $http) {
-    $scope.bricks = [];
-
-    $scope.shuffle = function () {
+    $scope.done     = false;
+    $scope.bricks   = [];
+    $scope.shuffle  = function () {
       $scope.bricks = shuffleArray($scope.bricks);
     }
 
-    $http.get('index.json').success( function(data) {
-      _.each(data.images, function(image){
-        $scope.bricks.push(image);
-      });
-      _.each(data.groups, function(group){
-        $scope.bricks.push(group);
-      });
+    var image = new Image();
+    image.src = 'https://sapneth3.wdf.sap.corp/~sapdownload/011000358700000178722013E';
+    setTimeout( function() {
 
-      $scope.bricks = shuffleArray($scope.bricks);
-    });
+        if ( !image.complete || !image.naturalWidth ) {
+          $scope.outOfOffice = true; 
+        } else {
+            $scope.outOfOffice = false; 
+        }
+
+        $http.get('index.json').success( function(data) {
+          _.each(data.images, function(image){
+            $scope.bricks.push(image);
+          });
+          _.each(data.groups, function(group){
+            $scope.bricks.push(group);
+          });
+
+          $scope.bricks = shuffleArray($scope.bricks);
+          $scope.done = true;
+        });
+
+    }, 2000 );    
+
 });
 
 // http://4loc.wordpress.com/2009/04/28/documentready-vs-windowload/

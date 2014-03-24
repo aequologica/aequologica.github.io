@@ -10,6 +10,13 @@ body {
   background  : #F0AB00; // #FFF; // ;
 }
 
+.loading-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0px 0px -8px;
+}
+
 div {
   font-size  : 12pt;
   overflow   : hidden; /* cf. http://www.quirksmode.org/css/textoverflow.html */
