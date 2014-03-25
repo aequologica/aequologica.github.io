@@ -46,8 +46,6 @@ li a:visited {color:#efefef; text-decoration: none;}
 li a:hover   {color:#101010; text-decoration: none; background  : #F0AB00;}
 li a:active  {color:#efefef; text-decoration: none;}
 
-a img:hover {text-decoration: none; background: #F0AB00;}
-
 img {
   border: none; 
 }
@@ -82,6 +80,14 @@ hr {
 }
 
 .masonry-brick {
-  // border  : 1px solid #efefef;
+  // border    : 1px solid #efefef;
+  // background: rgba(0,0,0,.03);
 }
 
+.masonry-brick:hover {
+  background: rgba(0,0,0,.1);
+}
+
+hr {
+  opacity: .8;
+}

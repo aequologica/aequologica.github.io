@@ -32,8 +32,7 @@
   <div masonry id="masonry" ng-click="shuffle()">
     <div class="masonry-brick" 
          ng-repeat="brick in bricks" 
-         ng-if="!outOfOffice || !(brick.url.indexOf('sap.corp')!=-1)"
-         style="display:none; background: rgba(0,0,0,.03);">
+         ng-if="!outOfOffice || !(brick.url.indexOf('sap.corp')!=-1)">
       <a ng-show="brick.src" ng-href="{{brick.url}}" target="{{brick.name}}" ng-click="$event.stopPropagation();">
         <img ng-src = "images/{{brick.src}}">
       </a>
@@ -43,7 +42,7 @@
           <a ng-show="item.url" ng-href="{{item.url}}" target="{{item.name}}" ng-click="$event.stopPropagation();">
             {{item.text}}
           </a>
-          <hr ng-show="item.type" style="opacity: .8;"/>
+          <hr ng-show="item.type"/>
         </li>
       </ul>
     </div>
