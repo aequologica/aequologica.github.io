@@ -88,6 +88,10 @@ hr {
   background: rgba(0,0,0,.1);
 }
 
+.internal {
+  opacity: .33333;
+}
+
 hr {
   opacity: .8;
 }

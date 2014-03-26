@@ -29,17 +29,27 @@
 
   <img id="loadinfo" class="loading-image" src="ajax-loader.gif" ng-show="!done" />
 
-  <div masonry id="masonry" ng-click="shuffle()">
-    <div class="masonry-brick" 
+  <div  masonry 
+        id="masonry" 
+        ng-click="shuffle()">
+    <div class="masonry-brick"
          ng-repeat="brick in bricks" 
          ng-if="!outOfOffice || !(brick.url.indexOf('sap.corp')!=-1)">
-      <a ng-show="brick.src" ng-href="{{brick.url}}" target="{{brick.name}}" ng-click="$event.stopPropagation();">
+      <a  ng-show="brick.src" 
+          ng-href="{{brick.url}}" 
+          target="{{brick.name}}" 
+          ng-click="$event.stopPropagation();"
+          ng-class="{'internal': brick.url.indexOf('sap.corp')!=-1}">
         <img ng-src = "images/{{brick.src}}">
       </a>
       <ul ng-show="brick.items" class="text-wrap">
         <li ng-repeat="item in brick.items"
             ng-if="!outOfOffice || !(item.url.indexOf('sap.corp')!=-1) || item.type">
-          <a ng-show="item.url" ng-href="{{item.url}}" target="{{item.name}}" ng-click="$event.stopPropagation();">
+          <a target="{{item.name}}" 
+             ng-show="item.url" 
+             ng-href="{{item.url}}" 
+             ng-click="$event.stopPropagation();"
+             ng-class="{'internal': item.url.indexOf('sap.corp')!=-1}">
             {{item.text}}
           </a>
           <hr ng-show="item.type"/>
