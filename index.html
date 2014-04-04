@@ -93,6 +93,15 @@ var shuffleArray = function(array) {
 
 
 angular.module( 'aequologicaApp', ['wu.masonry'])
+  .config(['$httpProvider', function($httpProvider) {
+    // http://stackoverflow.com/questions/16098430/angular-ie-caching-issue-for-http
+    //initialize get if not there
+    if (!$httpProvider.defaults.headers.get) {
+        $httpProvider.defaults.headers.get = {};    
+    }
+    //disable IE ajax request caching
+    $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
+  }])
   .controller( 'IndexCtrl', function ($scope, $http) {
     $scope.done     = false;
     $scope.bricks   = [];
