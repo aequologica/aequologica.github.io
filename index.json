@@ -61,7 +61,7 @@
         { "type" : "separator" },
         { "name" : "hudson_at_van",   "url":"http://vantgvmlnx232.dhcp.pgdev.sap.corp:8080/hudson/view/%CE%BF%CE%BB%CE%B9%CE%BA%CF%8C%CF%82/",   "text" : "hudson @ vantgvmlnx232"  },
         { "type" : "separator" },
-        { "name" : "jenkins_at_hcp",  "url":"https://jenkinsp1894179457trial.hanatrial.ondemand.com/",   "text" : "jenkins @ jenkinsp1894179457trial"  }
+        { "name" : "jenkins_at_hcp",  "url":"https://jenkinsp1894179457trial.hanatrial.ondemand.com/view/aequologica/",   "text" : "jenkins @ jenkinsp1894179457trial"  }
 
       ]
     },
