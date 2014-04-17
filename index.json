@@ -71,6 +71,16 @@
         { "name" : "SAP_stock",      "url":"https://ipp.wdf.sap.corp/sap/bc/webdynpro/ehr/es_docview?ar_objects=Z9918017,Z9918018,Z9918024,Z9918025,Z9918012,Z9928017,Z9928018,Z9928024,Z9928025,Z9928012,Z9928033,Z9928034&amp;sap-language=EN#", "text" : "€ € € € € €"}
       ]
     },
+    { "name" : "HCPs", 
+      "url"  : "HCPs", 
+      "items" : [
+        { "name" : "p1630844092",      "url":"https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/"             , "text" : "christophe.thiebaud@alumni.insead.edu"},
+        { "name" : "p1643349133",      "url":"https://rootp1643349133trial.hanatrial.ondemand.com/vethica/"             , "text" : "pbenoist@emergensoft.f"},
+        { "name" : "p1671404376",      "url":"https://fragmentump1671404376trial.hanatrial.ondemand.com/fragmentum-web/", "text" : "christophe.thiebaud@adventscloud.com"},
+        { "name" : "p1742770407",      "url":"https://abendrotp1742770407trial.hanatrial.ondemand.com/abendrot-web/"    , "text" : "christophe.thiebaud@fragmentum.org"},
+        { "name" : "p1894179457",      "url":"https://jenkinsp1894179457trial.hanatrial.ondemand.com/"                  , "text" : "webarchitect@paris-imagine.fr"}
+      ]
+    },
     { "name" : "internet",
       "url"  : "internet",
       "items" : [
