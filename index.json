@@ -74,7 +74,7 @@
     { "name" : "HCPs", 
       "url"  : "HCPs", 
       "items" : [
-        { "name" : "i051108",      "url":"https://tebaldi051108trial.hanatrial.ondemand.com/geppaequo-fileupload/"  , "text" : "christophe.thiebaud@sap.com"            },
+        { "name" : "i051108"    ,  "url":"https://tebaldi051108trial.hanatrial.ondemand.com/geppaequo-fileupload/"  , "text" : "christophe.thiebaud@sap.com"            },
         { "name" : "p1630844092",  "url":"https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/"             , "text" : "christophe.thiebaud@alumni.insead.edu"  },
         { "name" : "p1643349133",  "url":"https://rootp1643349133trial.hanatrial.ondemand.com/vethica/"             , "text" : "pbenoist@emergensoft.f"                 },
         { "name" : "p1671404376",  "url":"https://fragmentump1671404376trial.hanatrial.ondemand.com/fragmentum-web/", "text" : "christophe.thiebaud@adventscloud.com"   },

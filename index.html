@@ -119,7 +119,7 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
             $scope.outOfOffice = false; 
         }
 
-        $http.get('index.json').success( function(data) {
+        $http.get('index.json', { cache: false}).success( function(data) {
           _.each(data.images, function(image){
             $scope.bricks.push(image);
           });
