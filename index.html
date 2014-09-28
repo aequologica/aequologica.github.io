@@ -9,7 +9,7 @@
   <meta name="author"               content="cthiebaud">
 
   <meta http-equiv="Content-Language" content="en" />
-  <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1">  
+  <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1">
 
   <meta property="og:title"         content="Christophe Thiebaud Index"/>
   <meta property="og:description"   content="Useful links"/>
@@ -19,7 +19,7 @@
   <title>æquologica</title>
 
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  
+
   <link rel="stylesheet" type="text/css" href="style.css" >
 
   <link rel="shortcut icon" href="favicon2.ico">
@@ -29,15 +29,21 @@
 
   <img id="loadinfo" class="loading-image" src="ajax-loader.gif" ng-show="!done" />
 
-  <div  masonry 
-        id="masonry" 
+  <div  masonry
+
+        id="masonry"
+
         ng-click="shuffle()">
     <div class="masonry-brick"
-         ng-repeat="brick in bricks" 
+         ng-repeat="brick in bricks"
+
          ng-if="!outOfOffice || !(brick.url.indexOf('sap.corp')!=-1)">
-      <a  ng-show="brick.src" 
-          ng-href="{{brick.url}}" 
-          target="{{brick.name}}" 
+      <a  ng-show="brick.src"
+
+          ng-href="{{brick.url}}"
+
+          target="{{brick.name}}"
+
           ng-click="$event.stopPropagation();"
           ng-class="{'internal': brick.url.indexOf('sap.corp')!=-1}">
         <img ng-src = "images/{{brick.src}}">
@@ -45,9 +51,12 @@
       <ul ng-show="brick.items" class="text-wrap">
         <li ng-repeat="item in brick.items"
             ng-if="!outOfOffice || !(item.url.indexOf('sap.corp')!=-1) || item.type">
-          <a target="{{item.name}}" 
-             ng-show="item.url" 
-             ng-href="{{item.url}}" 
+          <a target="{{item.name}}"
+
+             ng-show="item.url"
+
+             ng-href="{{item.url}}"
+
              ng-click="$event.stopPropagation();"
              ng-class="{'internal': item.url.indexOf('sap.corp')!=-1}">
             {{item.text}}
@@ -58,9 +67,9 @@
     </div>
   </div>
 
-<!-- 
+<!--
 
-insert disqus.txt here 
+insert disqus.txt here
 
 -->
 
@@ -98,13 +107,13 @@ var shuffleArray = function(array) {
   return array;
 }
 
-
 angular.module( 'aequologicaApp', ['wu.masonry'])
   .config(['$httpProvider', function($httpProvider) {
     // http://stackoverflow.com/questions/16098430/angular-ie-caching-issue-for-http
     //initialize get if not there
     if (!$httpProvider.defaults.headers.get) {
-        $httpProvider.defaults.headers.get = {};    
+        $httpProvider.defaults.headers.get = {};
+
     }
     //disable IE ajax request caching
     $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
@@ -121,9 +130,11 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
     setTimeout( function() {
 
         if ( !image.complete || !image.naturalWidth ) {
-          $scope.outOfOffice = true; 
+          $scope.outOfOffice = true;
+
         } else {
-            $scope.outOfOffice = false; 
+            $scope.outOfOffice = false;
+
         }
 
         $http.get('index.json', { cache: false}).success( function(data) {
@@ -138,7 +149,7 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
           $scope.done = true;
         });
 
-    }, 2000 );    
+    }, 2000 );
 
 });
 
