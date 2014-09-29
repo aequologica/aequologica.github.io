@@ -8,7 +8,7 @@
         "src": "aequologica-trans.png",
 
         "items" : [
-            { "name" : "vethica"        ,"url":"https://tcbp1630844092trial.hanatrial.ondemand.com/"                      , "text" : "TC-BP"                              },
+            { "name" : "vethica"        ,"url":"https://tebaldi051108trial.hanatrial.ondemand.com/"                       , "text" : "tebaldi"                            },
             { "name" : "jenkins_at_hcp",  "url":"https://jenkinsp1894179457trial.hanatrial.ondemand.com/view/aequologica/", "text" : "jenkins @ jenkinsp1894179457trial"  }
         ]
      }
