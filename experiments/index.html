@@ -98,7 +98,7 @@
 
       </div> <!-- /.container -->
 
-    </div> <!-- /#wrap -->       
+    </div> <!-- /#wrap -->
 
   </body>
 </html>
@@ -147,25 +147,25 @@
 jQuery(document).ready(function() {
   $.ajax(
     {
-        url: 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/resources/buildhub/persist/history', 
-              // 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/documents/ls/', // 
-              // 'http://localhost:10080/runciter/documents/ls/', // 
+        url: 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/resources/buildhub/persist/history',
+              // 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/documents/ls/', //
+              // 'http://localhost:10080/runciter/documents/ls/', //
         beforeSend: function ( xhr ) {
           xhr.setRequestHeader('Accept', 'application/json');
       }
     }).done(function ( response ) {
-      $('#fragmentum pre#url').html(this.url); 
-      $('#fragmentum h1').html('Fragmentumed !'); 
+      $('#fragmentum pre#url').html(this.url);
+      $('#fragmentum h1').html('Fragmentumed !');
       $('#fragmentum pre#result').html(JSON.stringify(response, null, 2));
     }).fail(function ( jqXHR, textStatus, errorThrown ) {
-      $( "#fragmentum #msg" ).append( 
+      $( "#fragmentum #msg" ).append(
           "<li>this.url = "+this.url+"</li>"+
           "<li>jqXHR.status = "+jqXHR.status+"</li>"+
           "<li>textStatus = "+textStatus+"</li>" +
           "<li>errorThrown = "+errorThrown+"</li>"
       );
     }
-  );  
+  );
 });
 </script>
 
