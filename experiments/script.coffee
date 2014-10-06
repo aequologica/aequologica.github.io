@@ -13,10 +13,10 @@ jQuery ->
     defaults:
       part1: 'Hello'
       part2: 'Backbone'
-  
+
   class List extends Backbone.Collection
 
-    model: Item  
+    model: Item
 
     localStorage: new Backbone.LocalStorage "items"
 
@@ -45,7 +45,7 @@ jQuery ->
         part1: @model.get 'part2'
         part2: @model.get 'part1'
 
-    remove: -> 
+    remove: ->
       @model.destroy()
 
     events:
@@ -77,12 +77,12 @@ jQuery ->
 
     appendItem: (item) ->
       item_view = new ItemView model: item
-      $('#la_totale ol').append item_view.render().el      
+      $('#la_totale ol').append item_view.render().el
 
-    events: 
+    events:
       'click #add': 'addItem'
       'click #save': 'save'
 
   list_view = new ListView
-      
+
   list_view.collection.fetch {success: (model, response) -> console.log JSON.stringify(model) }
