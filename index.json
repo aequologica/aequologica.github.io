@@ -63,7 +63,7 @@
       "items" : [
         { "name" : "nexus_rest",      "url":"http://localhost:1082/nexus/nexus-restlet1x-plugin/default/docs/index.html",                        "text" : "nexus REST API doc"      },
         { "type" : "separator" },
-        { "name" : "nexus_at_local",  "url":"http://localhost:1088/nexus",                                                                       "text" : "nexus @ localhost"       },
+        { "name" : "nexus_at_local",  "url":"http://localhost:1082/nexus",                                                                       "text" : "nexus @ localhost"       },
         { "name" : "nexus_at_van",    "url":"http://vantgvmlnx232.dhcp.pgdev.sap.corp:1088/nexus/index.html",                                    "text" : "nexus @ vantgvmlnx232"   },
         { "name" : "nexus_at_wdf",    "url":"http://nexus.wdf.sap.corp:8081/nexus",                                                              "text" : "nexus @ wdf.sap.corp"    },
         { "type" : "separator" },
