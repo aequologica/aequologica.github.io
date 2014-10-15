@@ -97,6 +97,16 @@
         { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/",       "text" : "artifact-listener"  }
       ]
     },
+    { "name" : "chansons",
+      "url"  : "chansons",
+      "items" : [
+        { "name" : "gadomingo_de_manhã",                  "url":"https://www.youtube.com/watch?v=a_Z1uKpmiSo&app=desktop",                                        "text" : "Gabi Luthai - Domingo de Manhã - Marcos e Belutti"  },
+        { "name" : "jecalling_you",                       "url":"https://www.youtube.com/watch?v=nk7mCmgzpPE&app=desktop",                                        "text" : "Jevetta Steele - Calling You - Bob Telson" },
+        { "name" : "kaeu_nunca_estive_tão_apaixonado",    "url":"https://www.youtube.com/watch?v=ocJoCvQAdbE&app=desktop",                                        "text" : "Kamila Tomazolli - Eu nunca estive tão apaixonado - Fabio Jr"  },
+        { "name" : "lacomme_ils_disent",                  "url":"http://www.dailymotion.com/video/xj5yxo_lara-fabian-comme-ils-disent-acoustic-tv5monde_music",   "text" : "Lara Fabian - Comme ils disent - Charles Aznavour" },
+        { "name" : "vaainda_lembro",                      "url":"https://www.youtube.com/watch?v=-kgiBr28k1E&app=desktop",                                        "text" : "Vanessa Jackson - Ainda Lembro - Ed Motta"  }
+      ]
+    },
     { "name" : "abendrot",
       "url"  : "abendrot",
       "items" : [
