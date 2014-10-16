@@ -100,6 +100,8 @@
     { "name" : "chansons",
       "url"  : "chansons",
       "items" : [
+
+        { "name" : "g2adomingo_de_manhã",                 "url":"https://www.youtube.com/watch?v=NnMK4lBbYB8",                                                    "text" : "Gustavo Fofão e Natália Sandim - Domingo de Manhã - Marcos e Belutti"  },
         { "name" : "gadomingo_de_manhã",                  "url":"https://www.youtube.com/watch?v=a_Z1uKpmiSo&app=desktop",                                        "text" : "Gabi Luthai - Domingo de Manhã - Marcos e Belutti"  },
         { "name" : "jecalling_you",                       "url":"https://www.youtube.com/watch?v=nk7mCmgzpPE&app=desktop",                                        "text" : "Jevetta Steele - Calling You - Bob Telson" },
         { "name" : "kaeu_nunca_estive_tão_apaixonado",    "url":"https://www.youtube.com/watch?v=ocJoCvQAdbE&app=desktop",                                        "text" : "Kamila Tomazolli - Eu nunca estive tão apaixonado - Fabio Jr"  },
