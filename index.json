@@ -67,7 +67,7 @@
         { "name" : "nexus_at_van",    "url":"http://vantgvmlnx232.dhcp.pgdev.sap.corp:1088/nexus/index.html",                                    "text" : "nexus @ vantgvmlnx232"   },
         { "name" : "nexus_at_wdf",    "url":"http://nexus.wdf.sap.corp:8081/nexus",                                                              "text" : "nexus @ wdf.sap.corp"    },
         { "type" : "separator" },
-        { "name" : "hudson_at_van",   "url":"http://vantgvmlnx232.dhcp.pgdev.sap.corp:8080/hudson/view/%CE%BF%CE%BB%CE%B9%CE%BA%CF%8C%CF%82/",   "text" : "hudson @ vantgvmlnx232"  }
+        { "name" : "jenkins_at_lev",   "url":"http://dewdftv00333.dhcp.pgdev.sap.corp:8080/",                                                    "text" : "jenkins @ dewdftv00333"  }
       ]
     },
     { "name" : "€",
