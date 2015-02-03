@@ -12,7 +12,7 @@
             { "name" : "jenkins_at_hcp",  "url":"https://jenkinsp1894179457trial.hanatrial.ondemand.com/view/aequologica/", "text" : "jenkins @ jenkinsp1894179457trial"  }
         ]
      }
-    ,{ "name":"ais"                     , "url": "https://wiki.wdf.sap.corp/wiki/display/ProductionUnits/PU+Artifact+Information+Server"                            , "src": "ais-trans.png"                                  }
+    ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb.png"                                     }
     ,{ "name":"amazon"                  , "url": "https://console.aws.amazon.com/ec2/home?&region=eu-west-1#s=Instances"                                            , "src": "amazon_trans.png"                               }
     ,{ "name":"angular"                 , "url": "http://docs.angularjs.org/tutorial/step_02"                                                                       , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://getbootstrap.com/"                                                                                         , "src": "bootstrap_3.1.png"                              }
