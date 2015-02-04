@@ -23,6 +23,7 @@
     ,{ "name":"calcioa5"                , "url": "http://www.ilcalcioa5.com/emilia_romagna/serie_c2b/classifica/2014_2015.php"                                      , "src": "ilcalcioa5.PNG"                                 }
     ,{ "name":"dropbox"                 , "url": "https://www.dropbox.com/home/aequologica"                                                                         , "src": "dropbox.png"                                    }
     ,{ "name":"ds3"                     , "url": "http://d3js.org/"                                                                                                 , "src": "citroen-ds3-2011-white-view_160723-160x120.png" }
+    ,{ "name":"disqus"                  , "url": "https://disqus.com/by/cthiebaud/"                                                                                 , "src": "disqus-social-icon-blue-transparent.png"        }
     ,{ "name":"face"                    , "url": "https://sapneth3.wdf.sap.corp/~form/handler?_APP=00200682500000002283&_EVENT=DISPLAY&00200682500000002187=i051108", "src": "i051108.png"                                    }
     ,{ "name":"facebook.com"            , "url": "https://www.facebook.com/christophe.thiebaud"                                                                     , "src": "facebook_logo.png"                              }
     ,{ "name":"git"                     , "url": "http://git-scm.com/downloads"                                                                                     , "src": "Git-Icon-1788C.png"                             }
