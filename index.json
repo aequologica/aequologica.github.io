@@ -1,22 +1,16 @@
 {
-
   "images" : [
      { "name":"aequologica",
-
         "url": "http://aequologica.net/experiments/",
-
         "src": "aequologica-trans.png",
-
         "items" : [
             { "name" : "vethica"        ,"url":"https://tebaldi051108trial.hanatrial.ondemand.com/"                       , "text" : "tebaldi"                            },
             { "name" : "jenkins_at_hcp",  "url":"https://jenkinsp1894179457trial.hanatrial.ondemand.com/view/aequologica/", "text" : "jenkins @ jenkinsp1894179457trial"  }
         ]
      }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb.png"                                     }
-    ,{ "name":"amazon"                  , "url": "https://console.aws.amazon.com/ec2/home?&region=eu-west-1#s=Instances"                                            , "src": "amazon_trans.png"                               }
     ,{ "name":"angular"                 , "url": "http://docs.angularjs.org/tutorial/step_02"                                                                       , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://getbootstrap.com/"                                                                                         , "src": "bootstrap_3.1.png"                              }
-    ,{ "name":"buildeventhub"           , "url": "http://buildeventhub.net:3000/mainMenu"                                                                           , "src": "candle-128-trans.png"                           }
     ,{ "name":"cloudbees"               , "url": "https://cthiebaud.ci.cloudbees.com/job/candle/"                                                                   , "src": "cloudbees.png"                                  }
     ,{ "name":"cthiebaud@github"        , "url": "https://github.com/cthiebaud"                                                                                     , "src": "github-logo-transparent.png"                    }
     ,{ "name":"csi"                     , "url": "http://www.csibologna.it/showpage.php?cat_id=10"                                                                  , "src": "csi.png"                                        }
@@ -32,7 +26,6 @@
     ,{ "name":"ilfattoquotidiano.it"    , "url": "http://www.ilfattoquotidiano.it/"                                                                                 , "src": "il_fatto_quotidiano.png"                        }
     ,{ "name":"jira"                    , "url": "https://sapjira.wdf.sap.corp/secure/TaskBoard.jspa"                                                               , "src": "jira_logo_smaller.png"                          }
     ,{ "name":"job_search"              , "url": "https://rcp.wdf.sap.corp/sap/bc/bsp/rcfuix/flex_ui_int/SAPeRecruiting.html#mainView=search;popUps=0"              , "src": "ct@sap.png"                                     }
-    ,{ "name":"jsfiddle"                , "url": "http://jsfiddle.net/"                                                                                             , "src": "jsfiddle-logo1.png"                             }
     ,{ "name":"lemonde.fr"              , "url": "http://www.lemonde.fr/"                                                                                           , "src": "le_monde_02.png"                                }
     ,{ "name":"lequipe.fr"              , "url": "http://www.lequipe.fr/"                                                                                           , "src": "lequipe.gif"                                    }
     ,{ "name":"liberation.fr"           , "url": "http://www.liberation.fr/"                                                                                        , "src": "logo-liberation-trans.png"                      }
@@ -45,23 +38,18 @@
     ,{ "name":"payslip"                 , "url": "https://ipp.wdf.sap.corp/sap/bc/webdynpro/sap/hress_a_payslip?sap-language=EN&sap-wd-configId=HRESS_AC_PAYSLIP#"  , "src": "euro-trans.png"                                 }
     ,{ "name":"portal.wdf.sap.corp"     , "url": "https://portal.wdf.sap.corp/home"                                                                                 , "src": "sap_portal.png"                                 }
     ,{ "name":"projectportal"           , "url": "https://projectportal.wdf.sap.corp/projects?query=i051108"                                                        , "src": "project_portal_logo_medium-trans.png"           }
-    ,{ "name":"putty_and_tortoise"      , "url": "http://www.mono-project.com/Putty_and_TortoiseSVN"                                                                , "src": "putty.png"                                      }
     ,{ "name":"site@github.wdf.sap.corp", "url": "https://github.wdf.sap.corp/pages/production-neo-ondemand-com"                                                    , "src": "beh-semi-trans.png"                             }
     ,{ "name":"sofoot.com"              , "url": "http://www.sofoot.com/"                                                                                           , "src": "745958so_foot_logo-trans.png"                   }
     ,{ "name":"splunkstorm"             , "url": "https://www.splunkstorm.com/storm/deployment/list"                                                                , "src": "splunk-trans.png"                               }
     ,{ "name":"sueddeutsche"            , "url": "http://www.sueddeutsche.de/"                                                                                      , "src": "sueddeutsche2.png"                              }
-    ,{ "name":"torch@localhost"         , "url": "http://wdfn00262777a.dhcp.wdf.sap.corp:8080/beh/test.jsp"                                                         , "src": "home.png"                                       }
     ,{ "name":"Travel-expenses"         , "url": "https://portal.wdf.sap.corp/go/Travel-expenses"                                                                   , "src": "euros.png"                                      }
     ,{ "name":"travis-ci"               , "url": "http://travis-ci.org/#!/aequologica/hello"                                                                        , "src": "travis-ci-trans.png"                            }
     ,{ "name":"twitter"                 , "url": "https://twitter.com/cthiebaud"                                                                                    , "src": "twitter_t_logo_100.png"                         }
-    ,{ "name":"veldicihudson"           , "url": "http://veldicihudson.dhcp.wdf.sap.corp:8080/hudson/job/ais/"                                                      , "src": "jenkins-logo-centre-150x150-trans.png"          }
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "src": "wordpress.png"                                  }
   ],
   "groups" : [
     { "name" : "SAP",
-
       "ulr"  : "SAP",
-
       "items" : [
         { "name" : "nexus_rest",      "url":"http://localhost:1082/nexus/nexus-restlet1x-plugin/default/docs/index.html",                        "text" : "nexus REST API doc"      },
         { "type" : "separator" },
@@ -73,17 +61,13 @@
       ]
     },
     { "name" : "€",
-
       "url"  : "€",
-
       "items" : [
         { "name" : "SAP_stock",      "url":"https://ipp.wdf.sap.corp/sap/bc/webdynpro/ehr/es_docview?ar_objects=Z9918017,Z9918018,Z9918024,Z9918025,Z9918012,Z9928017,Z9928018,Z9928024,Z9928025,Z9928012,Z9928033,Z9928034&amp;sap-language=EN#", "text" : "€ € € € € €"}
       ]
     },
     { "name" : "HCPs",
-
       "url"  : "HCPs",
-
       "items" : [
         { "name" : "i051108"    ,  "url":"https://tebaldi051108trial.hanatrial.ondemand.com/geppaequo-fileupload/"  , "text" : "christophe.thiebaud@sap.com"            },
         { "name" : "p1630844092",  "url":"https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/"             , "text" : "christophe.thiebaud@alumni.insead.edu"  },
@@ -99,16 +83,16 @@
         { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/",       "text" : "artifact-listener"  }
       ]
     },
-    { "name" : "chansons",
-      "url"  : "chansons",
+    { "name" : "localhosts",
+      "url"  : "localhosts",
       "items" : [
-
-        { "name" : "g2adomingo_de_manhã",                 "url":"https://www.youtube.com/watch?v=NnMK4lBbYB8",                                                    "text" : "Gustavo Fofão e Natália Sandim - Domingo de Manhã - Marcos e Belutti"  },
-        { "name" : "gadomingo_de_manhã",                  "url":"https://www.youtube.com/watch?v=a_Z1uKpmiSo&app=desktop",                                        "text" : "Gabi Luthai - Domingo de Manhã - Marcos e Belutti"  },
-        { "name" : "jecalling_you",                       "url":"https://www.youtube.com/watch?v=nk7mCmgzpPE&app=desktop",                                        "text" : "Jevetta Steele - Calling You - Bob Telson" },
-        { "name" : "kaeu_nunca_estive_tão_apaixonado",    "url":"https://www.youtube.com/watch?v=ocJoCvQAdbE&app=desktop",                                        "text" : "Kamila Tomazolli - Eu nunca estive tão apaixonado - Fabio Jr"  },
-        { "name" : "lacomme_ils_disent",                  "url":"http://www.dailymotion.com/video/xj5yxo_lara-fabian-comme-ils-disent-acoustic-tv5monde_music",   "text" : "Lara Fabian - Comme ils disent - Charles Aznavour" },
-        { "name" : "vaainda_lembro",                      "url":"https://www.youtube.com/watch?v=-kgiBr28k1E&app=desktop",                                        "text" : "Vanessa Jackson - Ainda Lembro - Ed Motta"  }
+        { "name" : "localhost"  , "url":"http://localhost",       "text" : "local aequologica.github.io"  },
+        { "name" : "jgitflow"   , "url":"http://localhost:1010",  "text" : "local jgitflow slideshow"  },
+        { "name" : "jgitflow2"  , "url":"http://localhost:8888",  "text" : "local jgitflow slideshow (2)"  },
+        { "name" : "cors"       , "url":"http://localhost:9510",  "text" : "local cors"  },
+        { "name" : "xxx"        , "url":"http://localhost:9871",  "text" : "local ct2"  },
+        { "name" : "9999"       , "url":"http://localhost:9999",  "text" : "local markdown"  },
+        { "name" : "production" , "url":"http://localhost:2345",  "text" : "local production.neo.ondemand.com"  }
       ]
     },
     { "name" : "abendrot",
