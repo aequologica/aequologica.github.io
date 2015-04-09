@@ -15,8 +15,9 @@
   <meta property="og:locale"      content="en_US">
   <meta property="og:title"       content="Christophe Thiebaud Index" />
   <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="http://aequologica.net/" />
+  <meta property="og:url"         content="http://aequologica.net" />
   <meta property="og:description" content="Useful links" />
+  <meta property="og:site_name"   content="æquologica" />
 
   <meta property="og:image"        content="http://aequologica.net/images/beh-semi-trans.png" />
   <meta property="og:image:url"    content="http://aequologica.net/images/beh-semi-trans.png" />
@@ -24,10 +25,11 @@
   <meta property="og:image:width"  content="158" />
   <meta property="og:image:height" content="167" />
   
+  <meta property="article:author" content="https://www.facebook.com/christophe.thiebaud" />
+  
   <title>æquologica</title>
 
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
   <link rel="stylesheet" type="text/css" href="style.css" >
 
   <link rel="shortcut icon" href="favicon2.ico">
@@ -38,20 +40,14 @@
   <img id="loadinfo" class="loading-image" src="ajax-loader.gif" ng-show="!done" />
 
   <div  masonry
-
         id="masonry"
-
         ng-click="shuffle()">
     <div class="masonry-brick"
          ng-repeat="brick in bricks"
-
          ng-if="!outOfOffice || !(brick.url.indexOf('sap.corp')!=-1)">
       <a  ng-show="brick.src"
-
           ng-href="{{brick.url}}"
-
           target="{{brick.name}}"
-
           ng-click="$event.stopPropagation();"
           ng-class="{'internal': brick.url.indexOf('sap.corp')!=-1}">
         <img ng-src = "images/{{brick.src}}">
@@ -60,11 +56,8 @@
         <li ng-repeat="item in brick.items"
             ng-if="!outOfOffice || !(item.url.indexOf('sap.corp')!=-1) || item.type">
           <a target="{{item.name}}"
-
              ng-show="item.url"
-
              ng-href="{{item.url}}"
-
              ng-click="$event.stopPropagation();"
              ng-class="{'internal': item.url.indexOf('sap.corp')!=-1}">
             {{item.text}}
@@ -74,12 +67,6 @@
       </ul>
     </div>
   </div>
-
-<!--
-
-insert disqus.txt here
-
--->
 
 </html>
 
@@ -119,7 +106,6 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
     //initialize get if not there
     if (!$httpProvider.defaults.headers.get) {
         $httpProvider.defaults.headers.get = {};
-
     }
     //disable IE ajax request caching
     $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
@@ -134,13 +120,10 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
     var image = new Image();
     image.src = 'https://avatars.wdf.sap.corp/media/BAhbCVsHOgZmSSIdNTMyNmU5NjdkZjE1ZGI2ODVhMDE0YzJiBjoGRVRbCToGcDoMY29udmVydEkiAAY7BkYwWwg7BzoKdGh1bWJJIgg5NHgGOwZUWwc6BmU6CGpwZw.jpg';
     setTimeout( function() {
-
         if ( !image.complete || !image.naturalWidth ) {
           $scope.outOfOffice = true;
-
         } else {
             $scope.outOfOffice = false;
-
         }
 
         $http.get('index.json', { cache: false}).success( function(data) {
