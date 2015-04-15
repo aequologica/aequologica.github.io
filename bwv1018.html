@@ -39,7 +39,6 @@ body {
   font-family : Inconsolata;
   background  : transparent;
   font-size: 16px;
-  padding: 2em;
 }
 
 div.table {
@@ -52,6 +51,10 @@ div.table {
 
 div.table#legend {
   width: 600px;
+  table-layout: auto;    
+}
+div.table#harmo {
+  width: 1900px;
   table-layout: auto;    
 }
 
@@ -67,7 +70,7 @@ div.table > div > div {
     display: table-cell;
     border-bottom: 1px solid #c0c0c0;
     border-right: 1px solid #c0c0c0;
-    padding: 0;
+    padding: 0 5px 0 0;
     margin: 0;
 }
 
@@ -84,6 +87,15 @@ div.table > div > div > div > span {
     padding: 0;
     margin: 0;
     // font-size: 16px;
+}
+
+div.table > div > div > div > span:first-child  {
+  padding-left: 5px;
+}
+
+div.table > div > div.mod_ou > div > span:last-child{
+  position: relative; 
+  right: -14px;
 }
 
 #A, #B, #C {
@@ -135,9 +147,6 @@ li:first-child {
 }
 .coda {
   background-color: #d7faec;
-}
-.ident {
-  font-weight: bold;
 }
 
 #ss { 
@@ -219,7 +228,7 @@ Chaque partie est fonctionnellement organisée comme suit :
 </div>
 </div>
 
-<div class="table" id="table">
+<div class="table" id="harmo">
  <div class="numbers">
   <div id="A">A</div>
   <div class="exp"    >1</div>
@@ -237,48 +246,48 @@ Chaque partie est fonctionnellement organisée comme suit :
  </div>
  <div id="A">
   <div></div>
-  <div class="exp ident"    ><div><span>Am                         </span><span>                          </span><span>E<span id="ss">sus4</span> </span><span>E                            </span></div></div>
-  <div class="exp"          ><div><span>Am                         </span><span>                          </span><span>F6                         </span><span>B<span id="ss">dim</span>    </span></div></div>
-  <div class="exp"          ><div><span>E7                         </span><span>Am                        </span><span>D6                         </span><span>E7                           </span></div></div>
-  <div class="mod_rel"      ><div><span>Am                         </span><span>F/A                       </span><span>G7/B                       </span><span>G6                           </span></div></div>
-  <div class="mod_rel"      ><div><span>C                          </span><span>Am                        </span><span>F6                         </span><span>G7                           </span></div></div>
-  <div class="mod_ou ident" ><div><span>C                          </span><span>Am                        </span><span>D7/F#                      </span><span>D6                           </span></div></div>
-  <div class="mod_ou ident" ><div><span>G                          </span><span>Gm                        </span><span>C#<span id="ss">7dim</span></span><span>A7                           </span></div></div>
-  <div class="mod_ou ident" ><div><span>D7/C                       </span><span>G/B                       </span><span>A7/C#                      </span><span>Dm6                          </span></div></div>
-  <div class="mar_har ident"><div><span>Em/G                       </span><span>                          </span><span>Am/C                       </span><span>                             </span></div></div>
-  <div class="mar_har ident"><div><span>F#m7<span id="ss">b5</span></span><span>                          </span><span>B7                         </span><span>                             </span></div></div>
-  <div class="coda ident"   ><div><span>Em                         </span><span>                          </span><span>Am                         </span><span style="position: relative; left: -14px            ">D#<span id="ss">dim</span>/F#</span></div></div>
-  <div class="coda ident"   ><div><span>B7                         </span><span>Em                        </span><span>Am6                        </span><span>B                            </span></div></div>
+  <div class="exp"    ><div><span>Am</span>                         <span></span>                          <span>E<span id="ss">sus4</span></span> <span>E</span>                            </div></div>
+  <div class="exp"    ><div><span>Am</span>                         <span></span>                          <span>F6</span>                         <span>B<span id="ss">dim</span></span>    </div></div>
+  <div class="exp"    ><div><span>E7</span>                         <span>Am</span>                        <span>D6</span>                         <span>E7</span>                           </div></div>
+  <div class="mod_rel"><div><span>Am</span>                         <span>F/A</span>                       <span>G7/B</span>                       <span>G6</span>                           </div></div>
+  <div class="mod_rel"><div><span>C</span>                          <span>Am</span>                        <span>F6</span>                         <span>G7</span>                           </div></div>
+  <div class="mod_ou" ><div><span>C</span>                          <span>Am</span>                        <span>D7/F#</span>                      <span>D6</span>                           </div></div>
+  <div class="mod_ou" ><div><span>G</span>                          <span>Gm</span>                        <span>C#<span id="ss">7dim</span></span><span>A7</span>                           </div></div>
+  <div class="mod_ou" ><div><span>D7/C</span>                       <span>G/B</span>                       <span>A7/C#</span>                      <span>Dm6</span>                          </div></div>
+  <div class="mar_har"><div><span>Em/G</span>                       <span></span>                          <span>Am/C</span>                       <span></span>                             </div></div>
+  <div class="mar_har"><div><span>F#m7<span id="ss">b5</span></span><span></span>                          <span>B7</span>                         <span></span>                             </div></div>
+  <div class="coda"   ><div><span>Em</span>                         <span></span>                          <span>Am</span>                         <span style="position: relative; left: -14px">D#<span id="ss">dim</span>/F#</span></div></div>
+  <div class="coda"   ><div><span>B7</span>                         <span>Em</span>                        <span>Am6</span>                        <span>B</span>                            </div></div>
  </div>
  <div class="numbers">
   <div id="B">B</div>
-  <div class="exp"          >13</div>
-  <div class="mod_rel"      >14</div>
-  <div class="dev"          >15</div>
-  <div class="dev"          >16</div>
-  <div class="dev"          >17</div>
-  <div class="mod_ou"       >18</div>
-  <div class="mod_ou"       >19</div>
-  <div class="mod_ou"       >20</div>
-  <div class="mar_har"      >21</div>
-  <div class="mar_har"      >22</div>
-  <div class="coda"         >23</div>
-  <div class="coda"         >24</div>
+  <div class="exp"     >13</div>
+  <div class="mod_rel" >14</div>
+  <div class="dev"     >15</div>
+  <div class="dev"     >16</div>
+  <div class="dev"     >17</div>
+  <div class="mod_ou"  >18</div>
+  <div class="mod_ou"  >19</div>
+  <div class="mod_ou"  >20</div>
+  <div class="mar_har" >21</div>
+  <div class="mar_har" >22</div>
+  <div class="coda"    >23</div>
+  <div class="coda"    >24</div>
  </div>
  <div id="B">
   <div></div>
-  <div class="exp ident"    ><div><span>Em                         </span><span>                          </span><span>B<span id="ss">sus4</span> </span><span>B                            </span></div></div>
-  <div class="mod_rel"      ><div><span>Em                         </span><span>                          </span><span>Am                         </span><span>D7                           </span></div></div>
-  <div class="dev"          ><div><span>G                          </span><span>Em7<span id="ss">b5</span></span><span>A7                         </span><span>                             </span></div></div>
-  <div class="dev"          ><div><span>Dm                         </span><span>Bb                        </span><span>Gm6                        </span><span>A7                           </span></div></div>
-  <div class="dev"          ><div><span>Dm                         </span><span>Bb                        </span><span>Gm6                        </span><span>C7                           </span></div></div>
-  <div class="mod_ou ident" ><div><span>F                          </span><span>Dm                        </span><span>G7/B                       </span><span>G6                           </span></div></div>
-  <div class="mod_ou ident" ><div><span>C                          </span><span>Cm                        </span><span>F#<span id="ss">7dim</span></span><span>D7                           </span></div></div>
-  <div class="mod_ou ident" ><div><span>G7/F                       </span><span>C/E                       </span><span>D7/F#                      </span><span>Gm6                          </span></div></div>
-  <div class="mar_har ident"><div><span>Am/C                       </span><span>                          </span><span>Em/F                       </span><span>                             </span></div></div>
-  <div class="mar_har ident"><div><span>B#m7<span id="ss">b5</span></span><span>                          </span><span>E7                         </span><span>                             </span></div></div>
-  <div class="coda ident"   ><div><span>Am                         </span><span>                          </span><span>Dm                         </span><span style="position: relative; left: -14px            ">G#<span id="ss">dim</span>/B </span></div></div>
-  <div class="coda ident"   ><div><span>E7                         </span><span>Am                        </span><span>Dm6                        </span><span>E7                           </span></div></div>
+  <div class="exp"     ><div><span>Em</span>                         <span></span>                          <span>B<span id="ss">sus4</span></span> <span>B</span>                            </div></div>
+  <div class="mod_rel" ><div><span>Em</span>                         <span></span>                          <span>Am</span>                         <span>D7</span>                           </div></div>
+  <div class="dev"     ><div><span>G</span>                          <span>Em7<span id="ss">b5</span></span><span>A7</span>                         <span></span>                             </div></div>
+  <div class="dev"     ><div><span>Dm</span>                         <span>Bb</span>                        <span>Gm6</span>                        <span>A7</span>                           </div></div>
+  <div class="dev"     ><div><span>Dm</span>                         <span>Bb</span>                        <span>Gm6</span>                        <span>C7</span>                           </div></div>
+  <div class="mod_ou"  ><div><span>F</span>                          <span>Dm</span>                        <span>G7/B</span>                       <span>G6</span>                           </div></div>
+  <div class="mod_ou"  ><div><span>C</span>                          <span>Cm</span>                        <span>F#<span id="ss">7dim</span></span><span>D7</span>                           </div></div>
+  <div class="mod_ou"  ><div><span>G7/F</span>                       <span>C/E</span>                       <span>D7/F#</span>                      <span>Gm6</span>                          </div></div>
+  <div class="mar_har" ><div><span>Am/C</span>                       <span></span>                          <span>Em/F</span>                       <span></span>                             </div></div>
+  <div class="mar_har" ><div><span>B#m7<span id="ss">b5</span></span><span></span>                          <span>E7</span>                         <span></span>                             </div></div>
+  <div class="coda"    ><div><span>Am</span>                         <span></span>                          <span>Dm</span>                         <span style="position: relative; left: -14px">G#<span id="ss">dim</span>/B</span> </div></div>
+  <div class="coda"    ><div><span>E7</span>                         <span>Am</span>                        <span>Dm6</span>                        <span>E7</span>                           </div></div>
  </div>
  <div class="numbers">
   <div id="C">C</div>
@@ -289,8 +298,8 @@ Chaque partie est fonctionnellement organisée comme suit :
  <div>
   <div></div>
   <div><div><span>Am</span><span></span><span>Bb</span><span></span></div></div>
-  <div><div><span>Gm</span><span></span><span>C </span><span></span></div></div>
-  <div><div><span>F </span><span></span><span>  </span><span></span></div></div>
+  <div><div><span>Gm</span><span></span><span>C</span> <span></span></div></div>
+  <div><div><span>F</span> <span></span><span></span>  <span></span></div></div>
  </div>
 </div>
 </div>
@@ -370,7 +379,7 @@ $( document ).ready(function() {
     }
     return     "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
   }
-
+  /*
   function setTooltipToTextIfAny($element, placement) {
     $text = $element.text().trim();
     if ($text) {
@@ -389,7 +398,7 @@ $( document ).ready(function() {
   $.each( $("div.table > div#B > div > div > span").not("#ss"), function( index, value ) {
     setTooltipToTextIfAny($(this), 'bottom');
   });
-
+  */
   $.each([".exp", ".mod_rel", ".dev", ".mod_ou", ".mar_har", ".coda", ], function( index, value ){
 
     $.each( $(value), function() {
