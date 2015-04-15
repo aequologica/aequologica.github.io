@@ -1,0 +1,44 @@
+{ "name" : "HCPs",
+      "url"  : "HCPs",
+      "items" : [
+        { "name" : "i051108"    ,  "url":"https://tebaldi051108trial.hanatrial.ondemand.com/geppaequo-fileupload/"  , "text" : "christophe.thiebaud@sap.com"            },
+        { "name" : "p1630844092",  "url":"https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/"             , "text" : "christophe.thiebaud@alumni.insead.edu"  },
+        { "name" : "p1643349133",  "url":"https://rootp1643349133trial.hanatrial.ondemand.com/vethica/"             , "text" : "pbenoist@emergensoft.f"                 },
+        { "name" : "p1671404376",  "url":"https://fragmentump1671404376trial.hanatrial.ondemand.com/fragmentum-web/", "text" : "christophe.thiebaud@adventscloud.com"   },
+        { "name" : "p1742770407",  "url":"https://abendrotp1742770407trial.hanatrial.ondemand.com/abendrot-web/"    , "text" : "christophe.thiebaud@fragmentum.org"     },
+        { "name" : "p1894179457",  "url":"https://jenkinsp1894179457trial.hanatrial.ondemand.com/"                  , "text" : "webarchitect@paris-imagine.fr"          }
+      ]
+    },
+    { "name" : "localhosts",
+      "url"  : "localhosts",
+      "items" : [
+        { "name" : "localhost"  , "url":"http://localhost",       "text" : "local aequologica.github.io"  },
+        { "name" : "jgitflow"   , "url":"http://localhost:1010",  "text" : "local jgitflow slideshow"  },
+        { "name" : "jgitflow2"  , "url":"http://localhost:8888",  "text" : "local jgitflow slideshow (2)"  },
+        { "name" : "cors"       , "url":"http://localhost:9510",  "text" : "local cors"  },
+        { "name" : "xxx"        , "url":"http://localhost:9871",  "text" : "local ct2"  },
+        { "name" : "9999"       , "url":"http://localhost:9999",  "text" : "local markdown"  },
+        { "name" : "production" , "url":"http://localhost:2345",  "text" : "local production.neo.ondemand.com"  }
+      ]
+    },
+ { "name" : "abendrot",
+      "url"  : "abendrot",
+      "items" : [
+        { "name" : "blank_260",      "url":"https://abendrotp1742770407trial.hanatrial.ondemand.com/abendrot-web/",           "text" : "abendrot"                                 },
+        { "name" : "blank_161",      "url":"https://github.com/cthiebaud/abendrot",                                           "text" : "abendrot sources"                         },
+        { "name" : "blank_162",      "url":"http://cthiebaud.github.com/abendrot/",                                           "text" : "abendrot docs"                            },
+        { "name" : "blank_662",      "url":"https://travis-ci.org/cthiebaud/abendrot",                                        "text" : "abendrot builds"                          },
+        { "name" : "blank_163",      "url":"https://account.hanatrial.ondemand.com/",                                         "text" : "abendrot admin"                           },
+        { "name" : "blank_164",      "url":"http://www.google.com/accounts/ServiceLogin?service=analytics&passive=true&nui=1&hl=en&continue=https%3A%2F%2Fwww.google.com%2Fanalytics%2Fweb%2F%3Fhl%3Den&followup=https%3A%2F%2Fwww.google.com%2Fanalytics%2Fweb%2F%3Fhl%3Den",
+
+                                                                                                                              "text" : "abendrot google analytics"                },
+        { "type" : "separator" },
+        { "name" : "blank_165",      "url":"https://help.hana.ondemand.com/help/",                                            "text" : "SAP HANA Cloud Platform Documentation"    },
+        { "name" : "blank_166",      "url":"http://scn.sap.com/community/developer-center/cloud-platform",                    "text" : "SAP HANA Cloud Platform Developer Center" },
+        { "name" : "blank_150",      "url":"https://wiki.wdf.sap.corp/wiki/display/jpaas/JavA+platform+as+a+Service",         "text" : "JPaaS"                                    },
+        { "name" : "blank_190",      "url":"https://wiki.wdf.sap.corp/wiki/display/leanDI/home",                              "text" : "LeanDI"                                   },
+        { "type" : "separator" },
+        { "name" : "tools_palo_alto", "url":"https://github.wdf.sap.corp/I056931/ToolsPaloAlto/",                                                "text" : "Tools Palo Alto"    }
+      ]
+    }
+    
