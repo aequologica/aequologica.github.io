@@ -1,19 +1,19 @@
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
 
-  <meta name="viewport"             content="width=device-width, initial-scale=1">
-  <meta name="google"               content="notranslate">
-  <meta name="description"          content="">
-  <meta name="author"               content="cthiebaud">
+  <meta name="viewport"             content="width=device-width, initial-scale=1"/>
+  <meta name="google"               content="notranslate"/>
+  <meta name="description"          content=""/>
+  <meta name="author"               content="cthiebaud"/>
 
   <meta http-equiv="Content-Language" content="en" />
   <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1"/>
 
   <meta property="og:title"         content="BWV 1018"/>
   <meta property="og:description"   content="Analysis of BWV 1018"/>
-  <meta property="og:image"         content="/Johann_Sebastian_Bach.jpg"/>
+  <meta property="og:image:url"     content="http://aequologica.net/bwv1018images/adagio_usual_opening.png"/>
   <meta property="og:type"          content="website"/>
 
   <title>BWV 1018</title>
@@ -24,25 +24,79 @@
 
   <link rel="shortcut icon" href="favicon2.ico">
 
-  <style>
+<style>
 
 body {
-  font-style: monospace;
+  //font-style: monospace;
   font-size: 16px;
   padding: 2em;
 }
 
-th {
+div.table {
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+    //background-color: #f7f7f7; 
+}
+
+div.table#legend {
+  width: 500px;
+  table-layout: auto;    
+}
+
+div.table#legend > div > div {
+  padding: 0 1em;
+}
+
+div.table > div {
+    display: table-row;
+}
+
+div.table > div > div {
+    display: table-cell;
+    border-bottom: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    padding: 0;
+    margin: 0;
+}
+
+div.table > div > div > div {
+  display: table;
+  width: 100%;
+  table-layout: fixed;    
+}
+
+div.table > div > div > div > span {
+    display: table-cell;
+    border: none;
+    width: 25%;
+    padding: 0;
+    margin: 0;
+    // font-size: 16px;
+}
+
+#A, #B, #C {
+  border-bottom: none;
+  // color: blue;
+}
+
+div.table > div.numbers > div {
+ color: gray;
+ border-bottom: none;
+ font-size: 12px;
+}
+
+div.table > div:first-child > div {
+  // font-size:smaller;
+}
+
+div.table > div > div:first-child {
   font-size:smaller;
-  font-weight: normal;
+  width: 2%;
 }
 
-th, td {
-  // width: 96px;
-  border : 1px gray solid;
-  padding: 5px;
-}
-
+/*      */
 li {
   padding: 5px;
 }
@@ -50,38 +104,41 @@ li:first-child {
   font-weight: bold;
 }
 
-th:first-child, th:first-child {
-  width: 24px;
+/*      */
+.o {
+  opacity: 0.8;
 }
-
-.exposition {
-  background-color: #EEFDF7;
+.exp {
+  background-color: #d7faec;
 }
-.modulation_vers_relatif_majeur {
-  background-color: #ffffe5;
+.mod_rel {
+  background-color: #f9e257;
 }
-.development {
-  background-color: #ffe5ea;
+.dev {
+  background-color: #ffa500;
 }
-.modulation_on_ne_sait_ou {
-  background-color: #FFDECC;
+.mod_ou {
+  background-color: #facd73;
 }
-.marche_harmonique {
+.mar_har {
   background-color: #DCF5FE;
 }
 .coda {
-  background-color: #EEFDF7;
+  background-color: #d7faec;
 }
 .ident {
   font-weight: bold;
 }
 
-.numbers {
-font-weight: normal;
- }
-.superscript { position: relative; top: -0.5em; font-size: 70%; }
+#ss { 
+  position: relative;
+  top: -0.5em; 
+  font-size: 66.6%;
+}
 
-  </style>
+
+
+</style>
 </head>
 <body ng-app="aequologicaApp" ng-controller="IndexCtrl">
 
@@ -101,230 +158,134 @@ Or la structure harmonique est en béton, et en plus assez conventionnelle (je m
 C’est le mystère de Bach; comment fait-il ?
 </p>
 <p>
-Le motif rythmique est d’une invariance quasi parfaite (et même parfaitement parfaite en ce qui concerne les motifs du clavier). 
+Le motif rythmique est d’une invariance quasi parfaite (et même parfaitement parfaite en ce qui concerne les motifs rythmiques du clavier). 
 </p>
 <p>
 L’invariance est relativement rare dans l'œuvre de Bach, e.g. 1er prélude du clavecin bien tempéré, mais portée à ce degré, c’est carrément exceptionnel. 
 </p>
 <p>
-Les deux motifs de la main droite et de la main gauche sont assez anodins. D’ailleurs, une variante de la sonate les voit réduits à de vulgaires arpèges (cf. [0] partitions) :
+Les deux motifs de la main droite et de la main gauche sont assez anodins. D’ailleurs, une variante de la sonate les voit réduits à de vulgaires arpèges (cf. <a href="http://conquest.imslp.info/files/imglnks/usimg/b/be/IMSLP02246-Bach_-_BGA_-_BWV_1018.pdf" target="partition">partition</a>) :
 </p>
+
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="bwv1018images/adagio_usual_opening.png" class="thumbnail" target="adagio_usual_opening" >
+      <img src="bwv1018images/adagio_usual_opening.png" alt="adagio_usual_opening">
+    </a>
+  </div>
+<div class="col-xs-6 col-md-3">
+    <a href="bwv1018images/adagio_variant_opening.png" class="thumbnail" target="adagio_variant_opening">
+      <img src="bwv1018images/adagio_variant_opening.png" alt="adagio_variant_opening">
+    </a>
+  </div>
+</div>
+</div>
+
 <img src=""/>
 <img src=""/>
 <p>
 Tout est donc fait pour laisser l'esprit de l'auditeur se concentrer sur l'harmonie. 
 </p>
 <p>
-La partition compte 27 mesures. Les 3 dernières sont une coda modulante (C) sur laquelle on pourra revenir. 
+L'Adagio compte 27 mesures. Les 3 dernières sont une coda modulante (C) sur laquelle on pourra revenir. 
 </p>
 <p>
-Restent 24 mesures, également divisées en deux parties (A et B) de chacune 12 mesures .
+Restent 24 mesures, divisées en deux parties (A et B) égales, comptant donc chacune 12 mesures.
 </p>
 <p>
-Chaque partie est divisée comme suit :
+Chaque partie est fonctionnellement organisée comme suit :
 </p>
-<p>
-<table>
-<tr><th>&nbsp;</th><th>fonction</th><th>A</th><th># mesures</th><th>B</th><th># mesures</th></tr>
-<tr><td>1.</td><td class="exposition">Exposé du thème</td><td>1-3</td><td>3</td><td>13</td><td>1</td></tr>
-<tr><td>2.</td><td class="modulation_vers_relatif_majeur">Modulation vers relatif majeur</td><td>4-5</td><td>2</td><td>14</td><td>1</td></tr>
-<tr><td>3.</td><td class="development">Développement</td><td>&nbsp;</td><td>&nbsp;</td><td>15-17</td><td>3</td></tr>
-<tr><td>4.</td><td class="modulation_on_ne_sait_ou">Modulation on ne sait où</td><td>6-8</td><td>3</td><td>18-20</td><td>2</td></tr>
-<tr><td>5.</td><td class="marche_harmonique">Marche harmonique résolutive</td><td>9-10</td><td>2</td><td>21-22</td><td>2</td></tr>
-<tr><td>6.</td><td class="coda">Conclusion</td><td>11-12</td><td>2</td><td>23-24</td><td>3</td></tr>
-</table>
-</p>
-<p>
-<table>
-<tr class="numbers">
-<th>&nbsp;</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-<th>11</th>
-<th>12</th>
-</tr>
-<tr>
-<th id="A" >
-A
-</th>
-<td id="1" class="exposition ident">
-<span>Am&nbsp;</span>
-&nbsp;
-<span>E<span class="superscript">sus4</span>&nbsp;E</span>
-</td>
-<td id="2" class="exposition">
-<b>
-<span>Am</span>
-</b>
-&nbsp;
-<span>F6&nbsp;B<span class="superscript">dim</span></span>
-</td>
-<td id="3" class="exposition">
-<span>E7&nbsp;Am</span>
-&nbsp;
-<span>D6&nbsp;E7</span>
-</td>
-<td id="4" class="modulation_vers_relatif_majeur">
-<span>Am&nbsp;F/A</span>
-&nbsp;
-<span>G7/B&nbsp;G6</span>
-</td>
-<td id="5" class="modulation_vers_relatif_majeur">
-<span>C&nbsp;Am</span>
-&nbsp;
-<span>F6&nbsp;G7</span>
-</td>
-<td id="6" class="modulation_on_ne_sait_ou ident">
-<span>C&nbsp;Am</span>
-&nbsp;
-<span>D7/F#&nbsp;D6</span>
-</td>
-<td id="7" class="modulation_on_ne_sait_ou ident">
-<span>G&nbsp;Gm</span>
-&nbsp;
-<span>C#<span class="superscript">7dim</span>&nbsp;A7</span>
-</td>
-<td id="8" class="modulation_on_ne_sait_ou ident">
-<span>D7/C&nbsp;G/B</span>
-&nbsp;
-<span>A7/C#&nbsp;Dm6</span>
-</td>
-<td id="9" class="marche_harmonique ident">
-<span>Em/G&nbsp;Am/C</span>
-&nbsp;
-</td>
-<td id="10" class="marche_harmonique ident">
-<span>F#m7<span class="superscript">b5</span>&nbsp;B7</span>
-&nbsp;
-</td>
-<td id="11" class="coda ident">
-<span>Em&nbsp;</span>
-&nbsp;
-<span>Am&nbsp;D#<span class="superscript">dim</span>/F#</span>
-</td>
-<td id="12" class="coda ident">
-<span>B7&nbsp;Em</span>
-&nbsp;
-<span>Am6&nbsp;B7</span>
-</td>
-</tr>
-<tr>
-<th id="B">
-B
-</th>
-<td id="13" class="exposition ident">
-<span>Em&nbsp;</span>
-&nbsp;
-<span>B<span class="superscript">sus4</span>&nbsp;B</span>
-</td>
-<td id="14" class="modulation_vers_relatif_majeur">
-<b>
-<span>Em&nbsp;</span>
-</b>
-&nbsp;
-<span>Am&nbsp;D7</span>
-</td>
-<td id="15" class="development">
-<span>G&nbsp;Em7<span class="superscript">b5</span></span>
-&nbsp;
-<span>A7&nbsp;</span>
-</td>
-<td id="16" class="development">
-<span>Dm&nbsp;Bb</span>
-&nbsp;
-<span>Gm6&nbsp;A7</span>
-</td>
-<td id="17" class="development">
-<span>Dm&nbsp;Bb</span>
-&nbsp;
-<span>Gm6&nbsp;C7</span>
-</td>
-<td id="18" class="modulation_on_ne_sait_ou ident">
-<span>F&nbsp;Dm</span>
-&nbsp;
-<span>G7/B&nbsp;G6</span>
-</td>
-<td id="19" class="modulation_on_ne_sait_ou ident">
-<span>C&nbsp;Cm</span>
-&nbsp;
-<span>F#<span class="superscript">7dim</span>&nbsp;D7</span>
-</td>
-<td id="20" class="modulation_on_ne_sait_ou ident">
-<span>G7/F&nbsp;C/E</span>
-&nbsp;
-<span>D7/F#&nbsp;Gm6</span>
-</td>
-<td id="21" class="marche_harmonique ident">
-<span>Am/C&nbsp;Em/F</span>
-&nbsp;
-</td>
-<td id="22" class="marche_harmonique ident">
-<span>B#m7<span class="superscript">b5</span>&nbsp;E7</span>
-&nbsp;
-</td>
-<td id="23" class="coda ident">
-<span>Am&nbsp;</span>
-&nbsp;
-<span>Dm&nbsp;G#<span class="superscript">dim</span>/B</span>
-</td>
-<td id="24" class="coda ident">
-<span>E7&nbsp;Am</span>
-&nbsp;
-<span>Dm6&nbsp;E7</span>
-</td>
-</tr>
-<tr class="numbers">
-<th>&nbsp;</th>
-<th>13</th>
-<th>14</th>
-<th>15</th>
-<th>16</th>
-<th>17</th>
-<th>18</th>
-<th>19</th>
-<th>20</th>
-<th>21</th>
-<th>22</th>
-<th>23</th>
-<th>24</th>
-</tr>
-<tr>
-<th>C</th>
-<td id="22" class="">
-<span>Am&nbsp;</span>
-&nbsp;
-<span>Bb&nbsp;</span>
-</td>
-<td id="23" class="">
-<span>Gm&nbsp;</span>
-&nbsp;
-<span>C&nbsp;</span>
-</td>
-<td id="24" class="">
-<span>F&nbsp;</span>
-&nbsp;
-</td>
-</tr>
-<tr class="numbers">
-<th>&nbsp;</th>
-<th>25</th>
-<th>26</th>
-<th>27</th>
-</tr>
-</table>
+
+<div class="table" id="legend">
+  <div><div> </div><div                >fonction                       </div><div><span id="A">A</span></div><div>#</div><div><span id="B">B</span></div><div>#</div></div>
+
+  <div><div>1</div><div class="exp"    >Exposé du thème                </div><div>1-3  </div><div>3</div><div>13   </div><div>1</div></div>
+  <div><div>2</div><div class="mod_rel">Modulation vers relatif majeur </div><div>4-5  </div><div>2</div><div>14   </div><div>1</div></div>
+  <div><div>3</div><div class="dev"    >Développement                  </div><div>     </div><div> </div><div>15-17</div><div>3</div></div>
+  <div><div>4</div><div class="mod_ou" >Modulation on ne sait où       </div><div>6-8  </div><div>3</div><div>18-20</div><div>2</div></div>
+  <div><div>5</div><div class="mar_har">Marche harmonique résolutive   </div><div>9-10 </div><div>2</div><div>21-22</div><div>2</div></div>
+  <div><div>6</div><div class="coda"   >Conclusion                     </div><div>11-12</div><div>2</div><div>23-24</div><div>3</div></div>
+</div>
+
+<div class="table" id="table">
+ <div class="numbers">
+  <div id="A">A</div>
+  <div class="exp"    >1</div>
+  <div class="exp"    >2</div>
+  <div class="exp"    >3</div>
+  <div class="mod_rel">4</div>
+  <div class="mod_rel">5</div>
+  <div class="mod_ou" >6</div>
+  <div class="mod_ou" >7</div>
+  <div class="mod_ou" >8</div>
+  <div class="mar_har">9</div>
+  <div class="mar_har">10</div>
+  <div class="coda"   >11</div>
+  <div class="coda"   >12</div>
+ </div>
+ <div id="A">
+  <div></div>
+  <div class="exp ident"    ><div><span>Am                         </span><span>                          </span><span>E<span id="ss">sus4</span> </span><span>E                            </span></div></div>
+  <div class="exp"          ><div><span>Am                         </span><span>                          </span><span>F6                         </span><span>B<span id="ss">dim</span>    </span></div></div>
+  <div class="exp"          ><div><span>E7                         </span><span>Am                        </span><span>D6                         </span><span>E7                           </span></div></div>
+  <div class="mod_rel"      ><div><span>Am                         </span><span>F/A                       </span><span>G7/B                       </span><span>G6                           </span></div></div>
+  <div class="mod_rel"      ><div><span>C                          </span><span>Am                        </span><span>F6                         </span><span>G7                           </span></div></div>
+  <div class="mod_ou ident" ><div><span>C                          </span><span>Am                        </span><span>D7/F#                      </span><span>D6                           </span></div></div>
+  <div class="mod_ou ident" ><div><span>G                          </span><span>Gm                        </span><span>C#<span id="ss">7dim</span></span><span>A7                           </span></div></div>
+  <div class="mod_ou ident" ><div><span>D7/C                       </span><span>G/B                       </span><span>A7/C#                      </span><span>Dm6                          </span></div></div>
+  <div class="mar_har ident"><div><span>Em/G                       </span><span>                          </span><span>Am/C                       </span><span>                             </span></div></div>
+  <div class="mar_har ident"><div><span>F#m7<span id="ss">b5</span></span><span>                          </span><span>B7                         </span><span>                             </span></div></div>
+  <div class="coda ident"   ><div><span>Em                         </span><span>                          </span><span>Am                         </span><span style="position: relative; left: -14px            ">D#<span id="ss">dim</span>/F#</span></div></div>
+  <div class="coda ident"   ><div><span>B7                         </span><span>Em                        </span><span>Am6                        </span><span>B                            </span></div></div>
+ </div>
+ <div class="numbers">
+  <div id="B">B</div>
+  <div class="exp"          >13</div>
+  <div class="mod_rel"      >14</div>
+  <div class="dev"          >15</div>
+  <div class="dev"          >16</div>
+  <div class="dev"          >17</div>
+  <div class="mod_ou"       >18</div>
+  <div class="mod_ou"       >19</div>
+  <div class="mod_ou"       >20</div>
+  <div class="mar_har"      >21</div>
+  <div class="mar_har"      >22</div>
+  <div class="coda"         >23</div>
+  <div class="coda"         >24</div>
+ </div>
+ <div id="B">
+  <div></div>
+  <div class="exp ident"    ><div><span>Em                         </span><span>                          </span><span>B<span id="ss">sus4</span> </span><span>B                            </span></div></div>
+  <div class="mod_rel"      ><div><span>Em                         </span><span>                          </span><span>Am                         </span><span>D7                           </span></div></div>
+  <div class="dev"          ><div><span>G                          </span><span>Em7<span id="ss">b5</span></span><span>A7                         </span><span>                             </span></div></div>
+  <div class="dev"          ><div><span>Dm                         </span><span>Bb                        </span><span>Gm6                        </span><span>A7                           </span></div></div>
+  <div class="dev"          ><div><span>Dm                         </span><span>Bb                        </span><span>Gm6                        </span><span>C7                           </span></div></div>
+  <div class="mod_ou ident" ><div><span>F                          </span><span>Dm                        </span><span>G7/B                       </span><span>G6                           </span></div></div>
+  <div class="mod_ou ident" ><div><span>C                          </span><span>Cm                        </span><span>F#<span id="ss">7dim</span></span><span>D7                           </span></div></div>
+  <div class="mod_ou ident" ><div><span>G7/F                       </span><span>C/E                       </span><span>D7/F#                      </span><span>Gm6                          </span></div></div>
+  <div class="mar_har ident"><div><span>Am/C                       </span><span>                          </span><span>Em/F                       </span><span>                             </span></div></div>
+  <div class="mar_har ident"><div><span>B#m7<span id="ss">b5</span></span><span>                          </span><span>E7                         </span><span>                             </span></div></div>
+  <div class="coda ident"   ><div><span>Am                         </span><span>                          </span><span>Dm                         </span><span style="position: relative; left: -14px            ">G#<span id="ss">dim</span>/B </span></div></div>
+  <div class="coda ident"   ><div><span>E7                         </span><span>Am                        </span><span>Dm6                        </span><span>E7                           </span></div></div>
+ </div>
+ <div class="numbers">
+  <div id="C">C</div>
+  <div>25</div>
+  <div>26</div>
+  <div>27</div>
+ </div>
+ <div>
+  <div></div>
+  <div><div><span>Am</span><span></span><span>Bb</span><span></span></div></div>
+  <div><div><span>Gm</span><span></span><span>C </span><span></span></div></div>
+  <div><div><span>F </span><span></span><span>  </span><span></span></div></div>
+ </div>
+</div>
 </p>
 <p>
 La partie A va du La mineur vers le Mi mineur.<br/>
 La partie B retourne depuis le Mi mineur au La mineur initial.<br/>
-(nb. La coda modulante des mesures suivantes 25-27 repart de La mineur pour conclure en Fa majeur.)<br/>
+(nb. La coda modulante (C) des mesures suivantes 25-27 repart de La mineur pour conclure en Fa majeur.)<br/>
 </p>
 <p>
 Deux observations :
@@ -350,10 +311,76 @@ Fa majeur (nécessaire pour pouvoir recommencer verbatim le déroulement harmoni
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"            ></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"          ></script>
 
-<script type="text/javascript" >
-'use strict';
+<script type="text/javascript">
+$( document ).ready(function() {
+
+  function ColorLuminance(hex, lum) {
+
+    // validate hex string
+    hex = String(hex).replace(/[^0-9a-f]/gi, '');
+    if (hex.length < 6) {
+      hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+    }
+    lum = lum || 0;
+
+    // convert to decimal and change luminosity
+    var rgb = "#", c, i;
+    for (i = 0; i < 3; i++) {
+      c = parseInt(hex.substr(i*2,2), 16);
+      c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+      rgb += ("00"+c).substr(c.length);
+    }
+
+    return rgb;
+  }
+
+  function rgbToHex(color) {
+    var bg = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+      return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return     "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
+  }
+  
+  $.each( $("div.table > div#A > div > div > span").not("#ss"), function( index, value ){
+    $(this).prop('title', $(this).text());
+    $(this).attr({'data-toggle':"tooltip", 'data-placement':"top" })
+    $(this).tooltip();
+  });
+
+  $.each( $("div.table > div#B > div > div > span").not("#ss"), function( index, value ){
+    $(this).prop('title', $(this).text());
+    $(this).attr({'data-toggle':"tooltip", 'data-placement':"bottom" })
+    $(this).tooltip();
+  });
+
+  $.each([".exp", ".mod_rel", ".dev", ".mod_ou", ".mar_har", ".coda", ], function( index, value ){
+
+    $.each( $(value), function() {
+      $bg_color = rgbToHex($( this ).css('background-color'));
+      $bg_color_alt = ColorLuminance($bg_color, 0.12);
+      console.log($bg_color + ' -> ' + $bg_color_alt);
+      $( this ).data( {'data-bg'    : $bg_color} );
+      $( this ).data( {'data-bg-alt': $bg_color_alt } );
+      
+    });
+
+    $( "#legend "+value ).hover(
+      function() {
+        $.each( $(value), function() {
+          $( this ).css( {'background-color': $( this ).data( 'data-bg-alt'), 'color' : 'blue'} );
+        });
+      }, function() {
+        $.each( $(value), function() {
+          $( this ).css( {'background-color': $( this ).data( 'data-bg'), 'color' : 'inherit'} );
+        });
+      }
+    );
+  });
+
+
+  
 });
 </script>
-
 </html>
 
