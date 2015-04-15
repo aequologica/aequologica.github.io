@@ -341,17 +341,24 @@ $( document ).ready(function() {
     }
     return     "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
   }
+
+  function setTooltipToTextIfAny($element, placement) {
+    $text = $element.text().trim();
+    if ($text) {
+      $element.prop('title', $text );
+      $element.attr({'data-toggle':"tooltip", 'data-placement':placement })
+      $element.tooltip();
+    } else {
+      
+    }
+  }
   
-  $.each( $("div.table > div#A > div > div > span").not("#ss"), function( index, value ){
-    $(this).prop('title', $(this).text());
-    $(this).attr({'data-toggle':"tooltip", 'data-placement':"top" })
-    $(this).tooltip();
+  $.each( $("div.table > div#A > div > div > span").not("#ss"), function( index, value ) {
+    setTooltipToTextIfAny($(this), 'top');
   });
 
-  $.each( $("div.table > div#B > div > div > span").not("#ss"), function( index, value ){
-    $(this).prop('title', $(this).text());
-    $(this).attr({'data-toggle':"tooltip", 'data-placement':"bottom" })
-    $(this).tooltip();
+  $.each( $("div.table > div#B > div > div > span").not("#ss"), function( index, value ) {
+    setTooltipToTextIfAny($(this), 'bottom');
   });
 
   $.each([".exp", ".mod_rel", ".dev", ".mod_ou", ".mar_har", ".coda", ], function( index, value ){
@@ -359,10 +366,9 @@ $( document ).ready(function() {
     $.each( $(value), function() {
       $bg_color = rgbToHex($( this ).css('background-color'));
       $bg_color_alt = ColorLuminance($bg_color, 0.12);
-      console.log($bg_color + ' -> ' + $bg_color_alt);
+      // console.log($bg_color + ' -> ' + $bg_color_alt);
       $( this ).data( {'data-bg'    : $bg_color} );
       $( this ).data( {'data-bg-alt': $bg_color_alt } );
-      
     });
 
     $( "#legend "+value ).hover(
