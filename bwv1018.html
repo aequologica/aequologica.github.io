@@ -20,14 +20,24 @@
 
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-  <link rel="stylesheet" type="text/css" href="style.css" >
+  <!--link rel="stylesheet" type="text/css" href="style.css" -->
 
   <link rel="shortcut icon" href="favicon2.ico">
 
 <style>
+div{
+  margin-bottom:1em;
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url('assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff') format('woff');
+}
 
 body {
-  //font-style: monospace;
+  font-family : Inconsolata;
+  background  : transparent;
   font-size: 16px;
   padding: 2em;
 }
@@ -140,37 +150,36 @@ li:first-child {
 
 </style>
 </head>
-<body ng-app="aequologicaApp" ng-controller="IndexCtrl">
+<body>
 
 
-
-<div class="row">
-<div class="col-lg-10">
-<h1 style="float: left">BWV 1018</h1>
-
-<h1 style="float: right">
-<iframe width="480px" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&start_track=0&callback=true"></iframe>
-<h1>
-</div></div>
-<!-- div class="container" -->
-<p>
+<div class="container">
+ <div class="row">
+  <div class="col-lg-12">
+   <h1 style="float: left">BWV 1018</h1>
+   <h1 style="float: right">
+    <iframe width="480px" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&start_track=0&callback=true"></iframe>
+   </h1>
+  </div>
+ </div>
+<div>
 Toute la sonate BWV 1018 est magnifique, mais l'adagio est d'une modernité incroyable. A la première écoute,  je me souviens très bien avoir été mesmerisé par les enchaînements harmoniques : je ne savais plus où j'habitais ! 
-</p>
-<p>
+</div>
+<div>
 Or la structure harmonique est en béton, et en plus assez conventionnelle (je m’en suis rendu compte après avoir appris chaque note de l’adagio par cœur). 
-</p>
-<p>
+</div>
+<div>
 C’est le mystère de Bach; comment fait-il ?
-</p>
-<p>
+</div>
+<div>
 Le motif rythmique est d’une invariance quasi parfaite (et même parfaitement parfaite en ce qui concerne les motifs rythmiques du clavier). 
-</p>
-<p>
+</div>
+<div>
 L’invariance est relativement rare dans l'œuvre de Bach, e.g. 1er prélude du clavecin bien tempéré, mais portée à ce degré, c’est carrément exceptionnel. 
-</p>
-<p>
+</div>
+<div>
 Les deux motifs de la main droite et de la main gauche sont assez anodins. D’ailleurs, une variante de la sonate les voit réduits à de vulgaires arpèges (cf. <a href="http://conquest.imslp.info/files/imglnks/usimg/b/be/IMSLP02246-Bach_-_BGA_-_BWV_1018.pdf" target="partition">partition</a>) :
-</p>
+</div>
 
 <div class="row">
   <div class="col-xs-6 col-md-3">
@@ -184,22 +193,19 @@ Les deux motifs de la main droite et de la main gauche sont assez anodins. D’a
     </a>
   </div>
 </div>
-</div>
 
-<img src=""/>
-<img src=""/>
-<p>
+<div>
 Tout est donc fait pour laisser l'esprit de l'auditeur se concentrer sur l'harmonie. 
-</p>
-<p>
+</div>
+<div>
 L'Adagio compte 27 mesures. Les 3 dernières sont une coda modulante (C) sur laquelle on pourra revenir. 
-</p>
-<p>
+</div>
+<div>
 Restent 24 mesures, divisées en deux parties (A et B) égales, comptant donc chacune 12 mesures.
-</p>
-<p>
+</div>
+<div>
 Chaque partie est fonctionnellement organisée comme suit :
-</p>
+</div>
 
 <div class="table" id="legend">
   <div><div> </div><div                >fonction                       </div><div><span id="A">A</span></div><div>#</div><div><span id="B">B</span></div><div>#</div></div>
@@ -210,6 +216,7 @@ Chaque partie est fonctionnellement organisée comme suit :
   <div><div>4</div><div class="mod_ou" >Modulation on ne sait où       </div><div>6-8  </div><div>3</div><div>18-20</div><div>2</div></div>
   <div><div>5</div><div class="mar_har">Marche harmonique résolutive   </div><div>9-10 </div><div>2</div><div>21-22</div><div>2</div></div>
   <div><div>6</div><div class="coda"   >Conclusion                     </div><div>11-12</div><div>2</div><div>23-24</div><div>3</div></div>
+</div>
 </div>
 
 <div class="table" id="table">
@@ -286,29 +293,31 @@ Chaque partie est fonctionnellement organisée comme suit :
   <div><div><span>F </span><span></span><span>  </span><span></span></div></div>
  </div>
 </div>
-</p>
-<p>
+</div>
+<div class="container">
+<div>
 La partie A va du La mineur vers le Mi mineur.<br/>
 La partie B retourne depuis le Mi mineur au La mineur initial.<br/>
 (nb. La coda modulante (C) des mesures suivantes 25-27 repart de La mineur pour conclure en Fa majeur.)<br/>
-</p>
-<p>
+</div>
+<div>
 Deux observations :
-</p>
-<p>
+</div>
+<div>
 #1<br/>
 Le déroulement harmonique des 6 dernières mesures de chaque partie est parfaitement identique / verbatim (transposé dans la tonalité de chaque partie, bien sûr).<br/>
 Les mesures 6-12 de A modulent de Do majeur vers Mi mineur.<br/>
 Les mesures 18-24 de B modulent de Fa majeur vers La mineur.<br/>
 (nb. Les motifs main droite et gauche du clavier ne sont pas strictement identiques, il y a de subtiles variantes, assez mystérieuses elles aussi, car une transposition verbatim eut pu convenir, en regardant le détail on voit des permutations quasi mathématiques entre les deux)<br/>
-</p>
-<p>
+</div>
+<div>
 #2<br/>
 Dans la partie B, l’exposé du thème et la modulation vers relatif majeur sont squeezé en 2 mesures, au lieu de 5 dans la partie A,<br/>
 ce qui permet de dégager 3 mesures d’un développement échevelé qui module de <br/>
 Sol majeur (ton relatif de la tonalité initiale de la partie B, Mi mineur) vers <br/>
 Fa majeur (nécessaire pour pouvoir recommencer verbatim le déroulement harmonique des 6 dernières mesures pour retomber sur La mineur, la tonalité de l'œuvre).<br/>
-</p>
+</div>
+</div>
 
 </body>
 
