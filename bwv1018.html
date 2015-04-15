@@ -142,14 +142,19 @@ li:first-child {
 </head>
 <body ng-app="aequologicaApp" ng-controller="IndexCtrl">
 
-<h1>BWV 1018</h1>
 
+
+<div class="row">
+<div class="col-lg-10">
+<h1 style="float: left">BWV 1018</h1>
+
+<h1 style="float: right">
+<iframe width="480px" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&start_track=0&callback=true"></iframe>
+<h1>
+</div></div>
 <!-- div class="container" -->
 <p>
-Toute la sonate est effectivement magnifique. 
-</p>
-<p>
-L'adagio est d'une modernité incroyable. A la première écoute,  je me souviens très bien avoir été mesmerisé par les enchaînements harmoniques : je ne savais plus où j'habitais ! 
+Toute la sonate BWV 1018 est magnifique, mais l'adagio est d'une modernité incroyable. A la première écoute,  je me souviens très bien avoir été mesmerisé par les enchaînements harmoniques : je ne savais plus où j'habitais ! 
 </p>
 <p>
 Or la structure harmonique est en béton, et en plus assez conventionnelle (je m’en suis rendu compte après avoir appris chaque note de l’adagio par cœur). 
@@ -310,6 +315,21 @@ Fa majeur (nécessaire pour pouvoir recommencer verbatim le déroulement harmoni
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"            ></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"          ></script>
+
+<!--
+<script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
+<script src="//connect.soundcloud.com/sdk.js"></script>
+<script>
+SC.initialize({
+  client_id: '506d2e8c1cd057aa783906b0b1c8fe0d'
+});
+
+var track_url = 'https://soundcloud.com/christophe-thiebaud/adagio-sonata-for-violin-piano-bwv-1018-f-minor';
+SC.oEmbed(track_url, { auto_play: true }, function(oEmbed) {
+  console.log('oEmbed response: ' + oEmbed);
+});
+</script>
+-->
 
 <script type="text/javascript">
 $( document ).ready(function() {
