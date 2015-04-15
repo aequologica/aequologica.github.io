@@ -28,7 +28,13 @@
 
 body {
   font-style: monospace;
-  padding: 1em;
+  font-size: 16px;
+  padding: 2em;
+}
+
+th {
+  font-size:smaller;
+  font-weight: normal;
 }
 
 th, td {
@@ -70,29 +76,67 @@ th:first-child, th:first-child {
   font-weight: bold;
 }
 
-
+.numbers {
+font-weight: normal;
+ }
 .superscript { position: relative; top: -0.5em; font-size: 70%; }
 
   </style>
 </head>
 <body ng-app="aequologicaApp" ng-controller="IndexCtrl">
 
-<!-- div class="container" -->
+<h1>BWV 1018</h1>
 
-<div class="row">
-<ul class="col-md-3">
-<li>Légende</li>
-<li class="exposition">Exposé du thème</li>
-<li class="modulation_vers_relatif_majeur">Modulation vers relatif majeur</li>
-<li class="development">Développement</li>
-<li class="modulation_on_ne_sait_ou">Modulation on ne sait où</li>
-<li class="marche_harmonique">Marche harmonique résolutive</li>
-<li class="coda">Coda</li>
-<li>en <b>gras</b>: les mouvements harmoniques identiques</li>
-</ul>
-</div>
+<!-- div class="container" -->
+<p>
+Toute la sonate est effectivement magnifique. 
+</p>
+<p>
+L'adagio est d'une modernité incroyable. A la première écoute,  je me souviens très bien avoir été mesmerisé par les enchaînements harmoniques : je ne savais plus où j'habitais ! 
+</p>
+<p>
+Or la structure harmonique est en béton, et en plus assez conventionnelle (je m’en suis rendu compte après avoir appris chaque note de l’adagio par cœur). 
+</p>
+<p>
+C’est le mystère de Bach; comment fait-il ?
+</p>
+<p>
+Le motif rythmique est d’une invariance quasi parfaite (et même parfaitement parfaite en ce qui concerne les motifs du clavier). 
+</p>
+<p>
+L’invariance est relativement rare dans l'œuvre de Bach, e.g. 1er prélude du clavecin bien tempéré, mais portée à ce degré, c’est carrément exceptionnel. 
+</p>
+<p>
+Les deux motifs de la main droite et de la main gauche sont assez anodins. D’ailleurs, une variante de la sonate les voit réduits à de vulgaires arpèges (cf. [0] partitions) :
+</p>
+<img src=""/>
+<img src=""/>
+<p>
+Tout est donc fait pour laisser l'esprit de l'auditeur se concentrer sur l'harmonie. 
+</p>
+<p>
+La partition compte 27 mesures. Les 3 dernières sont une coda modulante (C) sur laquelle on pourra revenir. 
+</p>
+<p>
+Restent 24 mesures, également divisées en deux parties (A et B) de chacune 12 mesures .
+</p>
+<p>
+Chaque partie est divisée comme suit :
+</p>
+<p>
 <table>
-<tr>
+<tr><th>&nbsp;</th><th>fonction</th><th>A</th><th># mesures</th><th>B</th><th># mesures</th></tr>
+<tr><td>1.</td><td class="exposition">Exposé du thème</td><td>1-3</td><td>3</td><td>13</td><td>1</td></tr>
+<tr><td>2.</td><td class="modulation_vers_relatif_majeur">Modulation vers relatif majeur</td><td>4-5</td><td>2</td><td>14</td><td>1</td></tr>
+<tr><td>3.</td><td class="development">Développement</td><td>&nbsp;</td><td>&nbsp;</td><td>15-17</td><td>3</td></tr>
+<tr><td>4.</td><td class="modulation_on_ne_sait_ou">Modulation on ne sait où</td><td>6-8</td><td>3</td><td>18-20</td><td>2</td></tr>
+<tr><td>5.</td><td class="marche_harmonique">Marche harmonique résolutive</td><td>9-10</td><td>2</td><td>21-22</td><td>2</td></tr>
+<tr><td>6.</td><td class="coda">Conclusion</td><td>11-12</td><td>2</td><td>23-24</td><td>3</td></tr>
+</table>
+</p>
+<p>
+<table>
+<tr class="numbers">
 <th>&nbsp;</th>
 <th>1</th>
 <th>2</th>
@@ -237,7 +281,7 @@ B
 <span>Dm6&nbsp;E7</span>
 </td>
 </tr>
-<tr>
+<tr class="numbers">
 <th>&nbsp;</th>
 <th>13</th>
 <th>14</th>
@@ -252,11 +296,55 @@ B
 <th>23</th>
 <th>24</th>
 </tr>
+<tr>
+<th>C</th>
+<td id="22" class="">
+<span>Am&nbsp;</span>
+&nbsp;
+<span>Bb&nbsp;</span>
+</td>
+<td id="23" class="">
+<span>Gm&nbsp;</span>
+&nbsp;
+<span>C&nbsp;</span>
+</td>
+<td id="24" class="">
+<span>F&nbsp;</span>
+&nbsp;
+</td>
+</tr>
+<tr class="numbers">
+<th>&nbsp;</th>
+<th>25</th>
+<th>26</th>
+<th>27</th>
+</tr>
 </table>
+</p>
+<p>
+La partie A va du La mineur vers le Mi mineur.<br/>
+La partie B retourne depuis le Mi mineur au La mineur initial.<br/>
+(nb. La coda modulante des mesures suivantes 25-27 repart de La mineur pour conclure en Fa majeur.)<br/>
+</p>
+<p>
+Deux observations :
+</p>
+<p>
+#1<br/>
+Le déroulement harmonique des 6 dernières mesures de chaque partie est parfaitement identique / verbatim (transposé dans la tonalité de chaque partie, bien sûr).<br/>
+Les mesures 6-12 de A modulent de Do majeur vers Mi mineur.<br/>
+Les mesures 18-24 de B modulent de Fa majeur vers La mineur.<br/>
+(nb. Les motifs main droite et gauche du clavier ne sont pas strictement identiques, il y a de subtiles variantes, assez mystérieuses elles aussi, car une transposition verbatim eut pu convenir, en regardant le détail on voit des permutations quasi mathématiques entre les deux)<br/>
+</p>
+<p>
+#2<br/>
+Dans la partie B, l’exposé du thème et la modulation vers relatif majeur sont squeezé en 2 mesures, au lieu de 5 dans la partie A,<br/>
+ce qui permet de dégager 3 mesures d’un développement échevelé qui module de <br/>
+Sol majeur (ton relatif de la tonalité initiale de la partie B, Mi mineur) vers <br/>
+Fa majeur (nécessaire pour pouvoir recommencer verbatim le déroulement harmonique des 6 dernières mesures pour retomber sur La mineur, la tonalité de l'œuvre).<br/>
+</p>
 
-</div>
-
-</html>
+</body>
 
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"            ></script>
@@ -266,3 +354,6 @@ B
 'use strict';
 });
 </script>
+
+</html>
+
