@@ -323,6 +323,12 @@ Chaque partie est fonctionnellement organisée comme suit :
 
 <iframe id="sc-widget" width="100%" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&start_track=0&callback=true"></iframe>
 
+<div class="checkbox" id="sync_scroll_2_play">
+  <label>
+    <input type="checkbox">Sync scroll to play</input>
+  </label>
+</div>
+
 <div>
 La partie A va du La mineur vers le Mi mineur.<br/>
 La partie B retourne depuis le Mi mineur au La mineur initial.<br/>
@@ -486,17 +492,31 @@ $( document ).ready(function() {
               stop = null;
             }
           }
-          
+
+          // r.à.z
           $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
             $(value).css( {'background-color': 'inherit'} );
           });
+
           // calc id from position
-          var index = "#pos"+Math.floor(currentPosition/noire);
-          // console.log(currentPosition/noire+ " -> " +index);
-          
-          var bg_alt = $( index ).parent().parent().data( 'data-bg-alt');
-          $( index ).css( {'background-color': bg_alt} );
-          $( index ).parent().parent().parent().parent().parent().parent().scrollTo($( index ).parent().prev());
+          var $gotTheSpan = $("#pos"+Math.floor(currentPosition/noire));
+          if ($gotTheSpan.length > 0) {
+            var alternateBackgroundColor = $gotTheSpan.parent().parent().data( 'data-bg-alt');
+            
+            $gotTheSpan.css( {'background-color': alternateBackgroundColor} );
+
+            if ($("#sync_scroll_2_play :checkbox:checked").length >0) {
+              var $scrollToElement;
+              console.log($gotTheSpan.parent().parent().prev().length);
+              if ($gotTheSpan.parent().parent().prev().length < 1 ) {
+                $scrollToElement = $gotTheSpan.parent().parent();
+              } else {
+                $scrollToElement = $gotTheSpan.parent().parent().prev();
+              }
+
+              $gotTheSpan.parent().parent().parent().parent().parent().parent().scrollTo($scrollToElement);
+            }
+          }
         });
       });
       
