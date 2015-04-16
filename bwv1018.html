@@ -12,7 +12,7 @@
   <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1"/>
 
   <meta property="og:title"         content="BWV 1018"/>
-  <meta property="og:description"   content="Analysis of BWV 1018"/>
+  <meta property="og:description"   content="Analysis of JS Bach's Adagio from Sonata for Violin &amp; Keyboard BWV 1018 in F minor"/>
   <meta property="og:image:url"     content="http://aequologica.net/bwv1018images/adagio_usual_opening.png"/>
   <meta property="og:type"          content="website"/>
 
@@ -20,8 +20,6 @@
 
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-  <!--link rel="stylesheet" type="text/css" href="style.css" -->
 
   <link rel="shortcut icon" href="favicon2.ico">
 
@@ -43,6 +41,7 @@ body {
   background  : transparent;
   font-size: 16px;
 }
+
 /* tables */
 div.table {
   display: table;
@@ -157,10 +156,9 @@ div.table > div.numbers > div:hover {
   font-size: 66.6%;
 }
 
-.DocumentList {
+.harmoTableWrapperForHorizontalScrolling {
   overflow-x:scroll;
   overflow-y:hidden;
-  // height:200px;
   width:100%;
   margin: 1em 0;
   padding:0;  
@@ -172,6 +170,17 @@ div.table > div.numbers > div:hover {
 
 .fa-exclamation-triangle {
   color: orange;
+}
+
+form {
+  margin-bottom: 1em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.form-group {
+  margin-bottom:0; 
+  font-size : smaller;
 }
 
 </style>
@@ -248,7 +257,7 @@ Détail des tonalités :
 </div>
 </div>
 
-<div class="DocumentList">
+<div class="harmoTableWrapperForHorizontalScrolling">
     <ul class="list-inline">
  
 
@@ -339,7 +348,7 @@ Détail des tonalités :
 <iframe id="sc-widget" width="100%" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&start_track=0&callback=true"></iframe>
 
 <form>
-  <div class="form-group" style="margin-bottom:0; font-size : maller;">
+  <div class="form-group">
   <label class="checkbox-inline"> <!-- -inline -->   
     <input type="checkbox" id="sync_scroll_2_play">
 	  faire défiler la grille d'accord en synchrone avec l'écoute
@@ -365,14 +374,14 @@ La coda modulante (C) des 3 mesures finales 25-27 repart de La mineur pour concl
 Deux observations :
 </div>
 <div>
-#1<br/>
+<span class="label label-default">1</span><br/>
 Le déroulement harmonique des 6 dernières mesures de chaque partie est parfaitement identique / verbatim (transposé dans la tonalité de chaque partie, bien sûr).<br/>
 Les mesures 6-12 de A modulent de Do majeur vers Mi mineur.<br/>
 Les mesures 18-24 de B modulent de Fa majeur vers La mineur.<br/>
 Les motifs mélodiques de l'accompagnement au clavier ne sont pas strictement identiques entre les deux parties, il y a des variantes subtiles - assez mystérieuses elles aussi, car une transposition verbatim eut pu convenir; en regardant en détail on constate des permutations quasi mathématiques.<br/>
 </div>
 <div>
-#2<br/>
+<span class="label label-default">2</span><br/>
 Dans la partie B, l’exposé du thème et la modulation vers le relatif majeur sont squeezé en 2 mesures, au lieu de 5 dans la partie A,<br/>
 ce qui permet de dégager 3 mesures d’un développement échevelé qui module de <br/>
 Sol majeur (ton relatif de la tonalité initiale de la partie B, Mi mineur) vers <br/>
@@ -385,21 +394,8 @@ Fa majeur (nécessaire pour pouvoir recommencer verbatim le déroulement harmoni
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"            ></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"          ></script>
-
-<script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
-
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
 <script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
-<script src="//connect.soundcloud.com/sdk.js"></script>
-<script>
-SC.initialize({
-  client_id: '506d2e8c1cd057aa783906b0b1c8fe0d'
-});
-
-var track_url = 'https://soundcloud.com/christophe-thiebaud/adagio-sonata-for-violin-piano-bwv-1018-f-minor';
-SC.oEmbed(track_url, { auto_play: true }, function(oEmbed) {
-  // console.log('oEmbed response: ' + oEmbed);
-});
-</script>
 
 <script type="text/javascript">
 $( document ).ready(function() {
@@ -431,26 +427,7 @@ $( document ).ready(function() {
     }
     return     "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
   }
-  /*
-  function setTooltipToTextIfAny($element, placement) {
-    $text = $element.text().trim();
-    if ($text) {
-      $element.prop('title', $text );
-      $element.attr({'data-toggle':"tooltip", 'data-placement':placement })
-      $element.tooltip();
-    } else {
-      
-    }
-  }
-  
-  $.each( $("div.table > div#A > div > div > span").not("#ss"), function( index, value ) {
-    setTooltipToTextIfAny($(this), 'top');
-  });
 
-  $.each( $("div.table > div#B > div > div > span").not("#ss"), function( index, value ) {
-    setTooltipToTextIfAny($(this), 'bottom');
-  });
-  */
   $.each([".exp", ".mod_rel", ".dev", ".mod_ou", ".mar_har", ".coda", ".fin"], function( index, value ){
 
     $.each( $(value), function() {
@@ -485,62 +462,47 @@ $( document ).ready(function() {
         var stop = null;
 
     widget.bind(SC.Widget.Events.READY, function() {
-      widget.bind(SC.Widget.Events.PLAY, function() {
-        // get information about currently playing sound
-        widget.getCurrentSound(function(currentSound) {
-        });
-      });
-      widget.bind(SC.Widget.Events.FINISH, function() {
-        // get information about currently playing sound
-        widget.getPosition(function(currentPosition){
-          // console.log('sound finished to play at position '+currentPosition  );
-        });
-      });
+
       widget.bind(SC.Widget.Events.PAUSE, function() {
+        stop = null;
         widget.getPosition(function(currentPosition){
-          // console.log('sound paused at position '+currentPosition  );
+          // r.à.z display
           $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
             $(value).css( {'background-color': 'inherit'} );
           });
         });
       });
-      widget.bind(SC.Widget.Events.SEEK , function() {
-        widget.getPosition(function(currentPosition){
-          // console.log('sound seeked at position '+currentPosition  );
-        });
-      });
-
+      
       widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
         widget.getPosition(function(currentPosition){
           if (stop != null) { 
-            // console.log('position '+currentPosition  );
-            if (currentPosition>stop) {
-              widget.pause();
-              stop = null;
-            }
+            if ($("#stop_automatically:checked").length > 0) {
+              if (currentPosition>stop) {
+                widget.pause();
+              }
+            } 
           }
 
-          // r.à.z
+          // r.à.z display
           $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
             $(value).css( {'background-color': 'inherit'} );
           });
 
-          // calc id from position
-          var $gotTheSpan = $("#pos"+Math.floor(currentPosition/noire));
+          // calc chord id from position
+          var $gotTheSpan = $("#"+"chord"+Math.floor(currentPosition/noire));
           if ($gotTheSpan.length > 0) {
             var alternateBackgroundColor = $gotTheSpan.parent().parent().data( 'data-bg-alt');
             
             $gotTheSpan.css( {'background-color': alternateBackgroundColor} );
 
-            if ($("#sync_scroll_2_play:checked").length >0) {
+            if ($("#sync_scroll_2_play:checked").length > 0) {
               var $scrollToElement;
-              console.log($gotTheSpan.parent().parent().prev().length);
+              // console.log($gotTheSpan.parent().parent().prev().length);
               if ($gotTheSpan.parent().parent().prev().length < 1 ) {
                 $scrollToElement = $gotTheSpan.parent().parent();
               } else {
                 $scrollToElement = $gotTheSpan.parent().parent().prev();
               }
-
               $gotTheSpan.parent().parent().parent().parent().parent().parent().scrollTo($scrollToElement);
             }
           }
@@ -549,21 +511,23 @@ $( document ).ready(function() {
       
     });
 
+    /* chords offsets */
     $.each($("div.table#harmo > div > div > div > span"), function(index) {
-        $(this).prop("id", "pos"+index);
+        $(this).prop("id", "chord"+index);
         var offset = Math.round(noire*index); 
         $(this).data("position", offset);
         $(this).data("stop", offset + noire + (noire/8));
     });
 
+    /* bars offsets */
     $.each($("div.table#harmo > div.numbers > div").not(".header"), function(index) {
-        $(this).prop("id", "num"+index);
         var offset = Math.round(index*(noire  *4)); 
         if (offset) { offset = offset;}
         $(this).data("position", offset);
         $(this).data("stop", offset + (4*noire) + (noire/8));
     });
 
+    /* parts offsets */
     $.each($(".header"), function(index) {
         var offset = Math.round(index*(noire*4*12)); 
         if (offset) { offset = offset;}
@@ -573,17 +537,11 @@ $( document ).ready(function() {
 
     $("div.table > div.numbers > div").add("div.table#harmo > div > div > div > span").click(function() {
       $pos = $(this).data("position");
-      // console.log($(this).prop('id'));
       if (typeof $pos !== "undefined" && $pos != null) {
-        // console.log($pos);
         widget.pause();
         widget.seekTo($pos);
         widget.play();
-        if ($("#stop_automatically:checked").length >0) {
-          stop = $(this).data("stop");
-        } else {
-          stop = null;
-        }
+        stop = $(this).data("stop");
       }
     });
 
