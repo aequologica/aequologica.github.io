@@ -19,6 +19,7 @@
   <title>BWV 1018</title>
 
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <!--link rel="stylesheet" type="text/css" href="style.css" -->
 
@@ -169,6 +170,10 @@ div.table > div.numbers > div:hover {
   white-space:nowrap;
 }
 
+.fa-exclamation-triangle {
+  color: orange;
+}
+
 </style>
 </head>
 <body>
@@ -231,6 +236,15 @@ Chaque partie est fonctionnellement organisée comme suit :
   <div><div>5</div><div class="mar_har">Marche harmonique résolutive   </div><div>9-10 </div><div>2</div><div>21-22</div><div>2</div></div>
   <div><div>6</div><div class="coda"   >Conclusion                     </div><div>11-12</div><div>2</div><div>23-24</div><div>3</div></div>
   <div><div>6</div><div class="fin"    >Coda modulante                 </div><div>     </div><div> </div><div>     </div><div> </div></div>
+</div>
+
+<div>
+Détail des tonalités :
+  <span style="font-size:smaller; float:right;">
+    <i class="fa fa-exclamation-triangle"></i>
+    Transposition en La mineur. Original en Do mineur
+    <i class="fa fa-exclamation-triangle"></i>
+  </span>
 </div>
 </div>
 
@@ -324,14 +338,23 @@ Chaque partie est fonctionnellement organisée comme suit :
 
 <iframe id="sc-widget" width="100%" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&start_track=0&callback=true"></iframe>
 
-<div>
-  <label class="checkbox-inline">
-    <input type="checkbox" id="sync_scroll_2_play">sync scroll &amp; play</input>
+<form>
+  <div class="form-group" style="margin-bottom:0; font-size : maller;">
+  <label class="checkbox-inline"> <!-- -inline -->   
+    <input type="checkbox" id="sync_scroll_2_play">
+	  faire défiler la grille d'accord en synchrone avec l'écoute
+	</input>
   </label>
-  <label class="checkbox-inline">
-    <input type="checkbox" id="stop_automatically">stop automatically</input>
+  </div>
+  <div class="form-group">
+  </label>
+  <label class="checkbox-inline"> <!-- -inline -->
+    <input type="checkbox" id="stop_automatically">
+	écouter seulement l'accord / la mesure / la partie
+	</input>
   </label>
 </div>
+</form>
 
 <div>
 La partie A module de La mineur vers Mi mineur.<br/>
