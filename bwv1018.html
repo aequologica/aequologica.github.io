@@ -85,11 +85,15 @@ div.table > div > div > div > span {
     display: table-cell;
     border: none;
     width: 25%;
-
+    color: blue;
     padding: 0;
     margin: 0;
     cursor: pointer;
     // font-size: 16px;
+}
+
+div.table > div > div > div > span:hover {
+  text-decoration: underline;
 }
 
 div.table > div > div > div > span:first-child  {
@@ -107,9 +111,15 @@ div.table > div > div.mod_ou > div > span:last-child{
 }
 
 div.table > div.numbers > div {
- color: gray;
+ color: blue;
  border-bottom: none;
- font-size: 12px;
+ //font-size: 12px;
+ padding-left: 5px;
+ cursor: pointer;
+}
+
+div.table > div.numbers > div:hover {
+    text-decoration: underline;
 }
 
 div.table > div:first-child > div {
@@ -231,7 +241,7 @@ Chaque partie est fonctionnellement organisée comme suit :
 
 <div class="table" id="harmo">
  <div class="numbers">
-  <div id="A">A</div>
+  <div id="A" class="header">A</div>
   <div class="exp"    >1</div>
   <div class="exp"    >2</div>
   <div class="exp"    >3</div>
@@ -266,7 +276,7 @@ Chaque partie est fonctionnellement organisée comme suit :
   <div class="coda"   ><div><span>B7</span>                         <span>Em</span>                        <span>Am6</span>                        <span>B</span>                            </div></div>
  </div>
  <div class="numbers">
-  <div id="B">B</div>
+  <div id="B" class="header">B</div>
   <div class="exp"     >13</div>
   <div class="mod_rel" >14</div>
   <div class="dev"     >15</div>
@@ -296,7 +306,7 @@ Chaque partie est fonctionnellement organisée comme suit :
   <div class="coda"    ><div><span>E7</span>                         <span>Am</span>                        <span>Dm6</span>                        <span>E7</span>                           </div></div>
  </div>
  <div class="numbers">
-  <div id="C">C</div>
+  <div id="C" class="header">C</div>
   <div class="fin">25</div>
   <div class="fin">26</div>
   <div class="fin">27</div>
@@ -419,11 +429,11 @@ $( document ).ready(function() {
     $( "#legend "+value ).hover(
       function() {
         $.each( $(value), function() {
-          $( this ).css( {'background-color': $( this ).data( 'data-bg-alt'), 'color' : 'blue'} );
+          $( this ).css( {'background-color': $( this ).data( 'data-bg-alt')} );
         });
       }, function() {
         $.each( $(value), function() {
-          $( this ).css( {'background-color': $( this ).data( 'data-bg'), 'color' : 'inherit'} );
+          $( this ).css( {'background-color': $( this ).data( 'data-bg')} );
         });
       }
     );
@@ -455,7 +465,7 @@ $( document ).ready(function() {
         widget.getPosition(function(currentPosition){
           // console.log('sound paused at position '+currentPosition  );
           $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
-            $(value).css( {'background-color': 'inherit', 'color' : 'inherit'} );
+            $(value).css( {'background-color': 'inherit'} );
           });
         });
       });
@@ -476,14 +486,14 @@ $( document ).ready(function() {
           }
           
           $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
-            $(value).css( {'background-color': 'inherit', 'color' : 'inherit'} );
+            $(value).css( {'background-color': 'inherit'} );
           });
           // calc id from position
           var index = "#pos"+Math.floor(currentPosition/noire);
           console.log(currentPosition/noire+ " -> " +index);
           
           var bg_alt = $( index ).parent().parent().data( 'data-bg-alt');
-          $( index ).css( {'background-color': bg_alt, 'color' : 'red'} );
+          $( index ).css( {'background-color': bg_alt} );
         });
       });
       
@@ -492,11 +502,26 @@ $( document ).ready(function() {
     $.each($("div.table#harmo > div > div > div > span"), function(index) {
         $(this).prop("id", "pos"+index);
         var offset = Math.round(noire*index); 
-        if (offset) { offset = offset;}
         $(this).data("position", offset);
+        $(this).data("stop", offset + noire + (noire/8));
     });
 
-    $("div.table#harmo > div > div > div > span").click(function() {
+    $.each($("div.table#harmo > div.numbers > div").not(".header"), function(index) {
+        $(this).prop("id", "num"+index);
+        var offset = Math.round(index*(noire  *4)); 
+        if (offset) { offset = offset;}
+        $(this).data("position", offset);
+        $(this).data("stop", offset + (4*noire) + (noire/8));
+    });
+
+    $.each($(".header"), function(index) {
+        var offset = Math.round(index*(noire*4*12)); 
+        if (offset) { offset = offset;}
+        $(this).data("position", offset);
+        $(this).data("stop", offset + (noire*4*12) + (noire/8));
+    });
+
+    $("div.table > div.numbers > div").add("div.table#harmo > div > div > div > span").click(function() {
       $pos = $(this).data("position");
       console.log($(this).prop('id'));
       if (typeof $pos !== "undefined" && $pos != null) {
@@ -504,7 +529,7 @@ $( document ).ready(function() {
         widget.pause();
         widget.seekTo($pos);
         widget.play();
-        stop = $pos + noire + (noire/8);
+        stop = $(this).data("stop")
       }
     });
 
