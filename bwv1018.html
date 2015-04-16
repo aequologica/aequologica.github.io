@@ -507,7 +507,6 @@ $( document ).ready(function() {
     widget.bind(SC.Widget.Events.READY, function() {
 
       widget.bind(SC.Widget.Events.PAUSE, function() {
-        stop = null;
         widget.getPosition(function(currentPosition){
           // r.à.z display
           $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
@@ -519,9 +518,11 @@ $( document ).ready(function() {
       widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
         widget.getPosition(function(currentPosition){
           if (stop != null) { 
+            console.log($("#stop_automatically:checked").length +' '+ stop + ' ' + currentPosition + ' : ' + (currentPosition > stop));
             if ($("#stop_automatically:checked").length > 0) {
-              if (currentPosition>stop) {
+              if (currentPosition > stop) {
                 widget.pause();
+                stop = null;
               }
             } 
           }
@@ -584,7 +585,8 @@ $( document ).ready(function() {
         widget.pause();
         widget.seekTo($pos);
         widget.play();
-        stop = $(this).data("stop");
+        stop = Math.round($(this).data("stop"));
+        console.log(stop);
       }
     });
 
