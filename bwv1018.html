@@ -77,6 +77,7 @@ div.table > div > div {
 div.table > div > div > div {
   display: table;
   width: 100%;
+  height: 100%;
   table-layout: fixed;    
 }
 
@@ -84,8 +85,10 @@ div.table > div > div > div > span {
     display: table-cell;
     border: none;
     width: 25%;
+
     padding: 0;
     margin: 0;
+    cursor: pointer;
     // font-size: 16px;
 }
 
@@ -148,6 +151,9 @@ li:first-child {
 .coda {
   background-color: #d7faec;
 }
+.fin {
+  background-color: #a0a0a0;
+}
 
 #ss { 
   position: relative;
@@ -162,15 +168,9 @@ li:first-child {
 <body>
 
 
-<div class="container">
- <div class="row">
-  <div class="col-lg-12">
-   <h1 style="float: left">BWV 1018</h1>
-   <h1 style="float: right">
-    <iframe width="480px" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&start_track=0&callback=true"></iframe>
-   </h1>
-  </div>
- </div>
+<div class="container" style="margin-top: 1em;">
+
+<h1 id="BWV1018" style="float: left; margin: 0 1em 0 0 ;">BWV 1018</h1>
 <div>
 Toute la sonate BWV 1018 est magnifique, mais l'adagio est d'une modernité incroyable. A la première écoute,  je me souviens très bien avoir été mesmerisé par les enchaînements harmoniques : je ne savais plus où j'habitais ! 
 </div>
@@ -225,6 +225,7 @@ Chaque partie est fonctionnellement organisée comme suit :
   <div><div>4</div><div class="mod_ou" >Modulation on ne sait où       </div><div>6-8  </div><div>3</div><div>18-20</div><div>2</div></div>
   <div><div>5</div><div class="mar_har">Marche harmonique résolutive   </div><div>9-10 </div><div>2</div><div>21-22</div><div>2</div></div>
   <div><div>6</div><div class="coda"   >Conclusion                     </div><div>11-12</div><div>2</div><div>23-24</div><div>3</div></div>
+  <div><div>6</div><div class="fin"    >Coda modulante                 </div><div>     </div><div> </div><div>     </div><div> </div></div>
 </div>
 </div>
 
@@ -246,7 +247,12 @@ Chaque partie est fonctionnellement organisée comme suit :
  </div>
  <div id="A">
   <div></div>
-  <div class="exp"    ><div><span>Am</span>                         <span></span>                          <span>E<span id="ss">sus4</span></span> <span>E</span>                            </div></div>
+  <div class="exp"    ><div>
+    <span data-postion="0">Am</span>                         
+    <span></span>                          
+    <span data-postion="0">E<span id="ss">sus4</span></span>
+    <span data-postion="0">E</span>                            
+  </div></div>
   <div class="exp"    ><div><span>Am</span>                         <span></span>                          <span>F6</span>                         <span>B<span id="ss">dim</span></span>    </div></div>
   <div class="exp"    ><div><span>E7</span>                         <span>Am</span>                        <span>D6</span>                         <span>E7</span>                           </div></div>
   <div class="mod_rel"><div><span>Am</span>                         <span>F/A</span>                       <span>G7/B</span>                       <span>G6</span>                           </div></div>
@@ -291,19 +297,22 @@ Chaque partie est fonctionnellement organisée comme suit :
  </div>
  <div class="numbers">
   <div id="C">C</div>
-  <div>25</div>
-  <div>26</div>
-  <div>27</div>
+  <div class="fin">25</div>
+  <div class="fin">26</div>
+  <div class="fin">27</div>
  </div>
  <div>
   <div></div>
-  <div><div><span>Am</span><span></span><span>Bb</span><span></span></div></div>
-  <div><div><span>Gm</span><span></span><span>C</span> <span></span></div></div>
-  <div><div><span>F</span> <span></span><span></span>  <span></span></div></div>
+  <div class="fin"><div><span>Am</span><span>F</span><span>Bb</span><span>Gm</span></div></div>
+  <div class="fin"><div><span>C </span><span>B<span id="ss">dim</span></span><span>C<span id="ss">sus4</span></span><span>C</span></div></div>
+  <div class="fin"><div><span>F </span><span></span><span></span>  <span></span></div></div>
  </div>
 </div>
 </div>
 <div class="container">
+
+<iframe id="sc-widget" width="100%" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&start_track=0&callback=true"></iframe>
+
 <div>
 La partie A va du La mineur vers le Mi mineur.<br/>
 La partie B retourne depuis le Mi mineur au La mineur initial.<br/>
@@ -334,7 +343,6 @@ Fa majeur (nécessaire pour pouvoir recommencer verbatim le déroulement harmoni
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"            ></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"          ></script>
 
-<!--
 <script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
 <script src="//connect.soundcloud.com/sdk.js"></script>
 <script>
@@ -347,7 +355,6 @@ SC.oEmbed(track_url, { auto_play: true }, function(oEmbed) {
   console.log('oEmbed response: ' + oEmbed);
 });
 </script>
--->
 
 <script type="text/javascript">
 $( document ).ready(function() {
@@ -399,7 +406,7 @@ $( document ).ready(function() {
     setTooltipToTextIfAny($(this), 'bottom');
   });
   */
-  $.each([".exp", ".mod_rel", ".dev", ".mod_ou", ".mar_har", ".coda", ], function( index, value ){
+  $.each([".exp", ".mod_rel", ".dev", ".mod_ou", ".mar_har", ".coda", ".fin"], function( index, value ){
 
     $.each( $(value), function() {
       $bg_color = rgbToHex($( this ).css('background-color'));
@@ -421,6 +428,87 @@ $( document ).ready(function() {
       }
     );
   });
+
+  (function(){
+
+    var length = 227000.0;
+    var noire = length/(26.0*4.0);
+
+    var widgetIframe = document.getElementById('sc-widget'),
+        widget       = SC.Widget(widgetIframe);
+
+        var stop = null;
+
+    widget.bind(SC.Widget.Events.READY, function() {
+      widget.bind(SC.Widget.Events.PLAY, function() {
+        // get information about currently playing sound
+        widget.getCurrentSound(function(currentSound) {
+        });
+      });
+      widget.bind(SC.Widget.Events.FINISH, function() {
+        // get information about currently playing sound
+        widget.getPosition(function(currentPosition){
+          // console.log('sound finished to play at position '+currentPosition  );
+        });
+      });
+      widget.bind(SC.Widget.Events.PAUSE, function() {
+        widget.getPosition(function(currentPosition){
+          // console.log('sound paused at position '+currentPosition  );
+          $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
+            $(value).css( {'background-color': 'inherit', 'color' : 'inherit'} );
+          });
+        });
+      });
+      widget.bind(SC.Widget.Events.SEEK , function() {
+        widget.getPosition(function(currentPosition){
+          console.log('sound seeked at position '+currentPosition  );
+        });
+      });
+
+      widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
+        widget.getPosition(function(currentPosition){
+          if (stop != null) { 
+            // console.log('position '+currentPosition  );
+            if (currentPosition>stop) {
+              widget.pause();
+              stop = null;
+            }
+          }
+          
+          $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
+            $(value).css( {'background-color': 'inherit', 'color' : 'inherit'} );
+          });
+          // calc id from position
+          var index = "#pos"+Math.floor(currentPosition/noire);
+          console.log(currentPosition/noire+ " -> " +index);
+          
+          var bg_alt = $( index ).parent().parent().data( 'data-bg-alt');
+          $( index ).css( {'background-color': bg_alt, 'color' : 'red'} );
+        });
+      });
+      
+    });
+
+    $.each($("div.table#harmo > div > div > div > span"), function(index) {
+        $(this).prop("id", "pos"+index);
+        var offset = Math.round(noire*index); 
+        if (offset) { offset = offset;}
+        $(this).data("position", offset);
+    });
+
+    $("div.table#harmo > div > div > div > span").click(function() {
+      $pos = $(this).data("position");
+      console.log($(this).prop('id'));
+      if (typeof $pos !== "undefined" && $pos != null) {
+        console.log($pos);
+        widget.pause();
+        widget.seekTo($pos);
+        widget.play();
+        stop = $pos + noire + (noire/8);
+      }
+    });
+
+  }());
 
 
   
