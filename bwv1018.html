@@ -55,7 +55,8 @@ div.table#legend {
 }
 
 div.table#harmo {
-  width: 1900px;
+  min-width: 1900px;
+  width: 100%;
 }
 
 /* table rows */
@@ -465,7 +466,7 @@ $( document ).ready(function() {
     // validate hex string
     hex = String(hex).replace(/[^0-9a-f]/gi, '');
     if (hex.length < 6) {
-      hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+      hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];	
     }
     lum = lum || 0;
 
