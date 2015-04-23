@@ -25,7 +25,6 @@
     ,{ "name":"google.com/finance"      , "url": "http://www.google.com/finance?q=ETR:SAP"                                                                          , "src": "google_finance_logo-trans.png"                  }
     ,{ "name":"google.com/analytics"    , "url": "https://www.google.com/analytics/web"                                                                             , "src": "Google-Analytics.png"                           }
     ,{ "name":"i051108@sapgithub"       , "url": "https://github.wdf.sap.corp/i051108"                                                                              , "src": "github-enterprise-trans.png"                    }
-    ,{ "name":"ilfattoquotidiano.it"    , "url": "http://www.ilfattoquotidiano.it/"                                                                                 , "src": "il_fatto_quotidiano.png"                        }
     ,{ "name":"jira"                    , "url": "https://sapjira.wdf.sap.corp/secure/TaskBoard.jspa"                                                               , "src": "jira_logo_smaller.png"                          }
     ,{ "name":"job_search"              , "url": "https://rcp.wdf.sap.corp/sap/bc/bsp/rcfuix/flex_ui_int/SAPeRecruiting.html#mainView=search;popUps=0"              , "src": "ct@sap.png"                                     }
     ,{ "name":"lemonde.fr"              , "url": "http://www.lemonde.fr/"                                                                                           , "src": "le_monde_02.png"                                }
