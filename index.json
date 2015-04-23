@@ -47,7 +47,7 @@
     ,{ "name":"sueddeutsche"            , "url": "http://www.sueddeutsche.de/"                                                                                      , "src": "sueddeutsche2.png"                              }
     ,{ "name":"Travel-expenses"         , "url": "https://portal.wdf.sap.corp/go/Travel-expenses"                                                                   , "src": "euros.png"                                      }
     ,{ "name":"travis-ci"               , "url": "https://travis-ci.org/repositories"                                                                               , "src": "travis-ci-trans.png"                            }
-    ,{ "name":"twitter"                 , "url": "https://twitter.com/cthiebaud"                                                                                    , "src": "twitter_t_logo_100.png"                         }
+    ,{ "name":"twitter"                 , "url": "https://twitter.com/cthiebaud"                                                                                    , "src": "Twitter_logo_transparent-3.png"                         }
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "src": "wordpress.png"                                  }
   ],
   "groups" : [
