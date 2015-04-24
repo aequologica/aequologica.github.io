@@ -55,8 +55,14 @@
         { "type" : "separator" },  
         { "name" : "nexus_at_local",    "url":"http://localhost:1082/nexus",                                                   "text" : "nexus @ localhost"       },
         { "name" : "nexus_at_sonatype", "url":"https://oss.sonatype.org/",                                                     "text" : "nexus @ sonatype"        },
-        { "name" : "nexus_at_wdf",      "url":"http://nexus.wdf.sap.corp:8081/nexus",                                          "text" : "nexus @ wdf.sap.corp"    },
-        { "type" : "separator" },
+        { "name" : "nexus_at_wdf",      "url":"http://nexus.wdf.sap.corp:8081/nexus",                                          "text" : "nexus @ wdf.sap.corp"    }
+      ]
+    },
+    { "name" : "P4MS",
+      "ulr"  : "P4MS",
+      "items" : [
+        { "name" : "p4ms_dag",          "url":"https://development.neo.ondemand.com/dags/dag-p4ms-731.json",                    "text" : "P4MS DAG"  },
+        { "type" : "separator" },  
         { "name" : "p4ms_70_prod",      "url":"https://pie.wdf.sap.corp/p4ms",                                 					"text" : "P4MS 70 production"  },
         { "name" : "p4ms_73_dev",       "url":"http://pwdfm838.wdf.sap.corp:50000/p4ms",                                 		"text" : "P4MS 73 development"  }
       ]
