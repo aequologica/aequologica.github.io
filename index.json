@@ -4,8 +4,7 @@
         "url": "http://aequologica.net/experiments/",
         "src": "aequologica-trans.png",
         "items" : [
-            { "name" : "vethica"        ,"url":"https://tebaldi051108trial.hanatrial.ondemand.com/"                       , "text" : "tebaldi"                            },
-            { "name" : "jenkins_at_hcp",  "url":"https://jenkinsp1894179457trial.hanatrial.ondemand.com/view/aequologica/", "text" : "jenkins @ jenkinsp1894179457trial"  }
+            { "name" : "vethica"        ,"url":"https://tebaldi051108trial.hanatrial.ondemand.com/"                       , "text" : "tebaldi"                            }
         ]
      }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
@@ -57,8 +56,6 @@
         { "name" : "nexus_at_local",    "url":"http://localhost:1082/nexus",                                                   "text" : "nexus @ localhost"       },
         { "name" : "nexus_at_sonatype", "url":"https://oss.sonatype.org/",                                                     "text" : "nexus @ sonatype"        },
         { "name" : "nexus_at_wdf",      "url":"http://nexus.wdf.sap.corp:8081/nexus",                                          "text" : "nexus @ wdf.sap.corp"    },
-        { "type" : "separator" },
-        { "name" : "jenkins_at_lev",    "url":"http://dewdftv00333.dhcp.pgdev.sap.corp:8080/",                                 "text" : "jenkins @ dewdftv00333"  },
         { "type" : "separator" },
         { "name" : "p4ms_70_prod",      "url":"https://pie.wdf.sap.corp/p4ms",                                 					"text" : "P4MS 70 production"  },
         { "name" : "p4ms_73_dev",       "url":"http://pwdfm838.wdf.sap.corp:50000/p4ms",                                 		"text" : "P4MS 73 development"  }

@@ -104,7 +104,7 @@ var shuffleArray = function(array) {
 angular.module( 'aequologicaApp', ['wu.masonry'])
   .config(['$httpProvider', function($httpProvider) {
     // http://stackoverflow.com/questions/16098430/angular-ie-caching-issue-for-http
-    //initialize get if not there
+    // initialize get if not there
     if (!$httpProvider.defaults.headers.get) {
         $httpProvider.defaults.headers.get = {};
     }
