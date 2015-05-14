@@ -76,7 +76,8 @@
     { "name" : "Éreinté",
       "url"  : "Éreinté",
       "items" : [
-        { "name" : "Ereinte",      "url":"rimbaud_et_thiebaud", "text" : "Éreinté"}
+        { "name" : "Larme",      "url":"rimbaud_et_thiebaud", "text" : "Larme"},
+        { "name" : "Boheme",      "url":"rimbaud_et_thiebaud/boheme.html", "text" : "Ma Bohème"}
       ]
     },
    { "name" : "internet",
