@@ -73,6 +73,12 @@
         { "name" : "SAP_stock",      "url":"https://ipp.wdf.sap.corp/sap/bc/webdynpro/ehr/es_docview?ar_objects=Z9918017,Z9918018,Z9918024,Z9918025,Z9918012,Z9928017,Z9928018,Z9928024,Z9928025,Z9928012,Z9928033,Z9928034&amp;sap-language=EN#", "text" : "€ € € € € €"}
       ]
     },
+    { "name" : "Éreinté",
+      "url"  : "Éreinté",
+      "items" : [
+        { "name" : "Éreinté ",      "url":"rimbaud&thiebaud", "text" : "Éreinté"}
+      ]
+    },
    { "name" : "internet",
       "url"  : "internet",
       "items" : [
