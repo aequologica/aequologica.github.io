@@ -18,9 +18,14 @@
 
   <title>Rimbaud &amp; Thiebaud</title>
 
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <link rel="shortcut icon" href="/favicon2.ico">  
+
   
 <style>
-h1#title > span.char7 {
+h1#title > span.char7, h1#title > span.char18 {
 vertical-align: top;
 margin-left: 0.075em;
 display: inline-block;
@@ -33,20 +38,21 @@ top: -0.171em;
 transform: rotate(-14deg);
 }
 
-h1#title > span.char6 {
+h1#title > span.char6, h1#title > span.char17 {
 vertical-align: top;
 margin-left: 0.075em;
 display: inline-block;
 position: relative;
-top: 0.041em;
+top: -0.102em;
 -webkit-transform: rotate(7deg);
 -moz-transform: rotate(7deg);
 -ms-transform: rotate(7deg);
 -o-transform: rotate(7deg);
 transform: rotate(7deg);
+font-size: 120%;
 }
 
-h1#title > span.char5 {
+h1#title > span.char5, h1#title > span.char16 {
 vertical-align: top;
 margin-left: -0.014em;
 display: inline-block;
@@ -59,15 +65,15 @@ top: -0.288em;
 transform: rotate(-15deg);
 }
 
-h1#title > span.char4 {
+h1#title > span.char4, h1#title > span.char15 {
 vertical-align: top;
 margin-left: 0.226em;
 display: inline-block;
 position: relative;
 top: 0.24em;
-font-size: 87%;
+font-size: 80%;
 }
-
+/*
 h1#title > span.char3 {
 vertical-align: top;
 margin-left: 0.062em;
@@ -79,16 +85,17 @@ top: -0.288em;
 -ms-transform: rotate(18deg);
 -o-transform: rotate(18deg);
 transform: rotate(18deg);
+font-size: 110%;
 }
-
-h1#title > span.char2 {
+*/
+h1#title > span.char2, h1#title > span.char13 {
 vertical-align: top;
 font-size: 153%;
 }
 
 h1#title > span.char9 {
-vertical-align: top;
-font-size: 57%;
+//vertical-align: top;
+font-size: 75%;
 }
 
   
@@ -102,10 +109,10 @@ ul {
   font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 400;
-  src: local('Inconsolata'), url('/assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff') format('woff');
+  src: local('Inconsolata'), url('/assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff') durationformat('woff');
 }
 
-body {
+body, ul {
   font-family : Inconsolata;
   background  : transparent;
   font-size: 2em;
@@ -118,20 +125,76 @@ body {
 
 <body>
 
+<div class="container">
+
 <h1 id="title">Rimbaud &amp; Thiebaud</h1>
 
+<iframe id="sc-widget" width="100%" height="200px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/200594478&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=false&hide_related=false&visual=true&start_track=0&callback=true"></iframe>
+
+<div id="feedback">loading&hellip;</div>
+
+</div>
 
 </body>
 </html>
 
-
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"            ></script>
-<script type="text/javascript" src="jquery.lettering-0.6.1.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"      ></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"          ></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"        ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"       ></script>
+<script type="text/javascript" src="https://w.soundcloud.com/player/api.js"                                 ></script>
+<script type="text/javascript" src="jquery.lettering-0.6.1.min.js"                                          ></script>
 
 <script type="text/javascript">
 $( document ).ready(function() {
 
   $("h1").lettering(); 
+
+  $.getJSON( "https://api.soundcloud.com/tracks/200594478/comments?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", function( data ) {
+    var items = [];
+    $.each( data, function( key, val ) {
+      items.push( "<li id='" + key + "'>" + val.body + "</li>" );
+    });
+    items.reverse();
+    $( "<ul/>", {
+      "class": "my-new-list",
+      html: items.join( "" )
+    }).appendTo( ".container" );
+  });
+
+  (function(){
+
+    var widgetIframe = document.getElementById('sc-widget'),
+        widget       = SC.Widget(widgetIframe);
+
+    var stop = null;
+
+    function durationformat(coucou) {
+      //return coucou;
+      return numeral(Math.floor(coucou/1000)).format('00:00:00');
+    }
+
+    widget.bind(SC.Widget.Events.READY, function() {
+
+      $('#feedback').html('ready');
+
+      widget.bind(SC.Widget.Events.PAUSE, function() {
+        widget.getPosition(function(currentPosition){
+          $('#feedback').html('paused @ '+ durationformat(currentPosition));
+        });
+      });      
+
+      widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
+        widget.getPosition(function(currentPosition){
+          $('#feedback').html(durationformat(currentPosition));
+        });
+      });
+
+    });
+  
+  }());
 
 });
 </script>
