@@ -11,13 +11,13 @@
   <meta http-equiv="Content-Language" content="fr" />
   <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1"/>
 
-  <meta property="og:title"         content="Le Bateau ivre(Rimbaud et Thiebaud)"/>
-  <meta property="og:description"   content="Chansonettes de Thiebaud sur des poèmes de Rimbaud."/>
-  <meta property="og:url"           content="http://aequologica.net/rimbaud_et_thiebaud/bateau.html" />
+  <meta property="og:title"         content="Le Bateau ivre"/>
+  <meta property="og:description"   content="Les nouveaux chemins de la connaissance."/>
+  <meta property="og:url"           content="http://aequologica.net/rimbaud_et_thiebaud/bateau2.html" />
   <meta property="og:image:url"     content="http://aequologica.net/rimbaud_et_thiebaud/bateau.jpg"/>
   <meta property="og:type"          content="website"/>
 
-  <title>Le Bateau Ivre (Rimbaud et Thiebaud)</title>
+  <title>Le Bateau ivre</title>
 
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -37,13 +37,13 @@
 
 <div class="container">
   <div class="jumbotron" style="background-color: transparent; padding: 0;">
-    <h1 id="title" class="page-header">Rimbaud &amp; Thiebaud</h1>
-  </div>
-
+    <div><h1>Le Bateau ivre</h1></div>
+    <div><h2><a href="http://www.franceculture.fr/emission-les-nouveaux-chemins-de-la-connaissance-0">Les nouveaux chemins de la connaissance</a> par <a href="http://fr.wikipedia.org/wiki/Ad%C3%A8le_Van_Reeth">Adèle Van Reeth</a> </h2></div>
+    <div><h3><a href="http://www.franceculture.fr/emission-les-nouveaux-chemins-de-la-connaissance-l%E2%80%99ivresse-poetique-24-rimbaud-2015-04-28" >L’ivresse poétique (2/4) : Rimbaud</a>. Le Bateau ivre lu par <a href="http://fr.wikipedia.org/wiki/Georges_Claisse">Georges Claisse</a></h3></div>
+    </div>
+    
   <iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/203265311&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=false&hide_related=false&visual=true&start_track=0&callback=true"></iframe>  
-
-  <div id="feedback">loading&hellip;</div>
-
+    
 </div>
 
 </body>
@@ -57,11 +57,9 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"       ></script>
 
 <script type="text/javascript" src="https://w.soundcloud.com/player/api.js"                                 ></script>
-<script type="text/javascript" src="//connect.soundcloud.com/sdk.js"></script>
 
 <script type="text/javascript" src="jquery.lettering-0.6.1.min.js"></script>
 <script type="text/javascript" src="jquery.textillate.js"></script>
-<script type="text/javascript" src="jquery.fittext.js"></script>
 
 <script type="text/javascript" src="app.js"></script>
 
@@ -69,70 +67,7 @@
 $( document ).ready(function() {
 
   var mySouncCloudModule = MySouncCloudModule("203265311", 4);
-  /*
-  var qwe = [];
 
-  $.get( "bateau.txt", function( data ) {
-    var lines = data.split('\n');
-    for(var i = 0;i < lines.length;i++){
-      var ligne = lines[i].trim();
-      ligne = ligne.length == 0 ? '&nbsp;' : ligne;
-      $( "#result" ).append( $('<li>').html(ligne) );
-    }
-
-    $( "ul#result>li" ).click(function() {
-      console.log();
-      var text = $(this).text();
-      mySouncCloudModule.getPosition(function(position) {
-        $('textarea').append("[" +  position + "] '" + text + "'\n");
-        qwe.push({'text': text, 'timestamp': position});
-      }); 
-    });
-
-  });
-
-// initialize client with app credentials
-SC.initialize({
-  client_id: '506d2e8c1cd057aa783906b0b1c8fe0d',
-  redirect_uri: 'http://localhost/callback.html'
-});
-
-// initiate auth popup
-SC.connect(function() {
-  SC.get('/me', function(me) { 
-    alert('Hello, ' + me.username); 
-  });
-});
-
-  $('button#post').click(function(event) {
-
-    qwe.sort(function(a, b) {
-        return +a.timestamp - +b.timestamp;
-    });
-
-    qwe.reverse();
-
-    for (var i = 0; i < qwe.length; i++) {
-      var ligne = qwe[i];
-      console.log();
-      SC.post(
-        "https://api.soundcloud.com/tracks/203265311/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
-        { 'comment[body]': ligne.text,
-          'comment[timestamp]': ligne.timestamp}, 
-        function(response, error) {
-         if (error) console.log(error); else console.log(response); 
-        });
-      alert('next');
-    }
-
-
-  });
-
-  $('button#clear').click(function(event) {
-    qwe = [];
-    $('textarea').empty();
-  });
-  */
 });
 </script>
 

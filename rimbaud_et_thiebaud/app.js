@@ -1,4 +1,4 @@
-var MySouncCloudModule = function(trackId) {
+var MySouncCloudModule = function(trackId, strophe) {
 
   var lignes = [];
   var currentRow = null;
@@ -31,6 +31,13 @@ var MySouncCloudModule = function(trackId) {
     var items = [];
     $.each( lignes, function( index, item ) {
       items.push( "<li id='"+item.id+"'>" + item.what + "</li>" );
+      if (typeof strophe !== "undefined") {
+        if (strophe === parseInt(strophe, 10)) {
+          if ((index % strophe) == strophe-1) {
+            items.push( "<li id='"+item.id+"'>&nbsp;</li>" );
+          }
+        }
+      }
     });
 
     $( "<ul/>", {
