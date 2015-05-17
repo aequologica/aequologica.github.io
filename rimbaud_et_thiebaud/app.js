@@ -49,6 +49,10 @@ var MySouncCloudModule = function(trackId) {
     return numeral(Math.floor(coucou/1000)).format('00:00:00');
   }
 
+  var getPosition = function getPosition(callback) {
+    widget.getPosition(callback);
+  };
+
   widget.bind(SC.Widget.Events.READY, function() {
 
     $('#feedback').html('ready');
@@ -92,5 +96,7 @@ var MySouncCloudModule = function(trackId) {
     });
 
   });
+  
+  return {'getPosition' : getPosition };
 
 };
