@@ -40,7 +40,7 @@
     <h1 id="title" class="page-header">Rimbaud &amp; Thiebaud</h1>
   </div>
 
-  <iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/203265311&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=false&hide_related=false&visual=true&start_track=0&callback=true"></iframe>  
+  <iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/203852214&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=false&hide_related=false&visual=true&start_track=0&callback=true"></iframe>  
 
   <div id="feedback">loading&hellip;</div>
 
@@ -68,7 +68,7 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 
-  var mySouncCloudModule = MySouncCloudModule("203265311", 4);
+  var mySouncCloudModule = MySouncCloudModule("203852214", 4);
   /*
   var qwe = [];
 
@@ -116,7 +116,7 @@ SC.connect(function() {
       var ligne = qwe[i];
       console.log();
       SC.post(
-        "https://api.soundcloud.com/tracks/203265311/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
+        "https://api.soundcloud.com/tracks/203852214/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
         { 'comment[body]': ligne.text,
           'comment[timestamp]': ligne.timestamp}, 
         function(response, error) {
