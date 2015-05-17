@@ -23,7 +23,8 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <link href="animate.css" rel="stylesheet">
-
+  <link href="sticky-footer-navbar.css" rel="stylesheet">
+  
   <link rel="shortcut icon" href="/favicon2.ico">  
 
   <link rel="stylesheet" href="style.css">
@@ -35,8 +36,33 @@
 
 <body>
 
-<div class="container">
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.3&appId=104250825478";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<div id="main" class="container">
   <div class="jumbotron" style="background-color: transparent; padding: 0;">
+
+<div  style="float: right; margin: 0 0 0 1em; padding: 5px; background-color: #EDEDED;" class="col-md-2;">
+  <div><a href="https://twitter.com/share" class="twitter-share-button" data-via="cthiebaud" data-lang="fr" data-hashtags="rimbaud">Tweeter</a></div>
+  <div  class="fb-like" 
+    data-href="http://aequologica.net/rimbaud_et_thiebaud/bateau2.html" 
+    data-width="90" 
+    data-layout="button_count" 
+    data-action="like" 
+    data-show-faces="false" 
+    data-share="true"></span>
+ </div>
+</div>
+
+
     <div><h1>Le Bateau ivre</h1></div>
     <div><h2><a href="http://www.franceculture.fr/emission-les-nouveaux-chemins-de-la-connaissance-0">Les nouveaux chemins de la connaissance</a> par <a href="http://fr.wikipedia.org/wiki/Ad%C3%A8le_Van_Reeth">Adèle Van Reeth</a> </h2></div>
     <div><h3><a href="http://www.franceculture.fr/emission-les-nouveaux-chemins-de-la-connaissance-l%E2%80%99ivresse-poetique-24-rimbaud-2015-04-28" >L’ivresse poétique (2/4) : Rimbaud</a>. Le Bateau ivre lu par <a href="http://fr.wikipedia.org/wiki/Georges_Claisse">Georges Claisse</a></h3></div>
@@ -45,6 +71,16 @@
   <iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/203265311&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=false&hide_related=false&visual=true&start_track=0&callback=true"></iframe>  
     
 </div>
+
+<footer class="footer">
+<div class="container" style="padding:0;">
+    Voir aussi :
+    <a class="text-muted"><a href="bateau.html">Le Bateau ivre</a>&nbsp;|&nbsp;
+    <a href="bateau2.html">Le Bateau ivre</a>, lu par Georges Claisse&nbsp;|&nbsp;
+    <a href="index.html">Larme</a>&nbsp;|&nbsp;
+    <a href="boheme.html">Ma Bohème (Fantaisie)</a>
+</div>
+</footer>
 
 </body>
 </html>

@@ -43,7 +43,7 @@ var MySouncCloudModule = function(trackId, strophe) {
     $( "<ul/>", {
       "class": "my-new-list",
       html: items.join( "" )
-    }).appendTo( ".container" );
+    }).appendTo( ".container#main" );
   });
 
   var widgetIframe = document.getElementById('sc-widget'),
