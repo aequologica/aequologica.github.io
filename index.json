@@ -76,11 +76,11 @@
     { "name" : "Éreinté",
       "url"  : "Éreinté",
       "items" : [
-        { "name" : "Le_bateau_ivre",  "url":"rimbaud_et_thiebaud/bateau.html", "text" : "Le Bateau ivre"},
-        { "name" : "Le_bateau_ivre2", "url":"rimbaud_et_thiebaud/bateau2.html", "text" : "Le Bateau ivre, lu par Georges Claisse"},
-        { "name" : "Larme",           "url":"rimbaud_et_thiebaud"            , "text" : "Larme"},
-        { "name" : "Boheme",          "url":"rimbaud_et_thiebaud/boheme.html", "text" : "Ma Bohème (Fantaisie)"},
-        { "name" : "Crimen amoris",   "url":"verlaine_et_thiebaud/index.html", "text" : "Crimen amoris"}
+        { "name" : "Le_bateau_ivre",  "url":"rimbaud_et_thiebaud/bateau.html" , "text" : "Le Bateau ivre"                         },
+        { "name" : "Le_bateau_ivre2", "url":"rimbaud_et_thiebaud/bateau2.html", "text" : "Le Bateau ivre, lu par Georges Claisse" },
+        { "name" : "Larme",           "url":"rimbaud_et_thiebaud7larme.html"  , "text" : "Larme"                                  },
+        { "name" : "Boheme",          "url":"rimbaud_et_thiebaud/boheme.html" , "text" : "Ma Bohème (Fantaisie)"                  },
+        { "name" : "Crimen amoris",   "url":"verlaine_et_thiebaud/index.html" , "text" : "Crimen amoris"                          }
       ]
     },
    { "name" : "internet",
