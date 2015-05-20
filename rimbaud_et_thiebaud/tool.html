@@ -142,7 +142,7 @@ $( document ).ready(function() {
         var ligne = qwe[i];
         console.log();
         SC.post(
-          "https://api.soundcloud.com/tracks/200594478/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
+          "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
           { 'comment[body]': ligne.text,
             'comment[timestamp]': ligne.timestamp}, 
           function(response, error) {
