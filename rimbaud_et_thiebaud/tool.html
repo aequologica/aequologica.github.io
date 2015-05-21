@@ -157,9 +157,10 @@ $( document ).ready(function() {
           var $_this_ = $(this);
           if (!$_this_.hasClass('done')) {
             mySouncCloudModule.getPosition(function(position) {
+              var tex = $_this_.text();
               $_this_.addClass('done');
-              $_this_.append($('<span style="float:right">').text(position));
-              qwe.push({'text': $_this_.text(), 'timestamp': position});
+              $_this_.append($('<span style="float:right">').html('&nbsp;['+position+']'));
+              qwe.push({'text': tex, 'timestamp': position});
             }); 
           } else {
             console.log('alread done!');
