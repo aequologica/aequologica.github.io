@@ -176,11 +176,24 @@ Le Dieu clément qui nous gardera du mal.</pre>
 
 <div id="main" class="container">
 
-<h1 id="title">Verlaine &amp;Thiebaud</h1>
+  <h1 id="title">Verlaine &amp;Thiebaud</h1>
 
-<div id ="qwe">
+  <div class="row">
 
-</div>
+  <div class="col-md-6" >
+  <h2><a href="http://fr.wikisource.org/wiki/Crimen_amoris">Crimen amoris</a></h2>
+
+  <div style="font-style:italic; width:100%;margin-bottom:1em;">À Villiers de l’Isle Adam</div>
+
+  <div id ="qwe"></div>
+
+
+  </div>
+  <div class="col-md-6" id ="asd">
+  <a href="http://fr.wikisource.org/wiki/Page:Verlaine_-_%C5%92uvres_compl%C3%A8tes,_Vanier,_I.djvu/405"><img class="img-responsive" src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Verlaine_-_%C5%92uvres_compl%C3%A8tes%2C_Vanier%2C_I.djvu/page405-1024px-Verlaine_-_%C5%92uvres_compl%C3%A8tes%2C_Vanier%2C_I.djvu.jpg"></a>
+  </div>
+
+  </div>
 </div>
 
 <footer class="footer">
@@ -216,7 +229,7 @@ $( document ).ready(function() {
 
   var data = $('pre').text().split('\n');
 
-  var $container = $('.container#main');
+  var $container = $('div#qwe');
   var $table = $('<table/>');
   var $row = $('<tr/>');
   var $col = $('<td/>')
