@@ -23,6 +23,19 @@
   <link rel="shortcut icon" href="/favicon2.ico">  
 
   <link rel="stylesheet" href="style.css">
+
+  <style type="text/css">
+  .done {
+  	text-decoration: line-through;
+  }
+  ul#result > li:hover {
+    background-color: #e0e0e0;
+    opacity: 1;
+  }
+  h1, h2, h3 {
+  	margin-top: 0;
+  }
+  </style>
   
 </head>
 
@@ -30,30 +43,42 @@
 
 <div id="main" class="container">
 
-<h1 id="title">Outil</h1>
-
-<h2 id="me">anonymous</h2>
+<div class="row">
+<h1 id="title" class="col-md-6" style="float:left;">Outil</h1>
+<h2 class="col-md-6"><span id="me" style="float:right;">anonymous</span></h2>
+</div>
 
 <form id="target" class="form-inline">
     <label for="soundcloudURL">soundcloud URL</label>
-    <input type="text" class="form-control" id="soundcloudURL" placeholder="soundcloud URL" style="width:80%" value="https://soundcloud.com/eric-mugnier/le-bateau-ivre">
+    <input type="text" class="form-control" id="soundcloudURL" placeholder="https://soundcloud.com/…" style="width:80%" value="">
     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 </form>
 
 <div id="revealMe" style="display:none;">
 
-<h3 id="soundcloudID">anonymous</h3>
+<h3 id="soundcloudID">not found</h3>
+<button id="load" type="button" class="btn">load text</button> 
 
 <button id="post" type="button" class="btn btn-default">post to soundcloud</button>   
 <button id="clear" type="button" class="btn btn-default">clear</button>    
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
+  &nbsp;
+  </div>
+</div>
  
 <div class="row">   
-<ul class="col-md-6" id="result"></ul>   
-<textarea class="col-md-6"></textarea>    
+<ul class="col-md-12" id="result"></ul>   
 </div>   
-   
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
+  &nbsp;
+  </div>
+</div>
 <button id="post" type="button" class="btn btn-default">post to soundcloud</button>    
-<button id="clear" type="button" class="btn btn-default">clear</button> 
+<button id="clear" type="button" class="btn">clear</button> 
 
 </div>
 
@@ -91,44 +116,66 @@ $( document ).ready(function() {
   // initiate auth popup
   SC.connect(function() {
     SC.get('/me', function(me) { 
-      $('h2#me').html(me.username); 
+      $('span#me').html(me.username); 
     });
   });
 
+  /*
+  init function
+  */
   function init(soundcloudID) {
 
     $('h3#soundcloudID').text(soundcloudID);
 
     var $iframe = $('<iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/'+soundcloudID+'&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=false&hide_related=false&visual=true&start_track=0&callback=true"/>');
 
+    $('iframe').remove();
+    $('.progress').removeClass('progress-striped active');  
+    $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : 1 }).html('&nbsp;'); 
+    $('button#load').text('load ' + soundcloudID + '.txt');
     $('div#revealMe').prepend($iframe).css( "display", "block");
 
     var mySouncCloudModule = MySouncCloudModule(soundcloudID);
     
+    function loadText(soundcloudID) {
+      $.get( soundcloudID+".txt", function( data ) {
+
+        $('button#load').text("reload "+soundcloudID+'.txt');
+        $("#result").empty();
+      
+        var lines = data.split('\n');
+
+        for(var i = 0;i < lines.length;i++){
+          var ligne = lines[i].trim();
+          ligne = ligne.length == 0 ? '&nbsp;' : ligne;
+          $( "#result" ).append( $('<li>').html(ligne) );
+        }
+
+        $( "ul#result>li" ).click(function() {
+          var $_this_ = $(this);
+          if (!$_this_.hasClass('done')) {
+            mySouncCloudModule.getPosition(function(position) {
+              $_this_.addClass('done');
+              qwe.push({'text': $_this_.text(), 'timestamp': position});
+            }); 
+          } else {
+            console.log('alread done!');
+          }
+        });
+
+      }).fail(function() {
+        $('button#load').text(soundcloudID+'.txt not found. Retry ?');
+      });
+    }
+
+    $('button#load').click(function(event) {
+      var soundcloudID = $('h3#soundcloudID').text();
+      loadText(soundcloudID);
+    });
+
     var qwe = [];
 
-    $.get( soundcloudID+".txt", function( data ) {
-
-      var lines = data.split('\n');
-
-      $('textarea').css({'height':(lines.length*24)+'px'});
-
-      for(var i = 0;i < lines.length;i++){
-        var ligne = lines[i].trim();
-        ligne = ligne.length == 0 ? '&nbsp;' : ligne;
-        $( "#result" ).append( $('<li>').html(ligne) );
-      }
-
-      $( "ul#result>li" ).click(function() {
-        console.log();
-        var text = $(this).text();
-        mySouncCloudModule.getPosition(function(position) {
-          $('textarea').append("[" +  position + "] '" + text + "'\n");
-          qwe.push({'text': text, 'timestamp': position});
-        }); 
-      });
-
-    });
+    loadText(soundcloudID);
 
     $('button#post').click(function(event) {
 
@@ -138,56 +185,65 @@ $( document ).ready(function() {
 
       qwe.reverse();
 
-      for (var i = 0; i < qwe.length; i++) {
-        var ligne = qwe[i];
-        console.log();
-        SC.post(
-          "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
-          { 'comment[body]': ligne.text,
-            'comment[timestamp]': ligne.timestamp}, 
-          function(response, error) {
-           if (error) console.log(error); else console.log(response); 
+	  $('.progress').addClass('progress-striped active');  
+      $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
+      var index = 0;
+      var delta = 1200;
+      for (; index < qwe.length; index++) {
+        setTimeout(function(i) {
+          var ligne = qwe[i];
+        /* */
+          SC.post(
+            "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
+            { 'comment[body]': ligne.text,
+              'comment[timestamp]': ligne.timestamp}, 
+            function(response, error) { 
+        /* */
+              var percent = Math.ceil((100.0*(i+1))/qwe.length)+'%';
+              console.log(percent);
+              $('.progress-bar').css('width', percent).attr('aria-valuenow', i).text(ligne.text);  
+        /* */
+              if (error) console.log(error); else console.log(response); 
           });
-        alert('next');
+        /* */
+        }, index * delta, index); // we're passing index        
       }
-
-
+      setTimeout(function() {
+        $('.progress').removeClass('progress-striped active');  
+      }, index * delta);
+      
     });
 
     $('button#clear').click(function(event) {
       qwe = [];
-      $('textarea').empty();
+      $('.progress').removeClass('progress-striped active');  
+      $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
+      $('ul#result > li').removeClass('done');
     });
-
   }
 
+  /*
+  search handler
+  */
   $( "#target" ).submit(function( event ) {
     event.preventDefault();
 
-    var searchFor = $('input#soundcloudURL').val();
+    var searchFor = $('input#soundcloudURL').val().trim();
 
-    SC.get('/resolve', {'url': searchFor}, function(data) { 
-
-      if (typeof data.errors != 'undefined') {
-        $.each(data.errors, function(index, error) {
-          alert(searchFor+ " : " + error.error_message);
-        })  
-      } else  {
-        if (typeof data.id != 'undefined') {
-          init(data.id);
+    if (searchFor) {
+      SC.get('/resolve', {'url': searchFor}, function(data) { 
+          if (typeof data.errors != 'undefined') {
+          $.each(data.errors, function(index, error) {
+            alert(searchFor+ " : " + error.error_message);
+          })  
+        } else  {
+          if (typeof data.id != 'undefined') {
+            init(data.id);
+          }
         }
-      }
-      
-      console.log(data);
-    });
-
-    /*
-    $.getJSON( "http://api.soundcloud.com/resolve.json?url="+ searchFor +"?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", function( data ) {
-      
-    });    */
-
+      });
+    }
   });
-
 
 });
 </script>
