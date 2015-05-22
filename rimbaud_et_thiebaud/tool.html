@@ -59,11 +59,11 @@
 
       <div class="row" style="margin-bottom: 1em">
         <h3 id="soundcloudID" class="col-md-6" style="float:left;">not found</h3>
-        <div class="col-md-6" ><button id="load" type="button" class="btn btn-default" style="float:right;">load text</button> </div>
+        <div class="col-md-6" ><button id="load" type="button" class="btn btn-default" style="float:right;">"<i class="fa fa-upload"></i></button> </div>
       </div>
 
       <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>   
-      <button id="clear" type="button" class="btn btn-default">clear</button>    
+      <button id="reset" type="button" class="btn btn-default">reset</button>    
       <div class="progress" style="margin-top: 1em">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
           &nbsp;
@@ -77,6 +77,7 @@
           <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to submit</div>
           <textarea id="entry" style="width:100%;">
           </textarea>
+          <button id="fromRightToLeft" type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
         </div>
       </div>   
 
@@ -86,7 +87,7 @@
         </div>
       </div>
       <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>    
-      <button id="clear" type="button" class="btn btn-default">clear</button> 
+      <button id="reset" type="button" class="btn btn-default">reset</button> 
 
     </div>
 
@@ -138,6 +139,7 @@ $( document ).ready(function() {
 
     $('iframe').remove();
     $('.progress').removeClass('progress-striped active');  
+    $('.progress-bar').removeClass('progress-bar-success');   
     $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : 1 }).html('&nbsp;'); 
     $('button#load').text('load ' + soundcloudID + '.txt');
     $('div#revealMe').prepend($iframe).css( "display", "block");
@@ -170,6 +172,11 @@ $( document ).ready(function() {
       });
     }
 
+    $('button#fromRightToLeft').click(function() {
+      var data = $('textarea#entry').val();
+      loadData(data);
+    });
+
 	  $(document.body).on( 'keypress', 'textarea#entry', undefined, function(e) {
 	    if (e.which === 13  && !event.shiftKey) { // if is enter
 	      e.preventDefault(); // don't submit form
@@ -181,9 +188,9 @@ $( document ).ready(function() {
     function loadFile(soundcloudID) {
       $.get( soundcloudID+".txt", function( data ) {
       	loadData(data);
-        $('button#load').text("reload "+soundcloudID+'.txt');
+        $('button#load').html('<i class="fa fa-upload"></i>&nbsp;' + soundcloudID + '.txt');
       }).fail(function() {
-        $('button#load').text(soundcloudID+'.txt not found. Retry ?');
+        $('button#load').html('<i class="fa fa-upload"></i>&nbsp;' + soundcloudID + '.txt not found');
       });
     }
 
@@ -195,6 +202,7 @@ $( document ).ready(function() {
     loadFile(soundcloudID);
 
     var qwe = [];
+    var errorQueue = [];
 
     $('button#post').click(function(event) {
 
@@ -204,42 +212,59 @@ $( document ).ready(function() {
 
       qwe.reverse();
 
+      $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
 	    $('.progress').addClass('progress-striped active');  
       $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
       
       var delta = 1200; // milliseconds between POSTs
-      var index = 0;
       
-      for (; index < qwe.length; index++) {
+      for (var index = 0; index < qwe.length; index++) {
+
         setTimeout(function(i) {
           var ligne = qwe[i];
-          /* */
+/* */
           SC.post(
             "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
-            { 'comment[body]': ligne.text,
-              'comment[timestamp]': ligne.timestamp}, 
+            { 
+              'comment[body]': ligne.text,
+              'comment[timestamp]': ligne.timestamp
+            }, 
             function(response, error) { 
-          /* */
+/* */
               var percent = Math.ceil((100.0*(i+1))/qwe.length)+'%';
-              console.log(percent);
-              $('.progress-bar').css('width', percent).attr('aria-valuenow', i).text(ligne.text);  
-          /* */
-              if (error) console.log(error); else console.log(response); 
-          });
-          /* */
-        }, index * delta, index); // we're passing index        
-      }
+              $('.progress-bar').css('width', percent).attr('aria-valuenow', i).text(ligne.text)  ;  
+/*
+              var error = 0; 
+*/
+              if (error) {
+                errorQueue.push(error);
+                $('.progress-bar').removeClass('progress-bar-success');   
+                $('.progress-bar').addClass('progress-bar-warning');   
+                console.log(error); 
+              } else { 
+                // console.log(response); 
+              }
 
-      setTimeout(function() {
-        $('.progress').removeClass('progress-striped active');  
-      }, index * delta);
-      
+              if (i == qwe.length-1) {
+                $('.progress').removeClass('progress-striped active');  
+                if (errorQueue.length == 0) {
+                  $('.progress-bar').addClass('progress-bar-success');   
+                } else {
+                  $('.progress-bar').addClass('progress-bar-warning');   
+                }
+              }
+/* */
+          });
+/* */
+         }, index * delta, index); // we're passing index     
+      }
     });
 
-    $('button#clear').click(function(event) {
+    $('button#reset').click(function(event) {
       qwe = [];
       
-      $('.progress').removeClass('progress-striped active');  
+      $('.progress').removeClass('progress-striped active');
+      $('.progress-bar').removeClass('progress-bar-success');   
       $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
       $('ul#result > li').removeClass('done');
 
