@@ -74,7 +74,7 @@
         <ul class="col-md-6" id="result">
         </ul>   
         <div class="col-md-6">
-          <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to submit</div>
+          <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to &lt;&lt;</div>
           <textarea id="entry" style="width:100%;"></textarea>
           <button id="fromRightToLeft" type="button" class="btn btn-default" style="margin-bottom: 1em"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
         </div>
@@ -225,6 +225,10 @@ $( document ).ready(function() {
     var errorQueue = [];
 
     $('button#post').click(function(event) {
+
+      if (qwe.length == 0) {
+        alert('nothing to post !');
+      }
 
       qwe.sort(function(a, b) {
           return +a.timestamp - +b.timestamp;
