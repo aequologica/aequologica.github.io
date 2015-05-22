@@ -42,51 +42,55 @@
 
 <body>
 
-<div id="main" class="container">
+  <div id="main" class="container">
 
-<div class="row" style="margin-bottom :1em">
-<h1 id="title" class="col-md-6" style="float:left;">Outil</h1>
-<h2 class="col-md-6"><span id="me" style="float:right;">anonymous</span></h2>
-</div>
+    <div class="row" style="margin-bottom: 1em;">
+      <h1 class="col-md-6" id="title" style="float:left;">Outil</h1>
+      <h2 class="col-md-6"><span id="me" style="float:right;">anonymous</span></h2>
+    </div>
 
-<form id="target" class="form-inline"  style="margin-bottom :1em">
-    <label for="soundcloudURL">soundcloud URL</label>
-    <input type="text" class="form-control" id="soundcloudURL" placeholder="https://soundcloud.com/…" style="width:80%" value="">
-    <button type="submit" type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
-</form>
+    <form id="target" class="form-inline"  style="margin-bottom: 1em">
+      <label for="soundcloudURL">soundcloud URL</label>
+      <input type="text" class="form-control" id="soundcloudURL" placeholder="https://soundcloud.com/…" style="width:80%" value="">
+      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+    </form>
 
-<div id="revealMe" style="display:none;">
+    <div id="revealMe" style="display:none;">
 
-<div class="row" style="margin-bottom :1em">
-<h3 id="soundcloudID" class="col-md-6" style="float:left;">not found</h3>
-<div class="col-md-6" ><button id="load" type="button" class="btn btn-default" style="float:right;">load text</button> </div>
-</div>
+      <div class="row" style="margin-bottom: 1em">
+        <h3 id="soundcloudID" class="col-md-6" style="float:left;">not found</h3>
+        <div class="col-md-6" ><button id="load" type="button" class="btn btn-default" style="float:right;">load text</button> </div>
+      </div>
 
-<button id="post" type="button" class="btn btn-primary">post to soundcloud</button>   
-<button id="clear" type="button" class="btn btn-default">clear</button>    
+      <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>   
+      <button id="clear" type="button" class="btn btn-default">clear</button>    
+      <div class="progress" style="margin-top: 1em">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
+          &nbsp;
+        </div>
+      </div>
+       
+      <div class="row">
+        <ul class="col-md-6" id="result">
+        </ul>   
+        <div class="col-md-6">
+          <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to submit</div>
+          <textarea id="entry" style="width:100%;">
+          </textarea>
+        </div>
+      </div>   
 
-<div class="progress" style="margin-top :1em">
-  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
-  &nbsp;
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
+          &nbsp;
+        </div>
+      </div>
+      <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>    
+      <button id="clear" type="button" class="btn btn-default">clear</button> 
+
+    </div>
+
   </div>
-</div>
- 
-<div class="row">
-<ul class="col-md-6" id="result"></ul>   
-<div class="col-md-6"><div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to submit</div><textarea id="entry" style="width:100%;"></textarea></div>
-</div>   
-
-<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
-  &nbsp;
-  </div>
-</div>
-<button id="post" type="button" class="btn btn-primary">post to soundcloud</button>    
-<button id="clear" type="button" class="btn btn-default">clear</button> 
-
-</div>
-
-</div>
 
 </body>
 
@@ -101,10 +105,6 @@
 
 <script type="text/javascript" src="https://w.soundcloud.com/player/api.js"                                 ></script>
 <script type="text/javascript" src="//connect.soundcloud.com/sdk.js"></script>
-
-<script type="text/javascript" src="jquery.lettering-0.6.1.min.js"></script>
-<script type="text/javascript" src="jquery.textillate.js"></script>
-<script type="text/javascript" src="jquery.fittext.js"></script>
 
 <script type="text/javascript" src="app.js"></script>
 
@@ -142,43 +142,43 @@ $( document ).ready(function() {
     var mySouncCloudModule = MySouncCloudModule(soundcloudID);
 
     function loadData(data) {
-        $('button#load').text("reload "+soundcloudID+'.txt');
-        $("#result").empty();
+      $("#result").empty();
       
-        var lines = data.split('\n');
+      var lines = data.split('\n');
 
-        for(var i = 0;i < lines.length;i++){
-          var ligne = lines[i].trim();
-          ligne = ligne.length == 0 ? '&nbsp;' : ligne;
-          $( "#result" ).append( $('<li>').html(ligne) );
+      for(var i = 0;i < lines.length;i++){
+        var ligne = lines[i].trim();
+        ligne = ligne.length == 0 ? '&nbsp;' : ligne;
+        $( "#result" ).append( $('<li>').html(ligne) );
+      }
+
+      $( "ul#result>li" ).click(function() {
+        var $_this_ = $(this);
+        if (!$_this_.hasClass('done')) {
+          mySouncCloudModule.getPosition(function(position) {
+            var tex = $_this_.text();
+            $_this_.addClass('done');
+            $_this_.append($('<span style="float:right">').html('&nbsp;['+position+']'));
+            qwe.push({'text': tex, 'timestamp': position});
+          }); 
+        } else {
+          console.log('alread done!');
         }
-
-        $( "ul#result>li" ).click(function() {
-          var $_this_ = $(this);
-          if (!$_this_.hasClass('done')) {
-            mySouncCloudModule.getPosition(function(position) {
-              var tex = $_this_.text();
-              $_this_.addClass('done');
-              $_this_.append($('<span style="float:right">').html('&nbsp;['+position+']'));
-              qwe.push({'text': tex, 'timestamp': position});
-            }); 
-          } else {
-            console.log('alread done!');
-          }
-        });
+      });
     }
 
-	$(document.body).on( 'keypress', 'textarea#entry', undefined, function(e) {
+	  $(document.body).on( 'keypress', 'textarea#entry', undefined, function(e) {
 	    if (e.which === 13  && !event.shiftKey) { // if is enter
-	        e.preventDefault(); // don't submit form
-	        var data = $(this).val();
-      		loadData(data);
+	      e.preventDefault(); // don't submit form
+	      var data = $(this).val();
+      	loadData(data);
 	    }
-	});    
+	  });   
     
     function loadFile(soundcloudID) {
       $.get( soundcloudID+".txt", function( data ) {
       	loadData(data);
+        $('button#load').text("reload "+soundcloudID+'.txt');
       }).fail(function() {
         $('button#load').text(soundcloudID+'.txt not found. Retry ?');
       });
@@ -189,9 +189,9 @@ $( document ).ready(function() {
       loadFile(soundcloudID);
     });
 
-    var qwe = [];
-
     loadFile(soundcloudID);
+
+    var qwe = [];
 
     $('button#post').click(function(event) {
 
@@ -201,29 +201,32 @@ $( document ).ready(function() {
 
       qwe.reverse();
 
-	  $('.progress').addClass('progress-striped active');  
+	    $('.progress').addClass('progress-striped active');  
       $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
+      
+      var delta = 1200; // milliseconds between POSTs
       var index = 0;
-      var delta = 1200;
+      
       for (; index < qwe.length; index++) {
         setTimeout(function(i) {
           var ligne = qwe[i];
-        /* */
+          /* */
           SC.post(
             "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
             { 'comment[body]': ligne.text,
               'comment[timestamp]': ligne.timestamp}, 
             function(response, error) { 
-        /* */
+          /* */
               var percent = Math.ceil((100.0*(i+1))/qwe.length)+'%';
               console.log(percent);
               $('.progress-bar').css('width', percent).attr('aria-valuenow', i).text(ligne.text);  
-        /* */
+          /* */
               if (error) console.log(error); else console.log(response); 
           });
-        /* */
+          /* */
         }, index * delta, index); // we're passing index        
       }
+
       setTimeout(function() {
         $('.progress').removeClass('progress-striped active');  
       }, index * delta);
@@ -232,14 +235,14 @@ $( document ).ready(function() {
 
     $('button#clear').click(function(event) {
       qwe = [];
+      
       $('.progress').removeClass('progress-striped active');  
       $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
       $('ul#result > li').removeClass('done');
 
       $.each($('ul#result > li'), function( index, value ) {
-  		$(this).children().remove().end().text($.trim($(this).text()));
-	  });
-      
+  		  $(this).children().remove().end().text($.trim($(this).text()));
+	    });
     });
   }
 
