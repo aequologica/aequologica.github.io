@@ -45,7 +45,7 @@
   <div id="main" class="container">
 
     <div class="row" style="margin-bottom: 1em;">
-      <h1 class="col-md-6" id="title" style="float:left;">post synced soundcloud comments</h1>
+      <h1 class="col-md-6"><span id="title" style="float:left;">post synced soundcloud comments</span></h1>
       <h2 class="col-md-6"><span id="me" style="float:right;">anonymous</span></h2>
     </div>
 
@@ -58,7 +58,7 @@
     <div id="revealMe" style="display:none;">
 
       <div class="row" style="margin-bottom: 1em">
-        <h3 id="soundcloudID" class="col-md-6" style="float:left;">not found</h3>
+        <h3 id="soundcloudID" class="col-md-6" style="float:left;">no soundcloud ID</h3>
         <div class="col-md-6" ><button id="load" type="button" class="btn btn-default" style="float:right;">"<i class="fa fa-upload"></i></button> </div>
       </div>
 
@@ -77,7 +77,7 @@
           <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to submit</div>
           <textarea id="entry" style="width:100%;">
           </textarea>
-          <button id="fromRightToLeft" type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
+          <button id="fromRightToLeft" type="button" class="btn btn-default" style="margin-bottom: 1em"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
         </div>
       </div>   
 
@@ -103,9 +103,8 @@
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"          ></script>    
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"        ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"       ></script>
-
-<script type="text/javascript" src="https://w.soundcloud.com/player/api.js"                                 ></script>
-<script type="text/javascript" src="//connect.soundcloud.com/sdk.js"></script>
+<script type="text/javascript" src="//w.soundcloud.com/player/api.js"                                       ></script>
+<script type="text/javascript" src="//connect.soundcloud.com/sdk.js"                                        ></script>
 
 <script type="text/javascript" src="jquery.lettering-0.6.1.min.js"></script>   
 <script type="text/javascript" src="jquery.textillate.js"></script>    
