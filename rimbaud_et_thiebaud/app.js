@@ -1,4 +1,4 @@
-var MySouncCloudModule = function(trackId, strophe) {
+var MySouncCloudModule = function(trackId, strophe, userId) {
 
   var lignes = [];
   var currentRow = null;
@@ -16,7 +16,7 @@ var MySouncCloudModule = function(trackId, strophe) {
 
     $.each( data, function( key, val ) {
 
-      if (val.user.id != 17366398) return;
+      if (val.user.id != userId) return; // christophe thiebaud : 17366398, philippe benoist : 154105433
 
       lignes.push({'id':val.id, 'when':val.timestamp, 'what': val.body});
 
