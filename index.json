@@ -80,7 +80,11 @@
         { "name" : "Le_bateau_ivre2", "url":"rimbaud_et_thiebaud/bateau2.html", "text" : "Le Bateau ivre, lu par Georges Claisse" },
         { "name" : "Larme",           "url":"rimbaud_et_thiebaud/larme.html"  , "text" : "Larme"                                  },
         { "name" : "Boheme",          "url":"rimbaud_et_thiebaud/boheme.html" , "text" : "Ma Bohème (Fantaisie)"                  },
-        { "name" : "Crimen amoris",   "url":"verlaine_et_thiebaud/index.html" , "text" : "Crimen amoris"                          }
+        { "name" : "crimen_amoris",   "url":"verlaine_et_thiebaud/index.html" , "text" : "Crimen amoris"                          },
+        { "name" : "donuts_fm",       "url":"donutsfm_et_thiebaud/index.html" , "text" : "Madame la vache, by Donuts FM"          },
+        { "type" : "separator" },  
+        { "name" : "tool",            "url":"x_et_thiebaud/tool.html"         , "text" : "Tool"                                   }
+        
       ]
     },
    { "name" : "internet",
