@@ -129,7 +129,7 @@ $( document ).ready(function() {
   /*
   init function
   */
-  function init(soundcloudID, title, permalink) {
+  function init(soundcloudID, title, permalink_url) {
     // raz
     $('.progress').removeClass('progress-striped active');  
     $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
@@ -141,14 +141,14 @@ $( document ).ready(function() {
       var $title;
       if (typeof title !== "undefined") {
         var tit = title + ' [' + soundcloudID + ']';
-        if (typeof permalink !== "undefined") {
-          $title = $('<a>', { text: tit, href: permalink, target: 'soundcloud' });
+        if (typeof permalink_url !== "undefined") {
+          $title = $('<a>', { text: tit, href: permalink_url, target: 'soundcloud' });
         } else {
           $title = $('<span>', { text: tit });
         }
       } else {
-        if (typeof permalink !== "undefined") {
-          $title = $('<a>', { text: soundcloudID, href: permalink, target: 'soundcloud'  });
+        if (typeof permalink_url !== "undefined") {
+          $title = $('<a>', { text: soundcloudID, href: permalink_url, target: 'soundcloud'  });
         } else {
           $title = $('<span>', { text: soundcloudID });
         }
@@ -314,7 +314,7 @@ $( document ).ready(function() {
           }); 
         } else  {
           if (typeof data.id != 'undefined') {
-            init(data.id, data.title, data.permalink);
+            init(data.id, data.title, data.permalink_url);
           } else {
             alert('not able to get an ID from soudcloud URL : ' + soudcloudURL);
           }
