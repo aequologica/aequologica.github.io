@@ -39,7 +39,8 @@ var MySouncCloudModule = function(trackId, strophe) {
         }
       }
     });
-
+    
+    $('ul.my-new-list').remove();
     $( "<ul/>", {
       "class": "my-new-list",
       html: items.join( "" )

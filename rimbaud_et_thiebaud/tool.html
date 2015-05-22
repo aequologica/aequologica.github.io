@@ -58,8 +58,8 @@
     <div id="revealMe" style="display:none;">
 
       <div class="row" style="margin-bottom: 1em">
-        <h3 id="soundcloudID" class="col-md-6" style="float:left;">no soundcloud ID</h3>
-        <div class="col-md-6" ><button id="load" type="button" class="btn btn-default" style="float:right;">"<i class="fa fa-upload"></i></button> </div>
+        <h3 id="soundcloudTitle" class="col-md-6" style="float:left;">no soundcloud ID</h3>
+        <div class="col-md-6" ><button id="loadFile" type="button" class="btn btn-default" style="float:right;">"<i class="fa fa-upload"></i></button> </div>
       </div>
 
       <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>   
@@ -129,19 +129,41 @@ $( document ).ready(function() {
   /*
   init function
   */
-  function init(soundcloudID) {
+  function init(soundcloudID, title, permalink) {
+    // raz
+    $('.progress').removeClass('progress-striped active');  
+    $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
+    $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : 1 }).html('&nbsp;'); 
+    $('button#loadFile').text('load ' + soundcloudID + '.txt');
 
-    $('h3#soundcloudID').text(soundcloudID);
+    // set title. only soundcloudID cannot be undefined
+    {
+      var $title;
+      if (typeof title !== "undefined") {
+        var tit = title + ' [' + soundcloudID + ']';
+        if (typeof permalink !== "undefined") {
+          $title = $('<a>', { text: tit, href: permalink, target: 'soundcloud' });
+        } else {
+          $title = $('<span>', { text: tit });
+        }
+      } else {
+        if (typeof permalink !== "undefined") {
+          $title = $('<a>', { text: soundcloudID, href: permalink, target: 'soundcloud'  });
+        } else {
+          $title = $('<span>', { text: soundcloudID });
+        }
+      }
 
+      $('#soundcloudTitle').data('soundcloudID', soundcloudID).html($title);
+    }
+
+    // set soundcloud widget
     var $iframe = $('<iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/'+soundcloudID+'&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=false&hide_related=false&visual=true&start_track=0&callback=true"/>');
 
     $('iframe').remove();
-    $('.progress').removeClass('progress-striped active');  
-    $('.progress-bar').removeClass('progress-bar-success');   
-    $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : 1 }).html('&nbsp;'); 
-    $('button#load').text('load ' + soundcloudID + '.txt');
     $('div#revealMe').prepend($iframe).css( "display", "block");
 
+    //
     var mySouncCloudModule = MySouncCloudModule(soundcloudID);
 
     function loadData(data) {
@@ -186,14 +208,14 @@ $( document ).ready(function() {
     function loadFile(soundcloudID) {
       $.get( soundcloudID+".txt", function( data ) {
       	loadData(data);
-        $('button#load').html('<i class="fa fa-upload"></i>&nbsp;' + soundcloudID + '.txt');
+        $('button#loadFile').html('<i class="fa fa-upload"></i>&nbsp;' + soundcloudID + '.txt');
       }).fail(function() {
-        $('button#load').html('<i class="fa fa-upload"></i>&nbsp;' + soundcloudID + '.txt not found');
+        $('button#loadFile').html('<i class="fa fa-upload"></i>&nbsp;' + soundcloudID + '.txt not found');
       });
     }
 
     $('button#load').click(function(event) {
-      var soundcloudID = $('h3#soundcloudID').text();
+      var soundcloudID = $('#soundcloudTitle').data('soundcloudID');
       loadFile(soundcloudID);
     });
 
@@ -288,7 +310,7 @@ $( document ).ready(function() {
           }); 
         } else  {
           if (typeof data.id != 'undefined') {
-            init(data.id);
+            init(data.id, data.title, data.permalink);
           } else {
             alert('not able to get an ID from soudcloud URL : ' + soudcloudURL);
           }
@@ -296,7 +318,7 @@ $( document ).ready(function() {
       });
     } else {
       console.log('empty soudcloudURL, loading hardcoded 200813526.');
-    	init('200813526');
+    	init('200813526', "C'est pas beau à voir", "http://soundcloud.com/christophe-thiebaud/cest-pas-beau-a-voir");
     }
   });
 
