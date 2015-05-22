@@ -1,4 +1,4 @@
-var MySouncCloudModule = function(trackId, strophe, userId) {
+var MySouncCloudModule = function(trackId, strophe, userId, $appendTo) {
 
   var lignes = [];
   var currentRow = null;
@@ -44,7 +44,7 @@ var MySouncCloudModule = function(trackId, strophe, userId) {
     $( "<ul/>", {
       "class": "my-new-list",
       html: items.join( "" )
-    }).appendTo( ".container#main" );
+    }).appendTo( $appendTo || $(".container#main") );
   });
 
   var widgetIframe = document.getElementById('sc-widget'),

@@ -66,6 +66,12 @@
 
 <iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/204921668&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=false&hide_related=false&visual=true&start_track=0&callback=true"></iframe>
 
+<div class="row">
+<div class="col-md-6" id="appendHere"></div>
+<div class="col-md-6" id="illustration">
+<img style="float:right;" class="img-responsive" src="ma_boheme_manuscript.jpg">
+</div>
+</div>
 </div>
 
 <footer class="footer">
@@ -102,7 +108,7 @@ $( document ).ready(function() {
 
   $("h1").fitText(1.5).lettering(); 
 
-  var mySouncCloudModule = MySouncCloudModule("204921668", undefined, '17366398');
+  var mySouncCloudModule = MySouncCloudModule("204921668", undefined, '17366398', $("#appendHere"));
 
 });
 </script>
