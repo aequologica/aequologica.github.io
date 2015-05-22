@@ -5,24 +5,24 @@
 
   <meta name="viewport"             content="width=device-width, initial-scale=1"/>
   <meta name="google"               content="notranslate"/>
-  <meta name="title"                content=""/>
-  <meta name="description"          content=""/>
+  <meta name="title"                content="Outil"/>
+  <meta name="description"          content="Tool to sync and post soundcloud comments"/>
   <meta name="author"               content="Christophe Thiebaud"/>
 
-  <meta http-equiv="Content-Language" content="fr" />
+  <meta http-equiv="Content-Language" content="en" />
   <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1"/>
 
-  <title>Outil</title>
+  <title>post synced soundcloud comments</title>
 
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-  <link href="animate.css" rel="stylesheet">
-  <link href="sticky-footer-navbar.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="animate.css">
+  <link rel="stylesheet" type="text/css" href="sticky-footer-navbar.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
 
   <link rel="shortcut icon" href="/favicon2.ico">  
-
-  <link rel="stylesheet" href="style.css">
 
   <style type="text/css">
   .done {
@@ -49,7 +49,7 @@
       <h2 class="col-md-6"><span id="me" style="float:right;">anonymous</span></h2>
     </div>
 
-    <form id="target" class="form-inline"  style="margin-bottom: 1em">
+    <form id="id_from_url" class="form-inline"  style="margin-bottom: 1em">
       <label for="soundcloudURL">soundcloud URL</label>
       <input type="text" class="form-control" id="soundcloudURL" placeholder="https://soundcloud.com/…" style="width:80%" value="">
       <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -277,24 +277,27 @@ $( document ).ready(function() {
   /*
   search handler
   */
-  $( "#target" ).submit(function( event ) {
+  $( "form#id_from_url" ).submit(function( event ) {
     event.preventDefault();
 
-    var searchFor = $('input#soundcloudURL').val().trim();
+    var soudcloudURL = $('input#soundcloudURL').val().trim();
 
-    if (searchFor) {
-      SC.get('/resolve', {'url': searchFor}, function(data) { 
-          if (typeof data.errors != 'undefined') {
+    if (soudcloudURL) {
+      SC.get('/resolve', {'url': soudcloudURL}, function(data) { 
+        if (typeof data.errors != 'undefined') {
           $.each(data.errors, function(index, error) {
-            alert(searchFor+ " : " + error.error_message);
-          })  
+            alert(soudcloudURL + " : " + error.error_message);
+          }); 
         } else  {
           if (typeof data.id != 'undefined') {
             init(data.id);
+          } else {
+            alert('not able to get an ID from soudcloud URL : ' + soudcloudURL);
           }
         }
       });
     } else {
+      console.log('empty soudcloudURL, loading hardcoded 200813526.');
     	init('200813526');
     }
   });
