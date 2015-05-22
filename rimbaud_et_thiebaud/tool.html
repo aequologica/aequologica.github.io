@@ -175,9 +175,9 @@ $( document ).ready(function() {
       loadData(data);
     });
 
-	  $(document.body).on( 'keypress', 'textarea#entry', undefined, function(e) {
-	    if (e.which === 13  && !event.shiftKey) { // if is enter
-	      e.preventDefault(); // don't submit form
+	  $(document.body).on( 'keypress', 'textarea#entry', undefined, function(event) {
+	    if (event.which === 13  && !event.shiftKey) { // if is enter
+	      event.preventDefault(); // don't submit form
 	      var data = $(this).val();
       	loadData(data);
 	    }
