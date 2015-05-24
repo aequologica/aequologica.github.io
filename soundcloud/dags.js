@@ -66,12 +66,8 @@ $( document ).ready(function() {
         inner.selectAll("g.node").on("click", function(id) {
           var gotoURL = g.node(id).url;
           if (gotoURL) {
-            console.log(gotoURL);
             window.open(gotoURL,'_'+id);
           }       
-        }).on( "mouseenter", function(id, qwe, asd) {
-          console.log('this '+this+'id '+id+' qwe '+qwe+' asd ' +asd);
-        }).on( "mouseleave", function(id) {
         } );
       }
     };
@@ -87,39 +83,8 @@ $( document ).ready(function() {
     };
   }());
 
-  function wire () {
-    $( "g.node" ).mouseenter(function(event) { 
-      var $rect = $(this).find("rect");
-      if ($rect.length) {
-        var dataBG = $rect.attr('data-bg');
-        if (!dataBG) {
-          $rect.attr('data-bg', $rect.css('fill')) 
-        }
-        $rect.css('fill', '#404040');
-      } 
-      if (this.__data__) {
-        $('tr#'+this.__data__).css('background-color', '#efefef');
-      }
-    });
-    $( "g.node" ).mouseleave(function(event) {
-      var $rect = $(this).find("rect");
-      if ($rect.length) {
-        var dataBG = $rect.attr('data-bg');
-        if (!dataBG) {
-          $rect.css('fill', "none");
-        } else {
-          $rect.css('fill', dataBG);
-        }
-      }
-      if (this.__data__) {
-        $('tr#'+this.__data__).css('background-color', 'inherit');
-      }
-    });
-  }
-
   $.getJSON( "soundcloudlinkgraph.json", function( data ) {
     loadData(data);
-    wire();
   }).fail(function(jqxhr, textStatus, error) {
     var err = textStatus + ", " + error;
     console.log( "Request Failed: " + err );
