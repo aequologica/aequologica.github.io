@@ -71,20 +71,6 @@
         { "name" : "SAP_stock",      "url":"https://ipp.wdf.sap.corp/sap/bc/webdynpro/ehr/es_docview?ar_objects=Z9918017,Z9918018,Z9918024,Z9918025,Z9918012,Z9928017,Z9928018,Z9928024,Z9928025,Z9928012,Z9928033,Z9928034&amp;sap-language=EN#", "text" : "€ € € € € €"}
       ]
     },
-    { "name" : "Éreinté",
-      "url"  : "Éreinté",
-      "items" : [
-        { "name" : "Le_bateau_ivre",  "url":"rimbaud_et_thiebaud/bateau.html" , "text" : "Le Bateau ivre"                         },
-        { "name" : "Le_bateau_ivre2", "url":"rimbaud_et_thiebaud/bateau2.html", "text" : "Le Bateau ivre, lu par Georges Claisse" },
-        { "name" : "Larme",           "url":"rimbaud_et_thiebaud/larme.html"  , "text" : "Larme"                                  },
-        { "name" : "Boheme",          "url":"rimbaud_et_thiebaud/boheme.html" , "text" : "Ma Bohème (Fantaisie)"                  },
-        { "name" : "crimen_amoris",   "url":"verlaine_et_thiebaud/index.html" , "text" : "Crimen amoris"                          },
-        { "name" : "donuts_fm",       "url":"donutsfm_et_thiebaud/index.html" , "text" : "Madame la vache, by Donuts FM"          },
-        { "type" : "separator" },  
-        { "name" : "tool",            "url":"x_et_thiebaud/tool.html"         , "text" : "Tool"                                   }
-        
-      ]
-    },
    { "name" : "internet",
       "url"  : "internet",
       "items" : [
