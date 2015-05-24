@@ -1,0 +1,128 @@
+{ 
+  "name": "chansonettes", 
+  "key": "chansonettes",
+  "nodes":
+  [
+    {
+      "id": "sections",
+      "value": {
+        "label": "/"
+      }
+    },
+    {
+      "id": "bach",
+      "value": {
+        "label": "J.S. Bach"
+      }
+    },
+    {
+      "id": "bwv1018",
+      "value": {
+        "label": "bwv1018",
+        "url": "/bwv1018.html"
+      }
+    },
+    {
+      "id": "tool",
+      "value": {
+        "label": "Tool",
+        "url": "/x_et_thiebaud/tool.html"
+      }
+    },
+    {
+      "id": "rimbaud",
+      "value": {
+        "label": "Rimbaud & Thiebaud"
+      }
+    },
+    {
+      "id": "lebateauivre",
+      "value": {
+        "label": "Le Bateau ivre",
+        "url": "/rimbaud_et_thiebaud/bateau.html"
+      }
+    },
+    {
+      "id": "lebateauivre2",
+      "value": {
+        "label": "Le Bateau ivre, lu par Georges Claisse",
+        "url": "/rimbaud_et_thiebaud/bateau2.html"
+      }
+    },
+    {
+      "id": "larme",
+      "value": {
+        "label": "Larme",
+        "url": "/rimbaud_et_thiebaud/larme.html"
+      }
+    },
+    {
+      "id": "boheme",
+      "value": {
+        "label": "Ma Bohème (Fantaisie)",
+        "url": "/rimbaud_et_thiebaud/boheme.html"
+      }
+    },
+    {
+      "id": "verlaine",
+      "value": {
+        "label": "Verlaine & Thiebaud"
+      }
+    },
+    {
+      "id": "crimenamoris",
+      "value": {
+        "label": "Crimen Amoris",
+        "url": "/verlaine_et_thiebaud/"
+      }
+    },
+    {
+      "id": "donutsfm",
+      "value": {
+        "label": "DonutsFM & Thiebaud"
+      }
+    },
+    {
+      "id": "madamelavache",
+      "value": {
+        "label": "Madame la vache",
+        "url": "/donutsfm_et_thiebaud/"
+      }
+    },
+    {
+      "id": "julien",
+      "value": {
+        "label": "JuLieN & Thiebaud"
+      }
+    },
+    {
+      "id": "green",
+      "value": {
+        "label": "Green",
+        "url": "/verlaine_et_julien_et_thiebaud/green.html"
+      }
+    }
+  ], "links":
+  [
+    { "u": "sections"       , "v": "bach"               , "value": {} },
+    { "u": "sections"       , "v": "rimbaud"            , "value": {} },
+    { "u": "sections"       , "v": "verlaine"           , "value": {} },
+    { "u": "sections"       , "v": "donutsfm"           , "value": {} },
+    { "u": "madamelavache"       , "v": "julien"             , "value": {} },
+    { "u": "bach"           , "v": "bwv1018"            , "value": {} },
+    { "u": "rimbaud"        , "v": "lebateauivre"       , "value": {} },
+    { "u": "rimbaud"        , "v": "larme"              , "value": {} },
+    { "u": "rimbaud"        , "v": "boheme"             , "value": {} },
+    { "u": "lebateauivre"   , "v": "lebateauivre2"      , "value": {} },
+    { "u": "lebateauivre2"  , "v": "crimenamoris"       , "value": {} },
+    { "u": "verlaine"       , "v": "crimenamoris"       , "value": {} },
+    { "u": "donutsfm"       , "v": "madamelavache"      , "value": {} },
+    { "u": "julien"         , "v": "green"              , "value": {} },
+    { "u": "lebateauivre"       , "v": "tool"           , "value": {} },
+    { "u": "lebateauivre2"      , "v": "tool"           , "value": {} },
+    { "u": "larme"              , "v": "tool"           , "value": {} },
+    { "u": "boheme"             , "v": "tool"           , "value": {} },
+    { "u": "madamelavache"      , "v": "tool"           , "value": {} },
+    { "u": "green"              , "v": "tool"           , "value": {} }
+  ]
+}
