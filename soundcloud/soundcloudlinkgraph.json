@@ -15,7 +15,7 @@
     { "id": "julien"          , "value": { "label": "JuLieN"                                                                                   } },
     { "id": "green"           , "value": { "label": "Green"                           , "url": "/verlaine_et_julien_et_thiebaud/green.html"    } },
     { "id": "burns"           , "value": { "label": "Burns"                                                                                    } },
-    { "id": "highlands"       , "value": { "label": "My Heart's\nin the\nHighlands"   , "url": "/burns_and_prince_charles/index.html"          } },
+    { "id": "highlands"       , "value": { "label": "My Heart's\nin the\nHighlands"   , "url": "/burns_and_prince_charles/"                    } },
     { "id": "tool"            , "value": { "label": "Outil"                           , "url": "/x_et_thiebaud/tool.html", "shape" : "diamond" } }
   ], "links":
   [
