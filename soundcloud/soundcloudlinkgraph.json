@@ -28,13 +28,14 @@
     { "u": "rimbaud"          , "v": "boheme"         , "value": {} },
     { "u": "lebateauivre"     , "v": "lebateauivre2"  , "value": {} },
     { "u": "verlaine"         , "v": "crimenamoris"   , "value": {} },
-    { "u": "donutsfm"         , "v": "madamelavache"  , "value": {} },
     { "u": "julien"           , "v": "green"          , "value": {} },
+    { "u": "verlaine"         , "v": "green"          , "value": {} },
     { "u": "lebateauivre"     , "v": "tool"           , "value": {} },
     { "u": "lebateauivre2"    , "v": "tool"           , "value": {} },
     { "u": "larme"            , "v": "tool"           , "value": {} },
     { "u": "boheme"           , "v": "tool"           , "value": {} },
     { "u": "madamelavache"    , "v": "tool"           , "value": {} },
-    { "u": "green"            , "v": "tool"           , "value": {} }
+    { "u": "green"            , "v": "tool"           , "value": {} },
+    { "u": "donutsfm"         , "v": "madamelavache"  , "value": {} }
   ]
 }
