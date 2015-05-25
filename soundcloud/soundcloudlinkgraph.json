@@ -2,7 +2,7 @@
   [
     { "id": "sections"        , "value": { "label": "/"                                                                                        } },
     { "id": "bach"            , "value": { "label": "J.S. Bach"                                                                                } },
-    { "id": "bwv1018"         , "value": { "label": "bwv1018"                         , "url": "/bwv1018.html"                                 } },
+    { "id": "bwv1018"         , "value": { "label": "bwv1018"                         , "url": "/bwv1018/"                                     } },
     { "id": "rimbaud"         , "value": { "label": "Rimbaud"                                                                                  } },
     { "id": "lebateauivre"    , "value": { "label": "Le bateau ivre"                  , "url": "/rimbaud_et_thiebaud/bateau.html"              } },
     { "id": "lebateauivre2"   , "value": { "label": "Le bateau ivre,\nlu par Georges" , "url": "/rimbaud_et_thiebaud/bateau2.html"             } },
