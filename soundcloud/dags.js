@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-  var theGraph = undefined;
 
   (function () {
     'use strict';
@@ -28,18 +27,21 @@ $( document ).ready(function() {
             .setGraph({})
             .setDefaultEdgeLabel(function() { return {}; });
 
-          nodes.forEach(function(u) {
-            graph.setNode(u.id, u.value);
+          nodes.forEach(function(node) {
+            // node.value.style = node.value.style || "stroke: #666; fill: #ddd;";
+            if (node.value.url) { node.value.shape = node.value.shape || "circle"; }
+            graph.setNode(node.id, node.value);
           });
 
           edges.forEach(function(e) {
             e.value.lineInterpolate = 'basis';
             if (e.v == "tool") {
-              e.value.arrowheadStyle = "stroke: #777; fill: #777;";
-              e.value.style = "stroke: #777; stroke-width: 2px; stroke-dasharray: 5, 5; fill: none;";
+              e.value.arrowhead =   "undirected";
+              e.value.arrowheadStyle = "stroke: #fff; fill: #fff;";
+              e.value.style = "stroke: #fff; stroke-width: 2px; stroke-dasharray: 2, 2; fill: none;";
             } else if (e.u == "sections") {
-              e.value.arrowheadStyle = "stroke: #a00; fill: #a00;";
-              e.value.style = "stroke: #a00; fill: none";
+              e.value.arrowheadStyle = "stroke: #777; fill: #777;";
+              e.value.style = "stroke: #777; fill: none";
             } else {
               e.value.arrowheadStyle = "stroke: #000; fill: #000;";
               e.value.style = "fill: none";
@@ -51,16 +53,19 @@ $( document ).ready(function() {
         };
 
         var g = createGraph(nodes, links);
-        theGraph = g;
-
+        
         // Run the renderer. This is what draws the final graph.
         render(inner, g);
 
         inner.selectAll("g.node").each(function(id) {
           var gotoURL = g.node(id).url;
           if (gotoURL) {
-            $(this).attr('data-role', 'link');
-          }       
+            if (id == "tool") {
+              $(this).attr('data-role', 'link-tool');
+            } else {
+              $(this).attr('data-role', 'link');
+            }
+          }
         });
 
         inner.selectAll("g.node").on("click", function(id) {
@@ -68,7 +73,15 @@ $( document ).ready(function() {
           if (gotoURL) {
             window.open(gotoURL,'_'+id);
           }       
-        } );
+        });
+
+
+        // Center the graph
+        /*
+        var xCenterOffset = (svg.attr("width") - g.graph().width) / 2;
+        inner.attr("transform", "translate(" + xCenterOffset + ", 20)");
+        svg.attr("height", g.graph().height + 40);
+        */
       }
     };
   })();
