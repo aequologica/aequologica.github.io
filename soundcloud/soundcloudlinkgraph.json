@@ -14,6 +14,8 @@
     { "id": "madamelavache"   , "value": { "label": "Madame la vache"                 , "url": "/donutsfm_et_thiebaud/"                        } },
     { "id": "julien"          , "value": { "label": "JuLieN"                                                                                   } },
     { "id": "green"           , "value": { "label": "Green"                           , "url": "/verlaine_et_julien_et_thiebaud/green.html"    } },
+    { "id": "burns"           , "value": { "label": "Burns"                                                                                    } },
+    { "id": "highlands"       , "value": { "label": "My Heart's\nin the\nHighlands"   , "url": "/burns_and_prince_charles/index.html"          } },
     { "id": "tool"            , "value": { "label": "Outil"                           , "url": "/x_et_thiebaud/tool.html", "shape" : "diamond" } }
   ], "links":
   [
@@ -22,6 +24,7 @@
     { "u": "sections"         , "v": "verlaine"       , "value": {} },
     { "u": "sections"         , "v": "donutsfm"       , "value": {} },
     { "u": "sections"         , "v": "julien"         , "value": {} },
+    { "u": "sections"         , "v": "burns"          , "value": {} },
     { "u": "bach"             , "v": "bwv1018"        , "value": {} },
     { "u": "rimbaud"          , "v": "lebateauivre"   , "value": {} },
     { "u": "rimbaud"          , "v": "larme"          , "value": {} },
@@ -30,12 +33,14 @@
     { "u": "verlaine"         , "v": "crimenamoris"   , "value": {} },
     { "u": "julien"           , "v": "green"          , "value": {} },
     { "u": "verlaine"         , "v": "green"          , "value": {} },
+    { "u": "burns"            , "v": "highlands"      , "value": {} },
     { "u": "lebateauivre"     , "v": "tool"           , "value": {} },
     { "u": "lebateauivre2"    , "v": "tool"           , "value": {} },
     { "u": "larme"            , "v": "tool"           , "value": {} },
     { "u": "boheme"           , "v": "tool"           , "value": {} },
     { "u": "madamelavache"    , "v": "tool"           , "value": {} },
     { "u": "green"            , "v": "tool"           , "value": {} },
+    { "u": "highlands"        , "v": "tool"           , "value": {} },
     { "u": "donutsfm"         , "v": "madamelavache"  , "value": {} }
   ]
 }
