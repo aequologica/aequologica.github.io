@@ -38,29 +38,27 @@
 </head>
 <body ng-app="aequologicaApp" ng-controller="IndexCtrl" >
 
-  <img id="loadinfo" class="loading-image" src="ajax-loader.gif" ng-show="!done" />
+  <input type="checkbox" id="horribleHack" name="horribleHack" ng-model="outOfOffice" style="display:none!important;" />
 
   <div  masonry
         id="masonry"
         ng-click="shuffle()">
     <div class="masonry-brick"
-         ng-repeat="brick in bricks"
-         ng-if="!outOfOffice || !(brick.url.indexOf('sap.corp')!=-1)">
-      <a  ng-show="brick.src"
+         ng-repeat="brick in bricks">
+      <a  ng-show="!outOfOffice || (brick.url.indexOf('sap.corp')==-1 && brick.url.indexOf('localhost')==-1)"
           ng-href="{{brick.url}}"
           target="{{brick.name}}"
           ng-click="$event.stopPropagation();"
-          ng-class="{'internal': brick.url.indexOf('sap.corp')!=-1}">
+          ng-class="{'internal': (brick.url.indexOf('sap.corp')!=-1)}">
         <img ng-src = "images/{{brick.src}}">
       </a>
       <ul ng-show="brick.items" class="text-wrap">
-        <li ng-repeat="item in brick.items"
-            ng-if="!outOfOffice || !(item.url.indexOf('sap.corp')!=-1) || item.type">
+        <li ng-repeat="item in brick.items">
           <a target="{{item.name}}"
-             ng-show="item.url"
+             ng-show="!outOfOffice || (brick.url.indexOf('sap.corp')==-1 && brick.url.indexOf('localhost')==-1)"
              ng-href="{{item.url}}"
              ng-click="$event.stopPropagation();"
-             ng-class="{'internal': item.url.indexOf('sap.corp')!=-1}">
+             ng-class="{'internal': (item.url.indexOf('sap.corp')!=-1)}">
             {{item.text}}
           </a>
           <hr ng-show="item.type"/>
@@ -111,36 +109,42 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
     //disable IE ajax request caching
     $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
   }])
-  .controller( 'IndexCtrl', function ($scope, $http) {
-    $scope.done     = false;
-    $scope.bricks   = [];
-    $scope.shuffle  = function () {
-      $scope.bricks = shuffleArray($scope.bricks);
-    }
+  .controller( 'IndexCtrl', function ($scope, $document, $http) {
+      $scope.outOfOffice = true;
+      $scope.bricks      = [];
+      $scope.shuffle     = function () {
+        return $scope.bricks = shuffleArray($scope.bricks);
+      }
 
-    var image = new Image();
-    image.src = 'https://avatars.wdf.sap.corp/media/BAhbCVsHOgZmSSIdNTMyNmU5NjdkZjE1ZGI2ODVhMDE0YzJiBjoGRVRbCToGcDoMY29udmVydEkiAAY7BkYwWwg7BzoKdGh1bWJJIgg5NHgGOwZUWwc6BmU6CGpwZw.jpg';
-    setTimeout( function() {
-        if ( !image.complete || !image.naturalWidth ) {
-          $scope.outOfOffice = true;
-        } else {
-            $scope.outOfOffice = false;
-        }
-
-        $http.get('index.json', { cache: false}).success( function(data) {
-          _.each(data.images, function(image){
-            $scope.bricks.push(image);
-          });
-          _.each(data.groups, function(group){
-            $scope.bricks.push(group);
-          });
-
-          $scope.bricks = shuffleArray($scope.bricks);
-          $scope.done = true;
+      $http.get('index.json', { cache: false}).success( function(data) {
+        _.each(data.images, function(image){
+          $scope.bricks.push(image);
+        });
+        _.each(data.groups, function(group){
+          $scope.bricks.push(group);
         });
 
-    }, 2000 );
+        $scope.bricks = $scope.shuffle();
+      });
 
+      var image = new Image();
+      image.src = 'https://avatars.wdf.sap.corp/media/BAhbCVsHOgZmSSIdNTMyNmU5NjdkZjE1ZGI2ODVhMDE0YzJiBjoGRVRbCToGcDoMY29udmVydEkiAAY7BkYwWwg7BzoKdGh1bWJJIgg5NHgGOwZUWwc6BmU6CGpwZw.jpg';
+      setTimeout( function() {
+        var outOfOffice = $scope.outOfOffice;
+          if ( !image.complete || !image.naturalWidth ) {
+            $scope.outOfOffice = true;
+          } else {
+            $scope.outOfOffice = false;
+          }
+          if (outOfOffice != $scope.outOfOffice) {
+            var horribleHack = angular.element('#horribleHack');
+            horribleHack.val($scope.outOfOffice);
+            horribleHack.trigger('input');
+            $scope.bricks = $scope.shuffle();
+            // http://stackoverflow.com/questions/23710217/how-do-you-trigger-a-reload-in-angular-masonry
+            $scope.$broadcast('masonry.reload');
+          }
+      }, 2000 );
 });
 
 // http://4loc.wordpress.com/2009/04/28/documentready-vs-windowload/
