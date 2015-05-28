@@ -1,3 +1,27 @@
+/*
+var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    x = w.innerWidth || e.clientWidth || g.clientWidth,
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+var svg = d3.select("div#dag").append("svg")
+        .attr("width", x)
+        .attr("height", y)
+        .append("g");
+
+
+function updateWindow(){
+    x = w.innerWidth || e.clientWidth || g.clientWidth;
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+    svg.attr("width", x).attr("height", y);
+}
+
+window.onresize = updateWindow;
+*/
+
 $( document ).ready(function() {
 
   (function () {
@@ -75,18 +99,33 @@ $( document ).ready(function() {
           }       
         });
 
+        var resize = function() {
+          var gelem = d3.select("svg > g");
+      
+          var w = window,
+              d = document,
+              e = d.documentElement,
+              gbody = d.getElementsByTagName('body')[0],
+              x = w.innerWidth || e.clientWidth || gbody.clientWidth,
+              y = w.innerHeight|| e.clientHeight|| gbody.clientHeight;
 
-        // Center the graph
-        /*
-        var xCenterOffset = (svg.attr("width") - g.graph().width) / 2;
-        inner.attr("transform", "translate(" + xCenterOffset + ", 20)");
-        svg.attr("height", g.graph().height + 40);
-        */
+          var ratio_x = Math.min((x-40) / (g.graph().width), 1);
+          var ratio_y = Math.min((y-40) / (g.graph().height), 1);
+
+          console.log(x + " / " + g.graph().width + " = " + ratio_x);
+          console.log(y + " / " + g.graph().height + " = " + ratio_y);
+
+          gelem.attr("transform", "translate(20,20) scale("+ Math.min(ratio_x, ratio_y) +")");
+        }
+
+        resize();
+        
+        window.onresize = resize; 
       }
     };
   })();
 
-
+ 
   (function () {
     'use strict';
 
