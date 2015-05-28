@@ -62,14 +62,16 @@
         <div class="col-md-6" ><button id="loadFile" type="button" class="btn btn-default" style="float:right;">"<i class="fa fa-upload"></i></button> </div>
       </div>
 
-      <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>   
-      <button id="reset" type="button" class="btn btn-default">reset</button>    
+      <!-- button id="post" type="button" class="btn btn-primary">post to soundcloud</button>   
+      <button id="reset" type="button" class="btn btn-default">reset</button>
+      <span id="errors"></span>
       <div class="progress" style="margin-top: 1em">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
           &nbsp;
         </div>
-      </div>
-       
+      </div -->
+      <hr/>
+
       <div class="row">
         <ul class="col-md-6" id="result">
         </ul>   
@@ -80,14 +82,15 @@
         </div>
       </div>   
 
-      <div class="progress">
+      <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>    
+      <button id="reset" type="button" class="btn btn-default">reset</button> 
+      <div class="progress" style="margin-top: 1em">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
           &nbsp;
         </div>
       </div>
-      <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>    
-      <button id="reset" type="button" class="btn btn-default">reset</button> 
-
+      <div id="errors"></div>
+      
     </div>
 
   </div>
@@ -227,7 +230,8 @@ $( document ).ready(function() {
     $('button#post').click(function(event) {
 
       if (qwe.length == 0) {
-        alert('nothing to post !');
+        $('div#errors').empty().append($('<span/>', {text:'nothing to post !', class:"alert alert-info", role:"alert"})); 
+        return;
       }
 
       qwe.sort(function(a, b) {
@@ -239,8 +243,12 @@ $( document ).ready(function() {
       $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
 	    $('.progress').addClass('progress-striped active');  
       $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
-      
+      $('div#errors').empty();
+      errorQueue= [];
+
       var delta = 1200; // milliseconds between POSTs
+
+      $('button#post').prop("disabled",true);
       
       for (var index = 0; index < qwe.length; index++) {
 
@@ -263,14 +271,24 @@ $( document ).ready(function() {
               if (error) {
                 errorQueue.push(error);
                 $('.progress-bar').removeClass('progress-bar-success');   
-                $('.progress-bar').addClass('progress-bar-warning');   
-                console.log(error); 
+                $('.progress-bar').addClass('progress-bar-warning');  
+                var uniqueErrors = _.countBy(errorQueue, "message");
+                $('div#errors').empty();
+                $.each(uniqueErrors, function(key, value){
+                  var tex = key;
+                  if (value > 1) {
+                    tex = tex + " ("+value+")";
+                  }
+                  $('div#errors').append($('<span/>', {text:tex, class:"alert alert-warning", role:"alert"})); 
+                });
+                // console.log(error); 
               } else { 
                 // console.log(response); 
               }
 
               if (i == qwe.length-1) {
                 $('.progress').removeClass('progress-striped active');  
+                $('button#post').prop("disabled",false);
                 if (errorQueue.length == 0) {
                   $('.progress-bar').addClass('progress-bar-success');   
                 } else {
@@ -291,6 +309,8 @@ $( document ).ready(function() {
       $('.progress-bar').removeClass('progress-bar-success');   
       $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
       $('ul#result > li').removeClass('done');
+      $('div#errors').empty();
+      errorQueue = [];
 
       $.each($('ul#result > li'), function( index, value ) {
   		  $(this).children().remove().end().text($.trim($(this).text()));
