@@ -56,20 +56,13 @@
     </form>
 
     <div id="revealMe" style="display:none;">
+      <div id="url"><a href=""></a></div>
 
       <div class="row" style="margin-bottom: 1em">
         <h3 id="soundcloudTitle" class="col-md-6" style="float:left;">no soundcloud ID</h3>
         <div class="col-md-6" ><button id="loadFile" type="button" class="btn btn-default" style="float:right;">"<i class="fa fa-upload"></i></button> </div>
       </div>
 
-      <!-- button id="post" type="button" class="btn btn-primary">post to soundcloud</button>   
-      <button id="reset" type="button" class="btn btn-default">reset</button>
-      <span id="errors"></span>
-      <div class="progress" style="margin-top: 1em">
-        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
-          &nbsp;
-        </div>
-      </div -->
       <hr/>
 
       <div class="row">
@@ -116,6 +109,8 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 
+  var userId = null;
+
   // initialize client with app credentials
   SC.initialize({
     client_id: '506d2e8c1cd057aa783906b0b1c8fe0d',
@@ -125,6 +120,7 @@ $( document ).ready(function() {
   // initiate auth popup
   SC.connect(function() {
     SC.get('/me', function(me) { 
+      userId = me.id;
       $('span#me').html(me.username); 
     });
   });
@@ -165,6 +161,8 @@ $( document ).ready(function() {
 
     $('iframe').remove();
     $('div#revealMe').prepend($iframe).css( "display", "block");
+    var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/iframe?trackId="+soundcloudID+"&amp;userId="+userId;
+    $('div#url > a').prop('href', url).text(url);
 
     //
     var mySouncCloudModule = MySouncCloudModule(soundcloudID, undefined, '17366398');
