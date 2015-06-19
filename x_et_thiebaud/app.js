@@ -1,10 +1,15 @@
-var MySouncCloudModule = function(trackId, strophe, userId, $appendTo) {
+var MySouncCloudModule = function(trackId, strophe, userId, $appendTo, days) {
 
   var lignes = [];
   var currentRow = null;
-
+  
+  var days_ok = [];
+  if (typeof days !== "undefined") { 
+	  days_ok = _.map(days, function(day) { return moment(day); }); 
+  }
+  
   function getLigne(position) {
-    for (var i = lignes.length-1; i >= 0; --i) {;
+    for (var i = lignes.length-1; i >= 0; --i) {
       if (position > lignes[i].when ) {
         return lignes[i];
       }
@@ -16,10 +21,20 @@ var MySouncCloudModule = function(trackId, strophe, userId, $appendTo) {
 
     $.each( data, function( key, val ) {
 
-      if (val.user.id != userId) return; // christophe thiebaud : 17366398, philippe benoist : 154105433
+      if (val.user.id != userId) { return; } // christophe thiebaud : 17366398, philippe benoist : 154105433, JuLieN : 46056414
 
-      lignes.push({'id':val.id, 'when':val.timestamp, 'what': val.body});
-
+      var created_at = moment(val.created_at);
+      if (days_ok.length==0) {
+          lignes.push({'id':val.id, 'when':val.timestamp, 'what': val.body});
+      } else {
+	      $.each(days_ok, function( index, value ) {
+	        if (created_at.isSame(value, 'day') ) { 
+	          lignes.push({'id':val.id, 'when':val.timestamp, 'what': val.body});
+	          return false; 
+	        } 
+	        return true;
+	      });
+      }
     });
 
     if (lignes.length == 0) return;

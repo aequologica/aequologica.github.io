@@ -106,6 +106,8 @@
 <script type="text/javascript" src="//w.soundcloud.com/player/api.js"                                       ></script>
 <script type="text/javascript" src="//connect.soundcloud.com/sdk.js"                                        ></script>
 
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js" ></script>
+
 <script type="text/javascript" src="jquery.lettering-0.6.1.min.js"></script>   
 <script type="text/javascript" src="jquery.textillate.js"></script>    
 
@@ -166,7 +168,7 @@ $( document ).ready(function() {
 
     $('iframe').remove();
     $('div#revealMe').prepend($iframe).css( "display", "block");
-    var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/iframe?trackId="+soundcloudID+"&amp;userId="+userId;
+    var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/iframe?trackId="+soundcloudID+"&userId="+userId+"&day="+moment().format('YYYY-MM-DD');
     $('div#url > a').prop('href', url).text(url);
 
     //
