@@ -303,11 +303,11 @@ $( document ).ready(function() {
                     type: "POST",
                     crossDomain: true,
                     data : {
-                      id         : $('#soundcloudTitle').data('title'),
-                      userId     : userId,
-                      trackId    : soundcloudID,
-                      days       : moment().format("YYYY-MM-DD"),
-                      paragraph  : 0
+                      title     : $('#soundcloudTitle').data('title'),
+                      trackId   : soundcloudID,
+                      userId    : userId,
+                      days      : moment().format("YYYY-MM-DD") /*,
+                      paragraph : 0 */
                     } 
                   }); 
 
