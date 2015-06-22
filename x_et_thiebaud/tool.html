@@ -131,7 +131,7 @@ $( document ).ready(function() {
       $('span#me').html(me.username); 
     });
   });
-
+  
   /*
   init function
   */
@@ -160,7 +160,7 @@ $( document ).ready(function() {
         }
       }
 
-      $('#soundcloudTitle').data('soundcloudID', soundcloudID).html($title);
+      $('#soundcloudTitle').data('soundcloudID', soundcloudID).data('title', title).html($title);
     }
 
     // set soundcloud widget
@@ -303,7 +303,7 @@ $( document ).ready(function() {
                     type: "POST",
                     crossDomain: true,
                     data : {
-                      id         : $('#soundcloudTitle').text(),
+                      id         : $('#soundcloudTitle').data('title'),
                       userId     : userId,
                       trackId    : soundcloudID,
                       days       : moment().format("YYYY-MM-DD"),
