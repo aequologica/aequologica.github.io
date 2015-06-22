@@ -295,7 +295,30 @@ $( document ).ready(function() {
                 $('.progress').removeClass('progress-striped active');  
                 $('button#post').prop("disabled",false);
                 if (errorQueue.length == 0) {
-                  $('.progress-bar').addClass('progress-bar-success');   
+                  $('.progress-bar').addClass('progress-bar-success');
+
+                  // add parole to tebaldi
+                  var posting = $.ajax( {
+                    url : "https://tebaldi051108trial.hanatrial.ondemand.com/paroles", 
+                    type: "POST",
+                    crossDomain: true,
+                    data : {
+                      id         : $('#soundcloudTitle').text(),
+                      userId     : userId,
+                      trackId    : soundcloudID,
+                      days       : moment().format("YYYY-MM-DD"),
+                      paragraph  : 0
+                    } 
+                  }); 
+
+                  posting.done(function( msg ) {
+                    alert(msg);
+                  });
+                   
+                  posting.fail(function( jqXHR, textStatus ) {
+                    alert( "Request failed: " + textStatus );
+                  });
+
                 } else {
                   $('.progress-bar').addClass('progress-bar-warning');   
                 }
