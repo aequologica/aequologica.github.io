@@ -47,9 +47,10 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
     $.each( lignes, function( index, item ) {
       items.push( "<li id='"+item.id+"'>" + item.what + "</li>" );
       if (typeof paragraph !== "undefined") {
-        if (paragraph === parseInt(paragraph, 10)) {
-          if (paragraph > 0) {
-            if ((index % paragraph) == paragraph-1) {
+    	var intParagraph = parseInt(paragraph, 10);
+        if (paragraph == intParagraph) {
+          if (intParagraph > 0) {
+            if ((index % intParagraph) == intParagraph-1) {
               items.push( "<li id='"+item.id+"'>&nbsp;</li>" );
             }
           }
