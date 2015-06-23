@@ -142,6 +142,8 @@ $( document ).ready(function() {
     $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : 1 }).html('&nbsp;'); 
     $('button#loadFile').text('load ' + soundcloudID + '.txt');
 
+    var theURL = "";
+    
     // set title. only soundcloudID cannot be undefined
     {
       var $title;
@@ -162,9 +164,15 @@ $( document ).ready(function() {
 
       $('#soundcloudTitle').data('soundcloudID', soundcloudID).data('title', title).html($title);
     }
-
+    if (typeof permalink_url !== "undefined")  {
+        theURL = encodeURIComponent(permalink_url); 
+    } else {
+        theURL = "https%3A//api.soundcloud.com/tracks/"+soundcloudID;
+    }
+    
+    
     // set soundcloud widget
-    var $iframe = $('<iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/'+soundcloudID+'&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=true&callback=true"/>');
+    var $iframe = $('<iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url='+theURL+'&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=true&callback=true"/>');
 
     $('iframe').remove();
     $('div#revealMe').prepend($iframe).css( "display", "block");
