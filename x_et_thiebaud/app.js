@@ -5,7 +5,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
   
   var days_ok = [];
   if (typeof days !== "undefined") { 
-	  days_ok = _.map(days, function(day) { return moment(day); }); 
+    days_ok = _.map(days, function(day) { return moment(day); }); 
   }
   
   function getLigne(position) {
@@ -39,13 +39,13 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
       if (days_ok.length==0) {
           lignes.push({'id':val.id, 'when':val.timestamp, 'what': val.body});
       } else {
-	      $.each(days_ok, function( index, value ) {
-	        if (created_at.isSame(value, 'day') ) { 
-	          lignes.push({'id':val.id, 'when':val.timestamp, 'what': val.body});
-	          return false; 
-	        } 
-	        return true;
-	      });
+        $.each(days_ok, function( index, value ) {
+          if (created_at.isSame(value, 'day') ) { 
+            lignes.push({'id':val.id, 'when':val.timestamp, 'what': val.body});
+            return false; 
+          } 
+          return true;
+        });
       }
     });
 
@@ -59,7 +59,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
     $.each( lignes, function( index, item ) {
       items.push( "<li id='"+item.id+"'>" + item.what + "</li>" );
       if (typeof paragraph !== "undefined") {
-    	var intParagraph = parseInt(paragraph, 10);
+      var intParagraph = parseInt(paragraph, 10);
         if (paragraph == intParagraph) {
           if (intParagraph > 0) {
             if ((index % intParagraph) == intParagraph-1) {
@@ -77,8 +77,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
     }).appendTo( $appendTo || $(".container#main") );
   });
 
-  var widgetIframe = document.getElementById('sc-widget'),
-      widget       = SC.Widget(widgetIframe);
+  var widget = SC.Widget(document.getElementById('sc-widget'));
 
   var stop = null;
 
