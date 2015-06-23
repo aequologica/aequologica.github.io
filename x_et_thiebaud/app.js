@@ -1,4 +1,4 @@
-var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
+var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, secret_token) {
 
   var lignes = [];
   var currentRow = null;
@@ -17,7 +17,15 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
     return null;
   }
 
-  $.getJSON( "https://api.soundcloud.com/tracks/"+trackId+"?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", function( data ) {
+  
+  var trackURL    = "https://api.soundcloud.com/tracks/"+trackId+"?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
+  var commentsURL = "https://api.soundcloud.com/tracks/"+trackId+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
+  if (typeof secret_token !== "undefined") ){
+      trackURL = trackURL + "&secret_token="+secret_token;
+      commentsURL = commentsURL + "&secret_token="+secret_token;
+  }  
+  
+  $.getJSON(trackURL, function( data ) {
     $('meta[name=title]').prop("content", data.title);
     $('meta[name=description]').prop("content", data.description);
 
@@ -29,7 +37,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
     $('#description').linkify();
   });
   
-  $.getJSON( "https://api.soundcloud.com/tracks/"+trackId+"/comments?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", function( data ) {
+  $.getJSON( commentsURL, function( data ) {
 
     $.each( data, function( key, val ) {
 

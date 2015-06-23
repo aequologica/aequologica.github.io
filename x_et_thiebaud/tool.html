@@ -135,7 +135,7 @@ $( document ).ready(function() {
   /*
   init function
   */
-  function init(soundcloudID, title, permalink_url, uri) {
+  function init(soundcloudID, title, permalink_url, secret_uri, secret_token, uri) {
     // raz
     $('.progress').removeClass('progress-striped active');  
     $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
@@ -164,12 +164,14 @@ $( document ).ready(function() {
 
       $('#soundcloudTitle').data('soundcloudID', soundcloudID).data('title', title).html($title);
     }
-    if (typeof uri !== "undefined")  {
+    
+    if (typeof secret_uri !== "undefined")  {
+        theURL = encodeURIComponent(secret_uri);
+    } else if (typeof uri !== "undefined")  {
         theURL = encodeURIComponent(uri);
     } else {
         theURL = "https%3A//api.soundcloud.com/tracks/"+soundcloudID;
     }
-    
     
     // set soundcloud widget
     var $iframe = $('<iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url='+theURL+'&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=true&callback=true"/>');
@@ -180,7 +182,7 @@ $( document ).ready(function() {
     $('div#url > a').prop('href', url).text(url);
 
     //
-    var mySouncCloudModule = MySouncCloudModule(soundcloudID, undefined, '17366398');
+    var mySouncCloudModule = MySouncCloudModule(soundcloudID, undefined, '17366398', undefined, undefined, secret_token);
 
     function loadData(data) {
       $("#result").empty();
@@ -268,8 +270,13 @@ $( document ).ready(function() {
         setTimeout(function(i) {
           var ligne = qwe[i];
 /* */
+
+          var commentsURL = "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
+          if (typeof secret_token !== "undefined") ){
+            commentsURL = commentsURL + "&secret_token="+secret_token;
+          }
           SC.post(
-            "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", 
+                  commentsURL, 
             { 
               'comment[body]': ligne.text,
               'comment[timestamp]': ligne.timestamp
