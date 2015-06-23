@@ -180,7 +180,7 @@ $( document ).ready(function() {
     $('div#revealMe').prepend($iframe).css( "display", "block");
     var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/parole?trackId="+soundcloudID+"&userId="+userId+"&day="+moment().format('YYYY-MM-DD');
     if (typeof secret_token !== "undefined") {
-        url = url + + "&secret_token="+secret_token;
+        url = url + "&secret_token="+secret_token;
     }
     $('div#url > a').prop('href', url).text(url);
 
