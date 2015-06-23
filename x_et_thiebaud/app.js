@@ -35,6 +35,9 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
     $('#title').text(data.title);
     $('#description').html(desc);
     $('#description').linkify();
+    
+    var url =  "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/"+trackId;
+    $('div#url > a').prop('href', url).text(url);
   });
   
   $.getJSON( commentsURL, function( data ) {
