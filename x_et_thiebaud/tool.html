@@ -272,7 +272,7 @@ $( document ).ready(function() {
 /* */
 
           var commentsURL = "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
-          if (typeof secret_token !== "undefined") ){
+          if (typeof secret_token !== "undefined") {
             commentsURL = commentsURL + "&secret_token="+secret_token;
           }
           SC.post(
