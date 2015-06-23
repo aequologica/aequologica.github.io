@@ -178,7 +178,10 @@ $( document ).ready(function() {
 
     $('iframe').remove();
     $('div#revealMe').prepend($iframe).css( "display", "block");
-    var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/iframe?trackId="+soundcloudID+"&userId="+userId+"&day="+moment().format('YYYY-MM-DD');
+    var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/parole?trackId="+soundcloudID+"&userId="+userId+"&day="+moment().format('YYYY-MM-DD');
+    if (typeof secret_token !== "undefined") {
+        url = url + + "&secret_token="+secret_token;
+    }
     $('div#url > a').prop('href', url).text(url);
 
     //
@@ -321,13 +324,15 @@ $( document ).ready(function() {
                       title     : $('#soundcloudTitle').data('title'),
                       trackId   : soundcloudID,
                       userId    : userId,
-                      days      : moment().format("YYYY-MM-DD") /*,
+                      days      : moment().format("YYYY-MM-DD"),
+                      secretToken : secret_token/*,
                       paragraph : 0 */
                     } 
                   }); 
 
                   posting.done(function( msg ) {
-                    alert(msg);
+                      var url =  "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/"+soundcloudID;
+                      $('div#url > a').prop('href', url).text(url);
                   });
                    
                   posting.fail(function( jqXHR, textStatus ) {
