@@ -377,7 +377,7 @@ $( document ).ready(function() {
           }); 
         } else  {
           if (typeof data.id != 'undefined') {
-            init(data.id, data.title, data.permalink_url, data.uri);
+            init(data.id, data.title, data.permalink_url, data.secret_uri, data.secret_token, data.uri);
           } else {
             alert('not able to get an ID from soudcloud URL : ' + soudcloudURL);
           }
