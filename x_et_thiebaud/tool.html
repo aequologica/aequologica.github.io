@@ -165,7 +165,7 @@ $( document ).ready(function() {
       $('#soundcloudTitle').data('soundcloudID', soundcloudID).data('title', title).html($title);
     }
     if (typeof permalink_url !== "undefined")  {
-        theURL = encodeURIComponent(permalink_url); 
+        theURL = /*encodeURIComponent(*/permalink_url/*)*/;
     } else {
         theURL = "https%3A//api.soundcloud.com/tracks/"+soundcloudID;
     }
