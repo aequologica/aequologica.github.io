@@ -16,6 +16,18 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
     }
     return null;
   }
+
+  $.getJSON( "https://api.soundcloud.com/tracks/"+trackId+"?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", function( data ) {
+    $('meta[name=title]').prop("content", data.title);
+    $('meta[name=description]').prop("content", data.description);
+
+    var desc  = '<p>' + data.description.replace(/\n([ \t]*\n)+/g, '</p><p>').replace('\n', '<br />') + '</p>';
+    
+    $('head>title').text(data.title);
+    $('#title').text(data.title);
+    $('#description').html(desc);
+    $('#description').linkify();
+  });
   
   $.getJSON( "https://api.soundcloud.com/tracks/"+trackId+"/comments?client_id=506d2e8c1cd057aa783906b0b1c8fe0d", function( data ) {
 
@@ -71,7 +83,6 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days) {
   var stop = null;
 
   function durationformat(coucou) {
-    //return coucou;
     return numeral(Math.floor(coucou/1000)).format('00:00:00');
   }
 
