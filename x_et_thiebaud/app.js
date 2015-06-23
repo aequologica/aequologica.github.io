@@ -20,7 +20,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
   
   var trackURL    = "https://api.soundcloud.com/tracks/"+trackId+"?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
   var commentsURL = "https://api.soundcloud.com/tracks/"+trackId+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
-  if (typeof secret_token !== "undefined") {
+  if (typeof secret_token !== "undefined" && secret_token) {
       trackURL = trackURL + "&secret_token="+secret_token;
       commentsURL = commentsURL + "&secret_token="+secret_token;
   }  
