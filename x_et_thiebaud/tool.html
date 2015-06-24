@@ -61,6 +61,7 @@
     </form>
 
     <div id="revealMe" style="display:none;">
+
       <div id="url"><a href=""></a></div>
 
       <div class="row" style="margin-bottom: 1em">
@@ -71,6 +72,8 @@
       <hr/>
 
       <div class="row">
+        <div class="col-md-12" id="feedback"></div>
+
         <ul class="col-md-6" id="result">
         </ul>   
         <div class="col-md-6">
@@ -187,7 +190,7 @@ $( document ).ready(function() {
     $('div#url > a').prop('href', url).text(url);
     
     //
-    var mySouncCloudModule = MySouncCloudModule(soundcloudID, undefined, '17366398', undefined, undefined, secret_token);
+    var mySouncCloudModule = MySouncCloudModule(soundcloudID, undefined, userId, undefined, undefined, secret_token);
 
     function loadData(data) {
       $("#result").empty();
@@ -220,13 +223,13 @@ $( document ).ready(function() {
       loadData(data);
     });
 
-	  $(document.body).on( 'keypress', 'textarea#entry', undefined, function(event) {
-	    if (event.which === 13  && !event.shiftKey) { // if is enter
-	      event.preventDefault(); // don't submit form
-	      var data = $(this).val();
-      	loadData(data);
-	    }
-	  });   
+	$(document.body).on( 'keypress', 'textarea#entry', undefined, function(event) {
+	  if (event.which === 13  && !event.shiftKey) { // if is enter
+	    event.preventDefault(); // don't submit form
+	    var data = $(this).val();
+    	loadData(data);
+	  }
+	});   
     
     function loadFile(soundcloudID) {
       $.get( soundcloudID+".txt", function( data ) {
@@ -281,7 +284,7 @@ $( document ).ready(function() {
             commentsURL = commentsURL + "&secret_token="+secret_token;
           }
           SC.post(
-                  commentsURL, 
+            commentsURL, 
             { 
               'comment[body]': ligne.text,
               'comment[timestamp]': ligne.timestamp
@@ -363,8 +366,8 @@ $( document ).ready(function() {
       errorQueue = [];
 
       $.each($('ul#result > li'), function( index, value ) {
-  		  $(this).children().remove().end().text($.trim($(this).text()));
-	    });
+  		$(this).children().remove().end().text($.trim($(this).text()));
+	  });
     });
   }
 
@@ -392,7 +395,7 @@ $( document ).ready(function() {
       });
     } else {
       console.log('empty soudcloudURL, loading hardcoded 200813526.');
-    	init('200813526', "C'est pas beau à voir", "http://soundcloud.com/christophe-thiebaud/cest-pas-beau-a-voir");
+      init('200813526', "C'est pas beau à voir", "http://soundcloud.com/christophe-thiebaud/cest-pas-beau-a-voir");
     }
   });
 

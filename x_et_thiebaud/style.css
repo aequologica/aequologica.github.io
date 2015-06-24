@@ -135,8 +135,12 @@ body {
 }
 
 #feedback {
-  display: none;
-  font-size: .5em;
+  // display: none;
+  // font-size: .5em;
+}
+
+ul.my-new-list > li:not([data-when=""]) {
+  cursor: pointer;
 }
 
 
