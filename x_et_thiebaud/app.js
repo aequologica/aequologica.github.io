@@ -103,7 +103,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
       var $_this_ = $(this);
       var milliseconds = $_this_.data('when');
       if (typeof milliseconds !== "undefined") {
-        $('span#feedback').html(milliseconds);
+        $('span#feedback').html(durationformat(milliseconds));
         widget.seekTo(milliseconds);
       }
     });
