@@ -108,19 +108,23 @@
           </button>
           &nbsp;
           <span id="feedback"></span>
+          <button style="float:right;" "type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-target="#collapsible">show/hide input <i class="fa fa-caret-square-o-down"></i></button>
         </div>
 
-        <div class="col-md-6" >
+
+        <div class="col-md-6" style="margin-bottom:1em;">
           <ul id="result" style="position: relative; display: table; width:100%;">
           </ul>   
         </div>
         <div class="col-md-6 form">
-          <div class="input-group">
-            <span class="input-group-btn">
-              <button id="fromRightToLeft" class="btn btn-default btn-xs"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
-            </span>
-            <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to &lt;&lt;</div>
-            <textarea id="entry" class="form-control" rows="12"></textarea>
+          <div id="collapsible" class="collapse in">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button id="fromRightToLeft" class="btn btn-default btn-xs"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
+              </span>
+              <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to &lt;&lt;</div>
+              <textarea id="entry" class="form-control" rows="12"></textarea>
+            </div>
           </div>
         </div>
       </div>   
@@ -246,7 +250,7 @@ $( document ).ready(function() {
     //
     //
 
-    function loadData(data) {
+    function loadData(data, collapse) {
       $("ul#result").empty();
       
       var lines = data.split('\n');
@@ -306,11 +310,15 @@ $( document ).ready(function() {
           console.log('already done!');
         }
       });
+      
+      if (typeof collapse !== undefined && collapse) {
+          $('#collapsible').collapse('hide');
+      }
     }
 
     $('button#fromRightToLeft').click(function() {
       var data = $('textarea#entry').val();
-      loadData(data);
+      loadData(data, true);
     });
 
     $(document.body).on( 'keypress', 'textarea#entry', undefined, function(event) {
