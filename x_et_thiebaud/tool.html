@@ -72,7 +72,13 @@
       <hr/>
 
       <div class="row">
-        <div class="col-md-12" id="feedback"></div>
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default btn-xs" id="seek_to_zero">
+            <i class="fa fa-step-backward"></i>
+          </button>
+          &nbsp;
+          <span id="feedback"></span>
+        </div>
 
         <ul class="col-md-6" id="result">
         </ul>   
@@ -145,7 +151,7 @@ $( document ).ready(function() {
     $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
     $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : 1 }).html('&nbsp;'); 
     $('button#loadFile').text('load ' + soundcloudID + '.txt');
-
+    
     var theURL = "";
     
     // set title. only soundcloudID cannot be undefined

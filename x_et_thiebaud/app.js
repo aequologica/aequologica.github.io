@@ -1,6 +1,10 @@
 var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, secret_token) {
 
   var widget = SC.Widget(document.getElementById('sc-widget'));
+  
+  $('button#seek_to_zero').click(function() {
+      widget.seekTo(0);
+  });
 
   var lignes = [];
   var days_ok = [];
@@ -97,7 +101,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
       var $_this_ = $(this);
       var milliseconds = $_this_.data('when');
       if (typeof milliseconds !== "undefined") {
-        $('div#feedback').html(milliseconds);
+        $('span#feedback').html(milliseconds);
         widget.seekTo(milliseconds);
       }
     });
@@ -115,33 +119,33 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
 
   widget.bind(SC.Widget.Events.READY, function() {
 
-    $('div#feedback').html('ready');
+    $('span#feedback').html('ready');
 
     widget.bind(SC.Widget.Events.PLAY, function() {
       widget.getPosition(function(currentPosition){
         $('li').removeClass('emphased');
-        $('div#feedback').html('played @ '+ durationformat(currentPosition));
+        $('span#feedback').html('played @ '+ durationformat(currentPosition));
       });
     });   
 
     widget.bind(SC.Widget.Events.PAUSE, function() {
       widget.getPosition(function(currentPosition){
         $('li').removeClass('emphased');
-        $('div#feedback').html('paused @ '+ durationformat(currentPosition));
+        $('span#feedback').html('paused @ '+ durationformat(currentPosition));
       });
     });      
 
     widget.bind(SC.Widget.Events.FINISH, function() {
       widget.getPosition(function(currentPosition){
         $('li').removeClass('emphased');
-        $('div#feedback').html('finished @ ' + durationformat(currentPosition));
+        $('span#feedback').html('finished @ ' + durationformat(currentPosition));
       });
     });   
 
     widget.bind(SC.Widget.Events.SEEK, function() {
       widget.getPosition(function(currentPosition){
         $('li').removeClass('emphased');
-        $('div#feedback').html('seeked @ ' + durationformat(currentPosition));
+        $('span#feedback').html('seeked @ ' + durationformat(currentPosition));
       });
     });   
 
@@ -152,7 +156,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
           $('li').not('li#'+ligne.id).removeClass('emphased');
           $('li#'+ligne.id).addClass('emphased').textillate({ in: { effect: 'tada' } });
         }
-        $('div#feedback').html(durationformat(currentPosition));
+        $('span#feedback').html(durationformat(currentPosition));
       });
     });
 
