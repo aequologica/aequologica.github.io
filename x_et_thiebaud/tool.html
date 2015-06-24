@@ -25,10 +25,10 @@
   <link rel="shortcut icon" href="/favicon2.ico">  
 
   <style type="text/css">
-  .done {
+  ul#result > li.done > span:first-child {
   	text-decoration: line-through;
   }
-  ul#result > li:not(.done):hover { /* > span:first-child */
+  ul#result > li:not(.done):hover { 
     background-color: #f0f0f0;
     opacity: 1;
     cursor: pointer; 
@@ -51,11 +51,11 @@
   <div id="main" class="container">
 
     <div class="row" style="margin-bottom: 1em;">
-      <h1 class="col-md-6"><span id="title" style="float:left;">SC Commentor</span></h1>
-      <div class="col-md-6">
+      <h2 class="col-md-8"><span id="title" style="float:left;"></span></h2>
+      <div class="col-md-4">
         <span style="float:right; text-align: right;">
-          <h2><span id="me" >anonymous</span></h2>
-          <div id="help">Perdu ? l'aide est ici : <a href="help" target ="help"><i class="fa fa-info-circle"></a></i></div>
+          <h3><span id="me" >anonymous</span></h3>
+          <div id="help">Felling lost ? <a href="help" target ="help" style="cursor:help;"><i class="fa fa-info-circle"></a></i></div>
         </span>
       </div>
     </div>
