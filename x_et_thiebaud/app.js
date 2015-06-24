@@ -1,4 +1,4 @@
-var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, secret_token) {
+var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, secret_token, inited) {
 
   var widget = SC.Widget(document.getElementById('sc-widget'));
   
@@ -29,18 +29,20 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
       commentsURL = commentsURL + "&secret_token="+secret_token;
   }  
 
-  // get track info
-  $.getJSON(trackURL, function( data ) {
-    $('meta[name=title]').prop("content", data.title);
-    $('meta[name=description]').prop("content", data.description);
+  if (typeof inited === "undefined" || !inited) {
+    // get track info
+    $.getJSON(trackURL, function( data ) {
+      $('meta[name=title]').prop("content", data.title);
+      $('meta[name=description]').prop("content", data.description);
 
-    var desc  = '<p>' + data.description.replace(/\n([ \t]*\n)+/g, '</p><p>').replace('\n', '<br />') + '</p>';
-    
-    $('head>title').text(data.title);
-    $('#title').text(data.title);
-    $('#description').html(desc);
-    $('#description').linkify();
-  });
+      var desc  = '<p>' + data.description.replace(/\n([ \t]*\n)+/g, '</p><p>').replace('\n', '<br />') + '</p>';
+      
+      $('head>title').text(data.title);
+      $('#title').text(data.title);
+      $('#description').html(desc);
+      $('#description').linkify();
+    });
+  }
   
   // does trackID already exists in tebaldi ?
   var tebaldiURL =  "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/"+trackId;

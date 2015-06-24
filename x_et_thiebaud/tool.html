@@ -26,7 +26,7 @@
 
   <style type="text/css">
   ul#result > li.done > span:first-child {
-  	text-decoration: line-through;
+    text-decoration: line-through;
   }
   ul#result > li:not(.done):hover { 
     background-color: #f0f0f0;
@@ -39,8 +39,11 @@
     cursor: pointer; 
   }
 
-  h1, h2, h3 {
-  	margin-top: 0;
+  h1, h2, h3, h4{
+    margin-top: 0;
+  }
+  hr {
+    margin: 0 0 1em 0;
   }
   </style>
   
@@ -50,30 +53,37 @@
 
   <div id="main" class="container">
 
-    <div class="row" style="margin-bottom: 1em;">
-      <h2 class="col-md-8"><span id="title" style="float:left;"></span></h2>
+    <div class="row" style="padding-bottom: 1em;">
+      <div class="col-md-8">
+        <h3 style="float:left; text-align: left;">
+          <span id="title"></span>
+        </h3>
+      </div>
       <div class="col-md-4">
         <span style="float:right; text-align: right;">
-          <h3><span id="me" >anonymous</span></h3>
+          <h4><span id="me" >anonymous</span></h4>
           <div id="help">Feeling lost ? <a href="help" target ="help" style="cursor:help;"><i class="fa fa-info-circle"></a></i></div>
         </span>
       </div>
     </div>
 
-    <form id="id_from_url" class="form-inline"  style="margin-bottom: 1em">
-      <label for="soundcloudURL">soundcloud URL</label>
-      <input type="text" class="form-control" id="soundcloudURL" placeholder="https://soundcloud.com/…" style="width:80%" value="">
-      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-    </form>
+    <div class="row" style="padding-bottom: 1em;">
+      <div class="col-md-12">
+        <form id="id_from_url" class="form"  style="position :relative;">
+          <div class="input-group">
+            <label class="input-group-addon" for="soundcloudURL">soundcloud URL</label>
+            <input id="soundcloudURL" type="text" class="form-control" placeholder="https://soundcloud.com/…" value="" >
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <div id="revealMe" style="display:none;">
 
       <div id="url"><a href=""></a></div>
-
-      <div class="row" style="margin-bottom: 1em">
-        <h3 id="soundcloudTitle" class="col-md-6" style="float:left;">no soundcloud ID</h3>
-        <div class="col-md-6" ><button id="loadFile" type="button" class="btn btn-default" style="float:right;">"<i class="fa fa-upload"></i></button> </div>
-      </div>
 
       <hr/>
 
@@ -88,10 +98,14 @@
 
         <ul class="col-md-6" id="result">
         </ul>   
-        <div class="col-md-6">
-          <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to &lt;&lt;</div>
-          <textarea id="entry" style="width:100%;"></textarea>
-          <button id="fromRightToLeft" type="button" class="btn btn-default" style="margin-bottom: 1em"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
+        <div class="col-md-6 form">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button id="fromRightToLeft" class="btn btn-default"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
+            </span>
+            <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to &lt;&lt;</div>
+            <textarea id="entry" class="form-control" rows="12"></textarea>
+          </div>
         </div>
       </div>   
 
@@ -143,41 +157,51 @@ $( document ).ready(function() {
   SC.connect(function() {
     SC.get('/me', function(me) { 
       userId = me.id;
-      $('span#me').html(me.username); 
+      var $me = $('<a>', { text: me.username, href: me.permalink_url, target: me.username });
+      $('span#me').html($me); 
     });
   });
-  
+
   /*
   init function
   */
-  function init(soundcloudID, title, permalink_url, secret_uri, secret_token, uri) {
+  function init(trackId, title, description, permalink_url, secret_uri, secret_token, uri) {
     // raz
     $('.progress').removeClass('progress-striped active');  
     $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
     $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : 1 }).html('&nbsp;'); 
-    $('button#loadFile').text('load ' + soundcloudID + '.txt');
-    
+
     var theURL = "";
     
-    // set title. only soundcloudID cannot be undefined
+    // set title (only trackId cannot be undefined)
     {
-      var $title;
       if (typeof title !== "undefined") {
-        var tit = title + ' [' + soundcloudID + ']';
+        var $title;
         if (typeof permalink_url !== "undefined") {
-          $title = $('<a>', { text: tit, href: permalink_url, target: 'soundcloud' });
+          $title = $('<a>', { text: title, href: permalink_url, target: 'soundcloud' });
         } else {
-          $title = $('<span>', { text: tit });
+          $title = $('<span>', { text: title });
         }
       } else {
         if (typeof permalink_url !== "undefined") {
-          $title = $('<a>', { text: soundcloudID, href: permalink_url, target: 'soundcloud'  });
+          title = permalink_url;
+          $title = $('<a>', { text: trackId, href: permalink_url, target: 'soundcloud'  });
         } else {
-          $title = $('<span>', { text: soundcloudID });
+          title = trackId;
+          $title = $('<span>', { text: trackId });
         }
       }
 
-      $('#soundcloudTitle').data('soundcloudID', soundcloudID).data('title', title).html($title);
+      $('meta[name=title]').prop("content", title);
+      $('head > title').text(title);
+      $('#title').data('trackId', trackId).data('title', title).html($title);
+
+      if (typeof description != "undefined" && description) {
+        $('meta[name=description]').prop("content", description);
+        var $desc  = $('<p>').html(description.replace(/\n([ \t]*\n)+/g, '</p><p>').replace('\n', '<br />'));
+        $('#description').html($desc);
+        $('#description').linkify();
+      }
     }
     
     if (typeof secret_uri !== "undefined")  {
@@ -185,7 +209,7 @@ $( document ).ready(function() {
     } else if (typeof uri !== "undefined")  {
         theURL = encodeURIComponent(uri);
     } else {
-        theURL = "https%3A//api.soundcloud.com/tracks/"+soundcloudID;
+        theURL = "https%3A//api.soundcloud.com/tracks/"+trackId;
     }
     
     // set soundcloud widget
@@ -194,14 +218,17 @@ $( document ).ready(function() {
     $('iframe').remove();
     
     $('div#revealMe').prepend($iframe).css( "display", "block");
-    var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/onthefly?trackId="+soundcloudID+"&userId="+userId+"&day="+moment().format('YYYY-MM-DD');
+    var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/onthefly?trackId="+trackId+"&userId="+userId+"&day="+moment().format('YYYY-MM-DD');
     if (typeof secret_token !== "undefined") {
         url = url + "&secretToken="+secret_token;
     }
     $('div#url > a').prop('href', url).text(url);
     
     //
-    var mySouncCloudModule = MySouncCloudModule(soundcloudID, undefined, userId, undefined, undefined, secret_token);
+    //
+    var mySouncCloudModule = MySouncCloudModule(trackId, undefined, userId, undefined, undefined, secret_token, true);
+    //
+    //
 
     function loadData(data) {
       $("ul#result").empty();
@@ -244,8 +271,6 @@ $( document ).ready(function() {
               }
             });
 
-            // 
-
           }); 
         } else {
           console.log('already done!');
@@ -258,31 +283,14 @@ $( document ).ready(function() {
       loadData(data);
     });
 
-	$(document.body).on( 'keypress', 'textarea#entry', undefined, function(event) {
-	  if (event.which === 13  && !event.shiftKey) { // if is enter
-	    event.preventDefault(); // don't submit form
-	    var data = $(this).val();
-    	loadData(data);
-	  }
-	});   
-    
-    function loadFile(soundcloudID) {
-      $.get( soundcloudID+".txt", function( data ) {
-      	loadData(data);
-        $('button#loadFile').html('<i class="fa fa-upload"></i>&nbsp;' + soundcloudID + '.txt');
-      }).fail(function() {
-        $('button#loadFile').html('<i class="fa fa-upload"></i>&nbsp;' + soundcloudID + '.txt not found');
-      });
-    }
-
-    $('button#load').click(function(event) {
-      var soundcloudID = $('#soundcloudTitle').data('soundcloudID');
-      loadFile(soundcloudID);
+    $(document.body).on( 'keypress', 'textarea#entry', undefined, function(event) {
+      if (event.which === 13  && !event.shiftKey) { // if is enter
+        event.preventDefault(); // don't submit form
+        var data = $(this).val();
+        loadData(data);
+      }
     });
-
-    loadFile(soundcloudID);
-
-    // var arrayOfCommentsToBePosted = [];
+    
     var errorQueue = [];
 
     $('button#post').click(function(event) {
@@ -309,7 +317,7 @@ $( document ).ready(function() {
       arrayOfCommentsToBePosted.reverse();
 
       $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
-	    $('.progress').addClass('progress-striped active');  
+      $('.progress').addClass('progress-striped active');  
       $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : arrayOfCommentsToBePosted.length }).html('&nbsp;'); 
       $('div#errors').empty();
       errorQueue= [];
@@ -323,8 +331,7 @@ $( document ).ready(function() {
         setTimeout(function(i) {
           var commentToBePosted = arrayOfCommentsToBePosted[i];
 /* */
-
-          var commentsURL = "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
+          var commentsURL = "https://api.soundcloud.com/tracks/"+trackId+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
           if (typeof secret_token !== "undefined") {
             commentsURL = commentsURL + "&secret_token="+secret_token;
           }
@@ -371,8 +378,8 @@ $( document ).ready(function() {
                     type: "POST",
                     crossDomain: true,
                     data : {
-                      title     : $('#soundcloudTitle').data('title'),
-                      trackId   : soundcloudID,
+                      title     : $('#title').data('title'),
+                      trackId   : trackId,
                       userId    : userId,
                       days      : moment().format("YYYY-MM-DD"),
                       secretToken : secret_token/*,
@@ -381,7 +388,7 @@ $( document ).ready(function() {
                   }); 
 
                   posting.done(function( msg ) {
-                      var url =  "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/"+soundcloudID;
+                      var url =  "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/"+trackId;
                       $('div#url > a').prop('href', url).text(url);
                   });
                    
@@ -408,11 +415,6 @@ $( document ).ready(function() {
       $('ul#result > li > span.timestamp:last-child').remove();
       $('div#errors').empty();
       errorQueue = [];
-      /*
-      $.each($('ul#result > li'), function( index, value ) {
-  		  $(this).children().remove().end().text($.trim($(this).text()));
-	    });
-      */
     });
   }
 
@@ -432,7 +434,7 @@ $( document ).ready(function() {
           }); 
         } else  {
           if (typeof data.id != 'undefined') {
-            init(data.id, data.title, data.permalink_url, data.secret_uri, data.secret_token, data.uri);
+            init(data.id, data.title, data.description, data.permalink_url, data.secret_uri, data.secret_token, data.uri);
           } else {
             alert('not able to get an ID from soudcloud URL : ' + soudcloudURL);
           }
@@ -440,7 +442,7 @@ $( document ).ready(function() {
       });
     } else {
       console.log('empty soudcloudURL, loading hardcoded 200813526.');
-      init('200813526', "C'est pas beau à voir", "http://soundcloud.com/christophe-thiebaud/cest-pas-beau-a-voir");
+      init('200813526', "C'est pas beau à voir", undefined, "http://soundcloud.com/christophe-thiebaud/cest-pas-beau-a-voir");
     }
   });
 
