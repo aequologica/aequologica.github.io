@@ -28,11 +28,17 @@
   .done {
   	text-decoration: line-through;
   }
-  ul#result>li:not(.done):hover {
+  ul#result > li:not(.done) { /* > span:first-child:hover */
     background-color: #f0f0f0;
     opacity: 1;
     cursor: pointer; 
   }
+  ul#result > li.done > span:last-child:hover {
+    background-color: #f0f0f0;
+    opacity: 1;
+    cursor: pointer; 
+  }
+
   h1, h2, h3 {
   	margin-top: 0;
   }
@@ -130,7 +136,7 @@ $( document ).ready(function() {
   // initialize client with app credentials
   SC.initialize({
     client_id: '506d2e8c1cd057aa783906b0b1c8fe0d',
-    redirect_uri: 'http://aequologica.net/callback.html'
+    redirect_uri: 'http://localhost/callback.html'
   });
 
   // initiate auth popup
@@ -198,24 +204,48 @@ $( document ).ready(function() {
     var mySouncCloudModule = MySouncCloudModule(soundcloudID, undefined, userId, undefined, undefined, secret_token);
 
     function loadData(data) {
-      $("#result").empty();
+      $("ul#result").empty();
       
       var lines = data.split('\n');
 
       for(var i = 0; i < lines.length; i++){
         var ligne = lines[i].trim();
         ligne = ligne.length == 0 ? '&nbsp;' : ligne;
-        $( "#result" ).append( $('<li>').html(ligne) );
+        var $li = $('<li>');
+        var $span = $('<span>');
+        $span.html(ligne);
+        $li.append($span);
+        $( "ul#result" ).append( $li );
       }
 
-      $( "ul#result>li" ).click(function() {
+      $( "ul#result > li > span:first-child" ).click(function() {
         var $_this_ = $(this);
-        if (!$_this_.hasClass('done')) {
+        var $parent = $_this_.parent();
+        if (!$parent.hasClass('done')) {
           mySouncCloudModule.getPosition(function(position) {
             var tex = $_this_.text();
-            $_this_.addClass('done');
-            $_this_.append($('<span style="float:right">').html('&nbsp;['+position+']'));
-            qwe.push({'text': tex, 'timestamp': position});
+            $parent.addClass('done');
+            var $timestampSpan = $('<span>', { 
+              "style" : "float:right", 
+              "class": "timestamp"
+            });
+            $timestampSpan.html('&nbsp;['+position+']');
+            $timestampSpan.data('position', position);
+            $parent.append($timestampSpan);
+
+            $timestampSpan.click(function(event) {
+              var $_this_2 = $(this);
+              var $parent2 = $_this_2.parent();
+              if ($parent2.hasClass('done')) {
+                $parent2.removeClass('done');
+                $_this_2.remove();
+              } else {
+                console.log('not yet done!');
+              }
+            });
+
+            // 
+
           }); 
         } else {
           console.log('already done!');
@@ -252,36 +282,46 @@ $( document ).ready(function() {
 
     loadFile(soundcloudID);
 
-    var qwe = [];
+    // var arrayOfCommentsToBePosted = [];
     var errorQueue = [];
 
     $('button#post').click(function(event) {
 
-      if (qwe.length == 0) {
+      var arrayOfCommentsToBePosted = [];
+
+      $.each($('ul#result > li.done'), function( index, value ) {
+        var tex = $(this).children("span:first").text();
+        var position = $(this).children("span.timestamp:last").data("position");
+        if (typeof tex !== "undefined" && typeof position !== "undefined") {
+          arrayOfCommentsToBePosted.push({'text': tex, 'timestamp': position});
+        }
+      });
+
+      if (arrayOfCommentsToBePosted.length == 0) {
         $('div#errors').empty().append($('<span/>', {text:'nothing to post !', class:"alert alert-info", role:"alert"})); 
         return;
       }
 
-      qwe.sort(function(a, b) {
+      arrayOfCommentsToBePosted.sort(function(a, b) {
           return +a.timestamp - +b.timestamp;
       });
 
-      qwe.reverse();
+      arrayOfCommentsToBePosted.reverse();
 
       $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
 	    $('.progress').addClass('progress-striped active');  
-      $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
+      $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : arrayOfCommentsToBePosted.length }).html('&nbsp;'); 
       $('div#errors').empty();
       errorQueue= [];
 
-      var delta = 1200; // milliseconds between POSTs
+      var delta = 1234; // milliseconds between POSTs (more than 1 second, please)
 
       $('button#post').prop("disabled",true);
       
-      for (var index = 0; index < qwe.length; index++) {
+      for (var index = 0; index < arrayOfCommentsToBePosted.length; index++) {
 
         setTimeout(function(i) {
-          var ligne = qwe[i];
+          var commentToBePosted = arrayOfCommentsToBePosted[i];
 /* */
 
           var commentsURL = "https://api.soundcloud.com/tracks/"+soundcloudID+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
@@ -291,13 +331,13 @@ $( document ).ready(function() {
           SC.post(
             commentsURL, 
             { 
-              'comment[body]': ligne.text,
-              'comment[timestamp]': ligne.timestamp
+              'comment[body]': commentToBePosted.text,
+              'comment[timestamp]': commentToBePosted.timestamp
             }, 
             function(response, error) { 
 /* */
-              var percent = Math.ceil((100.0*(i+1))/qwe.length)+'%';
-              $('.progress-bar').css('width', percent).attr('aria-valuenow', i).text(ligne.text)  ;  
+              var percent = Math.ceil((100.0*(i+1))/arrayOfCommentsToBePosted.length)+'%';
+              $('.progress-bar').css('width', percent).attr('aria-valuenow', i).text(commentToBePosted.text)  ;  
 /*
               var error = 0; 
 */
@@ -319,7 +359,7 @@ $( document ).ready(function() {
                 // console.log(response); 
               }
 
-              if (i == qwe.length-1) {
+              if (i == arrayOfCommentsToBePosted.length-1) {
                 $('.progress').removeClass('progress-striped active');  
                 $('button#post').prop("disabled",false);
                 if (errorQueue.length == 0) {
@@ -361,18 +401,18 @@ $( document ).ready(function() {
     });
 
     $('button#reset').click(function(event) {
-      qwe = [];
-      
       $('.progress').removeClass('progress-striped active');
       $('.progress-bar').removeClass('progress-bar-success');   
-      $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : qwe.length }).html('&nbsp;'); 
+      $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : $("ul#result > li").length }).html('&nbsp;'); 
       $('ul#result > li').removeClass('done');
+      $('ul#result > li > span.timestamp:last-child').remove();
       $('div#errors').empty();
       errorQueue = [];
-
+      /*
       $.each($('ul#result > li'), function( index, value ) {
-  		$(this).children().remove().end().text($.trim($(this).text()));
-	  });
+  		  $(this).children().remove().end().text($.trim($(this).text()));
+	    });
+      */
     });
   }
 
