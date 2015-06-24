@@ -1,6 +1,7 @@
 { "name": "chansonettes", "key": "chansonettes", "nodes":
   [
-   { "id": "bach"            , "value": { "label": "J.S. Bach"                                                                                } },
+    { "id": "sections"        , "value": { "label": "/"                                                                                        } },
+    { "id": "bach"            , "value": { "label": "J.S. Bach"                                                                                } },
     { "id": "bwv1018"         , "value": { "label": "bwv1018"                         , "url": "/bwv1018/"                                     } },
     { "id": "rimbaud"         , "value": { "label": "Rimbaud"                                                                                  } },
     { "id": "julien"          , "value": { "label": "JuLieN"                                                                                   } },
@@ -22,6 +23,13 @@
     { "id": "tool"            , "value": { "label": "Outil"                           , "url": "/x_et_thiebaud/tool.html", "shape" : "diamond" } }
   ], "links":
   [
+    { "u": "sections"         , "v": "bach"           , "value": {} },
+    { "u": "sections"         , "v": "rimbaud"        , "value": {} },
+    { "u": "sections"         , "v": "verlaine"       , "value": {} },
+    { "u": "sections"         , "v": "donutsfm"       , "value": {} },
+    { "u": "sections"         , "v": "julien"         , "value": {} },
+    { "u": "sections"         , "v": "burns"          , "value": {} },
+    { "u": "sections"         , "v": "mugnier"        , "value": {} },
     { "u": "bach"             , "v": "bwv1018"        , "value": {} },
     { "u": "rimbaud"          , "v": "lebateauivre"   , "value": {} },
     { "u": "rimbaud"          , "v": "larme"          , "value": {} },
