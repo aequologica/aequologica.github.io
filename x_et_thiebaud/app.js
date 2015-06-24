@@ -32,15 +32,25 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
   if (typeof inited === "undefined" || !inited) {
     // get track info
     $.getJSON(trackURL, function( data ) {
-      $('meta[name=title]').prop("content", data.title);
-      $('meta[name=description]').prop("content", data.description);
-
-      var desc  = '<p>' + data.description.replace(/\n([ \t]*\n)+/g, '</p><p>').replace('\n', '<br />') + '</p>';
-      
-      $('head>title').text(data.title);
-      $('#title').text(data.title);
-      $('#description').html(desc);
-      $('#description').linkify();
+      if (typeof data.title !== "undefined" && data.title) {
+        $('meta[name=title]').prop("content", data.title);
+        $('head>title').text(data.title);
+        $('#title').text(data.title);
+      }
+        
+      if (typeof data.description !== "undefined" && data.description) {
+        $('meta[name=description]').prop("content", data.description);
+    
+        var desc  = $('<p>');
+            
+        desc.html(data.description
+                .replace(/@([^\s]+)/g, "@<a href='https://soundcloud.com/$1'>$1</a>")
+                .replace(/\n\s*\n+/g, '</p><p>')
+                .replace(/\n/g, '<br/>'));
+            
+        $('#description').html(desc);
+        $('#description').linkify();
+      }
     });
   }
   
