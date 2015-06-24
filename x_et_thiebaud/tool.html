@@ -239,26 +239,29 @@ $( document ).ready(function() {
         var ligne = lines[i].trim();
         ligne = ligne.length == 0 ? '&nbsp;' : ligne;
         var $li = $('<li>');
-        var $span = $('<span>');
+        var $span = $('<span>', { 
+            "style" : "width:100%"
+        });
         $span.html(ligne);
         $li.append($span);
         $( "ul#result" ).append( $li );
       }
       
       var removeMe = function(event) {
-        var $_this_2 = $(this);
-        var $parent2 = $_this_2.parent();
-        if ($parent2.hasClass('done')) {
-          $parent2.removeClass('done');
-          $_this_2.remove();
+        var $_this = $(this);
+        var $parent = $_this.parent();
+        if ($parent.hasClass('done')) {
+          $parent.removeClass('done');
+          $_this.remove();
         } else {
           console.log('not yet done!');
         }
       }
 
-      $( "ul#result > li" ).click(function() {
-        var $li_parent = $(this);
-        var $span_first_child = $li_parent.children('span:first-child');
+      $( "ul#result > li > span:first-child" ).click(function() {
+        var $span_first_child = $(this);
+        var $li_parent = $span_first_child.parent();
+        // $li_parent.children('span:first-child');
         
         if (!$li_parent.hasClass('done')) {
           mySouncCloudModule.getPosition(function(position) {
