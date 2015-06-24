@@ -69,7 +69,7 @@
 
     <div class="row" style="padding-bottom: 1em;">
       <div class="col-md-12">
-        <form id="id_from_url" class="form"  style="position :relative;">
+        <form id="id_from_url" class="form">
           <div class="input-group">
             <label class="input-group-addon" for="soundcloudURL">soundcloud URL</label>
             <input id="soundcloudURL" type="text" class="form-control" placeholder="https://soundcloud.com/…" value="" >
@@ -96,7 +96,7 @@
           <span id="feedback"></span>
         </div>
 
-        <ul class="col-md-6" id="result">
+        <ul class="col-md-6" id="result" style="position: relative; display: table; width:100%;">
         </ul>   
         <div class="col-md-6 form">
           <div class="input-group">
@@ -238,9 +238,11 @@ $( document ).ready(function() {
       for(var i = 0; i < lines.length; i++){
         var ligne = lines[i].trim();
         ligne = ligne.length == 0 ? '&nbsp;' : ligne;
-        var $li = $('<li>');
+        var $li = $('<li>', { 
+            "style" : "display:table-row; width:100%;"
+        });
         var $span = $('<span>', { 
-            "style" : "width:100%"
+            "style" : "display:table-cell; width:100%;"
         });
         $span.html(ligne);
         $li.append($span);
@@ -252,6 +254,7 @@ $( document ).ready(function() {
         var $parent = $_this.parent();
         if ($parent.hasClass('done')) {
           $parent.removeClass('done');
+          $parent.children("span.timestamp").remove();
           $_this.remove();
         } else {
           console.log('not yet done!');
@@ -261,20 +264,27 @@ $( document ).ready(function() {
       $( "ul#result > li > span:first-child" ).click(function() {
         var $span_first_child = $(this);
         var $li_parent = $span_first_child.parent();
-        // $li_parent.children('span:first-child');
         
         if (!$li_parent.hasClass('done')) {
           mySouncCloudModule.getPosition(function(position) {
             $li_parent.addClass('done');
             var $span_timestamp = $('<span>', { 
-              "style" : "float:right", 
-              "class": "timestamp"
+              "style" : "display:table-cell; width:1%; padding-right: .5em; font-family: monospace; text-align:right;",
+              "class" : "timestamp",
+              "title" : position + " millisecs"
             });
-            $span_timestamp.html('&nbsp;['+position+']');
+            $span_timestamp.html('['+numeral(Math.floor(position/1000)).format('00:00:00')+']');
             $span_timestamp.data('position', position );
-            $span_timestamp.click(removeMe);
+            
+            $close_button = $('<span>', { 
+                "html" : "<span aria-hidden='true'>&times;</span>",
+                "style" : "display:table-cell; width:1% ;padding-left: .5em; ",
+                "title" : "remove sync"
+            });
+            $close_button.click(removeMe);
             
             $li_parent.append($span_timestamp);
+            $li_parent.append($close_button);
           }); 
         } else {
           console.log('already done!');
@@ -416,7 +426,8 @@ $( document ).ready(function() {
       $('.progress-bar').removeClass('progress-bar-success');   
       $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : $("ul#result > li").length }).html('&nbsp;'); 
       $('ul#result > li').removeClass('done');
-      $('ul#result > li > span.timestamp:last-child').remove();
+      $('ul#result > li > span.timestamp').remove();
+      $('ul#result > li > span:last-child').remove();
       $('div#errors').empty();
       errorQueue = [];
     });
