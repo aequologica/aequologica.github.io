@@ -4,13 +4,13 @@
     { "id": "0001bwv1018"         , "value": { "label": "BWV 1018"                        , "url": "/bwv1018/"                                     } },
     { "id": "0010burns"           , "value": { "label": "R. Burns"                                                                                    } },
     { "id": "0011highlands"       , "value": { "label": "My Heart's\nin the\nHighlands"   , "url": "/burns_and_prince_charles/"                    } },
-    { "id": "0020donutsfm"        , "value": { "label": "DonutsFM"                                                                                 } },
+    { "id": "0020donutsfm"        , "value": { "label": "Le Laboratoire\ndes Gros Barbus" , "url": "https://www.facebook.com/lelabodesbarbus", "shape" : "rect" } },
     { "id": "0021madamelavache"   , "value": { "label": "Madame\nla vache"                , "url": "/donutsfm_et_thiebaud/"                        } },
-    { "id": "0030mugnier"         , "value": { "label": "Mugnier"                                                                                  } },
+    { "id": "0030mugnier"         , "value": { "label": "Mugnier"                         , "url": "https://soundcloud.com/eric-mugnier", "shape" : "rect" } },
     { "id": "0031idole"           , "value": { "label": "Matsubaba"                       , "url": "/mugnier_et_thiebaud/"                         } },
-    { "id": "0110julien"          , "value": { "label": "JuLieN"                                                                                   } },
+    { "id": "0110julien"          , "value": { "label": "JuLieN"                          , "url": "https://soundcloud.com/julien-c12", "shape" : "rect" } },
     { "id": "0200verlaine"        , "value": { "label": "Verlaine"                                                                                 } },
-    { "id": "0210verlaine"        , "value": { "label": "Work\nin\nprogress"                                                                       } },
+    { "id": "0210verlaine"        , "value": { "label": "(work\nin\nprogress)"                                                                       } },
     { "id": "0240clairdelune"     , "value": { "label": "Clair\nde\nLune"                 , "url": "/verlaine_et_thiebaud/clair-de-lune.html"      } },
     { "id": "0280green"           , "value": { "label": "Green"                           , "url": "/verlaine_et_julien_et_thiebaud/green.html"    } },
     { "id": "1999rimbaud"         , "value": { "label": "Rimbaud"                                                                                  } },
@@ -21,7 +21,7 @@
     { "id": "2020lebateauivre"    , "value": { "label": "Le\nbateau\nivre"                , "url": "/rimbaud_et_thiebaud/bateau.html"              } },
     { "id": "2020lebateauivre2"   , "value": { "label": "Le bateau ivre,\nlu par Georges" , "url": "/rimbaud_et_thiebaud/bateau2.html"             } },
     { "id": "2020sensation"       , "value": { "label": "Sensation"                       , "url": "/rimbaud_et_thiebaud/sensation.html"           } },
-    { "id": "9999tool"            , "value": { "label": "Outil"                           , "url": "/x_et_thiebaud/tool.html", "shape" : "diamond" } }
+    { "id": "9999tool"            , "value": { "label": "tool"                            , "url": "/x_et_thiebaud/tool.html", "shape" : "diamond" } }
   ], "links":
   [
     { "u": "0000bach"             , "v": "0001bwv1018"        , "value": {} },
