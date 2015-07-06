@@ -1,5 +1,6 @@
 { "name": "chansonettes", "key": "chansonettes", "nodes":
   [
+    { "id": "0000thiebaud"        , "value": { "label": "Thiebaud"                        , "url": "https://soundcloud.com/christophe-thiebaud", "shape" : "ellipse" } },
     { "id": "0000bach"            , "value": { "label": "J.S. Bach"                                                                                } },
     { "id": "0001bwv1018"         , "value": { "label": "BWV 1018"                        , "url": "/bwv1018/"                                     } },
     { "id": "0010burns"           , "value": { "label": "R. Burns"                                                                                    } },
@@ -51,6 +52,7 @@
     { "u": "2020lebateauivre"     , "v": "2020lebateauivre2"  , "value": {} },
     { "u": "2020lebateauivre"     , "v": "9999tool"           , "value": {} },
     { "u": "2020lebateauivre2"    , "v": "9999tool"           , "value": {} },
-    { "u": "2020sensation"        , "v": "9999tool"           , "value": {} }
+    { "u": "2020sensation"        , "v": "9999tool"           , "value": {} },
+    { "u": "9999tool"        , "v": "0000thiebaud"           , "value": {} }
   ]
 }
