@@ -20,7 +20,7 @@
     { "id": "2020crimenamoris"    , "value": { "label": "Crimen\namoris"                  , "url": "/verlaine_et_thiebaud/index.html"              } },
     { "id": "2020larme"           , "value": { "label": "Larme"                           , "url": "/rimbaud_et_thiebaud/larme.html"               } },
     { "id": "2020lebateauivre"    , "value": { "label": "Le\nbateau\nivre"                , "url": "/rimbaud_et_thiebaud/bateau.html"              } },
-    { "id": "2020lebateauivre2"   , "value": { "label": "Le bateau ivre,\nlu par Georges" , "url": "/rimbaud_et_thiebaud/bateau2.html"             } },
+    { "id": "2020lebateauivre2"   , "value": { "label": "Le bateau ivre,\nlu par\nGeorges Claisse" , "url": "/rimbaud_et_thiebaud/bateau2.html"             } },
     { "id": "2020sensation"       , "value": { "label": "Sensation"                       , "url": "/rimbaud_et_thiebaud/sensation.html"           } },
     { "id": "9999tool"            , "value": { "label": "tool"                            , "url": "/x_et_thiebaud/tool.html", "shape" : "diamond" } }
   ], "links":
