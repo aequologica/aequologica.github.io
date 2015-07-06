@@ -24,6 +24,11 @@ window.onresize = updateWindow;
 
 $( document ).ready(function() {
 
+  // http://stackoverflow.com/questions/280634/endswith-in-javascript
+  String.prototype.endsWith = function(suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+  };  
+
   (function () {
     'use strict';
     window.DAG = {
@@ -59,7 +64,7 @@ $( document ).ready(function() {
 
           edges.forEach(function(e) {
             e.value.lineInterpolate = 'basis';
-            if (e.v == "tool") {
+            if (e.v.endsWith("tool")) {
               e.value.arrowhead =   "undirected";
               e.value.arrowheadStyle = "stroke: #fff; fill: #fff;";
               e.value.style = "stroke: #fff; stroke-width: 2px; stroke-dasharray: 2, 2; fill: none;";
@@ -84,7 +89,7 @@ $( document ).ready(function() {
         inner.selectAll("g.node").each(function(id) {
           var gotoURL = g.node(id).url;
           if (gotoURL) {
-            if (id == "tool") {
+            if (id.endsWith("tool")) {
               $(this).attr('data-role', 'link-tool');
             } else {
               $(this).attr('data-role', 'link');
