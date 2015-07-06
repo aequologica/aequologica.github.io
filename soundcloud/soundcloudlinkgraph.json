@@ -10,17 +10,17 @@
     { "id": "0031idole"           , "value": { "label": "Matsubaba"                       , "url": "/mugnier_et_thiebaud/"                         } },
     { "id": "0110julien"          , "value": { "label": "JuLieN"                                                                                   } },
     { "id": "0200verlaine"        , "value": { "label": "Verlaine"                                                                                 } },
-    { "id": "0210verlaine"        , "value": { "label": "Work\nin\nprogress"                                                                                        } },
-    { "id": "0240clairdelune"     , "value": { "label": "Clair\nde\nLune"                 , "url": "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/211477594" } },
+    { "id": "0210verlaine"        , "value": { "label": "Work\nin\nprogress"                                                                       } },
+    { "id": "0240clairdelune"     , "value": { "label": "Clair\nde\nLune"                 , "url": "/verlaine_et_thiebaud/clair-de-lune.html"      } },
     { "id": "0280green"           , "value": { "label": "Green"                           , "url": "/verlaine_et_julien_et_thiebaud/green.html"    } },
     { "id": "1999rimbaud"         , "value": { "label": "Rimbaud"                                                                                  } },
     { "id": "2010dormeur"         , "value": { "label": "Le dormeur\ndu val"              , "url": "/rimbaud_et_julien_et_thiebaud/dormeur.html"   } },
     { "id": "2020boheme"          , "value": { "label": "Ma bohème\n(fantaisie)"          , "url": "/rimbaud_et_thiebaud/boheme.html"              } },
-    { "id": "2020crimenamoris"    , "value": { "label": "Crimen\namoris"                  , "url": "/verlaine_et_thiebaud/"                        } },
+    { "id": "2020crimenamoris"    , "value": { "label": "Crimen\namoris"                  , "url": "/verlaine_et_thiebaud/index.html"              } },
     { "id": "2020larme"           , "value": { "label": "Larme"                           , "url": "/rimbaud_et_thiebaud/larme.html"               } },
-    { "id": "2020lebateauivre"    , "value": { "label": "Le bateau ivre "                  , "url": "/rimbaud_et_thiebaud/bateau.html"             } },
+    { "id": "2020lebateauivre"    , "value": { "label": "Le\nbateau\nivre"                , "url": "/rimbaud_et_thiebaud/bateau.html"              } },
     { "id": "2020lebateauivre2"   , "value": { "label": "Le bateau ivre,\nlu par Georges" , "url": "/rimbaud_et_thiebaud/bateau2.html"             } },
-    { "id": "2020sensation"       , "value": { "label": "Sensation"                       , "url": "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/213423143" } },
+    { "id": "2020sensation"       , "value": { "label": "Sensation"                       , "url": "/rimbaud_et_thiebaud/sensation.html"           } },
     { "id": "9999tool"            , "value": { "label": "Outil"                           , "url": "/x_et_thiebaud/tool.html", "shape" : "diamond" } }
   ], "links":
   [
