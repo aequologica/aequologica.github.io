@@ -3,6 +3,7 @@
     { "id": "0000thiebaud"        , "value": { "label": "Thiebaud"                        , "url": "https://soundcloud.com/christophe-thiebaud", "shape" : "ellipse" } },
     { "id": "0000bach"            , "value": { "label": "J.S. Bach"                                                                                } },
     { "id": "0001bwv1018"         , "value": { "label": "BWV 1018"                        , "url": "/bwv1018/"                                     } },
+    { "id": "0019miscellaneous"   , "value": { "label": "miscellaneous"                                                                            } },
     { "id": "0020donutsfm"        , "value": { "label": "Le Laboratoire\ndes Gros Barbus" , "url": "https://www.facebook.com/lelabodesbarbus", "shape" : "rect" } },
     { "id": "0021madamelavache"   , "value": { "label": "Madame\nla vache"                , "url": "/donutsfm_et_thiebaud/"                        } },
     { "id": "0030mugnier"         , "value": { "label": "Mugnier"                         , "url": "https://soundcloud.com/eric-mugnier", "shape" : "rect" } },
@@ -26,6 +27,9 @@
   ], "links":
   [
     { "u": "0000bach"             , "v": "0001bwv1018"        , "value": {} },
+    { "u": "0019miscellaneous"    , "v": "0020donutsfm"  , "value": {} },
+    { "u": "0019miscellaneous"    , "v": "0030mugnier"  , "value": {} },
+    { "u": "0019miscellaneous"    , "v": "0040burns"  , "value": {} },
     { "u": "0020donutsfm"         , "v": "0021madamelavache"  , "value": {} },
     { "u": "0021madamelavache"    , "v": "9999tool"           , "value": {} },
     { "u": "0030mugnier"          , "v": "0031idole"          , "value": {} },
