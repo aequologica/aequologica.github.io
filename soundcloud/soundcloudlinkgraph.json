@@ -2,7 +2,7 @@
   [
     { "id": "0000bach"            , "value": { "label": "J.S. Bach"                                                                                } },
     { "id": "0001bwv1018"         , "value": { "label": "BWV 1018"                        , "url": "/bwv1018/"                                     } },
-    { "id": "0010burns"           , "value": { "label": "Burns"                                                                                    } },
+    { "id": "0010burns"           , "value": { "label": "R. Burns"                                                                                    } },
     { "id": "0011highlands"       , "value": { "label": "My Heart's\nin the\nHighlands"   , "url": "/burns_and_prince_charles/"                    } },
     { "id": "0020donutsfm"        , "value": { "label": "DonutsFM"                                                                                 } },
     { "id": "0021madamelavache"   , "value": { "label": "Madame\nla vache"                , "url": "/donutsfm_et_thiebaud/"                        } },
