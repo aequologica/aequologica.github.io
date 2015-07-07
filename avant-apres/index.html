@@ -2,11 +2,13 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
-    <title>avant-après</title>
+    <title>avant / après</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <meta name="author"               content="Christophe Thiebaud"/>
 
   <meta property="og:title"         content="avant / après"/>
   <meta property="og:description"   content="Quatre x deux photos de lieux parisiens."/>
@@ -172,53 +174,6 @@ li {
 <script src="jquery.browser.min.js"></script>
 <script src="jquery-iframe-auto-height.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-
-// http://stackoverflow.com/questions/7862233/twitter-bootstrap-tabs-go-to-specific-tab-on-page-reload-or-hyperlink
-
-// Javascript to enable link to tab
-var url = document.location.toString();
-if (url.match('#')) {
-    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-} 
-
-// Change hash for page-reload
-$('.nav-tabs a').on('shown.bs.tab', function (e) {
-    window.location.hash = e.target.hash;
-})
-
-
-/*
-// fire iframe resize when window is resized
-var windowResizeFunction = function (resizeFunction, iframe) {
-  $(window).resize(function () {
-    console.debug("window resized - firing resizeHeight on iframe");
-    resizeFunction(iframe);
-  });
-};
-
-// fire iframe resize when a link is clicked
-var clickFunction = function (resizeFunction, iframe) {
-  $('a').click(function () {
-    $(iframe).contents().find('body').html(''); // clear content of iframe
-    console.debug("link clicked - firing resizeHeight on iframe");
-    resizeFunction(iframe);
-  });
-};
-*/
-    $('iframe').iframeAutoHeight({debug: true,
-    animate: true /*,
-  triggerFunctions: [
-    windowResizeFunction,
-    clickFunction
-  ]
-  */
-  });
-
-});
-</script>    
-
   <script type="text/javascript">
 
     // http://www.browser-update.org/#
@@ -237,7 +192,24 @@ var clickFunction = function (resizeFunction, iframe) {
 
     jQuery(document).ready(function($) {
 
-      // Geppaequo.showBody("true"); 
+      // http://stackoverflow.com/questions/7862233/twitter-bootstrap-tabs-go-to-specific-tab-on-page-reload-or-hyperlink
+
+      // Javascript to enable link to tab
+      var url = document.location.toString();
+      if (url.match('#')) {
+          $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
+      } 
+
+      // Change hash for page-reload
+      $('.nav-tabs a').on('shown.bs.tab', function (e) {
+          window.location.hash = e.target.hash;
+      })
+
+      // iframe magic
+      $('iframe').iframeAutoHeight({
+        debug: true,
+        animate: true
+      });
 
     });
   </script>
