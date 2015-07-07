@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <title>avant-après</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="./files/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./files/font-awesome.css">
+
+    <style type="text/css">
+
+    @font-face {
+      font-family: 'Geppaequo';
+      font-size: larger;
+      font-style: normal;
+      font-weight: 400;
+      src: local('Geppaequo'), url(/assets/fonts/geppaequo.woff) format('woff');
+    }
+
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="./files/geppaequo.css">
+    <link rel="stylesheet" type="text/css" href="./files/sticky-footer-navbar.css">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+  </head>
+  <body>
+
+    <!-- animated gif displayed while loading dynamic header/footer -->
+    <div id="loading" style="display: none;">
+      <img class="" alt="loading..." src="./files/ajax-loader.gif">
+    </div>
+
+    <!-- wrap all page content here -->
+    <div id="wrap">
+      <div class="container">
+        <div id="loaded" style="visibility: visible;">
+            <div id="geppaequo-header" class="col-lg-12"></div>
+          <div id="geppaequo-body">
+<!-- # BEGIN jsp:doBody // // // // // // // // // // // // // // // // -->
+
+<style type="text/css">
+.iframe_container {
+    height: 100%; 
+    width: 100%; 
+    overflow-x: hidden; 
+    overflow-y: hidden;
+}
+iframe {
+    height: 100%; 
+    width: 100%; 
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+    // display:none;
+}
+li {
+  // display:none;
+}
+</style>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#rosiers" data-toggle="tab">[4ème] Rue des rosiers</a></li>
+  <li><a href="#abbe-de-lepee" data-toggle="tab">[5ème] Rue de l'Abbé-de-l'Épée</a></li>
+  <li><a href="#abbe-groult" data-toggle="tab">[15ème] Rue De l'Abbé Groult</a></li>
+  <li><a href="#champs-elysees" data-toggle="tab">[8ème] Avenue des Champs Elysées</a></li>
+</ul>
+
+ <div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade in active" id="rosiers" >    
+    <div class="row">
+      <div class="col-lg-12">
+        <span style="float:right;">
+          <a href="http://goo.gl/maps/gSaFL" target="google_maps">
+            maintenant sur google maps
+          </a>
+        </span>
+      </div>
+      <div class="col-lg-12 pagination-centered iframe_container">
+        <iframe src="before-after-rosiers.html" seamless ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade in" id="abbe-de-lepee">    
+    <div class="row">
+      <div class="col-lg-12">
+        <span style="float:right;">
+          <a href="http://goo.gl/maps/Cy0O0" target="google_maps">
+            maintenant sur google maps
+          </a>
+        </span>
+      </div>
+      <div class="col-lg-12 pagination-centered iframe_container">
+        <iframe src="before-after-abbe-de-lepee.html" seamless ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade in" id="abbe-groult">    
+    <div class="row">
+      <div class="col-lg-12">
+        <span style="float:right;">
+          <a href="http://goo.gl/maps/Zf7Mm" target="google_maps">
+            maintenant sur google maps
+          </a>
+        </span>
+      </div>
+      <div class="col-lg-12 pagination-centered iframe_container">
+        <iframe src="before-after-abbe-groult.html" seamless ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade in" id="champs-elysees">    
+    <div class="row">
+      <div class="col-lg-12">
+        <span style="float:right;">
+          <a href="http://goo.gl/maps/ruXuL" target="google_maps">
+            maintenant sur google maps
+          </a>
+        </span>
+      </div>
+      <div class="col-lg-12 pagination-centered iframe_container">
+        <iframe src="before-after-champs-elysees.html" seamless ></iframe>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- # END   jsp:doBody \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ -->
+          </div> <!-- /#geppaequo-body -->
+        </div><!-- /.container -->
+    </div><!--/#wrap -->
+    <div class="container">
+      <footer>
+        <p class="pull-right">© Christophe Thiebaud</p>
+      </footer>
+    </div><!--/.container -->
+  
+
+  <script type="text/javascript" charset="utf8" src="./files/underscore-min.js"></script>
+
+  <script type="text/javascript" charset="utf8" src="./files/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="./files/bootstrap.min.js"></script>
+
+  <script type="text/javascript" charset="utf8" src="./files/base64.js"></script>
+
+  <script type="text/javascript" charset="utf8" src="./files/ie.js"></script>
+  <script type="text/javascript" charset="utf8" src="./files/geppaequo-2.js"></script>
+
+<script src="jquery.browser.min.js"></script>
+<script src="jquery-iframe-auto-height.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+// http://stackoverflow.com/questions/7862233/twitter-bootstrap-tabs-go-to-specific-tab-on-page-reload-or-hyperlink
+
+// Javascript to enable link to tab
+var url = document.location.toString();
+if (url.match('#')) {
+    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
+} 
+
+// Change hash for page-reload
+$('.nav-tabs a').on('shown.bs.tab', function (e) {
+    window.location.hash = e.target.hash;
+})
+
+
+/*
+// fire iframe resize when window is resized
+var windowResizeFunction = function (resizeFunction, iframe) {
+  $(window).resize(function () {
+    console.debug("window resized - firing resizeHeight on iframe");
+    resizeFunction(iframe);
+  });
+};
+
+// fire iframe resize when a link is clicked
+var clickFunction = function (resizeFunction, iframe) {
+  $('a').click(function () {
+    $(iframe).contents().find('body').html(''); // clear content of iframe
+    console.debug("link clicked - firing resizeHeight on iframe");
+    resizeFunction(iframe);
+  });
+};
+*/
+    $('iframe').iframeAutoHeight({debug: true,
+    animate: true /*,
+  triggerFunctions: [
+    windowResizeFunction,
+    clickFunction
+  ]
+  */
+  });
+
+});
+</script>    
+
+  <script type="text/javascript">
+
+    // http://www.browser-update.org/#
+    {
+        var $buoop = {c:2}; 
+      function $buo_f(){ 
+       var e = document.createElement("script"); 
+       e.src = "//browser-update.org/update.js"; 
+       document.body.appendChild(e);
+      };
+      try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+      catch(e){window.attachEvent("onload", $buo_f)}
+    }
+
+    Geppaequo.setContextPath('/');
+
+    jQuery(document).ready(function($) {
+
+      // Geppaequo.showBody("true"); 
+
+    });
+  </script>
+
+<!-- # END layout.tag \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -->
+<script src="./files/update.js"></script>
+</body>
+</html>
