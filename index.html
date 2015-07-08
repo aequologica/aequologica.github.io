@@ -38,6 +38,13 @@
 </head>
 <body ng-app="aequologicaApp" ng-controller="IndexCtrl" >
 
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
   <input type="checkbox" id="horribleHack" name="horribleHack" ng-model="outOfOffice" style="display:none!important;" />
 
   <div  masonry
@@ -176,4 +183,23 @@ catch(e){window.attachEvent("onload", $buo_f)}
   ga('create', 'UA-62202103-1', 'auto');
   ga('send', 'pageview');
 
+</script>
+
+<!--  facebook sdk -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '104250825478',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 </script>
