@@ -44,6 +44,7 @@
     ,{ "name":"Travel-expenses"         , "url": "https://portal.wdf.sap.corp/go/Travel-expenses"                                                                   , "src": "euros.png"                                      }
     ,{ "name":"travis-ci"               , "url": "https://travis-ci.org/repositories"                                                                               , "src": "travis-ci-trans.png"                            }
     ,{ "name":"twitter"                 , "url": "https://twitter.com/cthiebaud"                                                                                    , "src": "Twitter_logo_transparent-3.png"                 }
+    ,{ "name":"versioneye"              , "url": "https://www.versioneye.com/user/projects/547de1de6c4767e0e4000036"                                                , "src": "versioneyelogo-150x150.png"                     }
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "src": "wordpress.png"                                  }
   ],
   "groups" : [
