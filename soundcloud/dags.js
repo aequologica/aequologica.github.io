@@ -90,7 +90,7 @@ $( document ).ready(function() {
           var gotoURL = g.node(id).url;
           if (gotoURL) {
             if (id.endsWith("tool")) {
-              $(this).attr('data-role', 'link-tool');
+                $(this).attr('data-role', 'link-tool');
             } else {
               $(this).attr('data-role', 'link');
             }
@@ -114,13 +114,13 @@ $( document ).ready(function() {
               x = w.innerWidth || e.clientWidth || gbody.clientWidth,
               y = w.innerHeight|| e.clientHeight|| gbody.clientHeight;
 
-          var ratio_x = Math.min((x-40) / (g.graph().width), 1);
-          var ratio_y = Math.min((y-40) / (g.graph().height), 1);
+          var ratio_x = Math.min((x) / (g.graph().width), 1);
+          var ratio_y = Math.min((y) / (g.graph().height), 1);
 
           console.log(x + " / " + g.graph().width + " = " + ratio_x);
           console.log(y + " / " + g.graph().height + " = " + ratio_y);
 
-          gelem.attr("transform", "translate(20,20) scale("+ Math.min(ratio_x, ratio_y) +")");
+          gelem.attr("transform", "scale("+ Math.min(ratio_x, ratio_y) +")");
         }
 
         resize();
