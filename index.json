@@ -4,9 +4,16 @@
         "url": "http://aequologica.net/experiments/",
         "src": "aequologica-trans.png",
         "items" : [
-            { "name" : "vethica"        ,"url":"https://tebaldi051108trial.hanatrial.ondemand.com/"                       , "text" : "tebaldi"                            }
+            { "name" : "tebaldi"      ,"url":"https://tebaldi051108trial.hanatrial.ondemand.com/" , "text" : "tebaldi"           }
         ]
      }
+     , { "name" : "versioneye",
+         "url"  : "https://www.versioneye.com/user/projects/547de1de6c4767e0e4000036",
+         "src" : "versioneyelogo-150x150.png",
+         "items" : [
+        { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/"      , "text" : "artifact listener"  }
+      ]
+    }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
     ,{ "name":"angular"                 , "url": "http://docs.angularjs.org/tutorial/step_02"                                                                       , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://getbootstrap.com/"                                                                                         , "src": "bootstrap_3.1.png"                              }
@@ -44,7 +51,6 @@
     ,{ "name":"Travel-expenses"         , "url": "https://portal.wdf.sap.corp/go/Travel-expenses"                                                                   , "src": "euros.png"                                      }
     ,{ "name":"travis-ci"               , "url": "https://travis-ci.org/repositories"                                                                               , "src": "travis-ci-trans.png"                            }
     ,{ "name":"twitter"                 , "url": "https://twitter.com/cthiebaud"                                                                                    , "src": "Twitter_logo_transparent-3.png"                 }
-    ,{ "name":"versioneye"              , "url": "https://www.versioneye.com/user/projects/547de1de6c4767e0e4000036"                                                , "src": "versioneyelogo-150x150.png"                     }
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "src": "wordpress.png"                                  }
   ],
   "groups" : [
@@ -71,12 +77,6 @@
       "url"  : "€",
       "items" : [
         { "name" : "SAP_stock",      "url":"https://ipp.wdf.sap.corp/sap/bc/webdynpro/ehr/es_docview?ar_objects=Z9918017,Z9918018,Z9918024,Z9918025,Z9918012,Z9928017,Z9928018,Z9928024,Z9928025,Z9928012,Z9928033,Z9928034&amp;sap-language=EN#", "text" : "€ € € € € €"}
-      ]
-    },
-   { "name" : "internet",
-      "url"  : "internet",
-      "items" : [
-        { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/",       "text" : "artifact-listener"  }
       ]
     }
   ]
