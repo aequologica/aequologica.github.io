@@ -2,10 +2,7 @@
   "images" : [
      { "name":"aequologica",
         "url": "http://aequologica.net/experiments/",
-        "src": "aequologica-trans.png",
-        "items" : [
-            { "name" : "tebaldi"      ,"url":"https://tebaldi051108trial.hanatrial.ondemand.com/" , "text" : "tebaldi"           }
-        ]
+        "src": "aequologica-trans.png"
      }
      , { "name" : "versioneye",
          "url"  : "https://www.versioneye.com/user/projects/547de1de6c4767e0e4000036",
@@ -14,6 +11,7 @@
         { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/"      , "text" : "artifact listener"  }
       ]
     }
+    ,{ "name" : "tebaldi"      ,"url":"https://tebaldi051108trial.hanatrial.ondemand.com/" , "text" : "tebaldi", "src" : "tebaldi.png"           }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
     ,{ "name":"angular"                 , "url": "http://docs.angularjs.org/tutorial/step_02"                                                                       , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://getbootstrap.com/"                                                                                         , "src": "bootstrap_3.1.png"                              }
