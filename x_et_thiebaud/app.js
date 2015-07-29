@@ -166,7 +166,7 @@ var MySouncCloudModule = function(trackId, paragraph, userId, $appendTo, days, s
         var ligne = getLigne(currentPosition);
         if (ligne != null) {
           $('li').not('li#'+ligne.id).removeClass('emphased');
-          $('li#'+ligne.id).addClass('emphased').textillate({ in: { effect: 'tada' } });
+          $('li#'+ligne.id).addClass('emphased').textillate({ 'in': { effect: 'tada' } });
         }
         $('span#feedback').html(durationformat(currentPosition));
       });
