@@ -65,7 +65,7 @@
     { "name" : "P4MS",
       "ulr"  : "P4MS",
       "items" : [
-        { "name" : "p4ms_dag",          "url":"https://development.neo.ondemand.com/dags/dag-p4ms-731.json",            "text" : "P4MS DAG"  },
+        { "name" : "p4ms_dag",          "url":"https://development.neo.ondemand.com/dags/p4ms-731",            "text" : "P4MS DAG"  },
         { "type" : "separator" },  
         { "name" : "p4ms_70_prod",      "url":"https://pie.wdf.sap.corp/p4ms",                                 					"text" : "P4MS 70 production"  },
         { "name" : "p4ms_73_dev",       "url":"https://piedev.mo.sap.corp/p4ms",                                 		      "text" : "P4MS 73 development"  }
