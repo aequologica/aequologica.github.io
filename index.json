@@ -51,6 +51,7 @@
     ,{ "name":"travis-ci"               , "url": "https://travis-ci.org/repositories"                                                                               , "src": "travis-ci-trans.png"                            }
     ,{ "name":"twitter"                 , "url": "https://twitter.com/cthiebaud"                                                                                    , "src": "Twitter_logo_transparent-3.png"                 }
     ,{ "name":"wordpress"               , "url": "http://cthiebaud.wordpress.com"                                                                                   , "src": "wordpress.png"                                  }
+    ,{ "name":"whatsapp"                , "url": "https://web.whatsapp.com/"                                                                                        , "src": "whatsapp1-e1430568105790.png"                   }
   ],
   "groups" : [
     { "name" : "SAP",
