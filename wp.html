@@ -11,15 +11,24 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container" ng-app>
-        <form class="form-signin">
-            <h2 class="form-signin-heading">What you type here:</h2>
-
-            <input ng-model="data.input" type="text" class="form-control" autofocus>
-
-            <h2 class="form-signin-heading">It will also be shown below:</h2>
-            <input type="text" class="sr-only">{{data.input}}</label>
-        </form>
+    <div class="container" ng-app="belleileApp">
+        <div class="form-signin" ng-controller='belleileCtrl'>
+            <h2>Pages</h2>
+            <ul>
+            <li ng-repeat="page in pages">
+                <h3 ng-bind-html="page.title.rendered"></h3>
+                <div ng-bind-html="page.content.rendered"></div>
+            </li>
+            </ul>
+            <h2>Posts</h2>
+            <ul>
+            <li ng-repeat="post in posts">
+                <h3 ng-bind-html="post.title.rendered"></h3>
+                <div ng-bind-html="post.content.rendered"></div>
+            </li>
+            </ul>
+            
+        </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -28,5 +37,29 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="bower_components/angular/angular.min.js"></script>
-</body>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/lodash/lodash.min.js"></script>
+    <script src="bower_components/restangular/dist/restangular.min.js"></script>
+    </body>
+
+<script>
+  (function() {
+    angular.module('belleileApp', ['restangular', 'ngSanitize']);
+    
+    angular.module("belleileApp").config(function(RestangularProvider) {
+      //set the base url for api calls on our RESTful services
+      var newBaseUrl = "http://devpmb.belleilemusique.com/wp-json/wp/v2";
+      RestangularProvider.setBaseUrl(newBaseUrl);
+    });
+    angular.module("belleileApp").controller("belleileCtrl", ['$scope', 'Restangular', function($scope, Restangular) {
+      $scope.input = "Calvin Hobbes";
+      
+      $scope.posts = Restangular.all('posts').getList().$object;
+      $scope.pages = Restangular.all('pages').getList().$object;
+    }]);
+
+  }());
+  
+</script>
+
 </html>
