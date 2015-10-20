@@ -7,7 +7,7 @@
 
 body {
   font-family : Inconsolata;
-  background  : transparent; // #1070a0; // #1DB82F; // #DB25C6; // #FFF; // #F0AB00; //
+  background  : transparent;
 }
 
 .loading-image {
@@ -24,7 +24,9 @@ div {
 }
 
 hr {
-    opacity: 0.333;
+  opacity: .8;
+  margin : 0;
+  padding: 0;
 }
 
 ul {
@@ -39,6 +41,7 @@ li {
 
 a img {
   margin: 10px;
+  border: none;
 }
 
 li a:link    {color:#efefef; text-decoration: none;}
@@ -46,21 +49,10 @@ li a:visited {color:#efefef; text-decoration: none;}
 li a:hover   {color:#101010; text-decoration: none; background  : #F0AB00;}
 li a:active  {color:#efefef; text-decoration: none;}
 
-img {
-  border: none;
-}
-
-hr {
-  margin : 0;
-  padding: 0;
-}
-
-
 .image-wrap {
   position   : relative;
   float      : left;
   display    : inline-block;
-  // visibility : hidden;
   margin     : 0;
 }
 
@@ -74,11 +66,6 @@ hr {
   box-shadow: 8px 8px 5px #888888;
 }
 
-
-#masonry {
-  cursor: crosshair;
-}
-
 .masonry-brick {
   // border    : 1px solid #efefef;
   // background: rgba(0,0,0,.03);
@@ -89,11 +76,7 @@ hr {
 }
 
 .internal {
-  opacity: .75;
-}
-
-hr {
-  opacity: .8;
+  // opacity: .75;
 }
 
 html {
@@ -108,7 +91,9 @@ html {
   background: -moz-linear-gradient( to left, #2F2727, #1a82f7, #2F2727);
   background: -ms-linear-gradient( to left, #2F2727, #1a82f7, #2F2727);
   background: -o-linear-gradient( to left, #2F2727, #1a82f7, #2F2727);
-  background: linear-gradient( to left, #2F2727, #1a82f7, #2F2727);
+  background: radial-gradient( circle, #1a82f7, #2F2727);
+  background-attachment: fixed;
+
 }
 
 div#masonry {
@@ -117,50 +102,5 @@ div#masonry {
   height: 100%;
   min-width: 100%;
   width: 100%;  
+  cursor: crosshair;
 }
-
-
-// #radial-center {
-//   /* fallback */
-//   background-color: #2F2727;
-//   background-image: url(images/radial_bg.png);
-//   background-position: center center;
-//   background-repeat: no-repeat;
-// 
-//   /* Safari 4-5, Chrome 1-9 */
-//   /* Can't specify a percentage size? Laaaaaame. */
-//   background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7), to(#2F2727));
-// 
-//   /* Safari 5.1+, Chrome 10+ */
-//   background: -webkit-radial-gradient(circle, #1a82f7, #2F2727);
-// 
-//   /* Firefox 3.6+ */
-//   background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
-// 
-//   /* IE 10 */
-//   background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
-// 
-//   /* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, how it kinda does but it's kinda broken (doesn't do sizing) */
-// }
-// 
-// #linearBg1 {
-//   /* fallback */
-//   background-color: #1a82f7;
-//   background-image: url(images/linear_bg_1.png);
-//   background-repeat: repeat-y;
-// 
-//   /* Safari 4-5, Chrome 1-9 */
-//   background: -webkit-gradient(linear, left top, right top, from(#1a82f7), to(#2F2727));
-// 
-//   /* Safari 5.1, Chrome 10+ */
-//   background: -webkit-linear-gradient(left, #2F2727, #1a82f7);
-// 
-//   /* Firefox 3.6+ */
-//   background: -moz-linear-gradient(left, #2F2727, #1a82f7);
-// 
-//   /* IE 10 */
-//   background: -ms-linear-gradient(left, #2F2727, #1a82f7);
-// 
-//   /* Opera 11.10+ */
-//   background: -o-linear-gradient(left, #2F2727, #1a82f7);
-// }
