@@ -81,6 +81,7 @@ li a:active  {color:#efefef; text-decoration: none;}
 
 html {
   height: 100%;
+  padding: 3em;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
