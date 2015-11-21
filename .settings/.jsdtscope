@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|files/|**/*.min.js" kind="src" path="avant-apres"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="avant-apres/files"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|min/|**/*.min.js" kind="src" path="bwv1018/scripts/perfect-scrollbar/js"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="bwv1018/scripts/perfect-scrollbar/js/min"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="experiments"/>
+	<classpathentry excluding="webjars/dagre-d3/0.3.2/|webjars/dagre-d3/0.4.8/|**/bower_components/*|**/node_modules/*|webjars/d3js/3.5.5/|**/*.min.js" kind="src" path="soundcloud"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="soundcloud/webjars/d3js/3.5.5"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="soundcloud/webjars/dagre-d3/0.3.2"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="soundcloud/webjars/dagre-d3/0.4.8"/>
+	<classpathentry excluding="**/bower_components/*|**/node_modules/*|**/*.min.js" kind="src" path="x_et_thiebaud"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
