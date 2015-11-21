@@ -1,0 +1,720 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+
+  <meta name="viewport"             content="width=device-width, initial-scale=1"/>
+  <meta name="google"               content="notranslate"/>
+  <meta name="description"          content=""/>
+  <meta name="author"               content="cthiebaud"/>
+
+  <meta http-equiv="Content-Language" content="en" />
+  <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1"/>
+
+  <meta property="og:title"         content="BWV 1018"/>
+  <meta property="og:description"   content="Analysis of JS Bach's Adagio from Sonata for Violin &amp; Keyboard BWV 1018 in F minor"/>
+  <meta property="og:image:url"     content="http://aequologica.net/bwv1018/images/adagio_usual_opening.png"/>
+  <meta property="og:type"          content="website"/>
+
+  <title>BWV 1018</title>
+
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!-- link rel="shortcut icon" href="/favicon.ico?v=2" -->
+
+<style>
+
+div.container > div {
+  margin-bottom:1em;
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url('/assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff') format('woff');
+}
+
+body {
+  font-family : Inconsolata;
+  background  : transparent;
+  font-size: 16px;
+}
+
+/* tables */
+div.table {
+  display: table;
+  table-layout: auto;
+  border-collapse: collapse;
+  margin-bottom: 2em;
+}
+
+div.table#legend {
+  width: 600px;
+}
+
+div.table#harmo {
+  min-width: 1900px;
+  width: 100%;
+}
+
+/* table rows */
+div.table > div {
+  display: table-row;
+}
+
+/* table cells */
+div.table > div > div {
+  display: table-cell;
+  border-bottom: 1px solid #c0c0c0;
+  border-right: 1px solid #c0c0c0;
+}
+
+div.table#legend > div > div {
+  padding: 0 1em;
+  margin: 0;
+}
+
+div.table#harmo > div > div {
+  padding: 0 0 0 4px;
+}
+
+/* table inside a table cell = une mesure  */
+div.table#harmo > div > div > div {
+  display: table;
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;    
+}
+
+/* 25% => quatre noires par mesure */
+div.table#harmo > div > div > div > span {
+  display: table-cell;
+  border: none;
+  width: 25%;
+  cursor: pointer;
+  color: blue;  
+}
+
+.header {
+  margin: 1em;
+}
+
+div.table#harmo > div > div > div > span:hover {
+  text-decoration: underline;
+}
+
+/* ugly workaround */
+div.table#harmo > div > div.mod_ou > div > span:last-child{
+  position: relative; 
+  right: -14px;
+}
+
+#A, #B, #C {
+  border-bottom: none;
+  padding: 0 1em;
+}
+
+div.table#harmo > div.numbers > div {
+ color: blue;
+ border-bottom: none;
+ padding-left: 4px;
+ cursor: pointer;
+}
+
+div.table > div.numbers > div:hover {
+  text-decoration: underline;
+}
+
+/*      */
+.func {
+  padding : 0 .5em;
+  white-space: nowrap;
+}
+.exp {
+  background-color: #d7faec;
+}
+.mod_rel {
+  background-color: #f9e257;
+}
+.dev {
+  background-color: #ffa500;
+}
+.mod_ou {
+  background-color: #facd73;
+}
+.mar_har {
+  background-color: #DCF5FE;
+}
+.coda {
+  background-color: #d7faec;
+}
+.fin {
+  background-color: #d0d0d0;
+}
+
+/* superscript */
+#ss { 
+  position: relative;
+  top: -0.5em; 
+  font-size: 66.6%;
+}
+
+.harmoTableWrapperForHorizontalScrolling {
+  overflow-x:scroll;
+  overflow-y:hidden;
+  width:100%;
+  margin: 1em 0;
+  padding:0;  
+}
+
+.list-inline {
+  white-space:nowrap;
+}
+
+.fa-exclamation-triangle {
+  color: orange;
+}
+
+form {
+  margin-bottom: 1em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.form-group {
+  margin-bottom:0; 
+  font-size : smaller;
+}
+
+ul {
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.label.pull-left{
+  margin-right: 1em;
+}
+
+</style>
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.3&appId=104250825478";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<div class="container" style="margin-top: 1em;">
+
+<img style="float: left; margin: 0 1em 0 0 ;" alt="bach seal" src="images/Bach_Seal.png"/>
+
+<h1 id="BWV1018" style="margin-top: 0; white-space: nowrap; display: inline-block">BWV 1018</h1>
+
+<div 	style="float: right; margin: 0 0 0 1em; padding: 5px; background-color: #EDEDED;" class="col-md-2;">
+  <div><a href="https://twitter.com/share" class="twitter-share-button" 
+    data-via="cthiebaud" 
+    data-lang="fr" 
+    data-hashtags="bach,bwv1018">Tweeter</a></div>
+  <div	class="fb-like" 
+		data-href="http://aequologica.net/bwv1018.html" 
+		data-width="90" 
+		data-layout="button_count" 
+		data-action="like" 
+		data-show-faces="false" 
+		data-share="true">
+ </div>
+</div>
+
+<div>
+Toute la sonate de JS Bach pour violon et clavier en Fa mineur <a href="https://www.google.de/search?q=BWV+1018" target="google">BWV 1018</a> est magnifique, mais l'adagio est d'une modernité incroyable. A la première écoute,  je me souviens très bien avoir été mesmerisé par les enchaînements harmoniques : je ne savais plus où j'habitais ! 
+</div>
+
+<div>
+Or la structure harmonique est en béton, et en plus assez conventionnelle (je m’en suis rendu compte après avoir appris chaque note de l’adagio par cœur). 
+</div>
+<div>
+C’est le mystère de Bach; comment fait-il ?
+</div>
+<div>
+Le motif rythmique est d’une invariance quasi parfaite (et même parfaitement parfaite en ce qui concerne les motifs rythmiques du clavier). 
+</div>
+<div>
+L’invariance est relativement rare dans l'œuvre de Bach, e.g. 1er prélude du clavecin bien tempéré, mais portée à ce degré, c’est carrément exceptionnel. 
+</div>
+<div>
+Les deux motifs de la main droite et de la main gauche sont assez anodins. D’ailleurs, une variante de la sonate les voit réduits à de vulgaires arpèges (cf. <a href="http://conquest.imslp.info/files/imglnks/usimg/b/be/IMSLP02246-Bach_-_BGA_-_BWV_1018.pdf" target="partition">partition</a>) :
+</div>
+
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="images/adagio_usual_opening.png" class="thumbnail" target="adagio_usual_opening" >
+      <img src="images/adagio_usual_opening.png" alt="adagio_usual_opening">
+    </a>
+  </div>
+  <div class="col-xs-6 col-md-3">
+    <a href="images/adagio_variant_opening.png" class="thumbnail" target="adagio_variant_opening">
+      <img src="images/adagio_variant_opening.png" alt="adagio_variant_opening">
+    </a>
+  </div>
+  <div class="col-xs-6 col-md-3">
+    <a href="SonateViolonBach.pdf" class="thumbnail" target="adagio_pdf" title="PDF">
+      <img src="images/adagio_chiffrage.png" alt="adagio_variant_opening">
+    </a>
+  </div>
+</div>
+
+<div>
+Tout est donc fait pour laisser l'esprit de l'auditeur se concentrer sur l'harmonie. 
+</div>
+<div>
+L'Adagio compte 27 mesures. Les 3 dernières sont une coda modulante (C) sur laquelle on pourra revenir. 
+</div>
+<div>
+Restent 24 mesures, divisées en deux parties (A et B) égales, comptant donc chacune 12 mesures.
+</div>
+<div>
+Chaque partie est fonctionnellement organisée comme suit :
+</div>
+
+<div class="table" id="legend">
+  <div><div> </div><div                >fonction                       </div><div><span id="A">A</span></div><div>#</div><div><span id="B">B</span></div><div>#</div></div>
+
+  <div><div>1</div><div class="func exp"    >Exposé du thème                </div><div>1-3    </div><div>3</div><div>13   </div><div>1</div></div> 
+  <div><div>2</div><div class="func mod_rel">Modulation vers relatif majeur </div><div>4-5    </div><div>2</div><div>14   </div><div>1</div></div> 
+  <div><div>3</div><div class="func dev"    >Développement                  </div><div>&empty;</div><div> </div><div>15-17</div><div>3</div></div> 
+  <div><div>4</div><div class="func mod_ou" >Modulation on ne sait où       </div><div>6-8    </div><div>3</div><div>18-20</div><div>2</div></div> 
+  <div><div>5</div><div class="func mar_har">Marche harmonique résolutive   </div><div>9-10   </div><div>2</div><div>21-22</div><div>2</div></div> 
+  <div><div>6</div><div class="func coda"   >Conclusion                     </div><div>11-12  </div><div>2</div><div>23-24</div><div>3</div></div> 
+  <div><div>7</div><div class="func fin"    >Coda modulante                 </div><div>       </div><div> </div><div>25-27</div><div>3</div></div> 
+</div>
+
+<div>
+Détail des tonalités :
+  <span style="font-size:smaller; float:right;">
+    <i class="fa fa-exclamation-triangle"></i>
+    Transposition en La mineur. Original en Do mineur
+    <i class="fa fa-exclamation-triangle"></i>
+  </span>
+</div>
+</div>
+
+<div class="harmoTableWrapperForHorizontalScrolling">
+    <ul class="list-inline">
+ 
+
+<div class="table" id="harmo">
+ <div class="numbers">
+  <div id="A" class="header">&nbsp;A&nbsp;</div>
+  <div class="func exp"    >1</div>
+  <div class="func exp"    >2</div>
+  <div class="func exp"    >3</div>
+  <div class="func mod_rel">4</div>
+  <div class="func mod_rel">5</div>
+  <div class="func mod_ou" >6</div>
+  <div class="func mod_ou" >7</div>
+  <div class="func mod_ou" >8</div>
+  <div class="func mar_har">9</div>
+  <div class="func mar_har">10</div>
+  <div class="func coda"   >11</div>
+  <div class="func coda"   >12</div>
+ </div>
+ <div id="A">
+  <div></div>
+  <div class="func exp"    ><div>
+    <span data-postion="0">Am</span>                         
+    <span></span>                          
+    <span data-postion="0">E<span id="ss">sus4</span></span>
+    <span data-postion="0">E</span>                            
+  </div></div>
+  <div class="func exp"    ><div><span>Am</span>                         <span></span>                          <span>F6</span>                         <span>B<span id="ss">dim</span></span>    </div></div>
+  <div class="func exp"    ><div><span>E7</span>                         <span>Am</span>                        <span>D6</span>                         <span>E7</span>                           </div></div>
+  <div class="func mod_rel"><div><span>Am</span>                         <span>F/A</span>                       <span>G7/B</span>                       <span>G6</span>                           </div></div>
+  <div class="func mod_rel"><div><span>C</span>                          <span>Am</span>                        <span>F6</span>                         <span>G7</span>                           </div></div>
+  <div class="func mod_ou" ><div><span>C</span>                          <span>Am</span>                        <span>D7/F#</span>                      <span>D6</span>                           </div></div>
+  <div class="func mod_ou" ><div><span>G</span>                          <span>Gm</span>                        <span>C#<span id="ss">7dim</span></span><span>A7</span>                           </div></div>
+  <div class="func mod_ou" ><div><span>D7/C</span>                       <span>G/B</span>                       <span>A7/C#</span>                      <span>Dm6</span>                          </div></div>
+  <div class="func mar_har"><div><span>Em/G</span>                       <span></span>                          <span>Am/C</span>                       <span></span>                             </div></div>
+  <div class="func mar_har"><div><span>F#m7<span id="ss">b5</span></span><span></span>                          <span>B7</span>                         <span></span>                             </div></div>
+  <div class="func coda"   ><div><span>Em</span>                         <span></span>                          <span>Am</span>                         <span style="position: relative; left: -14px">D#<span id="ss">dim</span>/F#</span></div></div>
+  <div class="func coda"   ><div><span>B7</span>                         <span>Em</span>                        <span>Am6</span>                        <span>B</span>                            </div></div>
+ </div>
+ <div class="numbers">
+  <div id="B" class="header">&nbsp;B&nbsp;</div>
+  <div class="func exp"     >13</div>
+  <div class="func mod_rel" >14</div>
+  <div class="func dev"     >15</div>
+  <div class="func dev"     >16</div>
+  <div class="func dev"     >17</div>
+  <div class="func mod_ou"  >18</div>
+  <div class="func mod_ou"  >19</div>
+  <div class="func mod_ou"  >20</div>
+  <div class="func mar_har" >21</div>
+  <div class="func mar_har" >22</div>
+  <div class="func coda"    >23</div>
+  <div class="func coda"    >24</div>
+ </div>
+ <div id="B">
+  <div></div>
+  <div class="func exp"     ><div><span>Em</span>                         <span></span>                          <span>B<span id="ss">sus4</span></span> <span>B</span>                            </div></div>
+  <div class="func mod_rel" ><div><span>Em</span>                         <span></span>                          <span>Am</span>                         <span>D7</span>                           </div></div>
+  <div class="func dev"     ><div><span>G</span>                          <span>Em7<span id="ss">b5</span></span><span>A7</span>                         <span></span>                             </div></div>
+  <div class="func dev"     ><div><span>Dm</span>                         <span>Bb</span>                        <span>Gm6</span>                        <span>A7</span>                           </div></div>
+  <div class="func dev"     ><div><span>Dm</span>                         <span>Bb</span>                        <span>Gm6</span>                        <span>C7</span>                           </div></div>
+  <div class="func mod_ou"  ><div><span>F</span>                          <span>Dm</span>                        <span>G7/B</span>                       <span>G6</span>                           </div></div>
+  <div class="func mod_ou"  ><div><span>C</span>                          <span>Cm</span>                        <span>F#<span id="ss">7dim</span></span><span>D7</span>                           </div></div>
+  <div class="func mod_ou"  ><div><span>G7/F</span>                       <span>C/E</span>                       <span>D7/F#</span>                      <span>Gm6</span>                          </div></div>
+  <div class="func mar_har" ><div><span>Am/C</span>                       <span></span>                          <span>Em/F</span>                       <span></span>                             </div></div>
+  <div class="func mar_har" ><div><span>B#m7<span id="ss">b5</span></span><span></span>                          <span>E7</span>                         <span></span>                             </div></div>
+  <div class="func coda"    ><div><span>Am</span>                         <span></span>                          <span>Dm</span>                         <span style="position: relative; left: -14px">G#<span id="ss">dim</span>/B</span> </div></div>
+  <div class="func coda"    ><div><span>E7</span>                         <span>Am</span>                        <span>Dm6</span>                        <span>E7</span>                           </div></div>
+ </div>
+ <div class="numbers">
+  <div id="C" class="header">&nbsp;C&nbsp;</div>
+  <div class="func fin">25</div>
+  <div class="func fin">26</div>
+  <div class="func fin">27</div>
+ </div>
+ <div>
+  <div></div>
+  <div class="func fin"><div><span>Am</span><span>F</span><span>Bb</span><span>Gm</span></div></div>
+  <div class="func fin"><div><span>C </span><span>B<span id="ss">dim</span></span><span>C<span id="ss">sus4</span></span><span>C</span></div></div>
+  <div class="func fin"><div><span>F </span><span></span><span></span>  <span></span></div></div>
+ </div>
+</div>
+</div>
+</ul>
+</div>
+<div class="container">
+
+<iframe id="sc-widget" width="100%" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&callback=true"></iframe>
+
+<form>
+  <div class="form-group">
+  <label class="checkbox-inline"> <!-- -inline -->   
+    <input type="checkbox" id="sync_scroll_2_play"  checked >
+	  faire défiler la grille des accords en synchrone avec l'écoute
+	</input>
+  </label>
+  </div>
+  <div class="form-group">
+  </label>
+  <label class="checkbox-inline"> <!-- -inline -->
+    <input type="checkbox" id="stop_automatically" checked >
+	écouter seulement l'accord / la mesure / la partie
+	</input>
+  </label>
+</div>
+</form>
+
+<div>
+La partie A module de La mineur vers Mi mineur.<br/>
+La partie B retourne depuis Mi mineur vers le La mineur initial.<br/>
+La coda modulante (C) des 3 mesures finales 25-27 repart de La mineur pour conclure en Fa majeur.<br/>
+</div>
+
+<div>
+Trois observations :
+</div>
+
+<span class="label label-default pull-left">1</span>
+<div>
+Le déroulement harmonique des <b>7</b> dernières mesures de chaque partie est parfaitement identique / verbatim (transposé dans la tonalité de chaque partie, bien sûr).
+<ul>
+<li>Les mesures 6-12 de A modulent de Do majeur vers Mi mineur.</li>
+<li>Les mesures 18-24 de B modulent de Fa majeur vers La mineur.</li>
+</ul>
+Les motifs mélodiques de l'accompagnement au clavier ne sont pas strictement identiques entre les deux parties, il y a des variantes subtiles - assez mystérieuses elles aussi, car une transposition verbatim eut pu convenir; en regardant en détail on constate des permutations quasi mathématiques. On retrouve dans ces variantes l'esprit de la variation.
+</div>
+
+<span class="label label-default pull-left">2</span>
+<div>
+Dans la partie B, <span class="func exp">l’exposé du thème</span> et la <span class="func mod_rel">modulation vers le relatif majeur</span> sont squeezé en 2 mesures, au lieu de 5 dans la partie A,<br/>
+ce qui permet de dégager 3 mesures d’un <span class="func dev">développement</span> échevelé qui module de
+<ul>
+<li>Sol majeur (ton relatif de la tonalité initiale de la partie B, Mi mineur) vers </li>
+<li>Fa majeur (nécessaire pour pouvoir recommencer verbatim le déroulement harmonique des 7 dernières mesures pour retomber sur La mineur, la tonalité de l'œuvre).</li>
+</ul>
+</div>
+<div>
+<span class="label label-default pull-left">3</span>
+</div>
+Dans la partie A, on est frappé, dés la première écoute, par le parrallélisme harmonique entre 
+<ul>
+<li>la première mesure de la <span class="func mod_rel">modulation vers le relatif majeur</span> et </li>
+<li>la première mesure de ce que j'ai appelé la <span class="func mod_ou">modulation on ne sait où</span>, pour faire comique.</li>
+</ul>
+Le déroulement harmonique de ces mesures est <ol>
+<li>
+le premier temps sur l'accord de tonique de la tonalité de départ : 
+<span class="func mod_rel">Am</span> | <span class="func mod_ou">C</span>;
+</li>
+<li>
+le deuxième temps sur le degré IV, resp. II (on sait que la fonction tonale du II et du IV degré sont égales) de la tonalité vers laquelle on se dirige :
+<span class="func mod_rel">F/A -&gt; C</span> | <span class="func mod_ou">Am -&gt; G</span>;
+</li>
+<li>
+le troisème temps sur l'accord de dominante septième de la tonalité vers laquelle on se dirige, en renversement de sixte, i.e. avec la sensible à la basse :
+<span class="func mod_rel">G7/B -&gt; C</span> | <span class="func mod_ou">D7/F# -&gt; G</span>;
+</li>
+<li>
+sur le quatrième temps, cette sensible, au lieu de porter directement à la tonique, redescend d'abord sur la fondamentale du même accord de dominante, avec en prime la disparition au chant de la septiéme au profit de la sixième en note de passage, qui se résout prestement sur la quinte de la dominante
+<span class="func mod_rel">G6</span> | <span class="func mod_ou">D6</span>;
+</li>
+<li>
+puis la résolution parfaite sur la tonique en position fondamentale, avec en prime au chant la quinte de la dominante qui remonte vers la médiante de la tonique, qui je le rappelle, « <i>est appelée 'note modale' parce qu'elle permet de faire la différence entre le mode majeur et le mode mineur. </i>» cf. <a href="http://fr.wikipedia.org/wiki/M%C3%A9diante" target="wikipedia">wikipedia</a>.
+<span class="func mod_rel">C</span> | <span class="func mod_ou">G</span>
+</li>
+</ol>
+
+<div><i>(Parenthèse : ceci est tout à fait indigeste à décrypter, c'est sans doute pour éviter de tels <a href="http://fr.wiktionary.org/wiki/pensum" target="wikipedia">pensums</a> que la notation musicale a été crée.)</i></div>
+<div>Aprés ces débuts identiques, la <span class="func mod_rel">modulation vers le relatif majeur</span> poursuit en confirmant la tonalité, alors que la <span class="func mod_ou">modulation on ne sait où</span> casse abruptement ce train-train en enchainant immédiatement de la tonique majeure <span class="func mod_ou">G</span> vers la tonique mineure <span class="func mod_ou">Gm</span>. D'où l'importance de la médiante ! Remember 'note modale' dans le paragraphe précédent ? Et l'on se demande alors effectivement où l'on va.</div>
+
+<div>Dans la partie B, la réduction à la moelle de la <span class="func mod_rel">modulation vers le relatif majeur</span> empêche de recourir au même procédé harmonique, est c'est tant mieux, sinon, ça lasserait.</div>
+
+<div>Mais, comme noté dans le point 1, les deux <span class="func mod_ou">modulation on ne sait où</span> des parties A et B sont harmoniquement identiques ! 
+On retrouve donc ce même procédé dans la partie B, 
+à la mesure 18 : <span class="func mod_ou">F Dm G7/B G6 | C</span>, 
+et ce après un <span class="func dev">développement</span> qui nous aura régalé en matière de surprises harmoniques.</div>
+
+<div>J'ai été un peu long, je m'en excuse, mais toute cette glose pompeuse pour arriver à : </div>
+
+<div><b>Cette chose même qui, dans la partie A, portait vers l'instabilité, se métamorphose dans la partie B en l'annonce d'une stabilité proche !<b>
+</div>
+<hr/>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bwv1018'; // Required - Replace example with your forum shortname
+    var disqus_identifier = 'aequologica.net/bwv1018';// 'a unique identifier for each page where Disqus is present';
+    var disqus_title = 'JS Bach Adagio Sonata Violon Clavier Fa mineur BWV 1018';
+    var disqus_url = 'http://aequologica.net/bwv1018.html';    
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</body>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"            ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"      ></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"          ></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="//w.soundcloud.com/player/api.js"></script>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+
+  $('input:checkbox').each(function() {
+    if (Modernizr.localstorage) {
+      var data = window.localStorage.getItem($(this).attr('id'));
+      console.log($(this).attr('id') + ' ' + data);
+      if (data === "true") {
+        $(this).prop('checked', true);
+      } else if (data === "false") {
+        $(this).prop('checked', false);
+      } else {  
+      }
+    }
+  });
+    
+  $('input:checkbox').change(function(event) {
+    // console.log($(this).attr('id') + ' ' + this.checked);
+    if (Modernizr.localstorage) {
+      window.localStorage.setItem($(this).attr('id'), this.checked);
+    }
+  });
+	  
+  function ColorLuminance(hex, lum) {
+
+    // validate hex string
+    hex = String(hex).replace(/[^0-9a-f]/gi, '');
+    if (hex.length < 6) {
+      hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];	
+    }
+    lum = lum || 0;
+
+    // convert to decimal and change luminosity
+    var rgb = "#", c, i;
+    for (i = 0; i < 3; i++) {
+      c = parseInt(hex.substr(i*2,2), 16);
+      c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+      rgb += ("00"+c).substr(c.length);
+    }
+
+    return rgb;
+  }
+
+  function rgbToHex(color) {
+    var bg = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+      return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return     "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
+  }
+
+  $.each([".exp", ".mod_rel", ".dev", ".mod_ou", ".mar_har", ".coda", ".fin"], function( index, value ){
+
+    $.each( $(value), function() {
+      $bg_color = rgbToHex($( this ).css('background-color'));
+      $bg_color_alt = ColorLuminance($bg_color, 0.12);
+      // console.log($bg_color + ' -> ' + $bg_color_alt);
+      $( this ).data( {'data-bg'    : $bg_color} );
+      $( this ).data( {'data-bg-alt': $bg_color_alt } );
+    });
+
+    $( "#legend "+value ).hover(
+      function() {
+        $.each( $(value), function() {
+          $( this ).css( {'background-color': $( this ).data( 'data-bg-alt')} );
+        });
+      }, function() {
+        $.each( $(value), function() {
+          $( this ).css( {'background-color': $( this ).data( 'data-bg')} );
+        });
+      }
+    );
+  });
+
+  (function(){
+
+    var length = 227000.0;
+    var noire = length/(26.0*4.0);
+
+    var widgetIframe = document.getElementById('sc-widget'),
+        widget       = SC.Widget(widgetIframe);
+
+        var stop = null;
+
+    widget.bind(SC.Widget.Events.READY, function() {
+
+      widget.bind(SC.Widget.Events.PAUSE, function() {
+        widget.getPosition(function(currentPosition){
+          // r.à.z display
+          $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
+            $(value).css( {'background-color': 'inherit'} );
+          });
+        });
+      });
+      
+      widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
+        widget.getPosition(function(currentPosition){
+          if (stop != null) { 
+            // console.log($("#stop_automatically:checked").length +' '+ stop + ' ' + currentPosition + ' : ' + (currentPosition > stop));
+            if ($("#stop_automatically:checked").length > 0) {
+              if (currentPosition > stop) {
+                widget.pause();
+                stop = null;
+              }
+            } 
+          }
+
+          // r.à.z display
+          $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
+            $(value).css( {'background-color': 'inherit'} );
+          });
+
+          // calc chord id from position
+          var $gotTheSpan = $("#"+"chord"+Math.floor(currentPosition/noire));
+          if ($gotTheSpan.length > 0) {
+            var alternateBackgroundColor = $gotTheSpan.parent().parent().data( 'data-bg-alt');
+            
+            $gotTheSpan.css( {'background-color': alternateBackgroundColor} );
+
+            if ($("#sync_scroll_2_play:checked").length > 0) {
+              var $scrollToElement;
+              // console.log($gotTheSpan.parent().parent().prev().length);
+              if ($gotTheSpan.parent().parent().prev().length < 1 ) {
+                $scrollToElement = $gotTheSpan.parent().parent();
+              } else {
+                $scrollToElement = $gotTheSpan.parent().parent().prev();
+              }
+              $gotTheSpan.parent().parent().parent().parent().parent().parent().scrollTo($scrollToElement);
+            }
+          }
+        });
+      });
+      
+    });
+
+    /* chords offsets */
+    $.each($("div.table#harmo > div > div > div > span"), function(index) {
+        $(this).prop("id", "chord"+index);
+        var offset = Math.round(noire*index); 
+        $(this).data("position", offset);
+        $(this).data("stop", offset + noire + (noire/8));
+    });
+
+    /* bars offsets */
+    $.each($("div.table#harmo > div.numbers > div").not(".header"), function(index) {
+        var offset = Math.round(index*(noire  *4)); 
+        if (offset) { offset = offset;}
+        $(this).data("position", offset);
+        $(this).data("stop", offset + (4*noire) + (noire/8));
+    });
+
+    /* parts offsets */
+    $.each($(".header"), function(index) {
+        var offset = Math.round(index*(noire*4*12)); 
+        if (offset) { offset = offset;}
+        $(this).data("position", offset);
+        $(this).data("stop", offset + (noire*4*12) + (noire/8));
+    });
+
+    $("div.table > div.numbers > div").add("div.table#harmo > div > div > div > span").click(function() {
+      $pos = $(this).data("position");
+      if (typeof $pos !== "undefined" && $pos != null) {
+        widget.pause();
+        widget.seekTo($pos);
+        widget.play();
+        stop = Math.round($(this).data("stop"));
+        // console.log(stop);
+      }
+    });
+
+  }());
+
+
+  
+});
+</script>
+
+<!-- https://browser-update.org/#install  -->
+<script> 
+var $buoop = {c:2}; 
+function $buo_f(){ 
+ var e = document.createElement("script"); 
+ e.src = "//browser-update.org/update.js"; 
+ document.body.appendChild(e);
+};
+try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+catch(e){window.attachEvent("onload", $buo_f)}
+</script> 
+
+<!-- google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62202103-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</html>
+
