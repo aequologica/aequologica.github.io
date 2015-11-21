@@ -1,4 +1,4 @@
-{
+  {
   "name": "aequologica.github.io",
   "version": "0.0.2",
   "homepage": "https://github.com/aequologica/aequologica.github.io",
@@ -19,7 +19,7 @@
   "dependencies": {
     "angular": "~1.4.7",
     "angular-sanitize": "~1.4.7",
-    "bootstrap": "~3.3.5",
+    "bootstrap": "~4",
     "jquery": "~2.1.4",
     "lodash": "~3.10.1",
     "restangular": "~1.5.1"

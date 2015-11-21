@@ -1,6 +1,6 @@
 var gulp = require('gulp');
-var gulpBowerFiles = require('gulp-bower-files');
+var mainBowerFiles = require('main-bower-files');
 
 gulp.task('default', function() {
-  gulpBowerFiles().pipe(gulp.dest("./lib"));
+  return gulp.src(mainBowerFiles({ paths: '.' }), { base: './bower_components' }).pipe(gulp.dest("./lib"));
 });
