@@ -1,10 +1,6 @@
 {
   "images" : [
-     { "name":"aequologica",
-        "url": "http://aequologica.net/experiments/",
-        "src": "aequologica-trans.png"
-     }
-     , { "name" : "versioneye",
+     { "name" : "versioneye",
          "url"  : "https://www.versioneye.com/user/projects/547de1de6c4767e0e4000036",
          "src" : "versioneyelogo-150x150.png",
          "items" : [
