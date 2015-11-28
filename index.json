@@ -9,7 +9,7 @@
     }
     ,{ "name":"tebaldi"                 , "url": "https://tebaldi051108trial.hanatrial.ondemand.com/"                                           , "text" : "tebaldi", "src": "tebaldi.png"                                    }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
-    ,{ "name":"angular"                 , "url": "http://docs.angularjs.org/tutorial/step_02"                                                                       , "src": "angular.png"                                    }
+    ,{ "name":"angular"                 , "url": "https://angular.io/docs/ts/latest/"                                                                               , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://v4-alpha.getbootstrap.com/getting-started/introduction/"                                                   , "src": "bootstrap_3.1.png"                              }
     ,{ "name":"bwv1018"                 , "url": "bwv1018"                                                                                                          , "src": "Bach_Seal.png"                                  }
     ,{ "name":"cthiebaud@github"        , "url": "https://github.com/cthiebaud"                                                                                     , "src": "github-logo-transparent.png"                    }
