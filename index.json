@@ -7,8 +7,8 @@
         { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/"      , "text" : "artifact listener"  }
       ]
     }
-    ,{ "name":"tebaldi"                 , "url": "https://tebaldi051108trial.hanatrial.ondemand.com/"                    , "text" : "the garden of earthly delights", "src": "https://tebaldi051108trial.hanatrial.ondemand.com/geppaequo-api/images/v1/crop?url=/geppaequo-api/stnemucod/v1/document/images/bosch-the-garden-of-earthly-delights.jpg&1453319208686&width=120&height=120&quality=100"                                    }
-    ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/"                                                               , "text" : "tebaldi", "src": "tebaldi.png"                                    }
+    ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/",                                         "text" : "the garden of earthly delights", "src": "https://tebaldi051108trial.hanatrial.ondemand.com/geppaequo-api/images/v1/crop?url=/geppaequo-api/stnemucod/v1/document/images/bosch-the-garden-of-earthly-delights.jpg&1453319208686&width=120&height=120&quality=100"                                    }
+    ,{ "name":"tebaldi"                 , "url": "https://tebaldi051108trial.hanatrial.ondemand.com/"                                           , "text" : "tebaldi", "src": "tebaldi.png"                                    }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
     ,{ "name":"angular"                 , "url": "https://angular.io/docs/ts/latest/"                                                                               , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://v4-alpha.getbootstrap.com/getting-started/introduction/"                                                   , "src": "bootstrap_3.1.png"                              }
