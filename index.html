@@ -118,7 +118,7 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
       $scope.shuffle     = function () {
         _.each($scope.bricks, function(brick) {
           if (brick.src0) {
-            image.src = image.src0 + "&" +(new Date().getTime());
+            brick.src = brick.src0 + "&" +(new Date().getTime());
           }
         });
         return $scope.bricks = shuffleArray($scope.bricks);
