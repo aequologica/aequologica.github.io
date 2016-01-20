@@ -116,6 +116,11 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
       $scope.outOfOffice = true;
       $scope.bricks      = [];
       $scope.shuffle     = function () {
+        _.each($scope.bricks, function(brick) {
+          if (brick.refreshOnShuffle) {
+            image.src = image.getImage();
+          }
+        });
         return $scope.bricks = shuffleArray($scope.bricks);
       }
 
@@ -123,7 +128,7 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
         _.each(data.images, function(image){
           image.getImage = function() {
               if (image.src.startsWith("http")) {
-                return image.src;
+                return image.src+"&"+(new Date().getTime());
               } else {
                 return "images/"+image.src;
               }
