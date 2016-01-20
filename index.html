@@ -51,7 +51,7 @@
           target="{{brick.name}}"
           ng-click="$event.stopPropagation();"
           ng-class="{'internal': (brick.url.indexOf('sap.corp')!=-1)}">
-        <img ng-src = "images/{{brick.src}}">
+        <img ng-src = "{{brick.getImage()}}">
       </a>
       <ul ng-show="brick.items" class="text-wrap">
         <li ng-repeat="item in brick.items">
@@ -121,6 +121,13 @@ angular.module( 'aequologicaApp', ['wu.masonry'])
 
       $http.get('index.json', { cache: false}).success( function(data) {
         _.each(data.images, function(image){
+          image.getImage = function() {
+              if (image.src.startsWith("http")) {
+                return image.src;
+              } else {
+                return "images/"+image.src;
+              }
+          };
           $scope.bricks.push(image);
         });
         _.each(data.groups, function(group){
