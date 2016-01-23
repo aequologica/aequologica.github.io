@@ -51,7 +51,7 @@
           target="{{brick.name}}"
           ng-click="$event.stopPropagation();"
           ng-class="{'internal': (brick.url.indexOf('sap.corp')!=-1)}">
-        <img ng-src = "{{brick.src}}">
+        <img ng-src = "{{brick.src}}" fallback-src>
       </a>
       <ul ng-show="brick.items" class="text-wrap">
         <li ng-repeat="item in brick.items">
@@ -77,8 +77,8 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"                    ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.0.0/imagesloaded.pkgd.min.js"   ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular.js"                      ></script>
-
-<script type="text/javascript" src="angular-masonry.min.js" ></script>
+<script type="text/javascript" src="assets/js/angular.dcb-img-fallback.js"></script>
+<script type="text/javascript" src="assets/js/angular-masonry.min.js" ></script>
 
 <script type="text/javascript" >
 'use strict';
@@ -102,7 +102,7 @@ var shuffleArray = function(array) {
   return array;
 }
 
-angular.module( 'aequologicaApp', ['wu.masonry'])
+angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
   .config(['$httpProvider', function($httpProvider) {
     // http://stackoverflow.com/questions/16098430/angular-ie-caching-issue-for-http
     // initialize get if not there
