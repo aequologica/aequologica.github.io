@@ -8,7 +8,7 @@
       ]
     }
     ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/",                                         "text" : "the garden of earthly delights", "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=240&height=240&quality=100",                                    
-        "onError" : "no_image_server.png"}
+        "onError" : "no_image_server.png", "width":"240px", "height":"240px"}
     ,{ "name":"tebaldi"                 , "url": "https://tebaldi051108trial.hanatrial.ondemand.com/"                                           , "text" : "tebaldi", "src": "basic_home.svg"                                 }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
     ,{ "name":"angular"                 , "url": "https://angular.io/docs/ts/latest/"                                                                               , "src": "angular.png"                                    }
