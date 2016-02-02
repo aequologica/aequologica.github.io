@@ -124,8 +124,8 @@ angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
         return $scope.bricks = shuffleArray($scope.bricks);
       }
 
-      $http.get('index.json', { cache: false}).success( function(data) {
-        _.each(data.images, function(image){
+      function successCallback(response) {
+        _.each(response.data.images, function(image){
           if (image.src.startsWith("http")) {
             image.src0 = image.src;
             image.src = image.src0 + "&" +(new Date().getTime());
@@ -134,12 +134,20 @@ angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
           }
           $scope.bricks.push(image);
         });
+
         _.each(data.groups, function(group){
           $scope.bricks.push(group);
         });
 
         $scope.bricks = $scope.shuffle();
-      });
+      }
+
+      $http.get('index.json', { cache: false})
+        .then(  successCallback, 
+                function(response) {
+                  console.log(response);
+                }
+      );
 
       var image = new Image();
       image.src = 'https://avatars.wdf.sap.corp/media/BAhbCVsHOgZmSSIdNTMyNmU5NjdkZjE1ZGI2ODVhMDE0YzJiBjoGRVRbCToGcDoMY29udmVydEkiAAY7BkYwWwg7BzoKdGh1bWJJIgg5NHgGOwZUWwc6BmU6CGpwZw.jpg';
