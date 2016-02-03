@@ -135,7 +135,7 @@ angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
           $scope.bricks.push(image);
         });
 
-        _.each(data.groups, function(group){
+        _.each(response.data.groups, function(group){
           $scope.bricks.push(group);
         });
 
