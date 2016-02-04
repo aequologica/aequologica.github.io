@@ -7,13 +7,22 @@
         { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/"      , "text" : "artifact listener"  }
       ]
     }
+    ,{ "name":"tebaldi"                 , 
+         "url": "https://tebaldi051108trial.hanatrial.ondemand.com/", 
+         "text" : "tebaldi", 
+         "src": "basic_home.svg",
+         "items" : [
+        { "name" : "p1941866044",      "url":"https://imageserverp1941866044trial.hanatrial.ondemand.com",  "text" : "p1941866044"  },
+        { "name" : "p1941872433",      "url":"https://imageserverp1941872433trial.hanatrial.ondemand.com",  "text" : "p1941872433"  },
+        { "name" : "p1630844092",       "url":"https://imageserverp1630844092trial.hanatrial.ondemand.com", "text" : "p1630844092"  }
+         ]
+     }
     ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/",                        "text" : "The Garden of Earthly Delights", "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=240&height=240&quality=100",                                    
         "onError" : "no_image_server.png", "width":"240px", "height":"240px"}
     ,{ "name":"haywaintriptych"         , "url": "http://earthlydelights.garden/haywain.triptych.html",   "text" : "The Haywain Triptych", "src": "https://imageserverp1941872433trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=300&height=300&quality=100",                                    
         "onError" : "no_image_server.png", "width":"300px", "height":"300px"}
     ,{ "name":"lastjudgment"            , "url": "http://earthlydelights.garden/last.judgment.html",      "text" : "The Last Judgment", "src": "https://imageserverp1630844092trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=180&height=180&quality=100",                                    
         "onError" : "no_image_server.png", "width":"180px", "height":"180px"}
-    ,{ "name":"tebaldi"                 , "url": "https://tebaldi051108trial.hanatrial.ondemand.com/"                                           , "text" : "tebaldi", "src": "basic_home.svg"                                 }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
     ,{ "name":"angular"                 , "url": "https://angular.io/docs/ts/latest/"                                                                               , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://v4-alpha.getbootstrap.com/getting-started/introduction/"                                                   , "src": "bootstrap_3.1.png"                              }
@@ -69,14 +78,6 @@
         { "type" : "separator" },  
         { "name" : "p4ms_70_prod",      "url":"https://pie.wdf.sap.corp/p4ms",                                          "text" : "P4MS 70 production"  },
         { "name" : "p4ms_73_dev",       "url":"https://piedev.mo.sap.corp/p4ms",                                          "text" : "P4MS 73 development"  }
-      ]
-    },
-    { "name" : "hieronymus",
-      "ulr"  : "hieronymus",
-      "items" : [
-        { "name" : "p1941866044",      "url":"https://imageserverp1941866044trial.hanatrial.ondemand.com",  "text" : "p1941866044"  },
-        { "name" : "p1941872433",      "url":"https://imageserverp1941872433trial.hanatrial.ondemand.com",  "text" : "p1941872433"  },
-        { "name" : "p1630844092",       "url":"https://imageserverp1630844092trial.hanatrial.ondemand.com", "text" : "p1630844092"  }
       ]
     },
     { "name" : "google",
