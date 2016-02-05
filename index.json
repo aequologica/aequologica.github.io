@@ -12,9 +12,9 @@
          "text" : "tebaldi", 
          "src": "basic_home.svg",
          "items" : [
-        { "name" : "p1941866044",      "url":"https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points",  "text" : "p1941866044"  },
-        { "name" : "p1941872433",      "url":"https://imageserverp1941872433trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points",  "text" : "p1941872433"  },
-        { "name" : "p1630844092",       "url":"https://imageserverp1630844092trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1630844092"  }
+        { "name" : "p1941866044", "url":"https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1941866044" },
+        { "name" : "p1941872433", "url":"https://imageserverp1941872433trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1941872433" },
+        { "name" : "p1630844092", "url":"https://imageserverp1630844092trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1630844092" }
          ]
      }
     ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/",                        "text" : "The Garden of Earthly Delights", "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=240&height=240&quality=100",                                    
