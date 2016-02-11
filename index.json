@@ -28,6 +28,7 @@
     ,{ "name":"temptationofstanthony"            , "url": "http://earthlydelights.garden/temptation.of.st.anthony.triptych.html",      "text" : "Triptych of the Temptation of St. Anthony", "src": "https://imageserverp1941883276trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=320&height=320&quality=100",                                    
         "onError" : "no_image_server.png", "width":"320px", "height":"320px"}
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
+    ,{ "name":"gerrit"                  , "url": "https://git.wdf.sap.corp:8080"                                                                                    , "src": "diffy-rotated-small-transparent.gif"            }
     ,{ "name":"angular"                 , "url": "https://angular.io/docs/ts/latest/"                                                                               , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://v4-alpha.getbootstrap.com/getting-started/introduction/"                                                   , "src": "bootstrap_3.1.png"                              }
     ,{ "name":"bwv1018"                 , "url": "bwv1018"                                                                                                          , "src": "Bach_Seal.png"                                  }
