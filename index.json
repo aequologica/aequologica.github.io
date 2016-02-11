@@ -21,12 +21,12 @@
      }
     ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/",                        "text" : "The Garden of Earthly Delights", "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=240&height=240&quality=100",                                    
         "onError" : "no_image_server.png", "width":"240px", "height":"240px"}
-    ,{ "name":"haywaintriptych"         , "url": "http://earthlydelights.garden/haywain.triptych.html",   "text" : "The Haywain Triptych", "src": "https://imageserverp1941872433trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=300&height=300&quality=100",                                    
-        "onError" : "no_image_server.png", "width":"300px", "height":"300px"}
+    ,{ "name":"haywaintriptych"         , "url": "http://earthlydelights.garden/haywain.triptych.html",   "text" : "The Haywain Triptych", "src": "https://imageserverp1941872433trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=100&height=100&quality=100",                                    
+        "onError" : "no_image_server.png", "width":"100px", "height":"100px"}
     ,{ "name":"lastjudgment"            , "url": "http://earthlydelights.garden/last.judgment.html",      "text" : "The Last Judgment", "src": "https://imageserverp1630844092trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=180&height=180&quality=100",                                    
         "onError" : "no_image_server.png", "width":"180px", "height":"180px"}
-    ,{ "name":"temptationofstanthony"            , "url": "http://earthlydelights.garden/temptation.of.st.anthony.triptych.html",      "text" : "Triptych of the Temptation of St. Anthony", "src": "https://imageserverp1941883276trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=80&height=80&quality=100",                                    
-        "onError" : "no_image_server.png", "width":"80px", "height":"80px"}
+    ,{ "name":"temptationofstanthony"            , "url": "http://earthlydelights.garden/temptation.of.st.anthony.triptych.html",      "text" : "Triptych of the Temptation of St. Anthony", "src": "https://imageserverp1941883276trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=320&height=320&quality=100",                                    
+        "onError" : "no_image_server.png", "width":"320px", "height":"320px"}
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
     ,{ "name":"angular"                 , "url": "https://angular.io/docs/ts/latest/"                                                                               , "src": "angular.png"                                    }
     ,{ "name":"bootstrap"               , "url": "http://v4-alpha.getbootstrap.com/getting-started/introduction/"                                                   , "src": "bootstrap_3.1.png"                              }
