@@ -16,7 +16,10 @@
         { "name" : "p1941872433", "url":"https://imageserverp1941872433trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1941872433" },
         { "name" : "p1941883276", "url":"https://imageserverp1941883276trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1941883276" },
         { "name" : "p1630844092", "url":"https://imageserverp1630844092trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1630844092" },
-        { "name" : "p1742770407", "url":"https://imageserverp1742770407trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1742770407" }
+        { "name" : "p1742770407", "url":"https://imageserverp1742770407trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1742770407" },
+        { "name" : "p1742770407", "url":"https://imageserverp1742770407trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1742770407" },
+        { "name" : "HCPs"       , "url":"https://tebaldi051108trial.hanatrial.ondemand.com//lifebuoy/HCPs.jsp"                                  , "text" : "HCPs" }
+        
          ]
      }
     ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/",                        "text" : "The Garden of Earthly Delights", "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=240&height=240&quality=100",                                    
