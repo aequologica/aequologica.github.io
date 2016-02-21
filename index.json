@@ -12,22 +12,22 @@
          "text" : "tebaldi", 
          "src": "basic_home.svg",
          "items" : [
-        { "name" : "p1941866044", "url":"https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1941866044" },
-        { "name" : "p1941872433", "url":"https://imageserverp1941872433trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1941872433" },
-        { "name" : "p1941883276", "url":"https://imageserverp1941883276trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1941883276" },
-        { "name" : "p1630844092", "url":"https://imageserverp1630844092trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1630844092" },
-        { "name" : "p1742770407", "url":"https://imageserverp1742770407trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/points", "text" : "p1742770407" },
+        { "name" : "p1941866044", "url":"https://imageserverp1941866044trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/points", "text" : "p1941866044" },
+        { "name" : "p1941872433", "url":"https://imageserverp1941872433trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/points", "text" : "p1941872433" },
+        { "name" : "p1941883276", "url":"https://imageserverp1941883276trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/points", "text" : "p1941883276" },
+        { "name" : "p1630844092", "url":"https://imageserverp1630844092trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/points", "text" : "p1630844092" },
+        { "name" : "p1742770407", "url":"https://imageserverp1742770407trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/points", "text" : "p1742770407" },
         { "name" : "HCPs"       , "url":"https://tebaldi051108trial.hanatrial.ondemand.com//lifebuoy/HCPs.jsp"                                  , "text" : "HCPs" }
         
          ]
      }
-    ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/",                        "text" : "The Garden of Earthly Delights", "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=240&height=240&quality=100",                                    
+    ,{ "name":"earthlydelights"         , "url": "http://earthlydelights.garden/",                        "text" : "The Garden of Earthly Delights", "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/crop?width=240&height=240&quality=100",                                    
         "onError" : "no_image_server.png", "width":"240px", "height":"240px"}
-    ,{ "name":"haywaintriptych"         , "url": "http://earthlydelights.garden/haywain.triptych.html",   "text" : "The Haywain Triptych", "src": "https://imageserverp1941872433trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=100&height=100&quality=100",                                    
+    ,{ "name":"haywaintriptych"         , "url": "http://earthlydelights.garden/haywain.triptych.html",   "text" : "The Haywain Triptych", "src": "https://imageserverp1941872433trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/crop?width=100&height=100&quality=100",                                    
         "onError" : "no_image_server.png", "width":"100px", "height":"100px"}
-    ,{ "name":"lastjudgment"            , "url": "http://earthlydelights.garden/last.judgment.html",      "text" : "The Last Judgment", "src": "https://imageserverp1630844092trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=180&height=180&quality=100",                                    
+    ,{ "name":"lastjudgment"            , "url": "http://earthlydelights.garden/last.judgment.html",      "text" : "The Last Judgment", "src": "https://imageserverp1630844092trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/crop?width=180&height=180&quality=100",                                    
         "onError" : "no_image_server.png", "width":"180px", "height":"180px"}
-    ,{ "name":"temptationofstanthony"            , "url": "http://earthlydelights.garden/temptation.of.st.anthony.triptych.html",      "text" : "Triptych of the Temptation of St. Anthony", "src": "https://imageserverp1941883276trial.hanatrial.ondemand.com/earthly-delights-garden-api/image/v1/crop?width=320&height=320&quality=100",                                    
+    ,{ "name":"temptationofstanthony"            , "url": "http://earthlydelights.garden/temptation.of.st.anthony.triptych.html",      "text" : "Triptych of the Temptation of St. Anthony", "src": "https://imageserverp1941883276trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/crop?width=320&height=320&quality=100",                                    
         "onError" : "no_image_server.png", "width":"320px", "height":"320px"}
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
     ,{ "name":"gerrit"                  , "url": "https://git.wdf.sap.corp:8080"                                                                                    , "src": "diffymute-300x279.png"                          }
