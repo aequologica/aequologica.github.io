@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+
+  <meta name="viewport"             content="width=device-width, initial-scale=1"/>
+  <meta name="google"               content="notranslate"/>
+  <meta name="title"                content="Outil"/>
+  <meta name="description"          content="Tool to sync and post soundcloud comments"/>
+  <meta name="author"               content="Christophe Thiebaud"/>
+
+  <meta http-equiv="Content-Language" content="en" />
+  <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1"/>
+
+  <meta property="og:title"         content="Soundcloud Comment Helper"/>
+  <meta property="og:description"   content="Helper tool to ease the creation of synchronized soundcloud comments."/>
+  <meta property="og:url"           content="http://aequologica.net/x_et_thiebaud/tool.html" />
+  <meta property="og:type"          content="website"/>
+
+  <meta property="og:image"        content="http://aequologica.net/x_et_thiebaud/SoundCloud_logo.jpg" />
+  <meta property="og:image:url"    content="http://aequologica.net/x_et_thiebaud/SoundCloud_logo.jpg" />
+  <meta property="og:image:type"   content="image/jpeg" />
+  <meta property="og:image:width"  content="1280" />
+  <meta property="og:image:height" content="729" />
+  
+  <meta property="fb:admins" content="708154592"/>
+  <meta property="fb:app_id" content="104250825478" />
+  <title></title>
+
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="animate.css">
+  <link rel="stylesheet" type="text/css" href="sticky-footer-navbar.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!-- link rel="shortcut icon" href="/favicon.ico?v=2" -->  
+
+  <style type="text/css">
+  ul#result > li.done > span:first-child {
+    text-decoration: line-through;
+  }
+  ul#result > li:not(.done):hover { 
+    background-color: #f0f0f0;
+    opacity: 1;
+    cursor: pointer; 
+  }
+  ul#result > li.done > span:last-child:hover {
+    background-color: #f0f0f0;
+    opacity: 1;
+    cursor: pointer; 
+  }
+
+  h1, h2, h3, h4{
+    margin-top: 0;
+  }
+  hr {
+    margin: 0 0 1em 0;
+  }
+  </style>
+  
+</head>
+
+<body>
+
+  <div id="main" class="container">
+
+    <div class="row" style="padding-bottom: 1em;">
+      <div class="col-md-8">
+        <h3 style="float:left; text-align: left;">
+          <span id="title"></span>
+        </h3>
+      </div>
+      <div class="col-md-4">
+        <span style="float:right; text-align: right;">
+          <h4><span id="me" >anonymous</span></h4>
+          <div id="help">Feeling lost ? <a href="help" target ="help" style="cursor:help;"><i class="fa fa-info-circle"></a></i></div>
+        </span>
+      </div>
+    </div>
+
+    <div class="row" style="padding-bottom: 1em;">
+      <div class="col-md-12">
+        <form id="id_from_url" class="form">
+          <div class="input-group">
+            <label class="input-group-addon" for="soundcloudURL"><a href="https://soundcloud.com/stream" target="soundcloud">soundcloud</a> URL:</label>
+            <input id="soundcloudURL" type="text" class="form-control" placeholder="https://soundcloud.com/&lt;user&gt;/&lt;title&gt;" value="" >
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="revealMe" style="display:none;">
+
+      <div id="url"><a href=""></a></div>
+
+      <hr/>
+
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default btn-xs" id="seek_to_zero">
+            <i class="fa fa-step-backward"></i>
+          </button>
+          &nbsp;
+          <span id="feedback"></span>
+          <button style="float:right;" type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-target="#collapsible">show/hide input <i class="fa fa-caret-square-o-down"></i></button>
+        </div>
+
+
+        <div class="col-md-6" style="margin-bottom:1em;">
+          <ul id="result" style="position: relative; display: table; width:100%;">
+          </ul>   
+        </div>
+        <div class="col-md-6 form">
+          <div id="collapsible" class="collapse in">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button id="fromRightToLeft" class="btn btn-default btn-xs"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button>
+              </span>
+              <div style="float:right; font-size:smallest;font-style: italic; color:gray;">shift-enter for new line | enter to &lt;&lt;</div>
+              <textarea id="entry" class="form-control" rows="12"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>   
+
+      <button id="post" type="button" class="btn btn-primary">post to soundcloud</button>    
+      <button id="reset" type="button" class="btn btn-default">reset</button> 
+      <div class="progress" style="margin-top: 1em">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1" style="width: 0%;">
+          &nbsp;
+        </div>
+      </div>
+      <div id="errors"></div>
+      
+    </div>
+
+  </div>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"       ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"                  ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"      ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js" ></script>    
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"        ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.5.3/numeral.min.js"       ></script>    
+<script type="text/javascript" src="//w.soundcloud.com/player/api.js"                                       ></script>
+<script type="text/javascript" src="//connect.soundcloud.com/sdk.js"                                        ></script>
+
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+
+<script type="text/javascript" src="jquery.textillate.js"></script>    
+<script type="text/javascript" src="jquery.linkify.min.js"></script>    
+<script type="text/javascript" src="app.js"></script>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+
+  var userId = null;
+
+  // initialize client with app credentials
+  SC.initialize({
+    client_id: '506d2e8c1cd057aa783906b0b1c8fe0d',
+    redirect_uri: 'http://aequologica.net/callback.html'
+  });
+
+  // initiate auth popup
+  SC.connect(function() {
+    SC.get('/me', function(me) { 
+      userId = me.id;
+      var $me = $('<a>', { text: me.username, href: me.permalink_url, target: me.username });
+      $('span#me').html($me); 
+    });
+  });
+
+  /*
+  init function
+  */
+  function init(trackId, title, description, permalink_url, secret_uri, secret_token, uri) {
+    // raz
+    $('.progress').removeClass('progress-striped active');  
+    $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
+    $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : 1 }).html('&nbsp;'); 
+
+    var theURL = "";
+    
+    // set title (only trackId cannot be undefined)
+    {
+      if (typeof title !== "undefined") {
+        var $title;
+        if (typeof permalink_url !== "undefined") {
+          $title = $('<a>', { text: title, href: permalink_url, target: 'soundcloud' });
+        } else {
+          $title = $('<span>', { text: title });
+        }
+      } else {
+        if (typeof permalink_url !== "undefined") {
+          title = permalink_url;
+          $title = $('<a>', { text: trackId, href: permalink_url, target: 'soundcloud'  });
+        } else {
+          title = trackId;
+          $title = $('<span>', { text: trackId });
+        }
+      }
+
+      $('meta[name=title]').prop("content", title);
+      $('head > title').text(title);
+      $('#title').data('trackId', trackId).data('title', title).html($title);
+
+      if (typeof description != "undefined" && description) {
+        $('meta[name=description]').prop("content", description);
+        var $desc  = $('<p>').html(description.replace(/\n([ \t]*\n)+/g, '</p><p>').replace('\n', '<br />'));
+        $('#description').html($desc);
+        $('#description').linkify();
+      }
+    }
+    
+    if (typeof secret_uri !== "undefined")  {
+        theURL = encodeURIComponent(secret_uri);
+    } else if (typeof uri !== "undefined")  {
+        theURL = encodeURIComponent(uri);
+    } else {
+        theURL = "https%3A//api.soundcloud.com/tracks/"+trackId;
+    }
+    
+    // set soundcloud widget
+    var $iframe = $('<iframe id="sc-widget" width="100%" height="128px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url='+theURL+'&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=true&callback=true"/>');
+
+    $('iframe').remove();
+    
+    $('div#revealMe').prepend($iframe).css( "display", "block");
+    var url = "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/onthefly?trackId="+trackId+"&userId="+userId+"&day="+moment().format('YYYY-MM-DD');
+    if (typeof secret_token !== "undefined") {
+        url = url + "&secretToken="+secret_token;
+    }
+    $('div#url > a').prop('href', url).text(url);
+    
+    //
+    //
+    var mySouncCloudModule = MySouncCloudModule(trackId, undefined, userId, undefined, undefined, secret_token, true);
+    //
+    //
+
+    function loadData(data, collapse) {
+      $("ul#result").empty();
+      
+      var lines = data.split('\n');
+
+      for(var i = 0; i < lines.length; i++){
+        var ligne = lines[i].trim();
+        ligne = ligne.length == 0 ? '&nbsp;' : ligne;
+        var $li = $('<li>', { 
+            "style" : "display:table-row; width:100%;"
+        });
+        var $span = $('<span>', { 
+            "style" : "display:table-cell; width:100%;"
+        });
+        $span.html(ligne);
+        $li.append($span);
+        $( "ul#result" ).append( $li );
+      }
+      
+      var removeMe = function(event) {
+        var $_this = $(this);
+        var $parent = $_this.parent();
+        if ($parent.hasClass('done')) {
+          $parent.removeClass('done');
+          $parent.children("span.timestamp").remove();
+          $_this.remove();
+        } else {
+          console.log('not yet done!');
+        }
+      }
+
+      $( "ul#result > li > span:first-child" ).click(function() {
+        var $span_first_child = $(this);
+        var $li_parent = $span_first_child.parent();
+        
+        if (!$li_parent.hasClass('done')) {
+          mySouncCloudModule.getPosition(function(position) {
+            $li_parent.addClass('done');
+            var $span_timestamp = $('<span>', { 
+              "style" : "display:table-cell; width:1%; padding-right: .5em; font-family: monospace; text-align:right;",
+              "class" : "timestamp",
+              "title" : position + " millisecs"
+            });
+            $span_timestamp.html('['+numeral(Math.floor(position/1000)).format('00:00:00')+']');
+            $span_timestamp.data('position', position );
+            
+            $close_button = $('<span>', { 
+                "html" : "<span aria-hidden='true'>&times;</span>",
+                "style" : "display:table-cell; width:1% ;padding-left: .5em; ",
+                "title" : "remove sync"
+            });
+            $close_button.click(removeMe);
+            
+            $li_parent.append($span_timestamp);
+            $li_parent.append($close_button);
+          }); 
+        } else {
+          console.log('already done!');
+        }
+      });
+      
+      if (typeof collapse !== undefined && collapse) {
+          $('#collapsible').collapse('hide');
+      }
+    }
+
+    $('button#fromRightToLeft').click(function() {
+      var data = $('textarea#entry').val();
+      loadData(data, true);
+    });
+
+    $(document.body).on( 'keypress', 'textarea#entry', undefined, function(event) {
+      if (event.which === 13  && !event.shiftKey) { // if is enter
+        event.preventDefault(); // don't submit form
+        var data = $(this).val();
+        loadData(data);
+      }
+    });
+    
+    var errorQueue = [];
+
+    $('button#post').click(function(event) {
+
+      var arrayOfCommentsToBePosted = [];
+
+      $.each($('ul#result > li.done'), function( index, value ) {
+        var tex = $(this).children("span:first").text();
+        var position = $(this).children("span.timestamp:last").data("position");
+        if (typeof tex !== "undefined" && typeof position !== "undefined") {
+          arrayOfCommentsToBePosted.push({'text': tex, 'timestamp': position});
+        }
+      });
+
+      if (arrayOfCommentsToBePosted.length == 0) {
+        $('div#errors').empty().append($('<span/>', {text:'nothing to post !', class:"alert alert-info", role:"alert"})); 
+        return;
+      }
+
+      arrayOfCommentsToBePosted.sort(function(a, b) {
+          return +a.timestamp - +b.timestamp;
+      });
+
+      arrayOfCommentsToBePosted.reverse();
+
+      $('.progress-bar').removeClass('progress-bar-success progress-bar-warning');   
+      $('.progress').addClass('progress-striped active');  
+      $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : arrayOfCommentsToBePosted.length }).html('&nbsp;'); 
+      $('div#errors').empty();
+      errorQueue= [];
+
+      var delta = 1234; // milliseconds between POSTs (more than 1 second, please)
+
+      $('button#post').prop("disabled",true);
+      
+      for (var index = 0; index < arrayOfCommentsToBePosted.length; index++) {
+
+        setTimeout(function(i) {
+          var commentToBePosted = arrayOfCommentsToBePosted[i];
+/* */
+          var commentsURL = "https://api.soundcloud.com/tracks/"+trackId+"/comments/?client_id=506d2e8c1cd057aa783906b0b1c8fe0d";
+          if (typeof secret_token !== "undefined") {
+            commentsURL = commentsURL + "&secret_token="+secret_token;
+          }
+          SC.post(
+            commentsURL, 
+            { 
+              'comment[body]': commentToBePosted.text,
+              'comment[timestamp]': commentToBePosted.timestamp
+            }, 
+            function(response, error) { 
+/* */
+              var percent = Math.ceil((100.0*(i+1))/arrayOfCommentsToBePosted.length)+'%';
+              $('.progress-bar').css('width', percent).attr('aria-valuenow', i).text(commentToBePosted.text)  ;  
+/*
+              var error = 0; 
+*/
+              if (error) {
+                errorQueue.push(error);
+                $('.progress-bar').removeClass('progress-bar-success');   
+                $('.progress-bar').addClass('progress-bar-warning');  
+                var uniqueErrors = _.countBy(errorQueue, "message");
+                $('div#errors').empty();
+                $.each(uniqueErrors, function(key, value){
+                  var tex = key;
+                  if (value > 1) {
+                    tex = tex + " ("+value+")";
+                  }
+                  $('div#errors').append($('<span/>', {text:tex, class:"alert alert-warning", role:"alert"})); 
+                });
+                // console.log(error); 
+              } else { 
+                // console.log(response); 
+              }
+
+              if (i == arrayOfCommentsToBePosted.length-1) {
+                $('.progress').removeClass('progress-striped active');  
+                $('button#post').prop("disabled",false);
+                if (errorQueue.length == 0) {
+                  $('.progress-bar').addClass('progress-bar-success');
+
+                  // add parole to tebaldi
+                  var posting = $.ajax( {
+                    url : "https://tebaldi051108trial.hanatrial.ondemand.com/paroles", 
+                    type: "POST",
+                    crossDomain: true,
+                    data : {
+                      title     : $('#title').data('title'),
+                      trackId   : trackId,
+                      userId    : userId,
+                      days      : moment().format("YYYY-MM-DD"),
+                      secretToken : secret_token/*,
+                      paragraph : 0 */
+                    } 
+                  }); 
+
+                  posting.done(function( msg ) {
+                      var url =  "https://tebaldi051108trial.hanatrial.ondemand.com/paroles/"+trackId;
+                      $('div#url > a').prop('href', url).text(url);
+                  });
+                   
+                  posting.fail(function( jqXHR, textStatus ) {
+                    alert( "Request failed: " + textStatus );
+                  });
+
+                } else {
+                  $('.progress-bar').addClass('progress-bar-warning');   
+                }
+              }
+/* */
+          });
+/* */
+         }, index * delta, index); // we're passing index     
+      }
+    });
+
+    $('button#reset').click(function(event) {
+      $('.progress').removeClass('progress-striped active');
+      $('.progress-bar').removeClass('progress-bar-success');   
+      $('.progress-bar').css('width', '0%').attr({'aria-valuenow': 0, 'aria-valuemax' : $("ul#result > li").length }).html('&nbsp;'); 
+      $('ul#result > li').removeClass('done');
+      $('ul#result > li > span.timestamp').remove();
+      $('ul#result > li > span:last-child').remove();
+      $('div#errors').empty();
+      errorQueue = [];
+    });
+  }
+
+  /*
+  search handler
+  */
+  $( "form#id_from_url" ).submit(function( event ) {
+    event.preventDefault();
+
+    var soudcloudURL = $('input#soundcloudURL').val().trim();
+
+    if (soudcloudURL) {
+      SC.get('/resolve', {'url': soudcloudURL}, function(data) { 
+        if (typeof data.errors != 'undefined') {
+          $.each(data.errors, function(index, error) {
+            alert(soudcloudURL + " : " + error.error_message);
+          }); 
+        } else  {
+          if (typeof data.id != 'undefined') {
+            init(data.id, data.title, data.description, data.permalink_url, data.secret_uri, data.secret_token, data.uri);
+          } else {
+            alert('not able to get an ID from soudcloud URL : ' + soudcloudURL);
+          }
+        }
+      });
+    } else {
+      console.log('empty soudcloudURL, loading hardcoded 200813526.');
+      init('200813526', "C'est pas beau à voir", undefined, "http://soundcloud.com/christophe-thiebaud/cest-pas-beau-a-voir");
+    }
+  });
+
+});
+</script>
+
+<!-- https://browser-update.org/#install  -->
+<script> 
+var $buoop = {c:2}; 
+function $buo_f(){ 
+ var e = document.createElement("script"); 
+ e.src = "//browser-update.org/update.js"; 
+ document.body.appendChild(e);
+};
+try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+catch(e){window.attachEvent("onload", $buo_f)}
+</script> 
+
+<!-- google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62202103-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
