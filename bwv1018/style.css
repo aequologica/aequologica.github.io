@@ -1,0 +1,167 @@
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url('/assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff') format('woff');
+}
+
+body {
+  font-family : Inconsolata;
+  background  : transparent;
+}
+
+/* tables */
+div.table {
+  display: table;
+  table-layout: auto;
+  border-collapse: collapse;
+  margin-bottom: 2em;
+}
+
+div.table#legend {
+  width: 600px;
+}
+
+div.table#harmo {
+  min-width: 1900px;
+  width: 100%;
+}
+
+/* table rows */
+div.table > div {
+  display: table-row;
+}
+
+/* table cells */
+div.table > div > div {
+  display: table-cell;
+  border-bottom: 1px solid #c0c0c0;
+  border-right: 1px solid #c0c0c0;
+}
+
+div.table#legend > div > div {
+  padding: 0 1em;
+  margin: 0;
+}
+
+div.table#harmo > div > div {
+  padding: 0 0 0 4px;
+}
+
+/* table inside a table cell = une mesure  */
+div.table#harmo > div > div > div {
+  display: table;
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;    
+}
+
+/* 25% => quatre noires par mesure */
+div.table#harmo > div > div > div > span {
+  display: table-cell;
+  border: none;
+  width: 25%;
+  cursor: pointer;
+  color: blue;  
+}
+
+.header {
+  margin: 1em;
+}
+
+div.table#harmo > div > div > div > span:hover {
+  text-decoration: underline;
+}
+
+/* ugly workaround */
+div.table#harmo > div > div.mod_ou > div > span:last-child{
+  position: relative; 
+  right: -14px;
+}
+
+#A, #B, #C {
+  border-bottom: none;
+  padding: 0 1em;
+}
+
+div.table#harmo > div.numbers > div {
+ color: blue;
+ border-bottom: none;
+ padding-left: 4px;
+ cursor: pointer;
+}
+
+div.table > div.numbers > div:hover {
+  text-decoration: underline;
+}
+
+/*      */
+.func {
+  padding : 0 .5em;
+  white-space: nowrap;
+}
+.exp {
+  background-color: #d7faec;
+}
+.mod_rel {
+  background-color: #f9e257;
+}
+.dev {
+  background-color: #ffa500;
+}
+.mod_ou {
+  background-color: #facd73;
+}
+.mar_har {
+  background-color: #DCF5FE;
+}
+.coda {
+  background-color: #d7faec;
+}
+.fin {
+  background-color: #d0d0d0;
+}
+
+/* superscript */
+#ss { 
+  position: relative;
+  top: -0.5em; 
+  font-size: 66.6%;
+}
+
+.harmoTableWrapperForHorizontalScrolling {
+  overflow-x:scroll;
+  overflow-y:hidden;
+  width:100%;
+  margin: 1em 0;
+  padding:0;  
+}
+
+.list-inline {
+  white-space:nowrap;
+}
+
+.fa-exclamation-triangle {
+  color: orange;
+}
+
+form {
+  margin-bottom: 1em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.form-group {
+  margin-bottom:0; 
+  font-size : smaller;
+}
+
+ul {
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.label.pull-left{
+  margin-right: 1em;
+}
+
