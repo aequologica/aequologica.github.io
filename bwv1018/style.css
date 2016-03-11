@@ -158,10 +158,13 @@ form {
 
 ul {
   list-style-type: none;
-  margin-bottom: 0;
 }
 
-.label.pull-left{
-  margin-right: 1em;
+div.card div.card-block p {
+  margin: 0 0 .5rem 0;
 }
 
+.fa-volume-up {
+  cursor : pointer;
+  font-size: 14px;
+}
