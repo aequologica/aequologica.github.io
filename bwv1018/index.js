@@ -262,35 +262,83 @@ function getChordIndexFromOffset(position) {
 	return _.sortedIndex(ticks, position)-1;
 }
 
-    var playing = false;
-
     var widgetIframe = document.getElementById('sc-widget'),
         widget       = SC.Widget(widgetIframe);
 
-    var stop = null;
+    var globalstop = null;
+    var clickedID  = undefined;
+
     $('textarea').on('click', function(e) {
       $ta = $(this);
       widget.getPosition(function(currentPosition){
       	$ta.append(currentPosition + "\n");
       });
-
     });
 
+
+    var nIntervId;
+    function fadeUntilStop() {
+
+      var tmpVolume;
+   
+      function changeColor() {
+        nIntervId = setInterval(flashText, 50);
+      }
+   
+      function stopTextColor() {
+        widget.pause();
+        widget.setVolume(1);
+        if (nIntervId) {
+          clearInterval(nIntervId);
+          nIntervId = undefined;
+        }
+      }
+
+      function flashText() {
+        tmpVolume -= .05;
+        if (tmpVolume <= 0){
+          tmpVolume = 0;
+          stopTextColor();
+          return;
+        }
+        console.log("tmpVolume SET TO", tmpVolume);
+        widget.setVolume(tmpVolume);
+      }
+
+      widget.getVolume(function(volume){
+        if (nIntervId) {
+          return;
+        }
+        console.log("fadeUntilStop started", "original volume IS", volume);
+        tmpVolume = volume;
+        changeColor();
+      });
+  
+    }
+
     widget.bind(SC.Widget.Events.READY, function() {
+
+      widget.setVolume(1);
 
       // ugly workaround to cope with seek not working on first click : play, then stop just a little bit after
       widget.play();
       setTimeout(function(){ widget.pause(); }, 10);
 
       widget.bind(SC.Widget.Events.PAUSE, function() {
-        playing = false;
         console.log("paused");
+        if (clickedID) {
+          // immediate visual feedback
+          $("#"+clickedID).removeClass("playFeedback");
+          clickedID = undefined;
+        }
         $("#legend .fa").removeClass("fa-volume-off fa-volume-up").addClass("fa-volume-up");
-        stop = null;
       });
       
+      widget.bind(SC.Widget.Events.ERROR, function(err) {
+        console.log("error", err);
+      });
+
       widget.bind(SC.Widget.Events.PLAY, function() {
-        playing = true;
         console.log("played");
       });
       
@@ -302,10 +350,10 @@ function getChordIndexFromOffset(position) {
 
         widget.getPosition(function(currentPosition){
 
-          // console.log(currentPosition);
-          if (typeof stop !== "undefined" && stop != null) { 
-            if (currentPosition > stop) {
-              widget.pause();
+          // console.log("currentPosition", currentPosition, "globalstop", globalstop);
+          if (typeof globalstop !== "undefined" && globalstop != null) { 
+            if (currentPosition > globalstop) {
+              fadeUntilStop();
             }
           }
 
@@ -395,31 +443,39 @@ function getChordIndexFromOffset(position) {
       }
     });
 
-    var clickedID = undefined;
-
     $("div.table > div.numbers > div").add("div.table#harmo > div > div > div > span").add(".fa-volume-up")
       .click(function() {
-        if (clickedID && clickedID == $(this).attr('id')) {
-          widget.pause();
+
+        // immediate visual feedback
+        $("#"+clickedID).removeClass("playFeedback");
+        
+        if (clickedID == $(this).attr('id')) {
           clickedID = undefined;
+          fadeUntilStop(); 
         } else {
+          clickedID = undefined;
           var pos = $(this).data("position");
-          console.log("start", pos);
+          var localstop = $(this).data("stop");
           if (typeof pos !== "undefined" && pos != null) {
+
+            // immediate visual feedback
+            $(this).addClass("playFeedback");
+
             clickedID = $(this).attr('id');
 
             widget.pause();
             widget.seekTo(pos);
             widget.play();
-            stop = $(this).data("stop");
-            console.log("stop", stop);
+            globalstop = localstop;
             if ($(this).hasClass("fa")) {
               var $this = $(this);
               setTimeout(function() {
                 $this.removeClass("fa-volume-up").addClass("fa-volume-off");
               },
-              100);
+              50);
             }
+          } else {
+            globalstop = null;
           }
         }
     });
