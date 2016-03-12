@@ -265,8 +265,7 @@ function getChordIndexFromOffset(position) {
     var widgetIframe = document.getElementById('sc-widget'),
         widget       = SC.Widget(widgetIframe);
 
-    var globalstop = null;
-    var clickedID  = undefined;
+    var clickQueue = [];
 
     $('textarea').on('click', function(e) {
       $ta = $(this);
@@ -325,11 +324,11 @@ function getChordIndexFromOffset(position) {
       setTimeout(function(){ widget.pause(); }, 10);
 
       widget.bind(SC.Widget.Events.PAUSE, function() {
-        console.log("paused");
-        if (clickedID) {
+        var removedClick = clickQueue.shift(); // remove first element
+        console.log("paused", "clickQueue", JSON.stringify(clickQueue));
+        if (removedClick && removedClick.id) {
           // immediate visual feedback
-          $("#"+clickedID).removeClass("playFeedback");
-          clickedID = undefined;
+          $("#"+removedClick.id).removeClass("playFeedback");
         }
         $("#legend .fa").removeClass("fa-volume-off fa-volume-up").addClass("fa-volume-up");
       });
@@ -339,7 +338,7 @@ function getChordIndexFromOffset(position) {
       });
 
       widget.bind(SC.Widget.Events.PLAY, function() {
-        console.log("played");
+        console.log("played", "clickQueue", JSON.stringify(clickQueue));
       });
       
       widget.bind(SC.Widget.Events.SEEK, function(e) {
@@ -350,9 +349,9 @@ function getChordIndexFromOffset(position) {
 
         widget.getPosition(function(currentPosition){
 
-          // console.log("currentPosition", currentPosition, "globalstop", globalstop);
-          if (typeof globalstop !== "undefined" && globalstop != null) { 
-            if (currentPosition > globalstop) {
+          // console.log("currentPosition", currentPosition, "clickQueue", clickQueue);
+          if (clickQueue.length > 0) { 
+            if (currentPosition > clickQueue[0].stop) {
               fadeUntilStop();
             }
           }
@@ -446,37 +445,36 @@ function getChordIndexFromOffset(position) {
     $("div.table > div.numbers > div").add("div.table#harmo > div > div > div > span").add(".fa-volume-up")
       .click(function() {
 
-        // immediate visual feedback
-        $("#"+clickedID).removeClass("playFeedback");
-        
-        if (clickedID == $(this).attr('id')) {
-          clickedID = undefined;
-          fadeUntilStop(); 
-        } else {
-          clickedID = undefined;
-          var pos = $(this).data("position");
-          var localstop = $(this).data("stop");
-          if (typeof pos !== "undefined" && pos != null) {
-
-            // immediate visual feedback
-            $(this).addClass("playFeedback");
-
-            clickedID = $(this).attr('id');
-
-            widget.pause();
-            widget.seekTo(pos);
-            widget.play();
-            globalstop = localstop;
-            if ($(this).hasClass("fa")) {
-              var $this = $(this);
-              setTimeout(function() {
-                $this.removeClass("fa-volume-up").addClass("fa-volume-off");
-              },
-              50);
-            }
-          } else {
-            globalstop = null;
+        if (clickQueue.length > 0) {
+  
+          // immediate visual feedback
+          $("#"+clickQueue[0].id).removeClass("playFeedback");
+  
+          if (clickQueue[0].id == $(this).attr('id')) {
+            fadeUntilStop(); 
+            return;
           }
+        }
+        
+        var pos = $(this).data("position");
+
+        if (typeof pos !== "undefined" && pos != null) {
+
+          // immediate visual feedback
+          $(this).addClass("playFeedback");
+          if ($(this).hasClass("fa")) {
+            $(this).removeClass("fa-volume-up").addClass("fa-volume-off");
+          }
+
+          widget.pause();
+          widget.seekTo(pos);
+          widget.play();
+
+          clickQueue.push({
+            stop:$(this).data("stop"), 
+            id:$(this).attr('id')
+          });
+
         }
     });
 
