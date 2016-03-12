@@ -274,17 +274,10 @@ function getChordIndexFromOffset(position) {
       });
     });
 
-
-    var nIntervId;
-    function fadeUntilStop() {
-
-      var tmpVolume;
-   
-      function changeColor() {
-        nIntervId = setInterval(flashText, 50);
-      }
-   
-      function stopTextColor() {
+    var fader = function () {
+      var nIntervId;
+      
+      function stopFade() {
         widget.pause();
         widget.setVolume(1);
         if (nIntervId) {
@@ -293,27 +286,40 @@ function getChordIndexFromOffset(position) {
         }
       }
 
-      function flashText() {
-        tmpVolume -= .05;
-        if (tmpVolume <= 0){
-          tmpVolume = 0;
-          stopTextColor();
-          return;
+      function fadeUntilStop() {
+
+        var fadingVolume;
+     
+        function setFadeInterval() {
+          nIntervId = setInterval(stepFade, 50);
         }
-        console.log("tmpVolume SET TO", tmpVolume);
-        widget.setVolume(tmpVolume);
+
+        function stepFade() {
+          fadingVolume -= .05;
+          if (fadingVolume <= 0){
+            fadingVolume = 0;
+            stopFade();
+            return;
+          }
+          // console.log("fadingVolume SET TO", fadingVolume);
+          widget.setVolume(fadingVolume);
+        }
+
+        widget.getVolume(function(volume){
+          if (nIntervId) {
+            return;
+          }
+          // console.log("fader started started", "original volume IS", volume);
+          fadingVolume = volume;
+          setFadeInterval();
+        });
       }
 
-      widget.getVolume(function(volume){
-        if (nIntervId) {
-          return;
-        }
-        console.log("fadeUntilStop started", "original volume IS", volume);
-        tmpVolume = volume;
-        changeColor();
-      });
-  
-    }
+      return {
+        start : fadeUntilStop,
+        stop : stopFade,
+      }
+    }();
 
     widget.bind(SC.Widget.Events.READY, function() {
 
@@ -325,7 +331,7 @@ function getChordIndexFromOffset(position) {
 
       widget.bind(SC.Widget.Events.PAUSE, function() {
         var removedClick = clickQueue.shift(); // remove first element
-        console.log("paused", "clickQueue", JSON.stringify(clickQueue));
+        // console.log("paused", "clickQueue", JSON.stringify(clickQueue));
         if (removedClick && removedClick.id) {
           // immediate visual feedback
           $("#"+removedClick.id).removeClass("playFeedback");
@@ -338,7 +344,7 @@ function getChordIndexFromOffset(position) {
       });
 
       widget.bind(SC.Widget.Events.PLAY, function() {
-        console.log("played", "clickQueue", JSON.stringify(clickQueue));
+        // console.log("played", "clickQueue", JSON.stringify(clickQueue));
       });
       
       widget.bind(SC.Widget.Events.SEEK, function(e) {
@@ -352,7 +358,7 @@ function getChordIndexFromOffset(position) {
           // console.log("currentPosition", currentPosition, "clickQueue", clickQueue);
           if (clickQueue.length > 0) { 
             if (currentPosition > clickQueue[0].stop) {
-              fadeUntilStop();
+              fader.start();
             }
           }
 
@@ -451,7 +457,7 @@ function getChordIndexFromOffset(position) {
           $("#"+clickQueue[0].id).removeClass("playFeedback");
   
           if (clickQueue[0].id == $(this).attr('id')) {
-            fadeUntilStop(); 
+            fader.start(); 
             return;
           }
         }
@@ -466,6 +472,7 @@ function getChordIndexFromOffset(position) {
             $(this).removeClass("fa-volume-up").addClass("fa-volume-off");
           }
 
+          fader.stop();
           widget.pause();
           widget.seekTo(pos);
           widget.play();
