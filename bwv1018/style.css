@@ -5,9 +5,14 @@
   src: local('Inconsolata'), url('/assets/fonts/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff') format('woff');
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
   font-family : Inconsolata;
   background  : transparent;
+  overflow-x: hidden;
 }
 
 /* tables */
@@ -19,7 +24,8 @@ div.table {
 }
 
 div.table#legend {
-  width: 600px;
+  max-width: 480px;
+  margin-bottom: 1rem;
 }
 
 div.table#harmo {
