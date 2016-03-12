@@ -175,3 +175,12 @@ div.card div.card-block p {
   color : SlateGrey  !important;
   background-color: Beige !important;
 }
+
+/* Sticky footer styles
+-------------------------------------------------- */
+.footer {
+  position:fixed; 
+  width: 100%;
+  bottom: 0;
+  background-color: #f5f5f5;
+}
