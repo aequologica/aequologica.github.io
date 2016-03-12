@@ -1,4 +1,4 @@
-jQuery( document ).ready(function($) {
+jQuery( document ).ready(function() {
 
   // build chord table + insert in DOM 
   (function(){
@@ -80,11 +80,11 @@ debugger;
   (function(){
 
     function setBodyMarginBottom() {
-      var footerHeight = $('footer').css('height');
-      $('body').css("margin-bottom", footerHeight);
+      var footerHeight = jQuery('footer').css('height');
+      jQuery('body').css("margin-bottom", footerHeight);
     }
 
-    $( window ).resize(function() {
+    jQuery( window ).resize(function() {
       setBodyMarginBottom();
     });
 
@@ -94,21 +94,24 @@ debugger;
 
   // save checkbox state locally 
   (function(){
-    $('input:checkbox').each(function() {
+    jQuery('input:checkbox').each(function() {
+
       if (Modernizr.localstorage) {
-        var data = window.localStorage.getItem($(this).attr('id'));
+        var $this = jQuery(this);
+        var data = window.localStorage.getItem($this.attr('id'));
         if (data === "true") {
-          $(this).prop('checked', true);
+          $this.prop('checked', true);
         } else if (data === "false") {
-          $(this).prop('checked', false);
+          $this.prop('checked', false);
         } else {  
         }
       }
     });
       
-    $('input:checkbox').change(function(event) {
+    jQuery('input:checkbox').change(function(event) {
       if (Modernizr.localstorage) {
-        window.localStorage.setItem($(this).attr('id'), this.checked);
+        var $this = jQuery(this);
+        window.localStorage.setItem($this.attr('id'), this.checked);
       }
     });
   })();
@@ -140,26 +143,29 @@ debugger;
       function hex(x) {
         return ("0" + parseInt(x).toString(16)).slice(-2);
       }
-      return     "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
+      return "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
     }
 
-    $.each([".exp", ".mod_rel", ".mod_relB", ".dev", ".mod_ou", ".mod_ouB", ".mar_har", ".coda", ".fin"], function( index, value ){
+    _.forEach([".exp", ".mod_rel", ".mod_relB", ".dev", ".mod_ou", ".mod_ouB", ".mar_har", ".coda", ".fin"], function( clazz ){
 
-      $.each( $(value), function() {
-        $bg_color = rgbToHex($( this ).css('background-color'));
+      _.forEach( jQuery(clazz), function(instance) {
+        $this = jQuery(instance);
+        $bg_color = rgbToHex($this.css('background-color'));
         $bg_color_alt = ColorLuminance($bg_color, 0.12);
-        $( this ).data( {'data-bg'    : $bg_color} );
-        $( this ).data( {'data-bg-alt': $bg_color_alt } );
+        $this.data( {'data-bg'    : $bg_color} );
+        $this.data( {'data-bg-alt': $bg_color_alt } );
       });
 
-      $( "#legend " + value ).add( ".fwyc" + value ).hover(
+      jQuery( "#legend " + clazz ).add( ".fwyc" + clazz ).hover(
         function() {
-          $.each( $(value), function() {
-            $( this ).css( {'background-color': $( this ).data( 'data-bg-alt')} );
+          _.forEach( jQuery(clazz), function(instance) {
+            $this = jQuery(instance);
+            $this.css( {'background-color': $this.data( 'data-bg-alt')} );
           });
         }, function() {
-          $.each( $(value), function() {
-            $( this ).css( {'background-color': $( this ).data( 'data-bg')} );
+          _.forEach( jQuery(clazz), function(instance) {
+            $this = jQuery(instance);
+            $this.css( {'background-color': $this.data( 'data-bg')} );
           });
         }
       );
@@ -301,12 +307,14 @@ debugger;
 
     var clickQueue = [];
 
+    /*
     $('textarea').on('click', function(e) {
       $ta = $(this);
       widget.getPosition(function(currentPosition){
       	$ta.append(currentPosition + "\n");
       });
     });
+    */
 
     var fader = function () {
       var nIntervId;
@@ -369,9 +377,9 @@ debugger;
         // console.log("paused", "clickQueue", JSON.stringify(clickQueue));
         if (removedClick && removedClick.id) {
           // immediate visual feedback
-          $("#"+removedClick.id).removeClass("playFeedback");
+          jQuery("#"+removedClick.id).removeClass("playFeedback");
         }
-        $("#legend .fa").removeClass("fa-volume-off fa-volume-up").addClass("fa-volume-up");
+        jQuery("#legend .fa").removeClass("fa-volume-off fa-volume-up").addClass("fa-volume-up");
       });
       
       widget.bind(SC.Widget.Events.ERROR, function(err) {
@@ -398,27 +406,27 @@ debugger;
           }
 
           // r.à.z display
-          $.each( $("div.table#adagio > div > div > div > span"), function(index, value) {
-            $(value).css( {'background-color': 'inherit'} );
+          _.forEach( jQuery("div.table#adagio > div > div > div > span"), function(value) {
+            jQuery(value).css( {'background-color': 'inherit'} );
           });
 
           // calc chord id from position
           var iChord = getChordIndexFromOffset(currentPosition);
           if (iChord != -1) {
-            var $gotTheChord = $("#"+"chord"+iChord);
+            var $gotTheChord = jQuery("#"+"chord"+iChord);
             if ($gotTheChord.length > 0) {
 
               var alternateBackgroundColor = $gotTheChord.parent().parent().data( 'data-bg-alt');
               $gotTheChord.css( {'background-color': alternateBackgroundColor} );
 
-              if ($("#sync_scroll_2_play:checked").length > 0) {
+              if (jQuery("#sync_scroll_2_play:checked").length > 0) {
                 var $scrollToElement;
                 if ($gotTheChord.parent().parent().prev().length < 1 ) {
                   $scrollToElement = $gotTheChord.parent().parent();
                 } else {
                   $scrollToElement = $gotTheChord.parent().parent().prev();
                 }
-                $('#wrapperForHorizontalScrolling').scrollTo($scrollToElement);
+                jQuery('#wrapperForHorizontalScrolling').scrollTo($scrollToElement);
               }
             }
           }
@@ -428,38 +436,45 @@ debugger;
     });
 
     /* chords offsets */
-    $.each($("div.table#adagio > div > div > div > span"), function(index) {
-        $(this).prop("id", "chord"+index);
-        var range = getChordsOffsetFromIndex(index, 1);
-        $(this).data("position", range.start);
-        $(this).data("stop", range.stop);
-    });
+    var $chords = jQuery("div.table#adagio > div > div > div > span");
+    for(i=0; i<$chords.length;i++) {
+        $this = jQuery($chords[i]);
+        $this.prop("id", "chord"+i);
+        var range = getChordsOffsetFromIndex(i, 1);
+        $this.data("position", range.start);
+        $this.data("stop", range.stop);
+    };
 
     // show that we are on first chord
-    var $startChord = $('span#chord0');
+    var $startChord = jQuery('span#chord0');
     var alternateBackgroundColor = $startChord.parent().parent().data( 'data-bg-alt');
     $startChord.css( {'background-color': alternateBackgroundColor} );
 
     /* bars offsets */
-    $.each($("div.table#adagio > div.numbe > div").not(".header"), function(index) {
-        $(this).prop("id", "bar"+index);
-        var range = getChordsOffsetFromIndex(index*4, 4);
-        $(this).data("position", range.start);
-        $(this).data("stop", range.stop);
-    });
+    var $bars = jQuery("div.table#adagio > div.numbe > div").not(".header"); 
+    for(i=0; i<$bars.length;i++) {
+        $this = jQuery($bars[i]);
+        $this.prop("id", "bar"+i);
+        var range = getChordsOffsetFromIndex(i*4, 4);
+        $this.data("position", range.start);
+        $this.data("stop", range.stop);
+    };
 
     /* parts offsets */
-    $.each($(".header"), function(index) {
-        $(this).prop("id", "part"+index);
-        var range = getChordsOffsetFromIndex(index*4*12, 4*12);
-        $(this).data("position", range.start);
-        $(this).data("stop", range.stop);
-    });
+    var $parts = jQuery(".header");
+    for(i=0; i<$parts.length;i++) {
+        $this = jQuery($parts[i]);
+        $this.prop("id", "part"+i);
+        var range = getChordsOffsetFromIndex(i*4*12, 4*12);
+        $this.data("position", range.start);
+        $this.data("stop", range.stop);
+    };
 
-    $.each($("#legend .fa"), function(index) {
+    jQuery.each(jQuery("#legend .fa"), function(index) {
+      $this = jQuery(this);
       var start = undefined, 
           stop  = undefined;
-      var tex = $(this).text().trim();
+      var tex = $this.text().trim();
       var match = /(\d+)\-(\d+)/gmi.exec(tex);
       if (match && match.length > 2) {
         start = match[1] - 1;
@@ -476,35 +491,36 @@ debugger;
       if (!(typeof start === "undefined") && 
           !(typeof stop  === "undefined")) {
         var range = getChordsOffsetFromIndex(start*4, (stop-start)*4);
-        $(this).data("position", range.start);
-        $(this).data("stop", range.stop);
+        $this.data("position", range.start);
+        $this.data("stop", range.stop);
       } else {
-        $(this).removeClass("fa fa-volume-up");
+        $this.removeClass("fa fa-volume-up");
       }
     });
 
-    $("div.table > div.numbe > div").add("div.table#adagio > div > div > div > span").add(".fa-volume-up")
+    jQuery("div.table > div.numbe > div").add("div.table#adagio > div > div > div > span").add(".fa-volume-up")
       .click(function() {
 
         if (clickQueue.length > 0) {
   
           // immediate visual feedback
-          $("#"+clickQueue[0].id).removeClass("playFeedback");
+          jQuery("#"+clickQueue[0].id).removeClass("playFeedback");
   
-          if (clickQueue[0].id == $(this).attr('id')) {
+          if (clickQueue[0].id == jQuery(this).attr('id')) {
             fader.start(); 
             return;
           }
         }
         
-        var pos = $(this).data("position");
+        $this = jQuery(this);
+        var pos = $this.data("position");
 
         if (typeof pos !== "undefined" && pos != null) {
 
           // immediate visual feedback
-          $(this).addClass("playFeedback");
-          if ($(this).hasClass("fa")) {
-            $(this).removeClass("fa-volume-up").addClass("fa-volume-off");
+          $this.addClass("playFeedback");
+          if ($this.hasClass("fa")) {
+            $this.removeClass("fa-volume-up").addClass("fa-volume-off");
           }
 
           fader.stop();
@@ -513,8 +529,8 @@ debugger;
           widget.play();
 
           clickQueue.push({
-            stop:$(this).data("stop"), 
-            id:$(this).attr('id')
+            stop : $this.data("stop"), 
+            id   : $this.attr('id')
           });
           // console.log("clickQueue PUSH", JSON.stringify(clickQueue));
 
