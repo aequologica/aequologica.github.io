@@ -73,12 +73,6 @@ div.table#harmo > div > div > div > span:hover {
   text-decoration: underline;
 }
 
-/* ugly workaround */
-div.table#harmo > div > div.mod_ou > div > span:last-child{
-  position: relative; 
-  right: -14px;
-}
-
 #A, #B, #C {
   border-bottom: none;
   padding: 0 1em;
