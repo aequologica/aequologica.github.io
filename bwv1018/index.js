@@ -216,6 +216,7 @@ $( document ).ready(function() {
 
     /* bars offsets */
     $.each($("div.table#harmo > div.numbers > div").not(".header"), function(index) {
+        $(this).prop("id", "bar"+index);
         var offset = Math.round(index*(noire  *4)); 
         $(this).data("position", offset);
         $(this).data("stop", offset + (4*noire) + (noire/8));
@@ -223,6 +224,7 @@ $( document ).ready(function() {
 
     /* parts offsets */
     $.each($(".header"), function(index) {
+        $(this).prop("id", "part"+index);
         var offset = Math.round(index*(noire*4*12)); 
         $(this).data("position", offset);
         $(this).data("stop", offset + (noire*4*12) + (noire/8));
