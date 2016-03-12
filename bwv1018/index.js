@@ -135,15 +135,146 @@ $( document ).ready(function() {
   });
 
   (function(){
+    var ticks = [
+0,
+1891.332,
+3168.911,
+4585.209,
+5943.462,
+7348.151,
+8729.033,
+10122.702,
+11491.975,
+12931.491,
+14289.744,
+15683.413,
+17064.884,
+18527.618,
+19967.134,
+21383.432,
+22810.75,
+24250.266,
+25585.89,
+27048.035,
+28406.877,
+29881.22,
+31320.736,
+32760.252,
+34199.768,
+35639.284,
+37089.82,
+38529.336,
+39806.915,
+41246.431,
+42708.576,
+44125.463,
+45541.761,
+47004.495,
+48408.595,
+49883.527,
+51206.364,
+52727.143,
+54085.396,
+55548.13,
+56999.844,
+58462.578,
+59844.049,
+61283.565,
+62665.036,
+64139.379,
+65683.376,
+67041.629,
+68526.992,
+69984.216,
+71441.44,
+72904.174,
+74285.056,
+75736.77,
+77106.043,
+78603.604,
+80020.491,
+81424.591,
+82899.523,
+84315.821,
+85720.51,
+87182.655,
+88599.542,
+90062.276,
+91478.574,
+92918.09,
+94299.561,
+95739.077,
+97097.33,
+98560.064,
+99976.362,
+101415.878,
+102774.131,
+104155.602,
+105537.073,
+106883.128,
+108380.689,
+109843.423,
+111295.137,
+112676.608,
+114058.079,
+115497.595,
+116960.329,
+118422.474,
+119816.143,
+121174.396,
+122613.912,
+123972.165,
+125480.746,
+126920.262,
+128302.731,
+129741.249,
+131180.765,
+132574.434,
+134118.431,
+135511.511,
+136974.245,
+138680.179,
+140131.893,
+141571.409,
+142940.682,
+144415.614,
+145971.22,
+147596.48,
+150231.723,
+158114.234,
+];
 
-    var length = 227000.0;
-    var noire = length/(26.0*4.0);
+ticks = _.transform(ticks, function(result, n) {
+  result.push(Math.floor(n));
+  return true;
+}, []);
+
+function getChordsOffsetFromIndex(iChord, dim, log) {
+  var ret = {
+  	start : ticks[iChord],
+  	stop  : ticks[iChord + dim],
+  };
+  if (log) console.log(ret.start, ret.stop);
+  return ret;
+}
+
+function getChordIndexFromOffset(position) {
+	return _.sortedIndex(ticks, position)-1;
+}
+
     var playing = false;
 
     var widgetIframe = document.getElementById('sc-widget'),
         widget       = SC.Widget(widgetIframe);
 
     var stop = null;
+    $('textarea').on('click', function(e) {
+      $ta = $(this);
+      widget.getPosition(function(currentPosition){
+      	$ta.append(currentPosition + "\n");
+      });
+
+    });
 
     widget.bind(SC.Widget.Events.READY, function() {
 
@@ -153,12 +284,14 @@ $( document ).ready(function() {
 
       widget.bind(SC.Widget.Events.PAUSE, function() {
         playing = false;
+        console.log("paused");
         $("#legend .fa").removeClass("fa-volume-off fa-volume-up").addClass("fa-volume-up");
         stop = null;
       });
       
       widget.bind(SC.Widget.Events.PLAY, function() {
         playing = true;
+        console.log("played");
       });
       
       widget.bind(SC.Widget.Events.SEEK, function(e) {
@@ -168,7 +301,9 @@ $( document ).ready(function() {
       widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
 
         widget.getPosition(function(currentPosition){
-          if (stop != null) { 
+
+          // console.log(currentPosition);
+          if (typeof stop !== "undefined" && stop != null) { 
             if (currentPosition > stop) {
               widget.pause();
             }
@@ -180,20 +315,23 @@ $( document ).ready(function() {
           });
 
           // calc chord id from position
-          var $gotTheChord = $("#"+"chord"+Math.floor(currentPosition/noire));
-          if ($gotTheChord.length > 0) {
+          var iChord = getChordIndexFromOffset(currentPosition);
+          if (iChord != -1) {
+            var $gotTheChord = $("#"+"chord"+iChord);
+            if ($gotTheChord.length > 0) {
 
-            var alternateBackgroundColor = $gotTheChord.parent().parent().data( 'data-bg-alt');
-            $gotTheChord.css( {'background-color': alternateBackgroundColor} );
+              var alternateBackgroundColor = $gotTheChord.parent().parent().data( 'data-bg-alt');
+              $gotTheChord.css( {'background-color': alternateBackgroundColor} );
 
-            if ($("#sync_scroll_2_play:checked").length > 0) {
-              var $scrollToElement;
-              if ($gotTheChord.parent().parent().prev().length < 1 ) {
-                $scrollToElement = $gotTheChord.parent().parent();
-              } else {
-                $scrollToElement = $gotTheChord.parent().parent().prev();
+              if ($("#sync_scroll_2_play:checked").length > 0) {
+                var $scrollToElement;
+                if ($gotTheChord.parent().parent().prev().length < 1 ) {
+                  $scrollToElement = $gotTheChord.parent().parent();
+                } else {
+                  $scrollToElement = $gotTheChord.parent().parent().prev();
+                }
+                $('.harmoTableWrapperForHorizontalScrolling').scrollTo($scrollToElement);
               }
-              $('.harmoTableWrapperForHorizontalScrolling').scrollTo($scrollToElement);
             }
           }
         });
@@ -204,9 +342,9 @@ $( document ).ready(function() {
     /* chords offsets */
     $.each($("div.table#harmo > div > div > div > span"), function(index) {
         $(this).prop("id", "chord"+index);
-        var offset = Math.round(noire*index); 
-        $(this).data("position", offset);
-        $(this).data("stop", offset + noire + (noire/8));
+        var range = getChordsOffsetFromIndex(index, 1);
+        $(this).data("position", range.start);
+        $(this).data("stop", range.stop);
     });
 
     // show that we are on first chord
@@ -217,17 +355,17 @@ $( document ).ready(function() {
     /* bars offsets */
     $.each($("div.table#harmo > div.numbers > div").not(".header"), function(index) {
         $(this).prop("id", "bar"+index);
-        var offset = Math.round(index*(noire  *4)); 
-        $(this).data("position", offset);
-        $(this).data("stop", offset + (4*noire) + (noire/8));
+        var range = getChordsOffsetFromIndex(index*4, 4);
+        $(this).data("position", range.start);
+        $(this).data("stop", range.stop);
     });
 
     /* parts offsets */
     $.each($(".header"), function(index) {
         $(this).prop("id", "part"+index);
-        var offset = Math.round(index*(noire*4*12)); 
-        $(this).data("position", offset);
-        $(this).data("stop", offset + (noire*4*12) + (noire/8));
+        var range = getChordsOffsetFromIndex(index*4*12, 4*12);
+        $(this).data("position", range.start);
+        $(this).data("stop", range.stop);
     });
 
     $.each($("#legend .fa"), function(index) {
@@ -249,10 +387,9 @@ $( document ).ready(function() {
       }
       if (!(typeof start === "undefined") && 
           !(typeof stop  === "undefined")) {
-        var offsetStart = Math.round(noire*4*start); 
-        var offsetStop  = Math.round(noire*4*stop); 
-        $(this).data("position", offsetStart);
-        $(this).data("stop"    , offsetStop + noire/8);
+        var range = getChordsOffsetFromIndex(start*4, (stop-start)*4);
+        $(this).data("position", range.start);
+        $(this).data("stop", range.stop);
       } else {
         $(this).removeClass("fa fa-volume-up");
       }
@@ -267,13 +404,15 @@ $( document ).ready(function() {
           clickedID = undefined;
         } else {
           var pos = $(this).data("position");
+          console.log("start", pos);
           if (typeof pos !== "undefined" && pos != null) {
             clickedID = $(this).attr('id');
-            console.log(clickedID, "ON");
+
             widget.pause();
             widget.seekTo(pos);
             widget.play();
-            stop = Math.round($(this).data("stop"));
+            stop = $(this).data("stop");
+            console.log("stop", stop);
             if ($(this).hasClass("fa")) {
               var $this = $(this);
               setTimeout(function() {
