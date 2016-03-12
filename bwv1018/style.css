@@ -15,7 +15,7 @@ div.table {
   display: table;
   table-layout: auto;
   border-collapse: collapse;
-  margin-bottom: 2em;
+  margin: 0;
 }
 
 div.table#legend {
@@ -96,9 +96,10 @@ div.table > div.numbers > div:hover {
 }
 
 /*      */
-.func {
-  padding : 0 .5em;
+.func, .func0 {
+  padding : 0 .3rem;
   white-space: nowrap;
+  border-radius: .3rem;
 }
 .exp {
   background-color: #d7faec;
@@ -132,9 +133,9 @@ div.table > div.numbers > div:hover {
 .harmoTableWrapperForHorizontalScrolling {
   overflow-x:scroll;
   overflow-y:hidden;
-  width:100%;
-  margin: 1em 0;
-  padding:0;  
+  width:    100%;
+  margin:   0;
+  padding:  0;  
 }
 
 .list-inline {
@@ -164,7 +165,7 @@ div.card div.card-block p {
   margin: 0 0 .5rem 0;
 }
 
-.fa-volume-up {
+#legend .fa {
   cursor : pointer;
   font-size: 14px;
 }

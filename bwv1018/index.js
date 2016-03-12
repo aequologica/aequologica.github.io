@@ -44,12 +44,12 @@ $( document ).ready(function() {
       $('#harmo .'+k+'.harmo'  ).append($('<div>'));
 
       $.each(tout[k], function(key, value) {
-        $('#harmo .'+k+'.numbers').append($('<div>').addClass("func "+value.c).text(measure++));
+        $('#harmo .'+k+'.numbers').append($('<div>').addClass(""+value.c).text(measure++));
         var $d = $('<div>');
         $.each(value.h, function(key2, value2) {
           $d.append($('<span>').text(value2));
         });
-        $('#harmo .'+k+'.harmo').append($('<div>').addClass("func "+value.c).html($d));
+        $('#harmo .'+k+'.harmo').append($('<div>').addClass(""+value.c).html($d));
       });
     }
   }
@@ -68,7 +68,6 @@ $( document ).ready(function() {
   $('input:checkbox').each(function() {
     if (Modernizr.localstorage) {
       var data = window.localStorage.getItem($(this).attr('id'));
-      console.log($(this).attr('id') + ' ' + data);
       if (data === "true") {
         $(this).prop('checked', true);
       } else if (data === "false") {
@@ -79,7 +78,6 @@ $( document ).ready(function() {
   });
     
   $('input:checkbox').change(function(event) {
-    // console.log($(this).attr('id') + ' ' + this.checked);
     if (Modernizr.localstorage) {
       window.localStorage.setItem($(this).attr('id'), this.checked);
     }
@@ -118,12 +116,11 @@ $( document ).ready(function() {
     $.each( $(value), function() {
       $bg_color = rgbToHex($( this ).css('background-color'));
       $bg_color_alt = ColorLuminance($bg_color, 0.12);
-      // console.log($bg_color + ' -> ' + $bg_color_alt);
       $( this ).data( {'data-bg'    : $bg_color} );
       $( this ).data( {'data-bg-alt': $bg_color_alt } );
     });
 
-    $( "#legend "+value ).hover(
+    $( "#legend " + value ).add(".func" + value).hover(
       function() {
         $.each( $(value), function() {
           $( this ).css( {'background-color': $( this ).data( 'data-bg-alt')} );
@@ -134,37 +131,46 @@ $( document ).ready(function() {
         });
       }
     );
+
   });
 
   (function(){
 
     var length = 227000.0;
     var noire = length/(26.0*4.0);
+    var playing = false;
 
     var widgetIframe = document.getElementById('sc-widget'),
         widget       = SC.Widget(widgetIframe);
 
-        var stop = null;
+    var stop = null;
 
     widget.bind(SC.Widget.Events.READY, function() {
 
+      // ugly workaround to cope with seek not working on first click : play, then stop just a little bit after
+      widget.play();
+      setTimeout(function(){ widget.pause(); }, 10);
+
       widget.bind(SC.Widget.Events.PAUSE, function() {
-        widget.getPosition(function(currentPosition){
-          // r.à.z display
-          /*
-          $.each( $("div.table#harmo > div > div > div > span"), function(index, value) {
-            $(value).css( {'background-color': 'inherit'} );
-          });
-          */
-        });
+        playing = false;
+        $("#legend .fa").removeClass("fa-volume-off fa-volume-up").addClass("fa-volume-up");
+        stop = null;
       });
       
+      widget.bind(SC.Widget.Events.PLAY, function() {
+        playing = true;
+      });
+      
+      widget.bind(SC.Widget.Events.SEEK, function(e) {
+        // console.log('New seek position: '+e.currentPosition);
+      });
+
       widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
+
         widget.getPosition(function(currentPosition){
           if (stop != null) { 
             if (currentPosition > stop) {
               widget.pause();
-              stop = null;
             }
           }
 
@@ -174,21 +180,20 @@ $( document ).ready(function() {
           });
 
           // calc chord id from position
-          var $gotTheSpan = $("#"+"chord"+Math.floor(currentPosition/noire));
-          if ($gotTheSpan.length > 0) {
-            var alternateBackgroundColor = $gotTheSpan.parent().parent().data( 'data-bg-alt');
-            
-            $gotTheSpan.css( {'background-color': alternateBackgroundColor} );
+          var $gotTheChord = $("#"+"chord"+Math.floor(currentPosition/noire));
+          if ($gotTheChord.length > 0) {
+
+            var alternateBackgroundColor = $gotTheChord.parent().parent().data( 'data-bg-alt');
+            $gotTheChord.css( {'background-color': alternateBackgroundColor} );
 
             if ($("#sync_scroll_2_play:checked").length > 0) {
               var $scrollToElement;
-              // console.log($gotTheSpan.parent().parent().prev().length);
-              if ($gotTheSpan.parent().parent().prev().length < 1 ) {
-                $scrollToElement = $gotTheSpan.parent().parent();
+              if ($gotTheChord.parent().parent().prev().length < 1 ) {
+                $scrollToElement = $gotTheChord.parent().parent();
               } else {
-                $scrollToElement = $gotTheSpan.parent().parent().prev();
+                $scrollToElement = $gotTheChord.parent().parent().prev();
               }
-              $gotTheSpan.parent().parent().parent().parent().parent().parent().scrollTo($scrollToElement);
+              $('.harmoTableWrapperForHorizontalScrolling').scrollTo($scrollToElement);
             }
           }
         });
@@ -204,10 +209,14 @@ $( document ).ready(function() {
         $(this).data("stop", offset + noire + (noire/8));
     });
 
+    // show that we are on first chord
+    var $startChord = $('span#chord0');
+    var alternateBackgroundColor = $startChord.parent().parent().data( 'data-bg-alt');
+    $startChord.css( {'background-color': alternateBackgroundColor} );
+
     /* bars offsets */
     $.each($("div.table#harmo > div.numbers > div").not(".header"), function(index) {
         var offset = Math.round(index*(noire  *4)); 
-        if (offset) { offset = offset;}
         $(this).data("position", offset);
         $(this).data("stop", offset + (4*noire) + (noire/8));
     });
@@ -215,57 +224,65 @@ $( document ).ready(function() {
     /* parts offsets */
     $.each($(".header"), function(index) {
         var offset = Math.round(index*(noire*4*12)); 
-        if (offset) { offset = offset;}
         $(this).data("position", offset);
         $(this).data("stop", offset + (noire*4*12) + (noire/8));
     });
 
-    $.each($(".fa-volume-up"), function(index) {
-      $(this).attr("title", "Play");
+    $.each($("#legend .fa"), function(index) {
+      var start = undefined, 
+          stop  = undefined;
       var tex = $(this).text().trim();
       var match = /(\d+)\-(\d+)/gmi.exec(tex);
-      var start = undefined, stop = undefined;
       if (match && match.length > 2) {
-        console.log(tex, '=>', match[1], ',', match[2]);
-        start = match[1] -1;
+        start = match[1] - 1;
         stop  = match[2];
       } else {
         match = /(\d+)/gmi.exec(tex);
         if (match && match.length > 1) {
-          console.log(tex, '=>', match[1]);
-          start = match[1]-1;
+          start = match[1] - 1;
           stop  = match[1];
         } else {
           console.log("["+tex+"]", "not matched!");
         }
       }
       if (!(typeof start === "undefined") && 
-          !(typeof stop === "undefined")) {
+          !(typeof stop  === "undefined")) {
         var offsetStart = Math.round(noire*4*start); 
         var offsetStop  = Math.round(noire*4*stop); 
         $(this).data("position", offsetStart);
-        $(this).data("stop", offsetStop+noire/8);
+        $(this).data("stop"    , offsetStop + noire/8);
       } else {
         $(this).removeClass("fa fa-volume-up");
       }
     });
 
-    $("div.table > div.numbers > div")
-      .add("div.table#harmo > div > div > div > span")
-      .add(".fa-volume-up")
+    var clickedID = undefined;
+
+    $("div.table > div.numbers > div").add("div.table#harmo > div > div > div > span").add(".fa-volume-up")
       .click(function() {
-      var pos = $(this).data("position");
-      console.log(pos);
-      if (typeof pos !== "undefined" && pos != null) {
-        widget.pause();
-        widget.seekTo(pos);
-        widget.play();
-        stop = Math.round($(this).data("stop"));
-      }
+        if (clickedID && clickedID == $(this).attr('id')) {
+          widget.pause();
+          clickedID = undefined;
+        } else {
+          var pos = $(this).data("position");
+          if (typeof pos !== "undefined" && pos != null) {
+            clickedID = $(this).attr('id');
+            console.log(clickedID, "ON");
+            widget.pause();
+            widget.seekTo(pos);
+            widget.play();
+            stop = Math.round($(this).data("stop"));
+            if ($(this).hasClass("fa")) {
+              var $this = $(this);
+              setTimeout(function() {
+                $this.removeClass("fa-volume-up").addClass("fa-volume-off");
+              },
+              100);
+            }
+          }
+        }
     });
 
-    widget.seekTo(0);
-    widget.pause();
 
   }());
 

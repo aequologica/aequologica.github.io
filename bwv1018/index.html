@@ -53,25 +53,25 @@
 </p>
 
 <div class="table" id="legend">
-  <div><div                     >fonction                       </div><div>A      </div><div>B    </div><div>C    </div></div>
-  <div><div class="func exp"    >Exposé du thème                </div><div class="fa fa-volume-up"> 1-3    </div><div class="fa fa-volume-up"> 13   </div><div>     </div></div>
-  <div><div class="func mod_rel">Modulation vers relatif majeur </div><div class="fa fa-volume-up"> 4-5    </div><div class="fa fa-volume-up"> 14   </div><div>     </div></div> 
-  <div><div class="func dev"    >Développement                  </div><div                        > &empty;</div><div class="fa fa-volume-up"> 15-17</div><div>     </div></div> 
-  <div><div class="func mod_ou" >Modulation on ne sait où       </div><div class="fa fa-volume-up"> 6-8    </div><div class="fa fa-volume-up"> 18-20</div><div>     </div></div> 
-  <div><div class="func mar_har">Marche harmonique              </div><div class="fa fa-volume-up"> 9-10   </div><div class="fa fa-volume-up"> 21-22</div><div>     </div></div> 
-  <div><div class="func coda"   >Conclusion                     </div><div class="fa fa-volume-up"> 11-12  </div><div class="fa fa-volume-up"> 23-24</div><div>     </div></div> 
-  <div><div class="func fin"    >Coda                           </div><div>                                </div><div>     </div><div class="fa fa-volume-up"> 25-27</div></div> 
+  <div><div                >fonction                       </div><div>A                                       </div><div>B                                      </div><div>C                                     </div></div>
+  <div><div class="exp"    >Exposé du thème                </div><div id="a1" class="fa fa-volume-up"> 1-3    </div><div id="b1" class="fa fa-volume-up"> 13    </div><div>                                      </div></div>
+  <div><div class="mod_rel">Modulation vers relatif majeur </div><div id="a2" class="fa fa-volume-up"> 4-5    </div><div id="b2" class="fa fa-volume-up"> 14    </div><div>                                      </div></div> 
+  <div><div class="dev"    >Développement                  </div><div                                > &empty;</div><div id="b3" class="fa fa-volume-up"> 15-17 </div><div>                                      </div></div> 
+  <div><div class="mod_ou" >Modulation on ne sait où       </div><div id="a4" class="fa fa-volume-up"> 6-8    </div><div id="b4" class="fa fa-volume-up"> 18-20 </div><div>                                      </div></div> 
+  <div><div class="mar_har">Marche harmonique              </div><div id="a5" class="fa fa-volume-up"> 9-10   </div><div id="b5" class="fa fa-volume-up"> 21-22 </div><div>                                      </div></div> 
+  <div><div class="coda"   >Conclusion                     </div><div id="a6" class="fa fa-volume-up"> 11-12  </div><div id="b6" class="fa fa-volume-up"> 23-24 </div><div>                                      </div></div> 
+  <div><div class="fin"    >Coda                           </div><div>                                        </div><div>                                       </div><div id="c" class="fa fa-volume-up"> 25-27 </div></div> 
 </div>
 
-<!--form>
+<form style="display:none;">
   <div class="form-group">
     <label class="checkbox-inline"> 
-      <input type="checkbox" id="sync_scroll_2_play"  checked >
+      <input type="checkbox" id="sync_scroll_2_play" checked >
       faire défiler la grille des accords en synchrone avec l'écoute
       </input>
     </label>
   </div>
-</form-->
+</form>
 
 <div class="card">
   <div class="card-block">
@@ -124,25 +124,25 @@
     </p>
     <ol>
       <li>
-        <span class="func mod_rel">Am</span> / <span class="func mod_ou">C</span> :
+        <span class="func0 mod_rel">Am</span> / <span class="func0 mod_ou">C</span> :
         le premier temps sur l'accord de tonique de la tonalité de départ,
       </li>
       <li>
-        <span class="func mod_rel">F/A</span> / <span class="func mod_ou">Am</span> :
+        <span class="func0 mod_rel">F/A</span> / <span class="func0 mod_ou">Am</span> :
         le deuxième temps sur le degré IV, resp. II (la fonction tonale du II et du IV degré étant équivalentes) de la tonalité vers laquelle on se dirige,
       </li>
       <li>
-        <span class="func mod_rel">G7/B</span> / <span class="func mod_ou">D7/F#</span> :
+        <span class="func0 mod_rel">G7/B</span> / <span class="func0 mod_ou">D7/F#</span> :
         le troisième temps sur l'accord de dominante septième de la tonalité vers laquelle on se dirige, en renversement de sixte (i.e. avec la sensible à la basse),
       </li>
       <li>
-        <span class="func mod_rel">G6</span> / <span class="func mod_ou">D6</span> :
+        <span class="func0 mod_rel">G6</span> / <span class="func0 mod_ou">D6</span> :
         sur le quatrième temps, cette sensible à la basse, au lieu de porter directement à la tonique, redescend d'abord sur la fondamentale du même accord de dominante, 
         avec en prime la disparition au chant de la septiéme au profit de la sixième en note 
         de passage, qui se résout prestement sur la quinte de la dominante,
       </li>
       <li>
-      <span class="func mod_rel">C</span> / <span class="func mod_ou">G</span> :
+      <span class="func0 mod_rel">C</span> / <span class="func0 mod_ou">G</span> :
       enfin la résolution parfaite sur la tonique en position fondamentale, avec en prime au chant la quinte de la dominante qui remonte vers la médiante de la tonique, qui rappelons-le « <i>est appelée 'note modale' parce qu'elle permet de faire la différence entre le mode majeur et le mode mineur. </i>» cf. <a href="http://fr.wikipedia.org/wiki/M%C3%A9diante" target="wikipedia">wikipedia</a>
       </li>
     </ol>
@@ -178,18 +178,20 @@
 
   <iframe id="sc-widget" width="100%" height="100px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/199655599&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&show_user=true&hide_related=false&visual=false&callback=true"></iframe>
 
-  <div class="table" id="harmo">
-    <div class="A numbers">
-    </div>
-    <div class="A harmo">
-    </div>
-    <div class="B numbers">
-    </div>
-    <div class="B harmo">
-    </div>
-    <div class="C numbers">
-    </div>
-    <div class="C harmo">
+  <div class="harmoTableWrapperForHorizontalScrolling">
+    <div class="table" id="harmo">
+      <div class="A numbers">
+      </div>
+      <div class="A harmo">
+      </div>
+      <div class="B numbers">
+      </div>
+      <div class="B harmo">
+      </div>
+      <div class="C numbers">
+      </div>
+      <div class="C harmo">
+      </div>
     </div>
   </div>
 
@@ -204,7 +206,7 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"   ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"                      ></script>
 
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.scrollto/2.1.0/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
 
 <script type="text/javascript" src="//w.soundcloud.com/player/api.js"></script>
 
