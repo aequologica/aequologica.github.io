@@ -29,6 +29,7 @@
         "onError" : "no_image_server.png", "width":"180px", "height":"180px"}
     ,{ "name":"temptationofstanthony"            , "url": "http://earthlydelights.garden/temptation.of.st.anthony.triptych.html",      "text" : "Triptych of the Temptation of St. Anthony", "src": "https://imageserverp1941883276trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/crop?width=320&height=320&quality=100",                                    
         "onError" : "no_image_server.png", "width":"320px", "height":"320px"}
+    ,{ "name":"vinyl"                   , "url": "http://aequologica.net/vinyl/"                                                                                    , "src": "vinyl_record-240x240.png"                       }
     ,{ "name":"airbnb"                  , "url": "https://www.airbnb.com/"                                                                                          , "src": "airbnb_icon.png"                                }
     ,{ "name":"gerrit"                  , "url": "https://git.wdf.sap.corp:8080"                                                                                    , "src": "diffymute-300x279.png"                          }
     ,{ "name":"angular"                 , "url": "https://angular.io/docs/ts/latest/"                                                                               , "src": "angular.png"                                    }
