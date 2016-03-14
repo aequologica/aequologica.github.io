@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Signerica';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Signerica'), url('/vinyl/fonts/Signerica_Fat.woff') format('woff');
+}
+body {
+  margin-top: 1rem;
+  background: url("/vinyl/images/vinyl.jpg") top left / cover no-repeat fixed black;
+  color: Aliceblue;
+}
+h2 {
+  border-top : 1px solid white;
+}
+h3 {
+  text-decoration: underline;
+}
+a {
+  color: Aliceblue;
+  font-family : Signerica;
+}
+a:link {
+  color: Aliceblue;
+}
+a:visited {
+  color: Aliceblue;
+}
+a:hover {
+  color: Aliceblue;
+}
+a:active {
+  color: Aliceblue;
+}
+pre {
+  color: Ghostwhite;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
