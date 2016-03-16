@@ -1,8 +1,21 @@
+
+@font-face {
+  font-family: 'WorstveldSlingExtra';
+  font-style: normal;
+  font-weight: 400;
+  src: local('WorstveldSlingExtra'), url('/vinyl/fonts/WorstveldSlingExtra.woff') format('woff');
+}
 @font-face {
   font-family: 'Signerica';
   font-style: normal;
   font-weight: 400;
   src: local('Signerica'), url('/vinyl/fonts/Signerica_Fat.woff') format('woff');
+}
+@font-face {
+  font-family: 'Vtks Vacancy';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Vtks Vacancy'), url('/vinyl/fonts/Vtks Vacancy.woff') format('woff');
 }
 body {
   margin-top: 1rem;
@@ -10,13 +23,36 @@ body {
   color: Aliceblue;
 }
 h2 {
+  padding-top : 1rem;
+  padding-bottom : 1rem;
   border-top : 1px solid white;
 }
 h3 {
-  text-decoration: underline;
+  // text-decoration: overline;
+  margin-bottom : 1rem;
 }
-#chansonettes a {
+h3 i.fa {
+  font-size: 14px;
+}
+#chansonettes p > span {
+  font-family : 'WorstveldSlingExtra';
+  font-size: 24px;
+}
+#chansonettes #rimbaud p > span {
   font-family : Signerica;
+  font-size: 14px;
+}
+#chansonettes #apollinaire p > span {
+  font-family : 'Vtks Vacancy';
+  font-size: 20px;
+}
+#chansonettes #verlaine p > span {
+  font-family : 'WorstveldSlingExtra';
+  font-size: 24px;
+}
+section.item {
+  // margin-bottom : .5rem;
+  margin: 1em;
 }
 a {
   color: Aliceblue;
