@@ -52,7 +52,7 @@ i.fa {
   font-size: 24px;
 }
 section.item {
-  margin: 1em;
+  margin: 1em 0 1em 1em;
 }
 a {
   color: Aliceblue;
@@ -88,4 +88,11 @@ h3:hover,
 h4:hover {
   color: Gainsboro;
   background-color: rgba(256, 32, 0, .1);
+}
+h3 a {
+ float:right;
+}
+
+span.buttons {
+ float:right;
 }
