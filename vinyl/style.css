@@ -32,9 +32,6 @@ h3 {
 h4 {
   font-size: 1.25rem;
 }
-i.fa {
-  font-size: 14px;
-}
 
 #chansonettes #rimbaud p > span {
   font-family : Signerica;
@@ -51,6 +48,10 @@ i.fa {
 
 section.item {
   margin: 1em 0 1em 1em;
+}
+i.fa {
+  font-size: 12px;
+  color: white;
 }
 a {
   color: Aliceblue;
