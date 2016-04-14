@@ -35,13 +35,10 @@ h4 {
 i.fa {
   font-size: 14px;
 }
-#chansonettes p > span {
-  font-family : 'WorstveldSlingExtra';
-  font-size: 24px;
-}
+
 #chansonettes #rimbaud p > span {
   font-family : Signerica;
-  font-size: 14px;
+  font-size: 20px;
 }
 #chansonettes #apollinaire p > span {
   font-family : 'Vtks Vacancy';
@@ -49,8 +46,9 @@ i.fa {
 }
 #chansonettes #verlaine p > span {
   font-family : 'WorstveldSlingExtra';
-  font-size: 24px;
+  font-size: 20px;
 }
+
 section.item {
   margin: 1em 0 1em 1em;
 }
