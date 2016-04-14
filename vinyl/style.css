@@ -33,17 +33,11 @@ h4 {
   font-size: 1.25rem;
 }
 
-#chansonettes #rimbaud p > span {
+#chansonettes #rimbaud      p > span ,
+#chansonettes #apollinaire  p > span ,
+#chansonettes #verlaine     p > span {
   font-family : Signerica;
-  font-size: 20px;
-}
-#chansonettes #apollinaire p > span {
-  font-family : 'Vtks Vacancy';
-  font-size: 20px;
-}
-#chansonettes #verlaine p > span {
-  font-family : 'WorstveldSlingExtra';
-  font-size: 20px;
+  font-size: 14px;
 }
 
 section.item {
@@ -82,9 +76,12 @@ section#sonates > div {
   background-color: rgba(64, 32, 0, .2);
 }
 
-section.item p:hover, 
-h3:hover,
-h4:hover {
+section.item p:hover {
+  color: Gainsboro;
+  background-color: rgba(128, 128, 128, .2);
+}
+
+h3 {
   color: Gainsboro;
   background-color: rgba(256, 32, 0, .1);
 }
@@ -94,4 +91,11 @@ h3 a {
 
 span.buttons {
  float:right;
+}
+.wiki {
+  display: none;
+}
+
+.btn-circle {
+    border-radius: 50%;
 }
