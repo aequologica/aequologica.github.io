@@ -35,9 +35,9 @@ h4 {
   font-size: 1.25rem;
 }
 
-#chansonettes #rimbaud      p > span ,
-#chansonettes #apollinaire  p > span ,
-#chansonettes #verlaine     p > span {
+#chansonnettes #rimbaud      p > span ,
+#chansonnettes #apollinaire  p > span ,
+#chansonnettes #verlaine     p > span {
   font-family : Signerica;
   font-size: 14px;
 }
@@ -71,7 +71,7 @@ ul {
     list-style-type: none;
     padding: 0;
 }
-section#chansonettes > div {
+section#chansonnettes > div {
   border-top : 1px solid white;
   padding-top : 1rem;
   background-color: rgba(64, 32, 0, .2);

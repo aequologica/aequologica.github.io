@@ -10,7 +10,7 @@
     5. Electric Gibson ES 335 / Epiphone SG 
 4. a solo instrument, different for each chansonette
 
-# Chansonettes
+# Chansonnettes
 
 ## Bonne pensée du matin 
 
