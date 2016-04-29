@@ -14,7 +14,7 @@
 
 ## Bonne pensée du matin 
 
-solo : clarinette
+solo : Cor de basset + Bugle
 
 ## Chanson de la plus haute tour 
 
@@ -32,7 +32,7 @@ solo : Quatuor à cordes
 
 ## Larme 
 
-solo : none
+solo : ∅
 
 ## Le bateau ivre 
 
