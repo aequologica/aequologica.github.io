@@ -10,12 +10,6 @@
     5. Electric Gibson ES 335 / Epiphone SG 
 4. a solo instrument, different for each chansonette:
 
-#### La chanson du mal-aimé 
-
-Quatuor à cordes <span style="float:right;">Baden-Württemberg</span>
-
-----
-
 #### Bonne pensée du matin 
 
 Cor de basset + Bugle <span style="float:right;">San Giovanni Lipioni</span>
@@ -53,3 +47,20 @@ Chor <span style="float:right;">?</span>
 #### Gaspard Hauser chante: (The Mother and the Whore Remix)
 
 ?<span style="float:right;">?</span>
+
+----
+
+#### La chanson du mal-aimé 
+
+Quatuor à cordes <span style="float:right;">Baden-Württemberg</span>
+
+Les septs épées
+
+* Alessia
+* Ariane
+* Carole
+* Maria
+* Michèle
+* Nathalie
+* Sylvie
+
