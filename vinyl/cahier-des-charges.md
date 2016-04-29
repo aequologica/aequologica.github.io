@@ -1,6 +1,6 @@
-# Instruments
+# Orchestration & Lieux
 
-1. bass (double basse / electric bass / synth bass ?)
+1. bass (double basse / electric bass / synth bass?)
 2. rythm (percussion)
 3. up to 5 guitars overdubbed :
     1. Classical Ramirez
@@ -8,45 +8,48 @@
     3. Acoustic Guild
     4. Acoustic twelve strings Takamine
     5. Electric Gibson ES 335 / Epiphone SG 
-4. a solo instrument, different for each chansonette
+4. a solo instrument, different for each chansonette:
 
-# Chansonnettes
+#### La chanson du mal-aimé 
 
-## Bonne pensée du matin 
+Quatuor à cordes <span style="float:right;">Baden-Württemberg</span>
 
-solo : Cor de basset + Bugle
+----
 
-## Chanson de la plus haute tour 
+#### Bonne pensée du matin 
 
-solo : Electric Gibson ES 335
+Cor de basset + Bugle <span style="float:right;">San Giovanni Lipioni</span>
 
-## Gaspard Hauser chante:  
+#### Chanson de la plus haute tour 
 
-solo : Chor
+Classical Ramirez <span style="float:right;">?</span>
 
-### Gaspard Hauser chante: (The Mother and the Whore Remix) 
+#### Larme 
 
-## La chanson du mal-aimé 
+∅ <span style="float:right;">Seloncourt</span>
 
-solo : Quatuor à cordes
+#### Le bateau ivre 
 
-## Larme 
+Electric Gibson ES 335 <span style="float:right;"> Paris, Rue Férou</span>
 
-solo : ∅
+#### Les chercheuses de poux 
 
-## Le bateau ivre 
+Cristal Baschet <span style="float:right;">?</span>
 
-solo : Electric Gibson ES 335
+#### Ma bohème 
 
-## Les chercheuses de poux 
+Percussion <span style="float:right;"> Chaumont, forêt domaniale du Corgebin</span>
 
-solo : Cristal Baschet
+#### Sensation 
 
-## Ma bohème 
+Acoustic twelve strings Takamine + Flamenco Ramirez <span style="float:right;">?</span>
 
-solo : Percussion
+----
 
-## Sensation 
+#### Gaspard Hauser chante:  
 
-solo : Acoustic twelve strings Takamine + Flamenco Ramirez
+Chor <span style="float:right;">?</span>
 
+#### Gaspard Hauser chante: (The Mother and the Whore Remix)
+
+?<span style="float:right;">?</span>
