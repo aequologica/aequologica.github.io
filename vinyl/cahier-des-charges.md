@@ -1,7 +1,7 @@
 # Instruments
 
-1. bass (double basse / electric bass / synth bass)
-2. rythm (drums / percussion)
+1. bass (double basse / electric bass / synth bass ?)
+2. rythm (percussion)
 3. up to 5 guitars overdubbed :
     1. Classical Ramirez
     2. Flamenco Ramirez
@@ -18,17 +18,17 @@ solo : clarinette
 
 ## Chanson de la plus haute tour 
 
-solo : ?
+solo : Electric Gibson ES 335
 
 ## Gaspard Hauser chante:  
 
-solo : men chor
+solo : Chor
 
 ### Gaspard Hauser chante: (The Mother and the Whore Remix) 
 
 ## La chanson du mal-aimé 
 
-solo : ?
+solo : Quatuor à cordes
 
 ## Larme 
 
@@ -40,13 +40,13 @@ solo : Electric Gibson ES 335
 
 ## Les chercheuses de poux 
 
-solo : ?
+solo : Cristal Baschet
 
 ## Ma bohème 
 
-solo : ?
+solo : Percussion
 
 ## Sensation 
 
-solo : oboe
+solo : Acoustic twelve strings Takamine + Flamenco Ramirez
 
