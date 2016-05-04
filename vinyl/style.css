@@ -35,11 +35,16 @@ h4 {
   font-size: 1.25rem;
 }
 
-#chansonnettes #rimbaud      p > span ,
-#chansonnettes #apollinaire  p > span ,
-#chansonnettes #verlaine     p > span {
+#chansonnettes #rimbaud      p > span.citation ,
+#chansonnettes #apollinaire  p > span.citation ,
+#chansonnettes #verlaine     p > span.citation {
   font-family : Signerica;
   font-size: 14px;
+}
+#chansonnettes #rimbaud      p > span.citation::after ,
+#chansonnettes #apollinaire  p > span.citation::after ,
+#chansonnettes #verlaine     p > span.citation::after { 
+    content: " …";
 }
 
 section.item {
