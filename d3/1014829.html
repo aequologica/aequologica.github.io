@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://bl.ocks.org/mbostock/raw/1014829/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head><body>
+<script src="./1014829_files/d3.v4.js"></script>
+<script>
+
+d3.xml("rect01.svg").mimeType("image/svg+xml").get(function(error, xml) {
+  if (error) throw error;
+  document.body.appendChild(xml.documentElement);
+});
+
+</script>
+</body></html>
