@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        
+        <link   type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"   rel="stylesheet">
+        
+        <!--script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/4.4.3/d3.js"></script-->
+        <script src="//d3js.org/d3.v3.min.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!--
+http://stackoverflow.com/questions/2_8_3723/change-and-transition-dataset-in-chord-diagram-with-d3
+http://www.visualcinnamon.com/20_5/08/stretched-chord.html
+https://www.google.de/webhp?sourceid=chrome-instant&ion=_&espv=2&ie=UTF-8#q=chord+site:bl.ocks.org
+https://soundsuggest.wordpress.com/20_2/_2/26/d3-js-javascript-library-chord-diagram-example/
+https://dave.cheney.net/20_4/__/2_/visualising-dependencies
+https://godoc.org/github.com/davecheney/junk/glyph#pkg-files
+http://bl.ocks.org/npashap/54cf6b3b370e85e3f8374943f5_50f53s
+-->
+
+<style type="text/css">
+body {
+    margin : 2rem;
+}
+div {
+    width:100%;
+    height: 100%;    
+    margin: 0 0 .5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+div span:first-child {
+    margin-right: 1rem;
+}
+div span i:nth-child(3) {
+    border-right: 1px solid gray;
+    padding-right: 1rem;
+}
+div span:last-child {
+    font-size: 12px;
+    white-space:nowrap;
+}
+div span:last-child i {
+    margin: 0 .5rem;
+}
+.green {
+    color :green;
+}
+.gray {
+    color :gray;
+}
+.red {
+    color :red;
+}
+
+.dotted-line {
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+.dotted-line:after {
+  content: "..........................................................................................................";
+  letter-spacing: 6px;
+  font-size: 20px;
+  color: gray;
+  display: inline-block;
+  vertical-align: 3px;
+  padding-left: 10px;
+}
+
+</style>
+        </head>
+    <body class="container" style="font-family: monospace; font-size: 20px;">
+
+<div id="SantAgataFutsal2004"><span class="dotted-line">Sant Agata Futsal 2004</span><span></span></div>
+<div id="OsteriaGrandeC5"><span class="dotted-line">Osteria Grande C5</span><span></span></div>
+<div id="RealCasalgrandese"><span class="dotted-line">Real Casalgrandese</span><span></span></div>
+<div id="AssClubC5"><span class="dotted-line">Ass. Club C5</span><span></span></div>
+<div id="Cavezzo"><span class="dotted-line">Cavezzo</span><span></span></div>
+<div id="RiminiC5"><span class="dotted-line">Rimini C5</span><span></span></div>
+<div id="FutsalReggioEmilia"><span class="dotted-line">Futsal Reggio Emilia</span><span></span></div>
+<div id="GianLucaMontanari"><span class="dotted-line">Gian Luca Montanari</span><span></span></div>
+<div id="FutsalPonteRodoni"><span class="dotted-line">Futsal Ponte Rodoni</span><span></span></div>
+<div id="Fossolo76Calcio"><span class="dotted-line">Fossolo 76 Calcio</span><span></span></div>
+<div id="ProPatriaSFelice"><span class="dotted-line">Pro Patria S. Felice</span><span></span></div>
+<div id="Aposa"><span class="dotted-line">Aposa</span><span></span></div>
+
+       <script type="text/javascript">
+
+var last = {
+SantAgataFutsal2004 : [3,3,3,3,0],
+OsteriaGrandeC5     : [0,3,1,3,3],
+RealCasalgrandese   : [1,3,0,0,3],
+AssClubC5           : [3,0,1,3,0],
+Cavezzo             : [3,0,3,1,3],
+RiminiC5            : [0,0,1,0,3],
+FutsalReggioEmilia  : [3,0,1,1,3],
+GianLucaMontanari   : [1,0,0,1,0],
+FutsalPonteRodoni   : [3,3,3,0,0],
+Fossolo76Calcio     : [0,3,0,1,3],
+ProPatriaSFelice    : [0,3,0,3,0],
+Aposa               : [0,0,3,0,0],
+};
+
+    _.forOwn(last, function(value, key) { 
+        var pos = 0;
+        _.forEach(value, function(val) {
+            var i = '<i class="fa fa-circle '+ 
+                (val==3 ? "green" : (val==1 ? "gray" : "red")) +
+                '" aria-hidden="true"></i>';
+            console.log(i);
+            var where = $("#"+key+" span:last-child")
+            where.append(i);
+        });
+    });
+
+
+
+        </script>
+    </body>
+<span></html>
