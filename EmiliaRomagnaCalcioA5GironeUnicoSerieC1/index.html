@@ -4,16 +4,12 @@
         <meta charset="utf-8">
         <title>D3 Test</title>
         
-        <link   type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"   rel="stylesheet">
-        <link   type="text/css" href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.css"   rel="stylesheet">
+        <link   type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link   type="text/css" href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.css"               rel="stylesheet">
         
-        <!--script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/4.4.3/d3.js"></script-->
-        <script src="//d3js.org/d3.v3.min.js"></script>
-
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+<!--script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/4.4.3/d3.js"></script-->
 <!--
+<script src="//d3js.org/d3.v3.min.js"></script>
 http://stackoverflow.com/questions/2_8_3723/change-and-transition-dataset-in-chord-diagram-with-d3
 http://www.visualcinnamon.com/20_5/08/stretched-chord.html
 https://www.google.de/webhp?sourceid=chrome-instant&ion=_&espv=2&ie=UTF-8#q=chord+site:bl.ocks.org
@@ -76,23 +72,26 @@ div span:last-child i {
 }
 
 </style>
-        </head>
-    <body class="container-fluid" style="font-family: monospace; font-size: 20px;">
+</head>
+<body class="container-fluid" style="font-family: monospace; font-size: 20px;">
 
-<div id="SantAgataFutsal2004"><span class="dotted-line">Sant Agata Futsal 2004</span><span></span></div>
-<div id="OsteriaGrandeC5"><span class="dotted-line">Osteria Grande C5</span><span></span></div>
-<div id="RealCasalgrandese"><span class="dotted-line">Real Casalgrandese</span><span></span></div>
-<div id="AssClubC5"><span class="dotted-line">Ass. Club C5</span><span></span></div>
-<div id="Cavezzo"><span class="dotted-line">Cavezzo</span><span></span></div>
-<div id="RiminiC5"><span class="dotted-line">Rimini C5</span><span></span></div>
-<div id="FutsalReggioEmilia"><span class="dotted-line">Futsal Reggio Emilia</span><span></span></div>
-<div id="GianLucaMontanari"><span class="dotted-line">Gian Luca Montanari</span><span></span></div>
-<div id="FutsalPonteRodoni"><span class="dotted-line">Futsal Ponte Rodoni</span><span></span></div>
-<div id="Fossolo76Calcio"><span class="dotted-line">Fossolo 76 Calcio</span><span></span></div>
-<div id="ProPatriaSFelice"><span class="dotted-line">Pro Patria S. Felice</span><span></span></div>
-<div id="Aposa"><span class="dotted-line">Aposa</span><span></span></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="SantAgataFutsal2004"><span class="dotted-line">Sant Agata Futsal 2004</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="OsteriaGrandeC5"><span class="dotted-line">Osteria Grande C5</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="RealCasalgrandese"><span class="dotted-line">Real Casalgrandese</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="AssClubC5"><span class="dotted-line">Ass. Club C5</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="Cavezzo"><span class="dotted-line">Cavezzo</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="RiminiC5"><span class="dotted-line">Rimini C5</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="FutsalReggioEmilia"><span class="dotted-line">Futsal Reggio Emilia</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="GianLucaMontanari"><span class="dotted-line">Gian Luca Montanari</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="FutsalPonteRodoni"><span class="dotted-line">Futsal Ponte Rodoni</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="Fossolo76Calcio"><span class="dotted-line">Fossolo 76 Calcio</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="ProPatriaSFelice"><span class="dotted-line">Pro Patria S. Felice</span><span></span></div></div>
+<div class="row"><div class="col col-xl-6 col-lg-8" id="Aposa"><span class="dotted-line">Aposa</span><span></span></div></div>
 
-       <script type="text/javascript">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
 
 var last = {
 SantAgataFutsal2004 : [3,3,3,3,0],
@@ -123,6 +122,6 @@ Aposa               : [0,0,3,0,0],
 
 
 
-        </script>
-    </body>
+</script>
+</body>
 <span></html>
