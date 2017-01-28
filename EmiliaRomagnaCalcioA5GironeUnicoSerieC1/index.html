@@ -4,96 +4,190 @@
         <meta charset="utf-8">
         <title>Forme des équipes</title>
         
-        <link   type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link   type="text/css" href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.css"               rel="stylesheet">
+        <link   type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"      rel="stylesheet">
+        <link   type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"    rel="stylesheet">
+        <link   type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css" rel="stylesheet">
+        <link   type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-light.min.css" rel="stylesheet">
         
-<!--script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/4.4.3/d3.js"></script-->
-<!--
-<script src="//d3js.org/d3.v3.min.js"></script>
-http://stackoverflow.com/questions/2_8_3723/change-and-transition-dataset-in-chord-diagram-with-d3
-http://www.visualcinnamon.com/20_5/08/stretched-chord.html
-https://www.google.de/webhp?sourceid=chrome-instant&ion=_&espv=2&ie=UTF-8#q=chord+site:bl.ocks.org
-https://soundsuggest.wordpress.com/20_2/_2/26/d3-js-javascript-library-chord-diagram-example/
-https://dave.cheney.net/20_4/__/2_/visualising-dependencies
-https://godoc.org/github.com/davecheney/junk/glyph#pkg-files
-http://bl.ocks.org/npashap/54cf6b3b370e85e3f8374943f5_50f53s
--->
-
 <style type="text/css">
 body {
-    margin : 2rem;
+    margin: 2rem;
+    font-family: monospace; 
+    font-size: 18px;
 }
-div {
-    width:100%;
-    height: 100%;    
-    margin: 0 1rem;
-    padding-right: 1rem; 
+section {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 640px;
+}
+section > div.row {
+    width: 100%;
+    height: 100%;
+    margin: 0 1rem;
     align-items: center;
 }
-div span:first-child {
-    margin-right: 1rem;
+section > div.row > div.col {
+    display: flex;
+    justify-content: space-between;
 }
-div span i:nth-child(3) {
+section > div.row span:first-child {
+    // background-color: #efefef;
+    width: 100%;
+}
+section > div.row span:last-child {
+    font-size: 12px;
+    white-space:nowrap;
+    height: 100%;
+}
+section > div.row span:last-child i {
+    margin: .2rem .3rem;
+    padding: .3rem .2rem;
+}
+section > div.row span i:nth-child(3) {
     border-right: 1px solid gray;
     padding-right: 1rem;
 }
-div span:last-child {
-    font-size: 12px;
-    white-space:nowrap;
-}
-div span:last-child i {
-    margin: 0 .5rem;
-}
 .green {
-    color :green;
+    color:green;
 }
 .gray {
-    color :gray;
+    color:gray;
 }
 .red {
-    color :red;
+    color:red;
 }
 
 .dotted-line {
   white-space: nowrap;
-  position: relative;
   overflow: hidden;
+  // direction: rtl;
 }
 .dotted-line:after {
-  content: "..........................................................................................................";
+  content: ".....................................................";
   letter-spacing: 6px;
   font-size: 20px;
   color: gray;
-  display: inline-block;
-  vertical-align: 3px;
+  // display: inline-block;
+  // vertical-align: 3px;
   padding-left: 10px;
 }
-
+.tooltip_templates { 
+    display: none; 
+}
+#tooltip_content {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 12px 20px 14px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+}
+#tooltip_content .intro {
+    display: block;
+    line-height: 17px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #7c8699;
+}
+#tooltip_content .content {
+    overflow: hidden;
+    display: block;
+    margin: 2px 0 0;
+    padding: 9px 0 0;
+    border-top: solid 1px #d4dae6;
+}
+#tooltip_content .score-block {
+    display: inline-block;
+    margin: 0 4px;
+    vertical-align: top;
+}
+#tooltip_content .score {
+    display: inline-block;
+    min-width: 26px;
+    padding: 4px 0 3px;
+    line-height: 19px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    color: #7c8699;
+    background: #e9eef5;
+    border-radius: 2px;
+}
+#tooltip_content .team-logo {
+    width: 20px;
+    height: auto;
+}
+img.img-fluid {
+    max-width: 32px;
+    max-height:32px;
+    margin-right: .5rem;
+}
 </style>
 </head>
-<body class="container-fluid" style="font-family: monospace; font-size: 20px;">
+<body class="container-fluid">
 
-<div class="row"><div class="col col-xl-6 col-lg-8" id="SantAgataFutsal2004"><span class="dotted-line">Sant Agata Futsal 2004</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="OsteriaGrandeC5"><span class="dotted-line">Osteria Grande C5</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="RealCasalgrandese"><span class="dotted-line">Real Casalgrandese</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="AssClubC5"><span class="dotted-line">Ass. Club C5</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="Cavezzo"><span class="dotted-line">Cavezzo</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="RiminiC5"><span class="dotted-line">Rimini C5</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="FutsalReggioEmilia"><span class="dotted-line">Futsal Reggio Emilia</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="GianLucaMontanari"><span class="dotted-line">Gian Luca Montanari</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="FutsalPonteRodoni"><span class="dotted-line">Futsal Ponte Rodoni</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="Fossolo76Calcio"><span class="dotted-line">Fossolo 76 Calcio</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="ProPatriaSFelice"><span class="dotted-line">Pro Patria S. Felice</span><span></span></div></div>
-<div class="row"><div class="col col-xl-6 col-lg-8" id="Aposa"><span class="dotted-line">Aposa</span><span></span></div></div>
+<div class="tooltip_templates">
+  <script id="entry-template" type="text/x-handlebars-template">
+    <span id="tooltip_content">
+      <span class="intro">{{title}}</span>
+      <span class="content">
+        <strong class="team-name ">{{match.homeTeam.id}}</strong>
+        <img class="team-logo" src="images/{{homeLogo}}.png" alt="{{match.homeTeam.id}}">
+        <span class="score-block">
+          <span class="score ">{{match.homeTeam.goals}}</span>
+          <span class="score winner">{{match.visitingTeam.goals}}</span>
+        </span>
+        <img class="team-logo" src="images/{{visitingLogo}}.png" alt="{{match.visitingTeam.id}}">
+        <strong class="team-name winner">{{match.visitingTeam.id}}</strong>
+      </span>
+    </script>
+  </span>
+</div>
+
+<section>
+<div class="row"><div class="col" id="SantAgataFutsal2004"><span class="dotted-line">Sant Agata Futsal 2004</span><span></span></div></div>
+<div class="row"><div class="col" id="OsteriaGrandeC5"><span class="dotted-line">Osteria Grande C5</span><span></span></div></div>
+<div class="row"><div class="col" id="RealCasalgrandese"><span class="dotted-line">Real Casalgrandese</span><span></span></div></div>
+<div class="row"><div class="col" id="AssClubC5"><span class="dotted-line">Ass. Club C5</span><span></span></div></div>
+<div class="row"><div class="col" id="Cavezzo"><span class="dotted-line">Cavezzo</span><span></span></div></div>
+<div class="row"><div class="col" id="RiminiC5"><span class="dotted-line">Rimini C5</span><span></span></div></div>
+<div class="row"><div class="col" id="FutsalReggioEmilia"><span class="dotted-line">Futsal Reggio Emilia</span><span></span></div></div>
+<div class="row"><div class="col" id="GianLucaMontanari"><span class="dotted-line">Gian Luca Montanari</span><span></span></div></div>
+<div class="row"><div class="col" id="FutsalPonteRodoni"><span class="dotted-line">Futsal Ponte Rodoni</span><span></span></div></div>
+<div class="row"><div class="col" id="Fossolo76Calcio"><span class="dotted-line">Fossolo 76 Calcio</span><span></span></div></div>
+<div class="row"><div class="col" id="ProPatriaSFelice"><span class="dotted-line">Pro Patria S. Felice</span><span></span></div></div>
+<div class="row"><div class="col" id="Aposa"><span class="dotted-line">Aposa</span><span></span></div></div>
+</section>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
 <script type="text/javascript">
 
-var last = {
+var source   = $("#entry-template").html();
+var template = Handlebars.compile(source);
+
+var days = [{
+  title: "9° GIORNATA 26 NOVEMBRE 2016 ore 15:00", 
+  matches: [
+{homeTeam: { id:"AssClubC5", goals:6}, visitingTeam: { id:"ProPatriaSFelice", goals:4},},
+{homeTeam: { id:"Cavezzo", goals:1}, visitingTeam: { id:"RiminiC5", goals:0},},
+{homeTeam: { id:"FutsalPonteRodoni", goals:6}, visitingTeam: { id:"OsteriaGrandeC5", goals:3},},
+{homeTeam: { id:"FutsalReggioEmilia", goals:7}, visitingTeam: { id:"Fossolo76Calcio", goals:3},},
+{homeTeam: { id:"GianLucaMontanari", goals:3}, visitingTeam: { id:"RealCasalgrandese", goals:3},},
+{homeTeam: { id:"SantAgataFutsal2004", goals:8}, visitingTeam: { id:"Aposa", goals:4},},
+  ],
+}
+];
+var full_table = {
 SantAgataFutsal2004 : [3,3,3,3,0],
 OsteriaGrandeC5     : [0,3,1,3,3],
 RealCasalgrandese   : [1,3,0,0,3],
@@ -107,20 +201,92 @@ Fossolo76Calcio     : [0,3,0,1,3],
 ProPatriaSFelice    : [0,3,0,3,0],
 Aposa               : [0,0,3,0,0],
 };
+var IDs = {
+SantAgataFutsal2004 : "1025311",
+OsteriaGrandeC5     : "1012511",
+RealCasalgrandese   : "1012446",
+AssClubC5           : "1012444",
+Cavezzo             : "1025227",
+RiminiC5            : "1012437",
+FutsalReggioEmilia  : "1025223",
+GianLucaMontanari   : "1025721",
+FutsalPonteRodoni   : "1012441",
+Fossolo76Calcio     : "1012512",
+ProPatriaSFelice    : "1012455",
+Aposa               : "1012435",
+}
 
-    _.forOwn(last, function(value, key) { 
-        var pos = 0;
+jQuery(document).ready(function($) {
+    // insert logos
+    _.forOwn(IDs, function(value, key) { 
+        var where = $("body > section > div.row > div.col#"+key);
+        where.prepend($('<img>').prop('src', "images/"+value+".png").addClass("img-fluid img-thumbnail"));
+    });
+
+    // from matchs to full_table
+    _.forEach(days, function(day, y) {
+      _.forEach(day.matches, function(match, x) {
+        console.log(x, y, match);
+        full_table[match.homeTeam.id][y] = match;
+        full_table[match.visitingTeam.id][y] = match;
+      });
+    });
+
+    // insert green 1 / gray x / red 2
+    var x = 0;
+    _.forOwn(full_table, function(value, key) { 
+        var $where = $("body > section > div.row > div.col#"+key+" > span:last-child");
+        $where.data('x', x++);
+        var y = 0;
         _.forEach(value, function(val) {
-            var i = '<i class="fa fa-circle '+ 
-                (val==3 ? "green" : (val==1 ? "gray" : "red")) +
-                '" aria-hidden="true"></i>';
-            console.log(i);
-            var where = $("#"+key+" span:last-child")
-            where.append(i);
+            var color;
+            if (typeof val === 'object') {
+                var _1x2;
+                if (val.homeTeam.goals > val.visitingTeam.goals) {
+                    _1x2 = "1";
+                } else if (val.homeTeam.goals == val.visitingTeam.goals) {
+                    _1x2 = "x";
+                } else {
+                    _1x2 = "2";
+                }
+                if (val.homeTeam.id == key) {
+                    color = (_1x2=="1" ? "green" : (_1x2=="x" ? "gray" : "red"));
+                } else {
+                    color = (_1x2=="2" ? "green" : (_1x2=="x" ? "gray" : "red"));
+                }
+            } else {
+                color = (val==3 ? "green" : (val==1 ? "gray" : "red"));
+            }
+            var $i = '<i class="fa fa-circle '+ color +'" aria-hidden="true" data-y="'+(y++)+'"></i>';
+            $where.append($i);
         });
     });
 
+    $("body > section > div.row > div > span:last-child > i").each(function (index, value) {
+        var $value = $(value);
+        var y = $value.parent().data('x');
+        var team = $value.parent().parent().prop('id');
+        var x = $value.data('y');
 
+        var match = full_table[team][x];
+
+        if (typeof match === 'object') {
+            $value.tooltipster({
+              content: template({
+                title: days[x % days.length].title,
+                match: match,
+                homeLogo: IDs[match.homeTeam.id],
+                visitingLogo: IDs[match.visitingTeam.id]
+              }),
+              contentAsHTML: true,
+              contentCloning: true,
+              theme: 'tooltipster-light',
+              delay: 0,
+            });
+        }
+    });
+
+  });
 
 </script>
 </body>
