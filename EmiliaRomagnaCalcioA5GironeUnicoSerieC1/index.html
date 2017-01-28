@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Forme des équipes</title>
-        
-        <link   type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"      rel="stylesheet">
-        <link   type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"    rel="stylesheet">
-        <link   type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css" rel="stylesheet">
-        <link   type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-light.min.css" rel="stylesheet">
+<head>
+<meta charset="utf-8">
+<title>Forme des équipes</title>
+
+<link   type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"                      rel="stylesheet">
+<link   type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"                    rel="stylesheet">
+<link   type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css"                 rel="stylesheet">
+<link   type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-light.min.css"    rel="stylesheet">
         
 <style type="text/css">
 body {
@@ -133,28 +133,6 @@ img.img-fluid {
 </head>
 <body class="container-fluid">
 
-<script id="entry-template" type="text/x-handlebars-template">
-  <span id="tooltip_content">
-    <span class="intro">{{title}}</span>
-    {{#with match}}
-    <span class="content">
-      {{#with home}}
-      <span class="team-name {{clazz}}">{{team}}</span>
-      <img class="team-logo" src="images/{{logo}}.png" alt="{{team}}">
-      <span class="score-block">
-        <span class="score ">{{goals}}</span>
-      {{/with}}
-      {{#with visiting}}
-        <span class="score winner">{{goals}}</span>
-      </span>
-      <img class="team-logo" src="images/{{logo}}.png" alt="{{team}}">
-      <span class="team-name {{clazz}}">{{team}}</span>
-      {{/with}}
-    </span>
-    {{/with}}
-  </span>
-</script>
-
 <section>
 <div class="row"><div class="col" id="SantAgataFutsal2004"><span class="dotted-line">Sant Agata Futsal 2004</span><span></span></div></div>
 <div class="row"><div class="col" id="OsteriaGrandeC5"><span class="dotted-line">Osteria Grande C5</span><span></span></div></div>
@@ -177,63 +155,81 @@ img.img-fluid {
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
-<script type="text/javascript">
+<script id="entry-template" type="text/x-handlebars-template">
+  <span id="tooltip_content">
+    <span class="intro">{{title}}</span>
+    {{#with match}}
+    <span class="content">
+      {{#with home}}
+      <span class="team-name {{clazz}}">{{team}}</span>
+      <img class="team-logo" src="images/{{logo}}.png" alt="{{team}}">
+      <span class="score-block">
+        <span class="score ">{{goals}}</span>
+      {{/with}}
+      {{#with visiting}}
+        <span class="score winner">{{goals}}</span>
+      </span>
+      <img class="team-logo" src="images/{{logo}}.png" alt="{{team}}">
+      <span class="team-name {{clazz}}">{{team}}</span>
+      {{/with}}
+    </span>
+    {{/with}}
+  </span>
+</script>
 
-var source   = $("#entry-template").html();
-var template = Handlebars.compile(source);
+<script type="text/javascript">
 
 var days = [{
   title: "9° giornata (26 novembre 2016)", 
   matches: [
-{homeTeam: { id:"AssClubC5", goals:6}, visitingTeam: { id:"ProPatriaSFelice", goals:4},},
-{homeTeam: { id:"Cavezzo", goals:1}, visitingTeam: { id:"RiminiC5", goals:0},},
-{homeTeam: { id:"FutsalPonteRodoni", goals:6}, visitingTeam: { id:"OsteriaGrandeC5", goals:3},},
-{homeTeam: { id:"FutsalReggioEmilia", goals:7}, visitingTeam: { id:"Fossolo76Calcio", goals:3},},
-{homeTeam: { id:"GianLucaMontanari", goals:3}, visitingTeam: { id:"RealCasalgrandese", goals:3},},
-{homeTeam: { id:"SantAgataFutsal2004", goals:8}, visitingTeam: { id:"Aposa", goals:4},},
+    {homeTeam: { id:"AssClubC5", goals:6}, visitingTeam: { id:"ProPatriaSFelice", goals:4},},
+    {homeTeam: { id:"Cavezzo", goals:1}, visitingTeam: { id:"RiminiC5", goals:0},},
+    {homeTeam: { id:"FutsalPonteRodoni", goals:6}, visitingTeam: { id:"OsteriaGrandeC5", goals:3},},
+    {homeTeam: { id:"FutsalReggioEmilia", goals:7}, visitingTeam: { id:"Fossolo76Calcio", goals:3},},
+    {homeTeam: { id:"GianLucaMontanari", goals:3}, visitingTeam: { id:"RealCasalgrandese", goals:3},},
+    {homeTeam: { id:"SantAgataFutsal2004", goals:8}, visitingTeam: { id:"Aposa", goals:4},},
   ],
 }, {
-    title: "10° giornata (03 dicembre 2016)",
+  title: "10° giornata (03 dicembre 2016)",
   matches: [
-{homeTeam: { id:"Fossolo76Calcio", goals:5}, visitingTeam: { id:"Aposa", goals:1},},
-{homeTeam: { id:"FutsalPonteRodoni", goals:2}, visitingTeam: { id:"Cavezzo", goals:1},},
-{homeTeam: { id:"OsteriaGrandeC5", goals:3}, visitingTeam: { id:"AssClubC5", goals:0},},
-{homeTeam: { id:"ProPatriaSFelice", goals:3}, visitingTeam: { id:"GianLucaMontanari", goals:2},},
-{homeTeam: { id:"RealCasalgrandese", goals:2}, visitingTeam: { id:"FutsalReggioEmilia", goals:1},},
-{homeTeam: { id:"RiminiC5", goals:2}, visitingTeam: { id:"SantAgataFutsal2004", goals:7},},
+    {homeTeam: { id:"Fossolo76Calcio", goals:5}, visitingTeam: { id:"Aposa", goals:1},},
+    {homeTeam: { id:"FutsalPonteRodoni", goals:2}, visitingTeam: { id:"Cavezzo", goals:1},},
+    {homeTeam: { id:"OsteriaGrandeC5", goals:3}, visitingTeam: { id:"AssClubC5", goals:0},},
+    {homeTeam: { id:"ProPatriaSFelice", goals:3}, visitingTeam: { id:"GianLucaMontanari", goals:2},},
+    {homeTeam: { id:"RealCasalgrandese", goals:2}, visitingTeam: { id:"FutsalReggioEmilia", goals:1},},
+    {homeTeam: { id:"RiminiC5", goals:2}, visitingTeam: { id:"SantAgataFutsal2004", goals:7},},
   ],
 }, {
-    title: "11° giornata (10 dicembre 2016)",
+  title: "11° giornata (10 dicembre 2016)",
   matches: [
-{homeTeam: { id:"Aposa", goals:4}, visitingTeam: { id:"ProPatriaSFelice", goals:2},},
-{homeTeam: { id:"AssClubC5", goals:1}, visitingTeam: { id:"RiminiC5", goals:1},},
-{homeTeam: { id:"Cavezzo", goals:6}, visitingTeam: { id:"RealCasalgrandese", goals:4},},
-{homeTeam: { id:"FutsalReggioEmilia", goals:0}, visitingTeam: { id:"OsteriaGrandeC5", goals:0},},
-{homeTeam: { id:"GianLucaMontanari", goals:0}, visitingTeam: { id:"FutsalPonteRodoni", goals:4},},
-{homeTeam: { id:"SantAgataFutsal2004", goals:7}, visitingTeam: { id:"Fossolo76Calcio", goals:4},},
+    {homeTeam: { id:"Aposa", goals:4}, visitingTeam: { id:"ProPatriaSFelice", goals:2},},
+    {homeTeam: { id:"AssClubC5", goals:1}, visitingTeam: { id:"RiminiC5", goals:1},},
+    {homeTeam: { id:"Cavezzo", goals:6}, visitingTeam: { id:"RealCasalgrandese", goals:4},},
+    {homeTeam: { id:"FutsalReggioEmilia", goals:0}, visitingTeam: { id:"OsteriaGrandeC5", goals:0},},
+    {homeTeam: { id:"GianLucaMontanari", goals:0}, visitingTeam: { id:"FutsalPonteRodoni", goals:4},},
+    {homeTeam: { id:"SantAgataFutsal2004", goals:7}, visitingTeam: { id:"Fossolo76Calcio", goals:4},},
   ],
 }, {
-    title: "12° giornata (14 gennaio 2017)",
+  title: "12° giornata (14 gennaio 2017)",
   matches: [
-{homeTeam: { id:"Aposa", goals:1}, visitingTeam: { id:"OsteriaGrandeC5", goals:2},},
-{homeTeam: { id:"AssClubC5", goals:6}, visitingTeam: { id:"FutsalPonteRodoni", goals:1},},
-{homeTeam: { id:"FutsalReggioEmilia", goals:3}, visitingTeam: { id:"Cavezzo", goals:3},},
-{homeTeam: { id:"GianLucaMontanari", goals:1}, visitingTeam: { id:"Fossolo76Calcio", goals:1},},
-{homeTeam: { id:"ProPatriaSFelice", goals:7}, visitingTeam: { id:"RiminiC5", goals:2},},
-{homeTeam: { id:"SantAgataFutsal2004", goals:6}, visitingTeam: { id:"RealCasalgrandese", goals:5},},
+    {homeTeam: { id:"Aposa", goals:1}, visitingTeam: { id:"OsteriaGrandeC5", goals:2},},
+    {homeTeam: { id:"AssClubC5", goals:6}, visitingTeam: { id:"FutsalPonteRodoni", goals:1},},
+    {homeTeam: { id:"FutsalReggioEmilia", goals:3}, visitingTeam: { id:"Cavezzo", goals:3},},
+    {homeTeam: { id:"GianLucaMontanari", goals:1}, visitingTeam: { id:"Fossolo76Calcio", goals:1},},
+    {homeTeam: { id:"ProPatriaSFelice", goals:7}, visitingTeam: { id:"RiminiC5", goals:2},},
+    {homeTeam: { id:"SantAgataFutsal2004", goals:6}, visitingTeam: { id:"RealCasalgrandese", goals:5},},
   ],
 }, {
-    title: "13° giornata (21 gennaio 2017)",
+  title: "13° giornata (21 gennaio 2017)",
   matches: [
-{homeTeam: { id:"Cavezzo", goals:7}, visitingTeam: { id:"GianLucaMontanari", goals:4},},
-{homeTeam: { id:"Fossolo76Calcio", goals:3}, visitingTeam: { id:"ProPatriaSFelice", goals:2},},
-{homeTeam: { id:"FutsalPonteRodoni", goals:0}, visitingTeam: { id:"FutsalReggioEmilia", goals:3},},
-{homeTeam: { id:"OsteriaGrandeC5", goals:4}, visitingTeam: { id:"SantAgataFutsal2004", goals:1},},
-{homeTeam: { id:"RealCasalgrandese", goals:5}, visitingTeam: { id:"AssClubC5", goals:3},},
-{homeTeam: { id:"RiminiC5", goals:7}, visitingTeam: { id:"Aposa", goals:2},},
+    {homeTeam: { id:"Cavezzo", goals:7}, visitingTeam: { id:"GianLucaMontanari", goals:4},},
+    {homeTeam: { id:"Fossolo76Calcio", goals:3}, visitingTeam: { id:"ProPatriaSFelice", goals:2},},
+    {homeTeam: { id:"FutsalPonteRodoni", goals:0}, visitingTeam: { id:"FutsalReggioEmilia", goals:3},},
+    {homeTeam: { id:"OsteriaGrandeC5", goals:4}, visitingTeam: { id:"SantAgataFutsal2004", goals:1},},
+    {homeTeam: { id:"RealCasalgrandese", goals:5}, visitingTeam: { id:"AssClubC5", goals:3},},
+    {homeTeam: { id:"RiminiC5", goals:7}, visitingTeam: { id:"Aposa", goals:2},},
   ],
-},
-];
+}];
 var full_table = {
 SantAgataFutsal2004 : [3,3,3,3,0],
 OsteriaGrandeC5     : [0,3,1,3,3],
@@ -261,7 +257,7 @@ FutsalPonteRodoni   : "1012441",
 Fossolo76Calcio     : "1012512",
 ProPatriaSFelice    : "1012455",
 Aposa               : "1012435",
-}
+};
 var NAMEs = {
 SantAgataFutsal2004: "Sant Agata Futsal 2004",
 OsteriaGrandeC5    : "Osteria Grande C5",
@@ -275,19 +271,23 @@ FutsalPonteRodoni  : "Futsal Ponte Rodoni",
 Fossolo76Calcio    : "Fossolo 76 Calcio",
 ProPatriaSFelice   : "Pro Patria S. Felice",
 Aposa              : "Aposa",
-}
+};
 
 jQuery(document).ready(function($) {
+
+    // handlebars template
+    var source   = $("#entry-template").html();
+    var template = Handlebars.compile(source);
+
     // insert logos
     _.forOwn(IDs, function(value, key) { 
         var where = $("body > section > div.row > div.col#"+key);
         where.prepend($('<img>').prop('src', "images/"+value+".png").addClass("img-fluid img-thumbnail"));
     });
 
-    // from matchs to full_table
+    // from matches to full_table
     _.forEach(days, function(day, y) {
       _.forEach(day.matches, function(match, x) {
-        // console.log(x, y, match);
         full_table[match.homeTeam.id][y] = match;
         full_table[match.visitingTeam.id][y] = match;
       });
@@ -323,6 +323,7 @@ jQuery(document).ready(function($) {
         });
     });
 
+    // setup popovers
     $("body > section > div.row > div > span:last-child > i").each(function (index, value) {
         var $value = $(value);
         var y = $value.parent().data('x');
@@ -332,21 +333,21 @@ jQuery(document).ready(function($) {
         var match = full_table[team][x];
         if (typeof match === 'object') {
           var massaged = {
-                    home : {
-                        team: NAMEs[match.homeTeam.id],
-                        logo: IDs[match.homeTeam.id],
-                        goals: match.homeTeam.goals,
-                        clazz : (match.homeTeam.goals > match.visitingTeam.goals ? "winner" : "") 
-                    },
-                    visiting : {
-                        team: NAMEs[match.visitingTeam.id],
-                        logo: IDs[match.visitingTeam.id],
-                        goals: match.visitingTeam.goals,
-                        clazz : (match.visitingTeam.goals > match.homeTeam.goals ? "winner" : "") 
-                    },
-                };
+                home : {
+                    team: NAMEs[match.homeTeam.id],
+                    logo: IDs[match.homeTeam.id],
+                    goals: match.homeTeam.goals,
+                    clazz : (match.homeTeam.goals > match.visitingTeam.goals ? "winner" : "") 
+                },
+                visiting : {
+                    team: NAMEs[match.visitingTeam.id],
+                    logo: IDs[match.visitingTeam.id],
+                    goals: match.visitingTeam.goals,
+                    clazz : (match.visitingTeam.goals > match.homeTeam.goals ? "winner" : "") 
+                },
+          };
 
-            $value.tooltipster({
+          $value.tooltipster({
               content: template({
                 title: days[x % days.length].title,
                 match: massaged,
@@ -355,7 +356,7 @@ jQuery(document).ready(function($) {
               contentCloning: true,
               theme: 'tooltipster-light',
               delay: 0,
-            });
+          });
         }
     });
 
@@ -363,4 +364,4 @@ jQuery(document).ready(function($) {
 
 </script>
 </body>
-<span></html>
+</html>
