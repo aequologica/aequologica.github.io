@@ -62,16 +62,23 @@ section > ul > li.row > div.col {
 section > ul > li.row > div.col > span {
     margin-right: 1rem;
 }
-section > ul > li.row > div.col > span:first-child {
+section > ul > li.row > div.col > span.jpeg {
     width: 0;
     margin-right: 0;
     margin: 0;
     padding: 0;
 }
-section > ul > li.row > div.col > span.visible:first-child {
+section > ul > li.row > div.col > span.jpeg.visible {
     width: 80px;
     margin-right: 0;
 }
+section > ul > li.row > div.col > span.jpeg > img.logo {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+}
+
 section > ul > li.row > div.col > span.title {
     margin-bottom: .5rem;
 }
@@ -80,12 +87,6 @@ section > ul > li.row > div.col > span:last-child {
     padding: 0;
     margin-left: auto;
     text-align: right;
-}
-section > ul > li.row > div.col > span:first-child > img.logo {
-    max-width: 80px;
-    max-height: 80px;
-    width: auto;
-    height: auto;
 }
 
 section > ul > li.row > div.col > span.year, 
@@ -181,8 +182,8 @@ section > ul > li.row > div.col > span.rank {
 <script id="row-template" type="text/x-handlebars-template">
     <li class="row {{seen}}" id="{{rank}}" name="#{{rank}}">
         <div class="col">
-            <span class="{{#if displayImage}}visible{{/if}}">{{#if displayImage}}<img class="logo img-fluid img-thumbnail" src="images/{{rank}}.jpg">{{/if}}</span>
             <span class="number rank {{seen}}" style="width: 20px">{{rank}}</span>
+            <span class="jpeg {{#if displayImage}}visible{{/if}}">{{#if displayImage}}<img class="logo img-fluid img-thumbnail" src="images/{{rank}}.jpg">{{/if}}</span>
             <span class="year">{{year}}</span>
             <span class="title"><a href="{{wikipedia}}" target="_{{rank}}_">{{title}}</a></span>
             <span class="author">{{author}}</span>
