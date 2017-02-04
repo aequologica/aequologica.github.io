@@ -39,67 +39,77 @@
 body {
     margin: 2rem;
     font-family: 'Montserrat', serif;
-    font-size: 16px;
+    font-size: 14px;
 }
 section {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1024px;
+    display: block;
 }
-section > div.row {
+section > ul {
+    max-width: 1024px;
+    margin: 0;
+    padding: 0;
+}
+section > ul > li.row {
     width: 100%;
 }
-section > div.row:hover {
+section > ul > li.row:hover {
     background-color: #efefef;
 }
-section > div.row > div.col {
+section > ul > li.row > div.col {
     display: flex;
+    justify-content: space-between;
 }
-section > div.row > div.col > span {
+section > ul > li.row > div.col > span {
     margin-right: 1rem;
 }
-section > div.row > div.col > span:first-child {
+section > ul > li.row > div.col > span:first-child {
+    width: 0;
+    margin-right: 0;
+    margin: 0;
+    padding: 0;
+}
+section > ul > li.row > div.col > span.visible:first-child {
     width: 80px;
     margin-right: 0;
 }
-section > div.row > div.col > span:first-child > img.logo {
+section > ul > li.row > div.col > span:last-child {
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    text-align: right;
+}
+section > ul > li.row > div.col > span:first-child > img.logo {
     max-width: 80px;
     max-height: 80px;
     width: auto;
     height: auto;
 }
 
-section > div.row > div.col > span.rank {
-    font-family: monospace; 
+section > ul > li.row > div.col > span.year, 
+section > ul > li.row > div.col > span.rank {
+    font-family: monospace;
 }
 
-section > div.row > div.col > span.dotted-line {
-  white-space: nowrap;
+section > ul > li.row > div.col > span.dotted-line {
+  /*white-space: nowrap;
   overflow: hidden;
+  */
 }
-section > div.row > div.col > span.dotted-line:after {
-  content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+/*
+section > ul > li.row > div.col > span.dotted-line:after {
+  content: ". . . . . . .";
   word-spacing: 6px;
   color: rgba(128, 128, 128, 0.4);
 }
-section > div.row > div.col > span.plays {
-    font-size: 14px;
-    white-space:nowrap;
-    margin-left: .5rem;
-}
-section > div.row > div.col > span.plays i.play {
-    margin: .2rem .3rem;
-    padding: .3rem .2rem;
-}
-section > div.row > div.col > span.plays i:nth-child(3) {
-    border-right: 1px solid gray;
-    padding-right: 1rem;
-}
+*/
 .number.true{
     color:green;
 }
 .number.false{
     color:orange;
+}
+.hidden {
+    display:none;
 }
 
 #tooltip_content {
@@ -157,15 +167,17 @@ section > div.row > div.col > span.plays i:nth-child(3) {
 </head>
 <body class="container-fluid">
 
-<h1>Les 100 meilleurs films de l'histoire selon “Télérama” 
+<h2>Les 100 meilleurs films de l'histoire selon “Télérama” 
   <a href="http://www.telerama.fr/cinema/les-100-meilleurs-films-de-l-histoire-selon-telerama,149864.php" target="telerama">
-    <i class="fa fa-external-link" aria-hidden="true"></i>
+    <i class="fa fa-external-link" aria-hidden="true" style="float:right;"></i>
   </a>
-</h1>
+</h2>
 
 <h5></h5>
 
 <section>
+<ul>
+</ul>
 </section>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
@@ -176,15 +188,15 @@ section > div.row > div.col > span.plays i:nth-child(3) {
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
 <script id="row-template" type="text/x-handlebars-template">
-    <div class="row {{seen}}" id="{{rank}}" name="#{{rank}}">
+    <li class="row {{seen}}" id="{{rank}}" name="#{{rank}}">
         <div class="col">
-            <span>{{#if displayImage}}<img class="logo img-fluid img-thumbnail" src="images/{{rank}}.jpg">{{/if}}</span>
+            <span class="{{#if displayImage}}visible{{/if}}">{{#if displayImage}}<img class="logo img-fluid img-thumbnail" src="images/{{rank}}.jpg">{{/if}}</span>
             <span class="number rank {{seen}}" style="width: 20px">{{rank}}</span>
             <span class="year">{{year}}</span>
-            <span class="title"><a href="{{wikipedia}}" target="_{{rank}}_">{{title}}</a></span>
+            <span class="title dotted-line"><a href="{{wikipedia}}" target="_{{rank}}_">{{title}}</a></span>
             <span class="author">{{author}}</span>
         </div>
-    </div>
+    </li>
 </script>
 
 <script type="text/javascript">
@@ -195,7 +207,7 @@ jQuery(document).ready(function($) {
 
   $.getJSON( "100.json")
   .done(function(data) {
-    var where = $('section');
+    var where = $('section ul');
     var seens = 0;
     _.forEach(data, function(flim, x) {
         if (flim.seen) {
