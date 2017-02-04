@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Les 100 meilleurs films de l&#039;histoire selon “Télérama”</title>
+
+<link   type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"                      rel="stylesheet">
+<link   type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"                    rel="stylesheet">
+<link   type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css"                 rel="stylesheet">
+<link   type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/themes/tooltipster-light.min.css"    rel="stylesheet">
+        
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+<style type="text/css">
+body {
+    margin: 2rem;
+    font-family: 'Montserrat', serif;
+    font-size: 16px;
+}
+section {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px;
+}
+section > div.row {
+    width: 100%;
+}
+section > div.row:hover {
+    background-color: #efefef;
+}
+section > div.row > div.col {
+    display: flex;
+}
+section > div.row > div.col > span {
+    margin-right: 1rem;
+}
+section > div.row > div.col > span:first-child {
+    width: 80px;
+    margin-right: 0;
+}
+section > div.row > div.col > span:first-child > img.logo {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+}
+
+section > div.row > div.col > span.rank {
+    font-family: monospace; 
+}
+
+section > div.row > div.col > span.dotted-line {
+  white-space: nowrap;
+  overflow: hidden;
+}
+section > div.row > div.col > span.dotted-line:after {
+  content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+  word-spacing: 6px;
+  color: rgba(128, 128, 128, 0.4);
+}
+section > div.row > div.col > span.plays {
+    font-size: 14px;
+    white-space:nowrap;
+    margin-left: .5rem;
+}
+section > div.row > div.col > span.plays i.play {
+    margin: .2rem .3rem;
+    padding: .3rem .2rem;
+}
+section > div.row > div.col > span.plays i:nth-child(3) {
+    border-right: 1px solid gray;
+    padding-right: 1rem;
+}
+.number.true{
+    color:green;
+}
+.number.false{
+    color:orange;
+}
+
+#tooltip_content {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 12px 20px 14px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.33);
+}
+#tooltip_content .intro {
+    display: block;
+    line-height: 17px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #7c8699;
+}
+#tooltip_content .winner {
+    font-weight: bold;
+}
+#tooltip_content .content {
+    overflow: hidden;
+    display: block;
+    margin: 2px 0 0;
+    padding: 9px 0 0;
+    border-top: solid 1px #d4dae6;
+    line-height: 25px;
+}
+#tooltip_content .score-block {
+    display: inline-block;
+    margin: 0 4px;
+    vertical-align: top;
+}
+#tooltip_content .score {
+    display: inline-block;
+    min-width: 26px;
+    padding: 4px 0 3px;
+    line-height: 19px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+    color: #7c8699;
+    background: #e9eef5;
+    border-radius: 2px;
+}
+#tooltip_content .team-logo {
+    width: 20px;
+    height: auto;
+}
+</style>
+</head>
+<body class="container-fluid">
+
+<h1>Les 100 meilleurs films de l'histoire selon “Télérama” 
+  <a href="http://www.telerama.fr/cinema/les-100-meilleurs-films-de-l-histoire-selon-telerama,149864.php" target="telerama">
+    <i class="fa fa-external-link" aria-hidden="true"></i>
+  </a>
+</h1>
+
+<h5></h5>
+
+<section>
+</section>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+
+<script id="row-template" type="text/x-handlebars-template">
+    <div class="row {{seen}}" id="{{rank}}" name="#{{rank}}">
+        <div class="col">
+            <span>{{#if displayImage}}<img class="logo img-fluid img-thumbnail" src="images/{{rank}}.jpg">{{/if}}</span>
+            <span class="number rank {{seen}}" style="width: 20px">{{rank}}</span>
+            <span class="year">{{year}}</span>
+            <span class="title"><a href="{{wikipedia}}" target="_{{rank}}_">{{title}}</a></span>
+            <span class="author">{{author}}</span>
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+
+  var row_template = Handlebars.compile($("#row-template").html());
+
+  $.getJSON( "100.json")
+  .done(function(data) {
+    var where = $('section');
+    var seens = 0;
+    _.forEach(data, function(flim, x) {
+        if (flim.seen) {
+            seens += 1;
+        }
+        if (flim.rank<50) {
+            flim.displayImage = true;
+        }
+        if (!flim.wikipedia ||      flim.wikipedia == "qwe") {
+            title = flim.title.split(" ");
+            author = flim.author.split(" ");
+            var s = title.join("+");
+            s = s + "+"+author.join("+");
+            flim.wikipedia = "https://www.google.de/?q=wikipedia.org+"+s;
+        }
+        where.append(row_template(flim));
+        $('h5').html("Vus <span class='number true'>" +seens + "</span>/100. il m'en reste <span class='number false'>47</span>.");
+    });
+  })
+  .fail(function(a, b, c) {
+    console.log(a,b,c)
+  })
+
+});
+
+</script>
+</body>
+</html>
