@@ -72,6 +72,9 @@ section > ul > li.row > div.col > span.visible:first-child {
     width: 80px;
     margin-right: 0;
 }
+section > ul > li.row > div.col > span.title {
+    margin-bottom: .5rem;
+}
 section > ul > li.row > div.col > span:last-child {
     margin: 0;
     padding: 0;
@@ -90,18 +93,6 @@ section > ul > li.row > div.col > span.rank {
     font-family: monospace;
 }
 
-section > ul > li.row > div.col > span.dotted-line {
-  /*white-space: nowrap;
-  overflow: hidden;
-  */
-}
-/*
-section > ul > li.row > div.col > span.dotted-line:after {
-  content: ". . . . . . .";
-  word-spacing: 6px;
-  color: rgba(128, 128, 128, 0.4);
-}
-*/
 .number.true{
     color:green;
 }
@@ -193,7 +184,7 @@ section > ul > li.row > div.col > span.dotted-line:after {
             <span class="{{#if displayImage}}visible{{/if}}">{{#if displayImage}}<img class="logo img-fluid img-thumbnail" src="images/{{rank}}.jpg">{{/if}}</span>
             <span class="number rank {{seen}}" style="width: 20px">{{rank}}</span>
             <span class="year">{{year}}</span>
-            <span class="title dotted-line"><a href="{{wikipedia}}" target="_{{rank}}_">{{title}}</a></span>
+            <span class="title"><a href="{{wikipedia}}" target="_{{rank}}_">{{title}}</a></span>
             <span class="author">{{author}}</span>
         </div>
     </li>
