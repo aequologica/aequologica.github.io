@@ -52,15 +52,16 @@ section > ul {
 section > ul > li.row {
     width: 100%;
 }
-section > ul > li.row:hover {
-    background-color: #efefef;
-}
 section > ul > li.row > div.col {
     display: flex;
     justify-content: space-between;
 }
 section > ul > li.row > div.col > span {
     margin-right: 1rem;
+    margin-bottom: .5rem;
+}
+section > ul > li.row > div.col > span.first-child {
+    max-width: 32px;
 }
 section > ul > li.row > div.col > span.jpeg {
     width: 0;
@@ -80,7 +81,6 @@ section > ul > li.row > div.col > span.jpeg > img.logo {
 }
 
 section > ul > li.row > div.col > span.title {
-    margin-bottom: .5rem;
 }
 section > ul > li.row > div.col > span:last-child {
     margin: 0;
@@ -94,11 +94,15 @@ section > ul > li.row > div.col > span.rank {
     font-family: monospace;
 }
 
-.number.true{
-    color:green;
+h5 .number.true {
+    color:#629f56;
 }
-.number.false{
+h5 .number.false,
+li .number.false {
     color:orange;
+}
+li.true {
+    background-color:#f9fff9;
 }
 .hidden {
     display:none;
@@ -182,9 +186,12 @@ section > ul > li.row > div.col > span.rank {
 <script id="row-template" type="text/x-handlebars-template">
     <li class="row {{seen}}" id="{{rank}}" name="#{{rank}}">
         <div class="col">
-            <span class="number rank {{seen}}" style="width: 20px">{{rank}}</span>
+            <span>
+                <span class="number rank {{seen}}" style="width: 20px">{{rank}}</span>
+                <br/>
+                <span class="year">{{year}}</span>
+            </span>
             <span class="jpeg {{#if displayImage}}visible{{/if}}">{{#if displayImage}}<img class="logo img-fluid img-thumbnail" src="images/{{rank}}.jpg">{{/if}}</span>
-            <span class="year">{{year}}</span>
             <span class="title"><a href="{{wikipedia}}" target="_{{rank}}_">{{title}}</a></span>
             <span class="author">{{author}}</span>
         </div>
@@ -216,7 +223,7 @@ jQuery(document).ready(function($) {
             flim.wikipedia = "https://www.google.de/?q=wikipedia.org+"+s;
         }
         where.append(row_template(flim));
-        $('h5').html("Vus <span class='number true'>" +seens + "</span>/100. il m'en reste <span class='number false'>47</span>.");
+        $('h5').html("Vus <span class='number true'>" +seens + "</span>/100. Il m'en reste <span class='number false'>47</span>.");
     });
   })
   .fail(function(a, b, c) {
