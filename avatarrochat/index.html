@@ -1,0 +1,45 @@
+<html>
+    <head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/simple.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-transition-speed="fast"><h3>initial dag</h3><img src="images/00_dag_before.PNG"                               ></section>
+                <section data-transition-speed="fast"><h3>select subdag</h3><img src="images/01_dag_select_subdag_mod1_mod2_mod3.PNG"       ></section>
+                <section data-transition-speed="fast"><h3>start release</h3><img src="images/02_dag_start_subdag_release.PNG"               ></section>
+                <section data-transition-speed="fast"><h3>mod1 running</h3><img src="images/03_dag_mod1_release_running.PNG"                ></section>
+                <section data-transition-speed="fast"><h3>calling xmake leandi release</h3><img src="images/04_dag_mod1_release_xmake_ldi.PNG"></section>
+                <section data-transition-speed="fast"><h3>mod1 OK, mod2 running</h3><img src="images/05_dag_mod1_OK_mod2_running.PNG"       ></section>
+                <section data-transition-speed="fast"><h3>mod2 OK, mod3 running</h3><img src="images/06_dag_mod2_OK_mod3_running.PNG"       ></section>
+                <section data-transition-speed="fast"><h3>mod3 OK, mod4 running</h3><img src="images/07_dag_mod3_OK_mod4_running.PNG"       ></section>
+                <section data-transition-speed="fast"><h3>mod4 OK, mod5 running</h3><img src="images/08_dag_mod4_OK_mod5_running.PNG"       ></section>
+                <section data-transition-speed="fast"><h3>done!</h3><img src="images/09_dag_done.PNG"                                       ></section>
+                <section data-transition-speed="fast"><h3>generate new dag</h3><img src="images/11_dag_new.PNG"                             ></section>
+                <section data-transition-speed="fast">
+                    <section><h3>new dag</h3><img src="images/12_dag_new_2.PNG"                                                             ></section>
+                    <section><h3>old dag</h3><img src="images/00_dag_before.PNG"                                                            ></section>
+                    <section><h3>old and new dag are isomorph</h3><img src="images/13_dag_before_and_after_release_are_isomorphm.PNG"       ></section>
+                </section>
+                <section data-transition-speed="fast"><h3>release dag looks good</h3><img src="images/14_dag_released_looks_good.PNG"       ></section>
+            </div>
+        </div>
+		<script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+        <script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				//dependencies: [
+				//	{ src: 'plugin/markdown/marked.js' },
+				//	{ src: 'plugin/markdown/markdown.js' },
+				//]
+			});
+        </script>
+    </body>
+</html>
