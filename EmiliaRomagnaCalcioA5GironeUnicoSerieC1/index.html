@@ -21,6 +21,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     max-width: 1024px;
+    margin-bottom: 1rem;
 }
 section > div.row {
     width: 100%;
@@ -128,12 +129,19 @@ section > div.row > div.col > span.plays i:nth-child(3) {
     width: 20px;
     height: auto;
 }
+div#relief span:first-child {
+    margin: 0 1rem 0 0;
+}
 </style>
 </head>
 <body class="container-fluid">
 
 <section>
 </section>
+
+<h3>relief</h3>
+<div id="relief">
+</div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -254,28 +262,28 @@ var days = [{
 }, {
   title: "16° giornata (18 febbraio 2017)",
   matches: [
-    {homeTeam: { id:"Aposa", goals:"_"}, visitingTeam: { id:"FutsalPonteRodoni", goals:"_"},},
-    {homeTeam: { id:"AssClubC5", goals:"_"}, visitingTeam: { id:"FutsalReggioEmilia", goals:"_"},},
+    {homeTeam: { id:"Aposa", goals:1}, visitingTeam: { id:"FutsalPonteRodoni", goals:1},},
+    {homeTeam: { id:"AssClubC5", goals:2}, visitingTeam: { id:"FutsalReggioEmilia", goals:3},},
     {homeTeam: { id:"Fossolo76Calcio", goals:1}, visitingTeam: { id:"OsteriaGrandeC5", goals:3},},
     {homeTeam: { id:"ProPatriaSFelice", goals:3}, visitingTeam: { id:"RealCasalgrandese", goals:2},},
-    {homeTeam: { id:"RiminiC5", goals:"_"}, visitingTeam: { id:"GianLucaMontanari", goals:"_"},},
-    {homeTeam: { id:"SantAgataFutsal2004", goals:"_"}, visitingTeam: { id:"Cavezzo", goals:"_"},},
+    {homeTeam: { id:"RiminiC5", goals:2}, visitingTeam: { id:"GianLucaMontanari", goals:1},},
+    {homeTeam: { id:"SantAgataFutsal2004", goals:6}, visitingTeam: { id:"Cavezzo", goals:2},},
   ],
 }];
 
 var full_table = {
-/* 01 */ SantAgataFutsal2004 : { id: "1025311", name: "Sant Agata Futsal 2004", classement:  1, points: 31, plays: [] },
+/* 01 */ SantAgataFutsal2004 : { id: "1025311", name: "Sant Agata Futsal 2004", classement:  1, points: 34, plays: [] },
 /* 02 */ OsteriaGrandeC5     : { id: "1012511", name: "Osteria Grande C5",      classement:  2, points: 30, plays: [] },
 /* 03 */ Cavezzo             : { id: "1012444", name: "Cavezzo",                classement:  3, points: 24, plays: [] },
 /* 04 */ RealCasalgrandese   : { id: "1012446", name: "Real Casalgrandese",     classement:  4, points: 23, plays: [] },
-/* 05 */ GianLucaMontanari   : { id: "1025721", name: "Gian Luca Montanari",    classement:  5, points: 21, plays: [] },
-/* 06 */ AssClubC5           : { id: "1025227", name: "Ass. Club C5",           classement:  6, points: 20, plays: [] },
-/* 07 */ RiminiC5            : { id: "1012437", name: "Rimini C5",              classement:  7, points: 19, plays: [] },
-/* 08 */ Fossolo76Calcio     : { id: "1012512", name: "Fossolo 76 Calcio",      classement:  8, points: 19, plays: [] },
-/* 09 */ FutsalPonteRodoni   : { id: "1012441", name: "Futsal Ponte Rodoni",    classement:  9, points: 19, plays: [] },
-/* 10 */ FutsalReggioEmilia  : { id: "1025223", name: "Futsal Reggio Emilia",   classement: 10, points: 18, plays: [] },
+/* 05 */ RiminiC5            : { id: "1012437", name: "Rimini C5",              classement:  5, points: 22, plays: [] },
+/* 06 */ GianLucaMontanari   : { id: "1025721", name: "Gian Luca Montanari",    classement:  6, points: 21, plays: [] },
+/* 07 */ FutsalReggioEmilia  : { id: "1025223", name: "Futsal Reggio Emilia",   classement:  7, points: 21, plays: [] },
+/* 08 */ AssClubC5           : { id: "1025227", name: "Ass. Club C5",           classement:  8, points: 20, plays: [] },
+/* 09 */ FutsalPonteRodoni   : { id: "1012441", name: "Futsal Ponte Rodoni",    classement:  9, points: 20, plays: [] },
+/* 10 */ Fossolo76Calcio     : { id: "1012512", name: "Fossolo 76 Calcio",      classement: 10, points: 19, plays: [] },
 /* 11 */ ProPatriaSFelice    : { id: "1012455", name: "Pro Patria S. Felice",   classement: 11, points: 18, plays: [] },
-/* 12 */ Aposa               : { id: "1012435", name: "Aposa",                  classement: 12, points: 12, plays: [] },
+/* 12 */ Aposa               : { id: "1012435", name: "Aposa",                  classement: 12, points: 13, plays: [] },
 };
 
 // massage data
@@ -365,6 +373,43 @@ jQuery(document).ready(function($) {
           } // match exists
         }); // each i
       }); // each row
+    })();
+
+    // relief
+    (function(){
+      $relief = $('#relief');
+      var pointsHere;
+      var lines = [];
+      var teamsHere = [];
+      _.forOwn(full_table, function(value, key) { 
+        if (!pointsHere) {
+            pointsHere = value.points;
+        }
+        while (pointsHere > value.points) {
+            lines.push(teamsHere);
+            teamsHere = [];
+            pointsHere = pointsHere - 1;
+        }
+        if (pointsHere == value.points) {
+            teamsHere.push(value.name)
+            return;
+        }
+      });
+      lines.push(teamsHere);
+      teamsHere = [];
+
+      var i = 34;
+      _.forEach(lines, function(value) {
+        var $div = $('<div>');
+        $div.append($('<span>').text(i--));
+        var first = true;
+        _.each(value, function(team) {
+            $div.append($('<span>').text((first ? "" : ", " ) + team));
+            first = false;
+        });
+        $relief.append($div);
+      });
+
     })();
 
   });
