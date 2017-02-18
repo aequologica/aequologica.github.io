@@ -55,6 +55,7 @@
     ,{ "name":"linkedin.com"            , "url": "https://www.linkedin.com/in/cthiebaud"                                                                            , "src": "LinkedIn-Logo-trans.png"                        }
     ,{ "name":"mail@gandi"              , "url": "https://webmail.eu.com/?_task=mail"                                                                               , "src": "roundcube_logo.png"                             }
     ,{ "name":"mavenCentral"            , "url": "http://search.maven.org/"                                                                                         , "src": "mavenCentral_logo.png"                          }
+    ,{ "name":"osteria"                 , "url": "EmiliaRomagnaCalcioA5GironeUnicoSerieC1"                                                                          , "src": "osteria_grande.png"                             }
     ,{ "name":"monsoon"                 , "url": "https://monsoon.mo.sap.corp/organizations/i05110"                                                                 , "src": "monsoon-coming-soon.png"                        }
     ,{ "name":"payslip"                 , "url": "https://ipp.wdf.sap.corp/sap/bc/webdynpro/sap/hress_a_payslip?sap-language=EN&sap-wd-configId=HRESS_AC_PAYSLIP#"  , "src": "euro-trans.png"                                 }
     ,{ "name":"portal.wdf.sap.corp"     , "url": "https://portal.wdf.sap.corp/home"                                                                                 , "src": "sap_portal.png"                                 }
