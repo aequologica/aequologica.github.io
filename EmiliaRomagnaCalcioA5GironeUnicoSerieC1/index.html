@@ -383,7 +383,7 @@ var days = [{
 }, {
   title: "20° giornata (18 marzo 2017)",
   matches: [
-    {homeTeam: { id:"Aposa"                 , goals:2  }, visitingTeam: { id:"SantAgataFutsal2004"   , goals:1   },},
+    {homeTeam: { id:"Aposa"                 , goals:2  }, visitingTeam: { id:"SantAgataFutsal2004"   , goals:4   },},
     {homeTeam: { id:"Fossolo76Calcio"       , goals:"_"}, visitingTeam: { id:"FutsalReggioEmilia"    , goals:"_" },},
     {homeTeam: { id:"OsteriaGrandeC5"       , goals:5  }, visitingTeam: { id:"FutsalPonteRodoni"     , goals:2   },},
     {homeTeam: { id:"ProPatriaSFelice"      , goals:4  }, visitingTeam: { id:"AssClubC5"             , goals:0   },},
@@ -393,7 +393,7 @@ var days = [{
 }];
 
 var full_table = {
-/* 01 */ SantAgataFutsal2004 : { id: "1025311", name: "Sant Agata Futsal 2004", classement:  1, points: 43, plays: [] },
+/* 01 */ SantAgataFutsal2004 : { id: "1025311", name: "Sant Agata Futsal 2004", classement:  1, points: 46, plays: [] },
 /* 02 */ OsteriaGrandeC5     : { id: "1012511", name: "Osteria Grande C5",      classement:  2, points: 33, plays: [] },
 /* 03 */ RiminiC5            : { id: "1012437", name: "Rimini C5",              classement:  3, points: 29, plays: [] },
 /* 04 */ RealCasalgrandese   : { id: "1012446", name: "Real Casalgrandese",     classement:  4, points: 29, plays: [] },
@@ -404,7 +404,7 @@ var full_table = {
 /* 09 */ Fossolo76Calcio     : { id: "1012512", name: "Fossolo 76 Calcio",      classement:  9, points: 25, plays: [] },
 /* 10 */ ProPatriaSFelice    : { id: "1012455", name: "Pro Patria S. Felice",   classement: 10, points: 25, plays: [] },
 /* 11 */ FutsalReggioEmilia  : { id: "1025223", name: "Futsal Reggio Emilia",   classement: 11, points: 22, plays: [] },
-/* 12 */ Aposa               : { id: "1012435", name: "Aposa",                  classement: 12, points: 21, plays: [] },
+/* 12 */ Aposa               : { id: "1012435", name: "Aposa",                  classement: 12, points: 18, plays: [] },
 };
 
 // massage data
@@ -519,7 +519,7 @@ jQuery(document).ready(function($) {
       lines.push(teamsHere);
       teamsHere = [];
 
-      var i = 43;
+      var i = 46;
       _.forEach(lines, function(value) {
         var $div = $('<div>');
         $div.append($('<span>').text(i--));
