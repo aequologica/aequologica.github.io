@@ -1,48 +1,82 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<!DOCTYPE html>
-<html>
-<head>
-<style type="text/css">
-/*svg {
-    background-color: #eee;
-}*/
+<style> /* set the CSS */
+
+.line {
+  fill: none;
+  stroke: gray;
+  stroke-width: 1px;
+}
+
 </style>
-</head>
 <body>
-<svg id="qwe" width="720" height="120">
-  <circle cx="40" cy="60" r="10"></circle>
-  <circle cx="80" cy="60" r="10"></circle>
-  <circle cx="120" cy="60" r="10"></circle>
-</svg>
-<svg viewBox="0 0 250 250">
-  <polygon points="125,30 125,30 125,30 31.9,63.2 46.1,186.3 125,230 125,230 125,230 203.9,186.3 218.1,63.2" />
-  <polygon points="125,30 125,52.2 125,52.1 125,153.4 125,153.4 125,230 125,230 203.9,186.3 218.1,63.2 125,30" />
-  <path d="M125,52.1L66.8,182.6h0h21.7h0l11.7-29.2h49.4l11.7,29.2h0h21.7h0L125,52.1L125,52.1L125,52.1L125,52.1
-      L125,52.1z M142,135.4H108l17-40.9L142,135.4z"/>
-</svg>
-</body>
-<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- load the d3.js library -->     
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
-/*
-var svg = d3.select("svg#qwe");
 
-var circle = svg.selectAll("circle").data([32, 57, 112, 293]);
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 1024 - margin.top - margin.bottom;
 
-circle.attr("r", function(d) { return Math.sqrt(d); });
+// set the ranges
+var x = d3.scaleLinear().range([0, width]);
+var y = d3.scaleLinear().range([height, 0]);
 
-var circleEnter = circle.enter().append("circle");
+// define the line
+var valueline = d3.line()
+    .x(function(d) { return x(d.rank); })
+    .y(function(d) { return y(d.popu); });
 
-circleEnter.attr("cy", 60);
-circleEnter.attr("cx", function(d, i) { return i * 100 + 30; });
-circleEnter.attr("r", function(d) { return Math.sqrt(d); });
+// append the svg obgect to the body of the page
+// appends a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
 
-circle.style("fill", "steelblue");
+// Get the data
+d3.csv("data.csv", function(error, data) {
+  if (error) throw error;
 
-var circle2 = svg.selectAll("circle")
-    .data([32, 57]);
+  // format the data
+  data.forEach(function(d) {
+      d.rank = +d.rank;
+      d.ppp = +d.ppp;
+      d.popu  = +d.popu;
+  });
 
-circle2.exit().remove();
-*/
+  // Scale the range of the data
+  x.domain(d3.extent(data, function(d) { return d.rank; }));
+  y.domain([0, d3.max(data, function(d) { return d.popu; })]);
+
+  // Add the valueline path.
+  svg.append("path")
+      .data([data])
+      .attr("class", "line")
+      .attr("d", valueline);
+  // Add the scatterplot
+  svg.selectAll("dot")
+      .data(data)
+      .enter().append("circle")
+      .attr("r", function(d) { return d.ppp/3333; })
+      .attr("cx", function(d) { return x(d.rank); })
+      .attr("cy", function(d) { return y(d.popu); });
+
+  // Add the X Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  svg.append("g")
+      .call(d3.axisLeft(y));
+
+});
+
 </script>
-</html>
+</body>
