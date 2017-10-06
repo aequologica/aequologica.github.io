@@ -18,7 +18,7 @@ body {
 }
 
 div {
-  font-size  : 12pt;
+  font-size  : 10pt;
   overflow   : hidden; /* cf. http://www.quirksmode.org/css/textoverflow.html */
   white-space: nowrap;
 }
