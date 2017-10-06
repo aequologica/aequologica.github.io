@@ -88,7 +88,7 @@
 
 // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
 // -> Fisher–Yates shuffle algorithm
-var shuffleArray = function(array) {
+function shuffleArray(array) {
   var m = array.length, t, i;
 
   // While there remain elements to shuffle
@@ -103,6 +103,12 @@ var shuffleArray = function(array) {
   }
 
   return array;
+}
+
+
+function getRandomQuanticWidth() {
+  var sizes = [50, 80, 100, 120, 150, 200];
+  return "" + sizes[Math.floor(Math.random() * sizes.length)] + "px";
 }
 
 angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
@@ -123,6 +129,9 @@ angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
           if (brick.src0) {
             brick.src = brick.src0 + "&" +(new Date().getTime());
           }
+        if (brick.height == "auto") {
+            brick.width = getRandomQuanticWidth();
+        }
         });
         return $scope.bricks = shuffleArray($scope.bricks);
       }
@@ -136,8 +145,8 @@ angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
             image.src = "images/"+image.src;
           }
           if (!image.width) {
-            image.width = "120px";
-            image.heght = "auto";
+            image.width = getRandomQuanticWidth();
+            image.height = "auto";
           } 
           $scope.bricks.push(image);
         });
