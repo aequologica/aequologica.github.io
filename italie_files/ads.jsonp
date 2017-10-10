@@ -1,0 +1,2 @@
+rp_ad_response={"status":"ok","account_id":9585,"site_id":54320,"zone_id":261600,"size_id":68,"tracking":"","inventory":{"sub_channel":"Football","main_channel":"Sport"},"ads":[{"status":"no-ads","reason":"no-compatible-ads","error_code":"10","impression_id":"eb54b648-e426-4078-bf4b-b26c291a05a3"}]};
+try{rp_onAdResponseLoaded(rp_ad_response);}catch(ignore){}
