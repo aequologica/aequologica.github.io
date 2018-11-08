@@ -34,7 +34,7 @@
   
     <title>aequologica</title>
   
-    <link href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" >
     <link rel="stylesheet" type="text/css" href="style.css">
 
   </head>
@@ -53,7 +53,7 @@
           target="{{brick.name}}"
           ng-click="$event.stopPropagation();"
           ng-class="{'internal': (brick.url.indexOf('sap.corp')!=-1)}">
-        <img ng-src = "{{brick.src}}" fallback-src="images/{{brick.onError}}" width="{{brick.width}}" height="{{brick.height}}">
+        <img class="face" ng-src = "{{brick.src}}" fallback-src="images/{{brick.onError}}" width="{{brick.width}}" height="{{brick.height}}">
       </a>
       <ul ng-show="brick.items" class="text-wrap">
         <li ng-repeat="item in brick.items">
@@ -72,10 +72,10 @@
 
 </html>
 
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"                        ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"                       ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"                            ></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.5/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.5/umd/popper.min.js"                                           ></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"                                              ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"                     ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"    ></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"                       ></script>
@@ -129,9 +129,9 @@ angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
           if (brick.src0) {
             brick.src = brick.src0 + "&" +(new Date().getTime());
           }
-        if (brick.height == "auto") {
+          if (brick.height == "auto") {
             brick.width = getRandomQuanticWidth();
-        }
+          }
         });
         return $scope.bricks = shuffleArray($scope.bricks);
       }
@@ -169,19 +169,19 @@ angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
       image.src = 'https://avatars.wdf.sap.corp/media/W1siZiIsIjU5NDJjYzY4ZWNiMjExYjZmZTAwMDAxYiJdLFsicCIsImNvbnZlcnQiLCIiXSxbInAiLCJ0aHVtYiIsIjEwNXgxMDUjIl0sWyJwIiwiZW5jb2RlIiwianBnIl1d.jpg';
       setTimeout( function() {
         var outOfOffice = $scope.outOfOffice;
-          if ( !image.complete || !image.naturalWidth ) {
-            $scope.outOfOffice = true;
-          } else {
-            $scope.outOfOffice = false;
-          }
-          if (outOfOffice != $scope.outOfOffice) {
-            var horribleHack = angular.element('#horribleHack');
-            horribleHack.val($scope.outOfOffice);
-            horribleHack.trigger('input');
-            $scope.bricks = $scope.shuffle();
-            // http://stackoverflow.com/questions/23710217/how-do-you-trigger-a-reload-in-angular-masonry
-            $scope.$broadcast('masonry.reload');
-          }
+        if ( !image.complete || !image.naturalWidth ) {
+          $scope.outOfOffice = true;
+        } else {
+          $scope.outOfOffice = false;
+        }
+        if (outOfOffice != $scope.outOfOffice) {
+          var horribleHack = angular.element('#horribleHack');
+          horribleHack.val($scope.outOfOffice);
+          horribleHack.trigger('input');
+          $scope.bricks = $scope.shuffle();
+          // http://stackoverflow.com/questions/23710217/how-do-you-trigger-a-reload-in-angular-masonry
+          $scope.$broadcast('masonry.reload');
+        }
       }, 2000 );
 });
 

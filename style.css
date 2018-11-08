@@ -65,19 +65,21 @@ li a:active  {color:#efefef; text-decoration: none;}
   color: white;
   box-shadow: 8px 8px 5px #888888;
 }
-
+/*
 .masonry-brick {
   // border    : 1px solid #efefef;
   // background: rgba(0,0,0,.03);
 }
+*/
 
 .masonry-brick:hover {
   background: rgba(0,0,0,.1);
 }
-
+/*
 .internal {
   // opacity: .75;
 }
+*/
 
 html {
   height: 100%;
