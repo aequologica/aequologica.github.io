@@ -1,6 +1,11 @@
 {
   "images" : [
-     { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/"      , "text" : "artifact listener"  }
+    { "name" : "AL",
+      "ulr"  : "AL",
+      "items" : [
+        { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/"      , "text" : "artifact listener"  }
+      ]
+    }
     ,{ "name":"tebaldi"                 , 
          "url": "https://tebaldi051108trial.hanatrial.ondemand.com/", 
          "text" : "tebaldi", 
@@ -82,12 +87,6 @@
       "ulr"  : "google",
       "items" : [
         { "name" : "webmasters",      "url":"https://www.google.com/webmasters/tools/home",                                          "text" : "google webmaster tools"  }
-      ]
-    },
-    { "name" : "€",
-      "url"  : "€",
-      "items" : [
-        { "name" : "SAP_stock",      "url":"https://ipp.wdf.sap.corp/sap/bc/webdynpro/ehr/es_docview?ar_objects=Z9918017,Z9918018,Z9918024,Z9918025,Z9918012,Z9928017,Z9928018,Z9928024,Z9928025,Z9928012,Z9928033,Z9928034&amp;sap-language=EN#", "text" : "€ € € € € €"}
       ]
     }
   ]
