@@ -33,7 +33,6 @@
     ,{ "name":"bwv1018"                 , "url": "bwv1018"                                                                                                          , "src": "Bach_Seal.png"                                  }
     ,{ "name":"cthiebaud@github"        , "url": "https://github.com/cthiebaud"                                                                                     , "src": "github-logo-transparent.png"                    }
     ,{ "name":"cthiebaud@gitlab"        , "url": "https://gitlab.com/dashboard/projects"                                                                            , "src": "GitLab_Logo.svg"                                }
-    ,{ "name":"csi"                     , "url": "http://www.csibologna.it/showpage.php?cat_id=10"                                                                  , "src": "csi.png"                                        }
     ,{ "name":"calcioa5"                , "url": "https://www.tuttocampo.it/EmiliaRomagna/CalcioA5/GironeUnicoSerieC1/Risultati"                                    , "src": "ilcalcioa5.PNG"                                 }
     ,{ "name":"dropbox"                 , "url": "https://www.dropbox.com/home/aequologica"                                                                         , "src": "dropbox.png"                                    }
     ,{ "name":"disqus"                  , "url": "https://disqus.com/by/cthiebaud/"                                                                                 , "src": "disqus-social-icon-blue-transparent.png"        }
