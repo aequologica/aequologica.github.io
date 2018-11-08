@@ -1,12 +1,6 @@
 {
   "images" : [
-    { "name" : "AL",
-      "ulr"  : "AL",
-      "items" : [
-        { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/"      , "text" : "artifact listener"  }
-      ]
-    }
-    ,{ "name":"tebaldi"                 , 
+    { "name":"tebaldi"                 , 
          "url": "https://tebaldi051108trial.hanatrial.ondemand.com/", 
          "text" : "tebaldi", 
          "src": "basic_home.svg",
@@ -73,6 +67,12 @@
     ,{ "name":"whatsapp"                , "url": "https://web.whatsapp.com/"                                                                                        , "src": "whatsapp.png"                                   }
   ],
   "groups" : [
+    { "name" : "artifact-listener",
+      "ulr"  : "artifact-listener",
+      "items" : [
+        { "name" : "artifact-listener", "url":"https://www.artifact-listener.org/dashboard/"      , "text" : "artifact listener"  }
+      ]
+    },
     { "name" : "SAP",
       "ulr"  : "SAP",
       "items" : [
