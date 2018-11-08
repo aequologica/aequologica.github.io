@@ -78,14 +78,6 @@
         { "name" : "nexus_at_wdf",      "url":"http://nexus.wdf.sap.corp:8081/nexus",                                          "text" : "nexus @ wdf.sap.corp"    }
       ]
     },
-    { "name" : "P4MS",
-      "ulr"  : "P4MS",
-      "items" : [
-        { "type" : "separator" },  
-        { "name" : "p4ms_70_prod",      "url":"https://pie.wdf.sap.corp/p4ms",                                          "text" : "P4MS 70 production"  },
-        { "name" : "p4ms_73_dev",       "url":"https://piedev.mo.sap.corp/p4ms",                                          "text" : "P4MS 73 development"  }
-      ]
-    },
     { "name" : "google",
       "ulr"  : "google",
       "items" : [
