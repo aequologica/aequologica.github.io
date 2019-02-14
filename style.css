@@ -23,6 +23,12 @@ div {
   white-space: nowrap;
 }
 
+div.masonry-brick img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 hr {
   opacity: .8;
   margin : 0;
