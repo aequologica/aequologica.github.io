@@ -53,7 +53,7 @@
           target="{{brick.name}}"
           ng-click="$event.stopPropagation();"
           ng-class="{'internal': (brick.url.indexOf('sap.corp')!=-1)}">
-        <img class="face" ng-src = "{{brick.src}}" fallback-src="images/{{brick.onError}}" width="{{brick.width}}" height="{{brick.height}}">
+        <img class="face" ng-src = "{{brick.src}}" width="{{brick.width}}" height="{{brick.height}}"> <!-- fallback-src="images/{{brick.onError}}" -->
       </a>
       <ul ng-show="brick.items" class="text-wrap">
         <li ng-repeat="item in brick.items">
