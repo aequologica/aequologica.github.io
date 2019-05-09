@@ -165,11 +165,11 @@ angular.module( 'aequologicaApp', ['wu.masonry', 'dcbImgFallback'])
                 }
       );
 
-      var image = new Image();
-      image.src = 'https://profiles.wdf.sap.corp/media/W1siZiIsIjIwMTkvMDQvMjQvOGduMmJqdDQ5ZV81NzY1MDkxNl8xMDE1NzA4Mzc4NTk0NDU5M18zNjg5NTEzNzYyMTAxOTE5NzQ0X24uanBnIl0sWyJwIiwiY29udmVydCIsIi1jcm9wIDcxN3g3MTcrMCs2OCJdLFsicCIsInRodW1iIiwiMTAweDEwMCMiXSxbInAiLCJlbmNvZGUiLCJqcGciXV0.jpg';
+      var christopheImage = new Image();
+      christopheImage.src = 'https://profiles.wdf.sap.corp/media/W1siZiIsIjIwMTkvMDQvMjQvOGduMmJqdDQ5ZV81NzY1MDkxNl8xMDE1NzA4Mzc4NTk0NDU5M18zNjg5NTEzNzYyMTAxOTE5NzQ0X24uanBnIl0sWyJwIiwiY29udmVydCIsIi1jcm9wIDcxN3g3MTcrMCs2OCJdLFsicCIsInRodW1iIiwiMTAweDEwMCMiXSxbInAiLCJlbmNvZGUiLCJqcGciXV0.jpg';
       setTimeout( function() {
         var outOfOffice = $scope.outOfOffice;
-        if ( !image.complete || !image.naturalWidth ) {
+        if ( !christopheImage.complete || !christopheImage.naturalWidth ) {
           $scope.outOfOffice = true;
         } else {
           $scope.outOfOffice = false;
