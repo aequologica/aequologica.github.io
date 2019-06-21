@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en"  id="radial-center">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"             content="width=device-width, initial-scale=1">
+  <meta name="google"               content="notranslate">
+  <meta name="description"          content="">
+  <meta name="author"               content="Christophe Thiebaud">
+
+  <meta http-equiv="Content-Language" content="en" />
+  <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1">
+
+  <!-- Open Graph data -->
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:title"       content="aequologica" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://aequologica.net" />
+  <meta property="og:description" content="Christophe Thiebaud" />
+  <meta property="og:site_name"   content="aequologica" />
+
+  <meta property="og:image"        content="https://aequologica.net/images/beh-semi-trans-200x200.png" />
+  <meta property="og:image:url"    content="https://aequologica.net/images/beh-semi-trans-200x200.png" />
+  <meta property="og:image:type"   content="image/png" />
+  <meta property="og:image:width"  content="158" />
+  <meta property="og:image:height" content="167" />
+  
+  <title>aequologica</title>
+  
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap@4/dist/css/bootstrap.min.css" >
+
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a id="mouchard" class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="Christophe Thiebaud">
+      <img 
+        style="border-radius: 50%;" 
+        src="https://avatars.wdf.sap.corp/media/W1siZiIsIjIwMTkvMDQvMjQvOGduMmJqdDQ5ZV81NzY1MDkxNl8xMDE1NzA4Mzc4NTk0NDU5M18zNjg5NTEzNzYyMTAxOTE5NzQ0X24uanBnIl0sWyJwIiwiY29udmVydCIsIi1jcm9wIDcxN3g3MTcrMCs2OCJdLFsicCIsInRodW1iIiwiMTA1eDEwNSMiXSxbInAiLCJlbmNvZGUiLCJqcGciXV0.jpg"
+        onerror="this.src='https://s.gravatar.com/avatar/0129872c3235b6f3befa46ef80f6cf80?s=120';">
+    </a>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div id="gridContainer" class="container">
+  <div id="gridContainerRow" class="row">
+    <div id ="gridContainerCol" class="col-lg-12 text-center">
+      <div id="grid">
+        <script id="brick-template" type="text/x-handlebars-template"><div class="grid-brick">
+  <a  href="{{url}}" target="{{name}}">
+    <img src = "{{ima}}" width="{{width}}px" height="{{height}}px" style="visibility:hidden;">
+  </a>
+</div></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="https://unpkg.com/jquery@3/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/lodash@4/lodash.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src='https://unpkg.com/isotope-packery@2/packery-mode.pkgd.js'></script>
+<script type="text/javascript" src="https://unpkg.com/handlebars@4/dist/handlebars.min.js"></script>
+
+<script type="text/javascript" src="index.js"></script>
+
+<script type="text/javascript" >
+
+String.prototype.startsWith = String.prototype.startsWith || function(prefix) {
+   return this.indexOf(prefix) === 0;
+}; 
+
+$(function () {
+
+  $('[data-toggle="tooltip"]').tooltip()
+
+});
+</script>
+
