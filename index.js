@@ -5,10 +5,12 @@
     handlebarsTemplateSelectorParam
     ) {
     
+    /*
     var inTheOffice        = false;
     var handlebarsSource   = $(handlebarsTemplateSelectorParam)[0].innerHTML;
     var handlebarsTemplate = Handlebars.compile(handlebarsSource);
-
+    */
+    
     // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
     // -> Fisher–Yates shuffle algorithm
     function shuffleArray(array) {
@@ -115,11 +117,11 @@
                         });
                     }
 
-                    if (!inTheOffice) {
+                    /* if (!inTheOffice) {
                         bricks = _.filter(bricks, function(ima) { 
                             return ima.url.indexOf("sap.corp")==-1; 
                         });
-                    }
+                    } */
 
                     bricks = shuffleArray(bricks);
 
@@ -156,6 +158,7 @@
         }).fail( function() {
             // console.log('all images loaded, at least one is broken');
         }).progress( function( instance, image ) {
+            /*
             if (!image.isLoaded) {
                 // console.log( 'image is BROKEN for', image.img.src );
                 inTheOffice = false;
@@ -165,6 +168,7 @@
                 inTheOffice = (image.img.src.indexOf("sap.corp") != -1);
                 $(instance).find("img").show();
             }
+            */
             // console.log( 'out of office', !inTheOffice);
         }); // wait for snitch image to be loaded
     }); // document ready
