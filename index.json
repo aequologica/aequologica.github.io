@@ -30,7 +30,7 @@
      ,{ "name":"tebaldi"              , "url": "https://rootp1630844092trial.hanatrial.ondemand.com/"                        , "src": "tebaldi.png"                         }
      ,{ "name":"travis-ci"            , "url": "https://travis-ci.org"                                                       , "src": "travis-ci-trans.png"                 }
      ,{ "name":"twitter"              , "url": "https://twitter.com/cthiebaud"                                               , "src": "Twitter_logo_transparent-3.png"      }  
-     ,{ "name":"earthlydelights"         , 
+     ,{ "name":"earthlydelights"      , 
         "url": "http://earthlydelights.garden/",
         "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/crop?width=300&height=185&quality=100",
         "width":"300",

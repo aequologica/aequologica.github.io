@@ -7,9 +7,10 @@
     
     /*
     var inTheOffice        = false;
+    */
     var handlebarsSource   = $(handlebarsTemplateSelectorParam)[0].innerHTML;
     var handlebarsTemplate = Handlebars.compile(handlebarsSource);
-    */
+    
     
     // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
     // -> Fisher–Yates shuffle algorithm
