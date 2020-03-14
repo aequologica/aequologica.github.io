@@ -22,6 +22,7 @@
      ,{ "name":"linkedin.com"         , "url": "https://www.linkedin.com/in/cthiebaud"                                       , "src": "Linkedin.svg"                        }
      ,{ "name":"mail@gandi"           , "url": "https://webmail.eu.com/roundcube/?_user=christophe.thiebaud@aequologica.net" , "src": "roundcube.svg"                       }
      ,{ "name":"mavenCentral"         , "url": "http://search.maven.org/"                                                    , "src": "maven.png"                           }
+     ,{ "name":"mediapart"            , "url": "https://www.mediapart.fr/"                                                   , "src": "Logo-crieur.svg"                     }
      ,{ "name":"reveal"               , "url": "reveal.js/"                                                                  , "src": "reveal.js.png"                       }
      ,{ "name":"sofoot.com"           , "url": "http://www.sofoot.com/"                                                      , "src": "745958so_foot_logo-trans.png"        }
      ,{ "name":"sogo"                 , "url": "https://webmail.eu.com/SOGo/so/christophe.thiebaud@aequologica.net"          , "src": "sogo-full.svg"                       }
