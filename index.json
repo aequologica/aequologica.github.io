@@ -9,7 +9,8 @@
      ,{ "name":"cv"                   , "url": "cv/"                                                                         , "src": "cv-icon-by-Vexels.svg"               }
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                , "src": "github-logo-transparent.png"         }
      ,{ "name":"youtube"              , "url": "https://www.youtube.com/user/cthiebaud60"                                    , "src": "youtube.png"                         }
-     ,{ "name":"facebook.com"         , "url": "https://www.facebook.com/christophe.thiebaud"                                , "src": "transparent-facebook-logo-icon.png"  }
+     ,{ "name":"facebook.com"         , "url": "https://www.facebook.com/christophe.thiebaud"                                , "src": "ft-2.svg"                            }
+     ,{ "name":"ft.com"               , "url": "https://www.ft.com/coronavirus-latest"                                       , "src": "transparent-facebook-logo-icon.png"  }
      ,{ "name":"franceCul"            , "url": "https://www.franceculture.fr/programmes"                                     , "src": "France_Culture.svg"                  }
      ,{ "name":"franceMu"             , "url": "https://www.francemusique.fr/programmes"                                     , "src": "France_Musique.svg"                  }
      ,{ "name":"gandi"                , "url": "https://admin.gandi.net/dashboard/9cb9417c-b33b-11e7-bcf1-00163ec388ae/"     , "src": "avatar_gandi.svg"                    }
