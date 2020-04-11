@@ -78,10 +78,10 @@ var svg = d3
 // Read in data
 d3.json("https://pomber.github.io/covid19/timeseries.json").then(function(data) {
   
-  data = {France : data.France, Italy : data.Italy, US : data.US};
+  data = {France : data.France, Italy : data.Italy, US : data.US, Spain : data.Spain};
 
   // Set the color domain equal to the three product categories
-  var productCategories = ["France", "Italy", "US"];
+  var productCategories = ["France", "Italy", "US", "Spain"];
   color.domain(productCategories);
 
   // console.log(JSON.stringify(data, null, 2)) // to view the structure
