@@ -26,15 +26,21 @@ body {
 }
 
 </style>
-<!-- https://github.com/doowb/sma -->
-<script src="sma.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+
+
 
 <body>
-<svg id="chart"></svg>
-  <script src="https://d3js.org/d3.v5.js"></script>
 
+  <svg id="chart"></svg>
+  
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@5.15.1/dist/d3.min.js" integrity="sha256-SQJ/nCYPXFPuqoS56EfnesDBPNiitndOIfN2WdPRi/o=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+  
+  <!-- https://github.com/doowb/sma -->
+  <!-- script src="https://cdn.jsdelivr.net/npm/sma@0.1.1/index.min.js"></script -->
+  <script src="sma.js" ></script>
+  
   <script>
  
 // Define margins
@@ -90,13 +96,9 @@ d3.json("https://pomber.github.io/covid19/timeseries.json").then(function(data) 
   productCategories.forEach(function(p) {
     var prev = 0;
     
-    var start = moment("2020-03-02");
+    var start = moment("2020-03-08");
     var sizeOfAverage = 4;
-    var startMinusSizeOfAverage = moment(start).subtract(sizeOfAverage+1, 'days');
-    
-    
-    data[p] = _.filter(data[p], function(d) { return moment(d.date).isAfter(startMinusSizeOfAverage); });
-
+     
     data[p].forEach(function(d) {
       d.date = parseDate(d.date);
       d.deaths = +d.deaths;
@@ -104,7 +106,6 @@ d3.json("https://pomber.github.io/covid19/timeseries.json").then(function(data) 
       prev = d.deaths;
     });
 
-    
     var deltas = _.map(data[p], 'delta');
     var deltasMovingAverage = sma(deltas, sizeOfAverage);
 
@@ -115,6 +116,8 @@ d3.json("https://pomber.github.io/covid19/timeseries.json").then(function(data) 
       d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i-sizeOfAverage];
       i = i + 1;
     });
+
+    data[p] = _.filter(data[p], function(d) { return moment(d.date).isSameOrAfter(start); });
 
   });
 
