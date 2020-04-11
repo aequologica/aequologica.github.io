@@ -90,9 +90,12 @@ d3.json("https://pomber.github.io/covid19/timeseries.json").then(function(data) 
   productCategories.forEach(function(p) {
     var prev = 0;
     
-    var start = moment("2020-03-08");
-
-    data[p] = _.filter(data[p], function(d) { return moment(d.date).isAfter(start); });
+    var start = moment("2020-03-02");
+    var sizeOfAverage = 4;
+    var startMinusSizeOfAverage = moment(start).subtract(sizeOfAverage+1, 'days');
+    
+    
+    data[p] = _.filter(data[p], function(d) { return moment(d.date).isAfter(startMinusSizeOfAverage); });
 
     data[p].forEach(function(d) {
       d.date = parseDate(d.date);
@@ -101,7 +104,7 @@ d3.json("https://pomber.github.io/covid19/timeseries.json").then(function(data) 
       prev = d.deaths;
     });
 
-    var sizeOfAverage = 7;
+    
     var deltas = _.map(data[p], 'delta');
     var deltasMovingAverage = sma(deltas, sizeOfAverage);
 
