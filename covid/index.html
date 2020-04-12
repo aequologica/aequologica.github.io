@@ -40,6 +40,11 @@
     .grid line {
       stroke: #eee;
     }
+
+    td.population {
+      font-family: monospace;
+      text-align: right;
+    }
   </style>
 
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -48,20 +53,19 @@
 <body>
   <div class="container-fluid">
     <div class="fixed-top px-2">
-
+      <div class="float-right">
+        sources:
+        <a href="https://pomber.github.io/covid19/timeseries.json" target="_json-data_source">data</a>
+        |
+        <a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html" target="_json_data_source">html</a>
+      </div>
       <h2 id="title"></h2>
       <p id="subtitle" style="display: inline-block"></p>
-      <div class="float-right">
-        sources: <a href="https://pomber.github.io/covid19/timeseries.json" target="_json-data_source">data</a>|<a
-          href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html"
-          target="_json-data_source">html</a>
-        </span>
-      </div>
     </div>
+
     <svg id="chart"></svg>
+
     <div class="fixed-bottom">
-
-
       <div class="float-right p-2">
         <div class="card" style="display: inline-block">
           <div class="card-body">
@@ -90,10 +94,9 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"
-    integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/d3@5.15.1/dist/d3.min.js"
-    integrity="sha256-SQJ/nCYPXFPuqoS56EfnesDBPNiitndOIfN2WdPRi/o=" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@5.15.1/dist/d3.min.js" integrity="sha256-SQJ/nCYPXFPuqoS56EfnesDBPNiitndOIfN2WdPRi/o=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
 
   <!-- https://github.com/doowb/sma -->
@@ -106,6 +109,7 @@
 
     radios.forEach(function (r) {
       r.addEventListener("click", function (e) {
+        var oldLinear = toggleLinear, oldCapita = toggleCapita;
         switch (this.id) {
           case "linear":
             toggleLinear = "linear";
@@ -122,8 +126,10 @@
           default:
             ;
         }
-        raz();
-        draw();
+        if (oldLinear != toggleLinear || oldCapita != toggleCapita) {
+          raz();
+          draw();
+        }
       });
     });
 
@@ -132,21 +138,14 @@
     var sizeOfAverage = 4;
     var startAfterNDeaths = 5;
     var populations = {
-      US: 330584264,     // https://www.worldometers.info/world-population/us-population/
-      France: 65242510,  // https://www.worldometers.info/world-population/france-population/
-      Italy: 60480826,   // https://www.worldometers.info/world-population/italy-population/ 
-      Spain: 46750899,   // https://www.worldometers.info/world-population/spain-population/
-      Belgium: 11578770, // https://www.worldometers.info/world-population/belgium-population/
+      US: 330584264,      // https://www.worldometers.info/world-population/us-population/
+      France: 65242510,   // https://www.worldometers.info/world-population/france-population/
+      Italy: 60480826,    // https://www.worldometers.info/world-population/italy-population/ 
+      Spain: 46750899,    // https://www.worldometers.info/world-population/spain-population/
+      Belgium: 11578770,  // https://www.worldometers.info/world-population/belgium-population/
     };
-    var firstDeaths = {
-      France: moment("2020-02-14"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_France
-      Italy: moment("2020-02-22"),   // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Italy 
-      US: moment("2020-02-29"),      // https://www.medscape.com/viewarticle/925932
-      Spain: moment("2020-02-13"),   // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Spain
-      Belgium: moment("2020-03-11")  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Belgium
-    };
-    var toggleCapita = "absolute";
-    var toggleLinear = "linear";
+    var toggleCapita = "absolute"; // "percapita"
+    var toggleLinear = "linear";   // "logaritmic"
 
     function raz() {
       var elem = document.querySelector('#chart');
@@ -164,8 +163,6 @@
           parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
         height =
           parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
-
-      var legendSpace = width / countries.length;
 
       // Define date parser
       var parseDate = d3.timeParse("%Y-%m-%d");
@@ -199,32 +196,36 @@
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       // Read in data
-      d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (data) {
+      d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (dataParam) {
 
-        data = { France: data.France, Italy: data.Italy, US: data.US, Spain: data.Spain, Belgium: data.Belgium };
+        var data = {};
+        countries.forEach(function (country) {
+          _.assign(data, { [country]: dataParam[country] });
+        });
 
-        // Set the color domain equal to the three product categories
-
+        // Set the color domain equal to the countries
         color.domain(countries);
 
+        // calc start date as with respect to first # of deaths for all countries
+        var start = moment("2020-02-01"); // default
+        {
+          var firstNDeaths = {};
 
-        var firstNDeaths = {};
+          countries.forEach(function (country) {
+            firstNDeaths[country] = _.find(data[country], function (d) { return d.deaths >= startAfterNDeaths; });
+          });
+          var firstNDeathsArray = _.values(firstNDeaths);
 
-        countries.forEach(function (country) {
-          firstNDeaths[country] = _.find(data[country], function (d) { return d.deaths >= startAfterNDeaths; });
-        });
-        var firstNDeathsArray = _.values(firstNDeaths);
+          firstNDeathsArray.sort(function compare(a, b) {
+            return moment(parseDate(a.date)) - moment(parseDate(b.date));
+          });
 
-        firstNDeathsArray.sort(function compare(a, b) {
-          return moment(parseDate(a.date)) - moment(parseDate(b.date));
-        });
+          var minFirstNDeaths = firstNDeathsArray[0];
 
-        var minFirstNDeaths = firstNDeathsArray[0];
+          start = moment(minFirstNDeaths.date); // 
+        }
 
-        var start = moment(minFirstNDeaths.date); // 
-        // start = moment("2020-02-01");
-
-        // Format the data field
+        // Format the data 
         countries.forEach(function (country) {
 
           var prev = 0;
@@ -249,7 +250,6 @@
           });
 
           data[country] = _.filter(data[country], function (d) { return moment(d.date).isSameOrAfter(start); });
-
         });
 
         // Reformat data to make it more copasetic for d3
@@ -258,15 +258,19 @@
         var deathss = countries.map(function (country) {
           return {
             category: country,
-            datapoints: data[country] /*map(function (d) {
-            return { date: d.date, deaths: d.deaths, delta: d.delta, deltaMovingAverage: d.deltaMovingAverage };
-          })*/
+            datapoints: data[country]
           };
         });
 
         // console.log(JSON.stringify(deathss, null, 2)) // to view the structure
 
         // Set the domain of the axes
+        xScale.domain(
+          d3.extent(deathss[0].datapoints, function (d) {
+            return d.date;
+          })
+        );
+
         var yExtents = deathss.map(function (deaths) {
           return d3.extent(deaths.datapoints, function (d) {
             return d.delta;
@@ -276,17 +280,9 @@
           d3.min(yExtents, function (d) { return d[0] }),
           d3.max(yExtents, function (d) { return d[1] })
         ];
-
-        xScale.domain(
-          d3.extent(deathss[2].datapoints, function (d) {
-            return d.date;
-          })
-        );
-
         yScale.domain(yExtent);
 
         // Place the axes on the chart
-
         svg
           .append("g")
           .attr("class", "x axis")
@@ -315,7 +311,6 @@
         products
           .append("path")
           .attr("class", "line")
-
           .attr("id", function (d, i) {
             return "line" + i;
           })
@@ -326,42 +321,29 @@
             return color(d.category);
           });
 
-
-        // Loop through each symbol / key
-        countries.forEach(function (d, i) {
-
-          // Add the Legend
-          svg.append("text")
-            .attr("x", 20)
-            .attr("y", (i + 1) * 20)
-            .attr("class", "legend")
-            .style("fill", function () {
-              return color(d)
-            })
-            .text(d + " " + new Intl.NumberFormat().format(populations[d]));
-
-        });
-
-        /*
-        svg.append("text")
+        var fo = svg.append("foreignObject")
           .attr("x", 20)
           .attr("y", 0)
-          .attr("class", "legend")
-          .text("New deaths per day (moving average of the previous " + sizeOfAverage + " days)");
-        */
+          .attr("width", 480)
+          .attr("height", 500);
+        var div = fo.append('xhtml:div');
+
+        // legend
+        // Loop through each symbol / key
+        var t = div.append('table');
+        countries.forEach(function (d, i) {
+          var r = t.append('tr');
+          r.append('th').attr("style", "color:" + color(d)).html(d);
+          r.append('td').attr("class", "population").html(new Intl.NumberFormat().format(populations[d]));
+        });
+
         document.getElementById("title").innerHTML = "New deaths each day"
         document.getElementById("subtitle").innerHTML = "(moving average of the previous " + sizeOfAverage + " days)";
 
-        // console.log(JSON.stringify(d3.values(deathss), null, 2)) // to view the structure
-        // console.log(d3.values(deathss)); // to view the structure
-        // console.log(deathss);
-        // console.log(deathss.map(function()))
-
-        // animate http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
+        // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
         {
           var i = 0;
           d3.selectAll(".line").style("opacity", "0.5");
-
 
           //Select All of the lines and process them one by one
           d3.selectAll(".line").each(function (d, i) {
@@ -374,16 +356,12 @@
               .attr("stroke-dashoffset", totalLength)
               .transition()
               .duration(3000)
-              /* .delay(100*i)
-              ease("linear") //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724 */
-              .attr("stroke-dashoffset", 0)/*
-              .style("stroke-width",3)*/;
+              .attr("stroke-dashoffset", 0);
 
           });
-
-
         }
       });
+
       // Define responsive behavior
       function resize() {
         var width =
@@ -420,12 +398,9 @@
 
       // Call the resize function
       resize();
-
     }
 
     draw();
-
-
 
   </script>
 </body>
