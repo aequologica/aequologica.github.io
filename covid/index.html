@@ -337,8 +337,8 @@
           r.append('td').attr("class", "population").html(new Intl.NumberFormat().format(populations[d]));
         });
 
-        document.getElementById("title").innerHTML = "New deaths each day"
-        document.getElementById("subtitle").innerHTML = "(moving average of the previous " + sizeOfAverage + " days)";
+        document.getElementById("title").innerHTML = "Daily deaths"
+        document.getElementById("subtitle").innerHTML = "("+sizeOfAverage + " days rolling average)";
 
         // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
         {
