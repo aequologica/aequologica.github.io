@@ -222,7 +222,7 @@
 
           var minFirstNDeaths = firstNDeathsArray[0];
 
-          start = moment(minFirstNDeaths.date); // 
+          start = moment(parseDate(minFirstNDeaths.date)); // 
         }
 
         // Format the data 
@@ -249,7 +249,9 @@
             i = i + 1;
           });
 
-          data[country] = _.filter(data[country], function (d) { return moment(d.date).isSameOrAfter(start); });
+          data[country] = _.filter(data[country], function (d) { 
+            return moment(d.date).isSameOrAfter(start); 
+          });
         });
 
         // Reformat data to make it more copasetic for d3
