@@ -18,7 +18,7 @@
     .line {
       fill: none;
       stroke: steelblue;
-      stroke-width: 2px;
+      stroke-width: 5px;
     }
 
     #chart {
@@ -32,8 +32,13 @@
       font-weight: bold;
       text-anchor: left;
     }
-   .fixed-bottom .card-body {
+
+    .fixed-bottom .card-body {
       padding: .5rem !important;
+    }
+
+    .grid line {
+      stroke: #eee;
     }
   </style>
 
@@ -43,11 +48,13 @@
 <body>
   <div class="container-fluid">
     <div class="fixed-top px-2">
-    
+
       <h2 id="title"></h2>
       <p id="subtitle" style="display: inline-block"></p>
-      <div class="float-right" >
-        sources: <a href="https://pomber.github.io/covid19/timeseries.json" target="_json-data_source">data</a>|<a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html" target="_json-data_source">html</a>
+      <div class="float-right">
+        sources: <a href="https://pomber.github.io/covid19/timeseries.json" target="_json-data_source">data</a>|<a
+          href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html"
+          target="_json-data_source">html</a>
         </span>
       </div>
     </div>
@@ -252,8 +259,10 @@
             return d.delta;
           });
         });
-        var yExtent = [d3.min(yExtents, function (d) { return d[0] }),
-        d3.max(yExtents, function (d) { return d[1] })];
+        var yExtent = [
+          d3.min(yExtents, function (d) { return d[0] }),
+          d3.max(yExtents, function (d) { return d[1] })
+        ];
 
         xScale.domain(
           d3.extent(deathss[2].datapoints, function (d) {
