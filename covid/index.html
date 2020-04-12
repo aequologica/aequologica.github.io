@@ -39,27 +39,41 @@
 
 <body>
   <div class="container-fluid">
+    <h1 id="title"></h1>
     <svg id="chart"></svg>
     <div class="row fixed-bottom">
       <div class="col">
+        <span>
+          source: <a href="https://pomber.github.io/covid19/timeseries.json"
+            target="_json-data_source">https://pomber.github.io/covid19/timeseries.json</a>
+        </span>
         <span class="float-right">
 
-
-          <span>
-            source: <a href="https://pomber.github.io/covid19/timeseries.json"
-              target="_json-data_source">https://pomber.github.io/covid19/timeseries.json</a>
-          </span>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
-            <label class="btn btn-secondary btn-sm">
-              <input type="radio" name="options" id="linear" autocomplete="off" checked> Linear
-            </label>
-            <label class="btn btn-secondary btn-sm">
-              <input type="radio" name="options" id="logaritmic" autocomplete="off"> Logaritmic
-            </label>
-
+          <div class="card" style="display: inline-block">
+            <div class="card-body">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="absolute" name="absolute" class="custom-control-input">
+                <label class="custom-control-label" for="absolute">absolute</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="percapita" name="absolute" class="custom-control-input">
+                <label class="custom-control-label" for="percapita">per capita</label>
+              </div>
+            </div>
           </div>
+          <div class="card" style="display: inline-block">
+            <div class="card-body">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="linear" name="linear" class="custom-control-input">
+                <label class="custom-control-label" for="linear">linear</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="logaritmic" name="linear" class="custom-control-input">
+                <label class="custom-control-label" for="logaritmic">logaritmic</label>
+              </div>
 
+            </div>
+          </div>
       </div>
     </div>
 
@@ -87,9 +101,16 @@
       });
     });
 
-    var field = "deltaMovingAverage"; //"deaths"; // 
+    var field = "deltaMovingAverage";
     var countries = _.sortBy(["France", "Italy", "US", "Spain", "Belgium"]);
     var sizeOfAverage = 4;
+    var populations = {
+      US: 330584264, // https://www.worldometers.info/world-population/us-population/
+      France: 65242510, // https://www.worldometers.info/world-population/france-population/
+      Italy: 60480826, // https://www.worldometers.info/world-population/italy-population/ 
+      Spain: 46750899, // https://www.worldometers.info/world-population/spain-population/
+      Belgium: 11578770, // https://www.worldometers.info/world-population/belgium-population/
+    };
 
     function raz() {
       var elem = document.querySelector('#chart');
@@ -100,9 +121,9 @@
       }
     }
 
-    function draw(mode) {
+    function draw(mode, capita) {
       // Define margins
-      var margin = { top: 48, right: 80, bottom: 20, left: 50 },
+      var margin = { top: 0, right: 80, bottom: 80, left: 50 },
         width =
           parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
         height =
@@ -153,8 +174,9 @@
           France: moment("2020-02-14"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_France
           Italy: moment("2020-02-22"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Italy 
           US: moment("2020-02-29"),  // https://www.medscape.com/viewarticle/925932
-          Spain: moment("2020-02-13")
-        }; // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Spain
+          Spain: moment("2020-02-13"), // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Spain
+          Belgium: moment("2020-03-11") // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Belgium
+        };
 
         // console.log(JSON.stringify(data, null, 2)) // to view the structure
 
@@ -169,7 +191,10 @@
             data[p].forEach(function (d) {
               d.date = parseDate(d.date);
               d.deaths = +d.deaths;
-              d.delta = d.deaths - prev;
+              d.delta = (d.deaths - prev);
+              if (capita == "percapita") {
+                d.delta = d.delta / (populations[p] / 1000000)
+              }
               prev = d.deaths;
             });
 
@@ -273,12 +298,15 @@
             .text(d);
 
         });
-
+       
+        /*
         svg.append("text")
           .attr("x", 20)
           .attr("y", 0)
           .attr("class", "legend")
           .text("New deaths per day (moving average of the previous " + sizeOfAverage + " days)");
+        */
+        document.getElementById("title").innerHTML = "New deaths per day (moving average of the previous " + sizeOfAverage + " days)";
 
         // console.log(JSON.stringify(d3.values(deathss), null, 2)) // to view the structure
         // console.log(d3.values(deathss)); // to view the structure
