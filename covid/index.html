@@ -39,22 +39,20 @@
 
 <body>
   <div class="container-fluid">
-    <div class="fixed-top">
+    <div class="fixed-top px-2">
+    
       <h2 id="title"></h2>
-      <p id="subtitle"></p>
+      <p id="subtitle" style="display: inline-block"></p>
+      <div class="float-right" >
+        sources: <a href="https://pomber.github.io/covid19/timeseries.json" target="_json-data_source">data</a>|<a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html" target="_json-data_source">html</a>
+        </span>
+      </div>
     </div>
     <svg id="chart"></svg>
     <div class="fixed-bottom">
 
-      <div class="float-left" style="display: inline-block">
-        sources:
-        <a href="https://pomber.github.io/covid19/timeseries.json" target="_json-data_source">data</a>
-        |
-        <a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html"
-          target="_json-data_source">html</a>
-        </span>
-      </div>
-      <div class="float-right">
+
+      <div class="float-right p-2">
         <div class="card" style="display: inline-block">
           <div class="card-body">
             <div class="custom-control custom-radio custom-control-inline">
