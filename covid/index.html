@@ -130,12 +130,20 @@
     var field = "deltaMovingAverage";
     var countries = _.sortBy(["France", "Italy", "US", "Spain", "Belgium"]);
     var sizeOfAverage = 4;
+    var startAfterNDeaths = 5;
     var populations = {
       US: 330584264,     // https://www.worldometers.info/world-population/us-population/
       France: 65242510,  // https://www.worldometers.info/world-population/france-population/
       Italy: 60480826,   // https://www.worldometers.info/world-population/italy-population/ 
       Spain: 46750899,   // https://www.worldometers.info/world-population/spain-population/
       Belgium: 11578770, // https://www.worldometers.info/world-population/belgium-population/
+    };
+    var firstDeaths = {
+      France: moment("2020-02-14"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_France
+      Italy: moment("2020-02-22"),   // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Italy 
+      US: moment("2020-02-29"),      // https://www.medscape.com/viewarticle/925932
+      Spain: moment("2020-02-13"),   // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Spain
+      Belgium: moment("2020-03-11")  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Belgium
     };
     var toggleCapita = "absolute";
     var toggleLinear = "linear";
@@ -198,46 +206,51 @@
         // Set the color domain equal to the three product categories
 
         color.domain(countries);
-        var firstDeaths = {
-          France: moment("2020-02-14"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_France
-          Italy: moment("2020-02-22"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Italy 
-          US: moment("2020-02-29"),  // https://www.medscape.com/viewarticle/925932
-          Spain: moment("2020-02-13"), // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Spain
-          Belgium: moment("2020-03-11") // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Belgium
-        };
 
-        // console.log(JSON.stringify(data, null, 2)) // to view the structure
 
-        var start = _.minBy(_.values(firstDeaths)); // moment("2020-02-01");
+        var firstNDeaths = {};
 
-        var field =
-          // Format the data field
-          countries.forEach(function (p) {
+        countries.forEach(function (country) {
+          firstNDeaths[country] = _.find(data[country], function (d) { return d.deaths >= startAfterNDeaths; });
+        });
+        var firstNDeathsArray = _.values(firstNDeaths);
 
-            var prev = 0;
+        firstNDeathsArray.sort(function compare(a, b) {
+          return moment(parseDate(a.date)) - moment(parseDate(b.date));
+        });
 
-            data[p].forEach(function (d) {
-              d.date = parseDate(d.date);
-              d.deaths = +d.deaths;
-              d.delta = (d.deaths - prev);
-              if (toggleCapita == "percapita") {
-                d.delta = d.delta / (populations[p] / 1000000)
-              }
-              prev = d.deaths;
-            });
+        var minFirstNDeaths = firstNDeathsArray[0];
 
-            var deltas = _.map(data[p], 'delta');
-            var deltasMovingAverage = sma(deltas, sizeOfAverage);
+        var start = moment(minFirstNDeaths.date); // 
+        // start = moment("2020-02-01");
 
-            var i = 0;
-            data[p].forEach(function (d) {
-              d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i - sizeOfAverage];
-              i = i + 1;
-            });
+        // Format the data field
+        countries.forEach(function (country) {
 
-            data[p] = _.filter(data[p], function (d) { return moment(d.date).isSameOrAfter(start); });
+          var prev = 0;
 
+          data[country].forEach(function (d) {
+            d.date = parseDate(d.date);
+            d.deaths = +d.deaths;
+            d.delta = (d.deaths - prev);
+            if (toggleCapita == "percapita") {
+              d.delta = d.delta / (populations[country] / 1000000)
+            }
+            prev = d.deaths;
           });
+
+          var deltas = _.map(data[country], 'delta');
+          var deltasMovingAverage = sma(deltas, sizeOfAverage);
+
+          var i = 0;
+          data[country].forEach(function (d) {
+            d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i - sizeOfAverage];
+            i = i + 1;
+          });
+
+          data[country] = _.filter(data[country], function (d) { return moment(d.date).isSameOrAfter(start); });
+
+        });
 
         // Reformat data to make it more copasetic for d3
         // data = An array of objects
