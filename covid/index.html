@@ -70,7 +70,7 @@
     });
 
     var field = "deltaMovingAverage"; //"deaths"; // 
-    var countries = _.sortBy(["France", "Italy", "US", "Spain"]);
+    var countries = _.sortBy(["France", "Italy", "US", "Spain", "Belgium"]);
     var sizeOfAverage = 4;
 
     function raz() {
@@ -126,7 +126,7 @@
       // Read in data
       d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (data) {
 
-        data = { France: data.France, Italy: data.Italy, US: data.US, Spain: data.Spain };
+        data = { France: data.France, Italy: data.Italy, US: data.US, Spain: data.Spain, Belgium: data.Belgium};
 
         // Set the color domain equal to the three product categories
 
