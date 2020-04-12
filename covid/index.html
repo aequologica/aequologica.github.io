@@ -39,46 +39,51 @@
 
 <body>
   <div class="container-fluid">
-    <h1 id="title"></h1>
+    <div class="fixed-top">
+      <h2 id="title"></h2>
+      <p id="subtitle"></p>
+    </div>
     <svg id="chart"></svg>
-    <div class="row fixed-bottom">
-      <div class="col">
+    <div class="fixed-bottom">
+
+      <div class="float-left">
         <span>
-          source: <a href="https://pomber.github.io/covid19/timeseries.json"
+          data: <a href="https://pomber.github.io/covid19/timeseries.json"
             target="_json-data_source">https://pomber.github.io/covid19/timeseries.json</a>
         </span>
-        <span class="float-right">
-
-          <div class="card" style="display: inline-block">
-            <div class="card-body">
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="absolute" name="absolute" class="custom-control-input">
-                <label class="custom-control-label" for="absolute">absolute</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="percapita" name="absolute" class="custom-control-input">
-                <label class="custom-control-label" for="percapita">per capita</label>
-              </div>
+        <br />
+        <span>
+          html: <a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html"
+            target="_json-data_source">https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html</a>
+        </span>
+      </div>
+      <div class="float-right">
+        <div class="card" style="display: inline-block">
+          <div class="card-body">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="absolute" name="absolute" class="custom-control-input" checked>
+              <label class="custom-control-label" for="absolute">absolute</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="percapita" name="absolute" class="custom-control-input">
+              <label class="custom-control-label" for="percapita">per capita</label>
             </div>
           </div>
-          <div class="card" style="display: inline-block">
-            <div class="card-body">
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="linear" name="linear" class="custom-control-input">
-                <label class="custom-control-label" for="linear">linear</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="logaritmic" name="linear" class="custom-control-input">
-                <label class="custom-control-label" for="logaritmic">logaritmic</label>
-              </div>
-
+        </div>
+        <div class="card" style="display: inline-block">
+          <div class="card-body">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="linear" name="linear" class="custom-control-input" checked>
+              <label class="custom-control-label" for="linear">linear</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="logaritmic" name="linear" class="custom-control-input">
+              <label class="custom-control-label" for="logaritmic">logaritmic</label>
             </div>
           </div>
+        </div>
       </div>
     </div>
-
-
-
   </div>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"
     integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
@@ -96,8 +101,24 @@
 
     radios.forEach(function (r) {
       r.addEventListener("click", function (e) {
+        switch (this.id) {
+          case "linear":
+            toggleLinear = "linear";
+            break;
+          case "logaritmic":
+            toggleLinear = "logaritmic";
+            break;
+          case "absolute":
+            toggleCapita = "absolute";
+            break;
+          case "percapita":
+            toggleCapita = "percapita";
+            break;
+          default:
+            ;
+        }
         raz();
-        draw(this.id);
+        draw();
       });
     });
 
@@ -105,12 +126,14 @@
     var countries = _.sortBy(["France", "Italy", "US", "Spain", "Belgium"]);
     var sizeOfAverage = 4;
     var populations = {
-      US: 330584264, // https://www.worldometers.info/world-population/us-population/
-      France: 65242510, // https://www.worldometers.info/world-population/france-population/
-      Italy: 60480826, // https://www.worldometers.info/world-population/italy-population/ 
-      Spain: 46750899, // https://www.worldometers.info/world-population/spain-population/
+      US: 330584264,     // https://www.worldometers.info/world-population/us-population/
+      France: 65242510,  // https://www.worldometers.info/world-population/france-population/
+      Italy: 60480826,   // https://www.worldometers.info/world-population/italy-population/ 
+      Spain: 46750899,   // https://www.worldometers.info/world-population/spain-population/
       Belgium: 11578770, // https://www.worldometers.info/world-population/belgium-population/
     };
+    var toggleCapita = "absolute";
+    var toggleLinear = "linear";
 
     function raz() {
       var elem = document.querySelector('#chart');
@@ -121,9 +144,9 @@
       }
     }
 
-    function draw(mode, capita) {
+    function draw() {
       // Define margins
-      var margin = { top: 0, right: 80, bottom: 80, left: 50 },
+      var margin = { top: 100, right: 80, bottom: 32, left: 50 },
         width =
           parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
         height =
@@ -136,7 +159,7 @@
 
       // Define scales
       var xScale = d3.scaleTime().range([0, width]);
-      var yScale = (mode == "logaritmic" ? d3.scaleSymlog() : d3.scaleLinear()).range([height, 0]);
+      var yScale = (toggleLinear == "logaritmic" ? d3.scaleSymlog() : d3.scaleLinear()).range([height, 0]);
       var color = d3.scaleOrdinal().range(d3.schemeCategory10);
 
       // Define axes
@@ -192,7 +215,7 @@
               d.date = parseDate(d.date);
               d.deaths = +d.deaths;
               d.delta = (d.deaths - prev);
-              if (capita == "percapita") {
+              if (toggleCapita == "percapita") {
                 d.delta = d.delta / (populations[p] / 1000000)
               }
               prev = d.deaths;
@@ -295,10 +318,10 @@
             .style("fill", function () {
               return color(d)
             })
-            .text(d);
+            .text(d + " " + new Intl.NumberFormat().format(populations[d]));
 
         });
-       
+
         /*
         svg.append("text")
           .attr("x", 20)
@@ -306,7 +329,8 @@
           .attr("class", "legend")
           .text("New deaths per day (moving average of the previous " + sizeOfAverage + " days)");
         */
-        document.getElementById("title").innerHTML = "New deaths per day (moving average of the previous " + sizeOfAverage + " days)";
+        document.getElementById("title").innerHTML = "New deaths per day"
+        document.getElementById("subtitle").innerHTML = "(moving average of the previous " + sizeOfAverage + " days)";
 
         // console.log(JSON.stringify(d3.values(deathss), null, 2)) // to view the structure
         // console.log(d3.values(deathss)); // to view the structure
