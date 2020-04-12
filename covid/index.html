@@ -30,7 +30,7 @@
     .legend {
       font-size: 16px;
       font-weight: bold;
-      text-anchor: middle;
+      text-anchor: left;
     }
   </style>
 </head>
@@ -52,7 +52,7 @@
   <script>
 
     var field = "deltaMovingAverage"; //"deaths"; // 
-    var countries = ["France", "Italy", "US", "Spain"];
+    var countries = _.sortBy(["France", "Italy", "US", "Spain"]);
 
     // Define margins
     var margin = { top: 20, right: 80, bottom: 30, left: 50 },
@@ -155,17 +155,21 @@
       // console.log(JSON.stringify(deathss, null, 2)) // to view the structure
 
       // Set the domain of the axes
+      var yExtents = deathss.map(function(deaths) {
+        return d3.extent(deaths.datapoints, function (d) {
+          return d.delta;
+        });
+      });
+      var yExtent = [d3.min(yExtents, function(d) { return d[0] }),
+                     d3.max(yExtents, function(d) { return d[1] })];
+
       xScale.domain(
         d3.extent(deathss[2].datapoints, function (d) {
           return d.date;
         })
       );
 
-      yScale.domain(
-        d3.extent(deathss[2].datapoints, function (d) {
-          return d.delta;
-        })
-      );
+      yScale.domain(yExtent);
 
       // Place the axes on the chart
       
@@ -214,10 +218,10 @@
 
         // Add the Legend
         svg.append("text")
-            .attr("x", (legendSpace/2)+i*legendSpace) // spacing
-            .attr("y", 0 ) // height + (margin.bottom/2)+ 5)
-            .attr("class", "legend")    // style the legend
-            .style("fill", function() { // dynamic colours
+            .attr("x", 20 )
+            .attr("y", (i+1)*20 ) 
+            .attr("class", "legend") 
+            .style("fill", function() { 
                 return color(d)})
             .text(d);
 
