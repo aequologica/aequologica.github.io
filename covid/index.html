@@ -37,6 +37,15 @@
 
 <body>
 
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" id="linear" autocomplete="off" checked> Linear
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="logaritmic" autocomplete="off"> Logaritmic
+    </label>
+  </div>
+
   <svg id="chart"></svg>
 
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"
@@ -51,251 +60,281 @@
 
   <script>
 
-    var field = "deltaMovingAverage"; //"deaths"; // 
-    var countries = _.sortBy(["France", "Italy", "US", "Spain"]);
+    var radios = document.querySelectorAll('[type="radio"]');
 
-    // Define margins
-    var margin = { top: 20, right: 80, bottom: 30, left: 50 },
-      width =
-        parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
-      height =
-        parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
-
-    
-    var legendSpace = width/countries.length;
-    
-    // Define date parser
-    var parseDate = d3.timeParse("%Y-%m-%d");
-
-    // Define scales
-    var xScale = d3.scaleTime().range([0, width]);
-    var yScale = d3.scaleLinear().range([height, 0]);
-    var color = d3.scaleOrdinal().range(d3.schemeCategory10);
-
-    // Define axes
-    var xAxis = d3.axisBottom().scale(xScale);
-    var yAxis = d3.axisLeft().scale(yScale);
-
-    // Define lines
-    var line = d3
-      .line()
-      .curve(d3.curveMonotoneX)
-      .x(function (d) {
-        return xScale(d["date"]);
-      })
-      .y(function (d) {
-        return yScale(d[field]);
+    radios.forEach(function (r) {
+      r.addEventListener("click", function (e) {
+        raz();
+        draw(this.id);
       });
-
-    // Define svg canvas
-    var svg = d3
-      .select("#chart")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    // Read in data
-    d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (data) {
-
-      data = { France: data.France, Italy: data.Italy, US: data.US, Spain: data.Spain };
-
-      // Set the color domain equal to the three product categories
-
-      color.domain(countries);
-      var firstDeaths = {
-        France: moment("2020-02-14"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_France
-        Italy: moment("2020-02-22"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Italy 
-        US: moment("2020-02-29"),  // https://www.medscape.com/viewarticle/925932
-        Spain: moment("2020-02-13")
-      }; // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Spain
-
-      // console.log(JSON.stringify(data, null, 2)) // to view the structure
-
-      var start = _.minBy(_.values(firstDeaths)); // moment("2020-02-01");
-      var sizeOfAverage = 4;
-      var field =
-        // Format the data field
-        countries.forEach(function (p) {
-
-          var prev = 0;
-
-          data[p].forEach(function (d) {
-            d.date = parseDate(d.date);
-            d.deaths = +d.deaths;
-            d.delta = d.deaths - prev;
-            prev = d.deaths;
-          });
-
-          var deltas = _.map(data[p], 'delta');
-          var deltasMovingAverage = sma(deltas, sizeOfAverage);
-
-          var i = 0;
-          data[p].forEach(function (d) {
-            d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i - sizeOfAverage];
-            i = i + 1;
-          });
-
-          data[p] = _.filter(data[p], function (d) { return moment(d.date).isSameOrAfter(start); });
-
-        });
-
-      // Reformat data to make it more copasetic for d3
-      // data = An array of objects
-      // deathss = An array of three objects, each of which contains an array of objects
-      var deathss = countries.map(function (country) {
-        return {
-          category: country,
-          datapoints: data[country] /*map(function (d) {
-            return { date: d.date, deaths: d.deaths, delta: d.delta, deltaMovingAverage: d.deltaMovingAverage };
-          })*/
-        };
-      });
-
-      // console.log(JSON.stringify(deathss, null, 2)) // to view the structure
-
-      // Set the domain of the axes
-      var yExtents = deathss.map(function(deaths) {
-        return d3.extent(deaths.datapoints, function (d) {
-          return d.delta;
-        });
-      });
-      var yExtent = [d3.min(yExtents, function(d) { return d[0] }),
-                     d3.max(yExtents, function(d) { return d[1] })];
-
-      xScale.domain(
-        d3.extent(deathss[2].datapoints, function (d) {
-          return d.date;
-        })
-      );
-
-      yScale.domain(yExtent);
-
-      // Place the axes on the chart
-      
-      svg
-        .append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-
-      svg
-        .append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
-        .append("text")
-        .attr("class", "label")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .attr("dx", ".71em")
-        .style("text-anchor", "beginning")
-        .text("");
-
-      var products = svg
-        .selectAll(".category")
-        .data(deathss)
-        .enter()
-        .append("g")
-        .attr("class", "category");
-
-      products
-        .append("path")
-        .attr("class", "line")
-
-        .attr("id", function (d, i) {
-          return "line" + i;
-        })
-        .attr("d", function (d) {
-          return line(d.datapoints);
-        })
-        .style("stroke", function (d) {
-          return color(d.category);
-        });
-      
-
-      // Loop through each symbol / key
-      countries.forEach(function(d,i) { 
-
-        // Add the Legend
-        svg.append("text")
-            .attr("x", 20 )
-            .attr("y", (i+1)*20 ) 
-            .attr("class", "legend") 
-            .style("fill", function() { 
-                return color(d)})
-            .text(d);
-
-      });
-
-      // console.log(JSON.stringify(d3.values(deathss), null, 2)) // to view the structure
-      // console.log(d3.values(deathss)); // to view the structure
-      // console.log(deathss);
-      // console.log(deathss.map(function()))
-
-      // animate http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
-      {
-        var i = 0;
-        d3.selectAll(".line").style("opacity", "0.5");
-
-
-        //Select All of the lines and process them one by one
-        d3.selectAll(".line").each(function (d, i) {
-
-          // Get the length of each line in turn
-          var totalLength = d3.select("#line" + i).node().getTotalLength();
-          // console.log(totalLength);
-
-          d3.selectAll("#line" + i).attr("stroke-dasharray", totalLength + " " + totalLength)
-            .attr("stroke-dashoffset", totalLength)
-            .transition()
-            .duration(4000)
-            /* .delay(100*i)
-            ease("linear") //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724 */
-            .attr("stroke-dashoffset", 0)/*
-              .style("stroke-width",3)*/;
-
-        });
-
-
-      }
     });
 
-    // Define responsive behavior
-    function resize() {
-      var width =
-        parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
-        height =
-          parseInt(d3.select("#chart").style("height")) -
-          margin.top -
-          margin.bottom;
+    var field = "deltaMovingAverage"; //"deaths"; // 
+    var countries = _.sortBy(["France", "Italy", "US", "Spain"]);
+    var sizeOfAverage = 4;
 
-      // Update the range of the scale with new width/height
-      xScale.range([0, width]);
-      yScale.range([height, 0]);
-
-      // Update the axis and text with the new scale
-      svg
-        .select(".x.axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-
-      svg.select(".y.axis").call(yAxis);
-
-      // Force D3 to recalculate and update the line
-      svg.selectAll(".line").attr("d", function (d) {
-        return line(d.datapoints);
-      });
-
-      // Update the tick marks
-      xAxis.ticks(Math.max(width / 75, 2));
-      yAxis.ticks(Math.max(height / 50, 2));
+    function raz() {
+      var elem = document.querySelector('#chart');
+      if (elem) {
+        while (elem.firstChild) {
+          elem.removeChild(elem.lastChild);
+        }
+      }
     }
 
-    // Call the resize function whenever a resize event occurs
-    d3.select(window).on("resize", resize);
+    function draw(mode) {
+      // Define margins
+      var margin = { top: 48, right: 80, bottom: 72, left: 50 },
+        width =
+          parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
+        height =
+          parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
 
-    // Call the resize function
-    resize();
+      var legendSpace = width / countries.length;
+
+      // Define date parser
+      var parseDate = d3.timeParse("%Y-%m-%d");
+
+      // Define scales
+      var xScale = d3.scaleTime().range([0, width]);
+      var yScale = (mode == "logaritmic" ? d3.scaleSymlog() : d3.scaleLinear()).range([height, 0]);
+      var color = d3.scaleOrdinal().range(d3.schemeCategory10);
+
+      // Define axes
+      var xAxis = d3.axisBottom().scale(xScale);
+      var yAxis = d3.axisLeft().scale(yScale);
+
+      // Define lines
+      var line = d3
+        .line()
+        .curve(d3.curveMonotoneX)
+        .x(function (d) {
+          return xScale(d["date"]);
+        })
+        .y(function (d) {
+          return yScale(d[field]);
+        });
+
+      // Define svg canvas
+      var svg = d3
+        .select("#chart")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      // Read in data
+      d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (data) {
+
+        data = { France: data.France, Italy: data.Italy, US: data.US, Spain: data.Spain };
+
+        // Set the color domain equal to the three product categories
+
+        color.domain(countries);
+        var firstDeaths = {
+          France: moment("2020-02-14"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_France
+          Italy: moment("2020-02-22"),  // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Italy 
+          US: moment("2020-02-29"),  // https://www.medscape.com/viewarticle/925932
+          Spain: moment("2020-02-13")
+        }; // https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Spain
+
+        // console.log(JSON.stringify(data, null, 2)) // to view the structure
+
+        var start = _.minBy(_.values(firstDeaths)); // moment("2020-02-01");
+
+        var field =
+          // Format the data field
+          countries.forEach(function (p) {
+
+            var prev = 0;
+
+            data[p].forEach(function (d) {
+              d.date = parseDate(d.date);
+              d.deaths = +d.deaths;
+              d.delta = d.deaths - prev;
+              prev = d.deaths;
+            });
+
+            var deltas = _.map(data[p], 'delta');
+            var deltasMovingAverage = sma(deltas, sizeOfAverage);
+
+            var i = 0;
+            data[p].forEach(function (d) {
+              d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i - sizeOfAverage];
+              i = i + 1;
+            });
+
+            data[p] = _.filter(data[p], function (d) { return moment(d.date).isSameOrAfter(start); });
+
+          });
+
+        // Reformat data to make it more copasetic for d3
+        // data = An array of objects
+        // deathss = An array of three objects, each of which contains an array of objects
+        var deathss = countries.map(function (country) {
+          return {
+            category: country,
+            datapoints: data[country] /*map(function (d) {
+            return { date: d.date, deaths: d.deaths, delta: d.delta, deltaMovingAverage: d.deltaMovingAverage };
+          })*/
+          };
+        });
+
+        // console.log(JSON.stringify(deathss, null, 2)) // to view the structure
+
+        // Set the domain of the axes
+        var yExtents = deathss.map(function (deaths) {
+          return d3.extent(deaths.datapoints, function (d) {
+            return d.delta;
+          });
+        });
+        var yExtent = [d3.min(yExtents, function (d) { return d[0] }),
+        d3.max(yExtents, function (d) { return d[1] })];
+
+        xScale.domain(
+          d3.extent(deathss[2].datapoints, function (d) {
+            return d.date;
+          })
+        );
+
+        yScale.domain(yExtent);
+
+        // Place the axes on the chart
+
+        svg
+          .append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+        svg
+          .append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+          .append("text")
+          .attr("class", "label")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .attr("dx", ".71em")
+          .style("text-anchor", "beginning")
+          .text("");
+
+        var products = svg
+          .selectAll(".category")
+          .data(deathss)
+          .enter()
+          .append("g")
+          .attr("class", "category");
+
+        products
+          .append("path")
+          .attr("class", "line")
+
+          .attr("id", function (d, i) {
+            return "line" + i;
+          })
+          .attr("d", function (d) {
+            return line(d.datapoints);
+          })
+          .style("stroke", function (d) {
+            return color(d.category);
+          });
+
+
+        // Loop through each symbol / key
+        countries.forEach(function (d, i) {
+
+          // Add the Legend
+          svg.append("text")
+            .attr("x", 20)
+            .attr("y", (i + 1) * 20)
+            .attr("class", "legend")
+            .style("fill", function () {
+              return color(d)
+            })
+            .text(d);
+
+        });
+
+        svg.append("text")
+          .attr("x", 20)
+          .attr("y", 0)
+          .attr("class", "legend")
+          .text("New deaths per day (moving average of the previous " + sizeOfAverage + " days)");
+
+        // console.log(JSON.stringify(d3.values(deathss), null, 2)) // to view the structure
+        // console.log(d3.values(deathss)); // to view the structure
+        // console.log(deathss);
+        // console.log(deathss.map(function()))
+
+        // animate http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
+        {
+          var i = 0;
+          d3.selectAll(".line").style("opacity", "0.5");
+
+
+          //Select All of the lines and process them one by one
+          d3.selectAll(".line").each(function (d, i) {
+
+            // Get the length of each line in turn
+            var totalLength = d3.select("#line" + i).node().getTotalLength();
+            // console.log(totalLength);
+
+            d3.selectAll("#line" + i).attr("stroke-dasharray", totalLength + " " + totalLength)
+              .attr("stroke-dashoffset", totalLength)
+              .transition()
+              .duration(3000)
+              /* .delay(100*i)
+              ease("linear") //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724 */
+              .attr("stroke-dashoffset", 0)/*
+              .style("stroke-width",3)*/;
+
+          });
+
+
+        }
+      });
+      // Define responsive behavior
+      function resize() {
+        var width =
+          parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
+          height =
+            parseInt(d3.select("#chart").style("height")) -
+            margin.top -
+            margin.bottom;
+
+        // Update the range of the scale with new width/height
+        xScale.range([0, width]);
+        yScale.range([height, 0]);
+
+        // Update the axis and text with the new scale
+        svg
+          .select(".x.axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+        svg.select(".y.axis").call(yAxis);
+
+        // Force D3 to recalculate and update the line
+        svg.selectAll(".line").attr("d", function (d) {
+          return line(d.datapoints);
+        });
+
+        // Update the tick marks
+        xAxis.ticks(Math.max(width / 75, 2));
+        yAxis.ticks(Math.max(height / 50, 2));
+      }
+
+      // Call the resize function whenever a resize event occurs
+      d3.select(window).on("resize", resize);
+
+      // Call the resize function
+      resize();
+
+    }
+
+    draw();
+
 
 
   </script>
