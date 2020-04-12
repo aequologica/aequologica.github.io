@@ -23,7 +23,7 @@
 
     #chart {
       width: 100%;
-      height: 100%;
+      height: 94%;
       position: absolute;
     }
 
@@ -33,21 +33,39 @@
       text-anchor: left;
     }
   </style>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+  <div class="container-fluid">
+    <svg id="chart"></svg>
+    <div class="row fixed-bottom">
+      <div class="col">
+        <span class="float-right">
 
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-      <input type="radio" name="options" id="linear" autocomplete="off" checked> Linear
-    </label>
-    <label class="btn btn-secondary">
-      <input type="radio" name="options" id="logaritmic" autocomplete="off"> Logaritmic
-    </label>
+
+          <span>
+            source: <a href="https://pomber.github.io/covid19/timeseries.json"
+              target="_json-data_source">https://pomber.github.io/covid19/timeseries.json</a>
+          </span>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+            <label class="btn btn-secondary btn-sm">
+              <input type="radio" name="options" id="linear" autocomplete="off" checked> Linear
+            </label>
+            <label class="btn btn-secondary btn-sm">
+              <input type="radio" name="options" id="logaritmic" autocomplete="off"> Logaritmic
+            </label>
+
+          </div>
+
+      </div>
+    </div>
+
+
+
   </div>
-
-  <svg id="chart"></svg>
-
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"
     integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@5.15.1/dist/d3.min.js"
@@ -84,7 +102,7 @@
 
     function draw(mode) {
       // Define margins
-      var margin = { top: 48, right: 80, bottom: 72, left: 50 },
+      var margin = { top: 48, right: 80, bottom: 20, left: 50 },
         width =
           parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
         height =
@@ -126,7 +144,7 @@
       // Read in data
       d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (data) {
 
-        data = { France: data.France, Italy: data.Italy, US: data.US, Spain: data.Spain, Belgium: data.Belgium};
+        data = { France: data.France, Italy: data.Italy, US: data.US, Spain: data.Spain, Belgium: data.Belgium };
 
         // Set the color domain equal to the three product categories
 
