@@ -51,7 +51,7 @@
 
   <script>
 
-    var field = "deaths"; // "deltaMovingAverage";
+    var field = "deltaMovingAverage"; //"deaths"; // 
     var countries = ["France", "Italy", "US", "Spain"];
 
     // Define margins
@@ -69,7 +69,7 @@
 
     // Define scales
     var xScale = d3.scaleTime().range([0, width]);
-    var yScale = d3.scaleSymlog().range([height, 0]);
+    var yScale = d3.scaleLinear().range([height, 0]);
     var color = d3.scaleOrdinal().range(d3.schemeCategory10);
 
     // Define axes
@@ -163,7 +163,7 @@
 
       yScale.domain(
         d3.extent(deathss[2].datapoints, function (d) {
-          return d.deaths;
+          return d.delta;
         })
       );
 
