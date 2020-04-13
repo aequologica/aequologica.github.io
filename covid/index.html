@@ -41,6 +41,7 @@
       stroke: #eee;
     }
 
+    th.population,
     td.population {
       font-family: monospace;
       text-align: right;
@@ -355,6 +356,10 @@
         // legend
         // Loop through each symbol / key
         var t = div.append('table');
+        var r = t.append('tr');
+        r.append('th').html("&nbsp;");
+        r.append('th').attr("class", "population").html("population");
+
         countries.forEach(function (d, i) {
           var r = t.append('tr');
           r.append('th').attr("style", "color:" + color(d)).html(d);
