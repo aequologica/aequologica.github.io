@@ -39,10 +39,6 @@
       padding: 1rem;
     }
 
-    button.trans {
-      background-color: transparent;
-    }
-
     .table-responsive {
       max-height: 300px;
     }
@@ -180,21 +176,12 @@
     });
 
     // constants
-    var defaultCountries = _.sortBy([
-      "Belgium",
-      "France",
-      "Germany",
-      "Italy",
-      "Luxembourg",
-      "Spain",
-      "US",
-    ]);
     var asses = Aliases.read();
     var countries;
     if (asses != null && asses.length > 0) {
       countries = _.map(asses, (a) => Aliases.a2c(a));
     } else {
-      countries = defaultCountries;
+      countries = [];
     }
     var field = "deltaMovingAverage";
     var sizeOfAverage = 4;
@@ -448,7 +435,7 @@
           var fo = svg.append("foreignObject")
             .attr("x", 0)
             .attr("y", 0)
-            .attr("width", 240)
+            .attr("width", 280)
             .attr("height", 280);
           var div = fo.append('xhtml:div');
           div.attr("class", "p-2");
@@ -456,25 +443,48 @@
           var t = div.append('table');
           t.attr("class", "table-responsive");
           var r = t.append('tr');
-          var add = r.append('th').append('button');
-          add.attr("type", "button");
-          add.attr("class", "add btn btn-sm btn-outline-secondary");
-          add.attr("title", "add country");
-          add.append('span').html("+");
-          r.append('th').attr("class", "population").html("<a target ='_population-by-country' href='https://www.worldometers.info/world-population/population-by-country/'>population</a>");
-          r.append('th').html("&nbsp;");
+          {
+            var reset = r.append('th').append('button');
+            reset.attr("type", "button");
+            reset.attr("class", "reset btn btn-sm btn-outline-secondary");
+            reset.attr("title", "reset to factory defaults");
+            reset.append('span').html("&#8634;");
+          }
+          {
+            var add = r.append('th').append('button');
+            add.attr("type", "button");
+            add.attr("class", "add btn btn-sm btn-outline-secondary");
+            add.attr("title", "add country");
+            add.append('span').html("+");
+          }
+          {
+            var pop = r.append('th').attr("class", "population");
+            if (countries.length == 0) {
+              pop.html("&nbsp;");
+            } else {
+              pop.html("<a style='color: black !important' target ='_population-by-country' href='https://www.worldometers.info/world-population/population-by-country/'>population</a>");
+            }
+          }
           countries.forEach(function (c, i) {
             var r = t.append('tr');
-            r.append('th').attr("style", "color:" + color(c)).html(c);
-            r.append('td').attr("class", "population").html(new Intl.NumberFormat().format(populations[c]));
             var del = r.append('td').append('button');
             del.attr("type", "button");
-            del.attr("class", "remove btn btn-sm trans");
+            del.attr("class", "remove btn btn-sm");
             var a = Aliases.c2a(c);
             del.attr("title", "remove " + a);
             del.attr("name", a);
             del.append('span').html("&times;");
+            r.append('th').attr("style", "color:" + color(c)).html(c);
+            r.append('td').attr("class", "population").html(new Intl.NumberFormat().format(populations[c]));
           });
+          //*[@id="chart"]/g/foreignObject/div/table/tr[1]/th[3]/a
+          {
+            var r = t.append('tr');
+            r.append('td').html("&nbsp;");
+            r.append('td').html("&nbsp;");
+            r.append('td').html("&nbsp;");
+          }
+
           var buttons = document.querySelectorAll('[type="button"].remove');
           buttons.forEach(function (b) {
             b.addEventListener("click", function (event) {
@@ -494,7 +504,15 @@
               window.open('settings.html', 'settings');
             })
           });
+          var buttons = document.querySelectorAll('[type="button"].reset');
+          buttons.forEach(function (b) {
+            b.addEventListener("click", function () {
+              Aliases.reset();
+              location.reload();
+            })
+          });
         }
+
         // titles, etc.
         document.getElementById("title").innerHTML = "Daily deaths as of " + end.format('LL');
         document.getElementById("bubble").innerHTML = sizeOfAverage;

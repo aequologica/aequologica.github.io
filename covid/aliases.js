@@ -77,7 +77,17 @@ var Aliases = (function () {
         "U.S. Virgin Islands",
         "Vanuatu",
         "Wallis & Futuna",
-    ]
+    ];
+
+    var factory = _.sortBy([
+        "Belgium",
+        "France",
+        "Germany",
+        "Italy",
+        "Luxembourg",
+        "Spain",
+        "United States",
+    ]);
 
     function findKey(object, keyParam) {
         for (let key in object) {
@@ -96,6 +106,7 @@ var Aliases = (function () {
         return undefined;
     }
     return {
+        factory: factory,
         c2a: function (c) {
             return countryAliases[c] || c;
         },
@@ -108,10 +119,15 @@ var Aliases = (function () {
         },
         read: function () {
             var a = localStorage.getItem("aliases");
-            if (a) {
-                a = a.split(',');
+            if (a != null) {
+                if (a.length == 0) {
+                    a = [];
+                } else {
+                    a = a.split(',');
+                }
             } else {
-                a = [];
+                a = factory;
+                this.write(a);
             }
             a = _.sortBy(a);
             console.log('read', a);
@@ -121,6 +137,9 @@ var Aliases = (function () {
             a = _.sortBy(a);
             localStorage.setItem('aliases', a);
             console.log('write', a);
+        },
+        reset: function () {
+            localStorage.removeItem('aliases');
         },
         isExcluded: function (a) {
             if (excludedNoPopulation.includes(a)) {
