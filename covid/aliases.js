@@ -79,7 +79,7 @@ var Aliases = (function () {
         "Wallis & Futuna",
     ];
 
-    var factory = _.sortBy([
+    var factory = [
         "Belgium",
         "France",
         "Germany",
@@ -87,7 +87,7 @@ var Aliases = (function () {
         "Luxembourg",
         "Spain",
         "United States",
-    ]);
+    ];
 
     function findKey(object, keyParam) {
         for (let key in object) {
