@@ -43,6 +43,10 @@
       background-color: transparent;
     }
 
+    .table-responsive {
+      max-height: 300px;
+    }
+
     tr,
     .card-body {
       background-color: ghostwhite;
@@ -68,7 +72,7 @@
         |
         <a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html" target="_json_data_source">html</a>
       </div>
-     <h2 id="title" class="float-left p-2"></h2>
+      <h2 id="title" class="float-left p-2"></h2>
     </div>
 
     <svg id="chart"></svg>
@@ -118,8 +122,25 @@
   <!-- script src="https://cdn.jsdelivr.net/npm/sma@0.1.1/index.min.js"></script -->
   <script src="sma.js"></script>
   <script src="population.js"></script>
+  <script src="countries.js"></script>
 
   <script>
+    'use strict';
+
+    var countries = _.sortBy([
+      "Belgium",
+      "France",
+      "Germany",
+      "Italy",
+      "Luxembourg",
+      "Spain",
+      "US",
+    ]);
+
+    var asses = Aliases.read();
+    if (asses != null && asses.length > 0) {
+      countries = _.map(asses, (a) => Aliases.a2c(a));
+    }
 
     var ranges = document.querySelectorAll('[type="range"]');
     ranges.forEach(function (r) {
@@ -168,11 +189,10 @@
     var sizeOfAverage = 4;
     var startAfterNDeaths = 5;
     var populations = {};
-    var countries = _.sortBy(["France", "Italy", "US", "Spain", "Belgium", "Luxembourg", "Germany"]);
-    var aliases = { US: "United States" };
+
     function getPopulation(country) {
-      var index = _.sortedIndexBy(populationByCountry, { 'name': aliases[country] ? aliases[country] : country }, 'name');
-      return populationByCountry[index].count;
+      var index = _.sortedIndexBy(populationByAlias, { 'name': Aliases.a2c(country) }, 'name');
+      return populationByAlias[index].count;
     }
     countries.forEach(function (country) {
       _.assign(populations, { [country]: getPopulation(country) });
@@ -234,13 +254,18 @@
 
         var data = {};
         countries.forEach(function (country) {
-          _.assign(data, { [country]: dataParam[country] });
+          if (dataParam[country]) {
+            var qwe = "" + country + "";
+            _.assign(data, { [qwe]: dataParam[country] });
+          }
         });
         // parse all dates first
         countries.forEach(function (country) {
-          data[country].forEach(function (d) {
-            d.date = parseDate(d.date);
-          });
+          if (data[country]) {
+            data[country].forEach(function (d) {
+              d.date = parseDate(d.date);
+            });
+          }
         });
 
         // Set the color domain equal to the countries
@@ -248,51 +273,60 @@
 
         // calc start date as with respect to first # of deaths for all countries
         var start = moment("2020-02-01"); // default
-        var end = moment(_.maxBy(data[countries[0]], 'date').date);
+        var end = countries.length > 0 ? moment(_.maxBy(data[countries[0]], 'date').date) : moment();
+
         {
           var firstNDeaths = {};
 
           countries.forEach(function (country) {
-            firstNDeaths[country] = _.find(data[country], function (d) { return d.deaths >= startAfterNDeaths; });
+            var found = _.find(data[country], function (d) { return d.deaths >= startAfterNDeaths; })
+            if (found) {
+              firstNDeaths[country] = found;
+            }
+
           });
           var firstNDeathsArray = _.values(firstNDeaths);
 
           firstNDeathsArray.sort(function compare(a, b) {
             return moment(a.date) - moment(b.date);
           });
+          if (firstNDeathsArray.length > 0) {
+            var minFirstNDeaths = firstNDeathsArray[0];
+            start = moment(minFirstNDeaths.date);
+          }
 
-          var minFirstNDeaths = firstNDeathsArray[0];
-
-          start = moment(minFirstNDeaths.date); // 
         }
 
         // Format the data 
-        countries.forEach(function (country) {
+        if (countries.length > 0) {
+          countries.forEach(function (country) {
 
-          var prev = 0;
+            var prev = 0;
 
-          data[country].forEach(function (d) {
-            d.deaths = +d.deaths;
-            d.delta = (d.deaths - prev);
-            if (toggleCapita == "percapita") {
-              d.delta = d.delta / (populations[country] / 1000000)
-            }
-            prev = d.deaths;
+            data[country].forEach(function (d) {
+              d.deaths = +d.deaths;
+              d.delta = (d.deaths - prev);
+              if (toggleCapita == "percapita") {
+                d.delta = d.delta / (populations[country] / 1000000)
+              }
+              prev = d.deaths;
+            });
+
+            var deltas = _.map(data[country], 'delta');
+            var deltasMovingAverage = sma(deltas, sizeOfAverage);
+
+            var i = 0;
+            data[country].forEach(function (d) {
+              d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i - sizeOfAverage];
+              i = i + 1;
+            });
+
+            data[country] = _.filter(data[country], function (d) {
+              return moment(d.date).isSameOrAfter(start);
+            });
           });
 
-          var deltas = _.map(data[country], 'delta');
-          var deltasMovingAverage = sma(deltas, sizeOfAverage);
-
-          var i = 0;
-          data[country].forEach(function (d) {
-            d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i - sizeOfAverage];
-            i = i + 1;
-          });
-
-          data[country] = _.filter(data[country], function (d) {
-            return moment(d.date).isSameOrAfter(start);
-          });
-        });
+        }
 
         // Reformat data to make it more copasetic for d3
         // data = An array of objects
@@ -307,69 +341,71 @@
         // console.log(JSON.stringify(deathss, null, 2)) // to view the structure
 
         // Set the domain of the axes
-        xScale.domain(
-          d3.extent(deathss[0].datapoints, function (d) {
-            return d.date;
-          })
-        );
-
-        var yExtents = deathss.map(function (deaths) {
-          return d3.extent(deaths.datapoints, function (d) {
-            return d.delta;
-          });
-        });
-        var yExtent = [
-          d3.min(yExtents, function (d) { return d[0] }),
-          d3.max(yExtents, function (d) { return d[1] })
-        ];
-        yScale.domain(yExtent);
-
-        // Place the axes on the chart
-        svg
-          .append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(xAxis);
-
-        svg
-          .append("g")
-          .attr("class", "y axis")
-          .attr("transform", "translate(" + width + ", 0)")
-          .call(yAxis);
-
-        var products = svg
-          .selectAll(".category")
-          .data(deathss)
-          .enter()
-          .append("g")
-          .attr("class", "category");
-
-        products
-          .append("path")
-          .attr("class", "line")
-          .attr("id", function (d, i) {
-            return "line" + i;
-          })
-          .attr("d", function (d) {
-            return line(d.datapoints);
-          })
-          .style("stroke", function (d) {
-            return color(d.category);
-          });
-
-        // grid lines
-        function make_y_gridlines() {
-          return d3.axisRight(yScale)
-            .ticks(10)
-        }
-        svg.append("g")
-          .attr("class", "grid")
-          .style("stroke-dasharray", ("3,3"))
-          .call(make_y_gridlines()
-            .tickSize(width)
-            .tickFormat("")
+        if (countries.length > 0) {
+          xScale.domain(
+            d3.extent(deathss[0].datapoints, function (d) {
+              return d.date;
+            })
           );
 
+          var yExtents = deathss.map(function (deaths) {
+            return d3.extent(deaths.datapoints, function (d) {
+              return d.delta;
+            });
+          });
+          var yExtent = [
+            d3.min(yExtents, function (d) { return d[0] }),
+            d3.max(yExtents, function (d) { return d[1] })
+          ];
+          yScale.domain(yExtent);
+
+          // Place the axes on the chart
+          svg
+            .append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+          svg
+            .append("g")
+            .attr("class", "y axis")
+            .attr("transform", "translate(" + width + ", 0)")
+            .call(yAxis);
+
+          var products = svg
+            .selectAll(".category")
+            .data(deathss)
+            .enter()
+            .append("g")
+            .attr("class", "category");
+
+          products
+            .append("path")
+            .attr("class", "line")
+            .attr("id", function (d, i) {
+              return "line" + i;
+            })
+            .attr("d", function (d) {
+              return line(d.datapoints);
+            })
+            .style("stroke", function (d) {
+              return color(d.category);
+            });
+
+          // grid lines
+          function make_y_gridlines() {
+            return d3.axisRight(yScale)
+              .ticks(10)
+          }
+          svg.append("g")
+            .attr("class", "grid")
+            .style("stroke-dasharray", ("3,3"))
+            .call(make_y_gridlines()
+              .tickSize(width)
+              .tickFormat("")
+            );
+
+        }
         // legend
         {
           var fo = svg.append("foreignObject")
@@ -379,7 +415,9 @@
             .attr("height", 280);
           var div = fo.append('xhtml:div');
           div.attr("class", "p-2");
+          div.attr("style", "overflow-y: scroll");
           var t = div.append('table');
+          t.attr("class", "table-responsive");
           var r = t.append('tr');
           var add = r.append('th').append('button');
           add.attr("type", "button");
@@ -407,12 +445,10 @@
           var buttons = document.querySelectorAll('[type="button"].add');
           buttons.forEach(function (b) {
             b.addEventListener("click", function () {
-              window.open('settings.html');
+              window.open('settings.html', 'settings');
             })
           });
         }
-
-
         // titles, etc.
         document.getElementById("title").innerHTML = "Daily deaths as of " + end.format('LL');
         document.getElementById("bubble").innerHTML = sizeOfAverage;

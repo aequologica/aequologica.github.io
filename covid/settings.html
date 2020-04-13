@@ -59,24 +59,41 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
 
     <script src="population.js"></script>
+    <script src="countries.js"></script>
 
     <script>
-        populationByCountry.forEach(function (country) {
+        var i = 0;
+        var locallyStoredAliases = Aliases.read();
+        populationByAlias.forEach(function (alias) {
+            if (Aliases.isExcluded(alias.name)) {
+                return;
+            }
             var $tr = $("table#countries tbody").append(
                 $("<tr>")
             );
             $tr.append(
-                $('<td>').html('<div class="form-check"><input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></div>')
+                $('<td>').html('<span class="form-check"><input class="form-check-input position-static" type="checkbox" id="cb' + i + '" value="' + i + '" aria-label="..."' +
+                    (_.sortedIndexOf(locallyStoredAliases, alias.name) >= 0 ? "checked" : "")
+                    + '></span>')
             );
             $tr.append(
-                $('<td>').text(country.name)
+                $('<td>').html('<span id="n' + i + '">' + alias.name + '</span>')
             );
             $tr.append(
-                $('<td>').addClass('population').text(country.count.toLocaleString())
+                $('<td>').addClass('population').text(alias.count.toLocaleString())
             );
+            i = i + 1;
         });
-        $("table#countries").addClass("table-striped table-hover");
-
+        var checkboxes = document.querySelectorAll('[type="checkbox"]');
+        checkboxes.forEach(element => {
+            element.addEventListener("change", (event) => {
+                locallyStoredAliases = [];
+                $("input:checkbox:checked").each(function () {
+                    locallyStoredAliases.push($("#n" + $(this).val()).text());
+                });
+                Aliases.write(locallyStoredAliases);
+            });
+        });
     </script>
 
 </body>
