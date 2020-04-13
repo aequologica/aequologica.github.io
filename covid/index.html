@@ -60,7 +60,11 @@
         <a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html" target="_json_data_source">html</a>
       </div>
       <h2 id="title"></h2>
-      <p id="subtitle" style="display: inline-block"></p>
+      <p>
+        <input type="range" min="1" max="10" value="4" class="slider" id="range">
+        <span id="bubble"></span>
+        <span id="subtitle"></span>
+      </p>
     </div>
 
     <svg id="chart"></svg>
@@ -104,6 +108,21 @@
   <script src="sma.js"></script>
 
   <script>
+
+    var ranges = document.querySelectorAll('[type="range"]');
+    ranges.forEach(function (r) {
+      r.addEventListener("input", () => {
+        bubble.innerHTML = r.value;
+      });
+      r.addEventListener("change", () => {
+        bubble.innerHTML = r.value;
+        if (sizeOfAverage != r.value) {
+          sizeOfAverage = r.value;
+          raz();
+          draw();
+        }
+      });
+    });
 
     var radios = document.querySelectorAll('[type="radio"]');
 
@@ -250,8 +269,8 @@
             i = i + 1;
           });
 
-          data[country] = _.filter(data[country], function (d) { 
-            return moment(d.date).isSameOrAfter(start); 
+          data[country] = _.filter(data[country], function (d) {
+            return moment(d.date).isSameOrAfter(start);
           });
         });
 
@@ -341,7 +360,8 @@
         });
 
         document.getElementById("title").innerHTML = "Daily deaths"
-        document.getElementById("subtitle").innerHTML = "("+sizeOfAverage + " days rolling average)";
+        document.getElementById("bubble").innerHTML = sizeOfAverage;
+        document.getElementById("subtitle").innerHTML = "days rolling average";
 
         // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
         {
