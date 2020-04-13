@@ -39,9 +39,8 @@
       padding: 1rem;
     }
 
-    button.close {
-      font-size: small;
-      color: gray;
+    button.trans {
+      background-color: transparent;
     }
 
     tr,
@@ -384,7 +383,7 @@
           var r = t.append('tr');
           var add = r.append('th').append('button');
           add.attr("type", "button");
-          add.attr("class", "btn btn-light btn-sm");
+          add.attr("class", "btn btn-sm btn-outline-secondary");
           add.attr("title", "add country");
           add.append('span').html("+");
           r.append('th').attr("class", "population").html("<a target ='_population-by-country' href='https://www.worldometers.info/world-population/population-by-country/'>population</a>");
@@ -394,7 +393,8 @@
             r.append('th').attr("style", "color:" + color(c)).html(c);
             r.append('td').attr("class", "population").html(new Intl.NumberFormat().format(populations[c]));
             var del = r.append('td').append('button');
-            del.attr("type", "button").attr("class", "close");
+            del.attr("type", "button");
+            del.attr("class", "btn btn-sm trans");
             del.attr("title", "remove " + c);
             del.append('span').html("&times;");
           });
