@@ -52,6 +52,10 @@
       background-color: ghostwhite;
     }
 
+    .card {
+      display: inline-block !important;
+    }
+
     th.population,
     td.population {
       font-family: monospace;
@@ -79,14 +83,14 @@
 
     <div class="fixed-bottom">
       <div class="float-right p-2">
-        <div class="card" style="display: inline-block">
+        <div class="card">
           <div class="card-body">
             <input type="range" min="1" max="12" value="4" class="slider" id="range">
             <span id="bubble"></span>
             <span id="subtitle"></span>
           </div>
         </div>
-        <div class="card" style="display: inline-block">
+        <div class="card">
           <div class="card-body">
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="absolute" name="absolute" class="custom-control-input" checked>
@@ -98,7 +102,7 @@
             </div>
           </div>
         </div>
-        <div class="card" style="display: inline-block">
+        <div class="card">
           <div class="card-body">
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="linear" name="linear" class="custom-control-input" checked>
@@ -127,21 +131,7 @@
   <script>
     'use strict';
 
-    var countries = _.sortBy([
-      "Belgium",
-      "France",
-      "Germany",
-      "Italy",
-      "Luxembourg",
-      "Spain",
-      "US",
-    ]);
-
-    var asses = Aliases.read();
-    if (asses != null && asses.length > 0) {
-      countries = _.map(asses, (a) => Aliases.a2c(a));
-    }
-
+    // html handlers
     var ranges = document.querySelectorAll('[type="range"]');
     ranges.forEach(function (r) {
       r.addEventListener("input", () => {
@@ -189,24 +179,39 @@
       });
     });
 
+    // constants
+    var defaultCountries = _.sortBy([
+      "Belgium",
+      "France",
+      "Germany",
+      "Italy",
+      "Luxembourg",
+      "Spain",
+      "US",
+    ]);
+    var asses = Aliases.read();
+    var countries;
+    if (asses != null && asses.length > 0) {
+      countries = _.map(asses, (a) => Aliases.a2c(a));
+    } else {
+      countries = defaultCountries;
+    }
     var field = "deltaMovingAverage";
     var sizeOfAverage = 4;
-    var startAfterNDeaths = 5;
-    var populations = {};
     {
       var tmp = localStorage.getItem("sizeOfAverage");
       if (tmp && 0 < +tmp < 13) {
         sizeOfAverage = +tmp;
         var rang = document.getElementById("range");
-        if (rang) { 
-          var att = document.createAttribute("value");     
-          att.value = tmp                         
+        if (rang) {
+          var att = document.createAttribute("value");
+          att.value = tmp
           rang.setAttributeNode(att);
         }
       }
     }
-
-
+    var startAfterNDeaths = 5;
+    var populations = {};
     function getPopulation(country) {
       var countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
       return countray.count;
@@ -214,7 +219,6 @@
     countries.forEach(function (country) {
       _.assign(populations, { [country]: getPopulation(country) });
     });
-
     var toggleCapita = "absolute"; // "percapita"
     var toggleLinear = "linear";   // "logaritmic"
     {
@@ -231,7 +235,6 @@
         toggleLinear = tmp;
         var radiobtn = document.getElementById(toggleLinear);
         if (radiobtn) { radiobtn.checked = true; }
-
       }
     }
 
@@ -486,7 +489,10 @@
         // titles, etc.
         document.getElementById("title").innerHTML = "Daily deaths as of " + end.format('LL');
         document.getElementById("bubble").innerHTML = sizeOfAverage;
-        document.getElementById("subtitle").innerHTML = "days rolling average";
+        document.getElementById("subtitle").innerHTML = 
+          sizeOfAverage < 2
+          ? "day <span style='text-decoration: line-through'>rolling average</span>"
+          : "days                                            rolling average";
 
         // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
         {

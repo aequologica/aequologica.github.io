@@ -68,8 +68,8 @@
                 $("<tr>")
             );
             $tr.append(
-                $('<td>').html('<span class="form-check"><input class="form-check-input position-static" type="checkbox" id="cb' + i + '" value="' + i + '" aria-label="..."' +
-                    (_.sortedIndexOf(locallyStoredAliases, alias.name) >= 0 ? "checked" : "")
+                $('<td>').html('<span class="form-check"><input class="form-check-input position-static" type="checkbox" id="cb' + i + '" value="' + i
+                    + (_.sortedIndexOf(locallyStoredAliases, alias.name) >= 0 ? "checked" : "")
                     + '></span>')
             );
             $tr.append(
@@ -83,7 +83,7 @@
         var checkboxes = document.querySelectorAll('[type="checkbox"]');
         checkboxes.forEach(element => {
             element.addEventListener("change", (event) => {
-                locallyStoredAliases = [];
+                var locallyStoredAliases = [];
                 $("input:checkbox:checked").each(function () {
                     locallyStoredAliases.push($("#n" + $(this).val()).text());
                 });
