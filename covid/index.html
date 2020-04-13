@@ -2,11 +2,14 @@
 <html>
 
 <head>
-  <meta charset="utf-8"><!--
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  -->
   
   <style>
+    body {
+      font: 12px sans-serif;
+    }
+
     .axis path,
     .axis line {
       fill: none;
@@ -37,7 +40,11 @@
     legend {
       padding: 1rem;
     }
-   
+
+    .table-responsive {
+      max-height: 300px;
+    }
+
     tr,
     .card-body {
       background-color: ghostwhite;
@@ -46,10 +53,15 @@
     .card {
       display: inline-block !important;
     }
-   
+
+    th.population,
+    td.population {
+      font-family: monospace;
+      text-align: right;
+    }
   </style>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>

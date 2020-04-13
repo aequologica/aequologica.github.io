@@ -3,15 +3,41 @@
 
 <head>
     <meta charset="utf-8">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
+
     <style>
-        .table-responsive {
+        body {
+            font: 14px sans-serif;
+        }
+
+        table.table-responsive {
             max-height: 300px;
         }
+
+        th.population,
+        td.population {
+            font-family: monospace;
+            text-align: right;
+        }
+
+        table.table-fit {
+            width: auto !important;
+            table-layout: auto !important;
+        }
+
+        table.table-fit thead th,
+        table.table-fit tfoot th {
+            width: auto !important;
+        }
+
+        table.table-fit tbody td,
+        table.table-fit tfoot td {
+            width: auto !important;
+        }
     </style>
-    
+
 </head>
 
 <body>
