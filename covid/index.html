@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <style>
     body {
-      font: 10px sans-serif;
+      font: 12px sans-serif;
     }
 
     .axis path,
@@ -27,18 +27,25 @@
       position: absolute;
     }
 
-    .legend {
-      font-size: 16px;
-      font-weight: bold;
-      text-anchor: left;
-    }
-
     .fixed-bottom .card-body {
-      padding: .5rem !important;
+      padding: .4rem !important;
     }
 
     .grid line {
-      stroke: #eee;
+      stroke: #bbccdd;
+    }
+
+    legend {
+      padding: 1rem;
+    }
+
+    button.close {
+      font-size: small;
+      color: gray;
+    }
+
+    tr {
+      vertical-align: baseline;
     }
 
     th.population,
@@ -107,6 +114,7 @@
   <!-- https://github.com/doowb/sma -->
   <!-- script src="https://cdn.jsdelivr.net/npm/sma@0.1.1/index.min.js"></script -->
   <script src="sma.js"></script>
+  <script src="population.js"></script>
 
   <script>
 
@@ -154,18 +162,19 @@
     });
 
     var field = "deltaMovingAverage";
-    var countries = _.sortBy(["France", "Italy", "US", "Spain", "Belgium", "Luxembourg", "Germany"]);
     var sizeOfAverage = 4;
     var startAfterNDeaths = 5;
-    var populations = {
-      US: 330584264,      // https://www.worldometers.info/world-population/us-population/
-      France: 65242510,   // https://www.worldometers.info/world-population/france-population/
-      Italy: 60480826,    // https://www.worldometers.info/world-population/italy-population/ 
-      Spain: 46750899,    // https://www.worldometers.info/world-population/spain-population/
-      Belgium: 11578770,  // https://www.worldometers.info/world-population/belgium-population/
-      Luxembourg: 623768, // https://www.worldometers.info/world-population/luxembourg-population/
-      Germany: 83726714,  // https://www.worldometers.info/world-population/germany-population/
-    };
+    var populations = {};
+    var countries = _.sortBy(["France", "Italy", "US", "Spain", "Belgium", "Luxembourg", "Germany"]);
+    var aliases = { US: "United States" };
+    function getPopulation(country) {
+      var index = _.sortedIndexBy(populationByCountry, { 'name': aliases[country] ? aliases[country] : country }, 'name');
+      return populationByCountry[index].count;
+    }
+    countries.forEach(function (country) {
+      _.assign(populations, { [country]: getPopulation(country) });
+    });
+
     var toggleCapita = "absolute"; // "percapita"
     var toggleLinear = "linear";   // "logaritmic"
 
@@ -316,15 +325,8 @@
         svg
           .append("g")
           .attr("class", "y axis")
-          .attr("transform", "translate(" + width + " ,0)")
-          .call(yAxis)
-          .append("text")
-          .attr("class", "label")
-          .attr("y", 6)
-          .attr("dy", ".71em")
-          .attr("dx", ".71em")
-          .style("text-anchor", "beginning")
-          .text("");
+          .attr("transform", "translate(" + width + ", 0)")
+          .call(yAxis);
 
         var products = svg
           .selectAll(".category")
@@ -346,26 +348,51 @@
             return color(d.category);
           });
 
-        var fo = svg.append("foreignObject")
-          .attr("x", 20)
-          .attr("y", 0)
-          .attr("width", 480)
-          .attr("height", 500);
-        var div = fo.append('xhtml:div');
+        // grid lines
+        function make_y_gridlines() {
+          return d3.axisRight(yScale)
+            .ticks(10)
+        }
+        svg.append("g")
+          .attr("class", "grid")
+          .style("stroke-dasharray", ("3,3"))
+          .call(make_y_gridlines()
+            .tickSize(width)
+            .tickFormat("")
+          );
 
         // legend
-        // Loop through each symbol / key
+        var fo = svg.append("foreignObject")
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("width", 240)
+          .attr("height", 240);
+        var div = fo.append('xhtml:div');
+        div.attr("class", "px-2");
         var t = div.append('table');
         var r = t.append('tr');
-        r.append('th').html("&nbsp;");
+        var add = r.append('th').append('button');
+        add.attr("type", "button");
+        add.attr("class", "btn btn-light btn-sm");
+        add.append('span').html("+");
         r.append('th').attr("class", "population").html("population");
-
+        r.append('th').html("&nbsp;");
         countries.forEach(function (d, i) {
           var r = t.append('tr');
           r.append('th').attr("style", "color:" + color(d)).html(d);
           r.append('td').attr("class", "population").html(new Intl.NumberFormat().format(populations[d]));
+          var del = r.append('td').append('button');
+          del.attr("type", "button").attr("class", "close");
+          del.append('span').html("&times;");
+        });
+        var buttons = document.querySelectorAll('[type="button"]');
+        buttons.forEach(function (b) {
+          b.addEventListener("click", function () {
+            alert("work in progress");
+          })
         });
 
+        // titles, etc.
         document.getElementById("title").innerHTML = "Daily deaths"
         document.getElementById("bubble").innerHTML = sizeOfAverage;
         document.getElementById("subtitle").innerHTML = "days rolling average";
