@@ -197,6 +197,12 @@
       var tmp = localStorage.getItem("sizeOfAverage");
       if (tmp && 0 < +tmp < 13) {
         sizeOfAverage = +tmp;
+        var rang = document.getElementById("range");
+        if (rang) { 
+          var att = document.createAttribute("value");     
+          att.value = tmp                         
+          rang.setAttributeNode(att);
+        }
       }
     }
 
