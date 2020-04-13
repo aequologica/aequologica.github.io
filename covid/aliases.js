@@ -16,7 +16,6 @@ var Aliases = (function () {
         "US": "United States",
         "West Bank and Gaza": "State of Palestine",
     };
-
     var excludedNoPopulation = [
         "Burma",
         "Diamond Princess",
@@ -80,7 +79,6 @@ var Aliases = (function () {
         "Wallis & Futuna",
     ]
 
-
     function findKey(object, keyParam) {
         for (let key in object) {
             if (keyParam == key) {
@@ -98,9 +96,8 @@ var Aliases = (function () {
         return undefined;
     }
     return {
-        qwe: findKey,
         c2a: function (c) {
-            return countryAliases[c];
+            return countryAliases[c] || c;
         },
         a2c: function (a) {
             var key = findKeyHavingValue(countryAliases, a);
@@ -131,8 +128,7 @@ var Aliases = (function () {
             }
             if (excludedNoCovidData.includes(a)) {
                 return true;
-            }
-            
+            } 
             return false;
         }
     }

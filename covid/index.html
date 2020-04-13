@@ -122,7 +122,7 @@
   <!-- script src="https://cdn.jsdelivr.net/npm/sma@0.1.1/index.min.js"></script -->
   <script src="sma.js"></script>
   <script src="population.js"></script>
-  <script src="countries.js"></script>
+  <script src="aliases.js"></script>
 
   <script>
     'use strict';
@@ -151,6 +151,7 @@
         bubble.innerHTML = r.value;
         if (sizeOfAverage != r.value) {
           sizeOfAverage = r.value;
+          localStorage.setItem("sizeOfAverage", sizeOfAverage);
           raz();
           draw();
         }
@@ -158,22 +159,25 @@
     });
 
     var radios = document.querySelectorAll('[type="radio"]');
-
     radios.forEach(function (r) {
       r.addEventListener("click", function (e) {
         var oldLinear = toggleLinear, oldCapita = toggleCapita;
         switch (this.id) {
           case "linear":
             toggleLinear = "linear";
+            localStorage.setItem("toggleLinear", toggleLinear);
             break;
           case "logaritmic":
             toggleLinear = "logaritmic";
+            localStorage.setItem("toggleLinear", toggleLinear);
             break;
           case "absolute":
             toggleCapita = "absolute";
+            localStorage.setItem("toggleCapita", toggleCapita);
             break;
           case "percapita":
             toggleCapita = "percapita";
+            localStorage.setItem("toggleCapita", toggleCapita);
             break;
           default:
             ;
@@ -189,10 +193,17 @@
     var sizeOfAverage = 4;
     var startAfterNDeaths = 5;
     var populations = {};
+    {
+      var tmp = localStorage.getItem("sizeOfAverage");
+      if (tmp && 0 < +tmp < 13) {
+        sizeOfAverage = +tmp;
+      }
+    }
+
 
     function getPopulation(country) {
-      var index = _.sortedIndexBy(populationByAlias, { 'name': Aliases.a2c(country) }, 'name');
-      return populationByAlias[index].count;
+      var countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
+      return countray.count;
     }
     countries.forEach(function (country) {
       _.assign(populations, { [country]: getPopulation(country) });
@@ -200,6 +211,23 @@
 
     var toggleCapita = "absolute"; // "percapita"
     var toggleLinear = "linear";   // "logaritmic"
+    {
+      var tmp = localStorage.getItem("toggleCapita");
+      if (tmp && (tmp == "absolute" || tmp == "percapita")) {
+        toggleCapita = tmp;
+        var radiobtn = document.getElementById(toggleCapita);
+        if (radiobtn) { radiobtn.checked = true; }
+      }
+    }
+    {
+      var tmp = localStorage.getItem("toggleLinear");
+      if (tmp && (tmp == "linear" || tmp == "logaritmic")) {
+        toggleLinear = tmp;
+        var radiobtn = document.getElementById(toggleLinear);
+        if (radiobtn) { radiobtn.checked = true; }
+
+      }
+    }
 
     function raz() {
       var elem = document.querySelector('#chart');
