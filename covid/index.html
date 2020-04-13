@@ -150,7 +150,7 @@
 
     var radios = document.querySelectorAll('[type="radio"]');
     radios.forEach(function (r) {
-      r.addEventListener("click", function (e) {
+      r.addEventListener("click", function (event) {
         var oldLinear = toggleLinear, oldCapita = toggleCapita;
         switch (this.id) {
           case "linear":
@@ -470,13 +470,22 @@
             var del = r.append('td').append('button');
             del.attr("type", "button");
             del.attr("class", "remove btn btn-sm trans");
-            del.attr("title", "remove " + c);
+            var a = Aliases.c2a(c);
+            del.attr("title", "remove " + a);
+            del.attr("name", a);
             del.append('span').html("&times;");
           });
           var buttons = document.querySelectorAll('[type="button"].remove');
           buttons.forEach(function (b) {
-            b.addEventListener("click", function () {
-              alert("work in progress");
+            b.addEventListener("click", function (event) {
+              console.log(this);
+              var locallyStoredAliases = Aliases.read();
+              const index = locallyStoredAliases.indexOf(event.currentTarget.name);
+              if (index > -1) {
+                locallyStoredAliases.splice(index, 1);
+              }
+              Aliases.write(locallyStoredAliases);
+              location.reload();
             })
           });
           var buttons = document.querySelectorAll('[type="button"].add');
@@ -489,10 +498,10 @@
         // titles, etc.
         document.getElementById("title").innerHTML = "Daily deaths as of " + end.format('LL');
         document.getElementById("bubble").innerHTML = sizeOfAverage;
-        document.getElementById("subtitle").innerHTML = 
+        document.getElementById("subtitle").innerHTML =
           sizeOfAverage < 2
-          ? "day <span style='text-decoration: line-through'>rolling average</span>"
-          : "days                                            rolling average";
+            ? "day <span style='text-decoration: line-through'>rolling average</span>"
+            : "days                                            rolling average";
 
         // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
         {
