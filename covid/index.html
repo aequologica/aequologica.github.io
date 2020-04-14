@@ -59,6 +59,10 @@
       font-family: monospace;
       text-align: right;
     }
+
+    .qwe {
+      margin-right: 0 !important;
+    }
   </style>
 
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -99,11 +103,11 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <div class="custom-control custom-radio custom-control-inline">
+            <div class="qwe custom-control custom-radio custom-control-inline">
               <input type="radio" id="absolute" name="absolute" class="custom-control-input" checked>
               <label class="custom-control-label" for="absolute">absolute</label>
             </div>
-            <div class="custom-control custom-radio custom-control-inline">
+            <div class="qwe custom-control custom-radio custom-control-inline">
               <input type="radio" id="percapita" name="absolute" class="custom-control-input">
               <label class="custom-control-label" for="percapita">per capita</label>
             </div>
@@ -111,11 +115,11 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <div class="custom-control custom-radio custom-control-inline">
+            <div class="qwe custom-control custom-radio custom-control-inline">
               <input type="radio" id="linear" name="linear" class="custom-control-input" checked>
               <label class="custom-control-label" for="linear">linear</label>
             </div>
-            <div class="custom-control custom-radio custom-control-inline">
+            <div class="qwe custom-control custom-radio custom-control-inline">
               <input type="radio" id="logaritmic" name="linear" class="custom-control-input">
               <label class="custom-control-label" for="logaritmic">logaritmic</label>
             </div>
@@ -451,8 +455,8 @@
         document.getElementById("bubble").innerHTML = sizeOfAverage;
         document.getElementById("subtitle").innerHTML =
           sizeOfAverage < 2
-            ? "day <span style='text-decoration: line-through'>rolling average</span>"
-            : "days                                            rolling average";
+            ? "day <span style='text-decoration: line-through'>average</span>"
+            : "days                                            average";
 
         // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
         {
