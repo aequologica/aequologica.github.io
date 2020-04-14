@@ -118,30 +118,28 @@
 
         function toggle(event) {
             event.stopPropagation();
+            $table_sorter.trigger('update');
             var locallyStoredAliases = [];
             $("input:checkbox:checked").each(function () {
                 locallyStoredAliases.push($("#n" + $(this).val()).text());
             });
             Aliases.write(locallyStoredAliases);
         }
-        var $trs = $('tbody tr');
 
+        var $trs = $('tbody tr');
         $trs.on("change", (event) => {
             var $eventTarget = $(event.target);
             if ($eventTarget.is("input")) {
                 var $td = $eventTarget.closest('td');
-                var $tr = $td.closest('tr');
                 var $truc = $td.find( "#trucAndAstuce" );
-                $truc.text($eventTarget.is(':checked') ? "checked" : "unchecked") /*+ $tr.attr("id")*/;
-                $table_sorter.trigger('update');
+                $truc.text($eventTarget.is(':checked') ? "checked" : "unchecked");
+                toggle(event);
             }
-            toggle(event);
         }).on("mouseup", (event) => {
             var $eventTarget = $(event.target);
             if (!$eventTarget.is("input")) {
                 var $tr = $eventTarget.closest('tr');
-                var row_index = $tr.index();
-                var $cb = $("#cb" + row_index);
+                var $cb = $tr.find( "input" )
                 $cb.prop('checked', !$cb.prop('checked'));
                 toggle(event);
             }
