@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+
   <style>
     body {
       font: 12px sans-serif;
@@ -68,13 +68,22 @@
   <div class="container-fluid">
 
     <div class="fixed-top">
-      <div class="float-right p-2">
-        sources:
-        <a href="https://pomber.github.io/covid19/timeseries.json" target="_json-data_source">data</a>
-        |
-        <a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html" target="_json_data_source">html</a>
+      <div class="row p-2">
+        <div class="col-10">
+          <h3 id="title"></h3>
+        </div>
+        <div class="col col-2">
+          <div class="float-right">
+            sources:
+            <a href="https://pomber.github.io/covid19/timeseries.json" target="_json-data_source">data</a>
+            |
+            <a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html" target="_json_data_source">html</a>
+          </div>
+        </div>
       </div>
-      <h2 id="title" class="float-left p-2"></h2>
+
+
+
     </div>
 
     <svg id="chart"></svg>
@@ -119,12 +128,14 @@
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@5.15.1/dist/d3.min.js" integrity="sha256-SQJ/nCYPXFPuqoS56EfnesDBPNiitndOIfN2WdPRi/o=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
   <!-- https://github.com/doowb/sma -->
   <!-- script src="https://cdn.jsdelivr.net/npm/sma@0.1.1/index.min.js"></script -->
   <script src="sma.js"></script>
   <script src="population.js"></script>
   <script src="aliases.js"></script>
+  <script src="legend.js"></script>
 
   <script>
     'use strict';
@@ -432,104 +443,8 @@
             );
 
         }
-        // legend
-        {
-          var fo = svg.append("foreignObject")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("width", 280)
-            .attr("height", 280);
-          var div = fo.append('xhtml:div');
-          div.attr("class", "p-2");
-          div.attr("style", "overflow-y: scroll");
-          var t = div.append('table');
-          t.attr("class", "table-responsive");
-          var r = t.append('tr');
-          {
-            var reset = r.append('th').append('button');
-            reset.attr("type", "button");
-            reset.attr("class", "reset btn btn-sm btn-outline-secondary");
-            reset.attr("title", "reset list of coutries to factory defaults");
-            reset.append('span').html("&#8634;");
-          }
-          var th = r.append('th');
-          {
-            var add = th.append('button');
-            add.attr("type", "button");
-            add.attr("class", "add btn btn-sm btn-outline-secondary");
-            add.attr("title", "add country");
-            add.append('span').html("+");
-          }
-          th.append('span').html("&nbsp;");
-          {
-            
-            var save = th.append('button');
-            save.attr("type", "button");
-            save.attr("class", "save btn btn-sm btn-outline-secondary");
-            save.attr("title", "save current countries");
-            save.append('span').html("&darr;");
-          }          
-          {
-            var pop = r.append('th').attr("class", "population");
-            if (countries.length == 0) {
-              pop.html("&nbsp;");
-            } else {
-              pop.html("<a style='color: black !important' target ='_population-by-country' href='https://www.worldometers.info/world-population/population-by-country/'>population</a>");
-            }
-          }
-          countries.forEach(function (c, i) {
-            var r = t.append('tr');
-            var del = r.append('td').append('button');
-            del.attr("type", "button");
-            del.attr("class", "remove btn btn-sm");
-            var a = Aliases.c2a(c);
-            del.attr("title", "remove " + a);
-            del.attr("name", a);
-            del.append('span').html("&times;");
-            r.append('th').attr("style", "color:" + color(c)).html(c);
-            r.append('td').attr("class", "population").html(new Intl.NumberFormat().format(populations[c]));
-          });
-          //*[@id="chart"]/g/foreignObject/div/table/tr[1]/th[3]/a
-          {
-            var r = t.append('tr');
-            r.append('td').html("&nbsp;");
-            r.append('td').html("&nbsp;");
-            r.append('td').html("&nbsp;");
-          }
 
-          var buttons = document.querySelectorAll('[type="button"].remove');
-          buttons.forEach(function (b) {
-            b.addEventListener("click", function (event) {
-              console.log(this);
-              var locallyStoredAliases = Aliases.read();
-              const index = locallyStoredAliases.indexOf(event.currentTarget.name);
-              if (index > -1) {
-                locallyStoredAliases.splice(index, 1);
-              }
-              Aliases.write(locallyStoredAliases);
-              location.reload();
-            })
-          });
-          var buttons = document.querySelectorAll('[type="button"].add');
-          buttons.forEach(function (b) {
-            b.addEventListener("click", function () {
-              window.open('settings.html', 'settings');
-            })
-          });
-          var buttons = document.querySelectorAll('[type="button"].save');
-          buttons.forEach(function (b) {
-            b.addEventListener("click", function () {
-              alert("work in progress");
-            })
-          });
-          var buttons = document.querySelectorAll('[type="button"].reset');
-          buttons.forEach(function (b) {
-            b.addEventListener("click", function () {
-              Aliases.reset();
-              location.reload();
-            })
-          });
-        }
+        Legend.draw(svg, populations, color);
 
         // titles, etc.
         document.getElementById("title").innerHTML = "Daily deaths as of " + end.format('LL');

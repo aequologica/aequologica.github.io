@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link src="legend.css">
+
+    <style>
+        body {
+            font: 12px sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <svg id="chart"></svg>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@5.15.1/dist/d3.min.js" integrity="sha256-SQJ/nCYPXFPuqoS56EfnesDBPNiitndOIfN2WdPRi/o=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+
+    <script src="population.js"></script>
+    <script src="aliases.js"></script>
+    <script src="legend.js"></script>
+
+    <script>
+        var svg = d3.select("#chart").append("g");
+        var populations = {
+            France: 12
+        };
+        var color = d3.scaleOrdinal().range(d3.schemeCategory10);
+
+        Legend.draw(svg, populations, color);
+    </script>
+
+</body>
+
+</html>
