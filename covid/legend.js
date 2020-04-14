@@ -1,7 +1,7 @@
 var Legend = (function () {
     'use strict';
     // legend
-    function draw (svg, populations, color) {
+    function draw(svg, populations, color) {
         var fo = svg.append("foreignObject")
             .attr("x", 0)
             .attr("y", 0)
@@ -20,23 +20,35 @@ var Legend = (function () {
             reset.attr("title", "reset list of coutries to factory defaults");
             reset.append('span').html("&#8634;");
         }
-        var th = r.append('th');
         {
-            var add = th.append('button');
-            add.attr("type", "button");
-            add.attr("class", "add btn btn-sm btn-outline-secondary");
-            add.attr("title", "add country");
-            add.append('span').html("+");
-        }
-        th.append('span').html("&nbsp;");
-        {
+            var th = r.append('th');
+            {
+                var add = th.append('button');
+                add.attr("type", "button");
+                add.attr("class", "add btn btn-sm btn-outline-secondary");
+                add.attr("title", "add country");
+                add.append('span').html("+");
+            }
+            th.append('span').html("&nbsp;");
+            {
 
-            var save = th.append('button');
-            save.attr("type", "button");
-            save.attr("class", "save btn btn-sm btn-outline-secondary");
-            save.attr("title", "save current countries");
-            save.append('span').html("&darr;");
+                var save = th.append('button');
+                save.attr("type", "button");
+                save.attr("class", "save btn btn-sm btn-outline-secondary");
+                save.attr("title", "save current countries");
+                save.append('span').html("&darr;");
+            }
+            th.append('span').html("&nbsp;");
+            {
+
+                var hide = th.append('button');
+                hide.attr("type", "button");
+                hide.attr("class", "hide btn btn-sm btn-outline-secondary");
+                hide.attr("title", "toggle population column");
+                hide.append('span').html("&harr;");
+            }
         }
+
         {
             var pop = r.append('th').attr("class", "population");
             if (populations.length == 0) {
@@ -91,6 +103,21 @@ var Legend = (function () {
                 alert("work in progress");
             })
         });
+        var buttons = document.querySelectorAll('[type="button"].hide');
+        buttons.forEach(function (b) {
+            b.addEventListener("click", function () {
+                var pops = document.getElementsByClassName("population");
+                for (let pop of pops) {
+                    var sty = pop.getAttribute("style");
+                    if (!sty || sty == "display:table-cell") {
+                        pop.setAttribute("style", "display:none");
+                    } else {
+                        pop.setAttribute("style", "display:table-cell");
+                    }
+                    
+                }
+            })
+        });
         var buttons = document.querySelectorAll('[type="button"].reset');
         buttons.forEach(function (b) {
             b.addEventListener("click", function () {
@@ -101,7 +128,7 @@ var Legend = (function () {
     }
 
     return {
-        draw: function(svg, populations, color) {
+        draw: function (svg, populations, color) {
             draw(svg, populations, color);
         },
     }
