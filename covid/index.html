@@ -449,16 +449,26 @@
             var reset = r.append('th').append('button');
             reset.attr("type", "button");
             reset.attr("class", "reset btn btn-sm btn-outline-secondary");
-            reset.attr("title", "reset to factory defaults");
+            reset.attr("title", "reset list of coutries to factory defaults");
             reset.append('span').html("&#8634;");
           }
+          var th = r.append('th');
           {
-            var add = r.append('th').append('button');
+            var add = th.append('button');
             add.attr("type", "button");
             add.attr("class", "add btn btn-sm btn-outline-secondary");
             add.attr("title", "add country");
             add.append('span').html("+");
           }
+          th.append('span').html("&nbsp;");
+          {
+            
+            var save = th.append('button');
+            save.attr("type", "button");
+            save.attr("class", "save btn btn-sm btn-outline-secondary");
+            save.attr("title", "save current countries");
+            save.append('span').html("&darr;");
+          }          
           {
             var pop = r.append('th').attr("class", "population");
             if (countries.length == 0) {
@@ -504,6 +514,12 @@
           buttons.forEach(function (b) {
             b.addEventListener("click", function () {
               window.open('settings.html', 'settings');
+            })
+          });
+          var buttons = document.querySelectorAll('[type="button"].save');
+          buttons.forEach(function (b) {
+            b.addEventListener("click", function () {
+              alert("work in progress");
             })
           });
           var buttons = document.querySelectorAll('[type="button"].reset');
