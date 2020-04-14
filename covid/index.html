@@ -56,7 +56,7 @@
       text-align: right;
     }
 
-    .qwe {
+    .zero-margin-right {
       margin-right: 0 !important;
     }
   </style>
@@ -96,11 +96,11 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <div class="qwe custom-control custom-radio custom-control-inline">
+            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
               <input type="radio" id="absolute" name="absolute" class="custom-control-input" checked>
               <label class="custom-control-label" for="absolute">absolute</label>
             </div>
-            <div class="qwe custom-control custom-radio custom-control-inline">
+            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
               <input type="radio" id="percapita" name="absolute" class="custom-control-input">
               <label class="custom-control-label" for="percapita">per capita</label>
             </div>
@@ -108,11 +108,11 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <div class="qwe custom-control custom-radio custom-control-inline">
+            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
               <input type="radio" id="linear" name="linear" class="custom-control-input" checked>
               <label class="custom-control-label" for="linear">linear</label>
             </div>
-            <div class="qwe custom-control custom-radio custom-control-inline">
+            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
               <input type="radio" id="logaritmic" name="linear" class="custom-control-input">
               <label class="custom-control-label" for="logaritmic">logaritmic</label>
             </div>
@@ -289,8 +289,7 @@
         var data = {};
         countries.forEach(function (country) {
           if (dataParam[country]) {
-            var qwe = "" + country + "";
-            _.assign(data, { [qwe]: dataParam[country] });
+            _.assign(data, { [country]: dataParam[country] });
           }
         });
         // parse all dates first
