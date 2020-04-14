@@ -348,6 +348,9 @@
 
             var deltas = _.map(data[country], 'delta');
             var deltasMovingAverage = sma(deltas, sizeOfAverage);
+            for (var i = 0; i<deltasMovingAverage.length; i++) { 
+              deltasMovingAverage[i] = +deltasMovingAverage[i];
+            }
 
             var i = 0;
             data[country].forEach(function (d) {
@@ -384,7 +387,7 @@
 
           var yExtents = deathss.map(function (deaths) {
             return d3.extent(deaths.datapoints, function (d) {
-              return d.delta;
+              return d[field];
             });
           });
           var yExtent = [
