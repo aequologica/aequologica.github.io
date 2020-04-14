@@ -1,5 +1,8 @@
 var Legend = (function () {
     'use strict';
+
+    var togglePopulationColumnVisibility = localStorage.getItem("togglePopulationColumnVisibility", togglePopulationColumnVisibility);
+
     // legend
     function draw(svg, populations, color) {
         var fo = svg.append("foreignObject")
@@ -17,7 +20,7 @@ var Legend = (function () {
             var reset = r.append('th').append('button');
             reset.attr("type", "button");
             reset.attr("class", "reset btn btn-sm btn-outline-secondary");
-            reset.attr("title", "reset list of coutries to factory defaults");
+            reset.attr("title", "reset list of countries to factory defaults");
             reset.append('span').html("&#8634;");
         }
         {
@@ -44,13 +47,16 @@ var Legend = (function () {
                 var hide = th.append('button');
                 hide.attr("type", "button");
                 hide.attr("class", "hide btn btn-sm btn-outline-secondary");
-                hide.attr("title", "toggle population column");
+                hide.attr("title", "toggle population column visibility");
                 hide.append('span').html("&harr;");
             }
         }
 
         {
             var pop = r.append('th').attr("class", "population");
+            if (togglePopulationColumnVisibility) {
+                pop.attr("style", "display:none");
+            }
             if (populations.length == 0) {
                 pop.html("&nbsp;");
             } else {
@@ -68,7 +74,11 @@ var Legend = (function () {
             del.attr("name", a);
             del.append('span').html("&times;");
             r.append('th').attr("style", "color:" + color(c)).html(c);
-            r.append('td').attr("class", "population").html(new Intl.NumberFormat().format(populations[c]));
+            var po = r.append('td').attr("class", "population");
+            if (togglePopulationColumnVisibility) {
+                po.attr("style", "display:none");
+            }
+            po.html(new Intl.NumberFormat().format(populations[c]));
         }
         //*[@id="chart"]/g/foreignObject/div/table/tr[1]/th[3]/a
         {
@@ -110,8 +120,10 @@ var Legend = (function () {
                 for (let pop of pops) {
                     var sty = pop.getAttribute("style");
                     if (!sty || sty == "display:table-cell") {
+                        localStorage.setItem("togglePopulationColumnVisibility", false);
                         pop.setAttribute("style", "display:none");
                     } else {
+                        localStorage.setItem("togglePopulationColumnVisibility", true);
                         pop.setAttribute("style", "display:table-cell");
                     }
                     
