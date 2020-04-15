@@ -48,6 +48,15 @@
 
     .card {
       display: inline-block !important;
+      vertical-align: bottom;
+    }
+
+    .fixed-bottom#my-bottom .card-body {
+      padding: .2rem .3rem !important;
+      padding-top: 0.2rem !important;
+      padding-right: 0.3rem !important;
+      padding-bottom: 0.2rem !important;
+      padding-left: 0.3rem !important;
     }
 
     th.population,
@@ -91,14 +100,16 @@
 
     <svg id="chart"></svg>
 
-    <div class="fixed-bottom" style="font-size:10pt">
+    <div id="my-bottom" class="fixed-bottom" style="font-size:10pt">
       <div class="float-right p-2">
-        <div class="card">
+        <div class="card" style="vertical-align: bottom;">
           <div class="card-body">
-            <div class="custom-control custom-control-inline" style="margin-right: 0 !important; margin-left: 0 !important; padding-left: 0 !important;">
-
-              <input type="range" min="1" max="12" value="4" class="custom-range" id="range" style="width:80px"> 
-              <label class="my-custom-control-label" id="bubble" for="range"style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label> 
+            <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
+              <!--
+                 style="margin-right: 0 !important; margin-left: 0 !important; padding-left: 0 !important;"
+              -->
+              <input type="range" min="1" max="12" value="4" class="custom-range" id="range" style="width:80px">
+              <label class="my-custom-control-label" id="bubble" for="range" style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label>
               <label class="my-custom-control-label" id="subtitle"></label>
               <!--
                 
@@ -262,7 +273,7 @@
 
     function draw() {
       // Define margins
-      var margin = { top: 72, right: 40, bottom: 40, left: 0 },
+      var margin = { top: 48, right: 56, bottom: 32, left: 0 },
         width =
           parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
         height =
