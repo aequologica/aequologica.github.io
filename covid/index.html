@@ -59,6 +59,12 @@
     .zero-margin-right {
       margin-right: 0 !important;
     }
+
+    .my-custom-control-label {
+      position: relative;
+      margin-bottom: 0;
+      vertical-align: top;
+    }
   </style>
 
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -69,10 +75,10 @@
 
     <div class="fixed-top">
       <div class="row p-2">
-        <div class="col-10">
+        <div class="col-9">
           <h3 id="title"></h3>
         </div>
-        <div class="col col-2">
+        <div class="col col-3">
           <div class="float-right" style="text-align: right;">
             sources:
             <a href="https://github.com/pomber/covid19" target="_json-data_source">data</a>
@@ -85,13 +91,23 @@
 
     <svg id="chart"></svg>
 
-    <div class="fixed-bottom">
+    <div class="fixed-bottom" style="font-size:10pt">
       <div class="float-right p-2">
         <div class="card">
           <div class="card-body">
-            <input type="range" min="1" max="12" value="4" class="slider" id="range" style="width:80px">
-            <span id="bubble" style="min-width:1rem; display: inline-block;"></span>
-            <span id="subtitle"></span>
+            <div class="custom-control custom-control-inline" style="margin-right: 0 !important; margin-left: 0 !important; padding-left: 0 !important;">
+
+              <input type="range" min="1" max="12" value="4" class="custom-range" id="range" style="width:80px"> 
+              <label class="my-custom-control-label" id="bubble" for="range"style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label> 
+              <label class="my-custom-control-label" id="subtitle"></label>
+              <!--
+                
+              <input type="range" class="custom-range" id="range" >
+              <label class="custom-control-label" for="range" id="bubble" style="min-width:1rem; display: inline-block;">
+                
+              </label>
+              -->
+            </div>
           </div>
         </div>
         <div class="card">
@@ -246,7 +262,7 @@
 
     function draw() {
       // Define margins
-      var margin = { top: 80, right: 80, bottom: 40, left: 20 },
+      var margin = { top: 72, right: 40, bottom: 40, left: 0 },
         width =
           parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
         height =
@@ -347,7 +363,7 @@
 
             var deltas = _.map(data[country], 'delta');
             var deltasMovingAverage = sma(deltas, sizeOfAverage);
-            for (var i = 0; i<deltasMovingAverage.length; i++) { 
+            for (var i = 0; i < deltasMovingAverage.length; i++) {
               deltasMovingAverage[i] = +deltasMovingAverage[i];
             }
 
