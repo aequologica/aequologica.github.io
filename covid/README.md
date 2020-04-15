@@ -1,3 +1,3 @@
-Live at [https://aequologica.net/covid/](https://aequologica.net/covid/).
+Live at [aequologica.net/covid](https://aequologica.net/covid/).
 
-Consuming data from [https://github.com/pomber/covid19](pomber/covid19).
+Consuming data from [pomber/covid19](https://github.com/pomber/covid19).
