@@ -17,10 +17,16 @@
       shape-rendering: crispEdges;
     }
 
+    table#legend td.country,
+    table#legend td.population {
+      padding-right: .3rem !important;
+    }
+
+
     .line {
       fill: none;
       stroke: steelblue;
-      stroke-width: 5px;
+      stroke-width: 4px;
     }
 
     #chart {
@@ -76,9 +82,9 @@
     }
 
     .modal-body {
-    height: 80vh;
-    overflow-y: auto; }
-
+      height: 80vh;
+      overflow-y: auto;
+    }
   </style>
 
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -116,9 +122,9 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="embed-responsive embed-responsive-1by1" style="height:100%" ><!--  -->
-              <iframe class="embed-responsive-item" src="settings.html" height="100%" allowfullscreen
-              ></iframe>
+            <div class="embed-responsive embed-responsive-1by1" style="height:100%">
+              <!--  -->
+              <iframe class="embed-responsive-item" src="settings.html" height="100%" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -302,7 +308,7 @@
 
     function draw() {
       // Define margins
-      var margin = { top: 48, right: 56, bottom: 32, left: 0 },
+      var margin = { top: 60, right: 56, bottom: 32, left: 0 },
         width =
           parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
         height =
@@ -502,7 +508,7 @@
         Legend.draw(svg, populations, color);
 
         // titles, etc.
-        document.getElementById("title").innerHTML = "Daily deaths as of " + end.format('LL');
+        document.getElementById("title").innerHTML = "Daily deaths <span style='font-size:smaller'><span style='font-size:smaller'>as of " + end.format('LL') + "</span></span>";
         document.getElementById("bubble").innerHTML = sizeOfAverage;
         document.getElementById("subtitle").innerHTML =
           sizeOfAverage < 2

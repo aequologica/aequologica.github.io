@@ -15,6 +15,7 @@ var Legend = (function () {
         div.attr("class", "p-2");
         div.attr("style", "overflow-y: scroll");
         var t = div.append('table');
+        t.attr("id", "legend");
         t.attr("class", "table-responsive");
         var r = t.append('tr');
         // col 1
@@ -22,6 +23,7 @@ var Legend = (function () {
         // col 2
         {
             var th = r.append('th');
+            th.attr("class", "country");
             {
                 var add = th.append('button');
                 add.attr("type", "button");
@@ -57,6 +59,7 @@ var Legend = (function () {
         // rows
         for (let c in populations) {
             var r = t.append('tr');
+            
             // col 1
             var del = r.append('td').append('button');
             del.attr("type", "button");
@@ -66,7 +69,9 @@ var Legend = (function () {
             del.attr("name", a);
             del.append('span').html("&times;");
             // col 2
-            r.append('td').attr("style", "color:" + color(c)).html(c);
+            var td = r.append('td');
+            td.attr("class", "country");
+            td.attr("style", "color:" + color(c)).html(c);
             // col 3
             var po = r.append('td').attr("class", "population");
             if (!isPopulationColumnVisible) {
