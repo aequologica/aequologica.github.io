@@ -16,7 +16,8 @@ var Legend = (function () {
         var t = div.append('table');
         t.attr("class", "table-responsive");
         var r = t.append('tr');
-        /*{
+        /* moved to settings
+        {
             var reset = */r.append('th')/*.append('button')*/;/*
             reset.attr("type", "button");
             reset.attr("class", "reset btn btn-sm btn-outline-secondary");
