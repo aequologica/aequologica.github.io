@@ -430,7 +430,7 @@
 
             var i = 0;
             data[country].forEach(function (d) {
-              d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i - sizeOfAverage];
+              d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i + 1 - sizeOfAverage];
               i = i + 1;
             });
 
