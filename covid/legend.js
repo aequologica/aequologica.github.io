@@ -1,25 +1,32 @@
 var Legend = (function () {
     'use strict';
 
-     // legend
-    function draw(svg, populations, color) {
+    // legend
+    function draw(svg, populations, color, height) {
 
-        var isPopulationColumnVisible= localStorage.getItem("togglePopulationColumnVisibility") == "visible";
+        var isPopulationColumnVisible = localStorage.getItem("togglePopulationColumnVisibility") == "visible";
 
         var fo = svg.append("foreignObject")
-            .attr("x", 0)
-            .attr("y", 0)
+            .attr("x", 5)
+            .attr("y", 5)
             .attr("width", 280)
-            .attr("height", 280);
-        var div = fo.append('xhtml:div');
-        div.attr("class", "p-2");
-        div.attr("style", "overflow-y: scroll");
-        var t = div.append('table');
+            .attr("height", height - 10)
+            .attr("class", "")
+            .attr("style", "overflow-y: scroll; direction:rtl;")
+            .attr("id", "legend");
+        var card = fo.append('xhtml:div');
+        card.attr("class", "card");
+        card.attr("style", "direction:ltr;");
+        var cardbody = card.append('xhtml:div');
+        cardbody.attr("class", "card-body");
+        cardbody.attr("style", "");
+        var t = cardbody.append('table');
         t.attr("id", "legend");
-        t.attr("class", "table-responsive");
+        t.attr("class", "");
+        t.attr("style", "");
         var r = t.append('tr');
         // col 1
-        r.append('th').append('span').html("&nbsp;");
+        r.append('th').attr("class", "remove").append('span').html("&nbsp;");
         // col 2
         {
             var th = r.append('th');
@@ -27,7 +34,7 @@ var Legend = (function () {
             {
                 var add = th.append('button');
                 add.attr("type", "button");
-                add.attr("class", "add btn btn-sm btn-outline-secondary");
+                add.attr("class", "add btn btn-sm btn-outline-secondary float-left");
                 add.attr("title", "add country");
                 add.attr("data-toggle", "modal");
                 add.attr("data-target", "#exampleModal");
@@ -59,15 +66,15 @@ var Legend = (function () {
         // rows
         for (let c in populations) {
             var r = t.append('tr');
-            
+
             // col 1
-            var del = r.append('td').append('button');
+            var alias = Aliases.c2a(c);
+            var del = r.append('td').attr("class", "remove").append('button');
             del.attr("type", "button");
-            del.attr("class", "remove btn btn-sm");
-            var a = Aliases.c2a(c);
-            del.attr("title", "remove " + a);
-            del.attr("name", a);
-            del.append('span').html("&times;");
+            del.attr("class", "remove btn btn-sm btn-outline-secondary");
+            del.attr("title", "remove " + alias);
+            del.attr("name", alias);
+            del.append('span').attr("class", "remove").html("&times;");
             // col 2
             var td = r.append('td');
             td.attr("class", "country");
@@ -101,20 +108,6 @@ var Legend = (function () {
                 location.reload();
             })
         });
-        /*
-        var buttons = document.querySelectorAll('[type="button"].add');
-        buttons.forEach(function (b) {
-            b.addEventListener("click", function () {
-                window.open('settings.html', 'settings');
-            })
-        });
-        */
-        var buttons = document.querySelectorAll('[type="button"].save');
-        buttons.forEach(function (b) {
-            b.addEventListener("click", function () {
-                alert("work in progress");
-            })
-        });
         var buttons = document.querySelectorAll('[type="button"].hide');
         buttons.forEach(function (b) {
             b.addEventListener("click", function () {
@@ -128,26 +121,15 @@ var Legend = (function () {
                         localStorage.setItem("togglePopulationColumnVisibility", "visible");
                         pop.setAttribute("style", "display:table-cell");
                     }
-                    
+
                 }
             })
         });
-        var buttons = document.querySelectorAll('[type="button"].reset');
-        buttons.forEach(function (b) {
-            b.addEventListener("click", function () {
-                Aliases.reset();
-                reload();
-            })
-        });
-
-        function reload() {
-            location.reload();
-        }
     }
 
     return {
-        draw: function (svg, populations, color) {
-            draw(svg, populations, color);
+        draw: function (svg, populations, color, height) {
+            draw(svg, populations, color, height);
         },
     }
 })();
