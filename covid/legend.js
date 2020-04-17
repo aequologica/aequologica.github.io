@@ -16,13 +16,13 @@ var Legend = (function () {
         var t = div.append('table');
         t.attr("class", "table-responsive");
         var r = t.append('tr');
-        {
-            var reset = r.append('th').append('button');
+        /*{
+            var reset = */r.append('th')/*.append('button')*/;/*
             reset.attr("type", "button");
             reset.attr("class", "reset btn btn-sm btn-outline-secondary");
             reset.attr("title", "reset list of countries to factory defaults");
             reset.append('span').html("&#8634;");
-        }
+        }*/
         {
             var th = r.append('th');
             {
@@ -30,9 +30,12 @@ var Legend = (function () {
                 add.attr("type", "button");
                 add.attr("class", "add btn btn-sm btn-outline-secondary");
                 add.attr("title", "add country");
+                add.attr("data-toggle", "modal");
+                add.attr("data-target", "#exampleModal");
                 add.append('span').html("+");
             }
             th.append('span').html("&nbsp;");
+            /*
             {
 
                 var save = th.append('button');
@@ -40,13 +43,13 @@ var Legend = (function () {
                 save.attr("class", "save btn btn-sm btn-outline-secondary");
                 save.attr("title", "save current countries");
                 save.append('span').html("&darr;");
-            }
+            }*/
             th.append('span').html("&nbsp;");
             {
 
                 var hide = th.append('button');
                 hide.attr("type", "button");
-                hide.attr("class", "hide btn btn-sm btn-outline-secondary");
+                hide.attr("class", "hide btn btn-sm btn-outline-secondary float-right");
                 hide.attr("title", "toggle population column visibility");
                 hide.append('span').html("&harr;");
             }
@@ -101,12 +104,14 @@ var Legend = (function () {
                 location.reload();
             })
         });
+        /*
         var buttons = document.querySelectorAll('[type="button"].add');
         buttons.forEach(function (b) {
             b.addEventListener("click", function () {
                 window.open('settings.html', 'settings');
             })
         });
+        */
         var buttons = document.querySelectorAll('[type="button"].save');
         buttons.forEach(function (b) {
             b.addEventListener("click", function () {
