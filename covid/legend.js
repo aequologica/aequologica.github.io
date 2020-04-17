@@ -1,10 +1,11 @@
 var Legend = (function () {
     'use strict';
 
-    var togglePopulationColumnVisibility = localStorage.getItem("togglePopulationColumnVisibility", togglePopulationColumnVisibility);
-
-    // legend
+     // legend
     function draw(svg, populations, color) {
+
+        var isPopulationColumnVisible= localStorage.getItem("togglePopulationColumnVisibility") == "visible";
+
         var fo = svg.append("foreignObject")
             .attr("x", 0)
             .attr("y", 0)
@@ -16,14 +17,9 @@ var Legend = (function () {
         var t = div.append('table');
         t.attr("class", "table-responsive");
         var r = t.append('tr');
-        /* moved to settings
-        {
-            var reset = */r.append('th')/*.append('button')*/;/*
-            reset.attr("type", "button");
-            reset.attr("class", "reset btn btn-sm btn-outline-secondary");
-            reset.attr("title", "reset list of countries to factory defaults");
-            reset.append('span').html("&#8634;");
-        }*/
+        // col 1
+        r.append('th').append('span').html("&nbsp;");
+        // col 2
         {
             var th = r.append('th');
             {
@@ -36,16 +32,6 @@ var Legend = (function () {
                 add.append('span').html("+");
             }
             th.append('span').html("&nbsp;");
-            /*
-            {
-
-                var save = th.append('button');
-                save.attr("type", "button");
-                save.attr("class", "save btn btn-sm btn-outline-secondary");
-                save.attr("title", "save current countries");
-                save.append('span').html("&darr;");
-            }*/
-            th.append('span').html("&nbsp;");
             {
 
                 var hide = th.append('button');
@@ -55,10 +41,10 @@ var Legend = (function () {
                 hide.append('span').html("&harr;");
             }
         }
-
+        // col 3
         {
             var pop = r.append('th').attr("class", "population");
-            if (togglePopulationColumnVisibility) {
+            if (!isPopulationColumnVisible) {
                 pop.attr("style", "display:none");
             }
             if (populations.length == 0) {
@@ -68,8 +54,10 @@ var Legend = (function () {
             }
         }
 
+        // rows
         for (let c in populations) {
             var r = t.append('tr');
+            // col 1
             var del = r.append('td').append('button');
             del.attr("type", "button");
             del.attr("class", "remove btn btn-sm");
@@ -77,14 +65,17 @@ var Legend = (function () {
             del.attr("title", "remove " + a);
             del.attr("name", a);
             del.append('span').html("&times;");
-            r.append('th').attr("style", "color:" + color(c)).html(c);
+            // col 2
+            r.append('td').attr("style", "color:" + color(c)).html(c);
+            // col 3
             var po = r.append('td').attr("class", "population");
-            if (togglePopulationColumnVisibility) {
+            if (!isPopulationColumnVisible) {
                 po.attr("style", "display:none");
             }
             po.html(new Intl.NumberFormat().format(populations[c]));
         }
-        //*[@id="chart"]/g/foreignObject/div/table/tr[1]/th[3]/a
+
+        // last empty row (what the fuck?)
         {
             var r = t.append('tr');
             r.append('td').html("&nbsp;");
@@ -126,10 +117,10 @@ var Legend = (function () {
                 for (let pop of pops) {
                     var sty = pop.getAttribute("style");
                     if (!sty || sty == "display:table-cell") {
-                        localStorage.setItem("togglePopulationColumnVisibility", false);
+                        localStorage.setItem("togglePopulationColumnVisibility", "hidden");
                         pop.setAttribute("style", "display:none");
                     } else {
-                        localStorage.setItem("togglePopulationColumnVisibility", true);
+                        localStorage.setItem("togglePopulationColumnVisibility", "visible");
                         pop.setAttribute("style", "display:table-cell");
                     }
                     
@@ -140,9 +131,13 @@ var Legend = (function () {
         buttons.forEach(function (b) {
             b.addEventListener("click", function () {
                 Aliases.reset();
-                location.reload();
+                reload();
             })
         });
+
+        function reload() {
+            location.reload();
+        }
     }
 
     return {
