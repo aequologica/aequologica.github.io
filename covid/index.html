@@ -533,7 +533,7 @@
         Legend.draw(svg, populations, color, height);
 
         // titles, etc.
-        document.getElementById("title").innerHTML = "Daily deaths <span style='font-size:12px'>as of " + end.format('LL') + " (updated every day at 0:30 UTC)</span>";
+        document.getElementById("title").innerHTML = "Daily deaths <span style='font-size:12px'>as of " + end.format('LL') + " (updated every day at 1am UTC)</span>";
         document.getElementById("bubble").innerHTML = sizeOfAverage;
         document.getElementById("subtitle").innerHTML =
           sizeOfAverage < 2
