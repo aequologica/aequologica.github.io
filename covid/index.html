@@ -56,7 +56,7 @@
       width: 100%;
       height: 94%;
       position: absolute;
-      z-index: 200;
+      z-index: -1;
     }
 
     .axis path,
@@ -118,13 +118,34 @@
   <div class="container-fluid">
 
 
-    <div class="fixed-top" , style="max-height: 60px; overflow-y: hidden;">
+    <div class="fixed-top" , style="max-height: 60px; ">
+      <!-- overflow-y: hidden; -->
       <div class="row p-2">
 
         <div class="col-9">
-          <h3 id="title"></h3>
+          <span id="title" style="display:inline-block; font-size:larger;">Daily
+            <!-- Example split danger button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary"><span id="measure"></span></button>
+              <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu" id="type">
+                <a class="dropdown-item disabled" href="#" data-qwe="confirmed" disabled>confirmed</a>
+                <a class="dropdown-item" href="#" data-qwe="deaths">deaths</a>
+                <a class="dropdown-item disabled" href="#" data-qwe="recovered">recovered</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item disabled" href="#" data-qwe="active">active (= confirmed - deaths - recovered)</a>
+                <a class="dropdown-item disabled"><i>(disabled menu items coming soon)</i></a>
+              </div>
+            </div>
+          </span>
+          <span style="display:block; font-size:smaller; white-space: nowrap; overflow:hidden; text-overflow: ellipsis;">as of <span id="end"></span> (updated every day at 3am
+            UTC)</span>
         </div>
-        <div class="col col-3">
+
+        <div class="col col-3" style="display:block; font-size:smaller; overflow:hidden; text-overflow: ellipsis;">
           <div class="float-right" style="text-align: right;">
             sources:
             <a href="https://github.com/pomber/covid19" target="_json-data_source">data</a>
@@ -216,15 +237,49 @@
   <script src="population.js"></script>
   <script src="aliases.js"></script>
   <script src="legend.js"></script>
+  <script src="measurement.js"></script>
 
   <script>
     'use strict';
 
-    // html handlers
+    var measure = new Measure({
+      type: "deaths"
+    });
+    var average = "deltaMovingAverage";
+    var sizeOfAverage = 4;
+    {
+      var tmpString = localStorage.getItem("sizeOfAverage");
+      if (tmpString) {
+        var tmpInt = +tmpString;
+        if (0 < tmpInt < 13) {
+          sizeOfAverage = tmpInt;
+          var rang = document.getElementById("range");
+          if (rang) {
+            var att = document.createAttribute("value");
+            att.value = sizeOfAverage;
+            rang.setAttributeNode(att);
+          }
+        }
+      }
+    }
 
+    /////////////////
+    // html handlers
     $('#exampleModal').on('hidden.bs.modal', function () {
       location.reload();
     })
+
+    $('.dropdown-toggle').dropdown();
+
+    $(".dropdown-item").on("click", function (e) {
+      var qwe = $(e.currentTarget).data("qwe");
+      measure = new Measure({
+        type: qwe,
+      });
+      raz();
+      draw();
+    });
+
     var ranges = document.querySelectorAll('[type="range"]');
     ranges.forEach(function (r) {
       r.addEventListener("input", () => {
@@ -280,20 +335,7 @@
     } else {
       countries = [];
     }
-    var field = "deltaMovingAverage";
-    var sizeOfAverage = 4;
-    {
-      var tmp = localStorage.getItem("sizeOfAverage");
-      if (tmp && 0 < +tmp < 13) {
-        sizeOfAverage = +tmp;
-        var rang = document.getElementById("range");
-        if (rang) {
-          var att = document.createAttribute("value");
-          att.value = tmp
-          rang.setAttributeNode(att);
-        }
-      }
-    }
+
     var startAfterNDeaths = 5;
     var populations = {};
     function getPopulation(country) {
@@ -359,7 +401,7 @@
           return xScale(d["date"]);
         })
         .y(function (d) {
-          return yScale(d[field]);
+          return yScale(d[average]);
         });
 
       // Define svg canvas
@@ -424,12 +466,11 @@
             var prev = 0;
 
             data[country].forEach(function (d) {
-              d.deaths = +d.deaths;
-              d.delta = (d.deaths - prev);
+              d.delta = (measure.func(d) - prev);
               if (toggleCapita == "percapita") {
                 d.delta = d.delta / (populations[country] / 1000000)
               }
-              prev = d.deaths;
+              prev = measure.func(d);
             });
 
             var deltas = _.map(data[country], 'delta');
@@ -453,27 +494,27 @@
 
         // Reformat data to make it more copasetic for d3
         // data = An array of objects
-        // deathss = An array of three objects, each of which contains an array of objects
-        var deathss = countries.map(function (country) {
+        // measures = An array of three objects, each of which contains an array of objects
+        var measures = countries.map(function (country) {
           return {
             category: country,
             datapoints: data[country]
           };
         });
 
-        // console.log(JSON.stringify(deathss, null, 2)) // to view the structure
+        // console.log(JSON.stringify(measures, null, 2)) // to view the structure
 
         // Set the domain of the axes
         if (countries.length > 0) {
           xScale.domain(
-            d3.extent(deathss[0].datapoints, function (d) {
+            d3.extent(measures[0].datapoints, function (d) {
               return d.date;
             })
           );
 
-          var yExtents = deathss.map(function (deaths) {
-            return d3.extent(deaths.datapoints, function (d) {
-              return d[field];
+          var yExtents = measures.map(function (item) {
+            return d3.extent(item.datapoints, function (d) {
+              return d[average];
             });
           });
           var yExtent = [
@@ -497,7 +538,7 @@
 
           var products = svg
             .selectAll(".category")
-            .data(deathss)
+            .data(measures)
             .enter()
             .append("g")
             .attr("class", "category");
@@ -533,7 +574,8 @@
         Legend.draw(svg, populations, color, height);
 
         // titles, etc.
-        document.getElementById("title").innerHTML = "Daily deaths <span style='font-size:12px'>as of " + end.format('LL') + " (updated every day at 1am UTC)</span>";
+        document.getElementById("measure").innerHTML = measure.type;
+        document.getElementById("end").innerHTML = end.format('LL');
         document.getElementById("bubble").innerHTML = sizeOfAverage;
         document.getElementById("subtitle").innerHTML =
           sizeOfAverage < 2
