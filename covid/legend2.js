@@ -6,6 +6,7 @@ var Legend = (function () {
 
         var isPopulationColumnVisible = localStorage.getItem("togglePopulationColumnVisibility") == "visible";
 
+        d3.selectAll("foreignObject").remove();
         var fo = svg.append("foreignObject")
             .attr("x", 5)
             .attr("y", 5)
@@ -85,14 +86,6 @@ var Legend = (function () {
                 po.attr("style", "display:none");
             }
             po.html(new Intl.NumberFormat().format(populations[c]));
-        }
-
-        // last empty row (what the fuck?)
-        {
-            var r = t.append('tr');
-            r.append('td').html("&nbsp;");
-            r.append('td').html("&nbsp;");
-            r.append('td').html("&nbsp;");
         }
 
         var buttons = document.querySelectorAll('[type="button"].remove');

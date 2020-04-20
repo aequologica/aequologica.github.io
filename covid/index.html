@@ -129,11 +129,9 @@
 <body>
   <div class="container-fluid">
 
-
+    <!-- header -->
     <div class="fixed-top" , style="max-height: 60px; ">
-      <!-- overflow-y: hidden; -->
       <div class="row p-2">
-
         <div class="col-9">
           <span id="title" style="display:inline-block; font-size:larger;">Daily
             <!-- Example split danger button -->
@@ -156,7 +154,6 @@
           <span style="display:block; font-size:smaller; white-space: nowrap; overflow:hidden; text-overflow: ellipsis;">as of <span id="end"></span> (updated every day at 3am
             UTC)</span>
         </div>
-
         <div class="col col-3" style="display:block; font-size:smaller; overflow:hidden; text-overflow: ellipsis;">
           <div class="float-right" style="text-align: right;">
             sources:
@@ -168,7 +165,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- modal country picker -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog .modal-dialog-scrollable" role="document">
         <div class="modal-content">
@@ -188,10 +185,10 @@
       </div>
     </div>
 
-
+    <!-- svg -->
     <svg id="chart"></svg>
 
-
+    <!-- footer -->
     <div id="my-bottom" class="fixed-bottom" style="font-size:10pt">
       <div class="float-right p-2">
         <div class="card" style="vertical-align: bottom;">
@@ -254,429 +251,413 @@
   <script>
     'use strict';
 
-    var measure = new Measure();
-    var average = "deltaMovingAverage";
-    var sizeOfAverage = 4;
-    {
-      var tmpString = localStorage.getItem("sizeOfAverage");
-      if (tmpString) {
-        var tmpInt = +tmpString;
-        if (0 < tmpInt < 13) {
-          sizeOfAverage = tmpInt;
-          var rang = document.getElementById("range");
-          if (rang) {
-            var att = document.createAttribute("value");
-            att.value = sizeOfAverage;
-            rang.setAttributeNode(att);
-          }
-        }
-      }
-    }
+    $(document).ready(function () {
 
-    /////////////////
-    // html handlers
-    $('#exampleModal').on('hidden.bs.modal', function () {
-      location.reload();
-    })
-
-    $('.dropdown-toggle').dropdown();
-
-    $(".dropdown-item").on("click", function (e) {
-      var newType = $(e.currentTarget).data("type");
-      measure.setType(newType);
-      location.reload();
-    });
-
-    var ranges = document.querySelectorAll('[type="range"]');
-    ranges.forEach(function (r) {
-      r.addEventListener("input", () => {
-        bubble.innerHTML = r.value;
-      });
-      r.addEventListener("change", () => {
-        bubble.innerHTML = r.value;
-        if (sizeOfAverage != r.value) {
-          sizeOfAverage = r.value;
-          localStorage.setItem("sizeOfAverage", sizeOfAverage);
-          raz();
-          draw();
-        }
-      });
-    });
-
-    var radios = document.querySelectorAll('[type="radio"]');
-    radios.forEach(function (r) {
-      r.addEventListener("click", function (event) {
-        var oldLinear = toggleLinear, oldCapita = toggleCapita;
-        switch (this.id) {
-          case "linear":
-            toggleLinear = "linear";
-            localStorage.setItem("toggleLinear", toggleLinear);
-            break;
-          case "logaritmic":
-            toggleLinear = "logaritmic";
-            localStorage.setItem("toggleLinear", toggleLinear);
-            break;
-          case "absolute":
-            toggleCapita = "absolute";
-            localStorage.setItem("toggleCapita", toggleCapita);
-            break;
-          case "percapita":
-            toggleCapita = "percapita";
-            localStorage.setItem("toggleCapita", toggleCapita);
-            break;
-          default:
-            ;
-        }
-        if (oldLinear != toggleLinear || oldCapita != toggleCapita) {
-          raz();
-          draw();
-        }
-      });
-    });
-
-    // constants & initialization
-    var asses = Aliases.read();
-    var countries;
-    if (asses != null && asses.length > 0) {
-      countries = _.map(asses, (a) => Aliases.a2c(a));
-    } else {
-      countries = [];
-    }
-
-    var startAfterNDeaths = 5;
-    var populations = {};
-    function getPopulation(country) {
-      var countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
-      return countray.count;
-    }
-    countries.forEach(function (country) {
-      _.assign(populations, { [country]: getPopulation(country) });
-    });
-    var toggleCapita = "absolute"; // "percapita"
-    var toggleLinear = "linear";   // "logaritmic"
-    {
-      var tmp = localStorage.getItem("toggleCapita");
-      if (tmp && (tmp == "absolute" || tmp == "percapita")) {
-        toggleCapita = tmp;
-        var radiobtn = document.getElementById(toggleCapita);
-        if (radiobtn) { radiobtn.checked = true; }
-      }
-    }
-    {
-      var tmp = localStorage.getItem("toggleLinear");
-      if (tmp && (tmp == "linear" || tmp == "logaritmic")) {
-        toggleLinear = tmp;
-        var radiobtn = document.getElementById(toggleLinear);
-        if (radiobtn) { radiobtn.checked = true; }
-      }
-    }
-
-    function raz() {
-      var elem = document.querySelector('#chart');
-      if (elem) {
-        while (elem.firstChild) {
-          elem.removeChild(elem.lastChild);
-        }
-      }
-    }
-
-    function draw() {
-      // Define margins
-      var margin = { top: 60, right: 56, bottom: 32, left: 0 },
-        width =
-          parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
-        height =
-          parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
-
-      // Define date parser
-      var parseDate = d3.timeParse("%Y-%m-%d");
-
-      // Define scales
-      var xScale = d3.scaleTime().range([0, width]);
-      var yScale = (toggleLinear == "logaritmic" ? d3.scaleSymlog() : d3.scaleLinear()).range([height, 0]);
-      var color = d3.scaleOrdinal().range(d3.schemeCategory10);
-
-      // Define axes
-      var xAxis = d3.axisBottom().scale(xScale);
-      var yAxis = d3.axisRight().scale(yScale);
-
-      // Define lines
-      var line = d3
-        .line()
-        .curve(d3.curveMonotoneX)
-        .x(function (d) {
-          return xScale(d.date);
-        })
-        .y(function (d) {
-          return yScale(d[average]);
-        });
-
-      // Define svg canvas
-      var svg = d3
-        .select("#chart")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-      // grid lines
-      function make_y_gridlines(height) {
-        return d3.axisRight(yScale)
-          .ticks(Math.max(height / 50, 2));
-      }
-      // Read in data
-      d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (dataParam) {
-
-        var data = {};
-        countries.forEach(function (country) {
-          if (dataParam[country]) {
-            _.assign(data, { [country]: dataParam[country] });
-          }
-        });
-        // parse all dates first
-        countries.forEach(function (country) {
-          if (data[country]) {
-            data[country].forEach(function (d) {
-              d.date = parseDate(d.date);
-            });
-          }
-        });
-
-        // Set the color domain equal to the countries
-        color.domain(countries);
-
-        // calc start date as with respect to first # of deaths for all countries
-        var start = moment("2020-02-01"); // default
-        var end = countries.length > 0 ? moment(_.maxBy(data[countries[0]], 'date').date) : moment();
-
-        {
-          var firstNDeaths = {};
-
-          countries.forEach(function (country) {
-            var found = _.find(data[country], function (d) { return d.deaths >= startAfterNDeaths; })
-            if (found) {
-              firstNDeaths[country] = found;
+      var measure = new Measure();
+      var sizeOfAverage = 4;
+      {
+        var tmpString = localStorage.getItem("sizeOfAverage");
+        if (tmpString) {
+          var tmpInt = +tmpString;
+          if (0 < tmpInt < 13) {
+            sizeOfAverage = tmpInt;
+            var rang = document.getElementById("range");
+            if (rang) {
+              var att = document.createAttribute("value");
+              att.value = sizeOfAverage;
+              rang.setAttributeNode(att);
             }
-
-          });
-          var firstNDeathsArray = _.values(firstNDeaths);
-
-          firstNDeathsArray.sort(function compare(a, b) {
-            return moment(a.date) - moment(b.date);
-          });
-          if (firstNDeathsArray.length > 0) {
-            var minFirstNDeaths = firstNDeathsArray[0];
-            start = moment(minFirstNDeaths.date);
           }
-
         }
+      }
 
-        // Format the data 
-        if (countries.length > 0) {
+      // constants & initialization
+      var asses = Aliases.read();
+      var countries;
+      if (asses != null && asses.length > 0) {
+        countries = _.map(asses, (a) => Aliases.a2c(a));
+      } else {
+        countries = [];
+      }
+
+      var startAfterNDeaths = 5;
+      var populations = {};
+      function getPopulation(country) {
+        var countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
+        return countray.count;
+      }
+      countries.forEach(function (country) {
+        _.assign(populations, { [country]: getPopulation(country) });
+      });
+      var toggleCapita = "absolute"; // "percapita"
+      var toggleLinear = "linear";   // "logaritmic"
+      {
+        var tmp = localStorage.getItem("toggleCapita");
+        if (tmp && (tmp == "absolute" || tmp == "percapita")) {
+          toggleCapita = tmp;
+          var radiobtn = document.getElementById(toggleCapita);
+          if (radiobtn) { radiobtn.checked = true; }
+        }
+      }
+      {
+        var tmp = localStorage.getItem("toggleLinear");
+        if (tmp && (tmp == "linear" || tmp == "logaritmic")) {
+          toggleLinear = tmp;
+          var radiobtn = document.getElementById(toggleLinear);
+        }
+        if (radiobtn) { radiobtn.checked = true; }
+      }
+
+      function raz() {
+        var elem = document.querySelector('#chart');
+        if (elem) {
+          while (elem.firstChild) {
+            elem.removeChild(elem.lastChild);
+          }
+        }
+      }
+
+      function draw() {
+        // define margins
+        var margin = { top: 60, right: 56, bottom: 32, left: 0 },
+          width =
+            parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
+          height =
+            parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
+
+        // define date parser
+        var parseDate = d3.timeParse("%Y-%m-%d");
+
+        // define scales
+        var xScale = d3.scaleTime().range([0, width]);
+        var yScale = (toggleLinear === "logaritmic" ? d3.scaleSymlog() : d3.scaleLinear()).range([height, 0]);
+        var color = d3.scaleOrdinal().range(d3.schemeCategory10);
+
+        // define axes
+        var xAxis = d3.axisBottom().scale(xScale);
+        var yAxis = d3.axisRight().scale(yScale);
+        var yGrid = d3.axisLeft().scale(yScale);
+
+        // define lines
+        var line = d3
+          .line()
+          .curve(d3.curveMonotoneX)
+          .x(function (d) { return xScale(d.date); })
+          .y(function (d) { return yScale(d.deltaMovingAverage); });
+
+        // define svg canvas
+        var svg = d3
+          .select("#chart")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // Read in data
+        d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (dataParam) {
+
+          var data = {};
           countries.forEach(function (country) {
+            if (dataParam[country]) {
+              _.assign(data, { [country]: dataParam[country] });
+            }
+          });
 
-            var prev = 0;
+          // Set the color domain equal to the countries
+          color.domain(countries);
 
-            data[country].forEach(function (d) {
-              d.delta = (measure.func(d) - prev);
-              if (toggleCapita == "percapita") {
-                d.delta = d.delta / (populations[country] / 1000000)
+          // parse all dates first, integerify other attributes
+          countries.forEach(function (country) {
+            if (data[country]) {
+              data[country].forEach(function (d) {
+                d.date = parseDate(d.date);
+                d.confirmed = +d.confirmed;
+                d.deaths = +d.deaths;
+                d.recovered = +d.recovered;
+              });
+            }
+          });
+
+          var start = moment("2020-02-01"); // default
+          var end = countries.length > 0 ? moment(_.maxBy(data[countries[0]], 'date').date) : moment();
+
+          // calc start date as with respect to first # of deaths for all countries
+          if (measure.getType() === "deaths") {
+            var firstNDeaths = {};
+
+            countries.forEach(function (country) {
+              var found = _.find(data[country], function (d) { return d.deaths >= startAfterNDeaths; })
+              if (found) {
+                firstNDeaths[country] = found;
               }
-              prev = measure.func(d);
-            });
 
-            var deltas = _.map(data[country], 'delta');
-            var deltasMovingAverage = sma(deltas, sizeOfAverage);
-            for (var i = 0; i < deltasMovingAverage.length; i++) {
-              deltasMovingAverage[i] = +deltasMovingAverage[i];
+            });
+            var firstNDeathsArray = _.values(firstNDeaths);
+
+            firstNDeathsArray.sort(function compare(a, b) {
+              return moment(a.date) - moment(b.date);
+            });
+            if (firstNDeathsArray.length > 0) {
+              var minFirstNDeaths = firstNDeathsArray[0];
+              start = moment(minFirstNDeaths.date);
             }
+          }
 
-            var i = 0;
-            data[country].forEach(function (d) {
-              d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i + 1 - sizeOfAverage];
-              i = i + 1;
-            });
+          // format the data 
+          if (countries.length > 0) {
+            countries.forEach(function (country) {
 
-            data[country] = _.filter(data[country], function (d) {
-              return moment(d.date).isSameOrAfter(start);
+              var previousDelta = 0;
+
+              data[country].forEach(function (d) {
+                d.delta = (measure.func(d) - previousDelta);
+                if (toggleCapita == "percapita") {
+                  d.delta = 1000000 * d.delta / populations[country];
+                }
+                previousDelta = measure.func(d);
+              });
+
+              var deltas = _.map(data[country], 'delta');
+              var deltasMovingAverage = sma(deltas, sizeOfAverage);
+              for (var i = 0; i < deltasMovingAverage.length; i++) {
+                deltasMovingAverage[i] = +deltasMovingAverage[i];
+              }
+
+              var i = 0;
+              data[country].forEach(function (d) {
+                d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i + 1 - sizeOfAverage];
+                i = i + 1;
+              });
+
+              data[country] = _.filter(data[country], function (d) {
+                return moment(d.date).isSameOrAfter(start);
+              });
             });
+          }
+
+          // reformat data to make it more copasetic for d3
+          var measures = countries.map(function (country) {
+            return {
+              category: country,
+              datapoints: data[country]
+            };
           });
 
-        }
-
-        // Reformat data to make it more copasetic for d3
-        // data = An array of objects
-        // measures = An array of three objects, each of which contains an array of objects
-        var measures = countries.map(function (country) {
-          return {
-            category: country,
-            datapoints: data[country]
-          };
-        });
-
-        // console.log(JSON.stringify(measures, null, 2)) // to view the structure
-
-        // Set the domain of the axes
-        if (countries.length > 0) {
-          xScale.domain(
-            d3.extent(measures[0].datapoints, function (d) {
-              return d.date;
-            })
-          );
-
-          var yExtents = measures.map(function (item) {
-            return d3.extent(item.datapoints, function (d) {
-              return d[average];
+          if (countries.length > 0) {
+            // set the domain of the axes
+            xScale.domain(
+              d3.extent(measures[0].datapoints, function (d) {
+                return d.date;
+              })
+            );
+            var yExtents = measures.map(function (item) {
+              return d3.extent(item.datapoints, function (d) {
+                return d.deltaMovingAverage;
+              });
             });
-          });
-          var yExtent = [
-            d3.min(yExtents, function (d) { return d[0] }),
-            d3.max(yExtents, function (d) { return d[1] })
-          ];
-          yScale.domain(yExtent);
+            var yExtent = [
+              d3.min(yExtents, function (d) { return d[0] }),
+              d3.max(yExtents, function (d) { return d[1] })
+            ];
+            yScale.domain(yExtent);
 
-          // Place the axes on the chart
-          svg
-            .append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+            // place the axes on the chart
+            svg
+              .append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis);
 
-          svg
-            .append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(" + width + ", 0)")
-            .call(yAxis);
-
-          var products = svg
-            .selectAll(".category")
-            .data(measures)
-            .enter()
-            .append("g")
-            .attr("class", "category");
-
-          products
-            .append("path")
-            .attr("class", "line")
-            .attr("id", function (d, i) {
-              return "line" + i;
-            })
-            .attr("d", function (d) {
-              return line(d.datapoints);
-            })
-            .style("stroke", function (d) {
-              return color(d.category);
-            });
-
-          // http://datawanderings.com/2019/11/01/tutorial-making-an-interactive-line-chart-in-d3-js-v-5/
-          var drawPoints = function () {
-            const tooltip = d3.select("body").append("div")
-              .attr("class", "tooltip")
-              .style("opacity", 0)
-              .style("position", "absolute");
-
-            products.selectAll("points")
-              .data(function (d) { return d.datapoints })
-              .enter()
-              .append("circle")
-              .attr("cx", function (d) { return xScale(d.date); })
-              .attr("cy", function (d) { return yScale(d[average]); })
-              .attr("r", 2)
-              .attr("class", "point");
+            svg
+              .append("g")
+              .attr("class", "y axis")
+              .attr("transform", "translate(" + width + ", 0)")
+              .call(yAxis);
 
             svg.append("g")
               .attr("class", "grid")
-              .style("stroke-dasharray", ("3,3"))
-              .call(make_y_gridlines(height)
-                .tickSize(width)
+              .style("stroke-dasharray", ("2,5"))
+              .call(yGrid
+                .tickSize(-width)
                 .tickFormat("")
               );
-              Legend.draw(svg, populations, color, height);
+
+            var products = svg
+              .selectAll(".category")
+              .data(measures)
+              .enter()
+              .append("g")
+              .attr("class", "category");
+
+            products
+              .append("path")
+              .attr("class", "line")
+              .attr("id", function (d, i) {
+                return "line" + i;
+              })
+              .attr("d", function (d) {
+                return line(d.datapoints);
+              })
+              .style("stroke", function (d) {
+                return color(d.category);
+              });
+
+            // http://datawanderings.com/2019/11/01/tutorial-making-an-interactive-line-chart-in-d3-js-v-5/
+            var drawPoints = function () {
+              products.selectAll("points")
+                .data(function (d) { return d.datapoints })
+                .enter()
+                .append("circle")
+                .attr("cx", function (d) { return xScale(d.date); })
+                .attr("cy", function (d) { return yScale(d.deltaMovingAverage); })
+                .attr("r", 1)
+                .attr("class", "point");
+            }
+
+            Legend.draw(svg, populations, color, height);
           }
-        }
 
+          // titles, etc.
+          document.getElementById("measure").innerHTML = measure.getType();
+          document.getElementById("end").innerHTML = end.format('LL');
+          document.getElementById("bubble").innerHTML = sizeOfAverage;
+          document.getElementById("subtitle").innerHTML =
+            sizeOfAverage < 2
+              ? "day <span style='text-decoration: line-through'>average</span>"
+              : "days                                            average";
 
-        
+          // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
+          {
+            var i = 0;
+            d3.selectAll(".line").style("opacity", "0.5");
 
-        // titles, etc.
-        document.getElementById("measure").innerHTML = measure.getType();
-        document.getElementById("end").innerHTML = end.format('LL');
-        document.getElementById("bubble").innerHTML = sizeOfAverage;
-        document.getElementById("subtitle").innerHTML =
-          sizeOfAverage < 2
-            ? "day <span style='text-decoration: line-through'>average</span>"
-            : "days                                            average";
+            // select All of the lines and process them one by one
+            d3.selectAll(".line").each(function (d, i) {
 
-        // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
-        {
-          var i = 0;
-          d3.selectAll(".line").style("opacity", "0.5");
+              // get the length of each line in turn
+              var totalLength = d3.select("#line" + i).node().getTotalLength();
 
-          //Select All of the lines and process them one by one
-          d3.selectAll(".line").each(function (d, i) {
-
-            // Get the length of each line in turn
-            var totalLength = d3.select("#line" + i).node().getTotalLength();
-            // console.log(totalLength);
-
-            d3.selectAll("#line" + i).attr("stroke-dasharray", totalLength + " " + totalLength)
-              .attr("stroke-dashoffset", totalLength)
-              .transition()
-              .duration(3000)
-              .attr("stroke-dashoffset", 0)
-              .on("end", drawPoints);
-
-          });
-        }
-      });
-
-      // Define responsive behavior
-      function resize() {
-        var width =
-          parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
-          height =
-            parseInt(d3.select("#chart").style("height")) -
-            margin.top -
-            margin.bottom;
-
-        // Update the range of the scale with new width/height
-        xScale.range([0, width]);
-        yScale.range([height, 0]);
-
-        // Update the axis and text with the new scale
-        svg.select(".x.axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(xAxis);
-
-        svg.select(".y.axis")
-          .attr("transform", "translate(" + width + " ,0)")
-          .call(yAxis);
-
-        // Force D3 to recalculate and update the line
-        svg.selectAll(".line").attr("d", function (d) {
-          return line(d.datapoints);
+              d3.selectAll("#line" + i)
+                .attr("stroke-dasharray", totalLength + " " + totalLength)
+                .attr("stroke-dashoffset", totalLength)
+                .transition()
+                .duration(3000)
+                .attr("stroke-dashoffset", 0)
+                .on("end", drawPoints);
+            });
+          }
         });
-        svg.selectAll("circle")
-          .attr("cx", function (d) { return xScale(d.date); })
-          .attr("cy", function (d) { return yScale(d[average]); })
 
-        // Update the tick marks
-        xAxis.ticks(Math.max(width / 75, 2));
-        yAxis.ticks(Math.max(height / 50, 2));
-        svg.selectAll(".grid").call(make_y_gridlines(height)
-          .tickSize(width)
-          .tickFormat("")
-        );
+        // define responsive behavior
+        function resize() {
+          var width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
+            height = parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
+
+          // Update the range of the scale with new width/height
+          xScale.range([0, width]);
+          yScale.range([height, 0]);
+
+          // Update the axis and text with the new scale
+          svg.select(".x.axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+          svg.select(".y.axis")
+            .attr("transform", "translate(" + width + " ,0)")
+            .call(yAxis);
+          svg.select(".grid")
+            .attr("transform", "translate(" + -width + " ,0)")
+            .call(yGrid);
+          // update the tick marks
+          xAxis.ticks(Math.max(width / 75, 2));
+          yAxis.ticks(Math.max(height / 50, 2));
+          yGrid.ticks(Math.max(height / 50, 2));
+
+          // force D3 to recalculate and update the line
+          svg.selectAll(".line").attr("d", function (d) {
+            return line(d.datapoints);
+          });
+
+          svg.selectAll("circle")
+            .attr("cx", function (d) { return xScale(d.date); })
+            .attr("cy", function (d) { return yScale(d.deltaMovingAverage); })
+
+          console.log("resized! " + new Date());
+        }
+
+        // call the resize function whenever a resize event occurs
+        d3.select(window).on("resize", _.debounce(function () {
+          raz();
+          draw();
+        }, 500));
+
+        // call the resize function
+        resize();
       }
 
-      // Call the resize function whenever a resize event occurs
-      d3.select(window).on("resize", resize);
+      /////////////////
+      // html handlers
+      $('#exampleModal').on('hidden.bs.modal', function () {
+        location.reload();
+      })
 
-      // Call the resize function
-      resize();
-    }
+      $('.dropdown-toggle').dropdown();
 
-    draw();
+      $(".dropdown-item").on("click", function (e) {
+        var newType = $(e.currentTarget).data("type");
+        measure.setType(newType);
+        location.reload();
+      });
+
+      var ranges = document.querySelectorAll('[type="range"]');
+      ranges.forEach(function (r) {
+        r.addEventListener("input", () => {
+          bubble.innerHTML = r.value;
+        });
+        r.addEventListener("change", () => {
+          bubble.innerHTML = r.value;
+          if (sizeOfAverage != r.value) {
+            sizeOfAverage = r.value;
+            localStorage.setItem("sizeOfAverage", sizeOfAverage);
+            raz();
+            draw();
+          }
+        });
+      });
+
+      var radios = document.querySelectorAll('[type="radio"]');
+      radios.forEach(function (r) {
+        r.addEventListener("click", function (event) {
+          var oldLinear = toggleLinear, oldCapita = toggleCapita;
+          switch (this.id) {
+            case "linear":
+              toggleLinear = "linear";
+              localStorage.setItem("toggleLinear", toggleLinear);
+              break;
+            case "logaritmic":
+              toggleLinear = "logaritmic";
+              localStorage.setItem("toggleLinear", toggleLinear);
+              break;
+            case "absolute":
+              toggleCapita = "absolute";
+              localStorage.setItem("toggleCapita", toggleCapita);
+              break;
+            case "percapita":
+              toggleCapita = "percapita";
+              localStorage.setItem("toggleCapita", toggleCapita);
+              break;
+            default:
+              ;
+          }
+          if (oldLinear != toggleLinear || oldCapita != toggleCapita) {
+            raz();
+            draw();
+          }
+        });
+      });
+
+      draw();
+
+    }); // $(document).ready
 
   </script>
 </body>

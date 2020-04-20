@@ -22,17 +22,17 @@ var Measure = (function () {
             case "deaths":
             case "recovered":
                 type = newType;
-                calc = function (d) { return +d[type] };
+                calc = function (d) { return d[type] };
                 localStorage.setItem("measureType", type);
                 break;
             case "active":
                 type = newType;
-                calc = function (d) { return (+d.confirmed) - (+d.deaths) - (+d.recovered) };
+                calc = function (d) { return d.confirmed - d.deaths - d.recovered; };
                 localStorage.setItem("measureType", type);
                 break;
             default:
                 type = "deaths";
-                calc = function (d) { return +d.deaths };
+                calc = function (d) { return d.deaths };
                 localStorage.setItem("measureType", type);
                 break;
         }
