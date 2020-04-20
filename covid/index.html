@@ -251,6 +251,12 @@
   <script>
     'use strict';
 
+    // https://stackoverflow.com/a/31732310/1070215
+    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
+
     $(document).ready(function () {
 
       var measure = new Measure();
@@ -514,7 +520,7 @@
                 .attr("class", "point");
             }
 
-            Legend.draw(svg, populations, color, height);
+            Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height);
           }
 
           // titles, etc.

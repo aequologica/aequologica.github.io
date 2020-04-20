@@ -2,14 +2,14 @@ var Legend = (function () {
     'use strict';
 
     // legend
-    function draw(svg, populations, color, height) {
+    function draw(svg, populations, color, y, height) {
 
         var isPopulationColumnVisible = localStorage.getItem("togglePopulationColumnVisibility") == "visible";
 
         d3.selectAll("foreignObject").remove();
         var fo = svg.append("foreignObject")
             .attr("x", 5)
-            .attr("y", 5)
+            .attr("y", y + 5)
             .attr("width", 280)
             .attr("height", height - 10)
             .attr("class", "")
@@ -121,8 +121,8 @@ var Legend = (function () {
     }
 
     return {
-        draw: function (svg, populations, color, height) {
-            draw(svg, populations, color, height);
+        draw: function (svg, populations, color, y, height) {
+            draw(svg, populations, color, y, height);
         },
     }
 })();
