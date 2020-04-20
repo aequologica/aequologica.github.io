@@ -109,6 +109,17 @@
       height: 80vh;
       overflow-y: auto;
     }
+
+    .tooltip {
+      fill: #2b2929;
+      font-family: Georgia;
+      font-size: 150%;
+    }
+
+    .point {
+      stroke: none;
+      fill: #9c9c9c;
+    }
   </style>
 
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -132,12 +143,12 @@
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <div class="dropdown-menu" id="type">
-                <a class="dropdown-item disabled" href="#" data-qwe="confirmed" disabled>confirmed</a>
-                <a class="dropdown-item" href="#" data-qwe="deaths">deaths</a>
-                <a class="dropdown-item disabled" href="#" data-qwe="recovered">recovered</a>
+                <a class="dropdown-item" href="#" data-type="confirmed" disabled>confirmed</a>
+                <a class="dropdown-item" href="#" data-type="deaths">deaths</a>
+                <a class="dropdown-item" href="#" data-type="recovered">recovered</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item disabled" href="#" data-qwe="active">active (= confirmed - deaths - recovered)</a>
-                <a class="dropdown-item disabled"><i>(disabled menu items coming soon)</i></a>
+                <a class="dropdown-item" href="#" data-type="active">active (= confirmed - deaths - recovered)</a>
+                <!-- a class="dropdown-item disabled"><i>(disabled menu items coming soon)</i></a -->
               </div>
             </div>
           </span>
@@ -242,9 +253,7 @@
   <script>
     'use strict';
 
-    var measure = new Measure({
-      type: "deaths"
-    });
+    var measure = new Measure();
     var average = "deltaMovingAverage";
     var sizeOfAverage = 4;
     {
@@ -272,12 +281,9 @@
     $('.dropdown-toggle').dropdown();
 
     $(".dropdown-item").on("click", function (e) {
-      var qwe = $(e.currentTarget).data("qwe");
-      measure = new Measure({
-        type: qwe,
-      });
-      raz();
-      draw();
+      var newType = $(e.currentTarget).data("type");
+      measure.setType(newType);
+      location.reload();
     });
 
     var ranges = document.querySelectorAll('[type="range"]');
@@ -398,7 +404,7 @@
         .line()
         .curve(d3.curveMonotoneX)
         .x(function (d) {
-          return xScale(d["date"]);
+          return xScale(d.date);
         })
         .y(function (d) {
           return yScale(d[average]);
@@ -556,6 +562,22 @@
               return color(d.category);
             });
 
+          // http://datawanderings.com/2019/11/01/tutorial-making-an-interactive-line-chart-in-d3-js-v-5/
+          const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0)
+            .style("position", "absolute");
+
+          products.selectAll("points")
+            .data(function (d) { return d.datapoints })
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) { return xScale(d.date); })
+            .attr("cy", function (d) { return yScale(d[average]); })
+            .attr("r", 2)
+            .attr("class", "point")
+            .style("opacity", 1);
+
           // grid lines
           function make_y_gridlines() {
             return d3.axisRight(yScale)
@@ -574,7 +596,7 @@
         Legend.draw(svg, populations, color, height);
 
         // titles, etc.
-        document.getElementById("measure").innerHTML = measure.type;
+        document.getElementById("measure").innerHTML = measure.getType();
         document.getElementById("end").innerHTML = end.format('LL');
         document.getElementById("bubble").innerHTML = sizeOfAverage;
         document.getElementById("subtitle").innerHTML =

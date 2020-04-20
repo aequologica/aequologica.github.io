@@ -1,35 +1,49 @@
-var Measure = (function (param) {
+var Measure = (function () {
     'use strict';
+
+    /* type is one of
+        confirmed
+        deaths
+        recovered
+        active
+    */ 
     
-    /* type is
-    confirmed
-    deaths
-    recovered
-    active
-    */
-
-    var settings = {
-        type    : param.type || "deaths",
+    // defaults
+    var type = "deaths"; 
+    var calc = function (d) { return +d.deaths };
+    
+    function getType() {
+        return type;
     }
 
-    var func;
-    switch (settings.type) {
-        case "confirmed":
-        case "deaths":
-        case "recovered":
-            func = function (d) { return +d[settings.type] };
-            break;
-        case "active":
-            func = function (d) { return (+d.confirmed) - (+d.deaths) - (+d.recovered) };
-            break;
-        default:
-            func = function (d) { return +d.deaths };
+    function setType(newType) {
+        switch (newType) {
+            case "confirmed":
+            case "deaths":
+            case "recovered":
+                type = newType;
+                calc = function (d) { return +d[type] };
+                localStorage.setItem("measureType", type);
+                break;
+            case "active":
+                type = newType;
+                calc = function (d) { return (+d.confirmed) - (+d.deaths) - (+d.recovered) };
+                localStorage.setItem("measureType", type);
+                break;
+            default:
+                type = "deaths";
+                calc = function (d) { return +d.deaths };
+                localStorage.setItem("measureType", type);
+                break;
+        }
     }
+
+    // read type from storage
+    setType(localStorage.getItem("measureType"));
 
     return {
-        func : func,
-        type : settings.type,
-        average: settings.average,
-        sizeOfAverage: settings.sizeOfAverage,
+        func: calc,
+        getType: getType,
+        setType: setType,
     }
 });
