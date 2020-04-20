@@ -28,7 +28,7 @@
 
     <script src="population.js"></script>
     <script src="aliases.js"></script>
-    <script src="legend.js"></script>
+    <script src="legend2.js"></script>
 
     <script>
         var svg = d3.select("#chart").append("g");
@@ -37,7 +37,7 @@
         };
         var color = d3.scaleOrdinal().range(d3.schemeCategory10);
 
-        Legend.draw(svg, populations, color);
+        Legend.draw(svg, populations, color, 300);
     </script>
 
 </body>
