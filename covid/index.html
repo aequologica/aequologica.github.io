@@ -591,11 +591,12 @@
                 .tickSize(width)
                 .tickFormat("")
               );
+              Legend.draw(svg, populations, color, height);
           }
         }
 
 
-        Legend.draw(svg, populations, color, height);
+        
 
         // titles, etc.
         document.getElementById("measure").innerHTML = measure.getType();
