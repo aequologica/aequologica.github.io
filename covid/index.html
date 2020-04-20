@@ -563,35 +563,37 @@
             });
 
           // http://datawanderings.com/2019/11/01/tutorial-making-an-interactive-line-chart-in-d3-js-v-5/
-          const tooltip = d3.select("body").append("div")
-            .attr("class", "tooltip")
-            .style("opacity", 0)
-            .style("position", "absolute");
+          var drawPoints = function () {
+            const tooltip = d3.select("body").append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0)
+              .style("position", "absolute");
 
-          products.selectAll("points")
-            .data(function (d) { return d.datapoints })
-            .enter()
-            .append("circle")
-            .attr("cx", function (d) { return xScale(d.date); })
-            .attr("cy", function (d) { return yScale(d[average]); })
-            .attr("r", 2)
-            .attr("class", "point")
-            .style("opacity", 1);
+            products.selectAll("points")
+              .data(function (d) { return d.datapoints })
+              .enter()
+              .append("circle")
+              .attr("cx", function (d) { return xScale(d.date); })
+              .attr("cy", function (d) { return yScale(d[average]); })
+              .attr("r", 2)
+              .attr("class", "point")
+              .style("opacity", 1);
 
-          // grid lines
-          function make_y_gridlines() {
-            return d3.axisRight(yScale)
-              .ticks(10)
+            // grid lines
+            function make_y_gridlines() {
+              return d3.axisRight(yScale)
+                .ticks(10)
+            }
+            svg.append("g")
+              .attr("class", "grid")
+              .style("stroke-dasharray", ("3,3"))
+              .call(make_y_gridlines()
+                .tickSize(width)
+                .tickFormat("")
+              );
           }
-          svg.append("g")
-            .attr("class", "grid")
-            .style("stroke-dasharray", ("3,3"))
-            .call(make_y_gridlines()
-              .tickSize(width)
-              .tickFormat("")
-            );
-
         }
+
 
         Legend.draw(svg, populations, color, height);
 
@@ -620,7 +622,8 @@
               .attr("stroke-dashoffset", totalLength)
               .transition()
               .duration(3000)
-              .attr("stroke-dashoffset", 0);
+              .attr("stroke-dashoffset", 0)
+              .on("end", drawPoints);
 
           });
         }
