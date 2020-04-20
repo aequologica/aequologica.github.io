@@ -147,7 +147,7 @@
                 <a class="dropdown-item disabled" href="#" data-type="recovered">recovered</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item disabled" href="#" data-type="active">active (= confirmed - deaths - recovered)</a>
-                <a class="dropdown-item disabled"><img src="Baustelle.svg" style="width: 24px; height:auto;;"> <i>disabled menu items coming soon</i></a>
+                <a class="dropdown-item disabled"><img src="images/baustelle.svg" style="width: 24px; height:auto;"> <i>disabled menu items coming soon</i></a>
               </div>
             </div>
           </span>
@@ -159,7 +159,7 @@
             sources:
             <a href="https://github.com/pomber/covid19" target="_json-data_source">data</a>
             |
-            <a href="https://github.com/aequologica/aequologica.github.io/blob/master/covid/index.html" target="_json_data_source">html</a>
+            <a href="https://github.com/aequologica/aequologica.github.io/tree/master/covid" target="_github_com">html</a>
           </div>
         </div>
       </div>
@@ -177,7 +177,6 @@
           </div>
           <div class="modal-body">
             <div class="embed-responsive embed-responsive-1by1" style="height:100%">
-              <!--  -->
               <iframe class="embed-responsive-item" src="settings.html" height="100%" allowfullscreen></iframe>
             </div>
           </div>
@@ -234,15 +233,15 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@5.15.1/dist/d3.min.js" integrity="sha256-SQJ/nCYPXFPuqoS56EfnesDBPNiitndOIfN2WdPRi/o=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
 
   <!-- https://github.com/doowb/sma -->
-  <!-- script src="https://cdn.jsdelivr.net/npm/sma@0.1.1/index.min.js"></script -->
-  <script src="sma.js"></script>
+  <script src="sma.js"></script> <!-- script src="https://cdn.jsdelivr.net/npm/sma@0.1.1/index.min.js"></script -->
+
+  <!-- -->
   <script src="population.js"></script>
   <script src="aliases.js"></script>
   <script src="legend2.js"></script>
@@ -253,12 +252,14 @@
 
     // https://stackoverflow.com/a/31732310/1070215
     var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
-               navigator.userAgent &&
-               navigator.userAgent.indexOf('CriOS') == -1 &&
-               navigator.userAgent.indexOf('FxiOS') == -1;
+      navigator.userAgent &&
+      navigator.userAgent.indexOf('CriOS') == -1 &&
+      navigator.userAgent.indexOf('FxiOS') == -1;
 
     $(document).ready(function () {
 
+      ///////////////////////////////
+      // constants & initializations
       var measure = new Measure();
       var sizeOfAverage = 4;
       {
@@ -276,44 +277,50 @@
           }
         }
       }
-
-      // constants & initialization
-      var asses = Aliases.read();
       var countries;
-      if (asses != null && asses.length > 0) {
-        countries = _.map(asses, (a) => Aliases.a2c(a));
-      } else {
-        countries = [];
+      {
+        var aliases = Aliases.read();
+        
+        if (aliases != null && aliases.length > 0) {
+          countries = _.map(aliases, (a) => Aliases.a2c(a));
+        } else {
+          countries = [];
+        }
       }
-
       var startAfterNDeaths = 5;
       var populations = {};
-      function getPopulation(country) {
-        var countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
-        return countray.count;
+      {
+        function getPopulation(country) {
+          var countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
+          return countray.count;
+        }
+        countries.forEach(function (country) {
+          _.assign(populations, { [country]: getPopulation(country) });
+        });
       }
-      countries.forEach(function (country) {
-        _.assign(populations, { [country]: getPopulation(country) });
-      });
       var toggleCapita = "absolute"; // "percapita"
       var toggleLinear = "linear";   // "logaritmic"
       {
-        var tmp = localStorage.getItem("toggleCapita");
-        if (tmp && (tmp == "absolute" || tmp == "percapita")) {
-          toggleCapita = tmp;
-          var radiobtn = document.getElementById(toggleCapita);
+        {
+          var tmp = localStorage.getItem("toggleCapita");
+          if (tmp && (tmp == "absolute" || tmp == "percapita")) {
+            toggleCapita = tmp;
+            var radiobtn = document.getElementById(toggleCapita);
+            if (radiobtn) { radiobtn.checked = true; }
+          }
+        }
+        {
+          var tmp = localStorage.getItem("toggleLinear");
+          if (tmp && (tmp == "linear" || tmp == "logaritmic")) {
+            toggleLinear = tmp;
+            var radiobtn = document.getElementById(toggleLinear);
+          }
           if (radiobtn) { radiobtn.checked = true; }
         }
       }
-      {
-        var tmp = localStorage.getItem("toggleLinear");
-        if (tmp && (tmp == "linear" || tmp == "logaritmic")) {
-          toggleLinear = tmp;
-          var radiobtn = document.getElementById(toggleLinear);
-        }
-        if (radiobtn) { radiobtn.checked = true; }
-      }
 
+      /////////////
+      // functions
       function raz() {
         var elem = document.querySelector('#chart');
         if (elem) {
@@ -322,7 +329,6 @@
           }
         }
       }
-
       function draw() {
         // define margins
         var margin = { top: 60, right: 56, bottom: 32, left: 0 },
@@ -587,7 +593,7 @@
             .attr("cx", function (d) { return xScale(d.date); })
             .attr("cy", function (d) { return yScale(d.deltaMovingAverage); })
 
-          console.log("resized! " + new Date());
+          // console.log("resized! " + new Date());
         }
 
         // call the resize function whenever a resize event occurs
@@ -661,6 +667,8 @@
         });
       });
 
+      //////////////////
+      // the main entry
       draw();
 
     }); // $(document).ready
