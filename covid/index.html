@@ -20,6 +20,7 @@
       font: 12px sans-serif;
     }
 
+
     #legend .parent {
       transform: scaleX(-1);
     }
@@ -111,15 +112,14 @@
     }
 
     .tooltip {
-      fill: #2b2929;
-      font-family: Georgia;
-      font-size: 150%;
+      position: absolute;
+      background-color: ghostwhite ;
     }
 
     .point {
       stroke: none;
-      fill: #9c9c9c;
-      opacity: .2;
+      fill: #cbcbcb;
+      opacity: .1;
     }
   </style>
 
@@ -280,7 +280,7 @@
       var countries;
       {
         var aliases = Aliases.read();
-        
+
         if (aliases != null && aliases.length > 0) {
           countries = _.map(aliases, (a) => Aliases.a2c(a));
         } else {
@@ -339,6 +339,7 @@
 
         // define date parser
         var parseDate = d3.timeParse("%Y-%m-%d");
+        var formatTime = d3.timeFormat("%e %B");
 
         // define scales
         var xScale = d3.scaleTime().range([0, width]);
@@ -515,6 +516,13 @@
               });
 
             // http://datawanderings.com/2019/11/01/tutorial-making-an-interactive-line-chart-in-d3-js-v-5/
+            // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
+            // Define the div for the tooltip
+            d3.selectAll("div.tooltip").remove();
+            var tt = d3.select(".container-fluid").append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+
             var drawPoints = function () {
               products.selectAll("points")
                 .data(function (d) { return d.datapoints })
@@ -522,9 +530,35 @@
                 .append("circle")
                 .attr("cx", function (d) { return xScale(d.date); })
                 .attr("cy", function (d) { return yScale(d.deltaMovingAverage); })
-                .attr("r", 1)
-                .attr("class", "point");
+                .attr("r", 5)
+                .attr("class", "point")
+                .on("mouseover", function (d) {
+                  console.log("OVER", d)
+                  tt.style("opacity", 1);
+                  tt.html(formatTime(d.date) + 
+                    "<br/>confirmed " + 
+                    d.confirmed + 
+                    "<br/>deaths " + 
+                    d.deaths + 
+                    "<br/>recovered " + 
+                    d.recovered)
+                    .style("left", (d3.event.pageX + 12) + "px")
+                    .style("top", (d3.event.pageY + 12) + "px");
+                })
+                .on("mouseout", function (d) {
+                });
+
+                tt.on("click", function() {
+                  tt.transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    .on("end", function() {
+                      console.log("OUT");
+                    });
+                });
             }
+
+
 
             Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height);
           }
