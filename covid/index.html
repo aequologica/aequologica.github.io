@@ -118,7 +118,7 @@
       padding: .2rem;
     }
 
-    .mytooltip tr td:last-child {
+    .mytooltip tr td:first-child {
       text-align: right;
       font-family: monospace;
     }
@@ -251,9 +251,9 @@
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
   <script id="tooltip-template" type="text/x-handlebars-template">
 <table><tr><caption>{{date}}</caption></tr>
-  <tr><td>confirmed </td><td>{{d.confirmed}}</td></tr>
-  <tr><td>deaths    </td><td>{{d.deaths}}</td></tr>
-  <tr><td>recovered </td><td>{{d.recovered}}</td></tr>
+  <tr><td>{{d.confirmed}}</td><td>confirmed</td></tr>
+  <tr><td>{{d.deaths}}   </td><td>deaths</td></tr>
+  <tr><td>{{d.recovered}}</td><td>recovered</td></tr>
 </table></script>
   <script>
     // compile the template
