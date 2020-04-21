@@ -111,9 +111,21 @@
       overflow-y: auto;
     }
 
-    .tooltip {
+    .mytooltip {
       position: absolute;
       background-color: ghostwhite;
+      font-size: 10px;
+      padding: .2rem;
+    }
+
+    .mytooltip tr td:last-child {
+      text-align: right;
+      font-family: monospace;
+    }
+
+    .mytooltip caption {
+      padding-top: .25rem;
+      padding-bottom: .25rem;
     }
 
     .point {
@@ -237,6 +249,16 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@5.15.1/dist/d3.min.js" integrity="sha256-SQJ/nCYPXFPuqoS56EfnesDBPNiitndOIfN2WdPRi/o=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+  <script id="tooltip-template" type="text/x-handlebars-template">
+<table><tr><caption>{{date}}</caption></tr>
+  <tr><td>confirmed </td><td>{{d.confirmed}}</td></tr>
+  <tr><td>deaths    </td><td>{{d.deaths}}</td></tr>
+  <tr><td>recovered </td><td>{{d.recovered}}</td></tr>
+</table></script>
+  <script>
+    // compile the template
+    var template = Handlebars.compile(document.getElementById("tooltip-template").innerHTML);
+  </script>
 
   <!-- https://github.com/doowb/sma -->
   <script src="sma.js"></script> <!-- script src="https://cdn.jsdelivr.net/npm/sma@0.1.1/index.min.js"></script -->
@@ -331,7 +353,7 @@
       }
       function draw() {
         // define margins
-        var margin = { top: 60, right: 56, bottom: 32, left: 0 },
+        var margin = { top: 60, right: 80, bottom: 32, left: 0 },
           width =
             parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
           height =
@@ -520,9 +542,9 @@
             // http://datawanderings.com/2019/11/01/tutorial-making-an-interactive-line-chart-in-d3-js-v-5/
             // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
             // Define the div for the tooltip
-            d3.selectAll("div.tooltip").remove();
+            d3.selectAll("div.mytooltip").remove();
             var tt = d3.select(".container-fluid").append("div")
-              .attr("class", "tooltip")
+              .attr("class", "mytooltip")
               .style("opacity", 0);
 
             var drawPoints = function () {
@@ -536,13 +558,10 @@
                 .attr("class", "point")
                 .on("mouseover", function (d) {
                   tt.style("opacity", 1);
-                  tt.html(formatTime(d.date) +
-                    "<br/>confirmed " +
-                    d.confirmed +
-                    "<br/>deaths " +
-                    d.deaths +
-                    "<br/>recovered " +
-                    d.recovered)
+                  tt.html(template({
+                    date: formatTime(d.date),
+                    d: d,
+                  }))
                     .style("left", (d3.event.pageX + 10) + "px")
                     .style("top", (d3.event.pageY + 10) + "px");
                 })
