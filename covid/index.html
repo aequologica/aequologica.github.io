@@ -165,6 +165,7 @@
           </span>
           <span style="display:block; font-size:smaller; white-space: nowrap; overflow:hidden; text-overflow: ellipsis;">as of <span id="end"></span> (updated every day at 3am
             UTC)</span>
+            <a href="settings.html" id="link_to_settings" style="display:none;" type="button" class="btn btn-sm btn-outline-secondary" title="add country"><span>+</span></a>
         </div>
         <div class="col col-3" style="display:block; font-size:smaller; overflow:hidden; text-overflow: ellipsis;">
           <div class="float-right" style="text-align: right;">
@@ -197,6 +198,7 @@
     </div>
 
     <!-- svg -->
+    
     <svg id="chart"></svg>
 
     <!-- footer -->
@@ -265,8 +267,8 @@
 
   <!-- -->
   <script src="population.js"></script>
-  <script src="aliases.js"></script>
-  <script src="legend2.js"></script>
+  <script src="aliases2.js"></script>
+  <script src="legend3.js"></script>
   <script src="measurement.js"></script>
 
   <script>
@@ -279,6 +281,9 @@
       navigator.userAgent.indexOf('FxiOS') == -1;
 
     $(document).ready(function () {
+
+      var margin = { top: 60, right: 80, bottom: 32, left: 0 };
+      // $("#link_to_settings").css({left: "32px", top:margin.top+10+"px", position: "absolute"});
 
       ///////////////////////////////
       // constants & initializations
@@ -309,6 +314,7 @@
           countries = [];
         }
       }
+
       var startAfterNDeaths = 5;
       var populations = {};
       {
@@ -353,7 +359,8 @@
       }
       function draw() {
         // define margins
-        var margin = { top: 60, right: 80, bottom: 32, left: 0 },
+        
+        var
           width =
             parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
           height =
@@ -721,7 +728,12 @@
 
       //////////////////
       // the main entry
-      draw();
+      if (countries.length == 0) {
+        $("#link_to_settings").show();
+      } else {
+        $("#link_to_settings").hide();
+        draw();
+      }
 
     }); // $(document).ready
 

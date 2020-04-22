@@ -86,6 +86,7 @@ var Aliases = (function () {
         "Italy",
         "Luxembourg",
         "Spain",
+        "United Kingdom",
         "United States",
     ];
 
