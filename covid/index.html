@@ -252,14 +252,14 @@
   <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
   <script id="tooltip-template" type="text/x-handlebars-template">
-<table><tr><caption>{{date}}</caption></tr>
+<table><tr><caption><div style="color:{{color}};">{{country}}</div><div>{{date}}</div></caption></tr>
   <tr><td>{{d.confirmed}}</td><td>confirmed</td></tr>
   <tr><td>{{d.deaths}}   </td><td>deaths</td></tr>
   <tr><td>{{d.recovered}}</td><td>recovered</td></tr>
 </table></script>
   <script>
     // compile the template
-    var template = Handlebars.compile(document.getElementById("tooltip-template").innerHTML);
+    var tooltipTemplate = Handlebars.compile(document.getElementById("tooltip-template").innerHTML);
   </script>
 
   <!-- https://github.com/doowb/sma -->
@@ -531,7 +531,12 @@
               .data(measures)
               .enter()
               .append("g")
-              .attr("class", "category");
+              .attr("class", "category")
+              .attr("id", function (d, i) {
+                return d.category;
+              }).attr("color", function (d, i) {
+                return color(d.category);
+              });
 
             products
               .append("path")
@@ -565,7 +570,9 @@
                 .attr("class", "point")
                 .on("mouseover", function (d) {
                   tt.style("opacity", 1);
-                  tt.html(template({
+                  tt.html(tooltipTemplate({
+                    color: $(this).parent().attr("color"),
+                    country: $(this).parent().attr("id"),
                     date: formatTime(d.date),
                     d: d,
                   }))
