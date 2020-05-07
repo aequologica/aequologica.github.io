@@ -145,7 +145,7 @@
     <div class="fixed-top" , style="max-height: 60px; ">
       <div class="row p-2">
         <div class="col-9">
-          <span id="title" style="display:inline-block; font-size:larger;">Daily
+          <span id="title" style="display:inline-block; font-size:larger;">Daily new 
             <!-- Example split danger button -->
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary"><span id="measure"></span></button>
@@ -154,17 +154,18 @@
                 <span class="sr-only">Toggle Dropdown</span>
               </button>
               <div class="dropdown-menu" id="type">
-                <a class="dropdown-item disabled" href="#" data-type="confirmed">confirmed</a>
-                <a class="dropdown-item" href="#" data-type="deaths">deaths</a>
+                <a class="dropdown-item" href="#" data-type="confirmed">confirmed</a>
+                <a class="dropdown-item" href="#" data-type="deaths">deaths</a> 
+                <!--
                 <a class="dropdown-item disabled" href="#" data-type="recovered">recovered</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item disabled" href="#" data-type="active">active (= confirmed - deaths - recovered)</a>
-                <a class="dropdown-item disabled"><img src="images/baustelle.svg" style="width: 24px; height:auto;"> <i>disabled menu items coming soon</i></a>
+                <a class="dropdown-item disabled"><img src="images/baustelle.svg" style="width: 24px; height:auto;"> <i>disabled menu items not yet </i></a>
+                -->
               </div>
             </div>
           </span>
-          <span style="display:block; font-size:smaller; white-space: nowrap; overflow:hidden; text-overflow: ellipsis;">as of <span id="end"></span> (updated every day at 3am
-            UTC)</span>
+          <span style="display:block; font-size:smaller; white-space: nowrap; overflow:hidden; text-overflow: ellipsis;">as of <span id="end"></span> (updated every day, not clear at what time though)</span>
             <a href="settings.html" id="link_to_settings" style="display:none;" type="button" class="btn btn-sm btn-outline-secondary" title="add country"><span>+</span></a>
         </div>
         <div class="col col-3" style="display:block; font-size:smaller; overflow:hidden; text-overflow: ellipsis;">
