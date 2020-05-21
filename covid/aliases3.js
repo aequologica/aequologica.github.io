@@ -84,8 +84,12 @@ var Aliases = (function () {
         "France",
         "Germany",
         "Italy",
-        "Luxembourg",
+        "Netherlands",
+        "Portugal",
+        "South Korea",
         "Spain",
+        "Sweden",
+        "Switzerland",
         "United Kingdom",
         "United States",
     ];
