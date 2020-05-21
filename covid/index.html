@@ -561,6 +561,7 @@
               .attr("class", "mytooltip")
               .style("opacity", 0);
 
+            /*
             var drawPoints = function () {
               products.selectAll("points")
                 .data(function (d) { return d.datapoints })
@@ -591,8 +592,7 @@
 
               });
             }
-
-
+            */
 
             Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height);
           }
@@ -622,8 +622,8 @@
                 .attr("stroke-dashoffset", totalLength)
                 .transition()
                 .duration(3000)
-                .attr("stroke-dashoffset", 0)
-                .on("end", drawPoints);
+                .attr("stroke-dashoffset", 0) /*
+                .on("end", drawPoints)*/;
             });
           }
         });
@@ -657,10 +657,10 @@
             return line(d.datapoints);
           });
 
-          svg.selectAll("circle")
+          /*svg.selectAll("circle")
             .attr("cx", function (d) { return xScale(d.date); })
             .attr("cy", function (d) { return yScale(d.deltaMovingAverage); })
-
+          */
           // console.log("resized! " + new Date());
         }
 
