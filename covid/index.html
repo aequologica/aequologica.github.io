@@ -145,7 +145,7 @@
     <div class="fixed-top" , style="max-height: 60px; ">
       <div class="row p-2">
         <div class="col-9">
-          <span id="title" style="display:inline-block; font-size:larger;">Daily new 
+          <span id="title" style="display:inline-block; font-size:larger;">Daily new
             <!-- Example split danger button -->
             <div class="btn-group">
               <button type="button" class="btn btn-sm btn-outline-secondary"><span id="measure"></span></button>
@@ -155,19 +155,30 @@
               </button>
               <div class="dropdown-menu" id="type">
                 <a class="dropdown-item" href="#" data-type="confirmed">confirmed</a>
-                <a class="dropdown-item" href="#" data-type="deaths">deaths</a> 
+                <a class="dropdown-item" href="#" data-type="deaths">deaths</a>
                 <a class="dropdown-item" href="#" data-type="recovered">recovered</a>
                 <!--
                 
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item disabled" href="#" data-type="active">active (= confirmed - deaths - recovered)</a>
                 <a class="dropdown-item disabled"><img src="images/baustelle.svg" style="width: 24px; height:auto;"> <i>disabled menu items not yet </i></a>
-                -->
+                
+                overflow:hidden; text-overflow: ellipsis;
+                
+              
+              -->
               </div>
             </div>
+
+          </span><span style="font-size:8pt;">&nbsp;(updated every day, not clear at what time though)</span>
+          <span style="display:block; font-size:smaller; white-space: nowrap; ">
+            as of <span id="end"></span>
+            - starting from
+            <input type="range" step="86400000" max="1325289600000" min="1293840000000" value="1293840000000" valueAsNumber="" id="rangeControlledByDate" class="custom-range" style="width: 80px; height:auto;"/>
+            <input type="date" max="2011-12-31" min="2011-01-01" value="2011-01-01" valueAsNumber="" id="dateControlledByRange" disabled/>
+
           </span>
-          <span style="display:block; font-size:smaller; white-space: nowrap; overflow:hidden; text-overflow: ellipsis;">as of <span id="end"></span> (updated every day, not clear at what time though)</span>
-            <a href="settings.html" id="link_to_settings" style="display:none;" type="button" class="btn btn-sm btn-outline-secondary" title="add country"><span>+</span></a>
+          <a href="settings.html" id="link_to_settings" style="display:none;" type="button" class="btn btn-sm btn-outline-secondary" title="add country"><span>+</span></a>
         </div>
         <div class="col col-3" style="display:block; font-size:smaller; overflow:hidden; text-overflow: ellipsis;">
           <div class="float-right" style="text-align: right;">
@@ -200,7 +211,7 @@
     </div>
 
     <!-- svg -->
-    
+
     <svg id="chart"></svg>
 
     <!-- footer -->
@@ -209,8 +220,8 @@
         <div class="card" style="vertical-align: bottom;">
           <div class="card-body">
             <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
-              <input type="range" min="1" max="20" value="4" class="custom-range" id="range" style="width:80px">
-              <label class="my-custom-control-label" id="bubble" for="range" style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label>
+              <input type="range" min="1" max="20" value="4" class="custom-range" id="sizeOfAverage" style="width:80px">
+              <label class="my-custom-control-label" id="bubble" for="sizeOfAverage" style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label>
               <label class="my-custom-control-label" id="subtitle"></label>
             </div>
           </div>
@@ -284,6 +295,15 @@
 
     $(document).ready(function () {
 
+      $('#dateControlledByRange').on('input', function () {
+        $('#rangeControlledByDate').prop('valueAsNumber', $.prop(this, 'valueAsNumber'));
+      });
+      $('#rangeControlledByDate').on('change', function () {
+        alert($.prop(this, 'valueAsNumber'));
+      }).on('input', function () {
+        $('#dateControlledByRange').prop('valueAsNumber', $.prop(this, 'valueAsNumber'));
+      });
+
       var margin = { top: 60, right: 80, bottom: 32, left: 0 };
       // $("#link_to_settings").css({left: "32px", top:margin.top+10+"px", position: "absolute"});
 
@@ -297,7 +317,7 @@
           var tmpInt = +tmpString;
           if (0 < tmpInt < 13) {
             sizeOfAverage = tmpInt;
-            var rang = document.getElementById("range");
+            var rang = document.getElementById("sizeOfAverage");
             if (rang) {
               var att = document.createAttribute("value");
               att.value = sizeOfAverage;
@@ -361,7 +381,7 @@
       }
       function draw() {
         // define margins
-        
+
         var
           width =
             parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
@@ -688,7 +708,7 @@
         location.reload();
       });
 
-      var ranges = document.querySelectorAll('[type="range"]');
+      var ranges = document.querySelectorAll('#sizeOfAverage[type="range"]');
       ranges.forEach(function (r) {
         r.addEventListener("input", () => {
           bubble.innerHTML = r.value;
