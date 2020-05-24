@@ -81,15 +81,17 @@ var Aliases = (function () {
 
     var factory = [
         "Belgium",
+        "Brazil",
         "France",
         "Germany",
         "Italy",
-        "Netherlands",
-        "Portugal",
+        /*"Netherlands",*/
+        /*"Portugal",*/
+        /*"Russia",*/
         "South Korea",
         "Spain",
         "Sweden",
-        "Switzerland",
+        /*"Switzerland",*/
         "United Kingdom",
         "United States",
     ];
