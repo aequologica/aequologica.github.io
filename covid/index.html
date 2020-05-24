@@ -207,20 +207,21 @@
     <svg id="chart"></svg>
 
     <!-- footer -->
-    <div id="my-bottom" class="fixed-bottom" style="font-size:10pt">
+    <div id="my-bottom" class="fixed-bottom" style="font-size:8pt">
       <div class="float-right p-2">
         <div class="card">
           <div class="card-body">
             <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
-              <span id="startFeedback"></span>
-              <input type="range" id="startRangeInput" step="1" min="1" max="366" value="1" class="custom-range" style="width: 80px; height:auto;"/>
+              <label id="startFeedback" class="my-custom-control-label"></label>
+              &nbsp;
+              <input type="range" id="startRangeInput" step="1" min="1" max="366" value="1" class="custom-range" style="width: 50px; height:auto;"/>
             </div>
           </div>
         </div>
         <div class="card" style="vertical-align: bottom;">
           <div class="card-body">
             <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
-              <input type="range" min="1" max="21" value="21" class="custom-range" id="sizeOfAverage" style="width:80px">
+              <input type="range" min="1" max="21" value="21" class="custom-range" id="sizeOfAverage" style="width:50px">
               <label class="my-custom-control-label" id="bubble" for="sizeOfAverage" style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label>
               <label class="my-custom-control-label" id="subtitle"></label>
             </div>
