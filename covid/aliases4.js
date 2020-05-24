@@ -85,15 +85,16 @@ var Aliases = (function () {
         "France",
         "Germany",
         "Italy",
-        /*"Netherlands",*/
-        /*"Portugal",*/
-        /*"Russia",*/
+        "Russia",
         "South Korea",
         "Spain",
         "Sweden",
-        /*"Switzerland",*/
         "United Kingdom",
         "United States",
+        /*"Netherlands",*/
+        /*"Portugal",*/
+        /**/
+        /*"Switzerland",*/
     ];
 
     function findKey(object, keyParam) {
@@ -134,7 +135,7 @@ var Aliases = (function () {
                 }
             } else {
                 a = factory;
-                this.write(a);
+                // this.write(a);
             }
             a = _.sortBy(a);
             console.log('read', a);
@@ -142,11 +143,18 @@ var Aliases = (function () {
         },
         write: function (a) {
             a = _.sortBy(a);
-            localStorage.setItem('aliases', a);
-            console.log('write', a);
+            if (_.isEqual(a, factory)) {
+                localStorage.removeItem('aliases');
+                console.log('removed local aliases');
+            } else {
+                localStorage.setItem('aliases', a);
+                console.log('write', a);
+            }
+            
         },
         reset: function () {
             localStorage.removeItem('aliases');
+            console.log('removed local aliases');
         },
         isExcluded: function (a) {
             if (excludedNoPopulation.includes(a)) {

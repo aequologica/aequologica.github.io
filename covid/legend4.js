@@ -92,7 +92,6 @@ var Legend = (function () {
         var buttons = document.querySelectorAll('[type="button"].remove');
         buttons.forEach(function (b) {
             b.addEventListener("click", function (event) {
-                console.log(this);
                 var locallyStoredAliases = Aliases.read();
                 const index = locallyStoredAliases.indexOf(event.currentTarget.name);
                 if (index > -1) {
