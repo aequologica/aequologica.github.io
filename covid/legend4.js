@@ -35,11 +35,11 @@ var Legend = (function () {
             {
                 var add = th.append('button');
                 add.attr("type", "button");
-                add.attr("class", "add btn btn-sm btn-outline-secondary float-left");
+                add.attr("class", "add btn btn-sm btn-primary float-left");
                 add.attr("title", "add country");
                 add.attr("data-toggle", "modal");
                 add.attr("data-target", "#exampleModal");
-                add.append('span').html("+");
+                add.append('i').attr("class", "fas fa-plus");
             }
             th.append('span').html("&nbsp;");
             {
@@ -48,7 +48,8 @@ var Legend = (function () {
                 hide.attr("type", "button");
                 hide.attr("class", "hide btn btn-sm btn-outline-secondary float-right");
                 hide.attr("title", "toggle population column visibility");
-                hide.append('span').html("&harr;");
+                hide.append('i').attr("class", "fas fa-globe");
+     
             }
         }
         // col 3
