@@ -1,5 +1,5 @@
 body {
-    font: 12px sans-serif;
+    font: 12pt sans-serif;
 }
 
 #legend .parent {
@@ -54,16 +54,18 @@ body {
     stroke: #bbccdd;
 }
 
-tr, .card-body {
+tr, 
+.card-body {
     background-color: ghostwhite;
 }
 
 .card {
     display: inline-block !important;
-    vertical-align: bottom;
+    /* vertical-align: bottom; */
 }
 
-#legend .card-body, .fixed-bottom#my-bottom .card-body {
+#legend .card-body, 
+.fixed-bottom#my-bottom .card-body {
     padding: .2rem .3rem !important;
     padding-top: 0.2rem !important;
     padding-right: 0.3rem !important;
@@ -78,7 +80,7 @@ tr, .card-body {
 .my-custom-control-label {
     position: relative;
     margin-bottom: 0;
-    vertical-align: top;
+    /* vertical-align: top; */
 }
 
 .modal-body {
