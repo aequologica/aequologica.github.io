@@ -91,10 +91,6 @@ var Aliases = (function () {
         "Sweden",
         "United Kingdom",
         "United States",
-        /*"Netherlands",*/
-        /*"Portugal",*/
-        /**/
-        /*"Switzerland",*/
     ];
 
     function findKey(object, keyParam) {
@@ -105,6 +101,7 @@ var Aliases = (function () {
         };
         return undefined;
     }
+
     function findKeyHavingValue(object, value) {
         for (let key in object) {
             if (value == object[key]) {
@@ -113,6 +110,7 @@ var Aliases = (function () {
         };
         return undefined;
     }
+
     return {
         factory: factory,
         c2a: function (c) {

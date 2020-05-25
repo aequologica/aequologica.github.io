@@ -1,0 +1,110 @@
+body {
+    font: 12px sans-serif;
+}
+
+#legend .parent {
+    transform: scaleX(-1);
+}
+
+#legend .sleeve {
+    transform: scaleX(-1);
+}
+
+#legend .table-responsive {
+    max-height: 240px !important;
+}
+
+#legend button {
+    padding: 0 .3rem;
+}
+
+#legend .remove button {
+    padding: 0;
+    border: none;
+}
+
+#legend td.country, #legend td.population {
+    padding-right: .3rem;
+}
+
+#legend th.population, #legend td.population {
+    font-family: monospace;
+    text-align: right;
+}
+
+#chart {
+    width: 100%;
+    height: 94%;
+    position: absolute;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2px;
+}
+
+.grid line {
+    stroke: #bbccdd;
+}
+
+tr, .card-body {
+    background-color: ghostwhite;
+}
+
+.card {
+    display: inline-block !important;
+    vertical-align: bottom;
+}
+
+#legend .card-body, .fixed-bottom#my-bottom .card-body {
+    padding: .2rem .3rem !important;
+    padding-top: 0.2rem !important;
+    padding-right: 0.3rem !important;
+    padding-bottom: 0.2rem !important;
+    padding-left: 0.3rem !important;
+}
+
+.zero-margin-right {
+    margin-right: 0 !important;
+}
+
+.my-custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+
+.modal-body {
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.mytooltip {
+    position: absolute;
+    background-color: ghostwhite;
+    font-size: 10px;
+    padding: .2rem;
+}
+
+.mytooltip tr td:first-child {
+    text-align: right;
+    font-family: monospace;
+}
+
+.mytooltip caption {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+}
+
+.point {
+    stroke: none;
+    fill: #cbcbcb;
+    opacity: .02;
+}
