@@ -48,13 +48,14 @@
     <div class="container-fluid">
         <button 
             type="button" 
-            class="reset btn btn-outline-secondary float-right" 
+            class="reset btn btn-outline-secondary" 
             title="reset list of countries to factory defaults"
-            style="padding: 0 .3rem;"
+            style="padding: 0 .3rem; margin-bottom:.5rem;"
             onclick="Aliases.reset();location.reload();">
             <i class="fas fa-power-off"></i>
+            reset to factory default 
         </button>
-         <table id="countries" class="table table-sm table-striped table-hover table-fit tablesorter">
+        <table id="countries" class="table table-sm table-striped table-hover table-fit tablesorter">
             <thead>
                 <tr>
                     <th scope="col" class="center">&nbsp;</th>

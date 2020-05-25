@@ -156,17 +156,9 @@
                 <a class="dropdown-item" href="#" data-type="confirmed">confirmed</a>
                 <a class="dropdown-item" href="#" data-type="deaths">deaths</a>
                 <a class="dropdown-item" href="#" data-type="recovered">recovered</a>
-                <!--
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item disabled" href="#" data-type="active">active (= confirmed - deaths - recovered)</a>
-                <a class="dropdown-item disabled"><img src="images/baustelle.svg" style="width: 24px; height:auto;"> <i>disabled menu items not yet </i></a>
-                
-                overflow:hidden; text-overflow: ellipsis;
-                -->
               </div>
             </div>
-
-          </span><span style="font-size:8pt;">&nbsp;(updated every day, not clear at what time though)</span>
+          </span><span style="font-size:7pt;">&nbsp;(updated every day, not clear at what time though)</span>
           <span style="display:block; font-size:smaller; white-space: nowrap; ">
             as of <span id="end"></span>
           </span>
@@ -176,7 +168,7 @@
           <div class="float-right" style="text-align: right;">
             sources:
             <a href="https://github.com/pomber/covid19" target="_json-data_source">data</a>
-            |
+            <i class="fas fa-grip-lines-vertical" style="color:gray;"></i>
             <a href="https://github.com/aequologica/aequologica.github.io/tree/master/covid" target="_github_com">html</a>
           </div>
         </div>
@@ -187,12 +179,6 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog .modal-dialog-scrollable" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Countries</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
           <div class="modal-body">
             <div class="embed-responsive embed-responsive-1by1" style="height:100%">
               <iframe class="embed-responsive-item" src="settings.html" height="100%" allowfullscreen></iframe>
@@ -207,17 +193,19 @@
     <svg id="chart"></svg>
 
     <!-- footer -->
-    <div id="my-bottom" class="fixed-bottom" style="font-size:8pt">
-      <div class="float-right p-2">
+    <div id="my-bottom" class="fixed-bottom" style="font-size:7pt">
+      <div class="float-left p-2">
         <div class="card">
           <div class="card-body">
             <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
-              <label id="startFeedback" class="my-custom-control-label"></label>
-              &nbsp;
               <input type="range" id="startRangeInput" step="1" min="1" max="366" value="1" class="custom-range" style="width: 50px; height:auto;"/>
+              &nbsp;
+              <label id="startFeedback" class="my-custom-control-label"></label>         
             </div>
           </div>
         </div>
+      </div>
+      <div class="float-right p-2">
         <div class="card" style="vertical-align: bottom;">
           <div class="card-body">
             <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
@@ -296,6 +284,7 @@
 
       var startAsDayOfYear = localStorage.getItem("startAsDayOfYear");
       var start = startAsDayOfYear ? moment().dayOfYear(startAsDayOfYear) : moment("2020-01-22"); // default
+      start.subtract(1, 'days');
       $('#startFeedback').text(start.format('LL'));
       $('#startRangeInput').prop('value', start.dayOfYear());
 
@@ -448,7 +437,8 @@
 
           var end = countries.length > 0 ? moment(_.maxBy(data[countries[0]], 'date').date) : moment();
           var earliest = countries.length > 0 ? moment(_.minBy(data[countries[0]], 'date').date) : moment();
-
+          end.subtract(1, 'days');
+          earliest.subtract(1, 'days');
           $('#startRangeInput').prop("max", end.dayOfYear());
           $('#startRangeInput').prop("min", earliest.dayOfYear());
           
