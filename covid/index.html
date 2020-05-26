@@ -330,10 +330,11 @@
           });
 
           var end = countries.length > 0 ? moment(_.maxBy(data[countries[0]], 'date').date) : moment();
+          var latest = new moment(end);
           var earliest = countries.length > 0 ? moment(_.minBy(data[countries[0]], 'date').date) : moment();
-          end.subtract(1, 'days');
+          latest.subtract(2, 'days');
           earliest.subtract(1, 'days');
-          $('#startRangeInput').prop("max", end.dayOfYear());
+          $('#startRangeInput').prop("max", latest.dayOfYear());
           $('#startRangeInput').prop("min", earliest.dayOfYear());
 
           // calc start date as with respect to first # of deaths for all countries
