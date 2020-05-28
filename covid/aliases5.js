@@ -16,12 +16,15 @@ var Aliases = (function () {
         "US": "United States",
         "West Bank and Gaza": "State of Palestine",
     };
+    
     var excludedNoPopulation = [
         "Burma",
         "Diamond Princess",
         "Kosovo",
         "MS Zaandam"
     ];
+    excludedNoPopulation = _.sortBy(excludedNoPopulation);
+
     var excludedNoCovidData = [
         "American Samoa",
         "Anguilla",
@@ -78,6 +81,7 @@ var Aliases = (function () {
         "Vanuatu",
         "Wallis & Futuna",
     ];
+    excludedNoCovidData = _.sortBy(excludedNoCovidData);
 
     var factory = [
         "Belgium",
@@ -92,6 +96,7 @@ var Aliases = (function () {
         "United Kingdom",
         "United States",
     ];
+    factory = _.sortBy(factory);
 
     function findKey(object, keyParam) {
         for (let key in object) {
@@ -126,27 +131,26 @@ var Aliases = (function () {
         read: function () {
             var a = localStorage.getItem("aliases");
             if (a != null) {
-                if (a.length == 0) {
+                if (typeof a !== "string" || a.length == 0) {
                     a = [];
                 } else {
                     a = a.split(',');
+                    a = _.sortBy(a);    
                 }
+                console.log('read local aliases', a);
             } else {
-                a = factory;
-                // this.write(a);
+                a = _.cloneDeep(factory);
+                console.log('factory local aliases', a);
             }
-            a = _.sortBy(a);
-            console.log('read', a);
             return a;
         },
         write: function (a) {
             a = _.sortBy(a);
-            if (_.isEqual(a, factory)) {
-                localStorage.removeItem('aliases');
-                console.log('removed local aliases');
+            if (_.isEqual(a, this.factory)) {
+                this.reset();
             } else {
                 localStorage.setItem('aliases', a);
-                console.log('write', a);
+                console.log('write local aliases', a);
             }
             
         },
@@ -155,10 +159,10 @@ var Aliases = (function () {
             console.log('removed local aliases');
         },
         isExcluded: function (a) {
-            if (excludedNoPopulation.includes(a)) {
+            if (-1 !== _.sortedIndexOf(excludedNoPopulation, a)) {
                 return true;
             }
-            if (excludedNoCovidData.includes(a)) {
+            if (-1 !== _.sortedIndexOf(excludedNoCovidData, a)) {
                 return true;
             } 
             return false;
