@@ -1,7 +1,7 @@
-var Aliases = (function () {
+var Aliases = (() => {
     'use strict';
 
-    var countryAliases = {
+    const countryAliases = {
         "Congo (Brazzaville)": "Congo",
         "Congo (Kinshasa)": "DR Congo",
         "Cote d'Ivoire": "Côte d'Ivoire",
@@ -17,15 +17,14 @@ var Aliases = (function () {
         "West Bank and Gaza": "State of Palestine",
     };
     
-    var excludedNoPopulation = [
+    const excludedNoPopulation = _.sortBy([
         "Burma",
         "Diamond Princess",
         "Kosovo",
         "MS Zaandam"
-    ];
-    excludedNoPopulation = _.sortBy(excludedNoPopulation);
+    ]);
 
-    var excludedNoCovidData = [
+    const excludedNoCovidData = _.sortBy([
         "American Samoa",
         "Anguilla",
         "Aruba",
@@ -80,10 +79,9 @@ var Aliases = (function () {
         "U.S. Virgin Islands",
         "Vanuatu",
         "Wallis & Futuna",
-    ];
-    excludedNoCovidData = _.sortBy(excludedNoCovidData);
-
-    var factory = [
+    ]);
+    
+    const factory = _.sortBy([
         "Belgium",
         "Brazil",
         "France",
@@ -95,8 +93,8 @@ var Aliases = (function () {
         "Sweden",
         "United Kingdom",
         "United States",
-    ];
-    factory = _.sortBy(factory);
+    ]);
+    
 
     function findKey(object, keyParam) {
         for (let key in object) {
@@ -118,17 +116,17 @@ var Aliases = (function () {
 
     return {
         factory: factory,
-        c2a: function (c) {
-            return countryAliases[c] || c;
-        },
-        a2c: function (a) {
-            var key = findKeyHavingValue(countryAliases, a);
+        c2a: (c) =>
+            countryAliases[c] || c
+        ,
+        a2c: (a) => {
+            let key = findKeyHavingValue(countryAliases, a);
             if (key) {
                 return key;
             }
             return a;
         },
-        read: function () {
+        read: () => {
             var a = localStorage.getItem("aliases");
             if (a != null) {
                 if (typeof a !== "string" || a.length == 0) {
@@ -137,28 +135,28 @@ var Aliases = (function () {
                     a = a.split(',');
                     a = _.sortBy(a);    
                 }
-                console.log('read local aliases', a);
+                console.log('read aliases from local storage', a);
             } else {
                 a = _.cloneDeep(factory);
-                console.log('factory local aliases', a);
+                console.log('get aliases from factory', a);
             }
             return a;
         },
-        write: function (a) {
+        write: (a) => {
             a = _.sortBy(a);
             if (_.isEqual(a, this.factory)) {
                 this.reset();
             } else {
                 localStorage.setItem('aliases', a);
-                console.log('write local aliases', a);
+                console.log('write aliases to local storage', a);
             }
             
         },
-        reset: function () {
+        reset: () => {
             localStorage.removeItem('aliases');
-            console.log('removed local aliases');
+            console.log('remove aliases from local storage');
         },
-        isExcluded: function (a) {
+        isExcluded: (a) => {
             if (-1 !== _.sortedIndexOf(excludedNoPopulation, a)) {
                 return true;
             }

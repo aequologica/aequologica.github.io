@@ -1,5 +1,5 @@
 // https://www.worldometers.info/world-population/population-by-country/
-var populationByAlias = [
+const populationByAlias = [
     { name: "Afghanistan", count: 38928346 },
     { name: "Albania", count: 2877797 },
     { name: "Algeria", count: 43851044 },

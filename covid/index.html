@@ -14,7 +14,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.css" rel="stylesheet">
 
@@ -23,7 +23,7 @@
     div.fixed-bottom#my-bottom label {
       height: 1.4rem;
       line-height: 1.4rem;
-    }  
+    }
   </style>
 </head>
 
@@ -52,7 +52,8 @@
           <span style="display:block; font-size:smaller; white-space: nowrap; ">
             as of <span id="end"></span>
           </span>
-          <div style="display:none;" id="link_to_settings">Add country : <a href="settings.html" type="button" class="btn btn-sm btn-primary" title="add country"><i class="fas fa-plus"></i></a></div>
+          <div style="display:none;" id="link_to_settings">Add country : <a href="settings.html" type="button" class="btn btn-sm btn-primary" title="add country"><i
+                class="fas fa-plus"></i></a></div>
         </div>
         <div class="col col-3" style="display:block; font-size:smaller; overflow:hidden; text-overflow: ellipsis;">
           <div class="float-right" style="text-align: right;">
@@ -88,9 +89,9 @@
         <div class="card">
           <div class="card-body">
             <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
-              <input type="range" id="startRangeInput" step="1" min="1" max="366" value="1" class="custom-range" style="width: 50px; height:auto;"/>
+              <input type="range" id="startRangeInput" step="1" min="1" max="366" value="1" class="custom-range" style="width: 50px; height:auto;" />
               &nbsp;
-              <label id="startFeedback" class="my-custom-control-label"></label>         
+              <label id="startFeedback" class="my-custom-control-label"></label>
             </div>
           </div>
         </div>
@@ -134,6 +135,20 @@
           </div>
         </div>
       </div>
+      <div class="float-right p-2">
+        <div class="card">
+          <div class="card-body">points:
+            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+              <input type="radio" id="showpoints" name="showpoints" class="custom-control-input">
+              <label class="custom-control-label" for="showpoints">show</label>
+            </div>
+            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+              <input type="radio" id="hidepoints" name="showpoints" class="custom-control-input" checked>
+              <label class="custom-control-label" for="hidepoints">hide</label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -153,113 +168,128 @@
 </table></script>
   <script>
     // compile the template
-    var tooltipTemplate = Handlebars.compile(document.getElementById("tooltip-template").innerHTML);
+    const tooltipTemplate = Handlebars.compile(document.getElementById("tooltip-template").innerHTML);
   </script>
 
   <!-- https://github.com/doowb/sma -->
   <script src="sma.js"></script> <!-- script src="https://cdn.jsdelivr.net/npm/sma@latest/index.js"></script -->
 
   <!-- -->
-  <script src="population.js"></script>
-  <script src="aliases5.js"></script>
-  <script src="legend4.js"></script>
-  <script src="measurement.js"></script>
+  <script src="population2.js"></script>
+  <script src="aliases6.js"></script>
+  <script src="legend5.js"></script>
+  <script src="measurement2.js"></script>
 
   <script>
     'use strict';
 
     // https://stackoverflow.com/a/31732310/1070215
-    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+    const isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
       navigator.userAgent &&
       navigator.userAgent.indexOf('CriOS') == -1 &&
       navigator.userAgent.indexOf('FxiOS') == -1;
 
     // allons-y
-    $(document).ready(function () {
+    $(document).ready(() => {
 
-      var margin = { top: 60, right: 80, bottom: 32, left: 0 };
-      
+      const margin = { top: 60, right: 80, bottom: 32, left: 0 };
+
       ///////////////////////////////
       // constants & initializations
-      var startAsDayOfYear = localStorage.getItem("startAsDayOfYear");
-      var start = startAsDayOfYear ? moment().dayOfYear(startAsDayOfYear) : moment("2020-01-22"); 
-      start.subtract(1, 'days');
-      $('#startFeedback').text(start.format('LL'));
-      $('#startRangeInput').prop('value', start.dayOfYear());
-
-      $('#startRangeInput').on('change', function () {
-        start = moment().dayOfYear($.prop(this, 'valueAsNumber'));
-        localStorage.setItem("startAsDayOfYear", start.dayOfYear());
-        raz();
-        draw();
-      }).on('input', function () {
-        $('#startFeedback').text(moment().dayOfYear($.prop(this, 'valueAsNumber')).format('LL'));
-      });
-
-      var measure = new Measure();
-      var sizeOfAverage = 21;
+      let start;
       {
-        var tmpString = localStorage.getItem("sizeOfAverage");
+        const startAsDayOfYear = localStorage.getItem("startAsDayOfYear");
+        const defaultStart = "2020-01-22";
+        start = startAsDayOfYear ? moment().dayOfYear(startAsDayOfYear) : moment(defaultStart);
+        start.subtract(1, 'days');
+        $('#startFeedback').text(start.format('LL'));
+        $('#startRangeInput').prop('value', start.dayOfYear());
+
+        $('#startRangeInput').on('change', (e) => {
+          start = moment().dayOfYear($.prop(e.currentTarget, 'valueAsNumber'));
+          localStorage.setItem("startAsDayOfYear", start.dayOfYear());
+          raz();
+          draw();
+        }).on('input', (e) => {
+          $('#startFeedback').text(moment().dayOfYear($.prop(e.currentTarget, 'valueAsNumber')).format('LL'));
+        });
+      }
+
+      const measure = new Measure();
+
+      let sizeOfAverage = 21;
+      {
+        let tmpString = localStorage.getItem("sizeOfAverage");
         if (tmpString) {
-          var tmpInt = +tmpString;
+          let tmpInt = +tmpString;
           if (0 < tmpInt < 22) {
             sizeOfAverage = tmpInt;
-            var rang = document.getElementById("sizeOfAverage");
+            let rang = document.getElementById("sizeOfAverage");
             if (rang) {
-              var att = document.createAttribute("value");
+              let att = document.createAttribute("value");
               att.value = sizeOfAverage;
               rang.setAttributeNode(att);
             }
           }
         }
       }
-      var countries;
-      {
-        var aliases = Aliases.read();
 
-        if (aliases != null && aliases.length > 0) {
-          countries = _.map(aliases, (a) => Aliases.a2c(a));
-        } else {
-          countries = [];
+      function getCountries() {
+        let aliases = Aliases.read();
+
+        if (aliases && aliases.length > 0) {
+          return _.map(aliases, (a) => Aliases.a2c(a));
         }
-      }
 
-      var startAfterNDeaths = 50;
-      var populations = {};
+        return [];
+      }
+      const countries = getCountries();
+
+      let startAfterNDeaths = 50;
+      let populations = {};
       {
         function getPopulation(country) {
-          var countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
+          const countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
           return countray.count;
         }
-        countries.forEach(function (country) {
+        countries.forEach((country) => {
           _.assign(populations, { [country]: getPopulation(country) });
         });
       }
-      var toggleCapita = "percapita";  // "absolute"; // 
-      var toggleLinear = "logaritmic"; // "linear";   // 
+      let toggleCapita = "percapita";  // "absolute";   // 
+      let toggleLinear = "logaritmic"; // "linear";     // 
+      let togglePoints = "hidepoints"; // "showpoints"; // 
       {
         {
-          var tmp = localStorage.getItem("toggleCapita");
+          const tmp = localStorage.getItem("toggleCapita");
           if (tmp && (tmp == "absolute" || tmp == "percapita")) {
             toggleCapita = tmp;
-            var radiobtn = document.getElementById(toggleCapita);
+            const radiobtn = document.getElementById(toggleCapita);
             if (radiobtn) { radiobtn.checked = true; }
           }
         }
         {
-          var tmp = localStorage.getItem("toggleLinear");
+          const tmp = localStorage.getItem("toggleLinear");
           if (tmp && (tmp == "linear" || tmp == "logaritmic")) {
             toggleLinear = tmp;
-            var radiobtn = document.getElementById(toggleLinear);
+            const radiobtn = document.getElementById(toggleLinear);
+            if (radiobtn) { radiobtn.checked = true; }
           }
-          if (radiobtn) { radiobtn.checked = true; }
+        }
+        {
+          const tmp = localStorage.getItem("togglePoints");
+          if (tmp && (tmp == "hidepoints" || tmp == "showpoints")) {
+            togglePoints = tmp;
+            const radiobtn = document.getElementById(togglePoints);
+            if (radiobtn) { radiobtn.checked = true; }
+          }
         }
       }
 
       /////////////
       // functions
       function raz() {
-        var elem = document.querySelector('#chart');
+        const elem = document.querySelector('#chart');
         if (elem) {
           while (elem.firstChild) {
             elem.removeChild(elem.lastChild);
@@ -269,35 +299,35 @@
       function draw() {
         // define margins
 
-        var
+        const
           width =
             parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
           height =
             parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
 
         // define date parser
-        var parseDate = d3.timeParse("%Y-%m-%d");
-        var formatTime = d3.timeFormat("%e %B");
+        const parseDate = d3.timeParse("%Y-%m-%d");
+        const formatTime = d3.timeFormat("%e %B");
 
         // define scales
-        var xScale = d3.scaleTime().range([0, width]);
-        var yScale = (toggleLinear === "logaritmic" ? d3.scaleSymlog() : d3.scaleLinear()).range([height, 0]);
-        var color = d3.scaleOrdinal().range(d3.schemeCategory10);
+        const xScale = d3.scaleTime().range([0, width]);
+        const yScale = (toggleLinear === "logaritmic" ? d3.scaleSymlog() : d3.scaleLinear()).range([height, 0]);
+        const color = d3.scaleOrdinal().range(d3.schemeCategory10);
 
         // define axes
-        var xAxis = d3.axisBottom().scale(xScale);
-        var yAxis = d3.axisRight().scale(yScale);
-        var yGrid = d3.axisLeft().scale(yScale);
+        const xAxis = d3.axisBottom().scale(xScale);
+        const yAxis = d3.axisRight().scale(yScale);
+        const yGrid = d3.axisLeft().scale(yScale);
 
         // define lines
-        var line = d3
+        const line = d3
           .line()
           .curve(d3.curveMonotoneX)
-          .x(function (d) { return xScale(d.date); })
-          .y(function (d) { return yScale(d.deltaMovingAverage); });
+          .x((d) => { return xScale(d.date); })
+          .y((d) => { return yScale(d.deltaMovingAverage); });
 
         // define svg canvas
-        var svg = d3
+        const svg = d3
           .select("#chart")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
@@ -305,10 +335,10 @@
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         // Read in data
-        d3.json("https://pomber.github.io/covid19/timeseries.json").then(function (dataParam) {
+        d3.json("https://pomber.github.io/covid19/timeseries.json").then((dataParam) => {
 
-          var data = {};
-          countries.forEach(function (country) {
+          let data = {};
+          countries.forEach((country) => {
             if (dataParam[country]) {
               _.assign(data, { [country]: dataParam[country] });
             }
@@ -318,9 +348,9 @@
           color.domain(countries);
 
           // parse all dates first, integerify other attributes
-          countries.forEach(function (country) {
+          countries.forEach((country) => {
             if (data[country]) {
-              data[country].forEach(function (d) {
+              data[country].forEach((d) => {
                 d.date = parseDate(d.date);
                 d.confirmed = +d.confirmed;
                 d.deaths = +d.deaths;
@@ -329,33 +359,34 @@
             }
           });
 
-          var end = countries.length > 0 ? moment(_.maxBy(data[countries[0]], 'date').date) : moment();
-          var latest = new moment(end);
-          var earliest = countries.length > 0 ? moment(_.minBy(data[countries[0]], 'date').date) : moment();
-          latest.subtract(2, 'days');
-          earliest.subtract(1, 'days');
-          $('#startRangeInput').prop("max", latest.dayOfYear());
-          $('#startRangeInput').prop("min", earliest.dayOfYear());
+          const end = countries.length > 0 ? moment(_.maxBy(data[countries[0]], 'date').date) : moment();
+          {
+            const latest = new moment(end);
+            const earliest = countries.length > 0 ? moment(_.minBy(data[countries[0]], 'date').date) : moment();
+            latest.subtract(2, 'days');
+            earliest.subtract(1, 'days');
+            $('#startRangeInput').prop("max", latest.dayOfYear());
+            $('#startRangeInput').prop("min", earliest.dayOfYear());
+          }
+
 
           // calc start date as with respect to first # of deaths for all countries
           /*
           if (measure.getType() === "deaths") {
-            var firstNDeaths = {};
+            let firstNDeaths = {};
 
-            countries.forEach(function (country) {
-              var found = _.find(data[country], function (d) { return d.deaths >= startAfterNDeaths; })
+            countries.forEach((country) => {
+              const found = _.find(data[country], (d) => { return d.deaths >= startAfterNDeaths; })
               if (found) {
                 firstNDeaths[country] = found;
               }
 
             });
-            var firstNDeathsArray = _.values(firstNDeaths);
+            const firstNDeathsArray = _.values(firstNDeaths);
 
-            firstNDeathsArray.sort(function compare(a, b) {
-              return moment(a.date) - moment(b.date);
-            });
+            firstNDeathsArray.sort((a, b) => moment(a.date) - moment(b.date) );
             if (firstNDeathsArray.length > 0) {
-              var minFirstNDeaths = firstNDeathsArray[0];
+              const minFirstNDeaths = firstNDeathsArray[0];
               start = moment(minFirstNDeaths.date);
             }
           }
@@ -363,11 +394,11 @@
 
           // format the data 
           if (countries.length > 0) {
-            countries.forEach(function (country) {
+            countries.forEach((country) => {
 
-              var previousDelta = 0;
+              let previousDelta = 0;
 
-              data[country].forEach(function (d) {
+              data[country].forEach((d) => {
                 d.delta = (measure.func(d) - previousDelta);
                 if (toggleCapita == "percapita") {
                   d.delta = 1000000 * d.delta / populations[country];
@@ -375,26 +406,26 @@
                 previousDelta = measure.func(d);
               });
 
-              var deltas = _.map(data[country], 'delta');
-              var deltasMovingAverage = sma(deltas, sizeOfAverage);
-              for (var i = 0; i < deltasMovingAverage.length; i++) {
+              const deltas = _.map(data[country], 'delta');
+              let deltasMovingAverage = sma(deltas, sizeOfAverage);
+              for (let i = 0; i < deltasMovingAverage.length; i++) {
                 deltasMovingAverage[i] = +deltasMovingAverage[i];
               }
 
-              var i = 0;
-              data[country].forEach(function (d) {
-                d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i + 1 - sizeOfAverage];
-                i = i + 1;
-              });
+              {
+                let i = 0;
+                data[country].forEach((d) => {
+                  d.deltaMovingAverage = i < sizeOfAverage ? 0 : deltasMovingAverage[i + 1 - sizeOfAverage];
+                  i = i + 1;
+                });
+              }
 
-              data[country] = _.filter(data[country], function (d) {
-                return moment(d.date).isSameOrAfter(start);
-              });
+              data[country] = _.filter(data[country], (d) => moment(d.date).isSameOrAfter(start));
             });
           }
 
           // reformat data to make it more copasetic for d3
-          var measures = countries.map(function (country) {
+          const measures = countries.map((country) => {
             return {
               category: country,
               datapoints: data[country]
@@ -406,18 +437,18 @@
           if (countries.length > 0) {
             // set the domain of the axes
             xScale.domain(
-              d3.extent(measures[0].datapoints, function (d) {
+              d3.extent(measures[0].datapoints, (d) => {
                 return d.date;
               })
             );
-            var yExtents = measures.map(function (item) {
-              return d3.extent(item.datapoints, function (d) {
+            const yExtents = measures.map((item) => {
+              return d3.extent(item.datapoints, (d) => {
                 return d.deltaMovingAverage;
               });
             });
-            var yExtent = [
-              d3.min(yExtents, function (d) { return d[0] }),
-              d3.max(yExtents, function (d) { return d[1] })
+            const yExtent = [
+              d3.min(yExtents, (d) => { return d[0] }),
+              d3.max(yExtents, (d) => { return d[1] })
             ];
             yScale.domain(yExtent);
 
@@ -442,28 +473,28 @@
                 .tickFormat("")
               );
 
-            var products = svg
+            const products = svg
               .selectAll(".category")
               .data(measures)
               .enter()
               .append("g")
               .attr("class", "category")
-              .attr("id", function (d, i) {
+              .attr("id", (d, i) => {
                 return d.category;
-              }).attr("color", function (d, i) {
+              }).attr("color", (d, i) => {
                 return color(d.category);
               });
 
             products
               .append("path")
               .attr("class", "line")
-              .attr("id", function (d, i) {
+              .attr("id", (d, i) => {
                 return "line" + i;
               })
-              .attr("d", function (d) {
+              .attr("d", (d) => {
                 return line(d.datapoints);
               })
-              .style("stroke", function (d) {
+              .style("stroke", (d) => {
                 return color(d.category);
               });
 
@@ -471,20 +502,20 @@
             // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
             // Define the div for the tooltip
             d3.selectAll("div.mytooltip").remove();
-            var tt = d3.select(".container-fluid").append("div")
+            const tt = d3.select(".container-fluid").append("div")
               .attr("class", "mytooltip")
               .style("opacity", 0);
 
-            var drawPoints = function () {
+            const drawPoints = function () {
               products.selectAll("points")
-                .data(function (d) { return d.datapoints })
+                .data((d) => { return d.datapoints })
                 .enter()
                 .append("circle")
-                .attr("cx", function (d) { return xScale(d.date); })
-                .attr("cy", function (d) { return yScale(d.deltaMovingAverage); })
+                .attr("cx", (d) => { return xScale(d.date); })
+                .attr("cy", (d) => { return yScale(d.deltaMovingAverage); })
                 .attr("r", 5)
                 .attr("class", "point")
-                .on("mouseover", function (d) {
+                .on("mouseover", (d) => {
                   tt.style("opacity", 1);
                   tt.html(tooltipTemplate({
                     color: $(this).parent().attr("color"),
@@ -495,17 +526,17 @@
                     .style("left", (d3.event.pageX + 10) + "px")
                     .style("top", (d3.event.pageY + 10) + "px");
                 })
-                .on("mouseout", function (d) {
+                .on("mouseout", (d) => {
                 });
 
-              $("svg#chart").on("click", function (e) {
+              $("svg#chart").on("click", (e) => {
                 if (!$(e.target).is("circle")) {
                   tt.style("opacity", 0);
                 }
 
               });
             }
-            
+
             Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height);
           }
 
@@ -520,29 +551,32 @@
 
           // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
           {
-            var i = 0;
             d3.selectAll(".line").style("opacity", "0.5");
 
             // select All of the lines and process them one by one
-            d3.selectAll(".line").each(function (d, i) {
+            d3.selectAll(".line").each((d, i) => {
 
               // get the length of each line in turn
-              var totalLength = d3.select("#line" + i).node().getTotalLength();
+              const totalLength = d3.select("#line" + i).node().getTotalLength();
 
-              d3.selectAll("#line" + i)
+              const line = d3.selectAll("#line" + i)
                 .attr("stroke-dasharray", totalLength + " " + totalLength)
                 .attr("stroke-dashoffset", totalLength)
                 .transition()
                 .duration(3000)
-                .attr("stroke-dashoffset", 0)
-                .on("end", drawPoints);
+                .attr("stroke-dashoffset", 0);
+
+              if (togglePoints === "showpoints") {
+                line.on("end", drawPoints);
+              }
+
             });
           }
         });
 
         // define responsive behavior
         function resize() {
-          var width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
+          const width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
             height = parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
 
           // Update the range of the scale with new width/height
@@ -565,18 +599,18 @@
           yGrid.ticks(Math.max(height / 50, 2));
 
           // force D3 to recalculate and update the line
-          svg.selectAll(".line").attr("d", function (d) {
+          svg.selectAll(".line").attr("d", (d) => {
             return line(d.datapoints);
           });
 
           svg.selectAll("circle")
-            .attr("cx", function (d) { return xScale(d.date); })
-            .attr("cy", function (d) { return yScale(d.deltaMovingAverage); })
+            .attr("cx", (d) => { return xScale(d.date); })
+            .attr("cy", (d) => { return yScale(d.deltaMovingAverage); })
           // console.log("resized! " + new Date());
         }
 
-        // call the resize function whenever a resize event occurs
-        d3.select(window).on("resize", _.debounce(function () {
+        // call resize whenever a resize event occurs
+        d3.select(window).on("resize", _.debounce(() => {
           raz();
           draw();
         }, 500));
@@ -587,20 +621,20 @@
 
       /////////////////
       // html handlers
-      $('#exampleModal').on('hidden.bs.modal', function () {
+      $('#exampleModal').on('hidden.bs.modal', () => {
         location.reload();
       })
 
       $('.dropdown-toggle').dropdown();
 
-      $(".dropdown-item").on("click", function (e) {
-        var newType = $(e.currentTarget).data("type");
+      $(".dropdown-item").on("click", (e) => {
+        const newType = $(e.currentTarget).data("type");
         measure.setType(newType);
         location.reload();
       });
 
-      var ranges = document.querySelectorAll('#sizeOfAverage[type="range"]');
-      ranges.forEach(function (r) {
+      const ranges = document.querySelectorAll('#sizeOfAverage[type="range"]');
+      ranges.forEach((r) => {
         r.addEventListener("input", () => {
           bubble.innerHTML = r.value;
         });
@@ -615,11 +649,11 @@
         });
       });
 
-      var radios = document.querySelectorAll('[type="radio"]');
-      radios.forEach(function (r) {
-        r.addEventListener("click", function (event) {
-          var oldLinear = toggleLinear, oldCapita = toggleCapita;
-          switch (this.id) {
+      const radios = document.querySelectorAll('[type="radio"]');
+      radios.forEach((r) => {
+        r.addEventListener("click", (event) => {
+          const oldLinear = toggleLinear, oldCapita = toggleCapita, oldPoints = togglePoints;
+          switch (event.currentTarget.id) {
             case "linear":
               toggleLinear = "linear";
               localStorage.setItem("toggleLinear", toggleLinear);
@@ -636,10 +670,18 @@
               toggleCapita = "percapita";
               localStorage.setItem("toggleCapita", toggleCapita);
               break;
+            case "showpoints":
+              togglePoints = "showpoints";
+              localStorage.setItem("togglePoints", togglePoints);
+              break;
+            case "hidepoints":
+              togglePoints = "hidepoints";
+              localStorage.setItem("togglePoints", togglePoints);
+              break;
             default:
               ;
           }
-          if (oldLinear != toggleLinear || oldCapita != toggleCapita) {
+          if (oldLinear != toggleLinear || oldCapita != toggleCapita || oldPoints != togglePoints) {
             raz();
             draw();
           }

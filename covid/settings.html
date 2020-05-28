@@ -75,8 +75,8 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@latest/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tablesorter@latest/dist/js/jquery.tablesorter.combined.min.js"></script>
     
-    <script src="population.js"></script>
-    <script src="aliases5.js"></script>
+    <script src="population2.js"></script>
+    <script src="aliases6.js"></script>
     <!-- Include Handlebars from a CDN -->
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
     <script id="row-template" type="text/x-handlebars-template">
@@ -102,7 +102,7 @@
         var i = 0;
         var locallyStoredAliases = Aliases.read();
         var t = $("table#countries tbody")
-        populationByAlias.forEach(function (alias) {
+        populationByAlias.forEach((alias) => {
             if (Aliases.isExcluded(alias.name)) {
                 return;
             }
