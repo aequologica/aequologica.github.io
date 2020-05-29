@@ -441,14 +441,15 @@
           if (countries.length > 0) {
             countries.forEach((country) => {
 
-              let previousDelta = 0;
+              let previousMeasure = 0;
 
               data[country].forEach((d) => {
-                d.delta = (measure.func(d) - previousDelta);
+                const thisMeasure = measure.func(d);
+                d.delta = (thisMeasure - previousMeasure);
                 if (toggleCapita == "percapita") {
                   d.delta = 1000000 * d.delta / populations[country];
                 }
-                previousDelta = measure.func(d);
+                previousMeasure = thisMeasure;
               });
 
               const deltas = _.map(data[country], 'delta');
