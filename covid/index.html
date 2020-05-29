@@ -86,7 +86,6 @@
     </div>
 
     <!-- svg -->
-
     <svg id="chart"></svg>
 
     <!-- footer -->
@@ -173,7 +172,7 @@
       <tr><td>{{d.deaths}}   </td><td>deaths</td></tr>
       <tr><td>{{d.recovered}}</td><td>recovered</td></tr>
     </table></script>
-  <script id="test-template" type="text/x-handlebars-template"><div class="card" style="direction: ltr;">
+  <script id="legend-template" type="text/x-handlebars-template"><div class="card" style="direction: ltr;">
     <div class="card-body">
         <table id="legend" class="">
             <tr>
@@ -212,7 +211,7 @@
     // compile the template
     const tooltipTemplate = Handlebars.compile(document.getElementById("tooltip-template").innerHTML);
 
-    const testTemplate = Handlebars.compile(document.getElementById("test-template").innerHTML);
+    const legendTemplate = Handlebars.compile(document.getElementById("legend-template").innerHTML);
   </script>
 
   <!-- https://github.com/doowb/sma -->
@@ -259,7 +258,7 @@
         });
       }
 
-      
+
 
       const measure = new Measure();
 
@@ -583,7 +582,7 @@
               });
             }
 
-            Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height, testTemplate);
+            Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height, legendTemplate);
           }
 
           // titles, etc.
