@@ -170,7 +170,7 @@
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
 
   <script id="tooltip-template" type="text/x-handlebars-template">
-    <table><tr><caption><div style="color:{{color}};">{{country}}</div><div>{{date}}</div></caption></tr>
+    <table><tr><caption><div {{{style}}}>{{country}}</div><div>{{date}}</div></caption></tr>
       <tr><td>{{d.confirmed}}</td><td>confirmed</td></tr>
       <tr><td>{{d.deaths}}   </td><td>deaths</td></tr>
       <tr><td>{{d.recovered}}</td><td>recovered</td></tr>
@@ -325,7 +325,7 @@
       }
 
       function draw() {
-        
+
         // get countries
         function getCountries() {
           let aliases = Aliases.read();
@@ -538,8 +538,10 @@
               .append("g")
               .attr("class", "category")
               .attr("id", (d, i) => {
+                return "country_" + i;
+              }).attr("name", (d) => {
                 return d.category;
-              }).attr("color", (d, i) => {
+              }).attr("color", (d) => {
                 return color(d.category);
               });
 
@@ -547,7 +549,7 @@
               .append("path")
               .attr("class", "line")
               .attr("id", (d, i) => {
-                return "line" + i;
+                return "line_" + i;
               })
               .attr("d", (d) => {
                 return line(d.datapoints);
@@ -573,11 +575,11 @@
                 .attr("cy", (d) => { return yScale(d.deltaMovingAverage); })
                 .attr("r", 5)
                 .attr("class", "point")
-                .on("mouseover", (d) => {
+                .on("mouseover", function (d) {
                   tt.style("opacity", 1);
                   tt.html(tooltipTemplate({
-                    color: $(this).parent().attr("color"),
-                    country: $(this).parent().attr("id"),
+                    style: 'style="color: ' + $(this).parent().css("color") + '"',
+                    country: $(this).parent().attr("name"),
                     date: formatTime(d.date),
                     d: d,
                   }))
@@ -618,19 +620,16 @@
             d3.selectAll(".line").each((d, i) => {
 
               // get the length of each line in turn
-              const totalLength = d3.select("#line" + i).node().getTotalLength();
+              const ID = "#line_" + i;
+              const totalLength = d3.select(ID).node().getTotalLength();
 
-              const line = d3.selectAll("#line" + i)
+              const line = d3.selectAll(ID)
                 .attr("stroke-dasharray", totalLength + " " + totalLength)
                 .attr("stroke-dashoffset", totalLength)
                 .transition()
                 .duration(3000)
-                .attr("stroke-dashoffset", 0);
-
-              if (togglePoints === "showpoints") {
-                line.on("end", drawPoints);
-              }
-
+                .attr("stroke-dashoffset", 0)
+                .on("end", togglePoints === "showpoints" ? drawPoints : () => { });
             });
           }
         });
