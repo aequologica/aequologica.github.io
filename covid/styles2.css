@@ -23,15 +23,22 @@ body {
     border: none;
 }
 
-#legend td.country, #legend td.population {
+#legend td.country, 
+#legend td.population {
     padding-right: .3rem;
 }
 
-#legend th.population, #legend td.population {
+#legend th.population, 
+#legend td.population {
     font-family: monospace;
+    font-size: smaller;
     text-align: right;
+    padding-left: .5rem;
 }
 
+#legend table.table-responsive {
+    max-height: 300px;
+}
 #chart {
     width: 100%;
     height: 94%;

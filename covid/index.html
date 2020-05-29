@@ -25,32 +25,38 @@
       line-height: 1.4rem;
     }
   </style>
+  <script data-pace-options='{ "target": "div#pb"}' src="https://cdn.jsdelivr.net/npm/pace-progressbar@latest/pace.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-progressbar@latest/themes/blue/pace-theme-flash.css">
 </head>
 
 <body>
   <div class="container-fluid">
 
+    <div id="pb">&nbsp;</div>
+
     <!-- header -->
     <div class="fixed-top" style="max-height: 60px; ">
       <div class="row p-2">
         <div class="col-9">
-          <span id="title" style="display:inline-block; font-size:larger;">Daily new
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary"><span id="measure"></span></button>
-              <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <div class="dropdown-menu" id="type">
-                <a class="dropdown-item" href="#" data-type="confirmed">confirmed</a>
-                <a class="dropdown-item" href="#" data-type="deaths">deaths</a>
-                <a class="dropdown-item" href="#" data-type="recovered">recovered</a>
+          <span id="showAfterLoad" style="display:none;">
+            <span id="title" style="display:inline-block; font-size:larger;">Daily new
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary"><span id="measure"></span></button>
+                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu" id="type">
+                  <a class="dropdown-item" href="#" data-type="confirmed">confirmed</a>
+                  <a class="dropdown-item" href="#" data-type="deaths">deaths</a>
+                  <a class="dropdown-item" href="#" data-type="recovered">recovered</a>
+                </div>
               </div>
-            </div>
-          </span>
-          <span style="font-size:8pt;">&nbsp;(updated every day, not clear at what time though)</span>
-          <span style="display:block; font-size:smaller; white-space: nowrap; ">
-            as of <span id="end"></span>
+            </span>
+            <span style="font-size:8pt;">&nbsp;(updated every day, not clear at what time though)</span>
+            <span style="display:block; font-size:smaller; white-space: nowrap; ">
+              as of <span id="end"></span>
+            </span>
           </span>
           <div style="display:none;" id="link_to_settings">Add country : <a href="settings.html" type="button" class="btn btn-sm btn-primary" title="add country"><i
                 class="fas fa-plus"></i></a></div>
@@ -160,15 +166,53 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@latest/dist/d3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@latest/moment.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+
   <script id="tooltip-template" type="text/x-handlebars-template">
-<table><tr><caption><div style="color:{{color}};">{{country}}</div><div>{{date}}</div></caption></tr>
-  <tr><td>{{d.confirmed}}</td><td>confirmed</td></tr>
-  <tr><td>{{d.deaths}}   </td><td>deaths</td></tr>
-  <tr><td>{{d.recovered}}</td><td>recovered</td></tr>
-</table></script>
+    <table><tr><caption><div style="color:{{color}};">{{country}}</div><div>{{date}}</div></caption></tr>
+      <tr><td>{{d.confirmed}}</td><td>confirmed</td></tr>
+      <tr><td>{{d.deaths}}   </td><td>deaths</td></tr>
+      <tr><td>{{d.recovered}}</td><td>recovered</td></tr>
+    </table></script>
+  <script id="test-template" type="text/x-handlebars-template"><div class="card" style="direction: ltr;">
+    <div class="card-body">
+        <table id="legend" class="">
+            <tr>
+                <th class="remove">
+                    <span>&nbsp;</span>
+                </th>
+                <th class="country">
+                    <button type="button" class="add btn btn-sm btn-primary float-left" title="add country" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fas fa-plus"></i></button>
+                    <span>&nbsp;</span>
+                    <button type="button" id="populationToggle" class="btn btn-sm btn-outline-secondary float-right" title="toggle population column visibility">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </th>
+                <th class="population" style="{{#if isPopulationColumnVisible}}display:table-cell{{else}}display:none{{/if}}">
+                    <a style="color: black !important" target="_population-by-country" href="https://www.worldometers.info/world-population/population-by-country/">
+                      population
+                    </a>
+                </th>
+            </tr>
+            {{#each populations}}
+            <tr>
+                <td class="remove">
+                    <button type="button" class="remove btn btn-sm btn-outline-secondary" title="remove {{alias @key}}" name="{{alias @key}}">
+                        <span class="remove">×</span>
+                    </button>
+                </td>
+                <td class="country" style="color: {{color @key}}">{{@key}}</td>
+                <td class="population" style="{{#if ../isPopulationColumnVisible}}display:table-cell{{else}}display:none{{/if}}">{{this}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</div></script>
   <script>
     // compile the template
     const tooltipTemplate = Handlebars.compile(document.getElementById("tooltip-template").innerHTML);
+
+    const testTemplate = Handlebars.compile(document.getElementById("test-template").innerHTML);
   </script>
 
   <!-- https://github.com/doowb/sma -->
@@ -177,7 +221,7 @@
   <!-- -->
   <script src="population2.js"></script>
   <script src="aliases6.js"></script>
-  <script src="legend5.js"></script>
+  <script src="legend6.js"></script>
   <script src="measurement2.js"></script>
 
   <script>
@@ -214,6 +258,8 @@
           $('#startFeedback').text(moment().dayOfYear($.prop(e.currentTarget, 'valueAsNumber')).format('LL'));
         });
       }
+
+      
 
       const measure = new Measure();
 
@@ -368,7 +414,7 @@
             $('#startRangeInput').prop("max", latest.dayOfYear());
             $('#startRangeInput').prop("min", earliest.dayOfYear());
           }
-
+          $("#showAfterLoad").show();
 
           // calc start date as with respect to first # of deaths for all countries
           /*
@@ -506,7 +552,7 @@
               .attr("class", "mytooltip")
               .style("opacity", 0);
 
-            const drawPoints = function () {
+            var drawPoints = function () {
               products.selectAll("points")
                 .data((d) => { return d.datapoints })
                 .enter()
@@ -537,7 +583,7 @@
               });
             }
 
-            Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height);
+            Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height, testTemplate);
           }
 
           // titles, etc.
