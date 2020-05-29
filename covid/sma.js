@@ -1,3 +1,5 @@
+// from https://github.com/doowb/sma/blob/master/index.js
+
 'use strict';
 
 /**
