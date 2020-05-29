@@ -170,10 +170,22 @@
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
 
   <script id="tooltip-template" type="text/x-handlebars-template">
-    <table><tr><caption><div {{{style}}}>{{country}}</div><div>{{date}}</div></caption></tr>
+    <table>
+      <caption>
+        <div {{{style}}}>{{country}}</div>
+        <div style="white-space: nowrap;">{{date}}</div>
+        {{#if showAverage}}
+        <div style="white-space: nowrap;">{{sizeOfAverage}} day(s) average: {{average}}</div>
+        {{/if}}
+      </caption>
+      <tr><td>{{yesterday}}                                     </td></tr>
+      <tr><td style="border-bottom: 1px solid #777">{{delta}} </td></tr>
+      <tr><td><b>{{today}}</b>                                  </td></tr>
+      <!--
       <tr><td>{{d.confirmed}}</td><td>confirmed</td><td>({{deltas.confirmed}})</td></tr>
       <tr><td>{{d.deaths}}   </td><td>deaths</td><td>({{deltas.deaths}})</td></tr>
       <tr><td>{{d.recovered}}</td><td>recovered</td><td>({{deltas.recovered}})</td></tr>
+      -->
     </table></script>
   <script id="legend-template" type="text/x-handlebars-template"><div class="card" style="direction: ltr;">
     <div class="card-body">
@@ -567,12 +579,9 @@
               .style("opacity", 0);
 
             function getNumberWithSign(input) {
-              /*if (input == 0) {
-                return "0"
-              }*/
               const sign = input < 0 ? '-' : '+';
 
-              return `${sign}${Math.abs(input)}`;
+              return `${sign}${Math.round(Math.abs(input)).toLocaleString()}`;
             }
 
             var drawPoints = function () {
@@ -592,15 +601,15 @@
                     style: 'style="color: ' + $(this).parent().css("color") + '"',
                     country: $(this).parent().attr("name"),
                     date: formatTime(d.date),
-                    d: d,
-                    deltas: {
-                      confirmed: getNumberWithSign(d.confirmed - prevD.confirmed),
-                      deaths: getNumberWithSign(d.deaths - prevD.deaths),
-                      recovered: getNumberWithSign(d.recovered - prevD.recovered),
-                    }
+                    today: d[measure.getType()].toLocaleString(),
+                    delta: getNumberWithSign(d[measure.getType()] - prevD[measure.getType()]),
+                    yesterday: prevD[measure.getType()].toLocaleString(),
+                    average: getNumberWithSign(d.deltaMovingAverage),
+                    sizeOfAverage: sizeOfAverage,
+                    showAverage: sizeOfAverage > 1 ? true : false,
                   }))
-                    .style("left", (d3.event.pageX + 10) + "px")
-                    .style("top", (d3.event.pageY + 10) + "px");
+                    .style("left", (d3.event.pageX - 100) + "px")
+                    .style("top", (d3.event.pageY - 100) + "px");
                 })
                 .on("mouseout", (d) => {
                 });
