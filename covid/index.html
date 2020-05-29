@@ -18,12 +18,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.css" rel="stylesheet">
 
-  <link href="styles3.css" rel="stylesheet">
+  <link href="styles4.css" rel="stylesheet">
   <style>
-    div.fixed-bottom#my-bottom label {
-      height: 1.4rem;
-      line-height: 1.4rem;
-    }
   </style>
   <script data-pace-options='{ "target": "div#progressbar"}' src="https://cdn.jsdelivr.net/npm/pace-progressbar@latest/pace.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-progressbar@latest/themes/blue/pace-theme-flash.css">
@@ -181,11 +177,6 @@
       <tr><td>{{yesterday}}                                     </td></tr>
       <tr><td style="border-bottom: 1px solid #777">{{delta}} </td></tr>
       <tr><td><b>{{today}}</b>                                  </td></tr>
-      <!--
-      <tr><td>{{d.confirmed}}</td><td>confirmed</td><td>({{deltas.confirmed}})</td></tr>
-      <tr><td>{{d.deaths}}   </td><td>deaths</td><td>({{deltas.deaths}})</td></tr>
-      <tr><td>{{d.recovered}}</td><td>recovered</td><td>({{deltas.recovered}})</td></tr>
-      -->
     </table></script>
   <script id="legend-template" type="text/x-handlebars-template"><div class="card" style="direction: ltr;">
     <div class="card-body">
@@ -591,7 +582,8 @@
                 .append("circle")
                 .attr("cx", (d) => xScale(d.date))
                 .attr("cy", (d) => yScale(d.deltaMovingAverage))
-                .attr("r", 5)
+                .attr("r", 4)
+                .lower()
                 .attr("data-d", (d) => JSON.stringify(d))
                 .attr("class", "point")
                 .on("mouseover", function (d) {
@@ -654,7 +646,7 @@
                 .transition()
                 .duration(3000)
                 .attr("stroke-dashoffset", 0)
-                .on("end", togglePoints === "showpoints" ? drawPoints : () => { });
+                .on("start", togglePoints === "showpoints" ? drawPoints : () => { });
             });
           }
         });
