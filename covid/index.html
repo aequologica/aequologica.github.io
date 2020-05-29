@@ -58,8 +58,11 @@
               as of <span id="end"></span>
             </span>
           </span>
-          <div style="display:none;" id="link_to_settings">Add country : <a href="settings.html" type="button" class="btn btn-sm btn-primary" title="add country"><i
-                class="fas fa-plus"></i></a></div>
+          <div style="display:none;" id="link_to_settings">Add country :
+            <button type="button" class="add btn btn-sm btn-primary" title="add country" data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
         </div>
         <div class="col col-3" style="display:block; font-size:smaller; overflow:hidden; text-overflow: ellipsis;">
           <div class="float-right" style="text-align: right;">
@@ -78,7 +81,7 @@
         <div class="modal-content">
           <div class="modal-body">
             <div class="embed-responsive embed-responsive-1by1" style="height:100%">
-              <iframe class="embed-responsive-item" src="settings.html" height="100%" allowfullscreen></iframe>
+              <iframe id="settingsAsIFrame" class="embed-responsive-item" src="settings.html" height="100%" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -220,7 +223,7 @@
   <!-- -->
   <script src="population2.js"></script>
   <script src="aliases6.js"></script>
-  <script src="legend6.js"></script>
+  <script src="legend7.js"></script>
   <script src="measurement2.js"></script>
 
   <script>
@@ -279,28 +282,6 @@
         }
       }
 
-      function getCountries() {
-        let aliases = Aliases.read();
-
-        if (aliases && aliases.length > 0) {
-          return _.map(aliases, (a) => Aliases.a2c(a));
-        }
-
-        return [];
-      }
-      const countries = getCountries();
-
-      let startAfterNDeaths = 50;
-      let populations = {};
-      {
-        function getPopulation(country) {
-          const countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
-          return countray.count;
-        }
-        countries.forEach((country) => {
-          _.assign(populations, { [country]: getPopulation(country) });
-        });
-      }
       let toggleCapita = "percapita";  // "absolute";   // 
       let toggleLinear = "logaritmic"; // "linear";     // 
       let togglePoints = "hidepoints"; // "showpoints"; // 
@@ -340,10 +321,41 @@
             elem.removeChild(elem.lastChild);
           }
         }
+        document.getElementById("settingsAsIFrame").contentDocument.location.reload(true);
       }
-      function draw() {
-        // define margins
 
+      function draw() {
+        
+        // get countries
+        function getCountries() {
+          let aliases = Aliases.read();
+
+          if (aliases && aliases.length > 0) {
+            return _.map(aliases, (a) => Aliases.a2c(a));
+          }
+
+          return [];
+        }
+        const countries = getCountries();
+        if (countries.length == 0) {
+          $("#link_to_settings").show();
+          return;
+        } else {
+          $("#link_to_settings").hide();
+        }
+
+        let startAfterNDeaths = 50;
+        let populations = {};
+        {
+          function getPopulation(country) {
+            const countray = _.find(populationByAlias, { 'name': Aliases.c2a(country) });
+            return countray.count;
+          }
+          countries.forEach((country) => {
+            _.assign(populations, { [country]: getPopulation(country) });
+          });
+        }
+        // define margins
         const
           width =
             parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
@@ -583,7 +595,10 @@
               });
             }
 
-            Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height, legendTemplate);
+            Legend.draw(svg, populations, color, isSafari ? margin.top : 0, height, legendTemplate, () => {
+              raz();
+              draw();
+            });
           }
 
           // titles, etc.
@@ -668,7 +683,8 @@
       /////////////////
       // html handlers
       $('#exampleModal').on('hidden.bs.modal', () => {
-        location.reload();
+        raz();
+        draw();
       })
 
       $('.dropdown-toggle').dropdown();
@@ -676,7 +692,9 @@
       $(".dropdown-item").on("click", (e) => {
         const newType = $(e.currentTarget).data("type");
         measure.setType(newType);
-        location.reload();
+        // location.reload();
+        raz();
+        draw();
       });
 
       const ranges = document.querySelectorAll('#sizeOfAverage[type="range"]');
@@ -736,12 +754,7 @@
 
       //////////////////
       // the main entry
-      if (countries.length == 0) {
-        $("#link_to_settings").show();
-      } else {
-        $("#link_to_settings").hide();
-        draw();
-      }
+      draw();
 
     }); // $(document).ready
 

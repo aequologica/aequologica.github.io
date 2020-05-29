@@ -3,7 +3,7 @@ var Legend = (function () {
 
     // legend
     return {
-        draw: (svg, populations, color, y, height, handlebarsTemplate) => {
+        draw: (svg, populations, color, y, height, handlebarsTemplate, refresh) => {
 
             const isPopulationColumnVisible = localStorage.getItem("togglePopulationColumnVisibility") == "visible";
 
@@ -34,7 +34,7 @@ var Legend = (function () {
                         locallyStoredAliases.splice(index, 1);
                     }
                     Aliases.write(locallyStoredAliases);
-                    location.reload();
+                    refresh();
                 })
             });
             
