@@ -107,6 +107,10 @@ tr,
     font-family: monospace;
 }
 
+.mytooltip tr td:last-child {
+    font-family: monospace;
+}
+
 .mytooltip caption {
     padding-top: .25rem;
     padding-bottom: .25rem;

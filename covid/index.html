@@ -18,7 +18,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.css" rel="stylesheet">
 
-  <link href="styles2.css" rel="stylesheet">
+  <link href="styles3.css" rel="stylesheet">
   <style>
     div.fixed-bottom#my-bottom label {
       height: 1.4rem;
@@ -171,9 +171,9 @@
 
   <script id="tooltip-template" type="text/x-handlebars-template">
     <table><tr><caption><div {{{style}}}>{{country}}</div><div>{{date}}</div></caption></tr>
-      <tr><td>{{d.confirmed}}</td><td>confirmed</td></tr>
-      <tr><td>{{d.deaths}}   </td><td>deaths</td></tr>
-      <tr><td>{{d.recovered}}</td><td>recovered</td></tr>
+      <tr><td>{{d.confirmed}}</td><td>confirmed</td><td>({{deltas.confirmed}})</td></tr>
+      <tr><td>{{d.deaths}}   </td><td>deaths</td><td>({{deltas.deaths}})</td></tr>
+      <tr><td>{{d.recovered}}</td><td>recovered</td><td>({{deltas.recovered}})</td></tr>
     </table></script>
   <script id="legend-template" type="text/x-handlebars-template"><div class="card" style="direction: ltr;">
     <div class="card-body">
@@ -566,22 +566,38 @@
               .attr("class", "mytooltip")
               .style("opacity", 0);
 
+            function getNumberWithSign(input) {
+              /*if (input == 0) {
+                return "0"
+              }*/
+              const sign = input < 0 ? '-' : '+';
+
+              return `${sign}${Math.abs(input)}`;
+            }
+
             var drawPoints = function () {
               products.selectAll("points")
                 .data((d) => { return d.datapoints })
                 .enter()
                 .append("circle")
-                .attr("cx", (d) => { return xScale(d.date); })
-                .attr("cy", (d) => { return yScale(d.deltaMovingAverage); })
+                .attr("cx", (d) => xScale(d.date))
+                .attr("cy", (d) => yScale(d.deltaMovingAverage))
                 .attr("r", 5)
+                .attr("data-d", (d) => JSON.stringify(d))
                 .attr("class", "point")
                 .on("mouseover", function (d) {
                   tt.style("opacity", 1);
+                  const prevD = JSON.parse($(this).prev().attr("data-d"));
                   tt.html(tooltipTemplate({
                     style: 'style="color: ' + $(this).parent().css("color") + '"',
                     country: $(this).parent().attr("name"),
                     date: formatTime(d.date),
                     d: d,
+                    deltas: {
+                      confirmed: getNumberWithSign(d.confirmed - prevD.confirmed),
+                      deaths: getNumberWithSign(d.deaths - prevD.deaths),
+                      recovered: getNumberWithSign(d.recovered - prevD.recovered),
+                    }
                   }))
                     .style("left", (d3.event.pageX + 10) + "px")
                     .style("top", (d3.event.pageY + 10) + "px");
