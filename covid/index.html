@@ -584,11 +584,11 @@
                 .attr("cy", (d) => yScale(d.deltaMovingAverage))
                 .attr("r", 4)
                 .lower()
-                .attr("data-d", (d) => JSON.stringify(d))
+                .attr("data-d", (d, i) => {d.i=i; return JSON.stringify(d)})
                 .attr("class", "point")
                 .on("mouseover", function (d) {
                   tt.style("opacity", 1);
-                  const prevD = JSON.parse($(this).prev().attr("data-d"));
+                  const prevD = JSON.parse($(this).next().attr("data-d"));
                   tt.html(tooltipTemplate({
                     style: 'style="color: ' + $(this).parent().css("color") + '"',
                     country: $(this).parent().attr("name"),
