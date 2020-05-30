@@ -98,6 +98,10 @@ tr, .card-body {
     font-size: 14px;
 }
 
+.navbar-toggler {
+    padding: 2px !important;
+}
+
 .zero-margin-right {
     margin-right: 0 ;
 }
