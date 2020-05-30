@@ -18,7 +18,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.css" rel="stylesheet">
 
-  <link href="styles4.css" rel="stylesheet">
+  <link href="styles5.css" rel="stylesheet">
   <style>
   </style>
   <script data-pace-options='{ "target": "div#progressbar"}' src="https://cdn.jsdelivr.net/npm/pace-progressbar@latest/pace.min.js"></script>
@@ -88,8 +88,8 @@
     <svg id="chart"></svg>
 
     <!-- footer -->
-    <div id="my-bottom" class="fixed-bottom" style="font-size:7pt">
-      <div class="float-left p-2">
+    <nav id="my-bottom" class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand">
         <div class="card">
           <div class="card-body">
             <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
@@ -99,61 +99,64 @@
             </div>
           </div>
         </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <form class="form-inline ml-auto my-2 my-lg-0">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="card nav-item">
+              <div class="card-body">
+                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="showpoints" name="showpoints" class="custom-control-input">
+                  <label class="custom-control-label" for="showpoints">show</label>
+                </div>
+                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="hidepoints" name="showpoints" class="custom-control-input" checked>
+                  <label class="custom-control-label" for="hidepoints">hide points</label>
+                </div>
+              </div>
+            </li>
+            <li class="card">
+              <div class="card-body">
+                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="linear" name="linear" class="custom-control-input">
+                  <label class="custom-control-label" for="linear">linear</label>
+                </div>
+                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="logaritmic" name="linear" class="custom-control-input" checked>
+                  <label class="custom-control-label" for="logaritmic">logaritmic</label>
+                </div>
+              </div>
+            </li>
+            <li class="card">
+              <div class="card-body">
+                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="absolute" name="absolute" class="custom-control-input">
+                  <label class="custom-control-label" for="absolute">absolute</label>
+                </div>
+                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="percapita" name="absolute" class="custom-control-input" checked>
+                  <label class="custom-control-label" for="percapita">per capita</label>
+                </div>
+              </div>
+            </li>
+            <li class="card">
+              <div class="card-body">
+                <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
+                  <input type="range" min="1" max="21" value="21" class="custom-range" id="sizeOfAverage" style="width:50px">
+                  <label class="my-custom-control-label" id="bubble" for="sizeOfAverage"
+                    style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label>
+                  <label class="my-custom-control-label" id="subtitle"></label>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </form>
       </div>
-      <div class="float-right p-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
-              <input type="range" min="1" max="21" value="21" class="custom-range" id="sizeOfAverage" style="width:50px">
-              <label class="my-custom-control-label" id="bubble" for="sizeOfAverage" style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label>
-              <label class="my-custom-control-label" id="subtitle"></label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="float-right p-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-              <input type="radio" id="absolute" name="absolute" class="custom-control-input">
-              <label class="custom-control-label" for="absolute">absolute</label>
-            </div>
-            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-              <input type="radio" id="percapita" name="absolute" class="custom-control-input" checked>
-              <label class="custom-control-label" for="percapita">per capita</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="float-right p-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-              <input type="radio" id="linear" name="linear" class="custom-control-input">
-              <label class="custom-control-label" for="linear">linear</label>
-            </div>
-            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-              <input type="radio" id="logaritmic" name="linear" class="custom-control-input" checked>
-              <label class="custom-control-label" for="logaritmic">logaritmic</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="float-right p-2">
-        <div class="card">
-          <div class="card-body">points:
-            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-              <input type="radio" id="showpoints" name="showpoints" class="custom-control-input">
-              <label class="custom-control-label" for="showpoints">show</label>
-            </div>
-            <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-              <input type="radio" id="hidepoints" name="showpoints" class="custom-control-input" checked>
-              <label class="custom-control-label" for="hidepoints">hide</label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </nav>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/js/fontawesome.min.js"></script>
@@ -584,7 +587,7 @@
                 .attr("cy", (d) => yScale(d.deltaMovingAverage))
                 .attr("r", 4)
                 .lower()
-                .attr("data-d", (d, i) => {d.i=i; return JSON.stringify(d)})
+                .attr("data-d", (d, i) => { d.i = i; return JSON.stringify(d) })
                 .attr("class", "point")
                 .on("mouseover", function (d) {
                   tt.style("opacity", 1);
@@ -623,11 +626,11 @@
           // titles, etc.
           document.getElementById("measure").innerHTML = measure.getType();
           document.getElementById("end").innerHTML = end.format('LL');
-          document.getElementById("bubble").innerHTML = sizeOfAverage;
-          document.getElementById("subtitle").innerHTML =
-            sizeOfAverage < 2
-              ? "day <span style='text-decoration: line-through'>average</span>"
-              : "days                                            average";
+          $("#bubble").html(sizeOfAverage);
+          $("#subtitle").html(sizeOfAverage < 2
+            ? "day <span style='text-decoration: line-through'>average</span>"
+            : "days                                            average"
+          );
 
           // animate cf. http://bl.ocks.org/fryford/2925ecf70ac9d9b51031
           {
