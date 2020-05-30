@@ -20,6 +20,12 @@
 
   <link href="styles5.css" rel="stylesheet">
   <style>
+    #when_is_data_updated {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 8pt;
+    }
   </style>
   <script data-pace-options='{ "target": "div#progressbar"}' src="https://cdn.jsdelivr.net/npm/pace-progressbar@latest/pace.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-progressbar@latest/themes/blue/pace-theme-flash.css">
@@ -49,7 +55,7 @@
                 </div>
               </div>
             </span>
-            <span style="font-size:8pt;">&nbsp;(updated every day, not clear at what time though)</span>
+            <span id="when_is_data_updated" class="d-none d-sm-inline">&nbsp;(updated every day, not clear at what time though)</span>
             <span style="display:block; font-size:smaller; white-space: nowrap; ">
               as of <span id="end"></span>
             </span>
