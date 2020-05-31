@@ -32,14 +32,14 @@
 </head>
 
 <body>
-  <div class="container-fluid">
 
-    <div id="progressbar">&nbsp;</div>
+  <div id="progressbar">&nbsp;</div>
 
-    <!-- header -->
-    <div class="fixed-top" style="max-height: 44px; ">
+  <!-- header -->
+  <header>
+    <div class="fixed-top">
       <div class="row p-2">
-        <div class="col-9">
+        <div class="col-8">
           <span id="showAfterLoad" style="display:none;">
             <span id="title" style="display:inline-block; font-size:larger;">Daily new
               <div class="btn-group">
@@ -56,9 +56,7 @@
               </div>
             </span>
             <span id="when_is_data_updated" class="d-none d-sm-inline">&nbsp;(updated every day, not clear at what time though)</span>
-            <span style="display:block; font-size:smaller; white-space: nowrap; ">
-              as of <span id="end"></span>
-            </span>
+
           </span>
           <div style="display:none;" id="link_to_settings">Add country :
             <button type="button" class="add btn btn-sm btn-primary" title="add country" data-toggle="modal" data-target="#exampleModal">
@@ -66,105 +64,121 @@
             </button>
           </div>
         </div>
-        <div class="col col-3" style="display:block; font-size:smaller; overflow:hidden; text-overflow: ellipsis;">
-          <div class="float-right" style="text-align: right;">
-            sources:
-            <a href="https://github.com/pomber/covid19" target="_json-data_source">data</a>
-            <i class="fas fa-grip-lines-vertical" style="color:gray;"></i>
-            <a href="https://github.com/aequologica/aequologica.github.io/tree/master/covid" target="_github_com">html</a>
+        <div class="col col-4" style="display:block; font-size:smaller;">
+          <div class="float-right" style="text-align: right; font-size:smaller;">
+            <div style="margin-bottom: .2rem">
+              sources:
+              <a href="https://github.com/pomber/covid19" target="_json-data_source">data</a>
+              <i class="fas fa-grip-lines-vertical" style="color:gray;"></i>
+              <a href="https://github.com/aequologica/aequologica.github.io/tree/master/covid" target="_github_com">html</a>
+            </div>
+            <div>
+              as of <span id="end"></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- page content -->
+  <main role="main">
+    <div class="container-fluid">
+      <!-- svg -->
+      <svg id="chart"></svg>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container">
+      <nav id="my-bottom" class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">
+          <div class="card">
+            <div class="card-body">
+              <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
+                <input type="range" id="startRangeInput" step="1" min="1" max="366" value="1" class="custom-range" style="width: 50px; height:auto;" />
+                &nbsp;
+                <label id="startFeedback" class="my-custom-control-label"></label>
+              </div>
+            </div>
+          </div>
+        </a>
+        <button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <form class="form-inline ml-auto my-2 my-lg-0">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="card nav-item">
+                <div class="card-body">
+                  <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="showpoints" name="showpoints" class="custom-control-input">
+                    <label class="custom-control-label" for="showpoints">show</label>
+                  </div>
+                  <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="hidepoints" name="showpoints" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="hidepoints">hide points</label>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <div class="card-body">
+                  <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="linear" name="linear" class="custom-control-input">
+                    <label class="custom-control-label" for="linear">linear</label>
+                  </div>
+                  <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="logaritmic" name="linear" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="logaritmic">logaritmic</label>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <div class="card-body">
+                  <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="absolute" name="absolute" class="custom-control-input">
+                    <label class="custom-control-label" for="absolute">absolute</label>
+                  </div>
+                  <div class="zero-margin-right custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="percapita" name="absolute" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="percapita">per capita</label>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <div class="card-body">
+                  <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
+                    <input type="range" min="1" max="21" value="21" class="custom-range" id="sizeOfAverage" style="width:50px">
+                    <label class="my-custom-control-label" id="bubble" for="sizeOfAverage"
+                      style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label>
+                    <label class="my-custom-control-label" id="subtitle"></label>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- modal country picker -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog .modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="embed-responsive embed-responsive-1by1" style="height:100%">
+            <iframe id="settingsAsIFrame" class="embed-responsive-item" src="settings.html" height="100%" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- modal country picker -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog .modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="embed-responsive embed-responsive-1by1" style="height:100%">
-              <iframe id="settingsAsIFrame" class="embed-responsive-item" src="settings.html" height="100%" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- svg -->
-    <svg id="chart"></svg>
-
-    <!-- footer -->
-    <nav id="my-bottom" class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">
-        <div class="card">
-          <div class="card-body">
-            <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
-              <input type="range" id="startRangeInput" step="1" min="1" max="366" value="1" class="custom-range" style="width: 50px; height:auto;" />
-              &nbsp;
-              <label id="startFeedback" class="my-custom-control-label"></label>
-            </div>
-          </div>
-        </div>
-      </a>
-      <button class="navbar-toggler btn-sm" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <form class="form-inline ml-auto my-2 my-lg-0">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="card nav-item">
-              <div class="card-body">
-                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="showpoints" name="showpoints" class="custom-control-input">
-                  <label class="custom-control-label" for="showpoints">show</label>
-                </div>
-                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="hidepoints" name="showpoints" class="custom-control-input" checked>
-                  <label class="custom-control-label" for="hidepoints">hide points</label>
-                </div>
-              </div>
-            </li>
-            <li class="card">
-              <div class="card-body">
-                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="linear" name="linear" class="custom-control-input">
-                  <label class="custom-control-label" for="linear">linear</label>
-                </div>
-                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="logaritmic" name="linear" class="custom-control-input" checked>
-                  <label class="custom-control-label" for="logaritmic">logaritmic</label>
-                </div>
-              </div>
-            </li>
-            <li class="card">
-              <div class="card-body">
-                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="absolute" name="absolute" class="custom-control-input">
-                  <label class="custom-control-label" for="absolute">absolute</label>
-                </div>
-                <div class="zero-margin-right custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="percapita" name="absolute" class="custom-control-input" checked>
-                  <label class="custom-control-label" for="percapita">per capita</label>
-                </div>
-              </div>
-            </li>
-            <li class="card">
-              <div class="card-body">
-                <div class="custom-control custom-control-inline" style="padding-left: 0.25rem; margin-right: 0.25rem;">
-                  <input type="range" min="1" max="21" value="21" class="custom-range" id="sizeOfAverage" style="width:50px">
-                  <label class="my-custom-control-label" id="bubble" for="sizeOfAverage"
-                    style="min-width:1rem; margin: 0 .3rem; text-align:right; font-family: monospace; "></label>
-                  <label class="my-custom-control-label" id="subtitle"></label>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </form>
-      </div>
-    </nav>
   </div>
 
+  <!-- 3rd party scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/js/fontawesome.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@latest/dist/umd/popper.min.js"></script>
@@ -174,8 +188,8 @@
   <script src="https://cdn.jsdelivr.net/npm/moment@latest/moment.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
 
-  <script id="tooltip-template" type="text/x-handlebars-template">
-    <table>
+  <!-- handlebars templates -->
+  <script id="tooltip-template" type="text/x-handlebars-template"><table>
       <caption>
         <div {{{style}}}>{{country}}</div>
         <div style="white-space: nowrap;">{{date}}</div>
@@ -225,19 +239,20 @@
   <script>
     // compile the template
     const tooltipTemplate = Handlebars.compile(document.getElementById("tooltip-template").innerHTML);
-
     const legendTemplate = Handlebars.compile(document.getElementById("legend-template").innerHTML);
   </script>
 
   <!-- https://github.com/doowb/sma -->
-  <script src="sma.js"></script> <!-- script src="https://cdn.jsdelivr.net/npm/sma@latest/index.js"></script -->
+  <!-- script src="https://cdn.jsdelivr.net/npm/sma@latest/index.js"></script -->
+  <script src="sma.js"></script>
 
-  <!-- -->
+  <!-- my scripts -->
   <script src="population2.js"></script>
   <script src="aliases6.js"></script>
   <script src="legend7.js"></script>
   <script src="measurement2.js"></script>
 
+  <!-- inline script -->
   <script>
     'use strict';
 
@@ -250,7 +265,7 @@
     // allons-y
     $(document).ready(() => {
 
-      const margin = { top: 44, right: 48, bottom: 46, left: 0 };
+      const margin = { top: 40, right: 54, bottom: 48, left: 0 };
 
       ///////////////////////////////
       // constants & initializations
@@ -272,8 +287,6 @@
           $('#startFeedback').text(moment().dayOfYear($.prop(e.currentTarget, 'valueAsNumber')).format('LL'));
         });
       }
-
-
 
       const measure = new Measure();
 
@@ -443,16 +456,16 @@
           /*
           if (measure.getType() === "deaths") {
             let firstNDeaths = {};
-
+ 
             countries.forEach((country) => {
               const found = _.find(data[country], (d) => { return d.deaths >= startAfterNDeaths; })
               if (found) {
                 firstNDeaths[country] = found;
               }
-
+ 
             });
             const firstNDeathsArray = _.values(firstNDeaths);
-
+ 
             firstNDeathsArray.sort((a, b) => moment(a.date) - moment(b.date) );
             if (firstNDeathsArray.length > 0) {
               const minFirstNDeaths = firstNDeathsArray[0];
