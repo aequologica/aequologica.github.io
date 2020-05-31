@@ -25,6 +25,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       font-size: 8pt;
+      max-width: 240px;
     }
   </style>
   <script data-pace-options='{ "target": "div#progressbar"}' src="https://cdn.jsdelivr.net/npm/pace-progressbar@latest/pace.min.js"></script>
@@ -33,52 +34,47 @@
 
 <body>
 
-  <div id="progressbar">&nbsp;</div>
+  <!-- progress bar -->
+  <div id="progressbar"></div>
 
   <!-- header -->
   <header>
     <div class="fixed-top">
-      <div class="row p-2">
-        <div class="col-8">
-          <span id="showAfterLoad" style="display:none;">
-            <span id="title" style="display:inline-block; font-size:larger;">Daily new
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary"><span id="measure"></span></button>
-                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu" id="type">
-                  <a class="dropdown-item" href="#" data-type="confirmed">confirmed</a>
-                  <a class="dropdown-item" href="#" data-type="deaths">deaths</a>
-                  <a class="dropdown-item" href="#" data-type="recovered">recovered</a>
-                </div>
-              </div>
-            </span>
-            <span id="when_is_data_updated" class="d-none d-sm-inline">&nbsp;(updated every day, not clear at what time though)</span>
-
-          </span>
-          <div style="display:none;" id="link_to_settings">Add country :
-            <button type="button" class="add btn btn-sm btn-primary" title="add country" data-toggle="modal" data-target="#exampleModal">
-              <i class="fas fa-plus"></i>
+      <span id="showAfterLoad" style="display:none;">
+        <div id="title" style="display:inline-block; font-size:larger; clear:none">Daily new
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><span id="measure"></span></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
             </button>
+            <div class="dropdown-menu" id="type">
+              <a class="dropdown-item" href="#" data-type="confirmed">confirmed</a>
+              <a class="dropdown-item" href="#" data-type="deaths">deaths</a>
+              <a class="dropdown-item" href="#" data-type="recovered">recovered</a>
+            </div>
           </div>
         </div>
-        <div class="col col-4" style="display:block; font-size:smaller;">
-          <div class="float-right" style="text-align: right; font-size:smaller;">
-            <div style="margin-bottom: .2rem">
-              sources:
-              <a href="https://github.com/pomber/covid19" target="_json-data_source">data</a>
-              <i class="fas fa-grip-lines-vertical" style="color:gray;"></i>
-              <a href="https://github.com/aequologica/aequologica.github.io/tree/master/covid" target="_github_com">html</a>
-            </div>
-            <div>
-              as of <span id="end"></span>
-            </div>
-          </div>
+        <span id="when_is_data_updated" class="d-none d-sm-inline">&nbsp;(updated every day, not clear at what time though)</span>
+      </span>
 
+      <div style="display:none;" id="link_to_settings">Add country :
+        <button type="button" class="add btn btn-sm btn-primary" title="add country" data-toggle="modal" data-target="#exampleModal">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+
+      <div class="float-right" style="text-align: right; font-size:smaller;">
+        <div style="margin-bottom: .2rem">
+          sources:
+          <a href="https://github.com/pomber/covid19" target="_json-data_source" title="github.com/pomber/covid19">data</a>
+          <i class="fas fa-grip-lines-vertical" style="color:gray;"></i>
+          <a href="https://github.com/aequologica/aequologica.github.io/tree/master/covid" target="_github_com" title="github.com/aequologica/covid">html</a>
+        </div>
+        <div>
+          as of <span id="end"></span>
         </div>
       </div>
+
     </div>
   </header>
 
@@ -269,18 +265,18 @@
 
       ///////////////////////////////
       // constants & initializations
-      let start;
+      let startDate;
       {
         const startAsDayOfYear = localStorage.getItem("startAsDayOfYear");
         const defaultStart = "2020-01-22";
-        start = startAsDayOfYear ? moment().dayOfYear(startAsDayOfYear) : moment(defaultStart);
-        start.subtract(1, 'days');
-        $('#startFeedback').text(start.format('LL'));
-        $('#startRangeInput').prop('value', start.dayOfYear());
+        startDate = startAsDayOfYear ? moment().dayOfYear(startAsDayOfYear) : moment(defaultStart);
+        startDate.subtract(1, 'days');
+        $('#startFeedback').text(startDate.format('LL'));
+        $('#startRangeInput').prop('value', startDate.dayOfYear());
 
         $('#startRangeInput').on('change', (e) => {
-          start = moment().dayOfYear($.prop(e.currentTarget, 'valueAsNumber'));
-          localStorage.setItem("startAsDayOfYear", start.dayOfYear());
+          startDate = moment().dayOfYear($.prop(e.currentTarget, 'valueAsNumber'));
+          localStorage.setItem("startAsDayOfYear", startDate.dayOfYear());
           raz();
           draw();
         }).on('input', (e) => {
@@ -503,7 +499,7 @@
                 });
               }
 
-              data[country] = _.filter(data[country], (d) => moment(d.date).isSameOrAfter(start));
+              data[country] = _.filter(data[country], (d) => moment(d.date).isSameOrAfter(startDate));
             });
           }
 

@@ -10,7 +10,8 @@ var Measure = (function () {
     }
 
     function setType(newType) {
-        if (newType && newType !== type) {
+        const previousType = type;
+        if (newType && newType !== previousType) {
             switch (newType) {
                 case "confirmed":
                 case "deaths":
@@ -24,7 +25,7 @@ var Measure = (function () {
             if (type === defaultType) {
                 localStorage.removeItem("measureType");
                 console.log("remove type from local storage:");
-            } else if (newType !== type){
+            } else if (type !== previousType){
                 localStorage.setItem("measureType", type);
                 console.log("write type to local storage:", "\"" + type + "\"");
             }

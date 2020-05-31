@@ -17,14 +17,14 @@ var Legend = (function () {
                 .attr("style", "overflow-y: scroll; direction:rtl;")
                 .attr("id", "legend");
 
-            Handlebars.registerHelper("alias", (country) => Aliases.c2a(country) );
-            Handlebars.registerHelper("color", (country) => color(country) );
+            Handlebars.registerHelper("alias", (country) => Aliases.c2a(country));
+            Handlebars.registerHelper("color", (country) => color(country));
 
             fo.append('xhtml:div').html(handlebarsTemplate({
                 populations: populations,
                 isPopulationColumnVisible: isPopulationColumnVisible,
             }));
-            
+
             const removeButtons = document.querySelectorAll('[type="button"].remove');
             removeButtons.forEach((b) => {
                 b.addEventListener("click", (event) => {
@@ -37,20 +37,29 @@ var Legend = (function () {
                     refresh();
                 })
             });
-            
+
             const populationToggleButtons = document.querySelectorAll('[type="button"]#populationToggle');
             populationToggleButtons.forEach((b) => {
-                b.addEventListener("click", () => {
+                b.addEventListener("click", (e) => {
                     const pops = document.getElementsByClassName("population");
+                    let act = false;
                     for (let pop of pops) {
                         const sty = pop.getAttribute("style");
                         if (!sty || sty == "display:table-cell") {
                             localStorage.setItem("togglePopulationColumnVisibility", "hidden");
                             pop.setAttribute("style", "display:none");
+                            act = false;
                         } else {
                             localStorage.setItem("togglePopulationColumnVisibility", "visible");
                             pop.setAttribute("style", "display:table-cell");
+                            act = true;
                         }
+                    }
+                    if (act) {
+                        e.currentTarget.setAttribute("class", "btn btn-sm btn-outline-secondary float-right active");
+                    } else {
+                        e.currentTarget.setAttribute("class", "btn btn-sm btn-outline-secondary float-right");
+
                     }
                 })
             });
