@@ -11,6 +11,7 @@
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                , "src": "github-logo-transparent.png"         }
      ,{ "name":"youtube"              , "url": "https://www.youtube.com/user/cthiebaud60"                                    , "src": "youtube.png"                         }
      ,{ "name":"facebook.com"         , "url": "https://www.facebook.com/christophe.thiebaud"                                , "src": "transparent-facebook-logo-icon.png"  }
+     ,{ "name":"facebook.dev"         , "url": "https://developers.facebook.com/apps/"                                       , "src": "facebook-developers.svg"             }
      ,{ "name":"ft.com"               , "url": "https://www.ft.com/coronavirus-latest"                                       , "src": "ft-2.svg"                            }
      ,{ "name":"franceCul"            , "url": "https://www.franceculture.fr/programmes"                                     , "src": "France_Culture.svg"                  }
      ,{ "name":"franceMu"             , "url": "https://www.francemusique.fr/programmes"                                     , "src": "France_Musique.svg"                  }
@@ -35,7 +36,7 @@
      ,{ "name":"twitter"              , "url": "https://twitter.com/cthiebaud"                                               , "src": "Twitter_logo_transparent-3.png"      }
      ,{ "name":"worldometers"         , "url": "https://www.worldometers.info/coronavirus/"                                  , "src": "covid-19.png"                        }
      
-     ,{ "name":"voice"         , "url": "voice"                                  , "src": "Papirus-Team-Papirus-Apps-Sound-recorder.svg"                        }
+     ,{ "name":"voice"                , "url": "voice"                                                                       , "src": "Papirus-Team-Papirus-Apps-Sound-recorder.svg" }
      
      ,{ "name":"earthlydelights"      , 
         "url": "http://earthlydelights.garden/",
