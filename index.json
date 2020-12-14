@@ -28,6 +28,7 @@
      ,{ "name":"sofoot.com"           , "url": "http://www.sofoot.com/"                                                      , "src": "745958so_foot_logo-trans.png"        }
      ,{ "name":"sogo"                 , "url": "https://webmail.eu.com/SOGo/so/christophe.thiebaud@aequologica.net"          , "src": "sogo-full.svg"                       }
      ,{ "name":"soundcloud.com"       , "url": "https://soundcloud.com/christophe-thiebaud"                                  , "src": "soundcloud.svg"                      }
+     ,{ "name":"sgl.net"              , "url": "https://sangiovannilipioni.net/"                                             , "src": "sgl.net.svg"                         }
      ,{ "name":"sueddeutsche"         , "url": "http://www.sueddeutsche.de/"                                                 , "src": "Süddeutsche-Zeitung-Ligatur.svg"     }
      ,{ "name":"tebaldi"              , "url": "https://rootp1630844092trial.hanatrial.ondemand.com/"                        , "src": "tebaldi.png"                         }
      ,{ "name":"travis-ci"            , "url": "https://travis-ci.org"                                                       , "src": "travis-ci-trans.png"                 }
