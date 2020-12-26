@@ -38,6 +38,9 @@
      
      ,{ "name":"voice"                , "url": "voice"                                                                       , "src": "Papirus-Team-Papirus-Apps-Sound-recorder.svg" }
      ,{ "name":"amazon"               , "url": "Amazon.it - Ordine 403-3907996-7249132.html"                                 , "src": "amazon-icon-1.svg" }
+
+     ,{ "name":"amazon2"              , "url": "Il tuo pacco è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. Ricorda di ritirarlo entro 3 gennaio.html"                                 
+      , "src": "package-svgrepo-com.svg" }
      
      ,{ "name":"earthlydelights"      , 
         "url": "http://earthlydelights.garden/",
