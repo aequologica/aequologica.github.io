@@ -35,13 +35,7 @@
      ,{ "name":"travis-ci"            , "url": "https://travis-ci.org"                                                       , "src": "travis-ci-trans.png"                 }
      ,{ "name":"twitter"              , "url": "https://twitter.com/cthiebaud"                                               , "src": "Twitter_logo_transparent-3.png"      }
      ,{ "name":"worldometers"         , "url": "https://www.worldometers.info/coronavirus/"                                  , "src": "covid-19.png"                        }
-     
-     ,{ "name":"voice"                , "url": "voice"                                                                       , "src": "Papirus-Team-Papirus-Apps-Sound-recorder.svg" }
-     ,{ "name":"amazon"               , "url": "Amazon.it - Ordine 403-3907996-7249132.html"                                 , "src": "amazon-icon-1.svg" }
-
-     ,{ "name":"amazon2"              , "url": "qwe.html"                                                                    , "src": "package-svgrepo-com.svg" }
-     ,{ "name":"amazon3"              , "url": "qwe2.html"                                                                   , "src": "package-svgrepo-com.svg" }
-     
+          
      ,{ "name":"earthlydelights"      , 
         "url": "http://earthlydelights.garden/",
         "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/crop?width=300&height=185&quality=100",
