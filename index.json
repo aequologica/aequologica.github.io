@@ -34,6 +34,7 @@
      ,{ "name":"tebaldi"              , "url": "https://rootp1630844092trial.hanatrial.ondemand.com/"                        , "src": "tebaldi.png"                         }
      ,{ "name":"travis-ci"            , "url": "https://travis-ci.org"                                                       , "src": "travis-ci-trans.png"                 }
      ,{ "name":"twitter"              , "url": "https://twitter.com/cthiebaud"                                               , "src": "Twitter_logo_transparent-3.png"      }
+     ,{ "name":"vinyl"                , "url": "vinyl/"                                                                      , "src": "Disque_Vinyl.svg"                    }
      ,{ "name":"worldometers"         , "url": "https://www.worldometers.info/coronavirus/"                                  , "src": "covid-19.png"                        }
           
      ,{ "name":"earthlydelights"      , 
