@@ -237,9 +237,15 @@
           <p class="card-text">{{val.text}}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.listen}}" target="_{{key}}_listen">Listen</a>
+              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.listen}}" target="_{{key}}_listen">
+                listen<br>
+                <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;">
+              </a>
               {{#if val.view}}
-              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.view}}" target="_{{key}}_view">View</a>
+              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.view}}" target="_{{key}}_view">
+                view<br>
+                <img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;">
+              </a>
               {{/if}}
             </div>
             <small class="text-muted">{{val.duration}}</small>
