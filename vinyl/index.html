@@ -22,8 +22,8 @@
   <meta property="og:description" content="Le Vinyl de Christophe Thiebaud" />
   <meta property="og:site_name" content="aequologica/vinyl" />
 
-  <meta property="og:image" content="https://aequologica.net/vinyl/thumbnails.jpg" />
-  <meta property="og:image:url" content="https://aequologica.net/vinyl/thumbnails.jpg" />
+  <meta property="og:image" content="https://aequologica.net/vinyl/thumbnails_dark.jpg" />
+  <meta property="og:image:url" content="https://aequologica.net/vinyl/thumbnails_dark.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1024" />
   <meta property="og:image:height" content="1024" />
@@ -37,8 +37,8 @@
     }
 
     main {
-      background: url(/images/Disque_Vinyl.svg) no-repeat;
-      background-size: cover;
+      background: url(/images/Disque_Vinyl.svg) no-repeat center center;
+      background-size: contain;
     }
 
     .bd-placeholder-img {
@@ -241,26 +241,30 @@
             <div class="btn-group">
               {{#if val.listen}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.listen}}" target="_{{key}}_listen">
-                listen<br>
-                <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;">
+                listen
+                <!-- <br>
+                <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
               </a>
               {{/if}}
               {{#if val.listen2}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.listen2}}" target="_{{key}}_listen2">
-                listen<br>
-                <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;">
+                listen
+                <!-- <br>
+                <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
               </a>
               {{/if}}
               {{#if val.view}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.view}}" target="_{{key}}_view">
-                view<br>
-                <img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;">
+                view
+                <!-- <br>
+                <img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;"> -->
               </a>
               {{/if}}
               {{#if val.read}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.read}}" target="_{{key}}_read">
-                read<br>
-                <img src="./open-book-svgrepo-com.svg" width="auto" height="28px" style="visibility: visible;">
+                read
+                <!-- <br>
+                <img src="./open-book-svgrepo-com.svg" width="auto" height="28px" style="visibility: visible;"> -->
               </a>
               {{/if}}
             </div>
