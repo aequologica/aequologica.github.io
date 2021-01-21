@@ -43,7 +43,7 @@
             <h4 class="text-white">Kézako ?</h4>
             <Pour class="text-muted">Un jour, tout ça sera un vinyl.
               Pour l'instant, ce sont des ébauches bien nazes faites au mieux avec GarageBand, au pire avec mon mobile, sans parler d'un essai d'enregistrement en studio au son
-              très ignoble, je vous laisse deviner lequel.
+              très pas terrible, je vous laisse deviner lequel.
               </p>
           </div>
           <div class="col-sm-4 offset-md-1 py-4">
@@ -172,7 +172,7 @@
             </g>
           </svg>
 
-          <strong style="margin-left:1rem;">Le Vinyl</strong>
+          <strong style="margin-left:1rem;">The Vinyl</strong>
         </a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
           aria-label="Toggle navigation">
@@ -216,14 +216,28 @@
           <p class="card-text">{{val.text}}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
+              {{#if val.listen}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.listen}}" target="_{{key}}_listen">
                 listen<br>
                 <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;">
               </a>
+              {{/if}}
+              {{#if val.listen2}}
+              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.listen2}}" target="_{{key}}_listen2">
+                listen<br>
+                <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;">
+              </a>
+              {{/if}}
               {{#if val.view}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.view}}" target="_{{key}}_view">
                 view<br>
                 <img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;">
+              </a>
+              {{/if}}
+              {{#if val.read}}
+              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.read}}" target="_{{key}}_read">
+                read<br>
+                <img src="./open-book-svgrepo-com.svg" width="auto" height="28px" style="visibility: visible;">
               </a>
               {{/if}}
             </div>
@@ -242,23 +256,84 @@
     console.log(template({ doesWhat: "rocks!" }));
 
     let songs = {
-      "bateau": { text: "Le Bateau ivre ", view: "https://youtu.be/a3Ek2EYkGsw", duration: "6:37", listen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre-1" },
-      "dancing": { text: "Socially Distant Dancing", view: "https://youtu.be/K6rk5tG71rI", duration: "3:49", listen: "https://soundcloud.com/christophe-thiebaud/matsubaba" },
-      "larme": { text: "Larme", view: "https://youtu.be/Zk_YubAnJmM", duration: "3:47", listen: "https://soundcloud.com/christophe-thiebaud/larme-1" },
-      "matin": { text: "Bonne pensée du matin", view: "https://youtu.be/KHRBZ7buOFk", duration: "3:17", listen: "https://soundcloud.com/christophe-thiebaud/bonne-pensee-du-matin-arthur" },
-      "matsubaba": { text: "Matsubaba Cantata", view: "", duration: "6:08", listen: "https://soundcloud.com/christophe-thiebaud/matsubaba_cantata" },
-      "poux": { text: "Les chercheuses de poux", view: "", duration: "2:24", listen: "https://soundcloud.com/christophe-thiebaud/les-chercheuses-de-poux/s-kZTIT" },
-      "sensation": { text: "Sensation", view: "", duration: "4:46", listen: "https://soundcloud.com/christophe-thiebaud/sensation-1" },
-      "supplique": { text: "Supplique Pour Être Enterré À La Plage De Sète", view: "", duration: "8:00", listen: "https://soundcloud.com/christophe-thiebaud/supplique-pour-etre-enterre-a/s-1ON0iP3KZ2d" },
-      "tour": { text: "Chanson de la plus haute tour", view: "https://youtu.be/7lKeQ91LtFk", duration: "5:09", listen: "https://soundcloud.com/christophe-thiebaud/chanson-de-la-plus-haute-tour" },
+      "bateau": {
+        text: "Le Bateau ivre ",
+        duration: "6:37",
+        listen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre-1",
+        listen2: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre",
+        read: "https://www.poetica.fr/poeme-1906/arthur-rimbaud-le-bateau-ivre/",
+        view: "https://youtu.be/a3Ek2EYkGsw",
+      },
+      "dancing": {
+        text: "Socially Distant Dancing",
+        duration: "3:49",
+        listen: "https://soundcloud.com/christophe-thiebaud/matsubaba",
+        view: "https://youtu.be/K6rk5tG71rI",
+      },
+      "larme": {
+        text: "Larme",
+        duration: "3:47",
+        listen: "https://soundcloud.com/christophe-thiebaud/larme-1",
+        view: "https://youtu.be/Zk_YubAnJmM",
+        read: "https://www.poetica.fr/poeme-899/arthur-rimbaud-larme/",
+      },
+      "matin": {
+        text: "Bonne pensée du matin",
+        duration: "3:17",
+        listen: "https://soundcloud.com/christophe-thiebaud/bonne-pensee-du-matin-arthur",
+        view: "https://youtu.be/KHRBZ7buOFk",
+        read: "https://www.poetica.fr/poeme-646/arthur-rimbaud-bonne-pensee-du-matin/",
+      },
+      "matsubaba": {
+        text: "Matsubaba Cantata",
+        duration: "6:08",
+        listen: "https://soundcloud.com/christophe-thiebaud/matsubaba_cantata",
+      },
+      "poux": {
+        text: "Les chercheuses de poux",
+        duration: "2:24",
+        listen: "https://soundcloud.com/christophe-thiebaud/les-chercheuses-de-poux/s-kZTIT",
+        read: "https://www.poetica.fr/poeme-138/arthur-rimbaud-les-chercheuses-de-poux/",
+      },
+      "sensation": {
+        text: "Sensation",
+        duration: "4:46",
+        listen: "https://soundcloud.com/christophe-thiebaud/sensation-1",
+        read: "https://www.poetica.fr/poeme-533/arthur-rimbaud-sensation/",
+      },
+      "supplique": {
+        text: "Supplique Pour Être Enterré À La Plage De Sète",
+        duration: "8:00",
+        listen0: "https://soundcloud.com/christophe-thiebaud/supplique-pour-etre-enterre-a/s-1ON0iP3KZ2d",
+        read: "http://www.analysebrassens.com/?page=texte&id=94&%23",
+      },
+      "tour": {
+        text: "Chanson de la plus haute tour",
+        duration: "5:09",
+        listen: "https://soundcloud.com/christophe-thiebaud/chanson-de-la-plus-haute-tour",
+        read: "http://courses.logos.it/plscourses/linguistic_resources.laboratorio5?lang=en",
+        view: "https://youtu.be/7lKeQ91LtFk",
+      },
     };
+
+    let order = [
+      "dancing",
+      "tour",
+      "larme",
+      "matin",
+      "matsubaba",
+      "sensation",
+      "bateau",
+      "poux",
+      "supplique",
+    ];
 
     let $row = $('#songs');
 
-    _.each(songs, (val, key) => {
+    _.each(order, (key) => {
       $row.append(template({
         key: key,
-        val: val,
+        val: songs[key],
       }));
     });
 
