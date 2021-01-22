@@ -230,9 +230,18 @@
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@latest/lodash.min.js"></script>
 
+  <script id="video-template" type="text/x-handlebars-template">
+    <iframe 
+    width="{{width}}" 
+    height="{{height}}" 
+    src="{{url}}" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </script>
+
+
   <script id="song-template" type="text/x-handlebars-template">
     <div class="col">
-      <div class="card shadow-sm bg-secondary">
+      <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative;">
         <img class="img-fluid" src="./covers/{{key}}.jpg" alt="">
 
         <div class="card-body text-light bg-dark">
@@ -242,29 +251,25 @@
               {{#if val.listen}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.listen}}" target="_{{key}}_listen">
                 listen
-                <!-- <br>
-                <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
+                <!-- <br><img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
               </a>
               {{/if}}
-              {{#if val.listen2}}
-              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.listen2}}" target="_{{key}}_listen2">
-                listen
-                <!-- <br>
-                <img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
+              {{#if val.alsoListen}}
+              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.alsoListen}}" target="_{{key}}_listen2">
+                also listen
+                <!-- <br><img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
               </a>
               {{/if}}
               {{#if val.see}}
-              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.see}}" target="_{{key}}_view">
+              <button id="see_{{key}}" type="button" class="vid btn btn-sm btn-outline-secondary" data-youtubeid="{{val.youtubeid}}" target="_{{key}}_view">
                 see
-                <!-- <br>
-                <img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;"> -->
-              </a>
+                <!-- <br><img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;"> -->
+              </button>
               {{/if}}
               {{#if val.read}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.read}}" target="_{{key}}_read">
                 read
-                <!-- <br>
-                <img src="./open-book-svgrepo-com.svg" width="auto" height="28px" style="visibility: visible;"> -->
+                <!-- <br><img src="./open-book-svgrepo-com.svg" width="auto" height="28px" style="visibility: visible;"> -->
               </a>
               {{/if}}
             </div>
@@ -277,31 +282,37 @@
 
   <script>
     // compile the template
-    var source = document.getElementById("song-template").innerHTML;
-    var template = Handlebars.compile(source);
-    // execute the compiled template and print the output to the console
-    console.log(template({ doesWhat: "rocks!" }));
+      var source = document.getElementById("song-template").innerHTML;
+      var template = Handlebars.compile(source);
+      var source2 = document.getElementById("video-template").innerHTML;
+      var template2 = Handlebars.compile(source2);
 
     let songs = {
       "bateau": {
         text: "Le Bateau ivre ",
         duration: "6:37",
         listen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre-1",
-        listen2: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre",
+        alsoListen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre",
         read: "https://www.poetica.fr/poeme-1906/arthur-rimbaud-le-bateau-ivre/",
         see: "https://youtu.be/a3Ek2EYkGsw",
+        youtubeid: "a3Ek2EYkGsw",
+
       },
       "dancing": {
         text: "Socially Distant Dancing",
         duration: "3:49",
         listen: "https://soundcloud.com/christophe-thiebaud/matsubaba",
         see: "https://youtu.be/K6rk5tG71rI",
+        youtubeid: "K6rk5tG71rI",
+
       },
       "larme": {
         text: "Larme",
         duration: "3:47",
         listen: "https://soundcloud.com/christophe-thiebaud/larme-1",
         see: "https://youtu.be/Zk_YubAnJmM",
+        youtubeid: "Zk_YubAnJmM",
+
         read: "https://www.poetica.fr/poeme-899/arthur-rimbaud-larme/",
       },
       "matin": {
@@ -309,6 +320,8 @@
         duration: "3:17",
         listen: "https://soundcloud.com/christophe-thiebaud/bonne-pensee-du-matin-arthur",
         see: "https://youtu.be/KHRBZ7buOFk",
+        youtubeid: "KHRBZ7buOFk",
+
         read: "https://www.poetica.fr/poeme-646/arthur-rimbaud-bonne-pensee-du-matin/",
       },
       "matsubaba": {
@@ -340,6 +353,7 @@
         listen: "https://soundcloud.com/christophe-thiebaud/chanson-de-la-plus-haute-tour",
         read: "http://courses.logos.it/plscourses/linguistic_resources.laboratorio5?lang=en",
         see: "https://youtu.be/7lKeQ91LtFk",
+        youtubeid: "7lKeQ91LtFk",
       },
     };
 
@@ -378,6 +392,60 @@
         key: key,
         val: songs[key],
       }));
+    });
+
+    function see(url) {
+      alert(url);
+    }
+
+    $(document).ready(function () {
+      let $theVideo = undefined;
+      let $theButton = undefined;
+      $('div.card .vid').on(
+        'click',
+        e => {
+          //  destroy if exists
+          if ($theVideo) {
+            $theVideo.remove();
+            $theVideo = undefined;
+          }
+          if ($theButton) {
+            $theButton.html("see");
+            if ($theButton.prop('id') === $(e.target).prop('id')) {
+              $theButton = undefined;
+              return;
+            }
+          }
+          // create if other
+          $theButton = $(e.target);
+          $theButton.html("hide");
+          const $card = $theButton.parents('div.card');
+          const $img = $card.children('img');
+          const oh = $img.outerHeight();
+          const ow = $img.outerWidth();
+
+          const style = {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: ow + "px",
+            height: oh + "px",
+            "background-color": "transparent",
+          };
+
+          const youtubeid = $theButton.data('youtubeid');
+          const youtubeiframe = template2({
+            id: "",
+            width: ow,
+            height: oh, 
+            url:  "https://www.youtube.com/embed/"+ youtubeid +"?controls=0&autoplay=1",
+          });
+
+          $theVideo = $(youtubeiframe);
+
+          $card.append($theVideo.css(style));
+        }
+      );
     });
 
 
