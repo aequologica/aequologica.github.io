@@ -256,13 +256,13 @@
               {{/if}}
               {{#if val.alsoListen}}
               <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.alsoListen}}" target="_{{key}}_listen2">
-                also listen
+                listen
                 <!-- <br><img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
               </a>
               {{/if}}
-              {{#if val.see}}
-              <button id="see_{{key}}" type="button" class="vid btn btn-sm btn-outline-secondary" data-youtubeid="{{val.youtubeid}}" target="_{{key}}_view">
-                see
+              {{#if val.watch}}
+              <button id="watch_{{key}}" type="button" class="vid btn btn-sm btn-outline-secondary" data-youtubeid="{{val.youtubeid}}" target="_{{key}}_view">
+                watch
                 <!-- <br><img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;"> -->
               </button>
               {{/if}}
@@ -282,19 +282,19 @@
 
   <script>
     // compile the template
-      var source = document.getElementById("song-template").innerHTML;
-      var template = Handlebars.compile(source);
-      var source2 = document.getElementById("video-template").innerHTML;
-      var template2 = Handlebars.compile(source2);
+    var source = document.getElementById("song-template").innerHTML;
+    var template = Handlebars.compile(source);
+    var source2 = document.getElementById("video-template").innerHTML;
+    var template2 = Handlebars.compile(source2);
 
     let songs = {
       "bateau": {
         text: "Le Bateau ivre ",
         duration: "6:37",
-        listen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre-1",
-        alsoListen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre",
+        listen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre",
+        alsoListen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre-1",
         read: "https://www.poetica.fr/poeme-1906/arthur-rimbaud-le-bateau-ivre/",
-        see: "https://youtu.be/a3Ek2EYkGsw",
+        watch: "https://youtu.be/a3Ek2EYkGsw",
         youtubeid: "a3Ek2EYkGsw",
 
       },
@@ -302,15 +302,14 @@
         text: "Socially Distant Dancing",
         duration: "3:49",
         listen: "https://soundcloud.com/christophe-thiebaud/matsubaba",
-        see: "https://youtu.be/K6rk5tG71rI",
+        watch: "https://youtu.be/K6rk5tG71rI",
         youtubeid: "K6rk5tG71rI",
 
       },
       "larme": {
         text: "Larme",
         duration: "3:47",
-        listen: "https://soundcloud.com/christophe-thiebaud/larme-1",
-        see: "https://youtu.be/Zk_YubAnJmM",
+        watch: "https://youtu.be/Zk_YubAnJmM",
         youtubeid: "Zk_YubAnJmM",
 
         read: "https://www.poetica.fr/poeme-899/arthur-rimbaud-larme/",
@@ -318,8 +317,8 @@
       "matin": {
         text: "Bonne pensée du matin",
         duration: "3:17",
-        listen: "https://soundcloud.com/christophe-thiebaud/bonne-pensee-du-matin-arthur",
-        see: "https://youtu.be/KHRBZ7buOFk",
+        listen_: "https://soundcloud.com/christophe-thiebaud/bonne-pensee-du-matin-arthur",
+        watch: "https://youtu.be/KHRBZ7buOFk",
         youtubeid: "KHRBZ7buOFk",
 
         read: "https://www.poetica.fr/poeme-646/arthur-rimbaud-bonne-pensee-du-matin/",
@@ -337,9 +336,9 @@
       },
       "sensation": {
         text: "Sensation",
-        duration: "4:46",
+        duration: "5:21",
         listen: "https://soundcloud.com/christophe-thiebaud/sensation-1",
-        see: "https://youtu.be/tkK7Bi7c7Wc",
+        watch: "https://youtu.be/tkK7Bi7c7Wc",
         youtubeid: "tkK7Bi7c7Wc",
         read: "https://www.poetica.fr/poeme-533/arthur-rimbaud-sensation/",
       },
@@ -354,27 +353,25 @@
         duration: "5:09",
         listen: "https://soundcloud.com/christophe-thiebaud/chanson-de-la-plus-haute-tour",
         read: "http://courses.logos.it/plscourses/linguistic_resources.laboratorio5?lang=en",
-        see: "https://youtu.be/7lKeQ91LtFk",
+        watch: "https://youtu.be/7lKeQ91LtFk",
         youtubeid: "7lKeQ91LtFk",
       },
       "brouillard_I": {
-        text: "Brouillard I",
+        text: "Brouillard I - Psycho, Alfred Hitchcock, 1960",
         duration: "3:54",
-        listen: "https://soundcloud.com/christophe-thiebaud/wam-brouillard",
-        see: "https://youtu.be/ehCW0AkOp2Q",
+        watch: "https://youtu.be/ehCW0AkOp2Q",
         youtubeid: "ehCW0AkOp2Q",
       },
       "brouillard_II": {
-        text: "Brouillard II",
+        text: "Brouillard II - Psycho, Gus Van Sant, 1998",
         duration: "3:54",
-        listen: "https://soundcloud.com/christophe-thiebaud/wam-brouillard",
-        see: "https://youtu.be/wDe2REZxvMo",
+        watch: "https://youtu.be/wDe2REZxvMo",
         youtubeid: "wDe2REZxvMo",
       },
       "bwv1005": {
-        text: "Largo from sonata #3 in C major BWV 1005",
+        text: "Largo from sonata #3 in C major BWV 1005, JS Bach",
         duration: "2:26",
-        see: "https://youtu.be/p9Cc4amUnHw",
+        watch: "https://youtu.be/p9Cc4amUnHw",
         youtubeid: "p9Cc4amUnHw",
       }
     };
@@ -419,7 +416,7 @@
       }));
     });
 
-    function see(url) {
+    function watch(url) {
       alert(url);
     }
 
@@ -435,7 +432,7 @@
             $theVideo = undefined;
           }
           if ($theButton) {
-            $theButton.html("see");
+            $theButton.html("watch");
             if ($theButton.prop('id') === $(e.target).prop('id')) {
               $theButton = undefined;
               return;
@@ -462,8 +459,8 @@
           const youtubeiframe = template2({
             id: "",
             width: ow,
-            height: oh, 
-            url:  "https://www.youtube.com/embed/"+ youtubeid +"?controls=0&autoplay=1",
+            height: oh,
+            url: "https://www.youtube.com/embed/" + youtubeid + "?controls=0&autoplay=1",
           });
 
           $theVideo = $(youtubeiframe);
