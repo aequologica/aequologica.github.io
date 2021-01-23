@@ -460,6 +460,7 @@
             return undefined;
           }
         }
+        $button.html("close");
         return $button;
       }
 
@@ -495,8 +496,6 @@
             return;
           }
 
-          $theButton.html("stop");
-
           const dims = getDims($theButton);
 
           const soundcloudid = $theButton.data('soundcloudid');
@@ -522,8 +521,6 @@
           if (!$theButton) {
             return;
           }
-
-          $theButton.html("stop");
 
           const dims = getDims($theButton);
 
