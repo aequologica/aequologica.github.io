@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+
+    <style>
+        html {
+            background-color: whitesmoke;
+        }
+
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/showdown@latest/dist/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            if (location.search && location.search.substring(1)) {
+
+                function displayResult(text) {
+                    var converter = new showdown.Converter({ tables: true, strikethrough: true }),
+                        html = converter.makeHtml(text);
+                    $("div.container").append(html);
+                    $("table").addClass("table table-striped table-sm");
+                }
+
+                $.get(location.search.substring(1), displayResult);
+
+            } else {
+                $("div.container").append("<p>Try with a '?' followed with a link to a markdown file.</p>");
+            }
+
+        });
+    </script>
+
+</body>

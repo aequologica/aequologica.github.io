@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <meta name="generator" content="Hugo 0.79.0">
   <title>Le Vinyl de Christophe Thiebaud</title>
 
   <link rel="canonical" href="https://aequologica.net/vinyl/">
@@ -236,18 +235,29 @@
       id="yt-widget" 
       width="{{width}}" 
       height="{{height}}" 
-      src="{{url}}" frameborder="0"
+      src="https://www.youtube.com/embed/{{id}}?controls=0&autoplay=1"
+      frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
     </iframe>
   </script>
 
   <script id="sound-template" type="text/x-handlebars-template">
-
     <iframe 
       id="sc-widget" 
       width="{{width}}" 
       height="{{height}}" 
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{soundcloudid}}&auto_play=true&buying=false&liking=true&download=false&sharing=false&show_artwork=true&show_comments=false&show_playcount=false&show_user=true&hide_related=true&visual=true&callback=true">
+      frameborder="0"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{id}}&auto_play=true&buying=false&liking=true&download=false&sharing=false&show_artwork=true&show_comments=false&show_playcount=false&show_user=true&hide_related=true&visual=true&callback=true">
+    </iframe>
+  </script>
+
+  <script id="text-template" type="text/x-handlebars-template">
+    <iframe 
+      id="tx-widget" 
+      width="{{width}}" 
+      height="{{height}}" 
+      frameborder="0"
+      src="/vinyl/texts/showdown.html?{{id}}.md">
     </iframe>
   </script>
 
@@ -261,25 +271,25 @@
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               {{#if val.listen}}
-              <a type="button" class="sound btn btn-sm btn-outline-secondary" href="{{val.listen}}" data-soundcloudid="{{val.soundcloudid}}" target="_{{key}}_listen">
+              <a type="button" class="sound btn btn-sm btn-outline-secondary" href="{{val.listen}}" data-id="{{val.soundcloudid}}" data-text="listen" target="_{{key}}_listen">
                 listen
                 <!-- <br><img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
               </a>
               {{/if}}
               {{#if val.listen2}}
-              <a type="button" class="sound btn btn-sm btn-outline-secondary" href="{{val.listen2}}" data-soundcloudid="{{val.soundcloudid2}}" target="_{{key}}_listen2">
+              <a type="button" class="sound btn btn-sm btn-outline-secondary" href="{{val.listen2}}" data-id="{{val.soundcloudid2}}" data-text="listen" target="_{{key}}_listen2">
                 listen
                 <!-- <br><img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
               </a>
               {{/if}}
               {{#if val.watch}}
-              <button id="watch_{{key}}" type="button" class="vid btn btn-sm btn-outline-secondary" data-youtubeid="{{val.youtubeid}}" target="_{{key}}_view">
+              <button id="watch_{{key}}" type="button" class="vid btn btn-sm btn-outline-secondary" data-id="{{val.youtubeid}}" data-text="watch" target="_{{key}}_view">
                 watch
                 <!-- <br><img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;"> -->
               </button>
               {{/if}}
               {{#if val.read}}
-              <a type="button" class="btn btn-sm btn-outline-secondary" href="{{val.read}}" target="_{{key}}_read">
+              <a id="read_{{key}}" type="button" class="markdown btn btn-sm btn-outline-secondary" href="{{val.read}}" data-id="{{key}}" data-text="read" target="_{{key}}_read">
                 read
                 <!-- <br><img src="./open-book-svgrepo-com.svg" width="auto" height="28px" style="visibility: visible;"> -->
               </a>
@@ -300,6 +310,8 @@
     var template2 = Handlebars.compile(source2);
     var source3 = document.getElementById("sound-template").innerHTML;
     var template3 = Handlebars.compile(source3);
+    var source4 = document.getElementById("text-template").innerHTML;
+    var template4 = Handlebars.compile(source4);
 
     let songs = {
       "bateau": {
@@ -455,7 +467,7 @@
           $thePlayer = undefined;
         }
         if ($theButton) {
-          $theButton.html(buttonText);
+          $theButton.html($theButton.data("text"));
           if ($theButton.prop('id') === $button.prop('id')) {
             return undefined;
           }
@@ -486,57 +498,31 @@
 
       }
 
-      $('div.card .sound').on(
-        'click',
-        e => {
-          e.preventDefault();
-          e.stopPropagation();
-          $theButton = destroy_if_exists($(e.target), "listen");
-          if (!$theButton) {
-            return;
-          }
-
-          const dims = getDims($theButton);
-
-          const soundcloudid = $theButton.data('soundcloudid');
-          const soundcloudiframe = template3({
-            id: "",
-            width: dims.ow,
-            height: dims.oh,
-            soundcloudid: soundcloudid,
-          });
-
-          $thePlayer = $(soundcloudiframe);
-
-          dims.$card.append($thePlayer.css(dims.style));
+      function showiframe(e, template) {
+        e.preventDefault();
+        e.stopPropagation();
+        $theButton = destroy_if_exists($(e.target));
+        if (!$theButton) {
+          return;
         }
-      );
 
-      $('div.card .vid').on(
-        'click',
-        e => {
-          e.preventDefault();
-          e.stopPropagation();
-          $theButton = destroy_if_exists($(e.target), "watch");
-          if (!$theButton) {
-            return;
-          }
+        const dims = getDims($theButton);
 
-          const dims = getDims($theButton);
+        const soundcloudid = $theButton.data('id');
+        const soundcloudiframe = template({
+          width: dims.ow,
+          height: dims.oh,
+          id: soundcloudid,
+        });
 
-          const youtubeid = $theButton.data('youtubeid');
-          const youtubeiframe = template2({
-            id: "",
-            width: dims.ow,
-            height: dims.oh,
-            url: "https://www.youtube.com/embed/" + youtubeid + "?controls=0&autoplay=1",
-          });
+        $thePlayer = $(soundcloudiframe);
 
-          $thePlayer = $(youtubeiframe);
+        dims.$card.append($thePlayer.css(dims.style));
+      }
 
-          dims.$card.append($thePlayer.css(dims.style));
-        }
-      );
+      $('div.card .vid').on('click', e => showiframe(e, template2));
+      $('div.card .sound').on('click', e => showiframe(e, template3));
+      $('div.card .markdown').on('click', e => showiframe(e, template4));
     });
 
 
