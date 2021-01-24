@@ -53,6 +53,10 @@
         font-size: 3.5rem;
       }
     }
+
+    img {
+      cursor:pointer;
+    }
   </style>
 
 </head>
@@ -271,16 +275,16 @@
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               {{#if val.watch}}
-              <button type="button" class="vid btn btn-sm btn-outline-secondary" data-id="{{val.youtubeid}}" data-text="watch">watch</button>
+              <button type="button" id="watch_{{key}}" class="vid btn btn-sm btn-outline-secondary" data-id="{{val.youtubeid}}" data-text="watch">watch</button>
               {{/if}}
               {{#if val.listen}}
-              <button type="button" class="sound btn btn-sm btn-outline-secondary" data-id="{{val.soundcloudid}}" data-text="listen">listen</button>
+              <button type="button" id="listen_{{key}}" class="sound btn btn-sm btn-outline-secondary" data-id="{{val.soundcloudid}}" data-text="listen">listen</button>
               {{/if}}
               {{#if val.listen2}}
-              <button type="button" class="sound btn btn-sm btn-outline-secondary" data-id="{{val.soundcloudid2}}" data-text="listen">listen</button>
+              <button type="button" id="listen2_{{key}}" class="sound btn btn-sm btn-outline-secondary" data-id="{{val.soundcloudid2}}" data-text="listen">listen</button>
               {{/if}}
               {{#if val.read}}
-              <button type="button" class="markdown btn btn-sm btn-outline-secondary" data-id="{{key}}" data-text="read">read</button>
+              <button type="button" id="read_{{key}}" class="markdown btn btn-sm btn-outline-secondary" data-id="{{key}}" data-text="read">read</button>
               {{/if}}
             </div>
             <small class="text-muted">{{val.duration}}</small>
@@ -512,9 +516,9 @@
         $(e.target).parent().find('.btn-group button:first-child').trigger("click");
       });
 
-      $('div.card .vid').on('click', e => showiframe(e, template2));
-      $('div.card .sound').on('click', e => showiframe(e, template3));
-      $('div.card .markdown').on('click', e => showiframe(e, template4));
+      $('div.card button.vid').on('click', e => showiframe(e, template2));
+      $('div.card button.sound').on('click', e => showiframe(e, template3));
+      $('div.card button.markdown').on('click', e => showiframe(e, template4));
     });
 
 
