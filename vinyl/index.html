@@ -270,29 +270,17 @@
           <p class="card-text">{{val.text}}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
+              {{#if val.watch}}
+              <button type="button" class="vid btn btn-sm btn-outline-secondary" data-id="{{val.youtubeid}}" data-text="watch">watch</button>
+              {{/if}}
               {{#if val.listen}}
-              <a type="button" class="sound btn btn-sm btn-outline-secondary" href="{{val.listen}}" data-id="{{val.soundcloudid}}" data-text="listen" target="_{{key}}_listen">
-                listen
-                <!-- <br><img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
-              </a>
+              <button type="button" class="sound btn btn-sm btn-outline-secondary" data-id="{{val.soundcloudid}}" data-text="listen">listen</button>
               {{/if}}
               {{#if val.listen2}}
-              <a type="button" class="sound btn btn-sm btn-outline-secondary" href="{{val.listen2}}" data-id="{{val.soundcloudid2}}" data-text="listen" target="_{{key}}_listen2">
-                listen
-                <!-- <br><img src="../images/soundcloud.svg" width="auto" height="20px" style="visibility: visible;"> -->
-              </a>
-              {{/if}}
-              {{#if val.watch}}
-              <button id="watch_{{key}}" type="button" class="vid btn btn-sm btn-outline-secondary" data-id="{{val.youtubeid}}" data-text="watch" target="_{{key}}_view">
-                watch
-                <!-- <br><img src="../images/youtube.png" width="auto" height="28px" style="visibility: visible;"> -->
-              </button>
+              <button type="button" class="sound btn btn-sm btn-outline-secondary" data-id="{{val.soundcloudid2}}" data-text="listen">listen</button>
               {{/if}}
               {{#if val.read}}
-              <a id="read_{{key}}" type="button" class="markdown btn btn-sm btn-outline-secondary" href="{{val.read}}" data-id="{{key}}" data-text="read" target="_{{key}}_read">
-                read
-                <!-- <br><img src="./open-book-svgrepo-com.svg" width="auto" height="28px" style="visibility: visible;"> -->
-              </a>
+              <button type="button" class="markdown btn btn-sm btn-outline-secondary" data-id="{{key}}" data-text="read">read</button>
               {{/if}}
             </div>
             <small class="text-muted">{{val.duration}}</small>
@@ -472,7 +460,7 @@
             return undefined;
           }
         }
-        $button.html("close");
+        $button.html("<span style='color:lightblue'>close ×</span>");
         return $button;
       }
 
@@ -519,6 +507,10 @@
 
         dims.$card.append($thePlayer.css(dims.style));
       }
+
+      $('div.card img').on('click', e => {
+        $(e.target).parent().find('.btn-group button:first-child').trigger("click");
+      });
 
       $('div.card .vid').on('click', e => showiframe(e, template2));
       $('div.card .sound').on('click', e => showiframe(e, template3));
