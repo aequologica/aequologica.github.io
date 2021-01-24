@@ -512,7 +512,7 @@
         dims.$card.append($thePlayer.css(dims.style));
       }
 
-      $('div.card img').on('click', e => {
+      $('div.card img.img-fluid').on('click', e => {
         $(e.target).parent().find('.btn-group button:first-child').trigger("click");
       });
 
