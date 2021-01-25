@@ -267,7 +267,7 @@
   <script id="song-template" type="text/x-handlebars-template">
     <div class="col">
       <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative; background-color: transparent !important;">
-        <img class="img-fluid" src="./covers/{{key}}{{#if val.extension}}{{val.extension}}{{else}}.jpg{{/if}}" alt="">
+        <img class="img-fluid" src="./covers/{{cover}}" alt="">
 
         <div class="card-body text-light bg-dark">
           <p class="card-text">{{val.text}}</p>
@@ -525,6 +525,20 @@
       $row.append(template({
         key: key,
         val: songs[key],
+        cover: () => {
+          if (songs[key].extension) {
+            return key+songs[key].extension;
+          }
+          if (key == "brouillard") {
+            const random_boolean = Math.random() < 0.5;
+            if (random_boolean) {
+              return "psycho_I.jpg";
+            } else {
+              return "psycho_II.jpg";
+            }
+          }
+          return key + ".jpg"
+        }
       }));
     });
 
