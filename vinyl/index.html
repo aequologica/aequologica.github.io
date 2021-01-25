@@ -277,6 +277,9 @@
               {{#if val.watch}}
               <button type="button" id="watch_{{key}}" class="vid btn btn-sm btn-outline-secondary" data-id="{{val.youtubeid}}" data-text="watch">watch</button>
               {{/if}}
+              {{#if val.watch2}}
+              <button type="button" id="watch2_{{key}}" class="vid btn btn-sm btn-outline-secondary" data-id="{{val.youtubeid2}}" data-text="watch">watch</button>
+              {{/if}}
               {{#if val.listen}}
               <button type="button" id="listen_{{key}}" class="sound btn btn-sm btn-outline-secondary" data-id="{{val.soundcloudid}}" data-text="listen">listen</button>
               {{/if}}
@@ -308,7 +311,7 @@
     let songs = {
       "bateau": {
         text: "Le Bateau ivre ",
-        duration: "6:37",
+        duration: "6:33",
         listen: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre",
         soundcloudid: "203852214",
         listen2: "https://soundcloud.com/christophe-thiebaud/le-bateau-ivre-1",
@@ -395,11 +398,13 @@
         watch: "https://youtu.be/wDe2REZxvMo",
         youtubeid: "wDe2REZxvMo",
       },
-      "bwv1005": {
-        text: "Largo from sonata #3 in C major BWV 1005, JS Bach",
-        duration: "2:26",
+      "bwv": {
+        text: "Johann Sebastian Bach",
+        duration: "",
         watch: "https://youtu.be/p9Cc4amUnHw",
         youtubeid: "p9Cc4amUnHw",
+        watch2: "https://youtu.be/OHp12oUx81A",
+        youtubeid2: "OHp12oUx81A",
       }
     };
 
@@ -407,7 +412,7 @@
       "bateau",
       "brouillard_I",
       "brouillard_II",
-      "bwv1005",
+      "bwv",
       "dancing",
       "larme",
       "matin",
