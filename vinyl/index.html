@@ -245,20 +245,14 @@
   <script id="video-template" type="text/x-handlebars-template">
     <iframe 
       id="yt-widget" 
-      width="{{width}}" 
-      height="{{height}}" 
       src="https://www.youtube.com/embed/{{id}}?controls=0&autoplay=1"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
     </iframe>
   </script>
 
   <script id="sound-template" type="text/x-handlebars-template">
     <iframe 
       id="sc-widget" 
-      width="{{width}}" 
-      height="{{height}}" 
-      frameborder="0"
       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{id}}&auto_play=true&buying=false&liking=true&download=false&sharing=false&show_artwork=true&show_comments=false&show_playcount=false&show_user=true&hide_related=true&visual=true&callback=true">
     </iframe>
   </script>
@@ -266,9 +260,6 @@
   <script id="text-template" type="text/x-handlebars-template">
     <iframe 
       id="tx-widget" 
-      width="{{width}}" 
-      height="{{height}}" 
-      frameborder="0"
       src="/vinyl/texts/showdown.html?{{id}}.md">
     </iframe>
   </script>
@@ -547,7 +538,7 @@
       let $theButton = undefined;
 
       //  destroy if exists
-      function destroy_if_exists($button, buttonText) {
+      function destroyIfExists($button) {
         if ($thePlayer) {
           $thePlayer.remove();
           $thePlayer = undefined;
@@ -555,6 +546,7 @@
         if ($theButton) {
           $theButton.html($theButton.data("text"));
           if ($theButton.prop('id') === $button.prop('id')) {
+            $theButton = undefined;
             return undefined;
           }
         }
@@ -562,11 +554,11 @@
         return $button;
       }
 
-      function getDims($button) {
-        const $card = $button.parents('div.card');
-        const $img = $card.children('img');
-        const oh = $img.outerHeight();
-        const ow = $img.outerWidth();
+      function getStyleAndParentCard($button) {
+        const $parentCard = $button.parents('div.card');
+        const $img = $parentCard.children('img');
+        const oh = $img.outerHeight(true);
+        const ow = $img.outerWidth(true);
 
         return {
           style: {
@@ -577,37 +569,33 @@
             height: oh + "px",
             "background-color": "transparent",
           },
-          ow: ow,
-          oh: oh,
-          $card: $card,
+          $parentCard: $parentCard,
         };
-
       }
 
       function showiframe(e, template) {
         e.preventDefault();
         e.stopPropagation();
-        $theButton = destroy_if_exists($(e.target));
+
+        // destroy
+        $theButton = destroyIfExists($(e.currentTarget));
         if (!$theButton) {
           return;
         }
 
-        const dims = getDims($theButton);
-
-        const soundcloudid = $theButton.data('id');
-        const soundcloudiframe = template({
-          width: dims.ow,
-          height: dims.oh,
-          id: soundcloudid,
+        // create
+        const styleAndParentCard = getStyleAndParentCard($theButton);
+        const iframe = template({
+          id: $theButton.data('id'),
         });
-
-        $thePlayer = $(soundcloudiframe);
-
-        dims.$card.append($thePlayer.css(dims.style));
+        $thePlayer = $(iframe);
+        styleAndParentCard.$parentCard.append($thePlayer.css(styleAndParentCard.style));
       }
 
       $('div.card img.img-fluid').on('click', e => {
-        $(e.target).parent().find('.btn-group button:first-child').trigger("click");
+        e.preventDefault();
+        e.stopPropagation();
+        $(e.currentTarget).parent().find('.btn-group button:first-child').trigger("click");
       });
 
       $('div.card button.vid').on('click', e => showiframe(e, template2));
