@@ -4,3 +4,4 @@ package-lock.json
 package.json
 _site/
 Gemfile*
+vinyl/campaign.md
