@@ -45,23 +45,27 @@
 
     main {
       background: url(./vinyl.svg) no-repeat center center;
+      /* https://picsum.photos/200/300 */
       background-size: contain;
+
     }
 
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
+    .card {
+      background-color: rgba(255, 255, 255, 0.2) !important;
     }
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
+    /* 
+    https://css-tricks.com/almanac/properties/b/backdrop-filter/
+    */
+    /*
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      .card {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.2) !important;
       }
     }
-
+    */
     img {
       cursor: pointer;
     }
@@ -223,7 +227,7 @@
 
     <div class="album py-5">
       <div class="container">
-        <div id="songs" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div id="songs" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="backdrop-filter: hue-rotate(120deg);">
         </div>
       </div>
     </div>
@@ -266,7 +270,7 @@
 
   <script id="song-template" type="text/x-handlebars-template">
     <div class="col">
-      <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative; background-color: transparent !important;">
+      <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative;">
         <img class="img-fluid" src="./covers/{{cover}}" alt="">
 
         <div class="card-body text-light bg-dark">
