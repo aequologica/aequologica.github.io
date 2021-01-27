@@ -92,6 +92,7 @@
               <li><a href="https://twitter.com/cthiebaud" class="text-white">Twitter</a></li>
               <li><a href="https://www.facebook.com/christophe.thiebaud" class="text-white">Facebook</a></li>
               <li><a href="https://www.instagram.com/cthiebaud/" class="text-white">Instagram</a></li>
+              <li><a href=".." class="text-white">Æquologica</a></li>
             </ul>
           </div>
         </div>
@@ -99,7 +100,7 @@
     </div>
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
-        <a href="#" class="navbar-brand d-flex align-items-center">
+        <a class="navbar-brand d-flex align-items-center">
 
           <?xml version="1.0" encoding="UTF-8" standalone="no"?>
           <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="40" height="40" viewBox="0 0 225.68 225.687" id="svg2"
@@ -494,7 +495,7 @@
             title: "Goldberg Variations BWV988 - Variatio 18. Canone alla Sexta.",
           },
 
-          
+
         ],
       }
     };
@@ -528,33 +529,6 @@
         array[i] = t;
       }
       return array;
-    }
-
-    let $row = $('#songs');
-
-    _.each(shuffleArray(order), (key) => {
-      $row.append(template({
-        key: key,
-        val: songs[key],
-        cover: () => {
-          if (songs[key].extension) {
-            return key + songs[key].extension;
-          }
-          if (key == "brouillard") {
-            const random_boolean = Math.random() < 0.5;
-            if (random_boolean) {
-              return "psycho_I.jpg";
-            } else {
-              return "psycho_II.jpg";
-            }
-          }
-          return key + ".jpg"
-        }
-      }));
-    });
-
-    function watch(url) {
-      alert(url);
     }
 
     $(document).ready(function () {
@@ -617,15 +591,48 @@
         styleAndParentCard.$parentCard.append($thePlayer.css(styleAndParentCard.style));
       }
 
-      $('div.card img.img-fluid').on('click', e => {
-        e.preventDefault();
-        e.stopPropagation();
-        $(e.currentTarget).parent().find('.btn-group button:first-child').trigger("click");
-      });
+      function insertCards() {
+        const $row = $('#songs');
 
-      $('div.card button.vid').on('click', e => showiframe(e, template2));
-      $('div.card button.sound').on('click', e => showiframe(e, template3));
-      $('div.card button.markdown').on('click', e => showiframe(e, template4));
+        $row.empty();
+
+        _.each(shuffleArray(order), (key) => {
+          $row.append(template({
+            key: key,
+            val: songs[key],
+            cover: () => {
+              if (songs[key].extension) {
+                return key + songs[key].extension;
+              }
+              if (key == "brouillard") {
+                const random_boolean = Math.random() < 0.5;
+                if (random_boolean) {
+                  return "psycho_I.jpg";
+                } else {
+                  return "psycho_II.jpg";
+                }
+              }
+              return key + ".jpg"
+            }
+          }));
+
+          $('div.card img.img-fluid').on('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            $(e.currentTarget).parent().find('.btn-group button:first-child').trigger("click");
+          });
+
+          $('div.card button.vid').on('click', e => showiframe(e, template2));
+          $('div.card button.sound').on('click', e => showiframe(e, template3));
+          $('div.card button.markdown').on('click', e => showiframe(e, template4));
+      
+        });
+      }
+
+      insertCards();
+
+      $('.navbar-brand').on('click', e => insertCards());
+        
     });
 
 
