@@ -40,14 +40,17 @@
 
   <style>
     body {
-      background-color: #21252C !important;
+      height: 100%;
+      width: 100%;
+      background-color: transparent !important;
     }
 
-    main {
-      background: url(./vinyl.svg) no-repeat center center;
-      /* https://picsum.photos/200/300 */
+    html {
+      height: 100%;
+      width: 100%;
+      background: url(./vinyl_rotating.svg) no-repeat center center;
       background-size: contain;
-
+      background-color: #21252C !important;
     }
 
     .card {
@@ -270,7 +273,7 @@
   </script>
 
   <script id="song-template" type="text/x-handlebars-template">
-    <div class="col">
+    <div class="col" style="opacity: 0.0;">
       <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative;">
         <img class="img-fluid" src="./covers/{{cover}}" alt="">
 
@@ -591,7 +594,7 @@
         styleAndParentCard.$parentCard.append($thePlayer.css(styleAndParentCard.style));
       }
 
-      function insertCards() {
+      function insertCards(delay) {
         const $row = $('#songs');
 
         $row.empty();
@@ -615,24 +618,26 @@
               return key + ".jpg"
             }
           }));
-
-          $('div.card img.img-fluid').on('click', e => {
-            e.preventDefault();
-            e.stopPropagation();
-            $(e.currentTarget).parent().find('.btn-group button:first-child').trigger("click");
-          });
-
-          $('div.card button.vid').on('click', e => showiframe(e, template2));
-          $('div.card button.sound').on('click', e => showiframe(e, template3));
-          $('div.card button.markdown').on('click', e => showiframe(e, template4));
-      
         });
+        $('div.card img.img-fluid').on('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          $(e.currentTarget).parent().find('.btn-group button:first-child').trigger("click");
+        });
+
+        $('div.card button.vid').on('click', e => showiframe(e, template2));
+        $('div.card button.sound').on('click', e => showiframe(e, template3));
+        $('div.card button.markdown').on('click', e => showiframe(e, template4));
+
+        $("#songs .col").animate({ opacity: 1.0 }, delay);
       }
 
-      insertCards();
+      insertCards(0);
 
-      $('.navbar-brand').on('click', e => insertCards());
-        
+      $('.navbar-brand').on('click', e => {
+        $("#songs .col").animate({ opacity: 0.0 }, 750, () => setTimeout(() => insertCards(250), 1000));
+      });
+
     });
 
 
