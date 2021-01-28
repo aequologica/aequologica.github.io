@@ -57,18 +57,6 @@
       background-color: rgba(255, 255, 255, 0.2) !important;
     }
 
-    /* 
-    https://css-tricks.com/almanac/properties/b/backdrop-filter/
-    */
-    /*
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      .card {
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.2) !important;
-      }
-    }
-    */
     img {
       cursor: pointer;
     }
@@ -273,7 +261,7 @@
   </script>
 
   <script id="song-template" type="text/x-handlebars-template">
-    <div class="col" style="opacity: 0.0;">
+    <div id="{{key}}_" class="col" style="opacity: 0.0;">
       <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative;">
         <img class="img-fluid" src="./covers/{{cover}}" alt="">
 
@@ -298,8 +286,10 @@
     </div>
   </script>
 
-  <script>
-    // compile the template
+  <script type="module">
+    import { fadeIn, fadeOut } from "./fadeInFadeOut.js";
+
+    // compile the templates
     var source = document.getElementById("song-template").innerHTML;
     var template = Handlebars.compile(source);
     var source2 = document.getElementById("video-template").innerHTML;
@@ -594,13 +584,28 @@
         styleAndParentCard.$parentCard.append($thePlayer.css(styleAndParentCard.style));
       }
 
-      function insertCards(delay) {
-        const $row = $('#songs');
+      const $row = $('#songs');
 
-        $row.empty();
+      // 
 
-        _.each(shuffleArray(order), (key) => {
-          $row.append(template({
+      function addEventHandlers() {
+        $('div.card img.img-fluid').on('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          $(e.currentTarget).parent().find('.btn-group button:first-child').trigger("click");
+        });
+
+        $('div.card button.vid').on('click', e => showiframe(e, template2));
+        $('div.card button.sound').on('click', e => showiframe(e, template3));
+        $('div.card button.markdown').on('click', e => showiframe(e, template4));
+      }
+
+      function insertCards() {
+
+        const shuffle = shuffleArray([...order]);
+
+        shuffle.forEach(key => {
+          $row.append($(template({
             key: key,
             val: songs[key],
             cover: () => {
@@ -617,25 +622,21 @@
               }
               return key + ".jpg"
             }
-          }));
-        });
-        $('div.card img.img-fluid').on('click', e => {
-          e.preventDefault();
-          e.stopPropagation();
-          $(e.currentTarget).parent().find('.btn-group button:first-child').trigger("click");
+          })));
         });
 
-        $('div.card button.vid').on('click', e => showiframe(e, template2));
-        $('div.card button.sound').on('click', e => showiframe(e, template3));
-        $('div.card button.markdown').on('click', e => showiframe(e, template4));
-
-        $("#songs .col").animate({ opacity: 1.0 }, delay);
+        addEventHandlers();
       }
 
-      insertCards(0);
+      insertCards(500);
+      fadeIn($("#songs .col"), 0, () => console.log("eventually"));
 
       $('.navbar-brand').on('click', e => {
-        $("#songs .col").animate({ opacity: 0.0 }, 750, () => setTimeout(() => insertCards(250), 1000));
+        fadeOut($("#songs .col"), 333, () => {
+          $row.empty();
+          insertCards(500);
+          fadeIn($("#songs .col"), 200, () => console.log("eventually"), shuffleArray);
+        });
       });
 
     });
