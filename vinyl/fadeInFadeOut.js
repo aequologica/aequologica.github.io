@@ -6,22 +6,32 @@ export function fadeIn($elements, delay, eventually, shuffle) {
     shuffle(elem);
   }
 
-  $(elem[0]).fadeTo(delay, opacity, function () {
-    $(elem[1]).fadeTo(delay, opacity, function () {
-      $(elem[2]).fadeTo(delay, opacity, function () {
-        $(elem[3]).fadeTo(delay, opacity, function () {
-          $(elem[4]).fadeTo(delay, opacity, function () {
-            $(elem[5]).fadeTo(delay, opacity, function () {
-              $(elem[6]).fadeTo(delay, opacity, function () {
-                $(elem[7]).fadeTo(delay, opacity, function () {
-                  $(elem[8]).fadeTo(delay, opacity, function () {
-                    $(elem[9]).fadeTo(delay, opacity, function () {
-                      $(elem[10]).fadeTo(delay, opacity, function () {
-                        $(elem[11]).fadeTo(delay, opacity, function () {
-                          if (eventually) {
-                            eventually();
-                          }
-                        });
+  const last = () => {
+    if (eventually) {
+      eventually();
+    }
+  };
+
+  /* 
+
+  // elegant, but jquery callback explose on requestAnimationFrame
+    elem
+    .reduce((acc, e) => Promise.resolve(acc).then((a) => $(e).fadeTo(delay, opacity, a)), undefined)
+    .then(last);
+  */
+
+  $(elem[0]).fadeTo(delay, opacity, () => {
+    $(elem[1]).fadeTo(delay, opacity, () => {
+      $(elem[2]).fadeTo(delay, opacity, () => {
+        $(elem[3]).fadeTo(delay, opacity, () => {
+          $(elem[4]).fadeTo(delay, opacity, () => {
+            $(elem[5]).fadeTo(delay, opacity, () => {
+              $(elem[6]).fadeTo(delay, opacity, () => {
+                $(elem[7]).fadeTo(delay, opacity, () => {
+                  $(elem[8]).fadeTo(delay, opacity, () => {
+                    $(elem[9]).fadeTo(delay, opacity, () => {
+                      $(elem[10]).fadeTo(delay, opacity, () => {
+                        $(elem[11]).fadeTo(delay, opacity, last);
                       });
                     });
                   });
