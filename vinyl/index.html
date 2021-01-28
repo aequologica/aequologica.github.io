@@ -277,7 +277,10 @@
               {{/each}}
               {{#if val.read}}
               <button type="button" id="read_{{key}}" class="markdown btn btn-sm btn-outline-secondary" data-id="{{key}}" data-text="read">read</button>
-              {{/if}} 
+              {{/if}}
+              {{#if val.mystery}}
+              <a type="button" id="mystery_{{key}}" class="markdown btn btn-sm btn-outline-secondary" data-id="{{key}}" data-text="read" href="{{val.mystery}}" target="_{{val.mystery}}">?</a>
+              {{/if}}
             </div>
             <small class="text-muted">{{{val.duration}}}</small>
           </div>
@@ -466,6 +469,7 @@
         text: "This page intentionally left orange.",
         extension: ".svg",
         duration: "&infin;",
+        mystery: "https://journals.openedition.org/genesis/1171",
       },
       "bwv": {
         text: "Johann Sebastian Bach",
