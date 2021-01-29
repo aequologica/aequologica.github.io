@@ -3,8 +3,8 @@
        <g id="g13">
               <path d="M 225.68,112.847 C 225.68,175.171 175.165,225.686 112.836,225.686 C 50.522,225.687 0,175.171 0,112.847 C 0,50.525 50.522,0 112.836,0 C 175.165,0 225.68,50.525 225.68,112.847 z" id="path15" />
               <g id="g14" >
-                     <path d="M 151.792,112.847 C 151.792,134.358 134.353,151.805 112.836,151.805 C 91.321,151.805 73.881,134.359 73.881,112.847 C 73.881,91.33 91.321,73.891 112.836,73.891 C 134.353,73.891 151.792,91.331 151.792,112.847 z" id="path17" style="fill:#bfbfbf" />
-                     <path d="M 116.866,112.847 C 116.866,115.074 115.063,116.879 112.836,116.879 C 110.617,116.879 108.807,115.074 108.807,112.847 C 108.807,110.619 110.617,108.816 112.836,108.816 C 115.063,108.816 116.866,110.62 116.866,112.847 z" id="path119" />
+              <path d="M 151.792,112.847 C 151.792,134.358 134.353,151.805 112.836,151.805 C 91.321,151.805 73.881,134.359 73.881,112.847 C 73.881,91.33 91.321,73.891 112.836,73.891 C 134.353,73.891 151.792,91.331 151.792,112.847 z" id="path17" style="fill:#bfbfbf" />
+              <path d="M 116.866,112.847 C 116.866,115.074 115.063,116.879 112.836,116.879 C 110.617,116.879 108.807,115.074 108.807,112.847 C 108.807,110.619 110.617,108.816 112.836,108.816 C 115.063,108.816 116.866,110.62 116.866,112.847 z" id="path119" />
 
                      <path d="M 20.097,66.216 C 30.92,44.729 48.992,27.523 71.101,17.801" id="path23" style="fill:none;stroke:#7f7f7f;stroke-width:2.5007;stroke-linecap:round;stroke-linejoin:round" />
 
@@ -76,6 +76,9 @@
 
                      <path d="M 185.226,140.644 C 179.144,156.488 168.007,169.819 153.798,178.674" id="path117" style="fill:none;stroke:#7f7f7f;stroke-width:2.5007;stroke-linecap:round;stroke-linejoin:round" />
 
+                     <text stroke="#000" font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="14" id="svg_1" y="134.29663" x="86" stroke-width="0" fill="#000000">Thiebaud</text>
+                     <text stroke="#000" font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="14" id="svg_2" y="100.29663" x="87" stroke-width="0" fill="#000000">Rimbaud</text>
+                     <text xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="24" id="svg_3" y="120.29663" x="105.33997" stroke-width="0" stroke="#000" fill="#000000">&amp;</text>
               </g>
        </g>
 </svg>
