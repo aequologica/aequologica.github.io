@@ -572,7 +572,7 @@
       $('#shuffle_button').on('click', e => {
         e.preventDefault();
         e.stopPropagation();
-        fadeOut($("#songs .col"), 333, () => {
+        fadeOut($("#songs .col"), 666, () => {
           $row.empty();
           insertCards(500);
           fadeIn($("#songs .col"), 666, () => console.log("done!"), shuffleArray);

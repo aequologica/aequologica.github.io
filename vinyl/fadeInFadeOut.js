@@ -89,8 +89,13 @@ export function fadeIn($elements, delay, eventually, shuffle) {
   
 
 export function fadeOut($elements, delay, eventually) {
-  $elements.fadeTo(delay, 0, () => {});
-  if (eventually) {
-    eventually();
-  }
+  //stackoverflow.com/a/8333110/1070215
+  $elements.fadeTo(delay, 0);
+  $(":animated")
+    .promise()
+    .done(function () {
+      if (eventually) {
+        eventually();
+      }
+    });
 }
