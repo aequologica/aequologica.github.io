@@ -42,7 +42,7 @@
     html {
       height: 100%;
       width: 100%;
-      background: url(./vinyl_rotating.svg) no-repeat center center;
+      background: url(./vinyl.svg) no-repeat center center;
       background-size: contain;
       background-color: #21252C !important;
     }
@@ -57,9 +57,14 @@
       background-color: rgba(255, 255, 255, 0.2) !important;
     }
 
-    img,
-    #shuffle_button {
+    .card img {
       cursor: pointer;
+    }
+
+    .navbar [type="button"] {
+      padding: .25rem .75rem;
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: .25rem;
     }
 
     #et_al {
@@ -96,10 +101,16 @@
     </div>
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
-        <a id="shuffle_button" class="navbar-brand d-flex align-items-center">
+        <a id="vinyl_brand" class="navbar-brand d-flex align-items-center" style="margin-right:1rem;">
           <img src="vinyl_icon.svg">
-          <span id="et_al" style="margin-left:1rem;">Thiebaud et al.</span>
         </a>
+        <div id="et_al" class="text-light">Thiebaud et al.</div>
+        <button id="shuffle_button" class="btn" type="button">
+          <img src="iconfinder_refresh_293697.svg" style="width:30px; height: 30px;">
+        </button>
+        <button id="start_pause_button" class="btn" type="button">
+          <img src="iconfinder_music_play_pause_control_go_arrow_1868967.svg" style="width:30px; height: 30px;">
+        </button>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -426,6 +437,22 @@
       let $thePlayer = undefined;
       let $theButton = undefined;
 
+      function startStopVynilAnimation() {
+        if ($start_pause_button.children('img').attr("src") == "iconfinder_music_pause_stop_control_play_1868969.svg") {
+          $start_pause_button.children('img').attr("src", "iconfinder_music_play_pause_control_go_arrow_1868967.svg");
+          $('html').css({
+            "background": "url(./vinyl.svg) no-repeat center center",
+            "background-size": "contain",
+          })
+        } else {
+          $start_pause_button.children('img').attr("src", "iconfinder_music_pause_stop_control_play_1868969.svg");
+          $('html').css({
+            "background": "url(./vinyl_rotating.svg) no-repeat center center",
+            "background-size": "contain",
+          })
+        }
+      }
+
       //  destroy if exists
       function destroyIfExists($button) {
         if ($thePlayer) {
@@ -434,12 +461,14 @@
         }
         if ($theButton) {
           $theButton.html($theButton.data("text"));
-          if ($theButton.prop('id') === $button.prop('id')) {
+          if (!$button || $theButton.prop('id') === $button.prop('id')) {
             $theButton = undefined;
             return undefined;
           }
         }
-        $button.html("<span style='color:lightblue'>close ×</span>");
+        if ($button) {
+          $button.html("<span style='color:lightblue'>close ×</span>");
+        } 
         return $button;
       }
 
@@ -465,6 +494,8 @@
       function showiframe(e, template) {
         e.preventDefault();
         e.stopPropagation();
+
+        startStopVynilAnimation();
 
         // destroy
         $theButton = destroyIfExists($(e.currentTarget));
@@ -528,16 +559,25 @@
       insertCards(500);
       fadeIn($("#songs .col"), 111, () => console.log("done!"));
 
-      $('.navbar-brand#shuffle_button').on('click', e => {
+      $('#shuffle_button').on('click', e => {
         e.preventDefault();
         e.stopPropagation();
-        console.log("shuffle!");
         fadeOut($("#songs .col"), 333, () => {
           $row.empty();
           insertCards(500);
           fadeIn($("#songs .col"), 666, () => console.log("done!"), shuffleArray);
         });
       });
+
+      const $start_pause_button = $('#start_pause_button');
+      $start_pause_button.on('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        startStopVynilAnimation();
+        destroyIfExists();
+      });
+
 
     });
 
