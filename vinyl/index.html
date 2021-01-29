@@ -437,21 +437,34 @@
       let $thePlayer = undefined;
       let $theButton = undefined;
 
-      function startStopVynilAnimation() {
-        if ($start_pause_button.children('img').attr("src") == "iconfinder_music_pause_stop_control_play_1868969.svg") {
-          $start_pause_button.children('img').attr("src", "iconfinder_music_play_pause_control_go_arrow_1868967.svg");
-          $('html').css({
-            "background": "url(./vinyl.svg) no-repeat center center",
-            "background-size": "contain",
-          })
-        } else {
+      const vynilAnimation = (() => {
+        const start = () => {
           $start_pause_button.children('img').attr("src", "iconfinder_music_pause_stop_control_play_1868969.svg");
           $('html').css({
             "background": "url(./vinyl_rotating.svg) no-repeat center center",
             "background-size": "contain",
-          })
+          });
+        };
+        const stop = () => {
+          $start_pause_button.children('img').attr("src", "iconfinder_music_play_pause_control_go_arrow_1868967.svg");
+          $('html').css({
+            "background": "url(./vinyl.svg) no-repeat center center",
+            "background-size": "contain",
+          });
+        };
+        const toggle = () => {
+          if ($start_pause_button.children('img').attr("src") == "iconfinder_music_pause_stop_control_play_1868969.svg") {
+            stop();
+          } else {
+            start();
+          }
+        };
+        return {
+          start: start,
+          stop: stop,
+          toggle: toggle,
         }
-      }
+      })();
 
       //  destroy if exists
       function destroyIfExists($button) {
@@ -468,7 +481,7 @@
         }
         if ($button) {
           $button.html("<span style='color:lightblue'>close ×</span>");
-        } 
+        }
         return $button;
       }
 
@@ -495,26 +508,23 @@
         e.preventDefault();
         e.stopPropagation();
 
-        startStopVynilAnimation();
-
         // destroy
+        vynilAnimation.stop();
         $theButton = destroyIfExists($(e.currentTarget));
-        if (!$theButton) {
-          return;
-        }
 
-        // create
-        const styleAndParentCard = getStyleAndParentCard($theButton);
-        const iframe = template({
-          id: $theButton.data('id'),
-        });
-        $thePlayer = $(iframe);
-        styleAndParentCard.$parentCard.append($thePlayer.css(styleAndParentCard.style));
+        if ($theButton) {
+          // create
+          vynilAnimation.start();
+          const styleAndParentCard = getStyleAndParentCard($theButton);
+          const iframe = template({
+            id: $theButton.data('id'),
+          });
+          $thePlayer = $(iframe);
+          styleAndParentCard.$parentCard.append($thePlayer.css(styleAndParentCard.style));
+        }
       }
 
       const $row = $('#songs');
-
-      // 
 
       function addEventHandlers() {
         $('div.card img.img-fluid').on('click', e => {
@@ -574,7 +584,7 @@
         e.preventDefault();
         e.stopPropagation();
 
-        startStopVynilAnimation();
+        vynilAnimation.toggle();
         destroyIfExists();
       });
 
