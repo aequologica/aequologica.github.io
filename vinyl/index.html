@@ -384,7 +384,7 @@
         text: "This page intentionally left orange.",
         extension: ".svg",
         duration: "&infin;",
-        url: "/vinyl",
+        url: "/vinyl?no_recursion=true",
       },
       "bwv": {
         text: "Johann Sebastian Bach",
@@ -424,6 +424,16 @@
       "supplique",
       "tour",
     ];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const no_recursion = urlParams.get('no_recursion');
+
+    if (no_recursion) {
+      const index = order.indexOf("orange2");
+      if (index > -1) {
+        order.splice(index, 1);
+      }
+    }
 
     // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
     // -> Fisher–Yates shuffle algorithm

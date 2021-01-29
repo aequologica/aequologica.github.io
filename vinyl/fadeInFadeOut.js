@@ -37,6 +37,9 @@ function delayIfVisible(el, delay) {
 }
 
 export function fadeIn($elements, delay, eventually, shuffle) {
+  if ($elements.length == 0) { 
+    return;
+  }
   let elem = $elements.toArray().map((element) => element);
   const opacity = 1;
 
@@ -58,17 +61,17 @@ export function fadeIn($elements, delay, eventually, shuffle) {
   //     .then(last);
   
   // respirons à fond !
-  $(elem[0]).fadeTo( delayIfVisible(elem[0], delay), opacity, () => { 
-    $(elem[1]).fadeTo( delayIfVisible(elem[1], delay), opacity, () => { 
-      $(elem[2]).fadeTo( delayIfVisible(elem[2], delay), opacity, () => { 
-        $(elem[3]).fadeTo( delayIfVisible(elem[3], delay), opacity, () => { 
-          $(elem[4]).fadeTo( delayIfVisible(elem[4], delay), opacity, () => { 
-            $(elem[5]).fadeTo( delayIfVisible(elem[5], delay), opacity, () => { 
-              $(elem[6]).fadeTo( delayIfVisible(elem[6], delay), opacity, () => { 
-                $(elem[7]).fadeTo( delayIfVisible(elem[7], delay), opacity, () => { 
-                  $(elem[8]).fadeTo( delayIfVisible(elem[8], delay), opacity, () => { 
-                    $(elem[9]).fadeTo( delayIfVisible(elem[9], delay), opacity, () => { 
-                      $(elem[10]).fadeTo( delayIfVisible(elem[10], delay), opacity, () => { 
+  $(elem[0]).fadeTo( delayIfVisible(elem[0], delay), opacity, elem.length <= 1 ? last : () => {
+    $(elem[1]).fadeTo( delayIfVisible(elem[1], delay), opacity, elem.length <= 2 ? last : () => { 
+      $(elem[2]).fadeTo( delayIfVisible(elem[2], delay), opacity, elem.length <= 3 ? last : () => { 
+        $(elem[3]).fadeTo( delayIfVisible(elem[3], delay), opacity, elem.length <= 4 ? last : () => { 
+          $(elem[4]).fadeTo( delayIfVisible(elem[4], delay), opacity, elem.length <= 5 ? last : () => { 
+            $(elem[5]).fadeTo( delayIfVisible(elem[5], delay), opacity, elem.length <= 6 ? last : () => { 
+              $(elem[6]).fadeTo( delayIfVisible(elem[6], delay), opacity, elem.length <= 7 ? last : () => { 
+                $(elem[7]).fadeTo( delayIfVisible(elem[7], delay), opacity, elem.length <= 8 ? last : () => { 
+                  $(elem[8]).fadeTo( delayIfVisible(elem[8], delay), opacity, elem.length <= 9 ? last : () => { 
+                    $(elem[9]).fadeTo( delayIfVisible(elem[9], delay), opacity, elem.length <= 10 ? last : () => { 
+                      $(elem[10]).fadeTo( delayIfVisible(elem[10], delay), opacity, elem.length <= 11 ? last : () => { 
                         $(elem[11]).fadeTo( delayIfVisible(elem[11], delay), opacity,
                           last
                         );
