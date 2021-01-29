@@ -1,17 +1,3 @@
-function isElementFullInViewport(el) {
-  var rect = el.getBoundingClientRect();
-
-  return (
-    rect.top >= 0
-    &&
-    rect.left >= 0
-    &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-    &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth) 
-  );
-}
-
 function isElementPartInViewport(el) {
   var box = el.getBoundingClientRect();
 
@@ -28,7 +14,6 @@ function isElementPartInViewport(el) {
 
 function delayIfVisible(el, delay) {
   if (isElementPartInViewport(el)) {
-    console.log(delay, el);
     return delay;
   } else { 
     console.log(0, el);
@@ -40,6 +25,7 @@ export function fadeIn($elements, delay, eventually, shuffle) {
   if ($elements.length == 0) { 
     return;
   }
+
   let elem = $elements.toArray().map((element) => element);
   const opacity = 1;
 
@@ -72,9 +58,17 @@ export function fadeIn($elements, delay, eventually, shuffle) {
                   $(elem[8]).fadeTo( delayIfVisible(elem[8], delay), opacity, elem.length <= 9 ? last : () => { 
                     $(elem[9]).fadeTo( delayIfVisible(elem[9], delay), opacity, elem.length <= 10 ? last : () => { 
                       $(elem[10]).fadeTo( delayIfVisible(elem[10], delay), opacity, elem.length <= 11 ? last : () => { 
-                        $(elem[11]).fadeTo( delayIfVisible(elem[11], delay), opacity,
-                          last
-                        );
+                        $(elem[11]).fadeTo( delayIfVisible(elem[11], delay), opacity, elem.length <= 12 ? last : () => { 
+                          $(elem[12]).fadeTo( delayIfVisible(elem[12], delay), opacity, elem.length <= 13 ? last : () => { 
+                            $(elem[13]).fadeTo( delayIfVisible(elem[13], delay), opacity, elem.length <= 14 ? last : () => { 
+                              $(elem[14]).fadeTo( delayIfVisible(elem[14], delay), opacity, elem.length <= 15 ? last : () => { 
+                                $(elem[16]).fadeTo( delayIfVisible(elem[15], delay), opacity,
+                                  last
+                                );
+                              });
+                            });
+                          });
+                        });
                       });
                     });
                   });

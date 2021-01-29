@@ -205,17 +205,16 @@
 
     // compile the templates
     const templates = {
-      "song": undefined,
-      "video": undefined,
-      "sound": undefined,
-      "markdown": undefined,
-      "url": undefined,
+      song: undefined,
+      video: undefined,
+      sound: undefined,
+      markdown: undefined,
+      url: undefined,
     };
 
     Object.keys(templates).map(function (key, index) {
       templates[key] = Handlebars.compile(document.getElementById(key + "-template").innerHTML);
     });
-
 
     let songs = {
       "bateau": {
@@ -486,7 +485,7 @@
       })();
 
       //  destroy if exists
-      function destroyIfExists($button) {
+      function destroyiframeIfExists($button) {
         if ($thePlayer) {
           $thePlayer.remove();
           $thePlayer = undefined;
@@ -529,7 +528,7 @@
 
         // destroy
         vynilAnimation.stop();
-        $theButton = destroyIfExists($(e.currentTarget));
+        $theButton = destroyiframeIfExists($(e.currentTarget));
 
         if ($theButton) {
           // create
@@ -542,8 +541,6 @@
           styleAndParentCard.$parentCard.append($thePlayer.css(styleAndParentCard.style));
         }
       }
-
-      const $row = $('#songs');
 
       function addEventHandlers() {
         $('div.card img.img-fluid').on('click', e => {
@@ -558,12 +555,12 @@
         $('div.card button.url').on('click', e => showiframe(e, templates.url));
       }
 
-      function insertCards() {
+      function insertCards($parent) {
 
         const shuffle = shuffleArray([...order]);
 
         shuffle.forEach(key => {
-          $row.append($(templates.song({
+          $parent.append($(templates.song({
             key: key,
             val: songs[key],
             cover: () => {
@@ -586,16 +583,17 @@
         addEventHandlers();
       }
 
-      insertCards(500);
-      fadeIn($("#songs .col"), 111, () => console.log("done!"));
+      const $row = $('#songs');
+      insertCards($row);
+      fadeIn($row.children(".col"), 111, () => {});
 
       $('#shuffle_button').on('click', e => {
         e.preventDefault();
         e.stopPropagation();
-        fadeOut($("#songs .col"), 333, () => {
+        fadeOut($row.children(".col"), 333, () => {
           $row.empty();
-          insertCards(500);
-          fadeIn($("#songs .col"), 666, () => console.log("done!"), shuffleArray);
+          insertCards($row);
+          fadeIn($row.children(".col"), 666, () => {}, shuffleArray);
         });
       });
 
@@ -605,15 +603,12 @@
         e.stopPropagation();
 
         vynilAnimation.toggle();
-        destroyIfExists();
+        destroyiframeIfExists();
       });
-
 
     });
 
-
   </script>
-
 
 </body>
 
