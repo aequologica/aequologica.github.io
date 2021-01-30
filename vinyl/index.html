@@ -462,6 +462,7 @@
             "background": "url(./vinyl_rotating.svg) no-repeat center center",
             "background-size": "contain",
           });
+          return "started";
         };
         const stop = () => {
           $start_pause_button.children('img').attr("src", "iconfinder_music_play_pause_control_go_arrow_1868967.svg");
@@ -469,12 +470,13 @@
             "background": "url(./vinyl.svg) no-repeat center center",
             "background-size": "contain",
           });
+          return "stopped";
         };
         const toggle = () => {
           if ($start_pause_button.children('img').attr("src") == "iconfinder_music_pause_stop_control_play_1868969.svg") {
-            stop();
+            return stop();
           } else {
-            start();
+            return start();
           }
         };
         return {
@@ -532,7 +534,9 @@
 
         if ($theButton) {
           // create
-          vynilAnimation.start();
+          if ($theButton.attr("class").indexOf("sound") != -1) {
+            vynilAnimation.start();
+          }
           const styleAndParentCard = getStyleAndParentCard($theButton);
           const iframe = template({
             id: $theButton.data('id'),
@@ -585,7 +589,7 @@
 
       const $row = $('#songs');
       insertCards($row);
-      fadeIn($row.children(".col"), 111, () => {});
+      fadeIn($row.children(".col"), 111, () => { });
 
       $('#shuffle_button').on('click', e => {
         e.preventDefault();
@@ -593,7 +597,7 @@
         fadeOut($row.children(".col"), 333, () => {
           $row.empty();
           insertCards($row);
-          fadeIn($row.children(".col"), 666, () => {}, shuffleArray);
+          fadeIn($row.children(".col"), 666, () => { }, shuffleArray);
         });
       });
 
@@ -602,8 +606,9 @@
         e.preventDefault();
         e.stopPropagation();
 
-        vynilAnimation.toggle();
-        destroyiframeIfExists();
+        if ("stopped" == vynilAnimation.toggle()) {
+          destroyiframeIfExists();
+        }
       });
 
     });
