@@ -76,9 +76,10 @@
 
                      <path d="M 185.226,140.644 C 179.144,156.488 168.007,169.819 153.798,178.674" id="path117" style="fill:none;stroke:white;stroke-width:2.5007;stroke-linecap:round;stroke-linejoin:round" />
 
-                     <text stroke="#000" font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="14" id="svg_1" y="134.29663" x="86" stroke-width="0" fill="#000000">Thiebaud</text>
-                     <text stroke="#000" font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="14" id="svg_2" y="100.29663" x="87" stroke-width="0" fill="#000000">Rimbaud</text>
-                     <text xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="24" id="svg_3" y="120.29663" x="105.33997" stroke-width="0" stroke="#000" fill="#000000">&amp;</text>
+                     <text y="97.0" x="87" stroke="#000" font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="14" id="svg_2" stroke-width="0" fill="#000000">Rimbaud</text>
+                     <text y="119.5" x="105.0" xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="24" id="svg_3" stroke-width="0" stroke="#000" fill="#000000">&amp;</text>
+                     <text y="136.0" x="86.75" stroke="#000" font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="14" id="svg_1" stroke-width="0" fill="#000000">Thiebaud</text>
+                     <text y="147.0" x="105.5" stroke="#000" font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Poppins'" font-size="8" id="svg_3" stroke-width="0" fill="#000000">et al.</text>
               </g>
        </g>
 </svg>
