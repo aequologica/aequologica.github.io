@@ -26,8 +26,7 @@
   <meta property="og:title" content="Thiebaud et al." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aequologica.net/vinyl/" />
-  <meta property="og:description"
-    content="Liste des courses pour projet de vinyl." />
+  <meta property="og:description" content="Liste des courses pour projet de vinyl." />
   <meta property="og:site_name" content="aequologica/vinyl" />
 
   <meta property="og:image" content="https://aequologica.net/vinyl/thumbnails_dark.jpg" />
@@ -79,7 +78,8 @@
 
 <body>
 
-  <header><!-- style="display:none;" -->
+  <header>
+    <!-- style="display:none;" -->
     <div class="bg-dark collapse" id="navbarHeader">
       <div class="container">
         <div class="row">
@@ -145,7 +145,8 @@
 
   </main>
 
-  <footer class="text-muted py-3"><!-- style="display:none;" -->
+  <footer class="text-muted py-3">
+    <!-- style="display:none;" -->
     <div class="container">
       <p class="float-end mb-1">Christophe Thiebaud ℗</p>
     </div>
@@ -524,17 +525,18 @@
       function getStyleAndParentCard($button) {
         const $parentCard = $button.parents('div.card');
         const $img = $parentCard.children('img');
-        const oh = $img.outerHeight(true) + 2;
-        const ow = $img.outerWidth(true) + 2;
+        const pos = $img.position();;
+        const oh = $img.outerHeight();
+        const ow = $img.outerWidth();
 
         return {
           style: {
             position: "absolute",
-            top: -1,
-            left: -1,
+            top: pos.top,
+            left: pos.left,
             width: ow + "px",
             height: oh + "px",
-            "background-color": "transparent",
+            "background-color": "#212529",
           },
           $parentCard: $parentCard,
         };
