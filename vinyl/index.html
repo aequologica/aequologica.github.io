@@ -524,14 +524,14 @@
       function getStyleAndParentCard($button) {
         const $parentCard = $button.parents('div.card');
         const $img = $parentCard.children('img');
-        const oh = $img.outerHeight(true) + 1;
-        const ow = $img.outerWidth(true) + 1;
+        const oh = $img.outerHeight(true) + 2;
+        const ow = $img.outerWidth(true) + 2;
 
         return {
           style: {
             position: "absolute",
-            top: 0,
-            left: 0,
+            top: -1,
+            left: -1,
             width: ow + "px",
             height: oh + "px",
             "background-color": "transparent",
