@@ -47,7 +47,7 @@
     html {
       height: 100%;
       width: 100%;
-      background: url(./vinyl.svg) no-repeat center center;
+      background: url(./svgs/vinyl.svg) no-repeat center center;
       background-size: contain;
       background-color: #21252C !important;
     }
@@ -136,17 +136,17 @@
           }
         </style>
         <a id="vinyl_brand" class="navbar-brand d-flex align-items-center" style="margin-right:.5rem;" title="Vinyl Title">
-          <img src="vinyl_icon.svg">
+          <img src="svgs/vinyl_icon.svg">
         </a>
         <a id="vinyl_share" class="btn" type="button" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faequologica.net%2Fvinyl%2F&amp;src=sdkpreparse"
           target="_facebook" title="Share on Facebook ...">
-          <img src="share-svgrepo-com.svg" style="width:30px; height: 30px;">
+          <img src="svgs/share.svg" style="width:30px; height: 30px;">
         </a>
         <button id="shuffle_button" class="btn" type="button">
-          <img src="iconfinder_interface-solid-multimedia-shuffle-button_6127262.svg" style="width:30px; height: 30px;" title="Shuffle Songs">
+          <img src="svgs/shuffle.svg" style="width:30px; height: 30px;" title="Shuffle Songs">
         </button>
         <button id="start_pause_button" class="btn" type="button">
-          <img src="iconfinder_music_play_pause_control_go_arrow_1868967.svg" style="width:30px; height: 30px;" title="Start / Stop Vinyl in Background">
+          <img src="svgs/play.svg" style="width:30px; height: 30px;" title="Start / Stop Vinyl in Background">
         </button>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
           aria-label="Toggle navigation" title="Display Info">
@@ -504,23 +504,23 @@
 
       const vynilAnimation = (() => {
         const start = () => {
-          $start_pause_button.children('img').attr("src", "iconfinder_music_pause_stop_control_play_1868969.svg");
+          $start_pause_button.children('img').attr("src", "./svgs/pause.svg");
           $('html').css({
-            "background": "url(./vinyl_rotating.svg) no-repeat center center",
+            "background": "url(./svgs/vinyl_rotating.svg) no-repeat center center",
             "background-size": "contain",
           });
           return "started";
         };
         const stop = () => {
-          $start_pause_button.children('img').attr("src", "iconfinder_music_play_pause_control_go_arrow_1868967.svg");
+          $start_pause_button.children('img').attr("src", "./svgs/play.svg");
           $('html').css({
-            "background": "url(./vinyl.svg) no-repeat center center",
+            "background": "url(./svgs/vinyl.svg) no-repeat center center",
             "background-size": "contain",
           });
           return "stopped";
         };
         const toggle = () => {
-          if ($start_pause_button.children('img').attr("src") == "iconfinder_music_pause_stop_control_play_1868969.svg") {
+          if ($start_pause_button.children('img').attr("src") == "./svgs/pause.svg") {
             return stop();
           } else {
             return start();
