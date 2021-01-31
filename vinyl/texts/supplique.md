@@ -1,3 +1,5 @@
+<span style="color:white; font-style: italic; font-size:smaller;">(photo de Michèle Thiebaud)</span>
+
 # Supplique pour être enterré à la plage de Sète
 
 *Georges Brassens*
