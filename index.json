@@ -37,6 +37,9 @@
      ,{ "name":"twitter"              , "url": "https://twitter.com/cthiebaud"                                               , "src": "Twitter_logo_transparent-3.png"      }
      ,{ "name":"vinyl"                , "url": "vinyl/"                                                                      , "src": "vinyl_orange.svg"                    }
      ,{ "name":"worldometers"         , "url": "https://www.worldometers.info/coronavirus/"                                  , "src": "covid-19.png"                        }
+     ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                            , "src": "Wordpress-Logo.svg"                  }
+
+     
           
      ,{ "name":"earthlydelights"      , 
         "url": "http://earthlydelights.garden/",

@@ -23,3 +23,8 @@ Budget idéal :
 3. le break-even point est atteint pour 2 écarts-types autour de la moyenne.
 4. quelques circonstances outlier-esques pourraient même assurer un gain, même modeste. 
 
+## Story telling
+
+
+
+
