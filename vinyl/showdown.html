@@ -21,6 +21,10 @@
             height: 100%;
         }
 
+        a {
+            color: ghostwhite;
+        }
+
         body {
             font-family: "baskerville";
         }
@@ -96,6 +100,7 @@
                             },
                         }
                     });
+                    $('img').addClass("img-fluid");
                 }
 
                 $.get(location.search.substring(1), { "_": $.now() }, displayResult);
