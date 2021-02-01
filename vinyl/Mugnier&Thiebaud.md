@@ -22,10 +22,11 @@ We are looking for somebody to contribute to the production of our music, from s
 
 Private soundcloud is here : 
 [Sensation on soundclound](https://soundcloud.com/christophe-thiebaud/sensation-new-mix/s-oyXVmEq51cf)
-; rather than listing to soundcloud (as said, production isn't good - very basic GarageBand), we recommend watching the small clip around it :
-[Sensation on youtube](https://youtu.be/tkK7Bi7c7Wc), which is very nice ([read what friends are telling us](https://www.facebook.com/christophe.thiebaud/posts/10158927764709593)), and somehow distracts from the low sound quality, 
+; rather than listening to soundcloud (as said, production is not our strength), we recommend watching the small clip around it :
+[Sensation on youtube](https://youtu.be/tkK7Bi7c7Wc), as it somehow distracts from the questionnable sound quality ; you may also want to read what our friends are [telling us about it](https://www.facebook.com/christophe.thiebaud/posts/10158927764709593).
 
-It is worth to be noted that this hand-made video, with zero promotion effort, enjoys a constant above-average - when not close to high - relative audience retention :
+It is worth to be noted that this hand-made video, with zero promotion effort, enjoys a constant above-average - when not close to high - relative audience retention.
+
 ![Relative audience retention](relative_audience_retention.jpg)
 
 If you are still with us, more here : [Songs for Vinyl Project](https://aequologica.net/vinyl/)
