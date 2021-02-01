@@ -1,4 +1,4 @@
-# Mugnier & Thiebaud
+# <a id="vinyl_brand" style="margin-right:.5rem;" title="Vinyl Title" href="/vinyl/" target="_mugnier_et_thiebaud"><img src="svgs/vinyl_icon.svg"></a> Mugnier & Thiebaud
 
 Mugnier & Thiebaud is a French duo ; Mugnier writes texts, composes music, and paints pictures, Thiebaud composes music, writes arrangements, and develops software ; though Thiebaud is supposed to be a learned musician, songs by Mugnier are much better, hence Thiebaud's bitter jealousness.
 
@@ -18,7 +18,7 @@ Mugnier and Thiebaud met as teenagers ; Thiebaud enjoys now a well deserved pre-
 
 Nor Mugnier neither Thiebaud are skilled or even interested in sound production ; both like songs with nice chords.
 
-Mugnier & Thiebaud is looking for somebody to contribute to the production of their music, from story telling to sound production to marketing to distribution.
+<span style="color:lightsalmon">The Mugnier & Thiebaud duo is looking for somebody to contribute to the production of their music, from story telling to sound production to marketing to distribution.</span>
 
 A private soundcloud demo song is here:
 [Sensation on soundclound](https://soundcloud.com/christophe-thiebaud/sensation-new-mix/s-oyXVmEq51cf)
@@ -31,6 +31,6 @@ It is worth to be noted that this hand-made video, with zero promotion effort, e
 
 If you are still with us, more here: [Songs for Vinyl Project](https://aequologica.net/vinyl/)
 
-Thanks for your attention, best regards, 
+Thanks for your attention,
 
 Mugnier & Thiebaud
