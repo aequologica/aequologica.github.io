@@ -14,7 +14,7 @@ Mugnier & Thiebaud is a French duo ; Mugnier writes texts, composes music, and p
 
 </div></div>
 
-Mugnier and Thiebaud met as teenagers ; Thiebaud enjoys now a well deserved pre-retirement ; Mugnier never ever went through paid work sufferings.
+Mugnier and Thiebaud met as teenagers ; Thiebaud enjoys now a well deserved pre-retirement ; Mugnier never ever went through paid work sufferings ; this conjunction of the stars leaves them some time for their endeavour.
 
 Nor Mugnier neither Thiebaud are skilled or even interested in sound production ; both like songs with nice chords.
 
