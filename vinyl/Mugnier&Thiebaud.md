@@ -5,7 +5,7 @@ Mugnier & Thiebaud is a French duo ; Mugnier writes texts, composes music, and p
 <div class="row mb-2"><div class="col">
 
 <img src="Mugnier.jpg" alt="Mugnier" class="img-fluid mb-2">
-<img src="Thiebaud2.jpg" alt="Thiebaud" class="img-fluid">
+<img src="Thiebaud3.jpg" alt="Thiebaud" class="img-fluid">
 
 </div><div class="col">
 
