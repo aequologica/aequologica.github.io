@@ -14,7 +14,7 @@ We are a French duo ; Mugnier writes texts, composes music, and paints pictures,
 
 </div></div>
 
-Mugnier and Thiebaud met as teenagers ; Thiebaud enjoys now a well deserved pre-retirement ; Mugnier never ever went through paid work.
+Mugnier and Thiebaud met as teenagers ; Thiebaud enjoys now a well deserved pre-retirement ; Mugnier never ever went through paid work sufferings.
 
 Nor Mugnier neither Thiebaud is skilled or even interested in sound production ; both like songs with nice chords.
 
