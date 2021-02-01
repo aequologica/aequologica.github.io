@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tablesorter@latest/dist/css/theme.bootstrap_4.min.css">
 
     <style>
         @font-face {
@@ -40,6 +41,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/showdown@latest/dist/showdown.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tablesorter@latest/dist/js/jquery.tablesorter.combined.min.js"></script>
 
     <script type="text/javascript">
 
@@ -84,8 +86,16 @@
                     var converter = new showdown.Converter({ tables: true, strikethrough: true }),
                         html = converter.makeHtml(text);
                     $("div.container").append(html);
-                    $("table").addClass("table table-striped table-sm");
-                    // sortTable();
+                    $("table").addClass("table table-striped table-light table-hover table-sm");
+                    $('head').prepend($('<title>').text($('h1').text()));
+                    $("table").tablesorter({
+                        theme: "bootstrap",
+                        textExtraction: {
+                            1: function (node, table, cellIndex) {
+                                return $(node).find("i").attr("class");
+                            },
+                        }
+                    });
                 }
 
                 $.get(location.search.substring(1), { "_": $.now() }, displayResult);

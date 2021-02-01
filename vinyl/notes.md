@@ -25,6 +25,10 @@ Budget idéal :
 
 ## Story telling
 
+Mugnier & Thiebaud et al.
+
+
+
 
 
 
