@@ -4,13 +4,13 @@
 
 <div class="row mb-2"><div class="col">
 
-<img src="Mugnier.jpg" alt="Mugnier" class="img-fluid mb-2">
-<img src="Thiebaud3.jpg" alt="Thiebaud" class="img-fluid">
+<img src="jpegs/Mugnier.jpg" alt="Mugnier" class="img-fluid mb-2">
+<img src="jpegs/Thiebaud3.jpg" alt="Thiebaud" class="img-fluid">
 
 </div><div class="col">
 
-<img src="Thiebaud.jpg" alt="Thiebaud" class="img-fluid mb-2">
-<img src="Mugnier2.jpg" alt="Mugnier" class="img-fluid float-end">
+<img src="jpegs/Thiebaud.jpg" alt="Thiebaud" class="img-fluid mb-2">
+<img src="jpegs/Mugnier2.jpg" alt="Mugnier" class="img-fluid float-end">
 
 </div></div>
 
@@ -23,7 +23,7 @@
 ; rather than listening to soundcloud (as said, production is not their strength), it is recommended to watch the small clip around it:
 [Sensation on youtube](https://youtu.be/tkK7Bi7c7Wc), as it somehow distracts from the questionable sound quality ; one may also want to read what friends are [saying about the clip](https://www.facebook.com/christophe.thiebaud/posts/10158927764709593). It is worth to be noted that this hand-made video, with zero promotion effort, enjoys an integral above-average - when not close to high - relative audience retention.
 
-![Relative audience retention](relative_audience_retention.jpg)
+![Relative audience retention](jpegs/relative_audience_retention.jpg)
 
 If you are still with us, more here: [Songs for Vinyl Project](https://aequologica.net/vinyl/)
 
