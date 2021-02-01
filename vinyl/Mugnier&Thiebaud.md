@@ -16,9 +16,7 @@ Mugnier & Thiebaud is a French duo ; Mugnier writes texts, composes music, and p
 
 Mugnier and Thiebaud met as teenagers ; Thiebaud enjoys now a well deserved pre-retirement ; Mugnier never ever went through paid work sufferings ; this conjunction of the stars leaves them some time for their endeavour.
 
-Nor Mugnier neither Thiebaud are skilled or even interested in sound production ; both like songs with nice chords.
-
-<span style="color:lightsalmon">The Mugnier & Thiebaud duo is looking for somebody to contribute to the production of their music, from story telling to sound production to marketing to distribution.</span>
+Nor Mugnier neither Thiebaud are skilled or even interested in sound production ; both like songs with nice chords. <span style="color:lightsalmon">The Mugnier & Thiebaud duo is looking for somebody to contribute to the production of their music, from story telling to sound production to marketing to distribution.</span>
 
 A private soundcloud demo song is here:
 [Sensation on soundclound](https://soundcloud.com/christophe-thiebaud/sensation-new-mix/s-oyXVmEq51cf)
