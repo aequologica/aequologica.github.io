@@ -18,7 +18,8 @@ Object.keys(templates).map(function (key, index) {
 });
 
 const urlParams = new URLSearchParams(window.location.search);
-const no_recursion = urlParams.get("no_recursion");
+const no_recursion = urlParams.get("no_recursion") || false;
+const file = urlParams.get("data") || "index.json";
 
 // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
 // -> Fisher–Yates shuffle algorithm
@@ -158,18 +159,19 @@ $(document).ready(function () {
     $("div.card button.url").on("click", (e) => showiframe(e, templates.url));
   }
 
-  function insertCards(datum, $parent) {
-    const shuffle = shuffleArray([...datum.order]);
+  function insertCards(datums, $parent) {
+    const shuffle = shuffleArray([...datums.order]);
 
     shuffle.forEach((key) => {
       $parent.append(
         $(
           templates.song({
             key: key,
-            val: datum.songs[key],
+            val: datums.songs[key],
+            covers: datums.covers || "covers",
             cover: () => {
-              if (datum.songs[key].extension) {
-                return key + datum.songs[key].extension;
+              if (datums.songs[key].extension) {
+                return key + datums.songs[key].extension;
               }
               if (key == "brouillard") {
                 const random_boolean = Math.random() < 0.5;
@@ -201,13 +203,25 @@ $(document).ready(function () {
 
   // Assign handlers immediately after making the request,
   // and remember the jqxhr object for this request
-  const jqxhr = $.get("index.json").done(function (data) {
+  const jqxhr = $.get(file).done(function (data) {
+    
     if (no_recursion && data.no_recursion) {
       const index = data.order.indexOf(data.no_recursion);
       if (index > -1) {
         data.order.splice(index, 1);
       }
     }
+
+    if (data.title) {
+      $("title").text(data.title);
+      const styleTemplate = Handlebars.compile(document.getElementById("style-template").innerHTML);
+      $("head").append(styleTemplate(data.title));
+    }
+
+    if (data.copyright) {
+      $("#copyright").text(data.copyright);
+    }
+
     const $row = $("#songs");
     insertCards(data, $row);
     fadeIn($row.children(".col"), 111, () => {});

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Mugnier & Thiebaud et al.</title>
+  <title></title>
 
   <link rel="canonical" href="https://aequologica.net/vinyl/">
 
@@ -126,15 +126,6 @@
     </div>
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
-        <style>
-          @media (min-width: 768px) {
-            #vinyl_brand::after {
-              content: "Mugnier & Thiebaud et al.";
-              font-size: 14pt;
-              margin-left: .5rem;
-            }
-          }
-        </style>
         <a id="vinyl_brand" class="navbar-brand d-flex align-items-center" style="margin-right:.5rem;" title="Vinyl Title">
           <!-- href="/vinyl/showdown_light.html?Mugnier&Thiebaud.md" target="_mugnier_et_thiebaud" -->
           <img src="svgs/vinyl_icon.svg">
@@ -144,7 +135,7 @@
           <img src="svgs/share.svg" style="width:30px; height: 30px;">
         </a>
         <button id="shuffle_button" class="btn" type="button">
-          <img src="svgs/shuffle.svg" style="width:30px; height: 30px;" title="Shuffle Songs">
+          <img src="svgs/shuffle.svg" style="width:30px; height: 30px;" title="Shuffle Cards">
         </button>
         <button id="start_pause_button" class="btn" type="button">
           <img src="svgs/play.svg" style="width:30px; height: 30px;" title="Start / Stop Vinyl in Background">
@@ -171,13 +162,26 @@
   <footer class="text-muted py-3">
     <!-- style="display:none;" -->
     <div class="container">
-      <p class="float-end mb-1" style="font-family:'Courier New', Courier, monospace">Copyright © 2021 [Mugnier & Thiebaud]. All Rights Reserved.</p>
+      <p id="copyright" class="float-end mb-1" style="font-family:'Courier New', Courier, monospace"></p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+
+
+  <script id="style-template" type="text/x-handlebars-template">
+    <style>
+      @media (min-width: 768px) {
+        #vinyl_brand::after {
+          content: "{{{this}}}";
+          font-size: 14pt;
+          margin-left: .5rem;
+        }
+      }
+    </style>
+  </script>
 
   <script id="video-template" type="text/x-handlebars-template">
     <iframe 
@@ -211,7 +215,7 @@
   <script id="song-template" type="text/x-handlebars-template">
     <div id="{{key}}_" class="col" style="opacity: 0.0;">
       <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative;">
-        <img class="img-fluid" src="./covers/{{cover}}" alt="">
+        <img class="img-fluid" src="./{{covers}}/{{cover}}" alt="">
 
         <div class="card-body text-light bg-dark"><!-- style="display:none;" -->
           <p class="card-text" style="font-size: smaller;">{{val.text}}</p>

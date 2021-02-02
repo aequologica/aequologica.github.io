@@ -1,0 +1,56 @@
+{
+  "title": "Carole",
+  "copyright": "Copyright © 2021 [Carole Thomas]. All Rights Reserved.",
+  "covers": "carole",
+  "order": [
+    "evasion",
+    "maison",
+    "promenade",
+    "cambodge",
+    "bretagne",
+    "banlieue",
+    "fred",
+    "sans_titre",
+    "roseraie",
+    "garceon",
+    "humeur",
+    "eplucher"
+  ],
+  "songs": {
+    "evasion": {
+      "text": "Envie d'évasion, heureusement qu'il y a la peinture pour partir à la mer"
+    },
+    "maison": {},
+    "promenade": {
+      "text": "Promenade sur les coteaux de Champagne"
+    },
+    "cambodge": {
+      "text": "Encore le Cambodge : besoin d'horizon"
+    },
+    "bretagne": {
+      "text": "Vive la Bretagne"
+    },
+    "banlieue": {
+      "text": "Un petit coin de banlieue en plein ciel. J'aime bien mes petites balades de confinement 😃"
+    },
+    "fred": {
+      "text": "D'après une photo de Fred"
+    },
+    "sans_titre": {},
+    "roseraie": {
+      "text": "Parc de la Roseraie - Croquis aquarellé"
+    },
+    "garceon": {
+      "text": "Garçon de Café désœuvré"
+    },
+    "humeur": {
+      "text": "Humeur du jour : Paris n'est pas une fête 😷"
+    },
+    "eplucher": {
+      "text": "No comment !"
+    },
+    "qwe": {
+      "text": "asd"
+    }
+  }
+}
