@@ -43,19 +43,27 @@ $(document).ready(function () {
   let $thePlayer = undefined;
   let $theButton = undefined;
 
-  let vynilAnimation = (() => {
+  let theBackground = {
+    start: () => {},
+    stop: () => {},
+    toggle: () => {},
+  };
+
+  const backgroundClass = (background, background_animated) => {
     const start = () => {
       $start_pause_button.children("img").attr("src", "./svgs/pause.svg");
+      // ./svgs/vinyl_rotating.svg
       $("html").css({
-        background: "url(./svgs/vinyl_rotating.svg) no-repeat center center",
+        background: "url(" + background_animated + ") no-repeat center center",
         "background-size": "contain",
       });
       return "started";
     };
     const stop = () => {
       $start_pause_button.children("img").attr("src", "./svgs/play.svg");
+      // ./svgs/vinyl.svg
       $("html").css({
-        background: "url(./svgs/vinyl.svg) no-repeat center center",
+        background: "url(" + background + ") no-repeat center center",
         "background-size": "contain",
       });
       return "stopped";
@@ -74,7 +82,7 @@ $(document).ready(function () {
       stop: stop,
       toggle: toggle,
     };
-  })();
+  };
 
   //  destroy if exists
   function destroyiframeIfExists($button) {
@@ -120,13 +128,13 @@ $(document).ready(function () {
     e.stopPropagation();
 
     // destroy
-    vynilAnimation.stop();
+    theBackground.stop();
     $theButton = destroyiframeIfExists($(e.currentTarget));
 
     if ($theButton) {
       // create
       if ($theButton.attr("class").indexOf("sound") != -1) {
-        vynilAnimation.start();
+        theBackground.start();
       }
       const styleAndParentCard = getStyleAndParentCard($theButton);
       const iframe = template({
@@ -196,7 +204,7 @@ $(document).ready(function () {
     e.preventDefault();
     e.stopPropagation();
 
-    if ("stopped" == vynilAnimation.toggle()) {
+    if ("stopped" == theBackground.toggle()) {
       /* destroyiframeIfExists(); */
     }
   });
@@ -255,8 +263,16 @@ $(document).ready(function () {
       $("#vinyl_brand img").attr("src", data.icon);
     }
 
-    if (!data.animated_background) {
-      vynilAnimation = () => {};
+    if (data.background && data.background_animated) {
+      $("html").css({
+        background: "url(" + data.background + ") no-repeat center center",
+        "background-size": "contain",
+      });
+      theBackground = backgroundClass(
+        data.background,
+        data.background_animated
+      );
+    } else {
       $("#start_pause_button").remove();
     }
 

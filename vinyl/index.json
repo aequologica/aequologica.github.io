@@ -1,13 +1,13 @@
 {
   "title": "Mugnier & Thiebaud et al.",
   "copyright": "Copyright © 2021 [Mugnier & Thiebaud]. All Rights Reserved.",
-  "no_recursion": "orange2",
   "navbarheader": "navbarHeader.html",
   "openGraphHeader": "openGraphHeader.html",
   "icon": "svgs/vinyl_icon.svg",
-  "animated_background": true,
   "background": "svgs/vinyl.svg",
   "background_animated": "svgs/vinyl_rotating.svg",
+  
+  "no_recursion": "orange2",
   "order": [
     "bateau",
     "brouillard",
