@@ -1,7 +1,6 @@
 {
   "copyright": "Copyright © 2021 [Mugnier & Thiebaud]. All Rights Reserved.",
   "navbarheader": "navbarHeader.html",
-  "openGraphHeader": "openGraphHeader.html",
   "icon": "svgs/vinyl_icon.svg",
   "background": "svgs/vinyl.svg",
   "background_animated": "svgs/vinyl_rotating.svg",

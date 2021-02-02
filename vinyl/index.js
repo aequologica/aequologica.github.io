@@ -3,7 +3,7 @@
 import { fadeIn, fadeOut } from "./fadeInFadeOut.js";
 
 $(document).ready(function () {
-  // and remember the jqxhr object for this request
+  // fetch body
   $.get("body.html").done(function (body) {
 
     $('body').append(body);
@@ -232,28 +232,6 @@ $(document).ready(function () {
 
       if (data.copyright) {
         $("#copyright").text(data.copyright);
-      }
-
-      $('head meta[property="fb:app_id"]').remove();
-      $('head meta[property="og:locale"]').remove();
-      $('head meta[property="og:title"]').remove();
-      $('head meta[property="og:type"]').remove();
-      $('head meta[property="og:url"]').remove();
-      $('head meta[property="og:description"]').remove();
-      $('head meta[property="og:site_name"]').remove();
-
-      $('head meta[property="og:image"]').remove();
-      $('head meta[property="og:image:url"]').remove();
-      $('head meta[property="og:image:type"]').remove();
-      $('head meta[property="og:image:width"]').remove();
-      $('head meta[property="og:image:height"]').remove();
-
-      if (!data.openGraphHeader) {
-        $("#vinyl_share").remove();
-      } else {
-        $.get(data.openGraphHeader).done(function (header) {
-          $("head").append($(header));
-        });
       }
 
       if (data.navbarheader) {
