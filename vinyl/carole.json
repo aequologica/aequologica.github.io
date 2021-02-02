@@ -1,7 +1,11 @@
 {
-  "title": "Carole",
+  "title": "Carole Thomas",
   "copyright": "Copyright © 2021 [Carole Thomas]. All Rights Reserved.",
   "covers": "carole",
+  "navbarheader": "navbarHeaderCarole.html",
+  "icon": "svgs/instagram.svg",
+  "background": "",
+  "background_animated": "",
   "order": [
     "evasion",
     "maison",

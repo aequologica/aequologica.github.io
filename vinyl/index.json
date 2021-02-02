@@ -2,6 +2,11 @@
   "title": "Mugnier & Thiebaud et al.",
   "copyright": "Copyright © 2021 [Mugnier & Thiebaud]. All Rights Reserved.",
   "no_recursion": "orange2",
+  "opengraph": true,
+  "navbarheader": "navbarHeader.html",
+  "icon" : "svgs/vinyl_icon.svg",
+  "background": "svgs/vinyl.svg",
+  "background_animated": "svgs/vinyl_rotating.svg",
   "order": [
     "bateau",
     "brouillard",

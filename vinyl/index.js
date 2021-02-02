@@ -204,7 +204,6 @@ $(document).ready(function () {
   // Assign handlers immediately after making the request,
   // and remember the jqxhr object for this request
   const jqxhr = $.get(file).done(function (data) {
-    
     if (no_recursion && data.no_recursion) {
       const index = data.order.indexOf(data.no_recursion);
       if (index > -1) {
@@ -214,12 +213,42 @@ $(document).ready(function () {
 
     if (data.title) {
       $("title").text(data.title);
-      const styleTemplate = Handlebars.compile(document.getElementById("style-template").innerHTML);
+      const styleTemplate = Handlebars.compile(
+        document.getElementById("style-template").innerHTML
+      );
       $("head").append(styleTemplate(data.title));
     }
 
     if (data.copyright) {
       $("#copyright").text(data.copyright);
+    }
+
+    if (!data.opengraph) {
+      $("#vinyl_share").remove();
+
+      $('head meta[property="fb:app_id"]').remove();
+      $('head meta[property="og:locale"]').remove();
+      $('head meta[property="og:title"]').remove();
+      $('head meta[property="og:type"]').remove();
+      $('head meta[property="og:url"]').remove();
+      $('head meta[property="og:description"]').remove();
+      $('head meta[property="og:site_name"]').remove();
+
+      $('head meta[property="og:image"]').remove();
+      $('head meta[property="og:image:url"]').remove();
+      $('head meta[property="og:image:type"]').remove();
+      $('head meta[property="og:image:width"]').remove();
+      $('head meta[property="og:image:height"]').remove();
+    }
+
+    if (data.navbarheader) {
+      $.get(data.navbarheader).done(function (header) {
+        $("#navbarHeader").prepend($(header));
+      });
+    }
+
+    if (data.icon) {
+      $("#vinyl_brand img").attr("src", data.icon);
     }
 
     const $row = $("#songs");
