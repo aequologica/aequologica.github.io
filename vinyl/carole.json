@@ -4,8 +4,7 @@
   "covers": "carole",
   "navbarheader": "navbarHeaderCarole.html",
   "icon": "svgs/instagram.svg",
-  "background": "",
-  "background_animated": "",
+  "animated_background": false,
   "order": [
     "evasion",
     "maison",

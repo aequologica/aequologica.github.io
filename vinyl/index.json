@@ -4,7 +4,8 @@
   "no_recursion": "orange2",
   "opengraph": true,
   "navbarheader": "navbarHeader.html",
-  "icon" : "svgs/vinyl_icon.svg",
+  "icon": "svgs/vinyl_icon.svg",
+  "animated_background": true,
   "background": "svgs/vinyl.svg",
   "background_animated": "svgs/vinyl_rotating.svg",
   "order": [

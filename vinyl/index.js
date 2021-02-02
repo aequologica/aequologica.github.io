@@ -43,7 +43,7 @@ $(document).ready(function () {
   let $thePlayer = undefined;
   let $theButton = undefined;
 
-  const vynilAnimation = (() => {
+  let vynilAnimation = (() => {
     const start = () => {
       $start_pause_button.children("img").attr("src", "./svgs/pause.svg");
       $("html").css({
@@ -249,6 +249,11 @@ $(document).ready(function () {
 
     if (data.icon) {
       $("#vinyl_brand img").attr("src", data.icon);
+    }
+
+    if (!data.animated_background) {
+      vynilAnimation = (() => { });
+      $("#start_pause_button").remove();
     }
 
     const $row = $("#songs");
