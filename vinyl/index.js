@@ -5,8 +5,15 @@ import { fadeIn, fadeOut } from "./fadeInFadeOut.js";
 $(document).ready(function () {
   // fetch body
   $.get("body.html").done(function (body) {
+    $("body").append(body);
 
-    $('body').append(body);
+    const canonical = encodeURI($('head link[rel="canonical"]').attr("href"));
+    $("#vinyl_share").attr(
+      "href",
+      "https://www.facebook.com/sharer/sharer.php?u=" +
+        canonical +
+        "&amp;src=sdkpreparse"
+    );
 
     const templates = {
       // compile the templates
@@ -25,7 +32,7 @@ $(document).ready(function () {
 
     const urlParams = new URLSearchParams(window.location.search);
     const no_recursion = urlParams.get("no_recursion") || false;
-    const file = $("head meta[name='file']").attr('content') || "index.json";
+    const file = $("head meta[name='file']").attr("content") || "index.json";
 
     // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
     // -> Fisher–Yates shuffle algorithm
