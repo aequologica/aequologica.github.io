@@ -3,6 +3,7 @@
   "copyright": "Copyright © 2021 [Carole Thomas]. All Rights Reserved.",
   "covers": "carole",
   "navbarheader": "navbarHeaderCarole.html",
+  "openGraphHeader": "openGraphHeaderCarole.html",
   "icon": "svgs/instagram.svg",
   "animated_background": false,
   "order": [
