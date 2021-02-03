@@ -247,12 +247,18 @@ $(document).ready(function () {
 
     $.get(file).done(function (data) {
       if (no_recursion && data.no_recursion) {
+        // remove recursive card
         const index = data.order.indexOf(data.no_recursion);
         if (index > -1) {
           data.order.splice(index, 1);
         }
       }
 
+      if (data.brandlink) {
+        $("#vinyl_brand")
+          .attr("href", data.brandlink)
+          .attr("target", "_" + data.id);
+      }
       const styleTemplate = Handlebars.compile(
         document.getElementById("style-template").innerHTML
       );

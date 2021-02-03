@@ -1,6 +1,8 @@
 {
+  "id" : "mugnier_and_thiebaud",
   "copyright": "Copyright © 2021 [Mugnier & Thiebaud]. All Rights Reserved.",
   "navbarheader": "navbarHeader.html",
+  "brandlink": "https://aequologica.net/vinyl/showdown.html?Mugnier&Thiebaud.md",
   "icon": "svgs/vinyl_icon.svg",
   "background": "svgs/vinyl.svg",
   "background_animated": "svgs/vinyl_rotating.svg",
