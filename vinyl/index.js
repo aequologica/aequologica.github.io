@@ -163,6 +163,7 @@ $(document).ready(function () {
           left: styleAndParentCard.style.left + styleAndParentCard.qwe.ow / 8.0,
           width: (3.0 * styleAndParentCard.qwe.ow) / 4.0 + "px",
           height: "auto",
+          "pointer-events": "none",
           opacity: 0.3,
         });
         $thePlayer = $theButton.attr("class").match("vid")
