@@ -18,7 +18,7 @@ $(document).ready(function () {
     const templates = {
       // compile the templates
       song: undefined,
-      video: undefined,
+      vid: undefined,
       sound: undefined,
       markdown: undefined,
       url: undefined,
