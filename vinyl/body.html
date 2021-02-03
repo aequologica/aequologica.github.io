@@ -84,6 +84,13 @@
   </iframe>
 </script>
 
+<script id="instagram-template" type="text/x-handlebars-template">
+  <iframe 
+    id="bs-widget" 
+    src="showdown.html?./instagrams/{{id}}.md">
+  </iframe>
+</script>
+
 <script id="song-template" type="text/x-handlebars-template">
   <div id="{{key}}_" class="col" style="opacity: 0.0;">
     <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative;">
@@ -104,6 +111,9 @@
             {{/if}}
             {{#if val.url}}
             <a type="button" id="url{{key}}" class="url btn btn-sm btn-outline-secondary" data-id="{{val.url}}" data-text="mise en abyme">mise en abyme</a>
+            {{/if}}
+            {{#if val.instagram}}
+            <a type="button" id="url{{key}}" class="instagram btn btn-sm btn-outline-secondary" data-id="{{key}}" data-text="insta">insta</a>
             {{/if}}
           </div>
           <span class="text-muted" style="font-family:'Courier New', Courier, monospace">{{{val.duration}}}</span>

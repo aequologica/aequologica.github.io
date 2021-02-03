@@ -22,6 +22,7 @@ $(document).ready(function () {
       sound: undefined,
       markdown: undefined,
       url: undefined,
+      instagram: undefined,
     };
 
     Object.keys(templates).map(function (key, index) {
@@ -189,6 +190,13 @@ $(document).ready(function () {
         }
       });
 
+      Object.keys(templates).map(function (key, index) {
+        $("div.card [type='button']." + key).on("click", (e) =>
+          showiframe(e, templates[key])
+        );
+      });
+
+      /*       
       $("div.card [type='button'].vid").on("click", (e) =>
         showiframe(e, templates.video)
       );
@@ -201,6 +209,10 @@ $(document).ready(function () {
       $("div.card [type='button'].url").on("click", (e) =>
         showiframe(e, templates.url)
       );
+      $("div.card [type='button'].instagram").on("click", (e) =>
+        showiframe(e, templates.instagram)
+      );
+      */
     }
 
     function insertCards(datums, $parent) {
