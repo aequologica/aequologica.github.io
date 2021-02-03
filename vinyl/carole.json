@@ -20,39 +20,54 @@
   ],
   "songs": {
     "evasion": {
-      "text": "Envie d'évasion, heureusement qu'il y a la peinture pour partir à la mer"
+      "text": "Envie d'évasion, heureusement qu'il y a la peinture pour partir à la mer",
+      "link": "https://www.instagram.com/p/CKg-Skxn6E-/"
     },
-    "maison": {},
+    "maison": {
+      "link": "https://www.instagram.com/p/CKVpX-knJ4G/"
+    },
     "promenade": {
-      "text": "Promenade sur les coteaux de Champagne"
+      "text": "Promenade sur les coteaux de Champagne",
+      "link": "https://www.instagram.com/p/CKO9JlGnhC3/"
     },
     "cambodge": {
-      "text": "Encore le Cambodge : besoin d'horizon"
+      "text": "Encore le Cambodge : besoin d'horizon",
+      "link": "https://www.instagram.com/p/CJyb_c4n4T1/"
     },
     "bretagne": {
-      "text": "Vive la Bretagne"
+      "text": "Vive la Bretagne",
+      "link": "https://www.instagram.com/p/CJ1UEidHPr3/"
     },
     "banlieue": {
-      "text": "Un petit coin de banlieue en plein ciel. J'aime bien mes petites balades de confinement 😃"
+      "text": "Un petit coin de banlieue en plein ciel. J'aime bien mes petites balades de confinement 😃",
+      "link": "https://www.instagram.com/p/CHkCGuYHTaw/"
     },
     "fred": {
-      "text": "D'après une photo de Fred"
+      "text": "D'après une photo de Fred",
+      "link": "https://www.instagram.com/p/CHbIQjgnRDQ/"
     },
-    "sans_titre": {},
+    "sans_titre": {
+      "link": "https://www.instagram.com/p/CG-hVNvnLFj/"
+    },
     "roseraie": {
-      "text": "Parc de la Roseraie - Croquis aquarellé"
+      "text": "Parc de la Roseraie - Croquis aquarellé",
+      "link": "https://www.instagram.com/p/CGyItWKnbFT/"
     },
     "garceon": {
-      "text": "Garçon de Café désœuvré"
+      "text": "Garçon de Café désœuvré",
+      "link": "https://www.instagram.com/p/CGhAs1znlUh/"
     },
     "humeur": {
-      "text": "Humeur du jour : Paris n'est pas une fête 😷"
+      "text": "Humeur du jour : Paris n'est pas une fête 😷",
+      "link": "https://www.instagram.com/p/CGefNFoHJb6/"
     },
     "eplucher": {
-      "text": "No comment !"
+      "text": "No comment !",
+      "link": "https://www.instagram.com/p/CHIZhwYHr9n/"
     },
     "qwe": {
-      "text": "asd"
+      "text": "asd",
+      "link": ""
     }
   }
 }

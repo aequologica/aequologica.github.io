@@ -87,23 +87,23 @@
 <script id="song-template" type="text/x-handlebars-template">
   <div id="{{key}}_" class="col" style="opacity: 0.0;">
     <div id="{{key}}" class="card shadow-sm bg-secondary" style="position: relative;">
-      <img class="img-fluid" src="./{{covers}}/{{cover}}" alt="">
+      <img class="img-fluid" src="./{{covers}}/{{cover}}" data-url="{{val.link}}" alt="">
 
       <div class="card-body text-light bg-dark"><!-- style="display:none;" -->
         <p class="card-text" style="font-size: smaller;">{{val.text}}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
             {{#each val.watch}}
-            <button type="button" id="watch_{{id}}" title="{{title}}" class="vid btn btn-sm btn-outline-secondary" data-id="{{id}}" data-text="watch">watch</button>
+            <a type="button" id="watch_{{id}}" title="{{title}}" class="vid btn btn-sm btn-outline-secondary" data-id="{{id}}" data-text="watch">watch</a>
             {{/each}}
             {{#each val.listen}}
-            <button type="button" id="listen_{{id}}" title="{{title}}" class="sound btn btn-sm btn-outline-secondary" data-id="{{id}}" data-text="listen">listen</button>
+            <a type="button" id="listen_{{id}}" title="{{title}}" class="sound btn btn-sm btn-outline-secondary" data-id="{{id}}" data-text="listen">listen</a>
             {{/each}}
             {{#if val.markdown}}
-            <button type="button" id="read_{{key}}" class="markdown btn btn-sm btn-outline-secondary" data-id="{{key}}" data-text="read">read</button>
+            <a type="button" id="read_{{key}}" class="markdown btn btn-sm btn-outline-secondary" data-id="{{key}}" data-text="read">read</a>
             {{/if}}
             {{#if val.url}}
-            <button type="button" id="url{{key}}" class="url btn btn-sm btn-outline-secondary" data-id="{{val.url}}" data-text="mise en abyme">mise en abyme</button>
+            <a type="button" id="url{{key}}" class="url btn btn-sm btn-outline-secondary" data-id="{{val.url}}" data-text="mise en abyme">mise en abyme</a>
             {{/if}}
           </div>
           <span class="text-muted" style="font-family:'Courier New', Courier, monospace">{{{val.duration}}}</span>

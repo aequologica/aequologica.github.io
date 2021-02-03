@@ -164,31 +164,43 @@ $(document).ready(function () {
           height: "auto",
           opacity: 0.3,
         });
-        $thePlayer = $theButton.attr('class').match("vid") ? [$iframe, $svg] : [$iframe];
+        $thePlayer = $theButton.attr("class").match("vid")
+          ? [$iframe, $svg]
+          : [$iframe];
         $thePlayer.forEach((p) => styleAndParentCard.$parentCard.append(p));
       }
     }
 
     function addEventHandlers() {
       $("div.card img.img-fluid").on("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        $(e.currentTarget)
+        const $firstButton = $(e.currentTarget)
           .parent()
-          .find(".btn-group button:first-child")
-          .trigger("click");
+          .find(".btn-group [type='button']:first-child");
+        if ($firstButton.length) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          $firstButton.trigger("click");
+        } else if ($(e.currentTarget).data("url")) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          window.open($(e.currentTarget).data("url"));
+        }
       });
 
-      $("div.card button.vid").on("click", (e) =>
+      $("div.card [type='button'].vid").on("click", (e) =>
         showiframe(e, templates.video)
       );
-      $("div.card button.sound").on("click", (e) =>
+      $("div.card [type='button'].sound").on("click", (e) =>
         showiframe(e, templates.sound)
       );
-      $("div.card button.markdown").on("click", (e) =>
+      $("div.card [type='button'].markdown").on("click", (e) =>
         showiframe(e, templates.markdown)
       );
-      $("div.card button.url").on("click", (e) => showiframe(e, templates.url));
+      $("div.card [type='button'].url").on("click", (e) =>
+        showiframe(e, templates.url)
+      );
     }
 
     function insertCards(datums, $parent) {
