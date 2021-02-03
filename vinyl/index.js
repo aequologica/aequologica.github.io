@@ -164,7 +164,7 @@ $(document).ready(function () {
           height: "auto",
           opacity: 0.3,
         });
-        $thePlayer = [$iframe, $svg];
+        $thePlayer = $theButton.attr('class').match("vid") ? [$iframe, $svg] : [$iframe];
         $thePlayer.forEach((p) => styleAndParentCard.$parentCard.append(p));
       }
     }
