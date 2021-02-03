@@ -159,14 +159,16 @@ $(document).ready(function () {
         ).css(styleAndParentCard.style);
         const $svg = $('<img src="svgs/vinyl_rotating.svg">').css({
           position: "absolute",
-          top: styleAndParentCard.style.top + styleAndParentCard.qwe.oh / 8.0,
-          left: styleAndParentCard.style.left + styleAndParentCard.qwe.ow / 8.0,
-          width: (3.0 * styleAndParentCard.qwe.ow) / 4.0 + "px",
+          top: styleAndParentCard.style.top + styleAndParentCard.qwe.oh,
+          left: styleAndParentCard.style.left + styleAndParentCard.qwe.ow,
+          width: styleAndParentCard.qwe.ow + "px",
           height: "auto",
           "pointer-events": "none",
           opacity: 0.3,
+          "margin-left": "-" + (styleAndParentCard.qwe.ow / 2) + "px",
         });
-        $thePlayer = $theButton.attr("class").match("vid")
+        styleAndParentCard.$parentCard.css("overflow", "hidden");
+        $thePlayer = $theButton.attr("class").match("(vid|sound)")
           ? [$iframe, $svg]
           : [$iframe];
         $thePlayer.forEach((p) => styleAndParentCard.$parentCard.append(p));
