@@ -100,7 +100,7 @@ $(document).ready(function () {
     //  destroy if exists
     function destroyiframeIfExists($button) {
       if ($thePlayer) {
-        $thePlayer.remove();
+        $thePlayer.forEach((p) => p.remove());
         $thePlayer = undefined;
       }
       if ($theButton) {
@@ -132,6 +132,7 @@ $(document).ready(function () {
           height: oh + "px",
           "background-color": "#212529",
         },
+        qwe: { ow: ow, oh: oh },
         $parentCard: $parentCard,
       };
     }
@@ -150,13 +151,21 @@ $(document).ready(function () {
           theBackground.start();
         }
         const styleAndParentCard = getStyleAndParentCard($theButton);
-        const iframe = template({
-          id: $theButton.data("id"),
+        const $iframe = $(
+          template({
+            id: $theButton.data("id"),
+          })
+        ).css(styleAndParentCard.style);
+        const $svg = $('<img src="svgs/vinyl_rotating.svg">').css({
+          position: "absolute",
+          top: styleAndParentCard.style.top + styleAndParentCard.qwe.oh / 8.0,
+          left: styleAndParentCard.style.left + styleAndParentCard.qwe.ow / 8.0,
+          width: (3.0 * styleAndParentCard.qwe.ow) / 4.0 + "px",
+          height: "auto",
+          opacity: 0.3,
         });
-        $thePlayer = $(iframe);
-        styleAndParentCard.$parentCard.append(
-          $thePlayer.css(styleAndParentCard.style)
-        );
+        $thePlayer = [$iframe, $svg];
+        $thePlayer.forEach((p) => styleAndParentCard.$parentCard.append(p));
       }
     }
 
