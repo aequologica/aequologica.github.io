@@ -16,4 +16,11 @@ Always keep in mind the canonical "Demo Policy":
 | Fire Talk | [firetalkrecs.com](http://firetalkrecs.com/) | http://firetalkrecs.com/contact/ | [Mamalarky](https://www.mamalarky.com/) |
 
 
+# Studios
+
+| name 	| url 	| contact  	| e.g.  | 
+|--- 	|--- 	|--- 	|--- 	|
+| Fonoprint 	|[fonoprint.com](http://www.fonoprint.com/) 	| http://www.fonoprint.com/contatti.html	| Toute la variéte italienne  |
+| Oliveta 	|[olivetarecordingstudio.com](https://www.olivetarecordingstudio.com/) 	| https://www.olivetarecordingstudio.com/en/contacts/	| Pausini  |
+| Crossover Studio | [crossoverstudio.net](https://www.crossoverstudio.net/) | https://www.crossoverstudio.net/#contatti | ? |
 
