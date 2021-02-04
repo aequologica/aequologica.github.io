@@ -114,10 +114,12 @@
                     $('img').addClass("img-fluid");
                 }
 
-                $.get(location.search.substring(1), { "_": $.now() }, displayResult);
+                $.get(location.search.substring(1), { "_": $.now() }, displayResult).fail(() => {
+                    $(".container").append($('<div>').attr("class", "alert alert-warning mt-2").html("[ " + location.search.substring(1) + " ] not found"));
+                });
 
             } else {
-                $("div.container").append("<p>Try with a '?' followed with a link to a markdown file.</p>");
+                $(".container").append($('<div>').attr("class", "alert alert-primary mt-2").html("Try the same URL with a '?' followed with a link to a markdown file."));
             }
 
         });
