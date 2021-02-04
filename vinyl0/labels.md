@@ -22,5 +22,6 @@ Always keep in mind the canonical "Demo Policy":
 |--- 	|--- 	|--- 	|--- 	|
 | Fonoprint 	|[fonoprint.com](http://www.fonoprint.com/) 	| http://www.fonoprint.com/contatti.html	| Toute la variéte italienne  |
 | Oliveta 	|[olivetarecordingstudio.com](https://www.olivetarecordingstudio.com/) 	| https://www.olivetarecordingstudio.com/en/contacts/	| Pausini  |
-| Crossover Studio | [crossoverstudio.net](https://www.crossoverstudio.net/) | https://www.crossoverstudio.net/#contatti | ? |
+| Crossover | [crossoverstudio.net](https://www.crossoverstudio.net/) | https://www.crossoverstudio.net/#contatti | ? |
+| Miraloop | [miraloop.com](https://www.miraloop.com/) | https://www.miraloop.com/preventivo_studio_di_registrazione | bof |
 
