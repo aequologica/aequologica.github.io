@@ -16,7 +16,7 @@ Mugnier & Thiebaud are a French music duo from [Chaumont](https://en.wikipedia.o
 
 Mugnier and Thiebaud met as teenagers ; Thiebaud enjoys now a well deserved pre-retirement ; Mugnier never ever went through paid work sufferings ; this conjunction of the stars leaves them some time for their endeavour.
 
-Neither Mugnier nor Thiebaud are skilled or even interested in sound production ; both like songs with nice chords. The duo is looking for somebody to contribute to the production of their music, from story-telling to sound production to marketing to distribution.
+Neither Mugnier nor Thiebaud are skilled or even interested in sound production ; both like songs with nice chords - maybe not literally [cerebral keys](https://www.mamalarky.com/about-us), but fairly close to the idea. The duo is looking for somebody to contribute to the production of their music, from story-telling to sound production to marketing to distribution.
 
 A private soundcloud demo song is here:
 [Sensation on soundclound](https://soundcloud.com/christophe-thiebaud/sensation-new-mix/s-oyXVmEq51cf)
@@ -24,6 +24,14 @@ A private soundcloud demo song is here:
 [Sensation on youtube](https://youtu.be/tkK7Bi7c7Wc), as it somehow distracts from the questionable sound quality ; one may also want to read what friends are [saying about the clip](https://www.facebook.com/christophe.thiebaud/posts/10158927764709593). It is worth to be noted that this hand-made video, with zero promotion effort, enjoys an integral above-average - when not close to high - relative audience retention.
 
 ![Relative audience retention](jpegs/relative_audience_retention.jpg)
+
+Also, the impressions click-through rate for the sensation video is significantly higher (~300% !) than that of the whole YouTube channel (as of 2/2/2021).
+
+**sensation**<br> ![channel](jpegs/impressions_click-through_rate_sensation.jpg)
+
+**channel**<br> ![sensation](jpegs/impressions_click-through_rate_channel.jpg)
+
+-----
 
 If you are still with us, more here: [Songs for Vinyl Project](https://aequologica.net/vinyl/)
 

@@ -13,6 +13,7 @@ Always keep in mind the canonical "Demo Policy":
 | Warriorecords 	| [warriorecords.com](https://www.warriorecords.com/)	| https://www.warriorecords.com/contact 	| [Mansfield.TYA](https://fr.wikipedia.org/wiki/Mansfield.TYA)  |
 | Bella Union  | [bellaunion.com](https://bellaunion.com/)  |  *We do not accept unsolicited demos. Simply due to the volume we receive we are not able to get through them all.* | [John Grant](https://youtu.be/Lit7cPfkUYo)  |
 | Heavenly Recordings Est. 1990 | [heavenlyrecordings.com](https://heavenlyrecordings.com)  | Demo Submissions to – daisy@heavenlyrecordings.com | [Anna Burch](https://en.wikipedia.org/wiki/Anna_Burch)  |
+| Fire Talk | [firetalkrecs.com](http://firetalkrecs.com/) | http://firetalkrecs.com/contact/ | [Mamalarky](https://www.mamalarky.com/) |
 
 
 
