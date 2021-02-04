@@ -7,4 +7,4 @@
 	branch = master
 [submodule "vinyl"]
 	path = vinyl
-	url = git@github.com:cthiebaud/vinyl.git
+	url = https://github.com/cthiebaud/vinyl.git
