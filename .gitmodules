@@ -5,6 +5,3 @@
 	path = maven-repository
 	url = https://github.com/aequologica/maven-repository.git
 	branch = master
-[submodule "vinyl"]
-	path = vinyl
-	url = https://github.com/cthiebaud/vinyl.git
