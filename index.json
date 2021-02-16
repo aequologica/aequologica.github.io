@@ -16,6 +16,7 @@
      ,{ "name":"franceCul"            , "url": "https://www.franceculture.fr/programmes"                                     , "src": "France_Culture.svg"                  }
      ,{ "name":"franceMu"             , "url": "https://www.francemusique.fr/programmes"                                     , "src": "France_Musique.svg"                  }
      ,{ "name":"gandi"                , "url": "https://admin.gandi.net/dashboard/9cb9417c-b33b-11e7-bcf1-00163ec388ae/"     , "src": "avatar_gandi.svg"                    }
+     ,{ "name":"google dev console"   , "url": "https://console.developers.google.com/"                                      , "src": "CloudPlatform_Logo-Lockup_CS6.png"   }
      ,{ "name":"google.com/analytics" , "url": "https://www.google.com/analytics/web"                                        , "src": "Google-Analytics.png"                }
      ,{ "name":"gmail"                , "url": "https://mail.google.com/mail/u/0/#inbox"                                     , "src": "New_Logo_Gmail.svg"                  }
      ,{ "name":"instagram"            , "url": "https://www.instagram.com/"                                                  , "src": "instagram.svg"                       }
