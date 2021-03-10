@@ -1,7 +1,3 @@
 [submodule "reveal.js"]
 	path = reveal.js
 	url = https://github.com/aequologica/reveal.js.git
-[submodule "maven-repository"]
-	path = maven-repository
-	url = https://github.com/aequologica/maven-repository.git
-	branch = master
