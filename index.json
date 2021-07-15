@@ -46,12 +46,5 @@
      ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                            , "src": "Wordpress-Logo.svg"                  }
 
      
-          
-     ,{ "name":"earthlydelights"      , 
-        "url": "http://earthlydelights.garden/",
-        "src": "https://imageserverp1941866044trial.hanatrial.ondemand.com/api/earthly-delights-garden/image/v1/crop?width=300&height=185&quality=100",
-        "width":"300",
-        "height":"180"
-      }
    ]
 }
