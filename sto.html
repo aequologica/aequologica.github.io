@@ -47,8 +47,13 @@ N26: "62,55",
 BNP: "29937,07"
 } 
 
-
-  $('[data-toggle="tooltip"]').tooltip()
+_.forOwn(sto, (value, key) => {
+  $('#sto tbody').append(
+    $("<tr>")
+      .append($("<td>").text(key))
+      .append($("<td>").text(value))
+    )
+  }) 
 
 });
 </script>
