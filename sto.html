@@ -54,7 +54,7 @@ BNP: "29937,07"
 let sum = 0
 _.forOwn(sto, (value, key) => {
 
-  sum = sum + value
+  sum = sum + parseInt(value) 
 
   $('#sto tbody').append(
 
