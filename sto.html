@@ -22,7 +22,7 @@ margin-top: 80vh;
 } 
 
 #sto table tr:last-child {
-border-top: 1px solid black;
+border-top: 1px solid black !important;
 } 
 
   </style>
@@ -53,11 +53,11 @@ border-top: 1px solid black;
 <script type="text/javascript" >
 $(function () {
 const sto = {
-Volksbank : "102637,43", 
-CA: "3918,66", 
-"Banca di Bologna": "0,46", 
-N26: "62,55", 
-BNP: "29937,07"
+Volksbank : "102637.43", 
+CA: "3918.66", 
+"Banca di Bologna": "0.46", 
+N26: "62.55", 
+BNP: "29937.07"
 } 
 let sum = 0
 _.forOwn(sto, (value, key) => {
