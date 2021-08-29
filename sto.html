@@ -17,6 +17,11 @@
   text-align: right;
   font-family: "Courier New", monospace;
 } 
+
+#sto table tr:last-child {
+border-top: 1px solid black;
+} 
+
   </style>
 </head>
 <body>
@@ -54,7 +59,7 @@ BNP: "29937,07"
 let sum = 0
 _.forOwn(sto, (value, key) => {
 
-  sum = sum + parseInt(value) 
+  sum = sum + parseFloat(value) 
 
   $('#sto tbody').append(
 
