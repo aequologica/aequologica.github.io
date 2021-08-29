@@ -51,7 +51,7 @@ CA: "3918,66",
 N26: "62,55", 
 BNP: "29937,07"
 } 
-let sum
+let sum = 0
 _.forOwn(sto, (value, key) => {
 
   sum = sum + value
@@ -67,7 +67,7 @@ _.forOwn(sto, (value, key) => {
 
 $('#sto tbody').append(
     $("<tr>")
-      .append($("<td>").text("&nbsp;" ))
+      .append($("<td>").html("&nbsp;" ))
       .append($("<td>").text(sum))
     )
 
