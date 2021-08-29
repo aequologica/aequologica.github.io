@@ -14,8 +14,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
 #sto table tr td:last-child {
-  text-align: "right";
-  font-family: '"Courier New", monospace';
+  text-align: right;
+  font-family: "Courier New", monospace;
 } 
   </style>
 </head>
@@ -51,14 +51,26 @@ CA: "3918,66",
 N26: "62,55", 
 BNP: "29937,07"
 } 
-
+let sum
 _.forOwn(sto, (value, key) => {
+
+  sum = sum + value
+
   $('#sto tbody').append(
+
     $("<tr>")
       .append($("<td>").text(key))
       .append($("<td>").text(value))
     )
   }) 
+}) 
+
+$('#sto tbody').append(
+    $("<tr>")
+      .append($("<td>").text("&nbsp;" ))
+      .append($("<td>").text(sum))
+    )
+
 
 });
 </script>
