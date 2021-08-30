@@ -41,6 +41,16 @@
           
           
         }
+
+        $("#bo thead")
+            .append($("<tr>")
+              .append($("<th>").text("part"))
+              .append($("<th>").text("armature"))
+              .append($("<th>").text("mesures"))
+              .append($("<th>").text("début"))
+              .append($("<th>").text("durée en secondes"))
+              .append($("<th>").html("indications")))
+        
         let sum = 0
         _.forOwn(bo, (value, key) => {
           sum = sum + parseFloat(value.mea)
@@ -67,6 +77,7 @@
   <body>
     <main id="bo" class="container">
       <table class="table">
+        <thead></thead>
         <tbody></tbody>
       </table>
     </main>
