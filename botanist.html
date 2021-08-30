@@ -69,13 +69,15 @@
               .append($("<td>").text(value.dur))
               .append($("<td>").html(value.tex)))
         })
+        
+        let tot = secs/60 + ':0' + secs%60
 
         $("#bo tbody").append(
           $("<tr>")
             .append($("<td>").html("&nbsp;"))
             .append($("<td>").html("&nbsp;"))
             .append($("<td>").html($("<b>").text(sum.toFixed(0))))
-            .append($("<td>").html("&nbsp;"))
+            .append($("<td>").html($("<b>").text(tot)))
             .append($("<td>").html($("<b>").text(secs.toFixed(0))))
             .append($("<td>").text("")))
       })
