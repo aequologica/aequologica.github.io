@@ -70,8 +70,10 @@
               .append($("<td>").html(value.tex)))
         })
         
-        let tot = secs/60 + ':0' + secs%60
-
+        let date = new Date(0);
+        date.setSeconds(secs);
+        let tot = date.toISOString().substr(14, 5);
+        
         $("#bo tbody").append(
           $("<tr>")
             .append($("<td>").html("&nbsp;"))
