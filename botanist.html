@@ -54,7 +54,9 @@
               .append($("<th>").text("mesures"))
               .append($("<th>").text("début"))
               .append($("<th>").text("durée"))
-              .append($("<th>").html("indications")))
+              .append($("<th>").html("indications"))
+              .append($("<th>").html("view"))
+            )
         
         let sum = 0
         let secs = 0
@@ -85,7 +87,9 @@
             .append($("<td>").html($("<b>").text(sum.toFixed(0))))
             .append($("<td>").html($("<b>").text(tot)))
             .append($("<td>").html($("<b>").text(secs.toFixed(0))))
-            .append($("<td>").text("")))
+            .append($("<td>").text(""))
+            .append($("<td>").text(""))
+          )
       })
     </script>
   </head>
