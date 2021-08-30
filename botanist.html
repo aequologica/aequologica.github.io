@@ -36,7 +36,11 @@
           $("#bo tbody")
             .append($("<tr>")
               .append($("<td>").text(key))
-              .append($("<td>").text(value.dur)))
+              .append($("<td>").text(value.arm))
+              .append($("<td>").text(value.mea))
+              .append($("<td>").text(value.beg))
+              .append($("<td>").text(value.dur))
+              .append($("<td>").html(value.tex)))
         })
 
         $("#bo tbody").append(
