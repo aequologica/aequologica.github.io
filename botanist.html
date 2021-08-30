@@ -25,7 +25,9 @@
     <script>
       $(document).ready( () => {
         const bo = {
-          A: {arm: "", mea: 2, beg: "0:00", dur: 11, tex: "blanc"},
+          intro: {arm: "", mea: 2, beg: "0:00", dur: 11, tex: "blanc"},
+          A: {arm: "###", mea: 12, beg: "0:11", dur: 33, tex: "souvenirs"},
+          B: {arm: "♭♭♭", mea: 12, beg: "0:44", dur: 33, tex: "souvenirs plus forts"},
         }
         let sum = 0
         _.forOwn(bo, (value, key) => {
