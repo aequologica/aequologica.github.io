@@ -34,9 +34,23 @@
 
     <script>
       
-      function randomIntFromInterval(min, max) { // min and max included 
-        return Math.floor(Math.random() * (max - min + 1) + min)
-      }
+      // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
+    // -> Fisher–Yates shuffle algorithm
+    function shuffleArray(array) {
+        var m = array.length, t, i;
+        // While there remain elements to shuffle
+        while (m) {
+            // Pick a remaining element…
+            i = Math.floor(Math.random() * m--);
+            // And swap it with the current element.
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+        }
+        return array;
+    }
+
+ 
       $(document).ready( () => {
         const bo = {
           'prolégomènes': {arm: "", mea: 2, beg: "00:00", dur: 11, tex: "blanc"},
@@ -54,8 +68,21 @@
         
         const imgs = [
           "black",
-          "bottom"
+          "bottom",
+          "close",
+          "closeright",
+          "diagonal",
+          "front",
+          "inside",
+          "into",
+          "left",
+          "normal",
+          "over",
+          "right",
+          "top",
+          "upright"
         ]
+        const shuffled = shuffleArray(imgs)
 
         $("#bo thead")
             .append($("<tr>")
@@ -70,6 +97,7 @@
         
         let sum = 0
         let secs = 0
+        let i = 0
         _.forOwn(bo, (value, key) => {
           sum = sum + parseFloat(value.mea)
           secs = secs + parseInt(value.dur)
@@ -84,8 +112,9 @@
               .append($("<td>").html(value.tex))
               .append($("<td>").html($('<img>')
                                      .addClass('img-fluid')
-                                     .attr('src', 'pianos/' + imgs[randomIntFromInterval(0,1)] + '.jpg')))
+                                     .attr('src', 'pianos/' + shuffled[i] + '.jpg')))
             )
+          i = i + 1
         })
         
         let date = new Date(0);
