@@ -41,8 +41,10 @@
           'A⁴': {arm: "###", mea: 9, beg: "04:16", dur: 25, tex: "agréable mélancolie, saudade"},     
           'péroraison': {arm: "####", mea: 6, beg: "04:41", dur: 17, tex: "tentative, dernier soubresaut"},
           'coda': {arm: "##", mea: 2, beg: "04:58", dur: 11, tex: "tout est bien qui finit bien, vraiment ? (sol ♮)"}
-          
-          
+        }
+        
+        const imgs = {
+          'prolégomènes' : "",
         }
 
         $("#bo thead")
@@ -67,7 +69,9 @@
               .append($("<td>").text(value.mea))
               .append($("<td>").text(value.beg))
               .append($("<td>").text(value.dur))
-              .append($("<td>").html(value.tex)))
+              .append($("<td>").html(value.tex))
+              .append($("<td>").html($('<img>').addClass('img-fluid').attr(src, imgs[key])))
+            )
         })
         
         let date = new Date(0);
