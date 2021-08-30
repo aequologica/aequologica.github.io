@@ -22,8 +22,7 @@
         font-family: "Courier New", monospace;
       }
       #bo img {
-        min-width: 20vw;
-        width: 360px;
+        max-width: 25vw;
         height: auto;
       }
     </style>
@@ -111,7 +110,7 @@
               .append($("<td>").text(value.dur))
               .append($("<td>").html(value.tex))
               .append($("<td>").html($('<img>')
-                                     .addClass('img-fluid')
+                                     .addClass('_img-fluid')
                                      .attr('src', 'pianos/' + shuffled[i] + '.jpg')))
             )
           i = i + 1
@@ -136,7 +135,7 @@
   </head>
   <body>
     <main id="bo" class="container">
-      <table class="table">
+      <table class="table table-responsive">
         <thead></thead>
         <tbody></tbody>
       </table>
