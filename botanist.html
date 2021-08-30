@@ -52,8 +52,10 @@
               .append($("<th>").html("indications")))
         
         let sum = 0
+        let secs = 0
         _.forOwn(bo, (value, key) => {
           sum = sum + parseFloat(value.mea)
+          secs = secs + parseInt(value.dur)
 
           $("#bo tbody")
             .append($("<tr>")
@@ -69,7 +71,10 @@
           $("<tr>")
             .append($("<td>").html("&nbsp;"))
             .append($("<td>").html("&nbsp;"))
-            .append($("<td>").html($("<b>").text(sum.toFixed(0))))
+            .append($("<td>").html($("<b>").text(sum.toFixed(0)))
+            .append($("<td>").html("&nbsp;"))
+            .append($("<td>").html($("<b>").text(secs.toFixed(0)))
+          )
         )
       })
     </script>
