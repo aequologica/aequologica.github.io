@@ -12,7 +12,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-      #bo table tr td:nth-child(2) {
+      #bo table tr td:nth-child(n+3):nth-last-child(n+3){
         text-align: right;
         font-family: "Courier New", monospace;
       }
@@ -45,6 +45,7 @@
 
         $("#bo tbody").append(
           $("<tr>")
+            .append($("<td>").html("&nbsp;"))
             .append($("<td>").html("&nbsp;"))
             .append($("<td>").html($("<b>").text(sum.toFixed(0))))
         )
