@@ -33,6 +33,10 @@
     <script src="https://cdn.jsdelivr.net/npm/lodash@latest/lodash.min.js"></script>
 
     <script>
+      
+      function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+      }
       $(document).ready( () => {
         const bo = {
           'prolégomènes': {arm: "", mea: 2, beg: "00:00", dur: 11, tex: "blanc"},
@@ -48,9 +52,10 @@
           'coda': {arm: "##", mea: 2, beg: "04:58", dur: 11, tex: "tout est bien qui finit bien, vraiment ? (sol ♮)"}
         }
         
-        const imgs = {
-          'prolégomènes' : "normal.jpg",
-        }
+        const imgs = [
+          "black",
+          "bottom"
+        ]
 
         $("#bo thead")
             .append($("<tr>")
@@ -77,7 +82,9 @@
               .append($("<td>").text(value.beg))
               .append($("<td>").text(value.dur))
               .append($("<td>").html(value.tex))
-              .append($("<td>").html($('<img>').addClass('img-fluid').attr('src', 'pianos/'+imgs[key])))
+              .append($("<td>").html($('<img>')
+                                     .addClass('img-fluid')
+                                     .attr('src', 'pianos/' + imgs[randomIntFromInterval(0,1)] + '.jpg')))
             )
         })
         
