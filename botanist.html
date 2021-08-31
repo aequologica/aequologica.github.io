@@ -103,6 +103,15 @@
         _.forOwn(bo, (value, key) => {
           sum = sum + parseFloat(value.mea)
           secs = secs + parseInt(value.dur)
+          let $div = $('<div>')
+          
+          for (let j=0; j<2; j++) {
+            let $img = $('<img>')
+                      .addClass('_img-fluid')
+                      .attr('src', 'pianos/' + shuffled[i] + '.jpg')
+            $div.append($img)
+          }
+          
 
           $("#bo tbody")
             .append($("<tr>")
@@ -112,9 +121,7 @@
               .append($("<td>").text(value.beg))
               .append($("<td>").text(value.dur))
               .append($("<td>").html(value.tex))
-              .append($("<td>").html($('<img>')
-                                     .addClass('_img-fluid')
-                                     .attr('src', 'pianos/' + shuffled[i] + '.jpg')))
+              .append($("<td>").html($div))
             )
           i = i + 1
         })
