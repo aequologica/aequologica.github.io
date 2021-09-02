@@ -24,8 +24,9 @@
         text-align: right;
         font-family: "Courier New", monospace;
       }
-      #bo img {
-        max-width: 30vw;
+      #bo table img {
+        display: block;
+        max-width: 216px;
         height: auto;
       }
     </style>
@@ -88,11 +89,11 @@
         
         const final = {
           'prolégomènes': ["kittyBack"],
-          'A': ["megaCloseup", "cordes", "megaCloseup"],
-          'B': ["kittyFrontTightShotFromRight", "roues", "kittyFrontTightShotFromRight"],
-          'A²': ["kittySideMediumShotFromLeft", "cordesBassesHorizontales", "kittySideMediumShotFromLeft"],
-          'B²': ["fullPianoFromSouthEast", "pedales3", "fullPianoFromSouthEast"],
-          'A³': ["counterDiveFromWestSouth", "marteauxInside", "counterDiveFromWestSouth"],
+          'A': ["megaCloseup"                 , "cordes"                  ],
+          'B': ["kittyFrontTightShotFromRight", "roues"                   ],
+          'A²': ["kittySideMediumShotFromLeft", "cordesBassesHorizontales"],
+          'B²': ["fullPianoFromSouthEast"     , "pedales2"                ],
+          'A³': ["counterDiveFromWestSouth"   , "marteauxInside"          ],
           'développement': [
              "leggio",
              "scoreMozart2",
@@ -115,7 +116,7 @@
             "longShotCircleRightToLeft10",
           ],
           'A⁴': ["horizontalFromWestSouth", "diveOnSeatFromWestNorth"],
-          'péroraison': ["kittyAndPianoAmericanPlanSideFromRight", "mediumEast", "longEast" ],
+          'péroraison': ["kittyAndPianoAmericanPlanSideFromRight", "mediumEast"],
           'coda': ["kittyEnd"],
         }
 
@@ -134,6 +135,11 @@
         let secs = 0
         let i = 0
         
+        /* CAROUSEL
+        let $carousel = $('#qwe')
+        let ci = 0;
+        */
+        
         _.forOwn(bo, (value, key) => {
           sum = sum + parseFloat(value.mea)
           secs = secs + parseInt(value.dur)
@@ -143,9 +149,17 @@
           if (final[key]) {
             final[key].forEach((ima) => {
               const $img = $('<img>')
-                      .addClass('_img-fluid img-thumbnail')
+                      .addClass('img-fluid img-thumbnail')
                       .attr('src', 'pianos/' + ima + '.jpg')
               $div.append($img)
+              /* CAROUSEL
+              $carousel.append(
+                $('<div>').addClass("carousel-item" + (ci === 0 ? " active" : "")).append(
+                  $('<img>').attr('src', 'pianos/' + ima + '.jpg').addClass("d-block w-100")
+                )
+              )
+              ci = ci + 1
+              */
             })
           }
 
@@ -181,6 +195,21 @@
   </head>
   <body>
     <main id="bo" class="container-fluid">
+      <!--
+      <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-wrap="false" data-bs-interval="false">
+        <div id="qwe" class="carousel-inner">
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1114444888&color=%23594d3f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/christophe-thiebaud" title="Christophe Thiebaud" target="_blank" style="color: #cccccc; text-decoration: none;">Christophe Thiebaud</a> · <a href="https://soundcloud.com/christophe-thiebaud/apres-les-filles-du-botaniste" title="Après &quot;Les Filles Du Botaniste&quot;" target="_blank" style="color: #cccccc; text-decoration: none;">Après &quot;Les Filles Du Botaniste&quot;</a></div>
+      -->
       <table class="table table-responsive">
         <thead></thead>
         <tbody></tbody>
