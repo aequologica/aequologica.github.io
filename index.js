@@ -6,16 +6,16 @@
     ) {
     
     /*
-    var inTheOffice        = false;
+    let inTheOffice        = false;
     */
-    var handlebarsSource   = $(handlebarsTemplateSelectorParam)[0].innerHTML;
-    var handlebarsTemplate = Handlebars.compile(handlebarsSource);
+    const handlebarsSource   = $(handlebarsTemplateSelectorParam)[0].innerHTML;
+    const handlebarsTemplate = Handlebars.compile(handlebarsSource);
     
     
     // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
     // -> Fisher–Yates shuffle algorithm
     function shuffleArray(array) {
-        var m = array.length, t, i;
+        let m = array.length, t, i;
         // While there remain elements to shuffle
         while (m) {
             // Pick a remaining element…
@@ -31,10 +31,10 @@
     // https://stackoverflow.com/a/49434653/1070215
     // -> Box–Muller transform
     function randn_bm(min, max, skew) {
-        var u = 0, v = 0;
+        let u = 0, v = 0;
         while(u === 0) u = Math.random(); // Converting [0,1) to (0,1)
         while(v === 0) v = Math.random();
-        var num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+        let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
     
         num = num / 10.0 + 0.5; // Translate to 0 -> 1
         if (num > 1 || num < 0) num = randn_bm(min, max, skew); // resample between 0 and 1 if out of range
@@ -44,9 +44,9 @@
         return num;
     }
 
-    // var widths = []; // uncomment variable widths to check normal distribution on console (see below)
+    // let widths = []; // uncomment variable widths to check normal distribution on console (see below)
     function getRandomWidth() {
-        var width = Math.floor(randn_bm(10, 210, 1));
+        const width = Math.floor(randn_bm(10, 400, 2));
         if (typeof widths !== 'undefined') { 
             widths.push(width);
         }
@@ -55,7 +55,7 @@
 
     $( document ).ready(function() {
 
-        var $m = $(gridSelectorParam);
+        const $m = $(gridSelectorParam);
 
         if (typeof widths !== 'undefined') {
             widths.length = 0;
@@ -72,7 +72,7 @@
         });
 
         function loadData() {
-            var loaded = {};
+            let loaded = {};
 
             $.ajax({
                 type        : "GET",
@@ -84,7 +84,7 @@
             }).fail(function(jqXHR, textStatus, errorThrown) {
             }).always(function(data_jqXHR, textStatus, jqXHR_errorThrown) {
                 try {                
-                    var bricks = [];
+                    const bricks = [];
 
                     $m.isotope({
                         layoutMode   : 'packery',
@@ -95,7 +95,7 @@
                     });
 
                     _.forEach(loaded.images, function(ima, i) {
-                        if (ima.src.startsWith("http")) {
+                        if (ima.src.startsWith("http") || ima.src.startsWith("/")) {
                           ima.ima = ima.src;
                         } else {
                           ima.ima = "images/"+ima.src;
@@ -124,15 +124,15 @@
                         });
                     } */
 
-                    bricks = shuffleArray(bricks);
+                    const shuffledBricks = shuffleArray(bricks);
 
-                    var $bricksContainer = $("<div>");
+                    const $bricksContainer = $("<div>");
                         
-                    _.forEach(bricks, function(brick) {
+                    _.forEach(shuffledBricks, function(brick) {
                         $bricksContainer.append($(handlebarsTemplate(brick)));
                     });
 
-                    var $bricks = $bricksContainer.children();
+                    const $bricks = $bricksContainer.children();
                     
                     $m.empty().append( $bricks ).isotope( 'appended', $bricks ).isotope('layout');
 
