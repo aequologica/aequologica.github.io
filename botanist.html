@@ -117,8 +117,8 @@
           .append($("<th>").text("Part"))
           .append($("<th>").text("Key"))
           .append($("<th>").text("Measures"))
-          /* .append($("<th>").text("début")) 
-          .append($("<th>").text("duration")) */
+          /* .append($("<th>").text("début")) */
+          .append($("<th>").text("duration")) 
           .append($("<th>").html("Directions"))
           .append($("<th>").html("Shots"))
         )
@@ -157,7 +157,7 @@
             .append($("<td>").text(key))
             .append($("<td>").html(value.arm?$('<img class="img-fluid">').attr("src", `pianos/lilyponds/${encodeURIComponent(value.arm)}.svg`):""))
             .append($("<td>").text(value.mea ? value.mea : ""))
-            /*.append($("<td>").text(value.dur ? value.dur : "")) */
+            .append($("<td>").text("tbd."))
             .append($("<td>").html(value.tex))
             .append($("<td>").html($div))
           )
