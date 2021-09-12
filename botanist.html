@@ -13,40 +13,40 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    #bo table > thead > tr > th {
+    #bo table>thead>tr>th {
       font-size: smaller;
     }
 
-    #bo table > tbody > tr > td {
+    #bo table>tbody>tr>td {
       vertical-align: top;
     }
 
-    #bo table > tbody > tr > td div {
+    #bo table>tbody>tr>td div {
       display: block;
     }
 
-    #bo table tr > :nth-child(2) {
+    #bo table tr> :nth-child(2) {
       max-width: 40px;
     }
 
-    #bo table tr > :nth-child(2) > img {
+    #bo table tr> :nth-child(2)>img {
       min-width: 80px;
     }
 
-    #bo table tr > :nth-child(3),
-    #bo table tr > :nth-child(4) {
+    #bo table tr> :nth-child(3),
+    #bo table tr> :nth-child(4) {
       text-align: right;
     }
 
-    #bo table > tbody > tr > td:nth-child(5) {
+    #bo table>tbody>tr>td:nth-child(5) {
       max-width: 12rem;
     }
 
-    #bo table > tbody > tr > td:nth-child(6) {
+    #bo table>tbody>tr>td:nth-child(6) {
       max-width: 16rem;
     }
 
-    #bo table > tbody > tr > td:nth-child(6) img {
+    #bo table>tbody>tr>td:nth-child(6) img {
       display: block;
       min-width: 240px;
       width: 100%;
@@ -58,6 +58,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@latest/lodash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/nunjucks@latest/browser/nunjucks.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@latest/moment.min.js"></script>
 
   <script>
 
@@ -78,37 +79,37 @@
       }
 
       const final = {
-        'prolégomènes': [{ "kittyBack": "00:00" }],
-        'A': [{ "megaCloseup": "00:07" }, { "cordes": "00:22" }, { "lessMegaCloseup": "00:33" }],
-        'B': [{ "kittyFrontTightShotFromRight": "00:42" }, { "roues": "00:57" }, { "kittyFrontMediumShotFromRight": "01:08" }],
-        'A²': [{ "kittySideMediumShotFromLeft": "01:17" }, { "cordesBassesHorizontales": "01:31" }, { "closeright": "01:41" }],
-        'B²': [{ "fullPianoFromSouthEast": "01:50" }, { "pedales2": "02:00" }, { "right": "02:00" }],
-        'A³': [{ "counterDiveFromWestSouth": "02:30" }, { "marteauxInside": "02:43" }, { "bottom": "02:53" }],
+        'prolégomènes': [{ "kittyBack": "00′00″" }],
+        'A': [{ "megaCloseup": "00′07″" }, { "cordes": "00′22″" }, { "lessMegaCloseup": "00′33″" }],
+        'B': [{ "kittyFrontTightShotFromRight": "00′42″" }, { "roues": "00′57″" }, { "kittyFrontMediumShotFromRight": "01′08″" }],
+        'A²': [{ "kittySideMediumShotFromLeft": "01′17″" }, { "cordesBassesHorizontales": "01′31″" }, { "closeright": "01′41″" }],
+        'B²': [{ "fullPianoFromSouthEast": "01′50″" }, { "pedales2": "02′00″" }, { "right": "02′00″" }],
+        'A³': [{ "counterDiveFromWestSouth": "02′30″" }, { "marteauxInside": "02′43″" }, { "bottom": "02′53″" }],
         'développement': [
-          { "bottom": "02:59" },
-          { "leggio": "03:04" },
-          { "verticalDiveOnKeyboard": "03:09" },
-          { "verticalDiveOnKeyboard2": "03:20" },
-          { "verticalDiveOnKeyboard3": "03:28" },
-          { "verticalDiveOnKeyboard4": "03:33" },
-          { "verticalDiveOnKeyboard5": "03:39" },
+          { "bottom": "02′59″" },
+          { "leggio": "03′04″" },
+          { "verticalDiveOnKeyboard": "03′09″" },
+          { "verticalDiveOnKeyboard2": "03′20″" },
+          { "verticalDiveOnKeyboard3": "03′28″" },
+          { "verticalDiveOnKeyboard4": "03′33″" },
+          { "verticalDiveOnKeyboard5": "03′39″" },
         ],
         'B³': [
-          { "longShotCircleRightToLeft1": "03:42" },
-          { "longShotCircleRightToLeft2": "03:48" },
-          { "longShotCircleRightToLeft3": "03:52" },
-          { "longShotCircleRightToLeft4": "03:57" },
-          { "longShotCircleRightToLeft5FullBehind": "04:00" },
-          { "longShotCircleRightToLeft6": "04:04" },
-          { "longShotCircleRightToLeft7": "04:07" },
-          { "longShotCircleRightToLeft8": "04:10" },
-          { "longShotCircleRightToLeft9": "04:13" },
-          { "longShotCircleRightToLeft10": "04:16" },
+          { "longShotCircleRightToLeft1": "03′42″" },
+          { "longShotCircleRightToLeft2": "03′48″" },
+          { "longShotCircleRightToLeft3": "03′52″" },
+          { "longShotCircleRightToLeft4": "03′57″" },
+          { "longShotCircleRightToLeft5FullBehind": "04′00″" },
+          { "longShotCircleRightToLeft6": "04′04″" },
+          { "longShotCircleRightToLeft7": "04′07″" },
+          { "longShotCircleRightToLeft8": "04′10″" },
+          { "longShotCircleRightToLeft9": "04′13″" },
+          { "longShotCircleRightToLeft10": "04′16″" },
         ],
-        'A⁴': [{ "horizontalFromWestSouth": "04:23" }, { "diveOnSeatFromWestNorth": "04:39" }],
-        'péroraison': [{ "kittyAndPianoAmericanPlanSideFromRight": "04:51" }, { "mediumEast": "04:58" }],
-        'coda': [{ "kittyEnd": "05:04" }],
-        'fin': [{ "_": "05:21" }],
+        'A⁴': [{ "horizontalFromWestSouth": "04′23″" }, { "diveOnSeatFromWestNorth": "04′39″" }],
+        'péroraison': [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" }, { "mediumEast": "04′58″" }],
+        'coda': [{ "kittyEnd": "05′04″" }],
+        'fin': [{ "_": "05′21″" }],
 
       }
 
@@ -118,7 +119,7 @@
           .append($("<th>").text("Key"))
           .append($("<th>").text("Measures"))
           /* .append($("<th>").text("début")) */
-          .append($("<th>").text("duration")) 
+          .append($("<th>").text("duration"))
           .append($("<th>").html("Directions"))
           .append($("<th>").html("Shots"))
         )
@@ -131,7 +132,8 @@
       function isString(x) {
         return Object.prototype.toString.call(x) === "[object String]"
       }
-
+      let prevDuration = undefined
+      let tdDuration = undefined
       _.forOwn(bo, (value, key) => {
         sum = sum + parseFloat(value.mea)
         secs = secs + parseInt(value.dur)
@@ -139,10 +141,14 @@
         const $div = $('<div>')
 
         if (final[key]) {
+          let first_time_since_start = undefined
           final[key].forEach((shot) => {
             const [ima] = Object.keys(shot)
-            const duratio = shot[ima]
-            $div.append($('<div>').addClass('duratio').text(duratio))
+            const time_since_start = shot[ima]
+            if (!first_time_since_start) {
+              first_time_since_start = time_since_start
+            }
+            $div.append($('<div>').addClass('time_since_start').text(time_since_start))
             if (ima !== "_") {
               const $img = $('<div>').append($('<img>')
                 .addClass('img-fluid img-thumbnail')
@@ -150,14 +156,26 @@
               $div.append($img)
             }
           })
+          if (tdDuration && first_time_since_start) {
+            let prev = 0;
+            if (prevDuration) {
+              prev = prevDuration
+            }
+            const A = moment(first_time_since_start, "mm′ss″")
+            const B = moment(prev, "mm′ss″")
+            const AminusB = A.diff(B) / 1000
+            tdDuration.html(`${AminusB}″`)
+            prevDuration = first_time_since_start
+          }
         }
 
+        tdDuration = $("<td>");
         $("#bo tbody")
           .append($("<tr>")
             .append($("<td>").text(key))
-            .append($("<td>").html(value.arm?$('<img class="img-fluid">').attr("src", `pianos/lilyponds/${encodeURIComponent(value.arm)}.svg`):""))
+            .append($("<td>").html(value.arm ? $('<img class="img-fluid">').attr("src", `pianos/lilyponds/${encodeURIComponent(value.arm)}.svg`) : ""))
             .append($("<td>").text(value.mea ? value.mea : ""))
-            .append($("<td>").text("tbd."))
+            .append(tdDuration)
             .append($("<td>").html(value.tex))
             .append($("<td>").html($div))
           )
