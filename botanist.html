@@ -18,29 +18,38 @@
     }
 
     #bo table > tbody > tr > td {
-      vertical-align: text-top;
+      vertical-align: top;
     }
 
     #bo table > tbody > tr > td div {
       display: block;
     }
 
-    #bo table > tbody > tr > :nth-child(3),
-    #bo table > tbody > tr > :nth-child(4) {
+    #bo table tr > :nth-child(2) {
+      max-width: 40px;
+    }
+
+    #bo table tr > :nth-child(2) > img {
+      min-width: 80px;
+    }
+
+    #bo table tr > :nth-child(3),
+    #bo table tr > :nth-child(4) {
       text-align: right;
     }
 
     #bo table > tbody > tr > td:nth-child(5) {
       max-width: 12rem;
     }
+
     #bo table > tbody > tr > td:nth-child(6) {
       max-width: 16rem;
     }
 
-    #bo table  > tbody > tr > td img {
+    #bo table > tbody > tr > td:nth-child(6) img {
       display: block;
       min-width: 240px;
-      max-width: 100%;
+      width: 100%;
       height: auto;
     }
   </style>
@@ -48,24 +57,24 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@latest/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nunjucks@latest/browser/nunjucks.min.js"></script>
 
   <script>
 
     $(document).ready(() => {
       const bo = {
-        'prolégomènes':   { arm: ""     , mea: 2,  dur: 11, tex: "Blank: bare, empty, or plain." },
-        'A':              { arm: "###"  , mea: 12, dur: 33, tex: "Memories, remembrance, recollection." },
-        'B':              { arm: "♭♭♭"  , mea: 12, dur: 33, tex: "Idem, but stronger, more vivid." },
-        'A²':             { arm: "###"  , mea: 12, dur: 33, tex: "Decision to act." },
-        'B²':             { arm: "♭♭♭"  , mea: 13, dur: 36, tex: "Decision to act even more." },
-        'A³':             { arm: "###"  , mea: 11, dur: 30, tex: "Renouncement, surrendering, giving up." },
-        'développement':  { arm: ""     , mea: 16, dur: 44, tex: "Await, suspense, rising turmoil." },
-        'B³':             { arm: "♭♭♭"  , mea: 13, dur: 36, tex: "Awakening, \"f…, something has to be done!\"" },
-        'A⁴':             { arm: "###"  , mea: 9,  dur: 25, tex: "Pleasant melancholy, saudade." },
-        'péroraison':     { arm: "####" , mea: 6,  dur: 17, tex: "Final surge, last attempt." },
-        'coda':           { arm: "##"   , mea: 2,  dur: 11, tex: "All's well that ends well." },
-        'fin':            { arm: ""     , mea: 0,  dur:  0, tex: "Really ? (is sol♮ asking)" }
-        
+        'prolégomènes': { arm: "∅", mea: 2, dur: 11, tex: "Blank, bare, empty, plain." },
+        'A': { arm: "###", mea: 12, dur: 33, tex: "Memories, remembrance, recollection." },
+        'B': { arm: "♭♭♭", mea: 12, dur: 33, tex: "Idem, but stronger, more vivid." },
+        'A²': { arm: "###", mea: 12, dur: 33, tex: "Decision to act." },
+        'B²': { arm: "♭♭♭", mea: 13, dur: 36, tex: "Decision to act even more." },
+        'A³': { arm: "###", mea: 11, dur: 30, tex: "Renouncement, surrendering, giving up." },
+        'développement': { arm: "∅", mea: 16, dur: 44, tex: "Await, suspense, rising turmoil." },
+        'B³': { arm: "♭♭♭", mea: 13, dur: 36, tex: "Awakening, \"f…, something has to be done!\"" },
+        'A⁴': { arm: "###", mea: 9, dur: 25, tex: "Pleasant melancholy, saudade." },
+        'péroraison': { arm: "####", mea: 6, dur: 17, tex: "Last surge, final attempt." },
+        'coda': { arm: "##", mea: 2, dur: 11, tex: "All's well that ends well." },
+        'fin': { arm: "", mea: 0, dur: 0, tex: "Really ? (<i>is sol♮ asking</i> 😉)" }
       }
 
       const final = {
@@ -106,10 +115,10 @@
       $("#bo thead")
         .append($("<tr>")
           .append($("<th>").text("Part"))
-          .append($("<th>").text("Key signature"))
+          .append($("<th>").text("Key"))
           .append($("<th>").text("Measures"))
-          /* .append($("<th>").text("début")) */
-          .append($("<th>").text("duration"))
+          /* .append($("<th>").text("début")) 
+          .append($("<th>").text("duration")) */
           .append($("<th>").html("Directions"))
           .append($("<th>").html("Shots"))
         )
@@ -146,9 +155,9 @@
         $("#bo tbody")
           .append($("<tr>")
             .append($("<td>").text(key))
-            .append($("<td>").text(value.arm))
+            .append($("<td>").html(value.arm?$('<img class="img-fluid">').attr("src", `pianos/lilyponds/${encodeURIComponent(value.arm)}.svg`):""))
             .append($("<td>").text(value.mea ? value.mea : ""))
-            .append($("<td>").text(value.dur ? value.dur : ""))
+            /*.append($("<td>").text(value.dur ? value.dur : "")) */
             .append($("<td>").html(value.tex))
             .append($("<td>").html($div))
           )
