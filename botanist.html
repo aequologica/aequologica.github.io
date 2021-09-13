@@ -20,7 +20,7 @@
     https://www.schemecolor.com/light-red-green-gradient.php
     #FCBABA Melon
     #FFCCCB Light Red
-    #FCF6E1 Old Lace
+    #FCF6E1 Old Lace | prolegomena ficta_conclusio
     #E4F2D5 Eggshell
     #CBE8BE Tea Green
     #B1D9A3 Light Moss Green
@@ -39,28 +39,37 @@
     }
 
     /* row colors */
-    #chapters table>tbody>tr.prolegomena {
-      background-color: #FCF6E160;
+    #chapters table>tbody>tr.prolegomena,
+    #chapters table>tbody>tr.cadentia {
+      /* Old Lace */
+      background-color: #FCF6E180;
     }
 
-    #chapters table>tbody>tr.thesis {
-      background-color: #E4F2D560;
+    #chapters table>tbody>tr.thesis,
+    #chapters table>tbody>tr.ficta_conclusio,
+    #chapters table>tbody>tr.conclusio {
+      /* Eggshell */
+      background-color: #E4F2D580;
     }
 
     #chapters table>tbody>tr.antithesis {
-      background-color: #B1D9A360;
+      /* Tea Green */
+      background-color: #CBE8BE80;
     }
 
     #chapters table>tbody>tr.progressus {
-      background-color: #FCBABA60;
+      /* Melon */
+      background-color: #FCBABA80;
+    }
+
+    #chapters table>tbody>tr.recapitulatio {
+      /* Light Moss Green */
+      background-color: #B1D9A380;
     }
 
     #chapters table>tbody>tr.peroratio {
-      background-color: #FFCCCB60;
-    }
-
-    #chapters table>tbody>tr.cadentia {
-      background-color: #FCF6E160;
+      /* Light Red */
+      background-color: #FFCCCB80;
     }
 
     /* end row colors */
@@ -145,36 +154,47 @@
       /* beautify ignore:start */
 
       const chapters = {
-        /* Prolégomènes  */ 'Prolegomena': { keySignature: "∅"   , measures:  2, html: "Blank, bare, empty." },
-        /* Thèse         */ 'Thesis'     : { keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
-        /* Antithèse     */ 'Antithesis' : { keySignature: "♭♭♭" , measures: 12, html: "Ditto, stronger, more vivid." },
-        /*               */ 'Thesis′'    : { keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
-        /*               */ 'Antithesis′': { keySignature: "♭♭♭" , measures: 13, html: "Action." },
-        /*               */ 'Thesis″'    : { keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
-        /* Développement */ 'Progressus' : { keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
-        /*               */ 'Antithesis″': { keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"something must be done!\"." },
-        /*               */ 'Thesis‴'    : { keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
-        /* Péroraison    */ 'Peroratio'  : { keySignature: "♯♯♯♯", measures:  4, html: "Last surge, final attempt." },
-        /* Cadentian    */ 'Cadentia'  : { keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
-        /* fin           */ 'end'        : { keySignature: ""    , measures:  0, html: "" }
+        /* Prolégomènes  */ 'Prolegomena': { clazz: "prolegomena"    , keySignature: "∅"   , measures:  2, html: "Blank, bare, empty." },
+        /* Thèse         */ 'A'          : { clazz: "thesis"         , keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
+        /* Antithèse     */ 'B'          : { clazz: "thesis"         , keySignature: "♭♭♭" , measures: 12, html: "" },
+        /*               */ 'A′'         : { clazz: "antithesis"     , keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
+        /*               */ 'B′'         : { clazz: "antithesis"     , keySignature: "♭♭♭" , measures: 13, html: "Action." },
+        /*               */ 'A″'         : { clazz: "ficta_conclusio", keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
+        /* Développement */ 'Progressus' : { clazz: "progressus"     , keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
+        /*               */ 'B″'         : { clazz: "recapitulatio"  , keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"something must be done!\"." },
+        /*               */ 'A‴'         : { clazz: "conclusio"      , keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
+        /* Péroraison    */ 'Peroratio'  : { clazz: "peroratio"      , keySignature: "♯♯♯♯", measures:  4, html: "Last surge, final attempt." },
+        /* Cadence       */ 'Cadentia'   : { clazz: "cadentia"       , keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
+        /* fin           */ 'end'        : { clazz: ""               , keySignature: ""    , measures:  0, html: "" }
         /* all-lowercase preperties, e.g. "end", will not be displayed */
       }
 
+      const dialectics = [
+        'prolegomena',
+        'thesis',
+        'antithesis',
+        'ficta_conclusio', 
+        'progressus',
+        'recapitulatio',
+        'peroratio',
+        'cadentia',
+      ]
+
       const   shootingScript = {
         'Prolegomena': [{ "kittyBack"                             : "00′00″" }],
-        'Thesis'     : [{ "megaCloseup"                           : "00′07″" }, 
+        'A'          : [{ "megaCloseup"                           : "00′07″" }, 
                         { "cordes"                                : "00′22″" }, 
                         { "lessMegaCloseup"                       : "00′33″" }],
-        'Antithesis' : [{ "kittyFrontTightShotFromRight"          : "00′42″" },
+        'B'          : [{ "kittyFrontTightShotFromRight"          : "00′42″" },
                         { "roues2"                                : "00′57″" },
                         { "kittyFrontMediumShotFromRight"         : "01′08″" }],
-        'Thesis′'    : [{ "kittySideMediumShotFromLeft"           : "01′17″" },
+        'A′'         : [{ "kittySideMediumShotFromLeft"           : "01′17″" },
                         { "cordesBassesHorizontales"              : "01′31″" },
                         { "closeright"                            : "01′41″" }],
-        'Antithesis′': [{ "fullPianoFromSouthEast"                : "01′50″" },
+        'B′'         : [{ "fullPianoFromSouthEast"                : "01′50″" },
                         { "pedales2"                              : "02′05″" },
                         { "right"                                 : "02′18″" }],
-        'Thesis″'    : [{ "counterDiveFromWestSouth"              : "02′30″" },
+        'A″'         : [{ "counterDiveFromWestSouth"              : "02′30″" },
                         { "marteauxInside"                        : "02′43″" },
                         { "bottomTop"                             : "02′53″" }],
         'Progressus': [ { "bottomTopBottom"                       : "02′59″" },
@@ -184,7 +204,7 @@
                         { "verticalDiveOnKeyboard3"               : "03′28″" },
                         { "verticalDiveOnKeyboard4"               : "03′33″" },
                         { "verticalDiveOnKeyboard5"               : "03′39″" },],
-        'Antithesis″': [{ "longShotCircleRightToLeft"             : "03′42″" },
+        'B″'         : [{ "longShotCircleRightToLeft"             : "03′42″" },
                         { "longShotCircleRightToLeft2"            : "03′48″" },
                         { "longShotCircleRightToLeft3"            : "03′52″" },
                         { "longShotCircleRightToLeft4"            : "03′57″" },
@@ -194,7 +214,7 @@
                         { "longShotCircleRightToLeft8"            : "04′10″" },
                         { "longShotCircleRightToLeft9"            : "04′13″" },
                         { "longShotCircleRightToLeft10"           : "04′16″" },],
-        'Thesis‴'    : [{ "longShotCircleRightToLeft13"           : "04′23″" },
+        'A‴'         : [{ "longShotCircleRightToLeft13"           : "04′23″" },
                         { "diveOnSeatFromWestNorth"               : "04′39″" }],
         'Peroratio'  : [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" },
                         { "mediumEast"                            : "04′58″" }],
@@ -298,7 +318,7 @@
 
         // insert row
         {
-          const $tr = $("<tr>").addClass(toClass(key))
+          const $tr = $("<tr>").addClass(value.clazz)
           tdDuration = $("<td>").addClass('duration')
 
           $tr.append($("<td>").addClass('dialectics').html(isLowerCase(key) ? "" : $('<h1>').text(key)))
