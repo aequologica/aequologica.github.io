@@ -147,26 +147,26 @@
       /* beautify ignore:start */
       const chapters = {
         'Prolégomènes' : { keySignature: "∅"   , measures:  2, html: "Blank. Bare. Empty." },
-        'A'            : { keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
-        'B'            : { keySignature: "♭♭♭" , measures: 12, html: "Ditto, stronger, more vivid." },
-        'A²'           : { keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
-        'B²'           : { keySignature: "♭♭♭" , measures: 13, html: "Action." },
-        'A³'           : { keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
+        'Thèse'        : { keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
+        'Antithèse'    : { keySignature: "♭♭♭" , measures: 12, html: "Ditto, stronger, more vivid." },
+        'Thèse′'       : { keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
+        'Antithèse′'   : { keySignature: "♭♭♭" , measures: 13, html: "Action." },
+        'Thèse″'       : { keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
         'Développement': { keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
-        'B³'           : { keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"f…, something has to be done!\"" },
-        'A⁴'           : { keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
+        'Antithèse″'   : { keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"f…, something has to be done!\"" },
+        'Thèse‴'       : { keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
         'Péroraison'   : { keySignature: "♯♯♯♯", measures:  6, html: "Last surge, final attempt." },
-        'Coda'         : { keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
+        'Conclusion'   : { keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
         'fin'          : { keySignature: ""    , measures:  0, html: "" }
       }
 
       const shootingScript = {
-        'Prolégomènes': [{ "kittyBack": "00′00″" }],
-        'A': [{ "megaCloseup": "00′07″" }, { "cordes": "00′22″" }, { "lessMegaCloseup": "00′33″" }],
-        'B': [{ "kittyFrontTightShotFromRight": "00′42″" }, { "roues2": "00′57″" }, { "kittyFrontMediumShotFromRight": "01′08″" }],
-        'A²': [{ "kittySideMediumShotFromLeft": "01′17″" }, { "cordesBassesHorizontales": "01′31″" }, { "closeright": "01′41″" }],
-        'B²': [{ "fullPianoFromSouthEast": "01′50″" }, { "pedales2": "02′05″" }, { "right": "02′18″" }],
-        'A³': [{ "counterDiveFromWestSouth": "02′30″" }, { "marteauxInside": "02′43″" }, { "bottomTop": "02′53″" }],
+        'Prolégomènes': [{ "kittyBack"                   : "00′00″" }],
+        'Thèse'       : [{ "megaCloseup"                 : "00′07″" }, { "cordes"                  : "00′22″" }, { "lessMegaCloseup"              : "00′33″" }],
+        'Antithèse'   : [{ "kittyFrontTightShotFromRight": "00′42″" }, { "roues2"                  : "00′57″" }, { "kittyFrontMediumShotFromRight": "01′08″" }],
+        'Thèse′'      : [{ "kittySideMediumShotFromLeft" : "01′17″" }, { "cordesBassesHorizontales": "01′31″" }, { "closeright"                   : "01′41″" }],
+        'Antithèse′'  : [{ "fullPianoFromSouthEast"      : "01′50″" }, { "pedales2"                : "02′05″" }, { "right"                        : "02′18″" }],
+        'Thèse″'      : [{ "counterDiveFromWestSouth"    : "02′30″" }, { "marteauxInside"          : "02′43″" }, { "bottomTop"                    : "02′53″" }],
         'Développement': [
           { "bottomTopBottom": "02′59″" },
           { "leggio": "03′04″" },
@@ -176,7 +176,7 @@
           { "verticalDiveOnKeyboard4": "03′33″" },
           { "verticalDiveOnKeyboard5": "03′39″" },
         ],
-        'B³': [
+        'Antithèse″': [
           { "longShotCircleRightToLeft": "03′42″" },
           { "longShotCircleRightToLeft2": "03′48″" },
           { "longShotCircleRightToLeft3": "03′52″" },
@@ -188,10 +188,10 @@
           { "longShotCircleRightToLeft9": "04′13″" },
           { "longShotCircleRightToLeft10": "04′16″" },
         ],
-        'A⁴': [{ "longShotCircleRightToLeft13": "04′23″" }, { "diveOnSeatFromWestNorth": "04′39″" }],
-        'Péroraison': [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" }, { "mediumEast": "04′58″" }],
-        'Coda': [{ "kittyEnd": "05′04″" }],
-        'fin': [{ "_": "05′21″" }],
+        'Thèse‴'    : [{ "longShotCircleRightToLeft13"           : "04′23″" }, { "diveOnSeatFromWestNorth": "04′39″" }],
+        'Péroraison': [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" }, { "mediumEast"             : "04′58″" }],
+        'Conclusion': [{ "kittyEnd"                              : "05′04″" }],
+        'fin'       : [{ "_"                                     : "05′21″" }],
       }
       /* beautify ignore:end */
 
@@ -216,66 +216,66 @@
       let lastImageName = undefined
       let noTime = false
       _.forOwn(chapters, (value, key) => {
-          sum = sum + parseFloat(value.measures)
+        sum = sum + parseFloat(value.measures)
 
-          const $lastColDiv = $('<div>')
+        const $lastColDiv = $('<div>')
 
-          if (shootingScript[key]) {
-            let first_time_since_start = undefined
-            shootingScript[key].forEach((shot) => {
-              const [imageName] = Object.keys(shot)
-              if (lastImageName) {
-                noTime = imageName.startsWith(lastImageName)
-              }
-              if (!noTime) {
-                lastImageName = imageName
-              }
-              const time_since_start = shot[imageName]
-              if (!first_time_since_start) {
-                first_time_since_start = time_since_start
-              }
-              if (!noTime) {
-                $lastColDiv.append($('<div>').addClass('time_since_start').text(time_since_start))
-              }
-              if (imageName !== "_") {
-                const $img = $('<div>').append($('<img>')
-                  .addClass('img-fluid')
-                  .attr('src', 'pianos/' + imageName + '.jpg'))
-                $lastColDiv.append($img)
-              }
-            })
-            if (tdDuration && first_time_since_start) {
-              let prev = 0;
-              if (prevDuration) {
-                prev = prevDuration
-              }
-              const A = moment(first_time_since_start, "mm′ss″")
-              const B = moment(prev, "mm′ss″")
-              const AminusB = A.diff(B) / 1000
-              tdDuration.html(`${AminusB}″`)
-              prevDuration = first_time_since_start
+        if (shootingScript[key]) {
+          let first_time_since_start = undefined
+          shootingScript[key].forEach((shot) => {
+            const [imageName] = Object.keys(shot)
+            if (lastImageName) {
+              noTime = imageName.startsWith(lastImageName)
             }
+            if (!noTime) {
+              lastImageName = imageName
+            }
+            const time_since_start = shot[imageName]
+            if (!first_time_since_start) {
+              first_time_since_start = time_since_start
+            }
+            if (!noTime) {
+              $lastColDiv.append($('<div>').addClass('time_since_start').text(time_since_start))
+            }
+            if (imageName !== "_") {
+              const $img = $('<div>').append($('<img>')
+                .addClass('img-fluid')
+                .attr('src', 'pianos/' + imageName + '.jpg'))
+              $lastColDiv.append($img)
+            }
+          })
+          if (tdDuration && first_time_since_start) {
+            let prev = 0;
+            if (prevDuration) {
+              prev = prevDuration
+            }
+            const S = moment(prev, "mm′ss″")
+            const E = moment(first_time_since_start, "mm′ss″")
+            const EminusS = E.diff(S) / 1000
+            tdDuration.html(`${EminusS}″`)
+            prevDuration = first_time_since_start
           }
+        }
 
-          function hasUpperCase(str) {
-            return str && str.toLowerCase() !== str;
-          }
+        function hasUpperCase(str) {
+          return str && str.toLowerCase() !== str;
+        }
 
-          tdDuration = $("<td>");
-          $("#chapters tbody")
-            .append($("<tr>")
-              .append($("<td>").html(hasUpperCase(key) ? $('<h1>').text(key) : ""))
-              .append($("<td>").html(value.keySignature ?
-                $('<div>').append($('<img>').attr("src", `pianos/lilyponds/${encodeURIComponent(value.keySignature)}.svg`)) :
-                ""))
+        tdDuration = $("<td>");
+        $("#chapters tbody")
+          .append($("<tr>")
+            .append($("<td>").html(hasUpperCase(key) ? $('<h1>').text(key) : ""))
+            .append($("<td>").html(value.keySignature ?
+              $('<div>').append($('<img>').attr("src", `pianos/lilyponds/${encodeURIComponent(value.keySignature)}.svg`)) :
+              ""))
             .append($("<td>").text(value.measures ? value.measures : ""))
             .append(tdDuration)
             .append($("<td>").html(value.html))
             .append($("<td>").html($lastColDiv))
-        )
+          )
       })
 
-    $("#chapters tbody tr:last-child td:nth-child(3)").html(sum.toFixed(0))
+      $("#chapters tbody tr:last-child td:nth-child(3)").html(sum.toFixed(0))
     })
   </script>
 </head>
