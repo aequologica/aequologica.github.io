@@ -34,7 +34,8 @@
 
     #chapters table>thead>tr,
     #chapters table>tbody>tr:last-child {
-      background-color: #164010; /* Vine Green */
+      background-color: #164010;
+      /* Vine Green */
       color: ghostwhite;
     }
 
@@ -177,7 +178,7 @@
         /* all-lowercase preperties, e.g. "end", will not be displayed */
       }
 
-      const   shootingScript = {
+      const shootingScript = {
         'Introduction': [{ "kittyBack"                             : "00′00″" }],
         'A'          : [{ "megaCloseup"                           : "00′07″" }, 
                         { "cordes"                                : "00′22″" }, 
@@ -263,18 +264,17 @@
       }
 
       let sum = {
-        measures: 0,
-        duration: 0
+        measures: 0
       }
 
-      let prevDuration = undefined
+      let prevDuration = 0
       let tdDuration = undefined
       let lastImageName = undefined
       let noTime = false
       _.forOwn(chapters, (value, key) => {
         sum.measures = sum.measures + parseFloat(value.measures)
 
-        const $lastColDiv = $('<div>')
+        const $shootingScriptDiv = $('<div>')
         if (hasShootingScript && shootingScript[key]) {
           let first_time_since_start = undefined
           shootingScript[key].forEach((shot) => {
@@ -290,24 +290,19 @@
               first_time_since_start = time_since_start
             }
             if (!noTime) {
-              $lastColDiv.append($('<div>').addClass('time_since_start').text(time_since_start))
+              $shootingScriptDiv.append($('<div>').addClass('time_since_start').text(time_since_start))
             }
             if (imageName !== "_") {
               const $img = $('<div>').append($('<img>')
                 .addClass('img-fluid')
                 .attr('src', 'pianos/' + imageName + '.jpg'))
-              $lastColDiv.append($img)
+              $shootingScriptDiv.append($img)
             }
           })
           if (tdDuration && first_time_since_start) {
-            let prev = 0;
-            if (prevDuration) {
-              prev = prevDuration
-            }
-            const S = moment(prev, "mm′ss″")
+            const S = moment(prevDuration, "mm′ss″")
             const E = moment(first_time_since_start, "mm′ss″")
             const EminusS = E.diff(S) / 1000
-            sum.duration = sum.duration + parseFloat(value.EminusS)
             tdDuration.html(`${EminusS}″`)
             prevDuration = first_time_since_start
           }
@@ -327,7 +322,7 @@
           }
           $tr.append($("<td>").addClass('clue').html(value.html))
           if (hasShootingScript) {
-            $tr.append($("<td>").addClass('shooting_script').html($lastColDiv))
+            $tr.append($("<td>").addClass('shooting_script').html($shootingScriptDiv))
           }
 
           $("#chapters table tbody").append($tr)
@@ -348,7 +343,7 @@
 <body>
   <main id="chapters" class="container-lg p-0">
     <table class="table table-responsive table-borderless">
-      <!-- table-striped -->
+      <!-- table-striped table-hover -->
       <thead></thead>
       <tbody></tbody>
       <tfoot></tfoot>
