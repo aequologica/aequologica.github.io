@@ -23,59 +23,59 @@
     #DEFDE0 Nyanza
     #DEF3FD Water
     #F0DEFD Lavender
-
-    https://www.schemecolor.com/light-pastel-gradient.php
-    #C0DFF7 Beau Blue
-    #CDE4F5 Azureish White
-    #D9E8F3 Azureish White
-    #E6EDF2 Bright Gray
-    #F2F1F0 Anti-Flash White
-    #FFF6EE Seashell
-    
-    https://www.schemecolor.com/light-red-green-gradient.php
-    #FCBABA Melon
-    #FFCCCB Light Red
-    #FCF6E1 Old Lace
-    #E4F2D5 Eggshell
-    #CBE8BE Tea Green
-    #B1D9A3 Light Moss Green
   -->
-    
+
   <style>
     body {
       font-family: 'Caveat', cursive;
       font-size: 20pt;
     }
 
+    /*
     #chapters table>tbody>tr:nth-child(1) {
-      background-color: #FCF6E160;
+      background-color: #FDDFDF60;
     }
 
-    #chapters table>tbody>tr:nth-child(2),
-    #chapters table>tbody>tr:nth-child(4),
-    #chapters table>tbody>tr:nth-child(6),
-    #chapters table>tbody>tr:nth-child(9) {
-      background-color: #E4F2D560;
+    #chapters table>tbody>tr:nth-child(2) {
+      background-color: #DEFDE060;
     }
 
-    #chapters table>tbody>tr:nth-child(3),
-    #chapters table>tbody>tr:nth-child(5),
-    #chapters table>tbody>tr:nth-child(8)  {
-      background-color: #B1D9A360;
+    #chapters table>tbody>tr:nth-child(3) {
+      background-color: #FCF7DE60;
+    }
+
+    #chapters table>tbody>tr:nth-child(4) {
+      background-color: #DEFDE060;
+    }
+
+    #chapters table>tbody>tr:nth-child(5) {
+      background-color: #FCF7DE60;
+    }
+
+    #chapters table>tbody>tr:nth-child(6) {
+      background-color: #DEFDE060;
     }
 
     #chapters table>tbody>tr:nth-child(7) {
-      background-color: #FCBABA60;
+      background-color: #F0DEFD60;
+    }
+
+    #chapters table>tbody>tr:nth-child(8) {
+      background-color: #FCF7DE60;
+    }
+
+    #chapters table>tbody>tr:nth-child(9) {
+      background-color: #DEFDE060;
     }
 
     #chapters table>tbody>tr:nth-child(10) {
-      background-color: #FFCCCB60;
+      background-color: #DEF3FD60;
     }
 
     #chapters table>tbody>tr:nth-child(11) {
-      background-color: #E4F2D560;
+      background-color: #FDDFDF60;
     }
-
+    */
     #chapters table>tbody>tr>td {
       vertical-align: top;
     }
@@ -125,6 +125,7 @@
   <script src="https://cdn.jsdelivr.net/npm/moment@latest/moment.min.js"></script>
 
   <script>
+
     $(document).ready(() => {
       const columns = [
         "Part",
@@ -137,18 +138,18 @@
 
       /* beautify ignore:start */
       const chapters = {
-        'Prolégomènes' : { keySignature: "∅"   , measures:  2, html: "Blank. Bare. Empty." },
-        'A'            : { keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
-        'B'            : { keySignature: "♭♭♭" , measures: 12, html: "Ditto, stronger, more vivid." },
-        'A²'           : { keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
-        'B²'           : { keySignature: "♭♭♭" , measures: 13, html: "Action." },
-        'A³'           : { keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
-        'Développement': { keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
-        'B³'           : { keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"f…, something has to be done!\"" },
-        'A⁴'           : { keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
-        'Péroraison'   : { keySignature: "♯♯♯♯", measures:  6, html: "Last surge, final attempt." },
-        'Coda'         : { keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
-        'fin'          : { keySignature: ""    , measures:  0, html: "" }
+        'Prolégomènes': { keySignature: "∅", measures: 2, dur: 11, html: "Blank. Bare. Empty." },
+        'A': { keySignature: "♯♯♯", measures: 12, dur: 33, html: "Memories, remembrance, recollection." },
+        'B': { keySignature: "♭♭♭", measures: 12, dur: 33, html: "Ditto, stronger, more vivid." },
+        'A²': { keySignature: "♯♯♯", measures: 12, dur: 33, html: "Decision to act." },
+        'B²': { keySignature: "♭♭♭", measures: 13, dur: 36, html: "Action." },
+        'A³': { keySignature: "♯♯♯", measures: 11, dur: 30, html: "Renouncement, surrendering, giving up." },
+        'Développement': { keySignature: "∅", measures: 16, dur: 44, html: "Await, suspense, rising turmoil." },
+        'B³': { keySignature: "♭♭♭", measures: 13, dur: 36, html: "Awakening, \"f…, something has to be done!\"" },
+        'A⁴': { keySignature: "♯♯♯", measures: 9, dur: 25, html: "Pleasant melancholy, saudade." },
+        'Péroraison': { keySignature: "♯♯♯♯", measures: 6, dur: 17, html: "Last surge, final attempt." },
+        'Coda': { keySignature: "♯♯", measures: 2, dur: 11, html: "All's well that ends well." },
+        'fin': { keySignature: "", measures: 0, dur: 0, html: "" }
       }
 
       const shootingScript = {
@@ -157,9 +158,9 @@
         'B': [{ "kittyFrontTightShotFromRight": "00′42″" }, { "roues2": "00′57″" }, { "kittyFrontMediumShotFromRight": "01′08″" }],
         'A²': [{ "kittySideMediumShotFromLeft": "01′17″" }, { "cordesBassesHorizontales": "01′31″" }, { "closeright": "01′41″" }],
         'B²': [{ "fullPianoFromSouthEast": "01′50″" }, { "pedales2": "02′05″" }, { "right": "02′18″" }],
-        'A³': [{ "counterDiveFromWestSouth": "02′30″" }, { "marteauxInside": "02′43″" }, { "bottomTop": "02′53″" }],
+        'A³': [{ "counterDiveFromWestSouth": "02′30″" }, { "marteauxInside": "02′43″" }, { "bottom": "02′53″" }],
         'Développement': [
-          { "bottomTopBottom": "02′59″" },
+          { "bottom": "02′59″" },
           { "leggio": "03′04″" },
           { "verticalDiveOnKeyboard": "03′09″" },
           { "verticalDiveOnKeyboard2": "03′20″" },
@@ -183,8 +184,8 @@
         'Péroraison': [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" }, { "mediumEast": "04′58″" }],
         'Coda': [{ "kittyEnd": "05′04″" }],
         'fin': [{ "_": "05′21″" }],
+
       }
-      /* beautify ignore:end */
 
       $("#chapters table thead")
         .append($("<tr>")
@@ -197,6 +198,7 @@
         )
 
       let sum = 0
+      let i = 0
 
       // https://stackoverflow.com/a/17772086/1070215
       function isString(x) {
@@ -206,7 +208,7 @@
       let tdDuration = undefined
       let lastImageName = undefined
       let noTime = false
-      _.forOwn(chapters, (value, key) => {
+      _.forOwn(bo, (value, key) => {
         sum = sum + parseFloat(value.measures)
 
         const $lastColDiv = $('<div>')
@@ -249,29 +251,30 @@
         }
 
         function hasUpperCase(str) {
-          return str && str.toLowerCase() !== str;
+          return srt && str.toLowerCase() !== str;
         }
 
         tdDuration = $("<td>");
         $("#chapters tbody")
           .append($("<tr>")
-            .append($("<td>").html(hasUpperCase(key) ? $('<h1>').text(key) : ""))
+            .append($("<td>").texthasUpperCase((key) ? key : ""))
             .append($("<td>").html(value.keySignature ? $('<img class="img-fluid">').attr("src", `pianos/lilyponds/${encodeURIComponent(value.keySignature)}.svg`) : ""))
             .append($("<td>").text(value.measures ? value.measures : ""))
             .append(tdDuration)
             .append($("<td>").html(value.html))
             .append($("<td>").html($lastColDiv))
           )
+        i = i + 1
       })
 
-      $("#chapters tbody tr:last-child td:nth-child(3)").html(sum.toFixed(0))
+      $("#chapters tbody tr:last-child td:nth-child(3)").html($("<b>").text(sum.toFixed(0)))
     })
   </script>
 </head>
 
 <body>
-  <main id="chapters" class="container">
-    <table class="table table-responsive table-borderless"> <!-- table-striped -->
+  <main id="bo" class="container">
+    <table class="table table-responsive table-striped table-borderless">
       <thead></thead>
       <tbody></tbody>
     </table>
