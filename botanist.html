@@ -47,6 +47,12 @@
       font-size: 20pt;
     }
 
+    #chapters table>thead>tr,
+    #chapters table>tbody>tr:last-child {
+      background-color: #999;
+      color: ghostwhite;
+    }
+
     #chapters table>tbody>tr:nth-child(1) {
       background-color: #FCF6E160;
     }
@@ -115,6 +121,10 @@
       padding: 8px 8px 8px 0;
     }
 
+    #chapters table>tbody>tr:nth-last-child(2)>td:nth-child(6) img {
+      padding-bottom: 8px;
+    }
+
     #chapters table>tbody>tr>td:nth-child(6) img {
       display: block;
       min-width: 240px;
@@ -156,7 +166,7 @@
         'Développement': { keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
         'Antithèse″'   : { keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"f…, something has to be done!\"" },
         'Thèse‴'       : { keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
-        'Péroraison'   : { keySignature: "♯♯♯♯", measures:  6, html: "Last surge, final attempt." },
+        'Péroraison'   : { keySignature: "♯♯♯♯", measures:  4, html: "Last surge, final attempt." },
         'Conclusion'   : { keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
         'fin'          : { keySignature: ""    , measures:  0, html: "" }
       }
