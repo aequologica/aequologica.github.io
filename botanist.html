@@ -40,7 +40,7 @@
     #CBE8BE Tea Green
     #B1D9A3 Light Moss Green
   -->
-    
+
   <style>
     body {
       font-family: 'Caveat', cursive;
@@ -60,7 +60,7 @@
 
     #chapters table>tbody>tr:nth-child(3),
     #chapters table>tbody>tr:nth-child(5),
-    #chapters table>tbody>tr:nth-child(8)  {
+    #chapters table>tbody>tr:nth-child(8) {
       background-color: #B1D9A360;
     }
 
@@ -84,12 +84,16 @@
       display: block;
     }
 
-    #chapters table tr> :nth-child(2) {
-      max-width: 40px;
+    #chapters table tr> :nth-child(2)>div {
+      max-width: 60px;
+      height: 50px;
     }
 
-    #chapters table tr> :nth-child(2)>img {
-      min-width: 80px;
+    #chapters table tr> :nth-child(2)>div>img {
+      width: 60px;
+      height: 50px;
+      object-fit: none;
+      object-position: 0 0;
     }
 
     #chapters table tr> :nth-child(3),
@@ -115,6 +119,10 @@
       min-width: 240px;
       width: 100%;
       height: auto;
+    }
+
+    #chapters table>tbody>tr:last-child {
+      font-weight: bold;
     }
   </style>
 
@@ -207,71 +215,74 @@
       let lastImageName = undefined
       let noTime = false
       _.forOwn(chapters, (value, key) => {
-        sum = sum + parseFloat(value.measures)
+          sum = sum + parseFloat(value.measures)
 
-        const $lastColDiv = $('<div>')
+          const $lastColDiv = $('<div>')
 
-        if (shootingScript[key]) {
-          let first_time_since_start = undefined
-          shootingScript[key].forEach((shot) => {
-            const [imageName] = Object.keys(shot)
-            if (lastImageName) {
-              noTime = imageName.startsWith(lastImageName)
+          if (shootingScript[key]) {
+            let first_time_since_start = undefined
+            shootingScript[key].forEach((shot) => {
+              const [imageName] = Object.keys(shot)
+              if (lastImageName) {
+                noTime = imageName.startsWith(lastImageName)
+              }
+              if (!noTime) {
+                lastImageName = imageName
+              }
+              const time_since_start = shot[imageName]
+              if (!first_time_since_start) {
+                first_time_since_start = time_since_start
+              }
+              if (!noTime) {
+                $lastColDiv.append($('<div>').addClass('time_since_start').text(time_since_start))
+              }
+              if (imageName !== "_") {
+                const $img = $('<div>').append($('<img>')
+                  .addClass('img-fluid')
+                  .attr('src', 'pianos/' + imageName + '.jpg'))
+                $lastColDiv.append($img)
+              }
+            })
+            if (tdDuration && first_time_since_start) {
+              let prev = 0;
+              if (prevDuration) {
+                prev = prevDuration
+              }
+              const A = moment(first_time_since_start, "mm′ss″")
+              const B = moment(prev, "mm′ss″")
+              const AminusB = A.diff(B) / 1000
+              tdDuration.html(`${AminusB}″`)
+              prevDuration = first_time_since_start
             }
-            if (!noTime) {
-              lastImageName = imageName
-            }
-            const time_since_start = shot[imageName]
-            if (!first_time_since_start) {
-              first_time_since_start = time_since_start
-            }
-            if (!noTime) {
-              $lastColDiv.append($('<div>').addClass('time_since_start').text(time_since_start))
-            }
-            if (imageName !== "_") {
-              const $img = $('<div>').append($('<img>')
-                .addClass('img-fluid')
-                .attr('src', 'pianos/' + imageName + '.jpg'))
-              $lastColDiv.append($img)
-            }
-          })
-          if (tdDuration && first_time_since_start) {
-            let prev = 0;
-            if (prevDuration) {
-              prev = prevDuration
-            }
-            const A = moment(first_time_since_start, "mm′ss″")
-            const B = moment(prev, "mm′ss″")
-            const AminusB = A.diff(B) / 1000
-            tdDuration.html(`${AminusB}″`)
-            prevDuration = first_time_since_start
           }
-        }
 
-        function hasUpperCase(str) {
-          return str && str.toLowerCase() !== str;
-        }
+          function hasUpperCase(str) {
+            return str && str.toLowerCase() !== str;
+          }
 
-        tdDuration = $("<td>");
-        $("#chapters tbody")
-          .append($("<tr>")
-            .append($("<td>").html(hasUpperCase(key) ? $('<h1>').text(key) : ""))
-            .append($("<td>").html(value.keySignature ? $('<img class="img-fluid">').attr("src", `pianos/lilyponds/${encodeURIComponent(value.keySignature)}.svg`) : ""))
+          tdDuration = $("<td>");
+          $("#chapters tbody")
+            .append($("<tr>")
+              .append($("<td>").html(hasUpperCase(key) ? $('<h1>').text(key) : ""))
+              .append($("<td>").html(value.keySignature ?
+                $('<div>').append($('<img>').attr("src", `pianos/lilyponds/${encodeURIComponent(value.keySignature)}.svg`)) :
+                ""))
             .append($("<td>").text(value.measures ? value.measures : ""))
             .append(tdDuration)
             .append($("<td>").html(value.html))
             .append($("<td>").html($lastColDiv))
-          )
+        )
       })
 
-      $("#chapters tbody tr:last-child td:nth-child(3)").html(sum.toFixed(0))
+    $("#chapters tbody tr:last-child td:nth-child(3)").html(sum.toFixed(0))
     })
   </script>
 </head>
 
 <body>
-  <main id="chapters" class="container">
-    <table class="table table-responsive table-borderless"> <!-- table-striped -->
+  <main id="chapters" class="container-lg p-0">
+    <table class="table table-responsive table-borderless">
+      <!-- table-striped -->
       <thead></thead>
       <tbody></tbody>
     </table>
