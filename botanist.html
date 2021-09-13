@@ -20,7 +20,7 @@
     https://www.schemecolor.com/light-red-green-gradient.php
     #FCBABA Melon
     #FFCCCB Light Red
-    #FCF6E1 Old Lace | prolegomena ficta_conclusio
+    #FCF6E1 Old Lace 
     #E4F2D5 Eggshell
     #CBE8BE Tea Green
     #B1D9A3 Light Moss Green
@@ -34,7 +34,7 @@
 
     #chapters table>thead>tr,
     #chapters table>tbody>tr:last-child {
-      background-color: #013220;
+      background-color: #164010; /* Vine Green */
       color: ghostwhite;
     }
 
@@ -46,13 +46,14 @@
     }
 
     #chapters table>tbody>tr.thesis,
-    #chapters table>tbody>tr.ficta_conclusio,
+    #chapters table>tbody>tr.conclusio,
     #chapters table>tbody>tr.conclusio {
       /* Eggshell */
       background-color: #E4F2D580;
     }
 
-    #chapters table>tbody>tr.antithesis {
+    #chapters table>tbody>tr.antithesis,
+    #chapters table>tbody>tr.recapitulatio {
       /* Tea Green */
       background-color: #CBE8BE80;
     }
@@ -60,11 +61,6 @@
     #chapters table>tbody>tr.progressus {
       /* Melon */
       background-color: #FCBABA80;
-    }
-
-    #chapters table>tbody>tr.recapitulatio {
-      /* Light Moss Green */
-      background-color: #B1D9A380;
     }
 
     #chapters table>tbody>tr.peroratio {
@@ -149,39 +145,40 @@
     function toClass(str) {
       return str.replace(/\s/g, '_').replace(/[^A-Za-z_]*/g, '').toLowerCase()
     }
+
     $(document).ready(() => {
 
       /* beautify ignore:start */
-
-      const chapters = {
-        /* Prolégomènes  */ 'Prolegomena': { clazz: "prolegomena"    , keySignature: "∅"   , measures:  2, html: "Blank, bare, empty." },
-        /* Thèse         */ 'A'          : { clazz: "thesis"         , keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
-        /* Antithèse     */ 'B'          : { clazz: "thesis"         , keySignature: "♭♭♭" , measures: 12, html: "" },
-        /*               */ 'A′'         : { clazz: "antithesis"     , keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
-        /*               */ 'B′'         : { clazz: "antithesis"     , keySignature: "♭♭♭" , measures: 13, html: "Action." },
-        /*               */ 'A″'         : { clazz: "ficta_conclusio", keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
-        /* Développement */ 'Progressus' : { clazz: "progressus"     , keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
-        /*               */ 'B″'         : { clazz: "recapitulatio"  , keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"something must be done!\"." },
-        /*               */ 'A‴'         : { clazz: "conclusio"      , keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
-        /* Péroraison    */ 'Peroratio'  : { clazz: "peroratio"      , keySignature: "♯♯♯♯", measures:  4, html: "Last surge, final attempt." },
-        /* Cadence       */ 'Cadentia'   : { clazz: "cadentia"       , keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
-        /* fin           */ 'end'        : { clazz: ""               , keySignature: ""    , measures:  0, html: "" }
-        /* all-lowercase preperties, e.g. "end", will not be displayed */
-      }
 
       const dialectics = [
         'prolegomena',
         'thesis',
         'antithesis',
-        'ficta_conclusio', 
+        'conclusio', 
         'progressus',
         'recapitulatio',
         'peroratio',
         'cadentia',
       ]
 
+      const chapters = {
+        /* Prolégomènes  */ 'Introduction': { clazz: "prolegomena"    , keySignature: "∅"   , measures:  2, html: "Blank." },
+        /* Thèse         */ 'A'           : { clazz: "thesis"         , keySignature: "♯♯♯" , measures: 12, html: "Memories." },
+        /* Antithèse     */ 'B'           : { clazz: "antithesis"     , keySignature: "♭♭♭" , measures: 12, html: "Stronger." },
+        /*               */ 'A′'          : { clazz: "thesis"         , keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
+        /*               */ 'B′'          : { clazz: "antithesis"     , keySignature: "♭♭♭" , measures: 13, html: "Action." },
+        /*               */ 'A″'          : { clazz: "conclusio"      , keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
+        /* Développement */ 'Development' : { clazz: "progressus"     , keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
+        /*               */ 'B″'          : { clazz: "recapitulatio"  , keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"something must be done!\"." },
+        /*               */ 'A‴'          : { clazz: "conclusio"      , keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
+        /* Péroraison    */ 'Coda'        : { clazz: "peroratio"      , keySignature: "♯♯♯♯", measures:  4, html: "Last surge." },
+        /* Cadence       */ 'Conclusion'  : { clazz: "cadentia"       , keySignature: "♯♯♯" , measures:  3, html: "All's well that ends well." },
+        /* fin           */ 'end'         : { clazz: ""               , keySignature: ""    , measures:  0, html: "" }
+        /* all-lowercase preperties, e.g. "end", will not be displayed */
+      }
+
       const   shootingScript = {
-        'Prolegomena': [{ "kittyBack"                             : "00′00″" }],
+        'Introduction': [{ "kittyBack"                             : "00′00″" }],
         'A'          : [{ "megaCloseup"                           : "00′07″" }, 
                         { "cordes"                                : "00′22″" }, 
                         { "lessMegaCloseup"                       : "00′33″" }],
@@ -197,7 +194,7 @@
         'A″'         : [{ "counterDiveFromWestSouth"              : "02′30″" },
                         { "marteauxInside"                        : "02′43″" },
                         { "bottomTop"                             : "02′53″" }],
-        'Progressus': [ { "bottomTopBottom"                       : "02′59″" },
+        'Development': [{ "bottomTopBottom"                       : "02′59″" },
                         { "leggio"                                : "03′04″" },
                         { "verticalDiveOnKeyboard"                : "03′09″" },
                         { "verticalDiveOnKeyboard2"               : "03′20″" },
@@ -216,9 +213,9 @@
                         { "longShotCircleRightToLeft10"           : "04′16″" },],
         'A‴'         : [{ "longShotCircleRightToLeft13"           : "04′23″" },
                         { "diveOnSeatFromWestNorth"               : "04′39″" }],
-        'Peroratio'  : [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" },
+        'Coda'       : [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" },
                         { "mediumEast"                            : "04′58″" }],
-        'Cadentia'  : [{ "kittyEnd"                              : "05′04″" }],
+        'Conclusion' : [{ "kittyEnd"                              : "05′04″" }],
         'end'        : [{ "_"                                     : "05′21″" }],
       }
       /* beautify ignore:end */
@@ -229,7 +226,7 @@
       // insert header
       {
         const columns = [
-          "Dialectics",
+          "Section",
           "Key",
           "Measures",
           "Duration",
