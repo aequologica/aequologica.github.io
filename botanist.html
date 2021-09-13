@@ -47,85 +47,82 @@
       font-size: 20pt;
     }
 
+    /* row colors */
     #chapters table>thead>tr,
     #chapters table>tbody>tr:last-child {
       background-color: #999;
       color: ghostwhite;
     }
 
-    #chapters table>tbody>tr:nth-child(1) {
+    #chapters table>tbody>tr.prolegomena {
       background-color: #FCF6E160;
     }
 
-    #chapters table>tbody>tr:nth-child(2),
-    #chapters table>tbody>tr:nth-child(4),
-    #chapters table>tbody>tr:nth-child(6),
-    #chapters table>tbody>tr:nth-child(9) {
+    #chapters table>tbody>tr.thesis {
       background-color: #E4F2D560;
     }
 
-    #chapters table>tbody>tr:nth-child(3),
-    #chapters table>tbody>tr:nth-child(5),
-    #chapters table>tbody>tr:nth-child(8) {
+    #chapters table>tbody>tr.antithesis {
       background-color: #B1D9A360;
     }
 
-    #chapters table>tbody>tr:nth-child(7) {
+    #chapters table>tbody>tr.development {
       background-color: #FCBABA60;
     }
 
-    #chapters table>tbody>tr:nth-child(10) {
+    #chapters table>tbody>tr.peroration {
       background-color: #FFCCCB60;
     }
 
-    #chapters table>tbody>tr:nth-child(11) {
-      background-color: #E4F2D560;
+    #chapters table>tbody>tr.conclusion {
+      background-color: #FCF6E160;
     }
+
+    /* end row colors */
 
     #chapters table>tbody>tr>td {
       vertical-align: top;
     }
 
-    #chapters table>tbody>tr>td div {
-      display: block;
-    }
-
-    #chapters table tr> :nth-child(2)>div {
+    /* key signaure column */
+    #chapters table tr>td.key>div> {
       max-width: 60px;
       height: 50px;
     }
 
-    #chapters table tr> :nth-child(2)>div>img {
+    #chapters table tr>td.key>div>img {
       width: 60px;
       height: 50px;
       object-fit: none;
       object-position: 0 0;
     }
 
-    #chapters table tr> :nth-child(3),
-    #chapters table tr> :nth-child(4) {
+    /* centered text */
+    .measures,
+    .duration {
       text-align: center;
     }
 
-    #chapters table>tbody>tr>td:nth-child(5) {
+
+    #chapters table>tbody>tr>td:clue {
       max-width: 12rem;
     }
 
-    #chapters table>tbody>tr>td:nth-child(6) {
+    #chapters table>tbody>tr>td.shooting_script {
       max-width: 16rem;
       padding: 0;
     }
 
-    #chapters table>thead>tr>th:nth-child(6),
-    #chapters table>tbody>tr>td:nth-child(6) div.time_since_start:first-child {
+    #chapters table>thead>tr>th.shooting_script,
+    #chapters table>tbody>tr>td.shooting_script div.time_since_start:first-child {
       padding: 8px 8px 8px 0;
     }
 
-    #chapters table>tbody>tr:nth-last-child(2)>td:nth-child(6) img {
+    #chapters table>tbody>tr.conclusion>td.shooting_script img {
       padding-bottom: 8px;
     }
 
-    #chapters table>tbody>tr>td:nth-child(6) img {
+    #chapters table>tbody>tr>td.shooting_script img {
       display: block;
       min-width: 240px;
       width: 100%;
@@ -145,11 +142,25 @@
   <script src="https://cdn.jsdelivr.net/npm/moment@latest/moment.min.js"></script>
 
   <script>
+    // https://stackoverflow.com/a/17772086/1070215
+    function isString(x) {
+      return Object.prototype.toString.call(x) === "[object String]"
+    }
+
+    // https://stackoverflow.com/a/31415820/1070215
+    function isLowerCase(str) {
+      return str == str.toLowerCase() && str != str.toUpperCase();
+    }
+
+    function toClass(str) {
+      return str.replace(/\s/g, '_').replace(/[^A-Za-z_]*/g, '').toLowerCase()
+    }
     $(document).ready(() => {
 
       /* beautify ignore:start */
+
       const chapters = {
-        /* Prolégomènes  */ 'Prolegomena': { keySignature: "∅"   , measures:  2, html: "Blank. <br>Bare. <br>Empty." },
+        /* Prolégomènes  */ 'Prolegomena': { keySignature: "∅"   , measures:  2, html: "Blank, bare, empty." },
         /* Thèse         */ 'Thesis'     : { keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
         /* Antithèse     */ 'Antithesis' : { keySignature: "♭♭♭" , measures: 12, html: "Ditto, stronger, more vivid." },
         /*               */ 'Thesis′'    : { keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
@@ -161,6 +172,7 @@
         /* Péroraison    */ 'Peroration' : { keySignature: "♯♯♯♯", measures:  4, html: "Last surge, final attempt." },
         /* Conclusion    */ 'Conclusion' : { keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
         /* fin           */ 'end'        : { keySignature: ""    , measures:  0, html: "" }
+        /* all lowercase, e.g. "end", will not be displayed */
       }
 
       const shootingScript = {
@@ -198,40 +210,61 @@
       }
       /* beautify ignore:end */
 
-      const columns = [
-        "Dialectics",
-        "Key",
-        "Measures",
-        "Duration",
-        "Clue",
-        "Shooting script"
-      ]
-      $("#chapters table thead")
-        .append($("<tr>")
-          .append($("<th>").text("Dialectics"))
-          .append($("<th>").text("Key"))
-          .append($("<th>").text("Measures"))
-          .append($("<th>").text("Duration"))
-          .append($("<th>").html("Clue"))
-          .append($("<th>").html("Shooting script"))
-        )
+      const hasShootingScript = typeof shootingScript !== "undefined"
+      let showShootingScript = true
 
-      let sum = 0
+      // insert header
+      {
+        const columns = [
+          "Dialectics",
+          "Key",
+          "Measures",
+          "Duration",
+          "Clue",
+          "Shooting Script"
+        ]
 
-      // https://stackoverflow.com/a/17772086/1070215
-      function isString(x) {
-        return Object.prototype.toString.call(x) === "[object String]"
+        const columnsFiltered = columns.filter(name => {
+          return hasShootingScript ?
+            true :
+            name !== "Duration" && name !== "Shooting Script"
+        })
+
+        const $tr = $("<tr>")
+        columnsFiltered.forEach(c => {
+          const clazz = toClass(c)
+          console.log(clazz)
+          const $th = $("<th>").addClass(clazz).text(c)
+          if (c === "Clue") {
+            $th.append($('<button>').addClass("float-end btn btn-light btn-sm").click(() => {
+              showShootingScript = !showShootingScript
+              if (showShootingScript) {
+                $("#chapters table .shooting_script").show()
+              } else {
+                $("#chapters table .shooting_script").hide()
+              }
+            }).text("±"))
+          }
+          $tr.append($th)
+        })
+
+        $("#chapters table thead").append($tr)
       }
+
+      let sum = {
+        measures: 0,
+        duration: 0
+      }
+
       let prevDuration = undefined
       let tdDuration = undefined
       let lastImageName = undefined
       let noTime = false
       _.forOwn(chapters, (value, key) => {
-        sum = sum + parseFloat(value.measures)
+        sum.measures = sum.measures + parseFloat(value.measures)
 
         const $lastColDiv = $('<div>')
-
-        if (shootingScript[key]) {
+        if (hasShootingScript && shootingScript[key]) {
           let first_time_since_start = undefined
           shootingScript[key].forEach((shot) => {
             const [imageName] = Object.keys(shot)
@@ -263,30 +296,35 @@
             const S = moment(prev, "mm′ss″")
             const E = moment(first_time_since_start, "mm′ss″")
             const EminusS = E.diff(S) / 1000
+            sum.duration = sum.duration + parseFloat(value.EminusS)
             tdDuration.html(`${EminusS}″`)
             prevDuration = first_time_since_start
           }
         }
 
-        function hasUpperCase(str) {
-          return str && str.toLowerCase() !== str;
-        }
+        // insert row
+        {
+          const $tr = $("<tr>").addClass(toClass(key))
+          tdDuration = $("<td>").addClass('duration')
 
-        tdDuration = $("<td>");
-        $("#chapters tbody")
-          .append($("<tr>")
-            .append($("<td>").html(hasUpperCase(key) ? $('<h1>').text(key) : ""))
-            .append($("<td>").html(value.keySignature ?
-              $('<div>').append($('<img>').attr("src", `pianos/lilyponds/${encodeURIComponent(value.keySignature)}.svg`)) :
-              ""))
-            .append($("<td>").text(value.measures ? value.measures : ""))
-            .append(tdDuration)
-            .append($("<td>").html(value.html))
-            .append($("<td>").html($lastColDiv))
-          )
+          $tr.append($("<td>").addClass('dialectics').html(isLowerCase(key) ? "" : $('<h1>').text(key)))
+          $tr.append($("<td>").addClass('key').html(value.keySignature ? $('<div>').append($('<img>').attr("src",
+            `pianos/lilyponds/${encodeURIComponent(value.keySignature)}.svg`)) : ""))
+          $tr.append($("<td>").addClass('measures').text(value.measures ? value.measures : ""))
+          if (hasShootingScript) {
+            $tr.append(tdDuration)
+          }
+          $tr.append($("<td>").addClass('clue').html(value.html))
+          if (hasShootingScript) {
+            $tr.append($("<td>").addClass('shooting_script').html($lastColDiv))
+          }
+
+          $("#chapters table tbody").append($tr)
+        }
       })
 
-      $("#chapters tbody tr:last-child td:nth-child(3)").html(sum.toFixed(0))
+      $("#chapters tbody tr:last-child td.measures").html(sum.measures.toFixed(0))
+      $("#chapters tbody tr:last-child td.shooting_script>div>div").detach().appendTo('#chapters tbody tr:last-child td.duration')
     })
   </script>
 </head>
@@ -297,6 +335,7 @@
       <!-- table-striped -->
       <thead></thead>
       <tbody></tbody>
+      <tfoot></tfoot>
     </table>
   </main>
 </body>
