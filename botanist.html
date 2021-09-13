@@ -140,6 +140,7 @@
   <script src="https://cdn.jsdelivr.net/npm/lodash@latest/lodash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/nunjucks@latest/browser/nunjucks.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@latest/moment.min.js"></script>
+  <script src="https://kit.fontawesome.com/630ccf7ca9.js" crossorigin="anonymous"></script>
 
   <script>
     // https://stackoverflow.com/a/17772086/1070215
@@ -211,7 +212,7 @@
       /* beautify ignore:end */
 
       const hasShootingScript = typeof shootingScript !== "undefined"
-      let showShootingScript = true
+      let showShootingScript = false
 
       // insert header
       {
@@ -236,14 +237,14 @@
           console.log(clazz)
           const $th = $("<th>").addClass(clazz).text(c)
           if (c === "Clue") {
-            $th.append($('<button>').addClass("float-end btn btn-light btn-sm").click(() => {
+            $th.append($('<button>').addClass("float-end btn btn-light btn-sm p-1 m-1").click(() => {
               showShootingScript = !showShootingScript
               if (showShootingScript) {
                 $("#chapters table .shooting_script").show()
               } else {
                 $("#chapters table .shooting_script").hide()
               }
-            }).text("±"))
+            }).html("<i class=\"fas fa-film\"></i>"))
           }
           $tr.append($th)
         })
@@ -325,6 +326,11 @@
 
       $("#chapters tbody tr:last-child td.measures").html(sum.measures.toFixed(0))
       $("#chapters tbody tr:last-child td.shooting_script>div>div").detach().appendTo('#chapters tbody tr:last-child td.duration')
+      if (showShootingScript) {
+        $("#chapters table .shooting_script").show()
+      } else {
+        $("#chapters table .shooting_script").hide()
+      }
     })
   </script>
 </head>
