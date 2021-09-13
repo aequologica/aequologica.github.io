@@ -146,39 +146,31 @@
 
   <script>
     $(document).ready(() => {
-      const columns = [
-        "Part",
-        "Key",
-        "Measures",
-        "Duration",
-        "Clue",
-        "Shooting script"
-      ]
 
       /* beautify ignore:start */
       const chapters = {
-        'Prolégomènes' : { keySignature: "∅"   , measures:  2, html: "Blank. <br>Bare. <br>Empty." },
-        'Thèse'        : { keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
-        'Antithèse'    : { keySignature: "♭♭♭" , measures: 12, html: "Ditto, stronger, more vivid." },
-        'Thèse′'       : { keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
-        'Antithèse′'   : { keySignature: "♭♭♭" , measures: 13, html: "Action." },
-        'Thèse″'       : { keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
-        'Développement': { keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
-        'Antithèse″'   : { keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"something must be done!\"." },
-        'Thèse‴'       : { keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
-        'Péroraison'   : { keySignature: "♯♯♯♯", measures:  4, html: "Last surge, final attempt." },
-        'Conclusion'   : { keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
-        'fin'          : { keySignature: ""    , measures:  0, html: "" }
+        /* Prolégomènes  */ 'Prolegomena': { keySignature: "∅"   , measures:  2, html: "Blank. <br>Bare. <br>Empty." },
+        /* Thèse         */ 'Thesis'     : { keySignature: "♯♯♯" , measures: 12, html: "Memories, remembrance, recollection." },
+        /* Antithèse     */ 'Antithesis' : { keySignature: "♭♭♭" , measures: 12, html: "Ditto, stronger, more vivid." },
+        /*               */ 'Thesis′'    : { keySignature: "♯♯♯" , measures: 12, html: "Decision to act." },
+        /*               */ 'Antithesis′': { keySignature: "♭♭♭" , measures: 13, html: "Action." },
+        /*               */ 'Thesis″'    : { keySignature: "♯♯♯" , measures: 11, html: "Renouncement, surrendering, giving up." },
+        /* Développement */ 'Development': { keySignature: "∅"   , measures: 16, html: "Await, suspense, rising turmoil." },
+        /*               */ 'Antithesis″': { keySignature: "♭♭♭" , measures: 13, html: "Awakening, \"something must be done!\"." },
+        /*               */ 'Thesis‴'    : { keySignature: "♯♯♯" , measures:  9, html: "Pleasant melancholy, saudade." },
+        /* Péroraison    */ 'Peroration' : { keySignature: "♯♯♯♯", measures:  4, html: "Last surge, final attempt." },
+        /* Conclusion    */ 'Conclusion' : { keySignature: "♯♯"  , measures:  3, html: "All's well that ends well." },
+        /* fin           */ 'end'        : { keySignature: ""    , measures:  0, html: "" }
       }
 
       const shootingScript = {
-        'Prolégomènes': [{ "kittyBack"                   : "00′00″" }],
-        'Thèse'       : [{ "megaCloseup"                 : "00′07″" }, { "cordes"                  : "00′22″" }, { "lessMegaCloseup"              : "00′33″" }],
-        'Antithèse'   : [{ "kittyFrontTightShotFromRight": "00′42″" }, { "roues2"                  : "00′57″" }, { "kittyFrontMediumShotFromRight": "01′08″" }],
-        'Thèse′'      : [{ "kittySideMediumShotFromLeft" : "01′17″" }, { "cordesBassesHorizontales": "01′31″" }, { "closeright"                   : "01′41″" }],
-        'Antithèse′'  : [{ "fullPianoFromSouthEast"      : "01′50″" }, { "pedales2"                : "02′05″" }, { "right"                        : "02′18″" }],
-        'Thèse″'      : [{ "counterDiveFromWestSouth"    : "02′30″" }, { "marteauxInside"          : "02′43″" }, { "bottomTop"                    : "02′53″" }],
-        'Développement': [
+        'Prolegomena': [{ "kittyBack"                   : "00′00″" }],
+        'Thesis'     : [{ "megaCloseup"                 : "00′07″" }, { "cordes"                  : "00′22″" }, { "lessMegaCloseup"              : "00′33″" }],
+        'Antithesis' : [{ "kittyFrontTightShotFromRight": "00′42″" }, { "roues2"                  : "00′57″" }, { "kittyFrontMediumShotFromRight": "01′08″" }],
+        'Thesis′'    : [{ "kittySideMediumShotFromLeft" : "01′17″" }, { "cordesBassesHorizontales": "01′31″" }, { "closeright"                   : "01′41″" }],
+        'Antithesis′': [{ "fullPianoFromSouthEast"      : "01′50″" }, { "pedales2"                : "02′05″" }, { "right"                        : "02′18″" }],
+        'Thesis″'    : [{ "counterDiveFromWestSouth"    : "02′30″" }, { "marteauxInside"          : "02′43″" }, { "bottomTop"                    : "02′53″" }],
+        'Development': [
           { "bottomTopBottom": "02′59″" },
           { "leggio": "03′04″" },
           { "verticalDiveOnKeyboard": "03′09″" },
@@ -187,7 +179,7 @@
           { "verticalDiveOnKeyboard4": "03′33″" },
           { "verticalDiveOnKeyboard5": "03′39″" },
         ],
-        'Antithèse″': [
+        'Antithesis″': [
           { "longShotCircleRightToLeft": "03′42″" },
           { "longShotCircleRightToLeft2": "03′48″" },
           { "longShotCircleRightToLeft3": "03′52″" },
@@ -199,16 +191,24 @@
           { "longShotCircleRightToLeft9": "04′13″" },
           { "longShotCircleRightToLeft10": "04′16″" },
         ],
-        'Thèse‴'    : [{ "longShotCircleRightToLeft13"           : "04′23″" }, { "diveOnSeatFromWestNorth": "04′39″" }],
-        'Péroraison': [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" }, { "mediumEast"             : "04′58″" }],
+        'Thesis‴'   : [{ "longShotCircleRightToLeft13"           : "04′23″" }, { "diveOnSeatFromWestNorth": "04′39″" }],
+        'Peroration': [{ "kittyAndPianoAmericanPlanSideFromRight": "04′51″" }, { "mediumEast"             : "04′58″" }],
         'Conclusion': [{ "kittyEnd"                              : "05′04″" }],
-        'fin'       : [{ "_"                                     : "05′21″" }],
+        'end'       : [{ "_"                                     : "05′21″" }],
       }
       /* beautify ignore:end */
 
+      const columns = [
+        "Dialectics",
+        "Key",
+        "Measures",
+        "Duration",
+        "Clue",
+        "Shooting script"
+      ]
       $("#chapters table thead")
         .append($("<tr>")
-          .append($("<th>").text("Part"))
+          .append($("<th>").text("Dialectics"))
           .append($("<th>").text("Key"))
           .append($("<th>").text("Measures"))
           .append($("<th>").text("Duration"))
