@@ -10,7 +10,7 @@
 
      ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                             , "src": "bandlab.png"                         }
 
-     ,{ "name":"botanist"             , "url": "/botanist.html"                                                              , "src": "/pianos/diagonal.jpg"                }
+     ,{ "name":"botanist"             , "url": "/botanist.html"                                                              , "src": "https://klam.cthiebaud.com/pianos/diagonal.jpg" }
      ,{ "name":"covid"                , "url": "https://covid.aequologica.net/"                                              , "src": "graph.svg"                           }
      ,{ "name":"cv"                   , "url": "cv/"                                                                         , "src": "cv-icon-by-Vexels.svg"               }
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                , "src": "github-logo-transparent.png"         }
