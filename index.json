@@ -45,7 +45,6 @@
      ,{ "name":"travis-ci"            , "url": "https://travis-ci.com"                                                       , "src": "travis-ci-trans.png"                 }
      ,{ "name":"twitter"              , "url": "https://twitter.com/cthiebaud"                                               , "src": "Twitter_logo_transparent-3.png"      }
      ,{ "name":"vinyl"                , "url": "https://mugnierandthiebaud.com/"                                             , "src": "vinyl_record.svg"                    }
-     ,{ "name":"worldometers"         , "url": "https://www.worldometers.info/coronavirus/"                                  , "src": "covid-19.svg"                        }
      ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                            , "src": "Wordpress-Logo.svg"                  }
 
      
