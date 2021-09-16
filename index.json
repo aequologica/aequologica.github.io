@@ -12,7 +12,7 @@
 
      ,{ "name":"botanist"             , "url": "/botanist.html"                                                              , "src": "https://klam.cthiebaud.com/pianos/diagonal.jpg" }
      ,{ "name":"covid"                , "url": "https://covid.aequologica.net/"                                              , "src": "graph.svg"                           }
-     ,{ "name":"cv"                   , "url": "cv/"                                                                         , "src": "cv-icon-by-Vexels.svg"               }
+     ,{ "name":"cv"                   , "url": "https://cthiebaud.com/cv/"                                                   , "src": "cv-icon-by-Vexels.svg"               }
      ,{ "name":"cthiebaud.com"        , "url": "https://cthiebaud.com"                                                       , "src": "mexican-sugar-skull-transparent-background.png" }
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                , "src": "github-logo-transparent.png"         }
      ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
