@@ -107,6 +107,15 @@
                         } 
                         bricks.push(ima);
                     });
+                    
+                    for (let transparents = 0; transparents<8; transparents++) {
+                        const tras = {}
+                        tras.width = getRandomWidth();
+                        tras.ima = "images/transparent.png";
+                        tras.height = "auto";
+                        tras.class= "transparent"
+                        bricks.push(tras);
+                    }
 
                     // display random widths to vaguely check normal distribution on console
                     if (typeof widths !== 'undefined') {
@@ -117,12 +126,6 @@
                             console.log(Math.floor(tick/10));
                         });
                     }
-
-                    /* if (!inTheOffice) {
-                        bricks = _.filter(bricks, function(ima) { 
-                            return ima.url.indexOf("sap.corp")==-1; 
-                        });
-                    } */
 
                     const shuffledBricks = shuffleArray(bricks);
 
@@ -152,26 +155,8 @@
         } // function loadData
 
         $(snitchSelectorParam).imagesLoaded().always(function( instance ) {
-            // console.log('all images successfully loaded');
             loadData();
-        }).done( function( instance ) {
-            // console.log('all images successfully loaded');
-        }).fail( function() {
-            // console.log('all images loaded, at least one is broken');
-        }).progress( function( instance, image ) {
-            /*
-            if (!image.isLoaded) {
-                // console.log( 'image is BROKEN for', image.img.src );
-                inTheOffice = false;
-                $(instance).find("img").hide();
-            } else {
-                // console.log( 'image is OK for', image.img.src);
-                inTheOffice = (image.img.src.indexOf("sap.corp") != -1);
-                $(instance).find("img").show();
-            }
-            */
-            // console.log( 'out of office', !inTheOffice);
-        }); // wait for snitch image to be loaded
+        })
     }); // document ready
 }(
   "#grid",

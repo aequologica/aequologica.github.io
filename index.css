@@ -26,22 +26,26 @@ body {
   width: 100%;  
 }
 
-.grid-brick {
+.grid-brick:not(.transparent) {
   background: rgba(0,0,0,.075);
   border-radius: 1rem;
 }
-.grid-brick:hover {
+.grid-brick:not(.transparent):hover {
   background: rgba(0,0,0,.150);
 }
 
-.grid-brick a img {
+.grid-brick.transparent a {
+  cursor: default;
+}
+
+.grid-brick:not(.transparent) a img {
   margin: 1rem;
   border: none;
   cursor: pointer;
 }
 
 /* https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
-.grid-brick a img:hover {
+.grid-brick:not(.transparent) a img:hover {
   -webkit-animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
           animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   -webkit-transform: translate3d(0, 0, 0);
