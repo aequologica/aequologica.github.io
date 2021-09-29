@@ -41,6 +41,7 @@
     };
     //  ξ: location (mean), ω: scale (standard deviation), α: and shape (skewness)
     const randomSkewNormal = (rng, ξ, ω, α = 0) => {
+        α = -α
         const [u0, v] = randomNormals(rng);
         if (α === 0) {
             return ξ + ω * u0;
@@ -51,18 +52,17 @@
         return ξ + ω * z;
     };    
 
-    let widths = []; // uncomment variable widths to check normal distribution on console (see below)
+    let surfaces = []; // uncomment variable surfaces to check normal distribution on console (see below)
     function setRandomSurface(image) {
 
         // const surface = Math.floor(randn_bm(0, 24000, 1));
-        const mean = 20
-        const scale = 6.666
-        const skew = -5
-        const multiple =  800
-        let surface = multiple * randomSkewNormal(Math.random, mean, scale, skew)
-        if (surface <= 0) {
-            surface = multiple * mean
-        }
+        const location = 2        
+        const scale = 1
+        const shape = 0
+        const multiple = 5000
+        const pick = randomSkewNormal(Math.random, location, scale, shape)
+        // console.log(pick)
+        let surface = 0.1 < pick ? multiple * pick : multiple * location
         let width, height
         if (!isNaN(surface) && image.width && image.height) {
             const ratio = Math.sqrt(surface / (image.width * image.height))
@@ -79,8 +79,8 @@
         } else {
             console.log(image.src)
         }
-        if (typeof widths !== 'undefined') { 
-            widths.push(width * height);
+        if (typeof surfaces !== 'undefined') { 
+            surfaces.push({surface:width * height, pick:pick});
         }
 
         // console.log(image.width, image.height, image.width * image.height, surface)
@@ -90,8 +90,8 @@
 
         const $m = $(gridSelectorParam);
 
-        if (typeof widths !== 'undefined') {
-            widths.length = 0;
+        if (typeof surfaces !== 'undefined') {
+            surfaces.length = 0;
         }
 
         $("html, body, #grid").bind( "click", function( event ) {
@@ -164,13 +164,27 @@
                     }).always( function() {
                         $m.isotope('layout');
                         $("#gridContainer").css("visibility", "visible");
-                        // display random widths to vaguely check normal distribution on console
-                        if (typeof widths !== 'undefined') {
-                            widths.sort(function(a, b) {
-                                return a - b;
+                        // display random surfaces to vaguely check normal distribution on console
+                        if (typeof surfaces !== 'undefined' || surfaces.length) {
+                            surfaces.sort(function(a, b) {
+                                return a.surface - b.surface;
                             });
-                            _.forEach(widths, function(w, i) {
-                                console.log(w);
+                            const [totalSurface, totalPick] = surfaces.reduce((a, b) => [
+                                    a[0] + b.surface, 
+                                    a[1] + b.pick
+                                ]
+                            , [0,0])
+                            const significantNumbers = [
+                                surfaces[0],
+                                {surface: Math.round(totalSurface/surfaces.length), pick : Math.round(totalPick/surfaces.length)}, 
+                                surfaces[surfaces.length - 1],
+                            ]
+                            _.forEach(surfaces, function(s, i) {
+                                console.log(s.surface, s.pick);
+                            });
+                            console.log('========')
+                            _.forEach(significantNumbers, function(s, i) {
+                                console.log(s.surface, s.pick);
                             });
                         }
 
