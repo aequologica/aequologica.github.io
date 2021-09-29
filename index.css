@@ -22,7 +22,7 @@ body {
   background-color: transparent;
   visibility: hidden;
 }
-
+/*
 .grid-brick:not(.transparent) {
   background: rgba(0,0,0,.075);
   border-radius: 1rem;
@@ -30,7 +30,7 @@ body {
 .grid-brick:not(.transparent):hover {
   background: rgba(0,0,0,.150);
 }
-
+*/
 .grid-brick.transparent a {
   cursor: default;
 }
