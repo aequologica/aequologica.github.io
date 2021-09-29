@@ -55,9 +55,13 @@
     function setRandomSurface(image) {
 
         // const surface = Math.floor(randn_bm(0, 24000, 1));
-        let surface = 960 * randomSkewNormal(Math.random, 20, 6.666, -5)
+        const mean = 20
+        const scale = 6.666
+        const skew = -5
+        const multiple =  800
+        let surface = multiple * randomSkewNormal(Math.random, mean, scale, skew)
         if (surface <= 0) {
-            surface = 960 * 20
+            surface = multiple * mean
         }
         let width, height
         if (!isNaN(surface) && image.width && image.height) {
