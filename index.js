@@ -28,29 +28,51 @@
         return array;
     }
 
-    // https://stackoverflow.com/a/49434653/1070215
-    // -> Box–Muller transform
-    function randn_bm(min, max, skew) {
-        let u = 0, v = 0;
-        while(u === 0) u = Math.random(); // Converting [0,1) to (0,1)
-        while(v === 0) v = Math.random();
-        let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
-    
-        num = num / 10.0 + 0.5; // Translate to 0 -> 1
-        if (num > 1 || num < 0) num = randn_bm(min, max, skew); // resample between 0 and 1 if out of range
-        num = Math.pow(num, skew); // Skew
-        num *= max - min; // Stretch to fill range
-        num += min; // offset to min
-        return num;
-    }
-
-    // let widths = []; // uncomment variable widths to check normal distribution on console (see below)
-    function getRandomWidth() {
-        const width = Math.floor(randn_bm(10, 400, 2));
-        if (typeof widths !== 'undefined') { 
-            widths.push(width);
+    // https://spin.atomicobject.com/2019/09/30/skew-normal-prng-javascript/
+    const randomNormals = (rng) => {
+        let u1 = 0, u2 = 0;
+        //Convert [0,1) to (0,1)
+        // cf. last comment of https://stackoverflow.com/a/36481059/1070215
+        u1 = 1 - rng();
+        u2 = 1 - rng();
+        const R = Math.sqrt(-2.0 * Math.log(u1));
+        const Θ = 2.0 * Math.PI * u2;
+        return [R * Math.cos(Θ), R * Math.sin(Θ)];
+    };
+    //  ξ: location (mean), ω: scale (standard deviation), α: and shape (skewness)
+    const randomSkewNormal = (rng, ξ, ω, α = 0) => {
+        const [u0, v] = randomNormals(rng);
+        if (α === 0) {
+            return ξ + ω * u0;
         }
-        return width;
+        const 𝛿 = α / Math.sqrt(1 + α * α);
+        const u1 = 𝛿 * u0 + Math.sqrt(1 - 𝛿 * 𝛿) * v;
+        const z = u0 >= 0 ? u1 : -u1;
+        return ξ + ω * z;
+    };    
+
+    let widths = []; // uncomment variable widths to check normal distribution on console (see below)
+    function setRandomSurface(image) {
+
+        // const surface = Math.floor(randn_bm(0, 24000, 1));
+        const surface = randomSkewNormal(Math.random, 20000, 10000, -5000)
+        let width, height
+        if (image.width && image.height) {
+            const ratio = Math.sqrt(surface / (image.width * image.height))
+
+            width = Math.round(image.width * ratio)
+            height = Math.round(image.height * ratio)
+        } else {
+            width = height = Math.round(Math.sqrt(surface))
+        }
+        image.style = `width: ${width}px; height: auto;`
+        image.width = width
+        image.height = "auto";
+        if (typeof widths !== 'undefined') { 
+            widths.push(width * height);
+        }
+
+        // console.log(image.width, image.height, image.width * image.height, surface)
     }
 
     $( document ).ready(function() {
@@ -72,7 +94,7 @@
         });
 
         function loadData() {
-            let loaded = {};
+            let configuration;
 
             $.ajax({
                 type        : "GET",
@@ -80,8 +102,9 @@
                 cache       : false,
                 url         : "index.json",
             }).done(function(data, textStatus, jqXHR) {
-                loaded = data;
+                configuration = data;
             }).fail(function(jqXHR, textStatus, errorThrown) {
+                configuration = {}
             }).always(function(data_jqXHR, textStatus, jqXHR_errorThrown) {
                 try {                
                     const bricks = [];
@@ -94,37 +117,21 @@
                         }              
                     });
 
-                    _.forEach(loaded.images, function(ima, i) {
+                    _.forEach(configuration.images, function(ima, i) {
                         if (ima.src.startsWith("http") || ima.src.startsWith("/")) {
                           ima.ima = ima.src;
                         } else {
                           ima.ima = "images/"+ima.src;
                         }
             
-                        if (!ima.width) {
-                            ima.width = getRandomWidth();
-                            ima.height = "auto";
-                        } 
                         bricks.push(ima);
                     });
                     
                     for (let transparents = 0; transparents<8; transparents++) {
                         const tras = {}
-                        tras.width = getRandomWidth();
                         tras.ima = "images/transparent.png";
-                        tras.height = "auto";
                         tras.class= "transparent"
                         bricks.push(tras);
-                    }
-
-                    // display random widths to vaguely check normal distribution on console
-                    if (typeof widths !== 'undefined') {
-                        widths.sort(function(a, b) {
-                            return a - b;
-                        });
-                        _.forEach(widths, function(tick, i) {
-                            console.log(Math.floor(tick/10));
-                        });
                     }
 
                     const shuffledBricks = shuffleArray(bricks);
@@ -137,16 +144,26 @@
 
                     const $bricks = $bricksContainer.children();
                     
-                    $m.empty().append( $bricks ).isotope( 'appended', $bricks ).isotope('layout');
+                    $m.empty().append( $bricks ).isotope( 'appended', $bricks );
 
                     $m.imagesLoaded().progress( function( instance, image ) {
-                        if (!image.isLoaded) {
-                            // console.log( 'image is broken for', image.img.src);
+                        if (image.isLoaded) {
+                            setRandomSurface(image.img)
                         }
-                        // $m.isotope('layout');
                     }).always( function() {
                         $m.isotope('layout');
-                        $(".grid-brick img").css("visibility", "visible");
+                        $("#gridContainer").css("visibility", "visible");
+                        // display random widths to vaguely check normal distribution on console
+                        if (typeof widths !== 'undefined') {
+                            widths.sort(function(a, b) {
+                                return a - b;
+                            });
+                            _.forEach(widths, function(w, i) {
+                                console.log(w);
+                            });
+                        }
+
+
                     });
                 } catch(err) {
                     alert(err);
