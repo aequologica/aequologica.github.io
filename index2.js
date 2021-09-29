@@ -111,7 +111,7 @@
                 type        : "GET",
                 dataType    : "json",
                 cache       : false,
-                url         : "index.json",
+                url         : "index2.json",
             }).done(function(data, textStatus, jqXHR) {
                 configuration = data;
             }).fail(function(jqXHR, textStatus, errorThrown) {
