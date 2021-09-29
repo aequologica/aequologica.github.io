@@ -6,11 +6,11 @@ html {
   background-size: cover;
   background: #000000;
   background-repeat:no-repeat;
-  background: -webkit-radial-gradient( circle, #00aab4, #00282a);
-  background: -moz-radial-gradient( circle, #00aab4, #00282a);
-  background: -ms-radial-gradient( circle, #00aab4, #00282a);
-  background: -o-radial-gradient( circle, #00aab4, #00282a);
-  background: radial-gradient( circle, #00aab4, #00282a);
+  background: -webkit-radial-gradient( circle, #ed5405, #4a1b02);
+  background: -moz-radial-gradient( circle, #ed5405, #4a1b02);
+  background: -ms-radial-gradient( circle, #ed5405, #4a1b02);
+  background: -o-radial-gradient( circle, #ed5405, #4a1b02);
+  background: radial-gradient( circle, #ed5405, #4a1b02);
   background-attachment: fixed;
 }
 
