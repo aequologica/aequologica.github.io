@@ -55,9 +55,12 @@
     function setRandomSurface(image) {
 
         // const surface = Math.floor(randn_bm(0, 24000, 1));
-        const surface = randomSkewNormal(Math.random, 20000, 10000, -5000)
+        let surface = 960 * randomSkewNormal(Math.random, 20, 6.666, -5)
+        if (surface <= 0) {
+            surface = 960 * 20
+        }
         let width, height
-        if (image.width && image.height) {
+        if (!isNaN(surface) && image.width && image.height) {
             const ratio = Math.sqrt(surface / (image.width * image.height))
 
             width = Math.round(image.width * ratio)
@@ -65,9 +68,13 @@
         } else {
             width = height = Math.round(Math.sqrt(surface))
         }
-        image.style = `width: ${width}px; height: auto;`
-        image.width = width
-        image.height = "auto";
+        if (!isNaN(width) && !isNaN(height)) {
+            image.style = `width: ${width}px; height: auto;`
+            image.width = width
+            image.height = "auto";
+        } else {
+            console.log(image.src)
+        }
         if (typeof widths !== 'undefined') { 
             widths.push(width * height);
         }
