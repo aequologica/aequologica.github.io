@@ -77,7 +77,7 @@
             image.width = width
             image.height = "auto";
         } else {
-            console.log(image.src)
+            // console.log(image.src)
         }
         if (typeof surfaces !== 'undefined') { 
             surfaces.push({surface:width * height, pick:pick});
@@ -165,6 +165,7 @@
                         $m.isotope('layout');
                         $("#gridContainer").css("visibility", "visible");
                         // display random surfaces to vaguely check normal distribution on console
+                        /*
                         if (typeof surfaces !== 'undefined' || surfaces.length) {
                             surfaces.sort(function(a, b) {
                                 return a.surface - b.surface;
@@ -180,13 +181,14 @@
                                 surfaces[surfaces.length - 1],
                             ]
                             _.forEach(surfaces, function(s, i) {
-                                console.log(s.surface, s.pick);
+                                // console.log(s.surface, s.pick);
                             });
-                            console.log('========')
+                            // console.log('========')
                             _.forEach(significantNumbers, function(s, i) {
-                                console.log(s.surface, s.pick);
+                                // console.log(s.surface, s.pick);
                             });
                         }
+                        */
 
 
                     });
