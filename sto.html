@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="google" content="notranslate" />
+<head>
+  <meta charset="UTF-8" />
 
-    <title>sto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google" content="notranslate" />
 
-    <link rel="canonical" href="https://aequologica.net/sto.html" />
+  <title>sto</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-      #sto table {
-        margin: 80vh 0;
-      }
-      #sto table tr td:last-child {
-        text-align: right;
-        font-family: "Courier New", monospace;
-      }
+  <link rel="canonical" href="https://aequologica.net/sto.html" />
 
-      #sto table tr:last-child {
-        border-top: 1px solid black !important;
-      }
-    </style>
-  </head>
-  <body>
-    <main id="sto" class="container">
-      <table class="table">
-        <tbody />
-      </table>
-    </main>
-  </body>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    #sto table {
+      margin: 10vh 0;
+    }
+
+    #sto table tr td:first-child {
+      text-align: left;
+      font-family: "Helvetica", sans-serif;
+    }
+    #sto table tr td {
+      text-align: right;
+      font-family: "Courier New", monospace;
+    }
+
+    #sto table tr:last-child {
+      border-top: 2px solid black !important;
+    }
+  </style>
+</head>
+
+<body>
+  <main id="sto" class="container">
+    <table class="table">
+      <tbody />
+    </table>
+  </main>
+</body>
+
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
@@ -42,24 +50,45 @@
 
 <script type="text/javascript">
   $(function () {
-    const sto = {
+    const banks = [
+      "Volksbank",
+      "CA",
+      "Banca_di_Bologna",
+      "N26",
+      "BNP",
+    ]
+
+    const sto0 = {
       Volksbank: "105298.43",
       CA: "3918.66",
       "Banca di Bologna": "0.46",
       N26: "62.55",
       BNP: "29937.07",
     };
-    let sum = 0;
-    _.forOwn(sto, (value, key) => {
-      sum = sum + parseFloat(value);
+    const sto = {
+      Volksbank: "106927.18",
+      CA: "3918.66",
+      "Banca di Bologna": "119.62",
+      N26: "117.43",
+      BNP: "25187.13",
+    };
+    banks.forEach((b) => {
+      const name = b.replace(/_/g, " ")
+      $("#sto tbody").append($(`<tr id="${b}">`).append($("<td>").text(name)));
+    })
+    $("#sto tbody").append($("<tr id='totaux'>").append($('<td>)')))
 
-      $("#sto tbody").append($("<tr>").append($("<td>").text(key)).append($("<td>").text(value)));
-    });
+    const qwe = [sto0, sto]
+    qwe.forEach( (s) => {
+      console.log("SSS", s)
+      let sum = 0;
+      _.forOwn(s, (value, b) => {
+          const key = b.replace(/\s/g, "_")
+          sum = sum + parseFloat(value);
+          $(`#sto tbody tr#${key}`).append($("<td>").html(value))
+      });
+      $(`#sto tbody tr#totaux`).append($("<td>").html($("<b>").text(sum.toFixed(2))))
+    })
 
-    $("#sto tbody").append(
-      $("<tr>")
-        .append($("<td>").html("&nbsp;"))
-        .append($("<td>").html($("<b>").text(sum.toFixed(2))))
-    );
   });
 </script>
