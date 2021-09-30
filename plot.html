@@ -40,7 +40,7 @@
     };
     //  ξ: location (mean), ω: scale (standard deviation), α: and shape (skewness)
     const randomSkewNormal = (rng, ξ, ω, α = 0) => {
-        // α = -α
+        α = -α
         const [u0, v] = randomNormals(rng);
         if (α === 0) {
             return ξ + ω * u0;
@@ -51,80 +51,83 @@
         return ξ + ω * z;
     };
 
+    const theDiv = document.getElementById("my_dataviz")
+    let width = theDiv.clientWidth
+    let height = theDiv.clientHeight
+
+    const margin = {
+        top: 30,
+        right: 30,
+        bottom: 30,
+        left: 50
+    }
+
+    // set the dimensions and margins of the graph
+    // append the svg object to the body of the page
+    const svg = d3.select("#my_dataviz")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
     // get the data
+    /*
     const data = [...Array(100)].map(() => randomSkewNormal(Math.random, 2, .5, 1))
     console.log(data)
-
-    window.onload = (event) => {
-        const theDiv = document.getElementById("my_dataviz")
-        let width = theDiv.clientWidth
-        let height = theDiv.clientHeight
-
-        const margin = {
-            top: 30,
-            right: 30,
-            bottom: 30,
-            left: 50
-        }
-
-        // set the dimensions and margins of the graph
-        // append the svg object to the body of the page
-        const svg = d3.select("#my_dataviz")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", `translate(${margin.left},${margin.top})`); {
-
-            width = width - margin.left - margin.right
-            height = height - margin.top - margin.bottom;
-            // add the x Axis
-            const x = d3.scaleLinear()
-                .range([0, width])
-                .domain([0, 4])
-            svg.append("g")
-                .attr("transform", `translate(0, ${height})`)
-                .call(d3.axisBottom(x));
-
-            // add the y Axis
-            const y = d3.scaleLinear()
-                .range([height, 0])
-                .domain([0.097, 0.107])
-            svg.append("g")
-                .call(d3.axisLeft(y));
-
-            // const data = [1, 2, 4, 5, 6, 7]
-
-            // Compute kernel density estimation
-            const kde = kernelDensityEstimator(kernelEpanechnikov(7), x.ticks(100))
-            const density = kde(data.map(function (d) {
-                return d;
-            }))
-
-            console.log(density)
-
-            // Plot the area
-            svg.append("path")
-                .attr("class", "mypath")
-                .datum(density)
-                .attr("fill", "#69b3a2")
-                .attr("opacity", ".8")
-                .attr("stroke", "#000")
-                .attr("stroke-width", 1)
-                .attr("stroke-linejoin", "round")
-                .attr("d", d3.line()
-                    .curve(d3.curveBasis)
-                    .x(function (d) {
-                        return x(d[0]);
-                    })
-                    .y(function (d) {
-                        return y(d[1]);
-                    })
-                );
+    window.onload = (event) => { 
+    */
+    d3.csv("1_OneNum.csv").then(function (data) {
+        console.log(data)
 
 
-        }
-    }
+        width = width - margin.left - margin.right
+        height = height - margin.top - margin.bottom;
+        // add the x Axis
+        const x = d3.scaleLinear()
+            .domain([0, 2000])
+            .range([0, width]);
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x));
+
+        // add the y Axis
+        const y = d3.scaleLinear()
+            .range([height, 0])
+            .domain([0, 0.01]);
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // Compute kernel density estimation
+        const kde = kernelDensityEstimator(kernelEpanechnikov(7), x.ticks(40))
+        const density = kde(data.map(function (d) {
+            const ret = 800 * randomSkewNormal(Math.random, 1, .75, -5);
+            console.log(ret)
+            return ret
+        }))
+
+        console.log(density)
+
+        // Plot the area
+        svg.append("path")
+            .attr("class", "mypath")
+            .datum(density)
+            .attr("fill", "#69b3a2")
+            .attr("opacity", ".8")
+            .attr("stroke", "#000")
+            .attr("stroke-width", 1)
+            .attr("stroke-linejoin", "round")
+            .attr("d", d3.line()
+                .curve(d3.curveBasis)
+                .x(function (d) {
+                    return x(d[0]);
+                })
+                .y(function (d) {
+                    return y(d[1]);
+                })
+            );
+
+    });
 
     // Function to compute density
     function kernelDensityEstimator(kernel, X) {

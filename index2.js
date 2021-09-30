@@ -55,14 +55,14 @@
     let surfaces = []; // uncomment variable surfaces to check normal distribution on console (see below)
     function setRandomSurface(image) {
 
-        // const surface = Math.floor(randn_bm(0, 24000, 1));
-        const location = 2        
-        const scale = 1
-        const shape = 0
-        const multiple = 5000
-        const pick = randomSkewNormal(Math.random, location, scale, shape)
+        const location = 1
+        const scale = .3
+        const shape = -12
+        const multiple = 4000
+        let pick = randomSkewNormal(Math.random, location, scale, shape)
+        pick = pick * pick * pick
         // console.log(pick)
-        let surface = 0.1 < pick ? multiple * pick : multiple * location
+        let surface = multiple * pick
         let width, height
         if (!isNaN(surface) && image.width && image.height) {
             const ratio = Math.sqrt(surface / (image.width * image.height))
@@ -138,7 +138,7 @@
                         bricks.push(ima);
                     });
                     
-                    for (let transparents = 0; transparents<8; transparents++) {
+                    for (let transparents = 0; transparents<10; transparents++) {
                         const tras = {}
                         tras.ima = "images/transparent.png";
                         tras.class= "transparent"
@@ -165,7 +165,7 @@
                         $m.isotope('layout');
                         $("#gridContainer").css("visibility", "visible");
                         // display random surfaces to vaguely check normal distribution on console
-                        /*
+
                         if (typeof surfaces !== 'undefined' || surfaces.length) {
                             surfaces.sort(function(a, b) {
                                 return a.surface - b.surface;
@@ -181,15 +181,13 @@
                                 surfaces[surfaces.length - 1],
                             ]
                             _.forEach(surfaces, function(s, i) {
-                                // console.log(s.surface, s.pick);
+                                console.log(s.surface, s.pick);
                             });
-                            // console.log('========')
+                            console.log('========')
                             _.forEach(significantNumbers, function(s, i) {
-                                // console.log(s.surface, s.pick);
+                                console.log(s.surface, s.pick);
                             });
                         }
-                        */
-
 
                     });
                 } catch(err) {
