@@ -52,13 +52,18 @@
         return ξ + ω * z;
     };    
 
+    const location = 1
+    const scale = .3
+    const shape = -12
+    let multiple = 5000
+    let transparents = 10
+    if (window.matchMedia("(max-width: 992px)").matches) {
+        transparents = 0
+        multiple = 3000
+    }
     let surfaces = []; // uncomment variable surfaces to check normal distribution on console (see below)
     function setRandomSurface(image) {
 
-        const location = 1
-        const scale = .3
-        const shape = -12
-        const multiple = 4000
         let pick = randomSkewNormal(Math.random, location, scale, shape)
         pick = pick * pick * pick
         // console.log(pick)
@@ -138,7 +143,7 @@
                         bricks.push(ima);
                     });
                     
-                    for (let transparents = 0; transparents<0; transparents++) {
+                    for (let t = 0; t<transparents; t++) {
                         const tras = {}
                         tras.ima = "images/transparent.png";
                         tras.class= "transparent"
