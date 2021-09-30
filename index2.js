@@ -138,7 +138,7 @@
                         bricks.push(ima);
                     });
                     
-                    for (let transparents = 0; transparents<10; transparents++) {
+                    for (let transparents = 0; transparents<0; transparents++) {
                         const tras = {}
                         tras.ima = "images/transparent.png";
                         tras.class= "transparent"
