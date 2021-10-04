@@ -1,16 +1,9 @@
 html {
   height: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   background: #000000;
   background-repeat: no-repeat;
-  background: -webkit-radial-gradient(circle, #da4d05, #703304);
-  background: -moz-radial-gradient(circle, #da4d05, #703304);
-  background: -ms-radial-gradient(circle, #da4d05, #703304);
-  background: -o-radial-gradient(circle, #da4d05, #703304);
-  background: radial-gradient(circle, #da4d05, #703304);
+  background: radial-gradient(circle, #F8B195 0%, #F67280 25%, #C06C84 50%, #6C5B7B 75%, #355C7D 100%);
   background-attachment: fixed;
 }
 
@@ -22,15 +15,6 @@ body {
   background-color: transparent;
   visibility: hidden;
 }
-/*
-  .grid-brick:not(.transparent) {
-    background: rgba(0, 0, 0, 0.075);
-    border-radius: 1rem;
-  }
-  .grid-brick:not(.transparent):hover {
-    background: rgba(0, 0, 0, 0.15);
-  }
-*/
 
 .grid-brick.transparent a {
   cursor: default;
