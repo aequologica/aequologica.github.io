@@ -38,6 +38,7 @@
      ,{ "name":"sangiosleague.it"     , "url": "https://sangiosleague.it"                                                    , "src": "sangiosleague.svg"                   }
      ,{ "name":"sueddeutsche"         , "url": "http://www.sueddeutsche.de/"                                                 , "src": "Süddeutsche-Zeitung-Ligatur.svg"     }
      ,{ "name":"tebaldi"              , "url": "https://rootp1630844092trial.hanatrial.ondemand.com/"                        , "src": "tebaldi.png"                         }
+     ,{ "name":"tiktok"               , "url": "https://www.tiktok.com/@aequologica"                                         , "src": "TikTok_Logo.svg"                     }
      ,{ "name":"travis-ci"            , "url": "https://travis-ci.com"                                                       , "src": "travis-ci-trans.png"                 }
      ,{ "name":"twitter"              , "url": "https://twitter.com/cthiebaud"                                               , "src": "Twitter_logo_transparent-3.png"      }
      ,{ "name":"vinyl"                , "url": "https://mugnierandthiebaud.com/"                                             , "src": "vinyl_record.svg"                    }
