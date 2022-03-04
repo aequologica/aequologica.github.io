@@ -11,6 +11,7 @@
      ,{ "name":"cv"                   , "url": "https://cthiebaud.com/cv/"                                                   , "src": "cv-icon-by-Vexels.svg"               }
      ,{ "name":"cthiebaud.com"        , "url": "https://cthiebaud.com"                                                       , "src": "mexican-sugar-skull-transparent-background.png" }
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                , "src": "github-logo-transparent.png"         }
+     ,{ "name":"cthiebaud@gitlab"     , "url": "https://gitlab.com/users/cthiebaud/projects"                                 , "src": "gitlab.svg"                          }
      ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
      ,{ "name":"facebook.com"         , "url": "https://www.facebook.com/christophe.thiebaud"                                , "src": "transparent-facebook-logo-icon.png"  }
      ,{ "name":"facebook.dev"         , "url": "https://developers.facebook.com/apps/"                                       , "src": "facebook-developers.svg"             }
