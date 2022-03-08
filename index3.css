@@ -1,7 +1,7 @@
 html {
   height: 100%;
   background-size: cover;
-  background: #1c1e1f;
+  background: linear-gradient(180deg, #0057b7 50%, #ffd700 50%);
   background-repeat: no-repeat;
   /* background: radial-gradient(circle, #F8B195 0%, #F67280 25%, #C06C84 50%, #6C5B7B 75%, #355C7D 100%); */
   background-attachment: fixed;
