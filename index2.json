@@ -4,23 +4,24 @@
         "url": "http://aequologica.net",
         "src": "aequologica-trans.png"
      }
+     
+
      ,{ "name":"aequologica@sonatype" , "url": "https://issues.sonatype.org/browse/OSSRH-13933"                              , "src": "sonatype.png"                        }
      ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                             , "src": "bandlab.png"                         }
      ,{ "name":"botanist"             , "url": "/botanist.html"                                                              , "src": "lam.jpg" }
      ,{ "name":"covid"                , "url": "https://covid.aequologica.net/"                                              , "src": "graph.svg"                           }
-     ,{ "name":"cv"                   , "url": "https://cthiebaud.com/cv/"                                                   , "src": "cv-icon-by-Vexels.svg"               }
      ,{ "name":"cthiebaud.com"        , "url": "https://cthiebaud.com"                                                       , "src": "mexican-sugar-skull-transparent-background.png" }
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                , "src": "github-logo-transparent.png"         }
      ,{ "name":"cthiebaud@gitlab"     , "url": "https://gitlab.com/users/cthiebaud/projects"                                 , "src": "gitlab.svg"                          }
-     ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
+     ,{ "name":"cv"                   , "url": "https://cthiebaud.com/cv/"                                                   , "src": "cv-icon-by-Vexels.svg"               }
      ,{ "name":"facebook.com"         , "url": "https://www.facebook.com/christophe.thiebaud"                                , "src": "transparent-facebook-logo-icon.png"  }
      ,{ "name":"facebook.dev"         , "url": "https://developers.facebook.com/apps/"                                       , "src": "facebook-developers.svg"             }
      ,{ "name":"franceCul"            , "url": "https://www.franceculture.fr/programmes"                                     , "src": "France_Culture.svg"                  }
      ,{ "name":"franceMu"             , "url": "https://www.radiofrance.fr/francemusique"                                    , "src": "France_Musique.svg"                  }
      ,{ "name":"gandi"                , "url": "https://admin.gandi.net/dashboard/9cb9417c-b33b-11e7-bcf1-00163ec388ae/"     , "src": "avatar_gandi.svg"                    }
+     ,{ "name":"gmail"                , "url": "https://mail.google.com/mail/u/0/#inbox"                                     , "src": "New_Logo_Gmail.svg"                  }
      ,{ "name":"google dev console"   , "url": "https://console.developers.google.com/"                                      , "src": "CloudPlatform_Logo-Lockup_CS6.png"   }
      ,{ "name":"google.com/analytics" , "url": "https://www.google.com/analytics/web"                                        , "src": "Google-Analytics.png"                }
-     ,{ "name":"gmail"                , "url": "https://mail.google.com/mail/u/0/#inbox"                                     , "src": "New_Logo_Gmail.svg"                  }
      ,{ "name":"instagram"            , "url": "https://www.instagram.com/"                                                  , "src": "instagram.svg"                       }
      ,{ "name":"lemonde.fr"           , "url": "http://www.lemonde.fr/"                                                      , "src": "Le_Monde_logo.svg"                   }
      ,{ "name":"lequipe.fr"           , "url": "http://www.lequipe.fr/"                                                      , "src": "L_Equipe_Logo_E.svg"                 }
@@ -32,19 +33,20 @@
      ,{ "name":"openmozart"           , "url": "http://openmozart.cthiebaud.com/"                                            , "src": "openmozart.jpg"                      }
      ,{ "name":"openricard"           , "url": "http://openricard.cthiebaud.com/"                                            , "src": "ricard.jpg"                          }
      ,{ "name":"sacem"                , "url": "https://createurs-editeurs.sacem.fr/secured/mon-espace-membre"               , "src": "SACEM_HD_trans_2.svg"                }
+     ,{ "name":"sangiosleague.it"     , "url": "https://sangiosleague.it"                                                    , "src": "sangiosleague.svg"                   }
+     ,{ "name":"sgl.net"              , "url": "https://sangiovannilipioni.net/"                                             , "src": "sgl.net.svg"                         }
      ,{ "name":"sofoot.com"           , "url": "http://www.sofoot.com/"                                                      , "src": "745958so_foot_logo-trans.png"        }
      ,{ "name":"sogo"                 , "url": "https://webmail.eu.com/SOGo/so/christophe.thiebaud@aequologica.net"          , "src": "sogo-full.svg"                       }
      ,{ "name":"soundcloud.com"       , "url": "https://soundcloud.com/christophe-thiebaud"                                  , "src": "soundcloud.svg"                      }
-     ,{ "name":"sgl.net"              , "url": "https://sangiovannilipioni.net/"                                             , "src": "sgl.net.svg"                         }
-     ,{ "name":"sangiosleague.it"     , "url": "https://sangiosleague.it"                                                    , "src": "sangiosleague.svg"                   }
      ,{ "name":"sueddeutsche"         , "url": "http://www.sueddeutsche.de/"                                                 , "src": "Süddeutsche-Zeitung-Ligatur.svg"     }
      ,{ "name":"tebaldi"              , "url": "https://rootp1630844092trial.hanatrial.ondemand.com/"                        , "src": "tebaldi.png"                         }
      ,{ "name":"tiktok"               , "url": "https://www.tiktok.com/@aequologica"                                         , "src": "TikTok_Logo.svg"                     }
      ,{ "name":"travis-ci"            , "url": "https://travis-ci.com"                                                       , "src": "travis-ci-trans.png"                 }
      ,{ "name":"twitter"              , "url": "https://twitter.com/cthiebaud"                                               , "src": "Twitter_logo_transparent-3.png"      }
+     ,{ "name":"ukraine@insead"       , "url": "https://docs.google.com/spreadsheets/d/1HwlCzTZD7gItzCbiLIqhWaC4zy5xCqP6wLd39sFGNdk/edit#gid=1656119269" , "src": "Ukraine-Flagmap.svg"  }
      ,{ "name":"vinyl"                , "url": "https://mugnierandthiebaud.com/"                                             , "src": "vinyl_record.svg"                    }
      ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                            , "src": "Wordpress-Logo.svg"                  }
-
+     ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
      
    ]
 }
