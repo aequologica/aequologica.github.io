@@ -38,6 +38,7 @@
      ,{ "name":"vinyl"                , "url": "https://mugnierandthiebaud.com/"                                             , "src": "vinyl_record.svg"                    }
      ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                            , "src": "Wordpress-Logo.svg"                  }
      ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
+     ,{ "name":"colors"               , "url": "/colors.html"                                                                , "src": "BYR_color_wheel.svg"                 }
      
    ]
 }
