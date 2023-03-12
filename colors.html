@@ -6,85 +6,86 @@
     <!-- meta name="viewport" content="width=device-width, initial-scale=1" -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>colors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
-        div {
-            font-size: 2rem;
+        li.list-group-item {
             color: white;
-            padding: .5rem;
-            margin: .5rem;
+            font-size: 2rem;
+        }
+
+        li>span:last-child {
+            float: right;
         }
     </style>
 </head>
 
 <body>
 
-    <div style="background-color: #fcffff;color : black;">Polar Bear In A Blizzard</div>
-    <div style="background-color: #bfd6d9;color : black;">Wind Speed</div>
-    <div style="background-color: #697f8e">Cascade Tour</div>
-    <div style="background-color: #3a445d">Diplomatic</div>
-    <div style="background-color: #222244">Black Market</div>
-    <div style="background-color: #0c0c1f">Tristesse</div>
-    <div style="background-color: #06c2ac">Turquoise</div>
-    <div style="background-color: #2a96d5">Boyzone</div>
-    <div style="background-color: #7777ff">Stargate Shimmer</div>
-    <div style="background-color: #4b57db">Warm Blue</div>
-    <div style="background-color: #2242c7">Blue Blue</div>
-    <div style="background-color: #0c1793">Royal</div>
-    <div style="background-color: #e84998">Schiaparelli Pink</div>
-    <div style="background-color: #a328b3">Pink Spyro</div>
-    <div style="background-color: #e34244">Vermilion Cinnabar</div>
-    <div style="background-color: #881166">Possessed Purple</div>
-    <div style="background-color: #ec8430">Navel</div>
-    <div style="background-color: #b12d35">Unmatched Beauty</div>
-    <div style="background-color: #ffe670;color : black;">Shandy</div>
-    <div style="background-color: #f7a233;color : black;">Lightning Yellow</div>
-    <div style="background-color: #6fea3e">Miyazaki Verdant</div>
-    <div style="background-color: #11875d">Primal Green</div>
-    <div style="background-color: #a3c1ad;color : black;">Cambridge Blue</div>
-    <div style="background-color: #6a8d88">Aspen Hush</div>
-    <div style="background-color: #355859">Depth Charge</div>
-    <div style="background-color: #112222">Black Feather</div>
-    <div style="background-color: #e3ac72;color : black;">Viva Gold</div>
-    <div style="background-color: #b66a3c">Mincemeat</div>
-    <div style="background-color: #8a3319">Red Rust</div>
-    <div style="background-color: #3c1414">Dark Sienna</div>
-    <div style="background-color: #ffd8bb;color : black;">Durazno Palido</div>
-    <div style="background-color: #f5a2a1;color : black;">Candy Heart Pink</div>
-
-    <div style="display:none">
-        FAFFFF :
-        C1D7DB :
-        697D8E :
-        38435F :
-        262245 :
-        130E26 :
-        34ddda :
-        2c9cd5 :
-        7781ff :
-        494fe1 :
-        213fbe :
-        0d2487 :
-        e33d98 :
-        9822a8 :
-        e53a4a :
-        8f1157 :
-        eb822b :
-        b02b36 :
-        ffe570 :
-        f9a135 :
-        65ef42 :
-        118c60 :
-        a8c4af :
-        698e86 :
-        325555 :
-        162527 :
-        e3b175 :
-        b6683c :
-        8a3e1b :
-        491816 :
-        ffd5bc :
-        f5a59f :
+    <div class="container">
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>
+        // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
+        // -> Fisher–Yates shuffle algorithm
+        function shuffleArray(array) {
+            let m = array.length,
+                t, i;
+            // While there remain elements to shuffle
+            while (m) {
+                // Pick a remaining element…
+                i = Math.floor(Math.random() * m--);
+                // And swap it with the current element.
+                t = array[m];
+                array[m] = array[i];
+                array[i] = t;
+            }
+            return array;
+        }
+
+        let colors = [
+        {rgb: "fcffff", name: "Polar Bear In A Blizzard", darktext: true},
+        {rgb: "bfd6d9", name: "Wind Speed", darktext: true},
+        {rgb: "697f8e", name: "Cascade Tour"},
+        {rgb: "3a445d", name: "Diplomatic"},
+        {rgb: "222244", name: "Black Market"},
+        {rgb: "0c0c1f", name: "Tristesse"},
+        {rgb: "06c2ac", name: "Turquoise"},
+        {rgb: "2a96d5", name: "Boyzone"},
+        {rgb: "7777ff", name: "Stargate Shimmer"},
+        {rgb: "4b57db", name: "Warm Blue"},
+        {rgb: "2242c7", name: "Blue Blue"},
+        {rgb: "0c1793", name: "Royal"},
+        {rgb: "e84998", name: "Schiaparelli Pink"},
+        {rgb: "a328b3", name: "Pink Spyro"},
+        {rgb: "e34244", name: "Vermilion Cinnabar"},
+        {rgb: "881166", name: "Possessed Purple"},
+        {rgb: "ec8430", name: "Navel"},
+        {rgb: "b12d35", name: "Unmatched Beauty"},
+        {rgb: "ffe670", name: "Shandy", darktext: true},
+        {rgb: "f7a233", name: "Lightning Yellow", darktext: true},
+        {rgb: "6fea3e", name: "Miyazaki Verdant"},
+        {rgb: "11875d", name: "Primal Green"},
+        {rgb: "a3c1ad", name: "Cambridge Blue", darktext: true},
+        {rgb: "6a8d88", name: "Aspen Hush"},
+        {rgb: "355859", name: "Depth Charge"},
+        {rgb: "112222", name: "Black Feather"},
+        {rgb: "e3ac72", name: "Viva Gold", darktext: true},
+        {rgb: "b66a3c", name: "Mincemeat"},
+        {rgb: "8a3319", name: "Red Rust"},
+        {rgb: "3c1414", name: "Dark Sienna"},
+        {rgb: "ffd8bb", name: "Durazno Palido", darktext: true},
+        {rgb: "f5a2a1", name: "Candy Heart Pink", darktext: true},
+        ]
+
+        var template = Handlebars.compile(
+        '<ul class="list-group">{{#each colors}}<li class="list-group-item" style="background-color: #{{rgb}}{{#if darktext}};color : black;{{/if}}">{{name}}</li>{{/each}}</ul>'
+        );
+
+        $( ".container" ).append( $(template({ colors: shuffleArray(colors) })) );
+        </script>
 </body>
 
 </html>
