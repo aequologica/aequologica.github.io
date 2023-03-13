@@ -27,12 +27,9 @@
         a {
             text-decoration: none;
         }
-        div.col > div {
+        .listOfColors div.col > div {
             font-size: 1.2rem;
             min-height: 5rem;;
-        }
-        div.col {
-            min-height:3rem;
         }
     </style>
 </head>
@@ -40,6 +37,11 @@
 <body>
 
     <div class="container">
+        <div class="row">
+            <div class="col d-flex">
+                <span class="ms-auto text-secondary">Closest Pantone Color</span>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
@@ -109,7 +111,7 @@
         Handlebars.registerHelper("inc", function(value, options){ return parseInt(value) + 1; });
 
         const templateAsString = 
-`<div>
+`<div class="listOfColors">
     {{#each colors}}
     <div class="row d-flex">
         <div class="col" style="background-color: #{{rgb}} !important;">
@@ -124,7 +126,7 @@
                 <a class="ms-auto pantone" target="pantone" href="https://www.pantone.com/connect/{{pantone}}" style="color: inherit;">
                     {{pantone}}
                 </a>
-                <b class="ms-auto index">{{inc @index}}</b>
+                <b class="ms-auto index">{{inc index}}</b>
             </div>
         </div>
     </div>
