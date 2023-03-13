@@ -72,7 +72,8 @@
             return array;
         }
 
-        let colors = [
+        let _colors_ = [
+        /* {rgb: "ffffff", p_rgb : "f5f5f1", sim: "97", pantone: "P 179-1 U", name: "White"}, */
         {rgb: "6a8d88", p_rgb : "6c8a82", sim: "98", pantone: "625 U", name: "Aspen Hush"},
         {rgb: "112222", p_rgb : "1b2f34", sim: "95", pantone: "5463 CP", name: "Black Feather"},
         {rgb: "222244", p_rgb : "252849", sim: "98", pantone: "282 CP", name: "Black Market"},
@@ -105,7 +106,7 @@
         {rgb: "e3ac72", p_rgb : "e2a770", sim: "98", pantone: "721 CP", name: "Viva Gold"},
         {rgb: "4b57db", p_rgb : "275ea3", sim: "89", pantone: "10261 C", name: "Warm Blue"},
         {rgb: "bfd6d9", p_rgb : "bcd5d6", sim: "99", pantone: "5523 U", name: "Wind Speed"},
-        ]
+        ];
 
         /*
             <span>
@@ -139,8 +140,8 @@
 </div>`.replace(/ *\n */gm, '')
 
         const template = Handlebars.compile(templateAsString);
-
-        for (let s of colors) {
+        // let i = 0;
+        for (let s of _colors_) {
             if (tinycolor("#"+s.rgb).isLight()) {
                 s.textColor = "000000";
             } else {
@@ -148,7 +149,8 @@
             }
         }
 
-        $( ".container" ).append( $(template( { colors: shuffleArray( colors ) } ) ) );
+        _colors_ = shuffleArray( _colors_ );
+        $( ".container" ).append( $(template( { colors:  _colors_ } ) ) );
 
     </script>
 </body>
