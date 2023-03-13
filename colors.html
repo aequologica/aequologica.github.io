@@ -31,6 +31,10 @@
             font-size: 1.2rem;
             min-height: 5rem;;
         }
+        span.sim {
+            font-size: .9rem;
+            font-style: italic;
+        }
     </style>
 </head>
 
@@ -69,38 +73,38 @@
         }
 
         let colors = [
-        {rgb: "6a8d88", p_rgb : "6c8a82", pantone: "625 U", name: "Aspen Hush"},
-        {rgb: "112222", p_rgb : "1b2f34", pantone: "5463 CP", name: "Black Feather"},
-        {rgb: "222244", p_rgb : "252849", pantone: "282 CP", name: "Black Market"},
-        {rgb: "2242c7", p_rgb : "24509a", pantone: "286 CP", name: "Blue Blue"},
-        {rgb: "2a96d5", p_rgb : "1f95cd", pantone: "2394 UP", name: "Boyzone"},
-        {rgb: "a3c1ad", p_rgb : "a6c2ad", pantone: "P 134-11 U", name: "Cambridge Blue"},
-        {rgb: "f5a2a1", p_rgb : "f6a1a0", pantone: "15-1621 TPX", name: "Candy Heart Pink"},
-        {rgb: "697f8e", p_rgb : "6a7f8e", pantone: "2166 UP", name: "Cascade Tour"},
-        {rgb: "3c1414", p_rgb : "4e2b1f", pantone: "7596 CP", name: "Dark Sienna"},
-        {rgb: "355859", p_rgb : "335959", pantone: "19-5413 TCX", name: "Depth Charge"},
-        {rgb: "3a445d", p_rgb : "3b4559", pantone: "2379 C", name: "Diplomatic"},
-        {rgb: "ffd8bb", p_rgb : "ffd4b2", pantone: "13-1026 TPX", name: "Durazno Palido"},
-        {rgb: "0abab5", p_rgb : "00baae", pantone: "3262 U", name: "Jade Gravel"},
-        {rgb: "f7a233", p_rgb : "f9a12e", pantone: "15-1058 TPG", name: "Lightning Yellow"},
-        {rgb: "b66a3c", p_rgb : "ba6a3b", pantone: "P 31-7 C", name: "Mincemeat"},
-        {rgb: "6fea3e", p_rgb : "87e878", pantone: "902 U", name: "Miyazaki Verdant"},
-        {rgb: "ec8430", p_rgb : "f38b3c", pantone: "144 U", name: "Navel"},
-        {rgb: "a328b3", p_rgb : "9b26b6", pantone: "2592 C", name: "Pink Spyro"},
-        {rgb: "fcffff", p_rgb : "c7dbf4", pantone: "2707 U", name: "Polar Bear In A Blizzard"},
-        {rgb: "881166", p_rgb : "890c58", pantone: "228 C", name: "Possessed Purple"},
-        {rgb: "11875d", p_rgb : "13955e", pantone: "P 145-8 U", name: "Primal Green"},
-        {rgb: "8a3319", p_rgb : "8a391b", pantone: "7526 C", name: "Red Rust"},
-        {rgb: "0c1793", p_rgb : "10069f", pantone: "Blue 072 C", name: "Royal"},
-        {rgb: "e84998", p_rgb : "e44c9a", pantone: "Rhodamine Red U", name: "Schiaparelli Pink"},
-        {rgb: "ffe670", p_rgb : "ffe671", pantone: "924 C", name: "Shandy"},
-        {rgb: "7777ff", p_rgb : "6490e8", pantone: "2727 U", name: "Stargate Shimmer"},
-        {rgb: "0c0c1f", p_rgb : "131e29", pantone: "7547 C", name: "Tristesse"},
-        {rgb: "b12d35", p_rgb : "b42937", pantone: "P 58-8 C", name: "Unmatched Beauty"},
-        {rgb: "e34244", p_rgb : "e73c3e", pantone: "2034 C", name: "Vermilion Cinnabar"},
-        {rgb: "e3ac72", p_rgb : "e2a770", pantone: "721 CP", name: "Viva Gold"},
-        {rgb: "4b57db", p_rgb : "275ea3", pantone: "10261 C", name: "Warm Blue"},
-        {rgb: "bfd6d9", p_rgb : "bcd5d6", pantone: "5523 U", name: "Wind Speed"},
+        {rgb: "6a8d88", p_rgb : "6c8a82", sim: "98", pantone: "625 U", name: "Aspen Hush"},
+        {rgb: "112222", p_rgb : "1b2f34", sim: "95", pantone: "5463 CP", name: "Black Feather"},
+        {rgb: "222244", p_rgb : "252849", sim: "98", pantone: "282 CP", name: "Black Market"},
+        {rgb: "2242c7", p_rgb : "24509a", sim: "91", pantone: "286 CP", name: "Blue Blue"},
+        {rgb: "2a96d5", p_rgb : "1f95cd", sim: "98", pantone: "7508 UP", name: "Boyzone"},
+        {rgb: "a3c1ad", p_rgb : "a6c2ad", sim: "99", pantone: "P 134-11 U", name: "Cambridge Blue"},
+        {rgb: "f5a2a1", p_rgb : "f6a1a0", sim: "100", pantone: "15-1621 TPX", name: "Candy Heart Pink"},
+        {rgb: "697f8e", p_rgb : "6a7f8e", sim: "100", pantone: "692 UP", name: "Cascade Tour"},
+        {rgb: "3c1414", p_rgb : "4e2b1f", sim: "92", pantone: "7596 CP", name: "Dark Sienna"},
+        {rgb: "355859", p_rgb : "335959", sim: "99", pantone: "19-5413 TCX", name: "Depth Charge"},
+        {rgb: "3a445d", p_rgb : "3b4559", sim: "98", pantone: "2379 C", name: "Diplomatic"},
+        {rgb: "ffd8bb", p_rgb : "ffd4b2", sim: "98", pantone: "13-1026 TPX", name: "Durazno Palido"},
+        {rgb: "0abab5", p_rgb : "00baae", sim: "97", pantone: "3262 U", name: "Jade Gravel"},
+        {rgb: "f7a233", p_rgb : "f9a12e", sim: "99", pantone: "15-1058 TPG", name: "Lightning Yellow"},
+        {rgb: "b66a3c", p_rgb : "ba6a3b", sim: "99", pantone: "P 31-7 C", name: "Mincemeat"},
+        {rgb: "6fea3e", p_rgb : "87e878", sim: "94", pantone: "902 U", name: "Miyazaki Verdant"},
+        {rgb: "ec8430", p_rgb : "f38b3c", sim: "98", pantone: "144 U", name: "Navel"},
+        {rgb: "a328b3", p_rgb : "9b26b6", sim: "98", pantone: "2592 C", name: "Pink Spyro"},
+        {rgb: "fcffff", p_rgb : "c7dbf4", sim: "87", pantone: "2707 U", name: "Polar Bear In A Blizzard"},
+        {rgb: "881166", p_rgb : "890c58", sim: "96", pantone: "228 C", name: "Possessed Purple"},
+        {rgb: "11875d", p_rgb : "13955e", sim: "95", pantone: "P 145-8 U", name: "Primal Green"},
+        {rgb: "8a3319", p_rgb : "8a391b", sim: "98", pantone: "7526 C", name: "Red Rust"},
+        {rgb: "0c1793", p_rgb : "10069f", sim: "97", pantone: "Blue 072 C", name: "Royal"},
+        {rgb: "e84998", p_rgb : "e44c9a", sim: "99", pantone: "Rhodamine Red U", name: "Schiaparelli Pink"},
+        {rgb: "ffe670", p_rgb : "ffe671", sim: "100", pantone: "924 C", name: "Shandy"},
+        {rgb: "7777ff", p_rgb : "6490e8", sim: "90", pantone: "2727 U", name: "Stargate Shimmer"},
+        {rgb: "0c0c1f", p_rgb : "131e29", sim: "91", pantone: "7547 C", name: "Tristesse"},
+        {rgb: "b12d35", p_rgb : "b42937", sim: "99", pantone: "P 58-8 C", name: "Unmatched Beauty"},
+        {rgb: "e34244", p_rgb : "e73c3e", sim: "99", pantone: "2034 C", name: "Vermilion Cinnabar"},
+        {rgb: "e3ac72", p_rgb : "e2a770", sim: "98", pantone: "721 CP", name: "Viva Gold"},
+        {rgb: "4b57db", p_rgb : "275ea3", sim: "89", pantone: "10261 C", name: "Warm Blue"},
+        {rgb: "bfd6d9", p_rgb : "bcd5d6", sim: "99", pantone: "5523 U", name: "Wind Speed"},
         ]
 
         /*
@@ -123,8 +127,9 @@
         </div>
         <div class="col" style="background-color: #{{p_rgb}} !important;">
             <div class="d-flex align-items-center" style="width:100%; color: #{{textColor}};">
+                <span class="sim">{{sim}}%</span>
                 <a class="ms-auto pantone" target="pantone" href="https://www.pantone.com/connect/{{pantone}}" style="color: inherit;">
-                    {{pantone}}
+                    <b>{{pantone}}</b>
                 </a>
                 <b class="ms-auto index">{{inc @index}}</b>
             </div>
