@@ -6,34 +6,33 @@
     <!-- meta name="viewport" content="width=device-width, initial-scale=1" -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>colors</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
         @media print {
-            body {print-color-adjust: exact !important;}
+            body {
+                print-color-adjust: exact !important;
+            }
             .pantone {
                 display: none !important;
             }
         }
+
         @media screen {
             .index {
                 display: none !important;
             }
         }
-        a {
-            color: black;
-            text-decoration: none; /* no underline */
-        }       
-        li.list-group-item {
-            font-size: 1.5rem;
-            border-width: 0;
-            padding: 1.8rem;
-        }
 
-        li>span:last-child {
-            float: right;
+        a {
+            text-decoration: none;
         }
-        .container {
-            margin-top:1rem;
+        div.col > div {
+            font-size: 1.2rem;
+            min-height: 5rem;;
+        }
+        div.col {
+            min-height:3rem;
         }
     </style>
 </head>
@@ -46,9 +45,10 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tinycolor2@1.6.0/cjs/tinycolor.min.js"></script>    
+
     <script type='module'>
         import tinycolor from "https://esm.sh/tinycolor2";
+
         // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
         // -> Fisher–Yates shuffle algorithm
         function shuffleArray(array) {
@@ -67,38 +67,38 @@
         }
 
         let colors = [
-        {name: "Aspen Hush", rgb: "6a8d88", pantone: "624-C"},
-        {name: "Black Feather", rgb: "112222", pantone: "5535-C"},
-        {name: "Black Market", rgb: "222244", pantone: "533-C"},
-        {name: "Blue Blue", rgb: "2242c7", pantone: "2736-C"},
-        {name: "Boyzone", rgb: "2a96d5", pantone: "7689-C"},
-        {name: "Cambridge Blue", rgb: "a3c1ad", pantone: "558-C"},
-        {name: "Candy Heart Pink", rgb: "f5a2a1", pantone: "2339-C"},
-        {name: "Cascade Tour", rgb: "697f8e", pantone: "2165-C"},
-        {name: "Dark Sienna", rgb: "3c1414", pantone: "4625-C"},
-        {name: "Depth Charge", rgb: "355859", pantone: "5477-C"},
-        {name: "Diplomatic", rgb: "3a445d", pantone: "2379-C"},
-        {name: "Durazno Palido", rgb: "ffd8bb", pantone: "162-C"},
-        {name: "Jade Gravel", rgb: "0abab5", pantone: "2200-C"},
-        {name: "Lightning Yellow", rgb: "f7a233", pantone: "715-C"},
-        {name: "Mincemeat", rgb: "b66a3c", pantone: "7585-C"},
-        {name: "Miyazaki Verdant", rgb: "6fea3e", pantone: "2285-C"},
-        {name: "Navel", rgb: "ec8430", pantone: "2011-C"},
-        {name: "Pink Spyro", rgb: "a328b3", pantone: "2592-C"},
-        {name: "Polar Bear In A Blizzard", rgb: "fdffff", pantone: "2717-C"},
-        {name: "Possessed Purple", rgb: "881166", pantone: "228-C"},
-        {name: "Primal Green", rgb: "11875d", pantone: "2244-C"},
-        {name: "Red Rust", rgb: "8a3319", pantone: "7526-C"},
-        {name: "Royal", rgb: "0c1793", pantone: "Blue 072-C"},
-        {name: "Schiaparelli Pink", rgb: "e84998", pantone: "2039-C"},
-        {name: "Shandy", rgb: "ffe670", pantone: "134-C"},
-        {name: "Stargate Shimmer", rgb: "7777ff", pantone: "292-C"},
-        {name: "Tristesse", rgb: "0c0c1f", pantone: "7547-C"},
-        {name: "Unmatched Beauty", rgb: "b12d35", pantone: "7620-C"},
-        {name: "Vermilion Cinnabar", rgb: "e34244", pantone: "2034-C"},
-        {name: "Viva Gold", rgb: "e3ac72", pantone: "472-C"},
-        {name: "Warm Blue", rgb: "4b57db", pantone: "2130-C"},
-        {name: "Wind Speed", rgb: "bfd6d9", pantone: "5455-C"},
+        {rgb: "6a8d88", p_rgb : "6c8a82", pantone: "625 U", name: "Aspen Hush"},
+        {rgb: "112222", p_rgb : "1b2f34", pantone: "5463 CP", name: "Black Feather"},
+        {rgb: "222244", p_rgb : "252849", pantone: "282 CP", name: "Black Market"},
+        {rgb: "2242c7", p_rgb : "24509a", pantone: "286 CP", name: "Blue Blue"},
+        {rgb: "2a96d5", p_rgb : "1f95cd", pantone: "2394 UP", name: "Boyzone"},
+        {rgb: "a3c1ad", p_rgb : "a6c2ad", pantone: "P 134-11 U", name: "Cambridge Blue"},
+        {rgb: "f5a2a1", p_rgb : "f6a1a0", pantone: "15-1621 TPX", name: "Candy Heart Pink"},
+        {rgb: "697f8e", p_rgb : "6a7f8e", pantone: "2166 UP", name: "Cascade Tour"},
+        {rgb: "3c1414", p_rgb : "4e2b1f", pantone: "7596 CP", name: "Dark Sienna"},
+        {rgb: "355859", p_rgb : "335959", pantone: "19-5413 TCX", name: "Depth Charge"},
+        {rgb: "3a445d", p_rgb : "3b4559", pantone: "2379 C", name: "Diplomatic"},
+        {rgb: "ffd8bb", p_rgb : "ffd4b2", pantone: "13-1026 TPX", name: "Durazno Palido"},
+        {rgb: "0abab5", p_rgb : "00baae", pantone: "3262 U", name: "Jade Gravel"},
+        {rgb: "f7a233", p_rgb : "f9a12e", pantone: "15-1058 TPG", name: "Lightning Yellow"},
+        {rgb: "b66a3c", p_rgb : "ba6a3b", pantone: "P 31-7 C", name: "Mincemeat"},
+        {rgb: "6fea3e", p_rgb : "87e878", pantone: "902 U", name: "Miyazaki Verdant"},
+        {rgb: "ec8430", p_rgb : "f38b3c", pantone: "144 U", name: "Navel"},
+        {rgb: "a328b3", p_rgb : "9b26b6", pantone: "2592 C", name: "Pink Spyro"},
+        {rgb: "fcffff", p_rgb : "c7dbf4", pantone: "2707 U", name: "Polar Bear In A Blizzard"},
+        {rgb: "881166", p_rgb : "890c58", pantone: "228 C", name: "Possessed Purple"},
+        {rgb: "11875d", p_rgb : "13955e", pantone: "P 145-8 U", name: "Primal Green"},
+        {rgb: "8a3319", p_rgb : "8a391b", pantone: "7526 C", name: "Red Rust"},
+        {rgb: "0c1793", p_rgb : "10069f", pantone: "Blue 072 C", name: "Royal"},
+        {rgb: "e84998", p_rgb : "e44c9a", pantone: "Rhodamine Red U", name: "Schiaparelli Pink"},
+        {rgb: "ffe670", p_rgb : "ffe671", pantone: "924 C", name: "Shandy"},
+        {rgb: "7777ff", p_rgb : "6490e8", pantone: "2727 U", name: "Stargate Shimmer"},
+        {rgb: "0c0c1f", p_rgb : "131e29", pantone: "7547 C", name: "Tristesse"},
+        {rgb: "b12d35", p_rgb : "b42937", pantone: "P 58-8 C", name: "Unmatched Beauty"},
+        {rgb: "e34244", p_rgb : "e73c3e", pantone: "2034 C", name: "Vermilion Cinnabar"},
+        {rgb: "e3ac72", p_rgb : "e2a770", pantone: "721 CP", name: "Viva Gold"},
+        {rgb: "4b57db", p_rgb : "275ea3", pantone: "10261 C", name: "Warm Blue"},
+        {rgb: "bfd6d9", p_rgb : "bcd5d6", pantone: "5523 U", name: "Wind Speed"},
         ]
 
         /*
@@ -106,40 +106,43 @@
                 {{@index}}
             </span>
         */
-        Handlebars.registerHelper("inc", function(value, options)
-{
-    return parseInt(value) + 1;
-});
+        Handlebars.registerHelper("inc", function(value, options){ return parseInt(value) + 1; });
 
-        var template = Handlebars.compile(
-`<ul class="list-group">
-    {{#each colors}}<li class="list-group-item" style="background-color: #{{rgb}} !important;">
-        <span style="color: #{{textColor}};">
-            <a target="hexcolorpedia" href="https://hexcolorpedia.com/color/{{rgb}}" style="color: inherit;">
-                {{name}}
-            </a>
-        </span>
-        <span style="color: #{{textColor}};">
-            <a class="pantone" target="pantone" href="https://www.pantone.com/connect/{{pantone}}" style="color: inherit;">
-                {{pantone}}
-            </a>
-            <b class="index">{{inc @index}}</b>
-        </span>
-    </li>
-{{/each}}</ul>`
-        );
+        const templateAsString = 
+`<div>
+    {{#each colors}}
+    <div class="row d-flex">
+        <div class="col" style="background-color: #{{rgb}} !important;">
+            <div class="d-flex align-items-center" style="color: #{{textColor}};">
+                <a target="hexcolorpedia" href="https://hexcolorpedia.com/color/{{rgb}}" style="color: inherit;">
+                    {{name}}
+                </a>
+            </div>
+        </div>
+        <div class="col" style="background-color: #{{p_rgb}} !important;">
+            <div class="d-flex align-items-center" style="width:100%; color: #{{textColor}};">
+                <a class="ms-auto pantone" target="pantone" href="https://www.pantone.com/connect/{{pantone}}" style="color: inherit;">
+                    {{pantone}}
+                </a>
+                <b class="ms-auto index">{{inc @index}}</b>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>`.replace(/ *\n */gm, '')
+
+        const template = Handlebars.compile(templateAsString);
 
         for (let s of colors) {
-            s.darktext = !tinycolor("#"+s.rgb).isDark();
-            if (s.darktext) {
+            if (tinycolor("#"+s.rgb).isLight()) {
                 s.textColor = "000000";
             } else {
                 s.textColor = "ffffff";
             }
         }
 
+        $( ".container" ).append( $(template( { colors: shuffleArray( colors ) } ) ) );
 
-        $( ".container" ).append( $(template({ colors: shuffleArray(colors) })) );
     </script>
 </body>
 
