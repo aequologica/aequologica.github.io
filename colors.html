@@ -54,7 +54,7 @@
         .grid-brick {
             display: table;
             font-size: 1.5rem;
-            width: 12rem;
+            width: 24rem;
             height: 6rem;
         }
 
@@ -66,6 +66,22 @@
 
         .Δ {
         }
+
+        .card__thumb {
+  position: relative;
+  width: 12rem;
+  height: 6rem;
+}
+
+.card__thumb img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 0% 50%;
+}        
     </style>
 </head>
 
@@ -211,6 +227,7 @@
 
             const templateTheme = 
 `<div class="grid-brick text-center" style="display: table; padding-right: 2rem; background-color: white !important;">
+    <img src="c0.png" style="height:6rem; width: auto; object-fit: cover; float: left">
     <span style="display: table-cell; vertical-align: middle; color: black">
         Chaconne<br><span class="font-monospace" style="font-size:smaller;">1-8</span>
     </span>
@@ -236,10 +253,14 @@
             } else {
                 bg = `background-image: linear-gradient(135deg, #${stripeColor} 16.67%, #${c.p_rgb} 16.67%, #${c.p_rgb} 50%, #${stripeColor} 50%, #${stripeColor} 66.67%, #${c.p_rgb} 66.67%, #${c.p_rgb} 100%); background-size: 16.97px 16.97px;`
             }
+            // height:6rem; width: 12rem; object-fit: cover; object-position: 0% 0%; aspect-ratio: 4 / 3;
             const templateVariations = 
 `
 <div class="grid-brick ${tone} text-end font-monospace">
     <div class="brick font-monospace" style="width:100%; height: 100%; ${bg}">
+        <div class="card__thumb">
+            <img src="c${i}.png" style="border: 5px solid #${c.p_rgb};">
+        </div>
         <span style="display: table-cell; font-style: inherit; font-size:smaller; vertical-align: middle; padding-right: 1rem; width: 6rem;color: #${c.textColor}">
             <span style="font-style: inherit; font-size:.9rem;">${warning}</span>&nbsp;${barFrom+1}<br\>${barTo}
         </span>
@@ -256,6 +277,7 @@
 
         const templateLastChord = 
 `<div class="grid-brick text-end" style="display: table; padding-right: 2rem; background-color: black !important;">
+    <img src="c33.png" style="height:6rem; width: auto; object-fit: cover; float: left">
     <span  style="display: table-cell; vertical-align: middle; color: white">
         BWV 1004
     </span>
