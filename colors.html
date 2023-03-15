@@ -8,11 +8,19 @@
     <title>colors</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap" rel="stylesheet">
     <style>
+        body {
+            margin: 2rem;
+        }
+
         @media print {
             body {
                 print-color-adjust: exact !important;
             }
+
             .pantone {
                 display: none !important;
             }
@@ -27,30 +35,89 @@
         a {
             text-decoration: none;
         }
-        .listOfColors div.col > div {
+
+        .listOfColors div.col>div {
             font-size: 1.2rem;
-            min-height: 5rem;;
+            min-height: 5rem;
+            ;
         }
+
         span.sim {
             font-size: .9rem;
             font-style: italic;
+        }
+
+        .gridContainer {
+            margin: 2rem;
+        }
+
+        .grid-brick {
+            display: table;
+            font-size: 1.5rem;
+            width: 12rem;
+            height: 6rem;
+        }
+
+        .brick {
+            display: table;
+            font-family: 'EB Garamond', serif;
+            border-radius: 0 3rem 3rem 0;
+        }
+
+        .Δ {
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <main id="gridContainer" class="container-lg my-center">
+        <div id="gridContainerRow" class="row">
+            <div id="gridContainerCol" class="col-lg-12 text-center">
+                <div id="grid">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- div class="container">
         <div class="row">
             <div class="col d-flex">
                 <span class="ms-auto text-secondary">Closest Pantone Color</span>
             </div>
         </div>
-    </div>
+    </!-->
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/isotope-layout@latest/dist/isotope.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/isotope-packery@latest/packery-mode.pkgd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script id="template1" type="text/x-handlebars">
+        <div class="listOfColors">
+            {{#each colors}}
+            <div class="row d-flex">
+                <div class="col" style="background-color: #{{rgb}} !important;">
+                    <div class="d-flex align-items-center" style="color: #{{textColor}};">
+                        <a target="hexcolorpedia" href="https://hexcolorpedia.com/color/{{rgb}}" style="color: inherit;">
+                            {{name}}
+                        </a>
+                    </div>
+                </div>
+                <div class="col" style="background-color: #{{p_rgb}} !important;">
+                    <div class="d-flex align-items-center" style="width:100%; color: #{{textColor}};">
+                        <span class="sim">{{sim}}%</span>
+                        <a class="ms-auto pantone" target="pantone" href="https://www.pantone.com/connect/{{pantone}}" style="color: inherit;">
+                            <b>{{pantone}}</b>
+                        </a>
+                        <!-- b class="ms-auto index">{{inc index}}</!-->
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </script>
 
     <script type='module'>
         import tinycolor from "https://esm.sh/tinycolor2";
@@ -72,40 +139,40 @@
             return array;
         }
 
+//         {rgb: "ffffff", p_rgb : "f5f5f1", sim: 101, pantone: "P 179-1 U", name: "White"},
         let _colors_ = [
-        /* {rgb: "ffffff", p_rgb : "f5f5f1", sim: "97", pantone: "P 179-1 U", name: "White"}, */
-        {rgb: "6a8d88", p_rgb : "6c8a82", sim: "98", pantone: "625 U", name: "Aspen Hush"},
-        {rgb: "112222", p_rgb : "1b2f34", sim: "95", pantone: "5463 CP", name: "Black Feather"},
-        {rgb: "222244", p_rgb : "252849", sim: "98", pantone: "282 CP", name: "Black Market"},
-        {rgb: "2242c7", p_rgb : "24509a", sim: "91", pantone: "286 CP", name: "Blue Blue"},
-        {rgb: "2a96d5", p_rgb : "1f95cd", sim: "98", pantone: "7508 UP", name: "Boyzone"},
-        {rgb: "a3c1ad", p_rgb : "a6c2ad", sim: "99", pantone: "P 134-11 U", name: "Cambridge Blue"},
-        {rgb: "f5a2a1", p_rgb : "f6a1a0", sim: "100", pantone: "15-1621 TPX", name: "Candy Heart Pink"},
-        {rgb: "697f8e", p_rgb : "6a7f8e", sim: "100", pantone: "692 UP", name: "Cascade Tour"},
-        {rgb: "3c1414", p_rgb : "4e2b1f", sim: "92", pantone: "7596 CP", name: "Dark Sienna"},
-        {rgb: "355859", p_rgb : "335959", sim: "99", pantone: "19-5413 TCX", name: "Depth Charge"},
-        {rgb: "3a445d", p_rgb : "3b4559", sim: "98", pantone: "2379 C", name: "Diplomatic"},
-        {rgb: "ffd8bb", p_rgb : "ffd4b2", sim: "98", pantone: "13-1026 TPX", name: "Durazno Palido"},
-        {rgb: "0abab5", p_rgb : "00baae", sim: "97", pantone: "3262 U", name: "Jade Gravel"},
-        {rgb: "f7a233", p_rgb : "f9a12e", sim: "99", pantone: "15-1058 TPG", name: "Lightning Yellow"},
-        {rgb: "b66a3c", p_rgb : "ba6a3b", sim: "99", pantone: "P 31-7 C", name: "Mincemeat"},
-        {rgb: "6fea3e", p_rgb : "87e878", sim: "94", pantone: "902 U", name: "Miyazaki Verdant"},
-        {rgb: "ec8430", p_rgb : "f38b3c", sim: "98", pantone: "144 U", name: "Navel"},
-        {rgb: "a328b3", p_rgb : "9b26b6", sim: "98", pantone: "2592 C", name: "Pink Spyro"},
-        {rgb: "fcffff", p_rgb : "c7dbf4", sim: "87", pantone: "2707 U", name: "Polar Bear In A Blizzard"},
-        {rgb: "881166", p_rgb : "890c58", sim: "96", pantone: "228 C", name: "Possessed Purple"},
-        {rgb: "11875d", p_rgb : "13955e", sim: "95", pantone: "P 145-8 U", name: "Primal Green"},
-        {rgb: "8a3319", p_rgb : "8a391b", sim: "98", pantone: "7526 C", name: "Red Rust"},
-        {rgb: "0c1793", p_rgb : "10069f", sim: "97", pantone: "Blue 072 C", name: "Royal"},
-        {rgb: "e84998", p_rgb : "e44c9a", sim: "99", pantone: "Rhodamine Red U", name: "Schiaparelli Pink"},
-        {rgb: "ffe670", p_rgb : "ffe671", sim: "100", pantone: "924 C", name: "Shandy"},
-        {rgb: "7777ff", p_rgb : "6490e8", sim: "90", pantone: "2727 U", name: "Stargate Shimmer"},
-        {rgb: "0c0c1f", p_rgb : "131e29", sim: "91", pantone: "7547 C", name: "Tristesse"},
-        {rgb: "b12d35", p_rgb : "b42937", sim: "99", pantone: "P 58-8 C", name: "Unmatched Beauty"},
-        {rgb: "e34244", p_rgb : "e73c3e", sim: "99", pantone: "2034 C", name: "Vermilion Cinnabar"},
-        {rgb: "e3ac72", p_rgb : "e2a770", sim: "98", pantone: "721 CP", name: "Viva Gold"},
-        {rgb: "4b57db", p_rgb : "275ea3", sim: "89", pantone: "10261 C", name: "Warm Blue"},
-        {rgb: "bfd6d9", p_rgb : "bcd5d6", sim: "99", pantone: "5523 U", name: "Wind Speed"},
+            { rgb: "6a8d88", p_rgb: "6c8a82", sim: 98, pantone: "625 U", name: "Aspen Hush" },
+            { rgb: "112222", p_rgb: "1b2f34", sim: 95, pantone: "5463 CP", name: "Black Feather" },
+            { rgb: "222244", p_rgb: "252849", sim: 98, pantone: "282 CP", name: "Black Market" },
+            { rgb: "2242c7", p_rgb: "24509a", sim: 91, pantone: "286 CP", name: "Blue Blue" },
+            { rgb: "2a96d5", p_rgb: "1f95cd", sim: 98, pantone: "7508 UP", name: "Boyzone" },
+            { rgb: "a3c1ad", p_rgb: "a6c2ad", sim: 99, pantone: "P 134-11 U", name: "Cambridge Blue" },
+            { rgb: "f5a2a1", p_rgb: "f6a1a0", sim: 100, pantone: "15-1621 TPX", name: "Candy Heart Pink" },
+            { rgb: "697f8e", p_rgb: "6a7f8e", sim: 100, pantone: "692 UP", name: "Cascade Tour" },
+            { rgb: "3c1414", p_rgb: "4e2b1f", sim: 92, pantone: "7596 CP", name: "Dark Sienna" },
+            { rgb: "355859", p_rgb: "335959", sim: 99, pantone: "19-5413 TCX", name: "Depth Charge" },
+            { rgb: "3a445d", p_rgb: "3b4559", sim: 98, pantone: "2379 C", name: "Diplomatic" },
+            { rgb: "ffd8bb", p_rgb: "ffd4b2", sim: 98, pantone: "13-1026 TPX", name: "Durazno Palido" },
+            { rgb: "0abab5", p_rgb: "00baae", sim: 97, pantone: "3262 U", name: "Jade Gravel" },
+            { rgb: "f7a233", p_rgb: "f9a12e", sim: 99, pantone: "15-1058 TPG", name: "Lightning Yellow" },
+            { rgb: "b66a3c", p_rgb: "ba6a3b", sim: 99, pantone: "P 31-7 C", name: "Mincemeat" },
+            { rgb: "6fea3e", p_rgb: "87e878", sim: 94, pantone: "902 U", name: "Miyazaki Verdant" },
+            { rgb: "ec8430", p_rgb: "f38b3c", sim: 98, pantone: "144 U", name: "Navel" },
+            { rgb: "a328b3", p_rgb: "9b26b6", sim: 98, pantone: "2592 C", name: "Pink Spyro" },
+            { rgb: "fcffff", p_rgb: "c7dbf4", sim: 87, pantone: "2707 U", name: "Polar Bear In A Blizzard" },
+            { rgb: "881166", p_rgb: "890c58", sim: 96, pantone: "228 C", name: "Possessed Purple" },
+            { rgb: "11875d", p_rgb: "13955e", sim: 95, pantone: "P 145-8 U", name: "Primal Green" },
+            { rgb: "8a3319", p_rgb: "8a391b", sim: 98, pantone: "7526 C", name: "Red Rust" },
+            { rgb: "0c1793", p_rgb: "10069f", sim: 97, pantone: "Blue 072 C", name: "Royal" },
+            { rgb: "e84998", p_rgb: "e44c9a", sim: 99, pantone: "Rhodamine Red U", name: "Schiaparelli Pink" },
+            { rgb: "ffe670", p_rgb: "ffe671", sim: 100, pantone: "924 C", name: "Shandy" },
+            { rgb: "7777ff", p_rgb: "6490e8", sim: 90, pantone: "2727 U", name: "Stargate Shimmer" },
+            { rgb: "0c0c1f", p_rgb: "131e29", sim: 91, pantone: "7547 C", name: "Tristesse" },
+            { rgb: "b12d35", p_rgb: "b42937", sim: 99, pantone: "P 58-8 C", name: "Unmatched Beauty" },
+            { rgb: "e34244", p_rgb: "e73c3e", sim: 99, pantone: "2034 C", name: "Vermilion Cinnabar" },
+            { rgb: "e3ac72", p_rgb: "e2a770", sim: 98, pantone: "721 CP", name: "Viva Gold" },
+            { rgb: "4b57db", p_rgb: "275ea3", sim: 89, pantone: "10261 C", name: "Warm Blue" },
+            { rgb: "bfd6d9", p_rgb: "bcd5d6", sim: 99, pantone: "5523 U", name: "Wind Speed" },
         ];
 
         /*
@@ -113,36 +180,14 @@
                 {{@index}}
             </span>
         */
-        Handlebars.registerHelper("inc", function(value, options){ return parseInt(value) + 1; });
+        Handlebars.registerHelper("inc", function (value, options) { return parseInt(value) + 1; });
 
-        const templateAsString = 
-`<div class="listOfColors">
-    {{#each colors}}
-    <div class="row d-flex">
-        <div class="col" style="background-color: #{{rgb}} !important;">
-            <div class="d-flex align-items-center" style="color: #{{textColor}};">
-                <a target="hexcolorpedia" href="https://hexcolorpedia.com/color/{{rgb}}" style="color: inherit;">
-                    {{name}}
-                </a>
-            </div>
-        </div>
-        <div class="col" style="background-color: #{{p_rgb}} !important;">
-            <div class="d-flex align-items-center" style="width:100%; color: #{{textColor}};">
-                <span class="sim">{{sim}}%</span>
-                <a class="ms-auto pantone" target="pantone" href="https://www.pantone.com/connect/{{pantone}}" style="color: inherit;">
-                    <b>{{pantone}}</b>
-                </a>
-                <b class="ms-auto index">{{inc @index}}</b>
-            </div>
-        </div>
-    </div>
-    {{/each}}
-</div>`.replace(/ *\n */gm, '')
+        let templateAsScriptTag = document.querySelector("#template1").innerHTML;
+        const template = Handlebars.compile(templateAsScriptTag);
 
-        const template = Handlebars.compile(templateAsString);
         // let i = 0;
         for (let s of _colors_) {
-            if (tinycolor("#"+s.rgb).isLight()) {
+            if (tinycolor("#" + s.rgb).isLight()) {
                 s.textColor = "000000";
             } else {
                 s.textColor = "ffffff";
@@ -150,7 +195,79 @@
         }
 
         _colors_ = shuffleArray( _colors_ );
-        $( ".container" ).append( $(template( { colors:  _colors_ } ) ) );
+        // _colors_ = _colors_.sort((a, b) => b.sim - a.sim)
+        // $( "#grid" ).append( $(template( { colors:  _colors_ } ) ) );
+        let $m = $("#grid")
+
+        $m.isotope({
+            layoutMode: 'packery',
+            itemSelector: ".grid-brick",
+            packery: {
+                gutter: 10,
+            }
+        });
+
+        const $bricksContainer = $("<span>");
+
+            const templateTheme = 
+`<div class="grid-brick text-center" style="display: table; padding-right: 2rem; background-color: white !important;">
+    <span style="display: table-cell; vertical-align: middle; color: black">
+        Chaconne<br><span class="font-monospace" style="font-size:smaller;">1-8</span>
+    </span>
+</div>`            
+        $bricksContainer.append($(templateTheme));
+        let i = 1;
+        let barFrom = 8
+        let tone = "";
+        _colors_.forEach(function (c) {
+            tone = (17 <= i && i<27)?  "Δ" : "";
+            const duration = (i == 10 || i == 16 || i == 19 || i == 30) ? 4 : ((i == 8 || i == 31 ) ? 12 : 8 );
+            let warning = duration < 8 ? "[4]" : duration > 8 ? "[12]" : "";
+            const barTo = barFrom + duration
+            let bg;
+            let stripeColor;
+            if (c.textColor == "000000") {
+                stripeColor = "bbbbbb"
+            } else {
+                stripeColor = "333333";
+            }
+            if (!tone) {
+                bg = `background-color: #${c.p_rgb} !important;`;
+            } else {
+                bg = `background-image: linear-gradient(135deg, #${stripeColor} 16.67%, #${c.p_rgb} 16.67%, #${c.p_rgb} 50%, #${stripeColor} 50%, #${stripeColor} 66.67%, #${c.p_rgb} 66.67%, #${c.p_rgb} 100%); background-size: 16.97px 16.97px;`
+            }
+            const templateVariations = 
+`
+<div class="grid-brick ${tone} text-end font-monospace">
+    <div class="brick font-monospace" style="width:100%; height: 100%; ${bg}">
+        <span style="display: table-cell; font-style: inherit; font-size:smaller; vertical-align: middle; padding-right: 1rem; width: 6rem;color: #${c.textColor}">
+            <span style="font-style: inherit; font-size:.9rem;">${warning}</span>&nbsp;${barFrom+1}<br\>${barTo}
+        </span>
+        <span style="display: table-cell; vertical-align: middle; padding-right: 2rem; color: #${c.textColor}; border-left: solid 1px gray">
+            ${tone}&nbsp;<b>${i}</b>
+        </span>
+    </div>
+</div>
+`            
+            $bricksContainer.append($(templateVariations));
+            barFrom = barFrom += duration
+            i++
+        });
+
+        const templateLastChord = 
+`<div class="grid-brick text-end" style="display: table; padding-right: 2rem; background-color: black !important;">
+    <span  style="display: table-cell; vertical-align: middle; color: white">
+        BWV 1004
+    </span>
+    <span class="font-monospace" style="display: table-cell; vertical-align: middle; color: white">
+        <!-- † -->∎
+    </span>
+</div>`            
+        $bricksContainer.append($(templateLastChord));
+
+        const $bricks = $bricksContainer.children();
+
+        $m.empty().append($bricks).isotope('appended', $bricks);
 
     </script>
 </body>
