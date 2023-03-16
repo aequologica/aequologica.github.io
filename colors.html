@@ -8,47 +8,13 @@
     <title>colors</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap" rel="stylesheet">
     <style>
         body {
-            /* margin: 2rem; */
-        }
-
-        @media print {
-            body {
-                print-color-adjust: exact !important;
-            }
-
-            .pantone {
-                display: none !important;
-            }
-        }
-
-        @media screen {
-            .index {
-                display: none !important;
-            }
+            margin: 1rem 0;
         }
 
         a {
             text-decoration: none;
-        }
-
-        .listOfColors div.col>div {
-            font-size: 1.2rem;
-            min-height: 5rem;
-            ;
-        }
-
-        span.sim {
-            font-size: .9rem;
-            font-style: italic;
-        }
-
-        .gridContainer {
-            /* margin: 2rem; */
         }
 
         .grid-brick {
@@ -60,11 +26,8 @@
 
         .brick {
             display: table;
-            font-family: 'EB Garamond', serif;
             border-radius: 0 3rem 3rem 0;
         }
-
-        .Δ {}
 
         .score {
             position: relative;
@@ -78,9 +41,6 @@
             position: absolute;
             left: 0;
             top: 0;
-            /*
-            width: 100%;
-            */
             height: 100%;
             object-fit: cover;
             object-position: 0% 50%;
@@ -100,45 +60,10 @@
         </div>
     </main>
 
-    <!-- div class="container">
-        <div class="row">
-            <div class="col d-flex">
-                <span class="ms-auto text-secondary">Closest Pantone Color</span>
-            </div>
-        </div>
-    </!-->
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/isotope-layout@latest/dist/isotope.pkgd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/isotope-packery@latest/packery-mode.pkgd.min.js"></script>
-    <!-- script src="https://cdn.jsdelivr.net/npm/isotope-fit-columns@latest/fit-columns.min.js"></!-->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-
-    <script id="template1" type="text/x-handlebars">
-        <div class="listOfColors">
-            {{#each colors}}
-            <div class="row d-flex">
-                <div class="col" style="background-color: #{{rgb}} !important;">
-                    <div class="d-flex align-items-center" style="color: #{{textColor}};">
-                        <a target="hexcolorpedia" href="https://hexcolorpedia.com/color/{{rgb}}" style="color: inherit;">
-                            {{name}}
-                        </a>
-                    </div>
-                </div>
-                <div class="col" style="background-color: #{{p_rgb}} !important;">
-                    <div class="d-flex align-items-center" style="width:100%; color: #{{textColor}};">
-                        <span class="sim">{{sim}}%</span>
-                        <a class="ms-auto pantone" target="pantone" href="https://www.pantone.com/connect/{{pantone}}" style="color: inherit;">
-                            <b>{{pantone}}</b>
-                        </a>
-                        <!-- b class="ms-auto index">{{inc index}}</!-->
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-        </div>
-    </script>
 
     <script type='module'>
         import tinycolor from "https://esm.sh/tinycolor2";
@@ -160,7 +85,6 @@
             return array;
         }
 
-        //         {rgb: "ffffff", p_rgb : "f5f5f1", sim: 101, pantone: "P 179-1 U", name: "White"},
         let _colors_ = [
             { rgb: "6a8d88", p_rgb: "6c8a82", sim: 98, pantone: "625 U", name: "Aspen Hush" },
             { rgb: "112222", p_rgb: "1b2f34", sim: 95, pantone: "5463 CP", name: "Black Feather" },
@@ -196,28 +120,17 @@
             { rgb: "bfd6d9", p_rgb: "bcd5d6", sim: 99, pantone: "5523 U", name: "Wind Speed" },
         ];
 
-        /*
-            <span>
-                {{@index}}
-            </span>
-        */
-        Handlebars.registerHelper("inc", function (value, options) { return parseInt(value) + 1; });
-
-        let templateAsScriptTag = document.querySelector("#template1").innerHTML;
-        const template = Handlebars.compile(templateAsScriptTag);
-
-        // let i = 0;
         for (let s of _colors_) {
             if (tinycolor("#" + s.rgb).isLight()) {
                 s.textColor = "000000";
             } else {
-                s.textColor = "ffffff";
+                s.textColor = "f8f8f8";
             }
         }
 
         _colors_ = shuffleArray(_colors_);
         // _colors_ = _colors_.sort((a, b) => b.sim - a.sim)
-        // $( "#grid" ).append( $(template( { colors:  _colors_ } ) ) );
+
         let $m = $("#grid")
 
         $m.isotope({
@@ -241,28 +154,28 @@
         $bricksContainer.append($(templateTheme));
         let i = 1;
         let barFrom = 8
-        let tone = "";
         _colors_.forEach(function (c) {
-            tone = (17 <= i && i < 27) ? "Δ" : "";
+            const tone  = (17 <= i && i < 27) ? "Δ" : "";
             const duration = (i == 10 || i == 15 || i == 19 || i == 29) ? 4 : ((i == 8 || i == 30) ? 12 : 8);
-            let warning = duration < 8 ? "(4)" : duration > 8 ? "(12)" : "";
+            const warning = duration != 8 ? `(${duration})` : "";
             const barTo = barFrom + duration
-            let bg;
-            let stripeColor;
-            if (c.textColor == "000000") {
-                stripeColor = "bbbbbb"
-            } else {
-                stripeColor = "333333";
-            }
-            if (!tone) {
-                bg = `background-color: #${c.p_rgb} !important;`;
-            } else {
-                bg = `background-image: linear-gradient(135deg, #${stripeColor} 16.67%, #${c.p_rgb} 16.67%, #${c.p_rgb} 50%, #${stripeColor} 50%, #${stripeColor} 66.67%, #${c.p_rgb} 66.67%, #${c.p_rgb} 100%); background-size: 16.97px 16.97px;`
-            }
-            // height:6rem; width: 12rem; object-fit: cover; object-position: 0% 0%; aspect-ratio: 4 / 3;
+            const stripeColor = (c.textColor == "000000") ? "d0d0d0" : "303030"
+            const bg = !tone ? 
+                `background-color: #${c.p_rgb} !important;`
+                :
+                `background-image: linear-gradient(135deg, 
+                #${stripeColor} 16.67%, 
+                #${c.p_rgb} 16.67%, 
+                #${c.p_rgb} 50%, 
+                #${stripeColor} 50%, 
+                #${stripeColor} 66.67%, 
+                #${c.p_rgb} 66.67%, 
+                #${c.p_rgb} 100%); 
+                background-size: 16.97px 16.97px;`
+
             const templateVariations =
                 `
-<div class="grid-brick ${tone} text-end font-monospace">
+<div class="grid-brick text-end font-monospace">
     <div class="brick font-monospace" style="width:100%; height: 100%; ${bg}">
         <!--div class="font-monospace text-center" style="display: table-cell; vertical-align: middle; font-size:1.5rem; color: #${c.textColor};">
         </div-->
@@ -289,7 +202,7 @@
 
         const templateLastChord =
 `
-<div class="grid-brick ${tone} text-end font-monospace">
+<div class="grid-brick text-end">
     <div class="brick" style="width:100%; height: 100%; background-color: black">
         <div class="score" style="width: 3rem">
             <img src="c33.png">
@@ -303,21 +216,6 @@
     </div>
 </div>
 `
-/*
-<div class="grid-brick" style="display: table; padding-right: 2rem; background-color: black !important; border-radius: 0 3rem 3rem 0;">
-    <div class="brick" style="width:100%; height: 100%;">
-        <div class="score">
-            <img src="c33.png">
-        </div>
-        <span style="display: table-cell; vertical-align: middle; color: white">
-            BWV 1004
-        </span>
-        <span class="font-monospace" style="display: table-cell; vertical-align: middle; color: white">
-            <!-- ∎ -->&nbsp;&nbsp;†
-        </span>
-    </div>
-</div>
-*/
         $bricksContainer.append($(templateLastChord));
 
         const $bricks = $bricksContainer.children();
