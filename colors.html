@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap" rel="stylesheet">
     <style>
         body {
-            margin: 2rem;
+            /* margin: 2rem; */
         }
 
         @media print {
@@ -48,14 +48,14 @@
         }
 
         .gridContainer {
-            margin: 2rem;
+            /* margin: 2rem; */
         }
 
         .grid-brick {
             display: table;
-            font-size: 1.5rem;
-            width: 24rem;
-            height: 6rem;
+            font-size: 1.4rem;
+            width: 18rem;
+            height: 5rem;
         }
 
         .brick {
@@ -64,24 +64,28 @@
             border-radius: 0 3rem 3rem 0;
         }
 
-        .Δ {
+        .Δ {}
+
+        .score {
+            position: relative;
+            width: 12rem;
+            height: 6rem;
+            overflow: hidden;
+            margin-right: .3rem;
         }
 
-        .card__thumb {
-  position: relative;
-  width: 12rem;
-  height: 6rem;
-}
-
-.card__thumb img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: 0% 50%;
-}        
+        .score img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*
+            width: 100%;
+            */
+            height: 100%;
+            object-fit: cover;
+            object-position: 0% 50%;
+            padding: 0.3rem;
+        }
     </style>
 </head>
 
@@ -108,6 +112,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/isotope-layout@latest/dist/isotope.pkgd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/isotope-packery@latest/packery-mode.pkgd.min.js"></script>
+    <!-- script src="https://cdn.jsdelivr.net/npm/isotope-fit-columns@latest/fit-columns.min.js"></!-->
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
     <script id="template1" type="text/x-handlebars">
@@ -155,7 +160,7 @@
             return array;
         }
 
-//         {rgb: "ffffff", p_rgb : "f5f5f1", sim: 101, pantone: "P 179-1 U", name: "White"},
+        //         {rgb: "ffffff", p_rgb : "f5f5f1", sim: 101, pantone: "P 179-1 U", name: "White"},
         let _colors_ = [
             { rgb: "6a8d88", p_rgb: "6c8a82", sim: 98, pantone: "625 U", name: "Aspen Hush" },
             { rgb: "112222", p_rgb: "1b2f34", sim: 95, pantone: "5463 CP", name: "Black Feather" },
@@ -210,7 +215,7 @@
             }
         }
 
-        _colors_ = shuffleArray( _colors_ );
+        _colors_ = shuffleArray(_colors_);
         // _colors_ = _colors_.sort((a, b) => b.sim - a.sim)
         // $( "#grid" ).append( $(template( { colors:  _colors_ } ) ) );
         let $m = $("#grid")
@@ -225,21 +230,25 @@
 
         const $bricksContainer = $("<span>");
 
-            const templateTheme = 
+        const templateTheme =
 `<div class="grid-brick text-center" style="display: table; padding-right: 2rem; background-color: white !important; ">
-    <img src="c0.png" style="height:6rem; width: auto; object-fit: cover; float: left">
-    <span style="display: table-cell; vertical-align: middle; color: black">
-        Chaconne<br><span class="font-monospace" style="font-size:smaller;">1-8</span>
-    </span>
-</div>`            
+    <div class="brick">
+        <div class="score">
+            <img src="c0.png">
+        </div>
+        <div class="font-monospace" style="display: table-cell; font-size:1.1rem; vertical-align: middle; padding: 0 .3rem;">
+            1<br\>8
+        </div>
+    </div>
+</div>`
         $bricksContainer.append($(templateTheme));
         let i = 1;
         let barFrom = 8
         let tone = "";
         _colors_.forEach(function (c) {
-            tone = (17 <= i && i<27)?  "Δ" : "";
-            const duration = (i == 10 || i == 16 || i == 19 || i == 29) ? 4 : ((i == 8 || i == 30 ) ? 12 : 8 );
-            let warning = duration < 8 ? "[4]" : duration > 8 ? "[12]" : "";
+            tone = (17 <= i && i < 27) ? "Δ" : "";
+            const duration = (i == 10 || i == 15 || i == 19 || i == 29) ? 4 : ((i == 8 || i == 30) ? 12 : 8);
+            let warning = duration < 8 ? "(4)" : duration > 8 ? "(12)" : "";
             const barTo = barFrom + duration
             let bg;
             let stripeColor;
@@ -254,41 +263,64 @@
                 bg = `background-image: linear-gradient(135deg, #${stripeColor} 16.67%, #${c.p_rgb} 16.67%, #${c.p_rgb} 50%, #${stripeColor} 50%, #${stripeColor} 66.67%, #${c.p_rgb} 66.67%, #${c.p_rgb} 100%); background-size: 16.97px 16.97px;`
             }
             // height:6rem; width: 12rem; object-fit: cover; object-position: 0% 0%; aspect-ratio: 4 / 3;
-            const templateVariations = 
-`
+            const templateVariations =
+                `
 <div class="grid-brick ${tone} text-end font-monospace">
     <div class="brick font-monospace" style="width:100%; height: 100%; ${bg}">
-        <div class="card__thumb">
-            <img src="c${i}.png" style="border: 5px solid #${c.p_rgb}; border-width: 5px 0 5px 5px;">
+        <!--div class="font-monospace text-center" style="display: table-cell; vertical-align: middle; font-size:1.5rem; color: #${c.textColor};">
+        </div-->
+        <div class="score">
+            <img src="c${i}.png">
+            <span style="float: left; padding: 0 .3rem 0 0; margin: 0 0 0 .3rem; position: relative;${bg}; border-bottom-right-radius:1rem; color: #${c.textColor};">${tone}</span>
         </div>
-        <span style="display: table-cell; font-style: inherit; font-size:smaller; vertical-align: middle; padding-right: 1rem; width: 6rem;color: #${c.textColor}">
-            <span style="font-style: inherit; font-size:.9rem;">${warning}</span>&nbsp;${barFrom+1}<br\>${barTo}
-        </span>
-        <span style="display: table-cell; vertical-align: middle; padding-right: 2rem; color: #${c.textColor}; border-left: solid 1px gray">
-            <b>${i}</b>
-        </span>
+        <div style="display: table-cell; vertical-align: middle; color: #${c.textColor};">
+            <span style="font-style: italic; font-size:.8rem;">${warning}</span>
+        </div>
+        <div style="display: table-cell; font-style: inherit; font-size:1.1rem; vertical-align: middle; padding: 0 .3rem; color: #${c.textColor}">
+            ${barFrom + 1}<br\>${barTo}
+        </div>
+        <div class="font-monospace fw-bold text-center" style="display: table-cell; vertical-align: middle; min-width: 3rem; color: #${c.textColor};">
+            ${i}
+        </div>
     </div>
 </div>
-`            
+`
             $bricksContainer.append($(templateVariations));
             barFrom = barFrom += duration
             i++
         });
 
-        const templateLastChord = 
-`<div class="grid-brick text-end" style="display: table; padding-right: 2rem; background-color: black !important; border-radius: 0 3rem 3rem 0;">
-    <div class="brick" style="width:100%; height: 100%;">
-        <div class="card__thumb">
-            <img src="c33.png" style="border: 5px solid black; border-width: 5px 0 5px 5px;">
+        const templateLastChord =
+`
+<div class="grid-brick ${tone} text-end font-monospace">
+    <div class="brick" style="width:100%; height: 100%; background-color: black">
+        <div class="score" style="width: 3rem">
+            <img src="c33.png">
         </div>
-        <span  style="display: table-cell; vertical-align: middle; color: white">
+        <div style="display: table-cell; font-style: inherit; font-size:smaller; vertical-align: middle; padding: 0 .3rem; color: white;">
+            Chaconne<br>BWV 1004
+        </div>
+        <span class="text-center" style="display: table-cell; vertical-align: middle; min-width: 3rem; color: white;">
+            †
+        </span>
+    </div>
+</div>
+`
+/*
+<div class="grid-brick" style="display: table; padding-right: 2rem; background-color: black !important; border-radius: 0 3rem 3rem 0;">
+    <div class="brick" style="width:100%; height: 100%;">
+        <div class="score">
+            <img src="c33.png">
+        </div>
+        <span style="display: table-cell; vertical-align: middle; color: white">
             BWV 1004
         </span>
         <span class="font-monospace" style="display: table-cell; vertical-align: middle; color: white">
             <!-- ∎ -->&nbsp;&nbsp;†
         </span>
     </div>
-</div>`            
+</div>
+*/
         $bricksContainer.append($(templateLastChord));
 
         const $bricks = $bricksContainer.children();
