@@ -48,19 +48,19 @@
 
         .grid-brick {
             font-size: 1.4rem;
-            /* width: 100%; */
             width: 22rem;
             height: 5rem;
         }
 
         .brick {
-            display: table;
             border-radius: 0 3rem 3rem 0;
+            width: 100%;
+            height: 100%;
         }
 
         .score {
-            /* position: relative; */
-            height: 6rem;
+            position: relative;
+            height: 5rem;
             overflow: hidden;
             margin-right: .3rem;
         }
@@ -212,9 +212,9 @@
         _colors_ = shuffleArray(_colors_);
         // _colors_ = _colors_.sort((a, b) => b.sim - a.sim)
 
-        let $m = $("#grid")
+        let $gridById = $("#grid")
 
-        $m.isotope({
+        $gridById.isotope({
             layoutMode: 'packery',
             itemSelector: ".grid-brick",
             packery: {
@@ -222,13 +222,8 @@
             }
         });
 
-        /*
-        display: flex; align-items: center; justify-content: center;
-        flex: 1; 
-        */
-
-        const $bricksContainer = $("<span>");
-        const templateTheme =
+        const $bricksTemporaryContainer = $("<span>");
+        const templateForTheme =
             `
 <div class="grid-brick">
     <div class="d-flex align-items-center justify-content-center mb-3" style="background-image: url('/cropped/bwv-1004_5_for_PNGs-page1.jpg'); background-repeat: no-repeat; height: 100%;">
@@ -237,17 +232,18 @@
         </div>
     </div>
 </div>`
-        $bricksContainer.append($(templateTheme));
+        $bricksTemporaryContainer.append($(templateForTheme));
+
         let i = 1;
         let barFrom = 8
         _colors_.forEach(function (c) {
-            const tone = (17 <= i && i < 27) ? "Δ" : "";
+            const tonality = (17 <= i && i < 27) ? "Δ" : "";
             const duration = (i == 10 || i == 15 || i == 19 || i == 29) ? 4 : ((i == 8 || i == 30) ? 12 : 8);
             const warning = duration != 8 ? `(${duration})` : "";
             const barTo = barFrom + duration
             const stripeColor = (c.textColor == "000000") ? "d0d0d0" : "303030"
-            const bg = !tone ?
-                `background-color: #${c.p_rgb} !important;`
+            const bg = !tonality ?
+                `background-color: #${c.p_rgb};`
                 :
                 `background-image: linear-gradient(135deg, 
                 #${stripeColor} 16.67%, 
@@ -261,25 +257,29 @@
 
             const templateVariations =
                 `
-<div class="grid-brick text-end font-monospace">
-    <div class="brick font-monospace d-flex align-items-center" style="width:100%; height: 100%; ${bg}">
+<div class="grid-brick text-end">
+    <div class="brick font-monospace d-flex align-items-center" style="${bg}">
         <div class="score flex-grow-1">
-            <img src="cropped/bwv-1004_5_for_PNGs-page${1 + barFrom / 4}.jpg" style="width:${(_widths_[i].w * .9) - 120}px">
-            <span style="font-family: 'Cinzel', serif; font-size: smaller; float: left; padding: 0 .3rem 0 0; margin: .5rem 0 0 .3rem; position: relative; ${bg}; border-bottom-right-radius:1rem; color: #${c.textColor};">${tone}</span>
+            <img src="cropped/bwv-1004_5_for_PNGs-page${1 + barFrom / 4}.jpg" style="width: ${(_widths_[i].w * .9) - 120}px">
+            <span style="font-family: 'Cinzel', serif; font-size: smaller; float: left; padding: 0 .3rem 0 0; margin: 0 0 0 .3rem; position: relative; ${bg}; border-bottom-right-radius:1rem; color: #${c.textColor};">
+                ${tonality}
+            </span>
         </div>
-        <div style="display: table-cell; vertical-align: middle; color: #${c.textColor};">
-            <span style="font-style: italic; font-size:.8rem;">${warning}</span>
+        <div style="font-style: italic; font-size:.8rem; color: #${c.textColor};">
+            ${warning}
         </div>
-        <div style="display: table-cell; font-style: inherit; font-size:1.1rem; vertical-align: middle; padding: 0 .3rem; border-right: .5px solid #${c.textColor}; color: #${c.textColor}">
+        <div style="font-size:1.1rem; padding: 0 .3rem; border-right: .5px solid #${c.textColor}; color: #${c.textColor}">
             ${barFrom + 1}<br\>${barTo}
         </div>
-        <div class="font-monospace fw-bold text-center" style="margin-top: auto; margin-bottom: .5rem; min-width: 3rem; color: #${c.textColor};">
+        <div class="fw-bold text-center" style="margin-top: auto; margin-bottom: .5rem; min-width: 3rem; color: #${c.textColor};">
             ${i}
         </div>
     </div>
 </div>
 `
-            $bricksContainer.append($(templateVariations));
+            $bricksTemporaryContainer.append($(templateVariations));
+
+            // bumpers
             barFrom = barFrom += duration
             i++
         });
@@ -287,8 +287,8 @@
         const templateLastChord =
             `
 <div class="grid-brick">
-    <div class="brick d-flex align-items-center justify-content-center" style="width:100%; height: 100%; background-color: #333">
-        <div class="score">
+    <div class="brick d-flex align-items-center justify-content-center" style="background-color: #333">
+        <div class="score" style="position: inherit">
             <img src="cropped/bwv-1004_5_for_PNGs-page65.jpg" style="width:${_widths_[i].w * .95 - 120}px">
         </div>
         <div style="background-image: url('/images/Bachsiegel.svg'); background-size: contain; background-repeat: no-repeat; background-color: #ddd; background-position-x: center; background-size: 80%; background-position-y: 66%; border-radius: 1rem;">
@@ -299,11 +299,11 @@
     </div>
 </div>
 `
-        $bricksContainer.append($(templateLastChord));
+        $bricksTemporaryContainer.append($(templateLastChord));
 
-        const $bricks = $bricksContainer.children();
+        const $bricks = $bricksTemporaryContainer.children();
 
-        $m.empty().append($bricks).isotope('appended', $bricks);
+        $gridById.empty().append($bricks).isotope('appended', $bricks);
 
     </script>
 </body>
