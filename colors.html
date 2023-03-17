@@ -8,9 +8,34 @@
     <title>colors</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/lodash@latest/lodash.min.js"></script>
+    <script>
+        // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+        const vh = window.innerHeight * 0.01;
+        const vw = window.innerWidth * 0.01;
+
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        document.documentElement.style.setProperty('--vw', `${vw}px`);
+
+        window.addEventListener('resize',
+            _.debounce(() => {
+                const vh = window.innerHeight * 0.01;
+                const vw = window.innerWidth * 0.01;
+
+                // Then we set the value in the --vh custom property to the root of the document
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+                document.documentElement.style.setProperty('--vw', `${vw}px`);
+            }, 750)
+        );
+    </script>
     <style>
         body {
-            margin: 1rem 0;
+            /* https://css-tricks.com/the-trick-to-viewport-units-on-mobile/ */
+            /* fallback for browsers that do not support custom properties */
+            height: 100vh;
+            /* custom properties */
+            height: calc(var(--vh, 1vh) * 100);
         }
 
         a {
@@ -18,10 +43,10 @@
         }
 
         .grid-brick {
-            display: table;
             font-size: 1.4rem;
-            width: 18rem;
-            height: 5rem;
+            /* width: 100%; */
+            width: 20rem;
+            height: 6rem;
         }
 
         .brick {
@@ -30,14 +55,15 @@
         }
 
         .score {
-            position: relative;
-            width: 12rem;
+            /* position: relative; */
+            width: 100%;
             height: 6rem;
             overflow: hidden;
             margin-right: .3rem;
         }
 
         .score img {
+            border-radius: 0 3rem 3rem 0;
             position: absolute;
             left: 0;
             top: 0;
@@ -84,6 +110,43 @@
             }
             return array;
         }
+
+        const _widths_ = [
+            { w: 0 },
+            { w: 278 },
+            { w: 288 },
+            { w: 277 },
+            { w: 285 },
+            { w: 311 },
+            { w: 306 },
+            { w: 284 },
+            { w: 328 },
+            { w: 316 },
+            { w: 378 },
+            { w: 280 },
+            { w: 250 },
+            { w: 253 },
+            { w: 247 },
+            { w: 353 },
+            { w: 319 },
+            { w: 288 },
+            { w: 285 },
+            { w: 314 },
+            { w: 310 },
+            { w: 305 },
+            { w: 310 },
+            { w: 248 },
+            { w: 257 },
+            { w: 264 },
+            { w: 260 },
+            { w: 282 },
+            { w: 314 },
+            { w: 330 },
+            { w: 325 },
+            { w: 343 },
+            { w: 252 },
+            { w: 188 }
+        ]
 
         let _colors_ = [
             { rgb: "6a8d88", p_rgb: "6c8a82", sim: 98, pantone: "625 U", name: "Aspen Hush" },
@@ -141,26 +204,30 @@
             }
         });
 
-        const $bricksContainer = $("<span>");
+        /*
+        display: flex; align-items: center; justify-content: center;
+        flex: 1; 
+        */
 
+        const $bricksContainer = $("<span>");
         const templateTheme =
-`<div class="grid-brick text-center" style="display: table; padding-right: 2rem; background-color: white !important; ">
-    <div class="brick">
-        <div class="score">
-            <img src="cropped/bwv-1004_5_for_PNGs-page1.jpg">
-        </div>
-    </div>
-</div>`
+            `<div class="grid-brick">
+                <div class="d-flex align-items-center justify-content-center mb-3" style="background-image: url('/cropped/bwv-1004_5_for_PNGs-page1.jpg'); background-repeat: no-repeat; height: 100%;">
+                    <div class="p-2" style="backdrop-filter: blur(2px); text-align: center; padding: 2px 2px; background-color: rgba(255,255,255,.66); border: 1px solid gray; border-radius: 1rem">
+                        Ciaccona
+                    </div>
+                </div>
+            </div>`
         $bricksContainer.append($(templateTheme));
         let i = 1;
         let barFrom = 8
         _colors_.forEach(function (c) {
-            const tone  = (17 <= i && i < 27) ? "Δ" : "";
+            const tone = (17 <= i && i < 27) ? "Δ" : "";
             const duration = (i == 10 || i == 15 || i == 19 || i == 29) ? 4 : ((i == 8 || i == 30) ? 12 : 8);
             const warning = duration != 8 ? `(${duration})` : "";
             const barTo = barFrom + duration
             const stripeColor = (c.textColor == "000000") ? "d0d0d0" : "303030"
-            const bg = !tone ? 
+            const bg = !tone ?
                 `background-color: #${c.p_rgb} !important;`
                 :
                 `background-image: linear-gradient(135deg, 
@@ -176,11 +243,9 @@
             const templateVariations =
                 `
 <div class="grid-brick text-end font-monospace">
-    <div class="brick font-monospace" style="width:100%; height: 100%; ${bg}">
-        <!--div class="font-monospace text-center" style="display: table-cell; vertical-align: middle; font-size:1.5rem; color: #${c.textColor};">
-        </div-->
-        <div class="score">
-            <img src="cropped/bwv-1004_5_for_PNGs-page${1 + barFrom/4}.jpg">
+    <div class="brick font-monospace d-flex align-items-center" style="width:100%; height: 100%; ${bg}">
+        <div class="score flex-grow-1">
+            <img src="cropped/bwv-1004_5_for_PNGs-page${1 + barFrom / 4}.jpg" style="width:${_widths_[i].w - 120}px">
             <span style="float: left; padding: 0 .3rem 0 0; margin: 0 0 0 .3rem; position: relative;${bg}; border-bottom-right-radius:1rem; color: #${c.textColor};">${tone}</span>
         </div>
         <div style="display: table-cell; vertical-align: middle; color: #${c.textColor};">
@@ -189,7 +254,7 @@
         <div style="display: table-cell; font-style: inherit; font-size:1.1rem; vertical-align: middle; padding: 0 .3rem; color: #${c.textColor}">
             ${barFrom + 1}<br\>${barTo}
         </div>
-        <div class="font-monospace fw-bold text-center" style="display: table-cell; vertical-align: middle; min-width: 3rem; color: #${c.textColor};">
+        <div class="font-monospace fw-bold text-center" style="margin-top: auto; margin-bottom: .8rem; min-width: 3rem; color: #${c.textColor};">
             ${i}
         </div>
     </div>
@@ -201,17 +266,17 @@
         });
 
         const templateLastChord =
-`
+            `
 <div class="grid-brick text-end">
     <div class="brick" style="width:100%; height: 100%; background-color: black">
-        <div class="score" style="width: 3rem">
-            <img src="c33.png">
+        <div class="score">
+            <img src="cropped/bwv-1004_5_for_PNGs-page65.jpg" style="width:${_widths_[i].w - 120}px">
         </div>
         <div style="display: table-cell; font-style: inherit; font-size:smaller; vertical-align: middle; padding: 0 .3rem; color: white;">
-            Chaconne<br>BWV 1004
+           BWV 1004
         </div>
         <span class="text-center" style="display: table-cell; vertical-align: middle; min-width: 3rem; color: white;">
-            †
+            &nbsp;
         </span>
     </div>
 </div>
