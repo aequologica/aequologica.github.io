@@ -108,7 +108,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/isotope-layout@latest/dist/isotope.pkgd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/isotope-packery@latest/packery-mode.pkgd.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bezier-easing@2.1.0/dist/bezier-easing.min.js"></script>
     <script type='module'>
         import tinycolor from "https://esm.sh/tinycolor2";
 
@@ -130,7 +130,7 @@
         }
 
         const _widths_ = [
-            { w: 0 },
+            { w: 270 },
             { w: 278 },
             { w: 288 },
             { w: 277 },
@@ -166,7 +166,11 @@
             { w: 188 }
         ]
 
-        let _colors_ = [
+        let _first_color_ = [
+            { rgb: "ffffff", p_rgb: "f2f1f0", sim: 97, pantone: "P 179-1 C", name: "Pastel White" }
+        ]
+
+        let _other_colors_ = [
             { rgb: "6a8d88", p_rgb: "6c8a82", sim: 98, pantone: "625 U", name: "Aspen Hush" },
             { rgb: "112222", p_rgb: "1b2f34", sim: 95, pantone: "5463 CP", name: "Black Feather" },
             { rgb: "222244", p_rgb: "252849", sim: 98, pantone: "282 CP", name: "Black Market" },
@@ -201,17 +205,29 @@
             { rgb: "bfd6d9", p_rgb: "bcd5d6", sim: 99, pantone: "5523 U", name: "Wind Speed" },
         ];
 
+        let _colors_ = _first_color_.concat(shuffleArray(_other_colors_))
+
+        // https://cubic-bezier.com/#.17,.67,.83,.67
+        let j = 0
         for (let s of _colors_) {
-            if (tinycolor("#" + s.rgb).isLight()) {
-                s.textColor = "000000";
+            // s.p_rgb = tinycolor.random().toString("hex6").slice(1);
+            s.l = tinycolor(s.p_rgb).getLuminance();
+            const easing = BezierEasing(.2,1,1,0)  //cubic-bezier(0,1.44,1,-0.37)
+            s.qwe = (1-easing(1-(s.l/0.8807910991220363))) * 100 // s.l *100 // 
+            if (s.l > .23) {
+                s.textColor = tinycolor(s.p_rgb).darken(s.qwe).toString("hex6").slice(1)
+                s.stripeColor = tinycolor(s.p_rgb).darken(10).toString("hex6").slice(1)
             } else {
-                s.textColor = "f8f8f8";
+                s.textColor = tinycolor(s.p_rgb).lighten(s.qwe).toString("hex6").slice(1)
+                s.stripeColor = tinycolor(s.p_rgb).lighten(10).toString("hex6").slice(1)
             }
+            s.r = tinycolor.readability(s.p_rgb, s.textColor)
         }
 
-        _colors_ = shuffleArray(_colors_);
-        // _colors_ = _colors_.sort((a, b) => b.sim - a.sim)
-
+        _colors_ = _colors_.sort((a,b) => b.l - a.l)
+        for (let s of _colors_) {
+            console.log(j++, s.l, s.qwe, 'bg', s.p_rgb, 'text', s.textColor, 'readability', tinycolor.readability(s.p_rgb, s.textColor))
+        }
         let $gridById = $("#grid")
 
         $gridById.isotope({
@@ -224,9 +240,9 @@
 
         const $bricksTemporaryContainer = $("<span>");
         const templateForTheme =
-            `
+            `<!-- /cropped/bwv-1004_5_for_PNGs-page1.jpg -->
 <div class="grid-brick">
-    <div class="d-flex align-items-center justify-content-center mb-3" style="background-image: url('/cropped/bwv-1004_5_for_PNGs-page1.jpg'); background-repeat: no-repeat; height: 100%;">
+    <div class="d-flex brick align-items-center justify-content-center mb-3" style="border-radius: 0; background-image: url('/manuscriptFirstLine.jpg'); background-repeat: no-repeat; background-size: cover; height: 100%;">
         <div class="magnificient-card p-2">
             Ciaccona
         </div>
@@ -234,24 +250,23 @@
 </div>`
         $bricksTemporaryContainer.append($(templateForTheme));
 
-        let i = 1;
-        let barFrom = 8
+        let i = 0;
+        let barFrom = 0
         _colors_.forEach(function (c) {
             const tonality = (17 <= i && i < 27) ? "Δ" : "";
             const duration = (i == 10 || i == 15 || i == 19 || i == 29) ? 4 : ((i == 8 || i == 30) ? 12 : 8);
             const warning = duration != 8 ? `(${duration})` : "";
             const barTo = barFrom + duration
-            const stripeColor = (c.textColor == "000000") ? "d0d0d0" : "303030"
             const bg = !tonality ?
                 `background-color: #${c.p_rgb};`
                 :
                 `background-image: linear-gradient(135deg, 
-                #${stripeColor} 16.67%, 
-                #${c.p_rgb} 16.67%, 
+                #${c.stripeColor} 10%, 
+                #${c.p_rgb} 10%, 
                 #${c.p_rgb} 50%, 
-                #${stripeColor} 50%, 
-                #${stripeColor} 66.67%, 
-                #${c.p_rgb} 66.67%, 
+                #${c.stripeColor} 50%, 
+                #${c.stripeColor} 60%, 
+                #${c.p_rgb} 60%, 
                 #${c.p_rgb} 100%); 
                 background-size: 16.97px 16.97px;`
 
@@ -272,7 +287,7 @@
             ${barFrom + 1}<br\>${barTo}
         </div>
         <div class="fw-bold text-center" style="margin-top: auto; margin-bottom: .5rem; min-width: 3rem; color: #${c.textColor};">
-            ${i}
+            ${i == 0 ? "" : i}
         </div>
     </div>
 </div>
@@ -287,10 +302,19 @@
         const templateLastChord =
             `
 <div class="grid-brick">
-    <div class="brick d-flex align-items-center justify-content-center" style="background-color: #333">
+    <div class="brick d-flex align-items-center justify-content-center" style="background-color: black">
         <div class="score" style="position: inherit">
             <img src="cropped/bwv-1004_5_for_PNGs-page65.jpg" style="width:${_widths_[i].w * .95 - 120}px">
         </div>
+        <div style="background-image: url('/images/Bachsiegel.svg'); background-size: contain; background-repeat: no-repeat; background-color: #ddd; background-position-x: center; background-size: 80%; background-position-y: 66%; border-radius: 1rem;">
+        </div>    
+    </div>
+</div>
+`
+        const oblivion =
+            `
+<div class="grid-brick">
+    <div class="brick d-flex align-items-center justify-content-center" style="border-radius: 0; background-color: black">
         <div style="background-image: url('/images/Bachsiegel.svg'); background-size: contain; background-repeat: no-repeat; background-color: #ddd; background-position-x: center; background-size: 80%; background-position-y: 66%; border-radius: 1rem;">
             <div class="magnificient-card p-2">
                 BWV 1004
@@ -300,6 +324,7 @@
 </div>
 `
         $bricksTemporaryContainer.append($(templateLastChord));
+        $bricksTemporaryContainer.append($(oblivion));
 
         const $bricks = $bricksTemporaryContainer.children();
 
