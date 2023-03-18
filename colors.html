@@ -214,7 +214,7 @@
             s.l = tinycolor(s.p_rgb).getLuminance();
             const easing = BezierEasing(.2,1,1,0)  //cubic-bezier(0,1.44,1,-0.37)
             s.qwe = (1-easing(1-(s.l/0.8807910991220363))) * 100 // s.l *100 // 
-            if (s.l > .23) {
+            if (s.l > .22) {
                 s.textColor = tinycolor(s.p_rgb).darken(s.qwe).toString("hex6").slice(1)
                 s.stripeColor = tinycolor(s.p_rgb).darken(10).toString("hex6").slice(1)
             } else {
