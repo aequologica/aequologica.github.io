@@ -40,6 +40,7 @@
      ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
      ,{ "name":"ciaccona"             , "url": "https://ciaccona.cthiebaud.com/"                                             , "src": "BachsiegelGay.svg"                   }
      ,{ "name":"perec"                , "url": "http://escarbille.free.fr/vme.php"                                           , "src": "perec_adobe_express.svg"             }
+     ,{ "name":"ga"                   , "url": "https://analytics.google.com/analytics"                                      , "src": "google-marketing-platform.svg"       }
      
      
    ]
