@@ -4,6 +4,12 @@
         "url": "http://aequologica.net",
         "src": "aequologica-trans.png"
      }
+     ,{ "name":"bookshelves",
+        "url": "https://bookshelves.cthiebaud.com",
+        "src": "script:bookshelves.js",
+        "file": "/images.json",
+        "ID": "dugenou"
+     }
      
    
      ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                             , "src": "bandlab.png"                         }

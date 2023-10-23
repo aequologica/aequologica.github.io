@@ -1,17 +1,17 @@
 (function (
-    gridSelectorParam, 
+    gridSelectorParam,
     itemSelectorParam,
     snitchSelectorParam,
     handlebarsTemplateSelectorParam
-    ) {
-    
+) {
+
     /*
     let inTheOffice        = false;
     */
-    const handlebarsSource   = $(handlebarsTemplateSelectorParam)[0].innerHTML;
+    const handlebarsSource = $(handlebarsTemplateSelectorParam)[0].innerHTML;
     const handlebarsTemplate = Handlebars.compile(handlebarsSource);
-    
-    
+
+
     // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
     // -> Fisher–Yates shuffle algorithm
     function shuffleArray(array) {
@@ -50,7 +50,7 @@
         const u1 = 𝛿 * u0 + Math.sqrt(1 - 𝛿 * 𝛿) * v;
         const z = u0 >= 0 ? u1 : -u1;
         return ξ + ω * z;
-    };    
+    };
 
     const location = 1
     const scale = .3
@@ -84,14 +84,14 @@
         } else {
             // console.log(image.src)
         }
-        if (typeof surfaces !== 'undefined') { 
-            surfaces.push({surface:width * height, pick:pick});
+        if (typeof surfaces !== 'undefined') {
+            surfaces.push({ surface: width * height, pick: pick });
         }
 
         // console.log(image.width, image.height, image.width * image.height, surface)
     }
 
-    $( document ).ready(function() {
+    $(document).ready(function () {
 
         const $m = $(gridSelectorParam);
 
@@ -99,9 +99,9 @@
             surfaces.length = 0;
         }
 
-        $("html, body, #grid").bind( "click", function( event ) {
-            if (event.target.nodeName == "HTML" || 
-                event.target.nodeName == "BODY" || 
+        $("html, body, #grid").bind("click", function (event) {
+            if (event.target.nodeName == "HTML" ||
+                event.target.nodeName == "BODY" ||
                 event.target.id.indexOf("grid") != -1) {
                 $m.isotope('shuffle');
                 event.preventDefault();
@@ -113,102 +113,115 @@
             let configuration;
 
             $.ajax({
-                type        : "GET",
-                dataType    : "json",
-                cache       : false,
-                url         : "index2.json",
-            }).done(function(data, textStatus, jqXHR) {
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: "index2.json",
+            }).done(function (data, textStatus, jqXHR) {
                 configuration = data;
-            }).fail(function(jqXHR, textStatus, errorThrown) {
+            }).fail(function (jqXHR, textStatus, errorThrown) {
                 configuration = {}
-            }).always(function(data_jqXHR, textStatus, jqXHR_errorThrown) {
-                try {                
+            }).always(function (data_jqXHR, textStatus, jqXHR_errorThrown) {
+                try {
                     const bricks = [];
 
                     $m.isotope({
-                        layoutMode   : 'packery',
-                        itemSelector : itemSelectorParam,
-                        packery      : {
+                        layoutMode: 'packery',
+                        itemSelector: itemSelectorParam,
+                        packery: {
                             gutter: 6,
-                        }              
+                        }
                     });
 
-                    _.forEach(configuration.images, function(ima, i) {
+                    _.forEach(configuration.images, function (ima, i) {
                         if (ima.src.startsWith("http") || ima.src.startsWith("/")) {
-                          ima.ima = ima.src;
+                            ima.ima = ima.src;
+                        } else if (ima.src.startsWith("script:")) {
+                            ima.ima = "images/asd.svg";
+                            {
+                                var script = document.createElement('script');
+                                script.onload = function () {
+                                    console.log("SCRIPT LOADED!")
+                                    let s = ima.src.split(':')[1].split('.')[0]
+                                    console.log(eval(s)(ima.url, ima.file, ima.name))
+                                };
+                                script.src = ima.src.split(':')[1];
+
+                                document.head.appendChild(script);
+                            }
                         } else {
-                          ima.ima = "images/"+ima.src;
+                            ima.ima = "images/" + ima.src;
                         }
-            
+
                         bricks.push(ima);
                     });
-                    
-                    for (let t = 0; t<transparents; t++) {
+
+                    for (let t = 0; t < transparents; t++) {
                         const tras = {}
                         tras.ima = "images/transparent.png";
-                        tras.class= "transparent"
+                        tras.class = "transparent"
                         bricks.push(tras);
                     }
 
                     const shuffledBricks = shuffleArray(bricks);
 
                     const $bricksContainer = $("<div>");
-                        
-                    _.forEach(shuffledBricks, function(brick) {
+
+                    _.forEach(shuffledBricks, function (brick) {
                         $bricksContainer.append($(handlebarsTemplate(brick)));
                     });
 
                     const $bricks = $bricksContainer.children();
-                    
-                    $m.empty().append( $bricks ).isotope( 'appended', $bricks );
 
-                    $m.imagesLoaded().progress( function( instance, image ) {
+                    $m.empty().append($bricks).isotope('appended', $bricks);
+
+                    $m.imagesLoaded().progress(function (instance, image) {
                         if (image.isLoaded) {
                             setRandomSurface(image.img)
                         }
-                    }).always( function() {
+                    }).always(function () {
                         $m.isotope('layout');
                         $("#gridContainer").css("visibility", "visible");
                         // display random surfaces to vaguely check normal distribution on console
 
                         if (typeof surfaces !== 'undefined' || surfaces.length) {
-                            surfaces.sort(function(a, b) {
+                            surfaces.sort(function (a, b) {
                                 return a.surface - b.surface;
                             });
                             const [totalSurface, totalPick] = surfaces.reduce((a, b) => [
-                                    a[0] + b.surface, 
-                                    a[1] + b.pick
-                                ]
-                            , [0,0])
+                                a[0] + b.surface,
+                                a[1] + b.pick
+                            ]
+                                , [0, 0])
                             const significantNumbers = [
                                 surfaces[0],
-                                {surface: Math.round(totalSurface/surfaces.length), pick : Math.round(totalPick/surfaces.length)}, 
+                                { surface: Math.round(totalSurface / surfaces.length), pick: Math.round(totalPick / surfaces.length) },
                                 surfaces[surfaces.length - 1],
                             ]
-                            _.forEach(surfaces, function(s, i) {
+                            _.forEach(surfaces, function (s, i) {
                                 console.log(s.surface, s.pick);
                             });
                             console.log('========')
-                            _.forEach(significantNumbers, function(s, i) {
+                            _.forEach(significantNumbers, function (s, i) {
                                 console.log(s.surface, s.pick);
                             });
                         }
 
                     });
-                } catch(err) {
+                } catch (err) {
                     alert(err);
                 }
             });// always   
         } // function loadData
 
-        $(snitchSelectorParam).imagesLoaded().always(function( instance ) {
+        $(snitchSelectorParam).imagesLoaded().always(function (instance) {
             loadData();
         })
     }); // document ready
 }(
-  "#grid",
-  ".grid-brick",
-  "#mouchard",
-  "#brick-template"
+    "#grid",
+    ".grid-brick",
+    "#mouchard",
+    "#brick-template"
 )); // self-exeuting enclosing function
 
