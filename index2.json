@@ -5,10 +5,10 @@
         "src": "aequologica-trans.png"
      }
      ,{ "name":"bookshelves",
-        "url": "https://bookshelves.cthiebaud.com",
+        "url": "https://bookshelves.cthiebaud.com/",
         "src": "script:bookshelves.js",
         "file": "/images.json",
-        "ID": "dugenou"
+        "ID": "bookshelves"
      }
      
      ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                             , "src": "bandlab.png"                         }

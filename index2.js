@@ -141,7 +141,7 @@
                             {
                                 var script = document.createElement('script');
                                 script.onload = function () {
-                                    console.log("SCRIPT LOADED!")
+                                    // console.log("SCRIPT LOADED!")
                                     let s = ima.src.split(':')[1].split('.')[0]
                                     console.log(eval(s)(ima.url, ima.file, ima.name))
                                 };
@@ -199,11 +199,11 @@
                                 surfaces[surfaces.length - 1],
                             ]
                             _.forEach(surfaces, function (s, i) {
-                                console.log(s.surface, s.pick);
+                                // console.log(s.surface, s.pick);
                             });
-                            console.log('========')
+                            // console.log('========')
                             _.forEach(significantNumbers, function (s, i) {
-                                console.log(s.surface, s.pick);
+                                // console.log(s.surface, s.pick);
                             });
                         }
 
