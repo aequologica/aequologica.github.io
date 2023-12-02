@@ -37,7 +37,7 @@
      ,{ "name":"mail@insead"          , "url": "https://outlook.office365.com/mail/"                                         , "src": "INSEAD_Strapline_Logo.svg"           }
      ,{ "name":"mediapart"            , "url": "https://www.mediapart.fr/"                                                   , "src": "Logo-crieur.svg"                     }
      ,{ "name":"openmozart"           , "url": "http://openmozart.cthiebaud.com/"                                            , "src": "openmozart.jpg"                      }
-     ,{ "name":"openricard"           , "url": "http://openricard.cthiebaud.com/"                                            , "src": "ricard.jpg"                          }
+     ,{ "name":"openricard"           , "url": "http://openricard.cthiebaud.com/"                                            , "src": "ricard2.png"                         }
      ,{ "name":"perec"                , "url": "http://escarbille.free.fr/vme.php"                                           , "src": "perec_adobe_express.svg"             }
      ,{ "name":"sacem"                , "url": "https://createurs-editeurs.sacem.fr/secured/mon-espace-membre"               , "src": "SACEM_HD_trans_2.svg"                }
      ,{ "name":"sofoot.com"           , "url": "http://www.sofoot.com/"                                                      , "src": "745958so_foot_logo-trans.png"        }
