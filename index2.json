@@ -7,12 +7,9 @@
      ,{ "name":"bookshelves",
         "url": "https://bookshelves.cthiebaud.com/",
         "src": "script:bookshelves.js",
-        "file": "/images.json",
+        "file": "images.json",
         "ID": "bookshelves"
      }
-     ,{ "name":"mail@gandi" , "url": "https://webmail.eu.com/roundcube/?_user=christophe.thiebaud@aequologica.net" , "src": "roundcube.svg"}
-
-     
      ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                             , "src": "bandlab.png"                         }
      ,{ "name":"botanist"             , "url": "/botanist.html"                                                              , "src": "lam.jpg"                             }
      ,{ "name":"chatgpt"              , "url": "https://chat.openai.com/"                                                    , "src": "ChatGPT_logo.svg"                    }
@@ -34,6 +31,7 @@
      ,{ "name":"liberation.fr"        , "url": "http://www.liberation.fr/"                                                   , "src": "Logo_liberation.svg"                 }
      ,{ "name":"librarything"         , "url": "https://www.librarything.com/catalog/cthiebaud"                              , "src": "flat-logo-rounded_1024w.svg"         }
      ,{ "name":"linkedin.com"         , "url": "https://www.linkedin.com/in/cthiebaud"                                       , "src": "Linkedin.svg"                        }
+     ,{ "name":"mail@gandi" , "url": "https://webmail.eu.com/roundcube/?_user=christophe.thiebaud@aequologica.net" , "src": "roundcube.svg"}
      ,{ "name":"mail@insead"          , "url": "https://outlook.office365.com/mail/"                                         , "src": "INSEAD_Strapline_Logo.svg"           }
      ,{ "name":"mediapart"            , "url": "https://www.mediapart.fr/"                                                   , "src": "Logo-crieur.svg"                     }
      ,{ "name":"openmozart"           , "url": "http://openmozart.cthiebaud.com/"                                            , "src": "openmozart.jpg"                      }
