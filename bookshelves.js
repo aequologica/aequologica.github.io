@@ -10,7 +10,7 @@ function bookshelves(url, json, id) {
         const dest = document.getElementById(id)
         const pick = Math.floor(Math.random() * data.length)
         dest.src = url + data[pick]
-        dest.parentNode.href = url + "scatter/?image=/" + data[pick].replace("thumbs/", "thumbs2/")
+        dest.parentNode.href = url + "scatter/?image=/" + data[pick] // .replace("thumbs/", "thumbs2/")
         console.log(`random pick from ajax response: ${dest.src}`)
     }).fail(function (jqXHR, textStatus) {
         alert("Request failed: " + textStatus);
