@@ -13,7 +13,7 @@
      ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                             , "src": "bandlab.png"                         }
      ,{ "name":"botanist"             , "url": "/botanist.html"                                                              , "src": "lam.jpg"                             }
      ,{ "name":"chatgpt"              , "url": "https://chat.openai.com/"                                                    , "src": "ChatGPT_logo.svg"                    }
-     ,{ "name":"ciaccona"             , "url": "https://ciaccona.cthiebaud.com/"                                             , "src": "BachsiegelGay.svg"                   }
+     ,{ "name":"ciaccona"             , "url": "https://ciaccona.cthiebaud.com/ciaccona.html"                                , "src": "BachsiegelGay.svg"                   }
      ,{ "name":"covid"                , "url": "https://covid.aequologica.net/"                                              , "src": "graph.svg"                           }
      ,{ "name":"cthiebaud.com"        , "url": "https://cthiebaud.com"                                                       , "src": "mexican-sugar-skull-transparent-background.png" }
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                , "src": "github-logo-transparent.png"         }
