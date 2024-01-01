@@ -43,7 +43,7 @@
      ,{ "name":"soundcloud.com"       , "url": "https://soundcloud.com/christophe-thiebaud"                                  , "src": "soundcloud.svg"                      }
      ,{ "name":"sueddeutsche"         , "url": "http://www.sueddeutsche.de/"                                                 , "src": "Süddeutsche-Zeitung-Ligatur.svg"     }
      ,{ "name":"tiktok"               , "url": "https://www.tiktok.com/@aequologica"                                         , "src": "TikTok_Logo.svg"                     }
-     ,{ "name":"truth"                , "url": "https://cthiebaud.com/truth"                                                 , "src": "Plastic_brick,_red.svg"              }
+     ,{ "name":"truth"                , "url": "https://truth.cthiebaud.com"                                                 , "src": "Plastic_brick,_red.svg"              }
      ,{ "name":"tuner"                , "url": "https://tuner-online.com"                                                    , "src": "tuning-svgrepo-com.svg"              }
      ,{ "name":"tuttocampo"           , "url": "https://www.tuttocampo.it/Veneto/CalcioA5SerieC2/GironeASerieC2/Risultati"   , "src": "Soccerball.svg"                      }
      ,{ "name":"vinyl"                , "url": "https://emugnier.cthiebaud.com/"                                             , "src": "vinyl_record.svg"                    }
