@@ -12,6 +12,7 @@
      }
      ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                             , "src": "bandlab.png"                         }
      ,{ "name":"botanist"             , "url": "/botanist.html"                                                              , "src": "lam.jpg"                             }
+     ,{ "name":"bsky"                 , "url": "https://bsky.app/"                                                           , "src": "Bluesky_butterfly-logo.svg"          }
      ,{ "name":"chatgpt"              , "url": "https://chat.openai.com/"                                                    , "src": "ChatGPT_logo.svg"                    }
      ,{ "name":"ciaccona"             , "url": "https://ciaccona.cthiebaud.com/ciaccona.html"                                , "src": "BachsiegelGay.svg"                   }
      ,{ "name":"covid"                , "url": "https://covid.aequologica.net/"                                              , "src": "graph.svg"                           }
@@ -50,7 +51,6 @@
      ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                            , "src": "Wordpress-Logo.svg"                  }
      ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
           
-     ,{ "name":"bsky"                 , "url": "https://bsky.app/"                                                           , "src": "Bluesky_butterfly-logo.svg"          }
 
    ]
 }
