@@ -50,5 +50,7 @@
      ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                            , "src": "Wordpress-Logo.svg"                  }
      ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
           
+     ,{ "name":"bsky"                 , "url": "https://bsky.app/"                                                           , "src": "Bluesky_butterfly-logo.svg"          }
+
    ]
 }
