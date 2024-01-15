@@ -44,7 +44,7 @@
      ,{ "name":"tiktok"               , "url": "https://www.tiktok.com/@aequologica"                                         , "src": "TikTok_Logo.svg"                     }
      ,{ "name":"tuner"                , "url": "https://tuner-online.com"                                                    , "src": "tuning-svgrepo-com.svg"              }
      ,{ "name":"tuttocampo"           , "url": "https://www.tuttocampo.it/Veneto/CalcioA5SerieC2/GironeASerieC2/Risultati"   , "src": "Soccerball.svg"                      }
-     ,{ "name":"vinyl"                , "url": "https://emugnier.cthiebaud.com/"                                             , "src": "vinyl_record.svg"                    }
+     ,{ "name":"vinyl"                , "url": "https://music.cthiebaud.com/"                                                , "src": "vinyl_record.svg"                    }
      ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                            , "src": "Wordpress-Logo.svg"                  }
      ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                 , "src": "youtube.png"                         }
           
