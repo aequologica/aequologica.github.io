@@ -39,6 +39,7 @@
         const Θ = 2.0 * Math.PI * u2;
         return [R * Math.cos(Θ), R * Math.sin(Θ)];
     };
+    
     //  ξ: location (mean), ω: scale (standard deviation), α: and shape (skewness)
     const randomSkewNormal = (rng, ξ, ω, α = 0) => {
         α = -α
@@ -103,6 +104,14 @@
             if (event.target.nodeName == "HTML" ||
                 event.target.nodeName == "BODY" ||
                 event.target.id.indexOf("grid") != -1) {
+
+
+                var gridItems = document.querySelectorAll(itemSelectorParam);                    
+                gridItems.forEach(function(item) {
+                    var img = item.querySelector('img');
+                    setRandomSurface(img)
+                });
+                $m.isotope('layout');
                 $m.isotope('shuffle');
                 event.preventDefault();
                 event.stopPropagation();
