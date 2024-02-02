@@ -232,5 +232,5 @@
     ".grid-brick",
     "#mouchard",
     "#brick-template"
-)); // self-exeuting enclosing function
+)); // self-executing enclosing function
 
