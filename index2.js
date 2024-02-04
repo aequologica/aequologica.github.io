@@ -31,7 +31,7 @@
     // https://spin.atomicobject.com/2019/09/30/skew-normal-prng-javascript/
     const randomNormals = (rng) => {
         let u1 = 0, u2 = 0;
-        //Convert [0,1) to (0,1)
+        //Convert [0,1) to (0,1]
         // cf. last comment of https://stackoverflow.com/a/36481059/1070215
         u1 = 1 - rng();
         u2 = 1 - rng();
@@ -62,7 +62,7 @@
         transparents = 0
         multiple = 3000
     }
-    let surfaces = []; // uncomment variable surfaces to check normal distribution on console (see below)
+    // let surfaces = []; // uncomment variable surfaces to check normal distribution on console (see below)
     function setRandomSurface(image) {
 
         let pick = randomSkewNormal(Math.random, location, scale, shape)
@@ -70,7 +70,7 @@
         // console.log(pick)
         let surface = multiple * pick
         let width, height
-        if (!isNaN(surface) && image.width && image.height) {
+        if (Number.isFinite(surface) && image.width && image.height) {
             const ratio = Math.sqrt(surface / (image.width * image.height))
 
             width = Math.round(image.width * ratio)
@@ -78,7 +78,7 @@
         } else {
             width = height = Math.round(Math.sqrt(surface))
         }
-        if (!isNaN(width) && !isNaN(height)) {
+        if (Number.isFinite(width) && Number.isFinite(height)) {
             image.style = `width: ${width}px; height: auto;`
             image.width = width
             image.height = "auto";
@@ -193,7 +193,7 @@
                         $("#gridContainer").css("visibility", "visible");
                         // display random surfaces to vaguely check normal distribution on console
 
-                        if (typeof surfaces !== 'undefined' || surfaces.length) {
+                        if (typeof surfaces !== 'undefined' && surfaces.length) {
                             surfaces.sort(function (a, b) {
                                 return a.surface - b.surface;
                             });
@@ -208,11 +208,11 @@
                                 surfaces[surfaces.length - 1],
                             ]
                             _.forEach(surfaces, function (s, i) {
-                                // console.log(s.surface, s.pick);
+                                console.log(s.surface, s.pick);
                             });
-                            // console.log('========')
+                            console.log('========')
                             _.forEach(significantNumbers, function (s, i) {
-                                // console.log(s.surface, s.pick);
+                                console.log(s.surface, s.pick);
                             });
                         }
 

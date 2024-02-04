@@ -10,7 +10,7 @@
         "file": "images.json",
         "ID": "bookshelves"
      }
-     ,{ "name":"aletheia"             , "url": "https://aletheia.cthiebaud.com"                                              , "src": "icon2.jpg"                           }
+     ,{ "name":"aletheia"             , "url": "https://aletheia.cthiebaud.com"                                              , "src": "aletheia.svg"                        }
      ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                             , "src": "bandlab.png"                         }
      ,{ "name":"botanist"             , "url": "/botanist.html"                                                              , "src": "lam.jpg"                             }
      ,{ "name":"bsky"                 , "url": "https://bsky.app/"                                                           , "src": "Bluesky_butterfly-logo.svg"          }
