@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- 
+	document.getElementsByTagName('svg')[0].getBBox()
+	x: 38, y: 32.00010681152344, width: 39.00049591064453, height: 43.999908447265625
+	0 0 108 108
+-->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="108px" height="108px" viewBox="38 32 40 44" enable-background="new 0 0 108 108" xml:space="preserve">
+<g id="background" display="none">
+	<rect id="bounding_box_1_" display="inline" fill="none" width="108" height="108"/>
+	<rect id="BG_color" display="inline" fill="#FFFFFF" width="108" height="108"/>
+</g>
+<g id="Foreground">
+	<g>
+		<path fill="#0080F4" d="M38,71.123V36.878c0-3.749,4.017-6.093,7.232-4.218L74.59,49.782c3.214,1.875,3.214,6.562,0,8.436
+			L45.232,75.339C42.018,77.216,38,74.872,38,71.123z"/>
+		<path fill="#BEF7FF" d="M66.934,45.317l-14.872,8.756L49.24,48.96c-0.364-0.659-0.96-1.135-1.679-1.339
+			c-0.249-0.071-0.505-0.107-0.76-0.107c-0.474,0-0.945,0.125-1.363,0.362L38,52.099v5.832l0.121-0.069l7.821-4.44l2.84,5.144
+			c0.362,0.656,0.982,1.147,1.699,1.345c0.238,0.066,0.485,0.099,0.733,0.099c0.496,0,0.983-0.132,1.408-0.382l19.334-11.384
+			L66.934,45.317z"/>
+	</g>
+</g>
+</svg>
