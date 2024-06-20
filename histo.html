@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Histogram of Exam Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+        const results = [11, 6.7, 10, 6.3, 7.9, 6.2, 9.7, 9, 5.5, 15.2, 7.1, 4.3, 5.5, 4.5, 4.9, 8.9, 2.1, 6.6, 5.4, 9.5, 5.4, 7.6, 2.9, 19.4];
+
+        // Define the buckets
+        const buckets = [
+            { range: [0, 2], count: 0 },
+            { range: [2, 4], count: 0 },
+            { range: [4, 6], count: 0 },
+            { range: [6, 8], count: 0 },
+            { range: [8, 10], count: 0 },
+            { range: [10, 12], count: 0 },
+            { range: [12, 14], count: 0 },
+            { range: [14, 16], count: 0 },
+            { range: [16, 18], count: 0 },
+            { range: [18, 20], count: 0 },
+            { range: [20, 22], count: 0 },
+            { range: [22, 24], count: 0 },
+        ];
+
+        // Count the results in each bucket
+        results.forEach(score => {
+            for (let bucket of buckets) {
+                if (score >= bucket.range[0] && score < bucket.range[1]) {
+                    bucket.count++;
+                    break;
+                }
+            }
+        });
+
+        // Prepare data for Chart.js
+        const labels = buckets.map(bucket => `${bucket.range[0]}-${bucket.range[1]}`);
+        const data = buckets.map(bucket => bucket.count);
+
+        // Create the chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Number of Students',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Score Range'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Number of Students'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
