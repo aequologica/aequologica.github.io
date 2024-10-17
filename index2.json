@@ -11,6 +11,7 @@
         "ID": "bookshelves"
      }
      ,{ "name":"shuffle"             , "url": "https://bost.ocks.org/mike/shuffle/"                                               , "src": "Fisher–Yates.jpg"                     }
+     ,{ "name":"moodle"             , "url": "https://moodle.heilbronn.dhbw.de/course/view.php?id=15064"                          , "src": "dhbw.png"                             }
      
 
      ,{ "name":"aletheia"             , "url": "https://aletheia.cthiebaud.com"                                                    , "src": "aletheia.svg"                        }
