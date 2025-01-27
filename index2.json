@@ -1,10 +1,6 @@
 {
   "images" : [
-     { "name":"aequologica",
-        "url": "http://aequologica.net",
-        "src": "aequologica-trans.png"
-     }
-     ,{ "name":"bookshelves",
+     { "name":"bookshelves",
         "url": "https://bookshelves.cthiebaud.com/",
         "src": "script:bookshelves.js",
         "file": "images.json",
@@ -20,7 +16,6 @@
      ,{ "name":"bsky"                 , "url": "https://bsky.app/"                                                                 , "src": "Bluesky_butterfly-logo.svg"          }
      ,{ "name":"chatgpt"              , "url": "https://chat.openai.com/"                                                          , "src": "ChatGPT_logo.svg"                    }
      ,{ "name":"ciaccona"             , "url": "https://ciaccona.cthiebaud.com/ciaccona.html"                                      , "src": "BachsiegelGay.svg"                   }
-     ,{ "name":"covid"                , "url": "https://covid.aequologica.net/"                                                    , "src": "graph.svg"                           }
      ,{ "name":"cthiebaud.com"        , "url": "https://cthiebaud.com"                                                             , "src": "8c9426e8ff0fc7a0a7cd18d6b3c865d4.png" }
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                      , "src": "github-logo-transparent.png"         }
      ,{ "name":"cthiebaud@gitlab"     , "url": "https://gitlab.com/users/cthiebaud/projects"                                       , "src": "gitlab.svg"                          }
