@@ -184,6 +184,9 @@
 
                     $m.empty().append($bricks).isotope('appended', $bricks);
 
+                    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
                     $m.imagesLoaded().progress(function (instance, image) {
                         if (image.isLoaded) {
                             setRandomSurface(image.img)

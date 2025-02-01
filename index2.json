@@ -1,55 +1,49 @@
 {
   "images" : [
-     { "name":"bookshelves",
+     { "name":"Mes livres",
         "url": "https://bookshelves.cthiebaud.com/",
         "src": "script:bookshelves.js",
         "file": "images.json",
         "ID": "bookshelves"
      }
-     ,{ "name":"shuffle"             , "url": "https://bost.ocks.org/mike/shuffle/"                                               , "src": "Fisher–Yates.jpg"                     }
-     ,{ "name":"moodle"             , "url": "https://moodle.heilbronn.dhbw.de/course/view.php?id=15064"                          , "src": "dhbw.png"                             }
-     
-
-     ,{ "name":"aletheia"             , "url": "https://aletheia.cthiebaud.com"                                                    , "src": "aletheia.svg"                        }
-     ,{ "name":"bandlab"              , "url": "https://www.bandlab.com/library/projects/recent"                                   , "src": "bandlab.png"                         }
-     ,{ "name":"botanist"             , "url": "/botanist.html"                                                                    , "src": "lam.jpg"                             }
-     ,{ "name":"bsky"                 , "url": "https://bsky.app/"                                                                 , "src": "Bluesky_butterfly-logo.svg"          }
-     ,{ "name":"chatgpt"              , "url": "https://chat.openai.com/"                                                          , "src": "ChatGPT_logo.svg"                    }
-     ,{ "name":"ciaccona"             , "url": "https://ciaccona.cthiebaud.com/ciaccona.html"                                      , "src": "BachsiegelGay.svg"                   }
-     ,{ "name":"cthiebaud.com"        , "url": "https://cthiebaud.com"                                                             , "src": "8c9426e8ff0fc7a0a7cd18d6b3c865d4.png" }
-     ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                      , "src": "github-logo-transparent.png"         }
-     ,{ "name":"cthiebaud@gitlab"     , "url": "https://gitlab.com/users/cthiebaud/projects"                                       , "src": "gitlab.svg"                          }
-     ,{ "name":"cv"                   , "url": "https://cthiebaud.com/cv/"                                                         , "src": "cv-icon-by-Vexels.svg"               }
-     ,{ "name":"facebook.com"         , "url": "https://www.facebook.com/christophe.thiebaud"                                      , "src": "transparent-facebook-logo-icon.png"  }
-     ,{ "name":"franceCul"            , "url": "https://www.franceculture.fr/programmes"                                           , "src": "France_Culture.svg"                  }
-     ,{ "name":"franceMu"             , "url": "https://www.radiofrance.fr/francemusique"                                          , "src": "France_Musique.svg"                  }
-     ,{ "name":"ga"                   , "url": "https://analytics.google.com/analytics"                                            , "src": "google-marketing-platform.svg"       }
-     ,{ "name":"gandi"                , "url": "https://admin.gandi.net/dashboard/9cb9417c-b33b-11e7-bcf1-00163ec388ae/"           , "src": "avatar_gandi.svg"                    }
-     ,{ "name":"gmail"                , "url": "https://mail.google.com/mail/u/0/#inbox"                                           , "src": "New_Logo_Gmail.svg"                  }
-     ,{ "name":"googleplayconsole"    , "url": "https://play.google.com/console/u/0/developers/7840214153383499948/app-list?pli=1" , "src": "play-console.svg"                    }
-     ,{ "name":"instagram"            , "url": "https://www.instagram.com/"                                                        , "src": "instagram.svg"                       }
-     ,{ "name":"lemonde.fr"           , "url": "http://www.lemonde.fr/"                                                            , "src": "Le_Monde_logo.svg"                   }
-     ,{ "name":"lequipe.fr"           , "url": "http://www.lequipe.fr/"                                                            , "src": "L_Equipe_Logo_E.svg"                 }
-     ,{ "name":"liberation.fr"        , "url": "http://www.liberation.fr/"                                                         , "src": "Logo_liberation.svg"                 }
-     ,{ "name":"librarything"         , "url": "https://www.librarything.com/catalog/cthiebaud"                                    , "src": "flat-logo-rounded_1024w.svg"         }
-     ,{ "name":"linkedin.com"         , "url": "https://www.linkedin.com/in/cthiebaud"                                             , "src": "Linkedin.svg"                        }
-     ,{ "name":"mail@insead"          , "url": "https://outlook.office365.com/mail/"                                               , "src": "INSEAD_Strapline_Logo.svg"           }
-     ,{ "name":"mediapart"            , "url": "https://www.mediapart.fr/"                                                         , "src": "Logo-crieur.svg"                     }
-     ,{ "name":"openmozart"           , "url": "http://openmozart.cthiebaud.com/"                                                  , "src": "openmozart.jpg"                      }
-     ,{ "name":"openricard"           , "url": "http://openricard.cthiebaud.com/"                                                  , "src": "ricard-vector-logo.svg"              }
-     ,{ "name":"sacem"                , "url": "https://createurs-editeurs.sacem.fr/secured/mon-espace-membre"                     , "src": "SACEM_HD_trans_2.svg"                }
-     ,{ "name":"sofoot.com"           , "url": "http://www.sofoot.com/"                                                            , "src": "745958so_foot_logo-trans.png"        }
-     ,{ "name":"soundcloud.com"       , "url": "https://soundcloud.com/christophe-thiebaud"                                        , "src": "soundcloud.svg"                      }
-     ,{ "name":"sueddeutsche"         , "url": "http://www.sueddeutsche.de/"                                                       , "src": "Süddeutsche-Zeitung-Ligatur.svg"     }
-     ,{ "name":"telegram"             , "url": "https://web.telegram.org/"                                                         , "src": "Telegram_logo.svg"                   }
-     ,{ "name":"tiktok"               , "url": "https://www.tiktok.com/@aequologica"                                               , "src": "TikTok_Logo.svg"                     }
-     ,{ "name":"tuner"                , "url": "https://tuner-online.com"                                                          , "src": "tuning-svgrepo-com.svg"              }
-     ,{ "name":"tuttocampo"           , "url": "https://www.tuttocampo.it/Veneto/CalcioA5SerieC2/GironeASerieC2/Risultati"         , "src": "Soccerball.svg"                      }
-     ,{ "name":"vinyl"                , "url": "https://music.cthiebaud.com/"                                                      , "src": "vinyl_record.svg"                    }
-     ,{ "name":"wordpress"            , "url": "https://cthiebaud.wordpress.com/"                                                  , "src": "Wordpress-Logo.svg"                  }
-     ,{ "name":"youtube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                       , "src": "youtube.png"                         }
-     ,{ "name":"coiffeur"             , "url": "/images/coiffeur.jpg"                                                              , "src": "coiffeur.jpg"                        }
-
+     ,{ "name":"Aletheia"             , "url": "https://aletheia.cthiebaud.com"                                                    , "src": "aletheia.svg"                          }
+     ,{ "name":"Après « Les filles du botaniste »", "url": "/botanist.html"                                                        , "src": "lam.jpg"                               }
+     ,{ "name":"BandLab"              , "url": "https://www.bandlab.com/library/projects/recent"                                   , "src": "bandlab.png"                           }
+     ,{ "name":"Bluesky"              , "url": "https://bsky.app/"                                                                 , "src": "Bluesky_butterfly-logo.svg"            }
+     ,{ "name":"ChatGPT"              , "url": "https://chat.openai.com/"                                                          , "src": "ChatGPT_logo.svg"                      }
+     ,{ "name":"Ciaccona"             , "url": "https://ciaccona.cthiebaud.com/ciaccona.html"                                      , "src": "BachsiegelGay.svg"                     }
+     ,{ "name":"cthiebaud.com"        , "url": "https://cthiebaud.com"                                                             , "src": "8c9426e8ff0fc7a0a7cd18d6b3c865d4.png"  }
+     ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                      , "src": "github-logo-transparent.png"           }
+     ,{ "name":"cthiebaud@gitlab"     , "url": "https://gitlab.com/users/cthiebaud/projects"                                       , "src": "gitlab.svg"                            }
+     ,{ "name":"Curriculum Vitae"     , "url": "https://cthiebaud.com/cv/"                                                         , "src": "cv-icon-by-Vexels.svg"                 }
+     ,{ "name":"Facebook"             , "url": "https://www.facebook.com/christophe.thiebaud"                                      , "src": "transparent-facebook-logo-icon.png"    }
+     ,{ "name":"Fedele Barbiere"      , "url": "/images/coiffeur.jpg"                                                              , "src": "coiffeur.jpg"                          }
+     ,{ "name":"France Culture"       , "url": "https://www.franceculture.fr/programmes"                                           , "src": "France_Culture.svg"                    }
+     ,{ "name":"France Musique"       , "url": "https://www.radiofrance.fr/francemusique"                                          , "src": "France_Musique.svg"                    }
+     ,{ "name":"Gandi"                , "url": "https://admin.gandi.net/dashboard/9cb9417c-b33b-11e7-bcf1-00163ec388ae/"           , "src": "avatar_gandi.svg"                      }
+     ,{ "name":"Gmail"                , "url": "https://mail.google.com/mail/u/0/#inbox"                                           , "src": "New_Logo_Gmail.svg"                    }
+     ,{ "name":"Google Analytics"     , "url": "https://analytics.google.com/analytics"                                            , "src": "google-marketing-platform.svg"         }
+     ,{ "name":"Google Play Console"  , "url": "https://play.google.com/console/u/0/developers/7840214153383499948/app-list?pli=1" , "src": "play-console.svg"                      }
+     ,{ "name":"Instagram"            , "url": "https://www.instagram.com/"                                                        , "src": "instagram.svg"                         }
+     ,{ "name":"Judo"                 , "url": "https://judotv.com/"                                                               , "src": "Judo_white_belt.svg"                   }
+     ,{ "name":"L'équipe"             , "url": "http://www.lequipe.fr/"                                                            , "src": "L_Equipe_Logo_E.svg"                   }
+     ,{ "name":"Le Monde"             , "url": "http://www.lemonde.fr/"                                                            , "src": "Le_Monde_logo.svg"                     }
+     ,{ "name":"Liberation"           , "url": "http://www.liberation.fr/"                                                         , "src": "Logo_liberation.svg"                   }
+     ,{ "name":"LibraryThing"         , "url": "https://www.librarything.com/catalog/cthiebaud"                                    , "src": "flat-logo-rounded_1024w.svg"           }
+     ,{ "name":"LinkedIn"             , "url": "https://www.linkedin.com/in/cthiebaud"                                             , "src": "Linkedin.svg"                          }
+     ,{ "name":"mail@insead"          , "url": "https://outlook.office365.com/mail/"                                               , "src": "INSEAD_Strapline_Logo.svg"             }
+     ,{ "name":"Mediapart"            , "url": "https://www.mediapart.fr/"                                                         , "src": "Logo-crieur.svg"                       }
+     ,{ "name":"Openmozart"           , "url": "http://openmozart.cthiebaud.com/"                                                  , "src": "openmozart.jpg"                        }
+     ,{ "name":"Sacem"                , "url": "https://createurs-editeurs.sacem.fr/secured/mon-espace-membre"                     , "src": "SACEM_HD_trans_2.svg"                  }
+     ,{ "name":"SoFoot"               , "url": "http://www.sofoot.com/"                                                            , "src": "745958so_foot_logo-trans.png"          }
+     ,{ "name":"SoundCloud"           , "url": "https://soundcloud.com/christophe-thiebaud"                                        , "src": "soundcloud.svg"                        }
+     ,{ "name":"Süddeutsche Zeitung"  , "url": "http://www.sueddeutsche.de/"                                                       , "src": "Süddeutsche-Zeitung-Ligatur.svg"       }
+     ,{ "name":"Telegram"             , "url": "https://web.telegram.org/"                                                         , "src": "Telegram_logo.svg"                     }
+     ,{ "name":"Tuner"                , "url": "https://tuner-online.com"                                                          , "src": "tuning-svgrepo-com.svg"                }
+     ,{ "name":"Tuttocampo"           , "url": "https://www.tuttocampo.it/Veneto/CalcioA5SerieC2/GironeASerieC2/Risultati"         , "src": "Soccerball.svg"                        }
+     ,{ "name":"Vinyl"                , "url": "https://music.cthiebaud.com/"                                                      , "src": "vinyl_record.svg"                      }
+     ,{ "name":"WordPress"            , "url": "https://cthiebaud.wordpress.com/"                                                  , "src": "Wordpress-Logo.svg"                    }
+     ,{ "name":"YouTube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                       , "src": "youtube.png"                           }
      
    ]
 }

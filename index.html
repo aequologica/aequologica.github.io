@@ -40,6 +40,13 @@
       justify-content: center;
       align-items: center;
     }
+
+    .custom-tooltip {
+      --bs-tooltip-zindex: 1234;
+      --bs-tooltip-bg: white;
+      --bs-tooltip-color: black;
+      --bs-tooltip-opacity: .75;
+    }
   </style>
 
 </head>
@@ -51,7 +58,7 @@
     <div id="gridContainerRow" class="row">
       <div id="gridContainerCol" class="col-lg-12 text-center">
         <div id="grid">
-          <script id="brick-template" type="text/x-handlebars-template"><div class="grid-brick {{class}}">
+          <script id="brick-template" type="text/x-handlebars-template"><div class="grid-brick {{class}}"  title="{{name}}" data-bs-toggle="tooltip" data-bs-content="{{name}}" data-bs-custom-class="custom-tooltip">
   <a  href="{{url}}" target="{{name}}">
     <img id="{{name}}" src = "{{ima}}" alt="{{name}}" width="{{width}}px" height="{{height}}px">
   </a>
@@ -82,7 +89,8 @@
 
   $(function () {
 
-    $('[data-toggle="tooltip"]').tooltip()
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
   });
 </script>
