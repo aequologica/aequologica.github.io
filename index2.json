@@ -8,7 +8,7 @@
      }
      ,{ "name":"Aletheia"             , "url": "https://aletheia.cthiebaud.com"                                                    , "src": "aletheia.svg"                          }
      ,{ "name":"Après « Les filles du botaniste »", "url": "/botanist.html"                                                        , "src": "lam.jpg"                               }
-     ,{ "name":"BandLab"              , "url": "https://www.bandlab.com/library/projects/recent"                                   , "src": "bandlab.png"                           }
+     ,{ "name":"BandLab"              , "url": "https://www.bandlab.com/library/projects/recent"                                   , "src": "icons8-bandlab.svg"                    }
      ,{ "name":"Bluesky"              , "url": "https://bsky.app/"                                                                 , "src": "Bluesky_butterfly-logo.svg"            }
      ,{ "name":"ChatGPT"              , "url": "https://chat.openai.com/"                                                          , "src": "ChatGPT_logo.svg"                      }
      ,{ "name":"Ciaccona"             , "url": "https://ciaccona.cthiebaud.com/ciaccona.html"                                      , "src": "BachsiegelGay.svg"                     }
