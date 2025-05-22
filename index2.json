@@ -16,6 +16,7 @@
      ,{ "name":"ChatGPT"              , "url": "https://chat.openai.com/"                                                          , "src": "ChatGPT_logo.svg"                      }
      ,{ "name":"Ciaccona"             , "url": "https://ciaccona.cthiebaud.com/ciaccona.html"                                      , "src": "BachsiegelGay.svg"                     }
      ,{ "name":"Cineteca di Bologna"  , "url": "https://cinetecadibologna.it/programmazione/film-in-programma/"                    , "src": "logo_cineteca.svg"                     }
+     ,{ "name":"ClaudeAI"             , "url": "https://claude.ai"                                                                 , "src": "Claude_AI_logo.svg"                    }
      ,{ "name":"cthiebaud@github"     , "url": "https://github.com/cthiebaud"                                                      , "src": "octocat.svg"                           }
      ,{ "name":"cthiebaud@gitlab"     , "url": "https://gitlab.com/users/cthiebaud/projects"                                       , "src": "gitlab.svg"                            }
      ,{ "name":"Curriculum Vitae"     , "url": "https://cthiebaud.com/cv/"                                                         , "src": "cv-icon-by-Vexels.svg"                 }
