@@ -42,7 +42,7 @@
      ,{ "name":"Süddeutsche Zeitung"  , "url": "http://www.sueddeutsche.de/"                                                        , "src": "Süddeutsche-Zeitung-Ligatur.svg"       }
      ,{ "name":"Telegram"             , "url": "https://web.telegram.org/"                                                          , "src": "Telegram_logo.svg"                     }
      ,{ "name":"Tuner"                , "url": "https://tuner-online.com"                                                           , "src": "tuning-svgrepo-com.svg"                }
-     ,{ "name":"Tuttocampo"           , "url": "https://www.tuttocampo.it/Veneto/CalcioA5SerieC2/GironeBSerieC2/Risultati"          , "src": "Soccerball.svg"                        }
+     ,{ "name":"Tuttocampo"           , "url": "https://www.tuttocampo.it/Lombardia/CalcioA5Dilettanti/GironeASerieD/Risultati"     , "src": "Soccerball.svg"                        }
      ,{ "name":"Vinyl"                , "url": "https://music.cthiebaud.com/"                                                       , "src": "vinyl_record.svg"                      }
      ,{ "name":"WordPress"            , "url": "https://cthiebaud.wordpress.com/"                                                   , "src": "Wordpress-Logo.svg"                    }
      ,{ "name":"YouTube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                        , "src": "YouTube_full-color_icon_(2017).svg"    }
