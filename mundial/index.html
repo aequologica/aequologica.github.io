@@ -53,7 +53,7 @@ svg { display: block; width: 100%; height: auto; }
   </div>
   <span>1.1</span>
 </div>
-<p id="legend-note">joueurs exportés / million d'hab. · Gris : aucun joueur exporté · survol pour le détail (top 5 joueurs par caps)</p>
+<p id="legend-note">joueurs exportés / million d'hab. · Gris : aucun joueur exporté · ● nation qualifiée au Mondial 2026</p>
 <div id="tooltip"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -92,16 +92,21 @@ const W = 900, H = 480;
 const projection = d3.geoNaturalEarth1().scale(152).translate([W/2, H/2 + 10]);
 const path = d3.geoPath(projection);
 const svg = d3.select('#map');
+const g = svg.append('g');
 const tt = document.getElementById('tooltip');
 
-svg.append('path').datum({type:'Sphere'})
+svg.call(d3.zoom()
+  .scaleExtent([1, 12])
+  .on('zoom', e => g.attr('transform', e.transform)));
+
+g.append('path').datum({type:'Sphere'})
   .attr('d', path).attr('fill','#d8d0e8').attr('stroke','#b4a8cc').attr('stroke-width',.5);
 
-svg.append('path').datum(d3.geoGraticule()())
+g.append('path').datum(d3.geoGraticule()())
   .attr('d', path).attr('fill','none').attr('stroke','#ccc4dc').attr('stroke-width',.25);
 
 d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(world => {
-  svg.selectAll('.country')
+  g.selectAll('.country')
     .data(topojson.feature(world, world.objects.countries).features)
     .join('path')
     .attr('class','country')
@@ -131,9 +136,61 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w
     })
     .on('mouseleave', () => { tt.style.display='none'; });
 
-  svg.append('path')
+  g.append('path')
     .datum(topojson.mesh(world, world.objects.countries, (a,b) => a!==b))
     .attr('fill','none').attr('stroke','#b8b0a8').attr('stroke-width',.3).attr('d', path);
+
+  // Dots centroïdes pour les 48 nations qualifiées
+  const QUALIFIED_NAMES = {
+    12:'Algeria', 32:'Argentina', 36:'Australia', 40:'Austria',
+    56:'Belgium', 70:'Bosnia and Herzegovina', 76:'Brazil', 124:'Canada',
+    132:'Cape Verde', 170:'Colombia', 191:'Croatia', 203:'Czech Republic',
+    180:'DR Congo', 218:'Ecuador', 250:'France', 276:'Germany',
+    288:'Ghana', 332:'Haiti', 364:'Iran', 368:'Iraq', 384:'Ivory Coast',
+    392:'Japan', 400:'Jordan', 484:'Mexico', 504:'Morocco', 528:'Netherlands',
+    554:'New Zealand', 578:'Norway', 591:'Panama', 600:'Paraguay',
+    620:'Portugal', 634:'Qatar', 682:'Saudi Arabia', 686:'Senegal',
+    710:'South Africa', 410:'South Korea', 724:'Spain', 752:'Sweden',
+    756:'Switzerland', 788:'Tunisia', 792:'Turkey',
+    826:'England / Scotland', 840:'United States', 858:'Uruguay', 860:'Uzbekistan'
+  };
+
+  // Coordonnées manuelles [lon, lat] pour les pays dont le centroïde auto est faussé
+  // par des territoires d'outre-mer ou une géographie atypique
+  const CENTROID_OVERRIDE = {
+    250: [2.5, 46.5],    // France (sans outre-mer)
+    840: [-98, 38],      // USA (sans Alaska/Hawaii)
+    826: [-2, 54],       // UK
+    638: [55.5, -21],    // Réunion — pas dans notre liste mais précaution
+  };
+
+  const dotCentroid = d => {
+    const ov = CENTROID_OVERRIDE[+d.id];
+    return ov ? projection(ov) : path.centroid(d);
+  };
+
+  g.selectAll('.dot-qualified')
+    .data(topojson.feature(world, world.objects.countries).features.filter(d => QUALIFIED_NAMES[+d.id]))
+    .join('circle')
+    .attr('class','dot-qualified')
+    .attr('cx', d => dotCentroid(d)[0])
+    .attr('cy', d => dotCentroid(d)[1])
+    .attr('r', 2.5)
+    .attr('fill', '#c8a84b')
+    .attr('stroke', '#fff')
+    .attr('stroke-width', 0.6)
+    .attr('pointer-events', d => byId[+d.id] ? 'none' : 'all')
+    .on('mousemove', (event, d) => {
+      const name = QUALIFIED_NAMES[+d.id];
+      tt.innerHTML = `<div class="tt-name">${name}</div>`;
+      tt.style.display = 'block';
+      let x = event.clientX + 16, y = event.clientY + 16;
+      if (x + 270 > window.innerWidth) x = event.clientX - 274;
+      if (y + 80 > window.innerHeight) y = event.clientY - 84;
+      tt.style.left = x + 'px';
+      tt.style.top  = y + 'px';
+    })
+    .on('mouseleave', () => { tt.style.display = 'none'; });
 });
 
 const bar = document.getElementById('legend-bar');
