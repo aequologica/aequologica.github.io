@@ -33,7 +33,6 @@ svg { display: block; width: 100%; height: auto; }
 .tt-nation { color: #aaa; font-size: 10px; white-space: nowrap; }
 #legend { display: flex; align-items: center; gap: 10px; max-width: 1100px; margin: 10px auto 8px; padding: 0 16px; font-size: 11px; color: #888; }
 #legend-bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; flex: 1; max-width: 280px; }
-.leg-seg { height: 100%; flex: 1; }
 #legend-ticks { display: flex; justify-content: space-between; width: 280px; font-size: 10px; color: #aaa; margin-top: 3px; }
 #legend-note { font-size: 11px; color: #aaa; margin: 0 16px 20px; max-width: 1100px; }
 </style>
@@ -47,12 +46,12 @@ svg { display: block; width: 100%; height: auto; }
   <svg id="map" viewBox="0 0 900 480" role="img" aria-label="Carte choroplèthe des pays de naissance des joueurs exportés au Mondial 2026"></svg>
 </div>
 <div id="legend">
-  <span>0</span>
+  <span>≈0</span>
   <div>
     <div id="legend-bar"></div>
-    <div id="legend-ticks"><span>0.03</span><span>0.08</span><span>0.20</span><span>0.35</span><span>0.60</span><span>0.85</span></div>
+    <div id="legend-ticks"><span>0.01</span><span>0.03</span><span>0.10</span><span>0.30</span><span>1.0</span></div>
   </div>
-  <span>1.1+</span>
+  <span>1.1</span>
 </div>
 <p id="legend-note">joueurs exportés / million d'hab. · Gris : aucun joueur exporté · survol pour le détail (top 5 joueurs par caps)</p>
 <div id="tooltip"></div>
@@ -82,11 +81,12 @@ DATA.forEach(d => {
   byId[d.id] = d;
 });
 
-const COLORS = ['#f3e8f7','#ddb8ea','#c285d8','#a354c2','#7b2d8b','#581f65','#361240'];
+const RATIO_MIN = 0.03;
+const RATIO_MAX = 1.20;
 
-const color = d3.scaleThreshold()
-  .domain([0.03, 0.08, 0.20, 0.35, 0.60, 0.85])
-  .range(COLORS);
+const PALETTE = d3.interpolateRgbBasis(['#f3e8f7','#ddb8ea','#c285d8','#a354c2','#7b2d8b','#581f65','#361240']);
+const normalize = r => (r - RATIO_MIN) / (RATIO_MAX - RATIO_MIN);
+const color = r => PALETTE(Math.max(0, Math.min(1, normalize(r))));
 
 const W = 900, H = 480;
 const projection = d3.geoNaturalEarth1().scale(152).translate([W/2, H/2 + 10]);
@@ -137,11 +137,12 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w
 });
 
 const bar = document.getElementById('legend-bar');
-COLORS.forEach(c => {
-  const s = document.createElement('div');
-  s.className = 'leg-seg'; s.style.background = c;
-  bar.appendChild(s);
+const stops = Array.from({length: 60}, (_, i) => {
+  const v = RATIO_MIN + (i / 59) * (RATIO_MAX - RATIO_MIN);
+  return color(v);
 });
+bar.style.background = `linear-gradient(to right, ${stops.join(',')})`;
+bar.style.borderRadius = '5px';
 </script>
 </body>
 </html>
