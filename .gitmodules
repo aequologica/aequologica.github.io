@@ -1,3 +1,6 @@
 [submodule "reveal.js"]
 	path = reveal.js
 	url = https://github.com/aequologica/reveal.js.git
+[submodule "mundial"]
+	path = mundial
+	url = https://github.com/cthiebaud/mundial
