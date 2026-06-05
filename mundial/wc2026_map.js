@@ -51,6 +51,9 @@ svg.call(d3.zoom()
       .attr('height', s)
       .attr('x', function() { return +this.getAttribute('data-cx') - s/2; })
       .attr('y', function() { return +this.getAttribute('data-cy') - s/2; });
+    g.selectAll('.arc-line').attr('stroke-width', function() {
+      return +this.getAttribute('data-sw') / e.transform.k;
+    });
   }));
 
 g.append('path').datum({type:'Sphere'})
@@ -125,7 +128,10 @@ const showQualifiedTip = (event, name, code) => {
 
 // ── Dim helpers (click destination highlight) ─────────────────────────────────
 let dimActive = false;
-let dimDestIds = new Set();
+let dimDestIds = new Map(); // destId → player count
+let arcsGroup  = null;
+const centroids = {};
+let DATA_REF = {}; // set once data loads, used by applyDim
 
 const applyDim = (sourceId, destIds, country) => {
   dimActive = true;
@@ -134,19 +140,94 @@ const applyDim = (sourceId, destIds, country) => {
     const id = +this.getAttribute('data-id');
     return id === sourceId || destIds.has(id) ? 1 : 0.15;
   });
+  // Arcs
+  if (arcsGroup) {
+    arcsGroup.selectAll('.arc-line').remove();
+    const src = centroids[sourceId];
+    if (src) {
+      destIds.forEach((count, destId) => {
+        const dst = centroids[destId];
+        if (!dst) return;
+        const ddx = dst[0] - src[0], ddy = dst[1] - src[1];
+        const dist = Math.sqrt(ddx*ddx + ddy*ddy);
+        const qx = (src[0] + dst[0]) / 2;
+        const qy = (src[1] + dst[1]) / 2 - dist * 0.3;
+        // End tangent: direction from control point to endpoint
+        const etx = dst[0] - qx, ety = dst[1] - qy;
+        const etLen = Math.sqrt(etx*etx + ety*ety);
+        const ux = etx/etLen, uy = ety/etLen; // unit tangent
+        const nx = -uy,  ny = ux;             // perpendicular
+        const arrowH = 6, arrowW = 3;
+        const sw = Math.max(1, Math.sqrt(count));
+        // Line stops before flag centre
+        const ex = dst[0] - ux*arrowH, ey = dst[1] - uy*arrowH;
+        arcsGroup.append('path')
+          .attr('class', 'arc-line')
+          .attr('d', `M${src[0]},${src[1]} Q${qx},${qy} ${ex},${ey}`)
+          .attr('fill', 'none')
+          .attr('stroke', '#c285d8')
+          .attr('stroke-width', sw)
+          .attr('data-sw', sw)
+          .attr('opacity', 0.6);
+        // Filled triangle arrowhead, tip at destination centroid
+        const bx = dst[0] - ux*arrowH, by = dst[1] - uy*arrowH;
+        arcsGroup.append('polygon')
+          .attr('class', 'arc-line')
+          .attr('points', `${dst[0]},${dst[1]} ${bx+nx*arrowW},${by+ny*arrowW} ${bx-nx*arrowW},${by-ny*arrowW}`)
+          .attr('fill', '#c285d8')
+          .attr('opacity', 0.8);
+      });
+    }
+  }
   const fc = ISO2[sourceId];
-  const badgeW = Math.round(country.length * 5.8 + 46); // 8 + flag16 + 6 + text + 10 + 6
+  const badgeW = Math.round(country.length * 5.8 + 46);
   const bx = 895 - badgeW;
   dimBadgeRect.attr('x', bx).attr('width', badgeW);
   dimBadgeFlag.attr('href', fc ? FLAG_CDN(fc) : '').attr('x', bx + 8);
   dimBadgeText.attr('x', bx + 30).text(country);
+  // Raise source flag above arc group
+  g.selectAll('.flag-qualified').filter(function() {
+    return +this.getAttribute('data-id') === sourceId;
+  }).raise();
+
+  // Player table
+  document.getElementById('pt-flag').src = fc ? FLAG_CDN(fc) : '';
+  document.getElementById('pt-title').textContent =
+    `${country} — ${DATA_REF[sourceId]?.count ?? ''} joueur${(DATA_REF[sourceId]?.count ?? 1) > 1 ? 's' : ''} exporté${(DATA_REF[sourceId]?.count ?? 1) > 1 ? 's' : ''}`;
+  const nationsEl = document.getElementById('pt-nations');
+  nationsEl.innerHTML = '';
+  const players = DATA_REF[sourceId]?.players ?? [];
+  // Group by nation (already sorted by nation order)
+  const groups = [];
+  players.forEach(p => {
+    if (!groups.length || groups[groups.length-1].nation !== p.nation)
+      groups.push({ nation: p.nation, players: [] });
+    groups[groups.length-1].players.push(p);
+  });
+  groups.forEach(({ nation, players: gp }) => {
+    const nc = ISO2[QUALIFIED_BY_NAME[nation]];
+    const header = document.createElement('div');
+    header.className = 'pt-nation-header';
+    header.innerHTML = `${nc ? `<img src="${FLAG_CDN(nc)}">` : ''}<span class="pt-nation-name">${nation}</span><span class="pt-nation-count">${gp.length} joueur${gp.length > 1 ? 's' : ''}</span>`;
+    nationsEl.appendChild(header);
+    gp.forEach(p => {
+      const row = document.createElement('div');
+      row.className = 'pt-player-row';
+      row.innerHTML = `<span>${p.name}</span><span class="pt-caps">${p.caps} sél.</span>`;
+      nationsEl.appendChild(row);
+    });
+  });
+  document.getElementById('player-table').style.display = '';
+
   dimBadge.style('display', null);
 };
 const clearDim = () => {
   dimActive = false;
-  dimDestIds = new Set();
+  dimDestIds = new Map();
   g.selectAll('.flag-qualified').attr('opacity', null);
+  if (arcsGroup) arcsGroup.selectAll('.arc-line').remove();
   dimBadge.style('display', 'none');
+  document.getElementById('player-table').style.display = 'none';
 };
 
 // ── Flag join helpers ─────────────────────────────────────────────────────────
@@ -169,6 +250,7 @@ Promise.all([
     d.ratio = d.pop ? d.count / d.pop : null;
     byId[d.id] = d;
   });
+  DATA_REF = byId;
 
   g.selectAll('.country')
     .data(topojson.feature(world, world.objects.countries).features)
@@ -210,8 +292,11 @@ Promise.all([
       const rec = byId[+d.id];
       if (!rec) return;
       hideTip();
-      const destIds = new Set(
-        rec.nations.map(([n]) => QUALIFIED_BY_NAME[n]).filter(id => id !== undefined)
+      const destIds = new Map(
+        rec.nations.flatMap(([n, c]) => {
+          const id = QUALIFIED_BY_NAME[n];
+          return id !== undefined ? [[id, c]] : [];
+        })
       );
       applyDim(+d.id, destIds, rec.country);
     });
@@ -245,6 +330,16 @@ Promise.all([
       .attr('pointer-events', 'all')
       .on('mousemove', (event) => showQualifiedTip(event, QUALIFIED_NAMES[id], ISO2[id]));
   });
+
+  // ── Centroids map (for arc drawing) ──────────────────────────────────────────
+  topojson.feature(world, world.objects.countries).features.forEach(f => {
+    centroids[+f.id] = dotCentroid(f);
+  });
+  STANDALONE_FLAGS.forEach(({ id, lon, lat }) => { centroids[id] = projection([lon, lat]); });
+
+
+  // ── Arc group (above flags; source flag raised above arcs in applyDim) ────────
+  arcsGroup = g.append('g').attr('class', 'arcs-group');
 });
 
 // ── Legend gradient ───────────────────────────────────────────────────────────

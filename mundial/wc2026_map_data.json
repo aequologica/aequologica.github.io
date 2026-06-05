@@ -80,7 +80,389 @@
           1
         ]
       ],
-      "id": 250
+      "id": 250,
+      "players": [
+        {
+          "name": "Aïssa Mandi",
+          "nation": "Algeria",
+          "caps": 116
+        },
+        {
+          "name": "Riyad Mahrez",
+          "nation": "Algeria",
+          "caps": 113
+        },
+        {
+          "name": "Nabil Bentaleb",
+          "nation": "Algeria",
+          "caps": 58
+        },
+        {
+          "name": "Farès Chaïbi",
+          "nation": "Algeria",
+          "caps": 28
+        },
+        {
+          "name": "Rayan Aït-Nouri",
+          "nation": "Algeria",
+          "caps": 27
+        },
+        {
+          "name": "Amine Gouiri",
+          "nation": "Algeria",
+          "caps": 21
+        },
+        {
+          "name": "Houssem Aouar",
+          "nation": "Algeria",
+          "caps": 19
+        },
+        {
+          "name": "Jaouen Hadjam",
+          "nation": "Algeria",
+          "caps": 16
+        },
+        {
+          "name": "Anis Hadj Moussa",
+          "nation": "Algeria",
+          "caps": 13
+        },
+        {
+          "name": "Luca Zidane",
+          "nation": "Algeria",
+          "caps": 6
+        },
+        {
+          "name": "Samir Chergui",
+          "nation": "Algeria",
+          "caps": 4
+        },
+        {
+          "name": "Melvin Mastil",
+          "nation": "Algeria",
+          "caps": 1
+        },
+        {
+          "name": "Farès Ghedjemis",
+          "nation": "Algeria",
+          "caps": 1
+        },
+        {
+          "name": "Johny Placide",
+          "nation": "Haiti",
+          "caps": 80
+        },
+        {
+          "name": "Duckens Nazon",
+          "nation": "Haiti",
+          "caps": 77
+        },
+        {
+          "name": "Martin Expérience",
+          "nation": "Haiti",
+          "caps": 20
+        },
+        {
+          "name": "Jean-Kévin Duverne",
+          "nation": "Haiti",
+          "caps": 16
+        },
+        {
+          "name": "Alexandre Pierre",
+          "nation": "Haiti",
+          "caps": 15
+        },
+        {
+          "name": "Ruben Providence",
+          "nation": "Haiti",
+          "caps": 14
+        },
+        {
+          "name": "Jean-Ricner Bellegarde",
+          "nation": "Haiti",
+          "caps": 9
+        },
+        {
+          "name": "Josué Casimir",
+          "nation": "Haiti",
+          "caps": 6
+        },
+        {
+          "name": "Yassin Fortuné",
+          "nation": "Haiti",
+          "caps": 4
+        },
+        {
+          "name": "Wilson Isidor",
+          "nation": "Haiti",
+          "caps": 3
+        },
+        {
+          "name": "Lenny Joseph",
+          "nation": "Haiti",
+          "caps": 1
+        },
+        {
+          "name": "Dominique Simon",
+          "nation": "Haiti",
+          "caps": 1
+        },
+        {
+          "name": "Cédric Bakambu",
+          "nation": "DR Congo",
+          "caps": 68
+        },
+        {
+          "name": "Samuel Moutoussamy",
+          "nation": "DR Congo",
+          "caps": 56
+        },
+        {
+          "name": "Arthur Masuaku",
+          "nation": "DR Congo",
+          "caps": 44
+        },
+        {
+          "name": "Yoane Wissa",
+          "nation": "DR Congo",
+          "caps": 36
+        },
+        {
+          "name": "Gaël Kakuta",
+          "nation": "DR Congo",
+          "caps": 30
+        },
+        {
+          "name": "Lionel Mpasi",
+          "nation": "DR Congo",
+          "caps": 27
+        },
+        {
+          "name": "Gédéon Kalulu",
+          "nation": "DR Congo",
+          "caps": 27
+        },
+        {
+          "name": "Nathanaël Mbuku",
+          "nation": "DR Congo",
+          "caps": 17
+        },
+        {
+          "name": "Dylan Batubinsika",
+          "nation": "DR Congo",
+          "caps": 14
+        },
+        {
+          "name": "Simon Banza",
+          "nation": "DR Congo",
+          "caps": 14
+        },
+        {
+          "name": "Steve Kapuadi",
+          "nation": "DR Congo",
+          "caps": 3
+        },
+        {
+          "name": "Kalidou Koulibaly",
+          "nation": "Senegal",
+          "caps": 102
+        },
+        {
+          "name": "Édouard Mendy",
+          "nation": "Senegal",
+          "caps": 56
+        },
+        {
+          "name": "Pape Gueye",
+          "nation": "Senegal",
+          "caps": 41
+        },
+        {
+          "name": "Iliman Ndiaye",
+          "nation": "Senegal",
+          "caps": 39
+        },
+        {
+          "name": "Moussa Niakhaté",
+          "nation": "Senegal",
+          "caps": 30
+        },
+        {
+          "name": "Ibrahim Mbaye",
+          "nation": "Senegal",
+          "caps": 10
+        },
+        {
+          "name": "Mamadou Sarr",
+          "nation": "Senegal",
+          "caps": 7
+        },
+        {
+          "name": "Antoine Mendy",
+          "nation": "Senegal",
+          "caps": 6
+        },
+        {
+          "name": "Mory Diaw",
+          "nation": "Senegal",
+          "caps": 5
+        },
+        {
+          "name": "Yehvann Diouf",
+          "nation": "Senegal",
+          "caps": 2
+        },
+        {
+          "name": "Nicolas Pépé",
+          "nation": "Ivory Coast",
+          "caps": 54
+        },
+        {
+          "name": "Yahia Fofana",
+          "nation": "Ivory Coast",
+          "caps": 34
+        },
+        {
+          "name": "Seko Fofana",
+          "nation": "Ivory Coast",
+          "caps": 31
+        },
+        {
+          "name": "Evan Ndicka",
+          "nation": "Ivory Coast",
+          "caps": 28
+        },
+        {
+          "name": "Evann Guessand",
+          "nation": "Ivory Coast",
+          "caps": 21
+        },
+        {
+          "name": "Guéla Doué",
+          "nation": "Ivory Coast",
+          "caps": 19
+        },
+        {
+          "name": "Elye Wahi",
+          "nation": "Ivory Coast",
+          "caps": 1
+        },
+        {
+          "name": "Ange-Yoan Bonny",
+          "nation": "Ivory Coast",
+          "caps": 0
+        },
+        {
+          "name": "Ellyes Skhiri",
+          "nation": "Tunisia",
+          "caps": 82
+        },
+        {
+          "name": "Montassar Talbi",
+          "nation": "Tunisia",
+          "caps": 63
+        },
+        {
+          "name": "Dylan Bronn",
+          "nation": "Tunisia",
+          "caps": 52
+        },
+        {
+          "name": "Hannibal Mejbri",
+          "nation": "Tunisia",
+          "caps": 45
+        },
+        {
+          "name": "Elias Achouri",
+          "nation": "Tunisia",
+          "caps": 29
+        },
+        {
+          "name": "Yan Valery",
+          "nation": "Tunisia",
+          "caps": 22
+        },
+        {
+          "name": "Ismaël Gharbi",
+          "nation": "Tunisia",
+          "caps": 16
+        },
+        {
+          "name": "Neil El Aynaoui",
+          "nation": "Morocco",
+          "caps": 15
+        },
+        {
+          "name": "Gessime Yassine",
+          "nation": "Morocco",
+          "caps": 5
+        },
+        {
+          "name": "Ayyoub Bouaddi",
+          "nation": "Morocco",
+          "caps": 3
+        },
+        {
+          "name": "Issa Diop",
+          "nation": "Morocco",
+          "caps": 3
+        },
+        {
+          "name": "Samir El Mourabet",
+          "nation": "Morocco",
+          "caps": 3
+        },
+        {
+          "name": "Redouane Halhal",
+          "nation": "Morocco",
+          "caps": 2
+        },
+        {
+          "name": "Willy Semedo",
+          "nation": "Cape Verde",
+          "caps": 37
+        },
+        {
+          "name": "Logan Costa",
+          "nation": "Cape Verde",
+          "caps": 27
+        },
+        {
+          "name": "Steven Moreira",
+          "nation": "Cape Verde",
+          "caps": 19
+        },
+        {
+          "name": "Jordan Ayew",
+          "nation": "Ghana",
+          "caps": 120
+        },
+        {
+          "name": "Elisha Owusu",
+          "nation": "Ghana",
+          "caps": 20
+        },
+        {
+          "name": "Marvin Senaya",
+          "nation": "Ghana",
+          "caps": 2
+        },
+        {
+          "name": "Haissem Hassan",
+          "nation": "Egypt",
+          "caps": 3
+        },
+        {
+          "name": "Karim Boudiaf",
+          "nation": "Qatar",
+          "caps": 117
+        },
+        {
+          "name": "Aymeric Laporte",
+          "nation": "Spain",
+          "caps": 44
+        }
+      ]
     },
     {
       "country": "Germany",
@@ -162,7 +544,129 @@
           1
         ]
       ],
-      "id": 276
+      "id": 276,
+      "players": [
+        {
+          "name": "Hakan Çalhanoğlu",
+          "nation": "Turkey",
+          "caps": 104
+        },
+        {
+          "name": "Kaan Ayhan",
+          "nation": "Turkey",
+          "caps": 73
+        },
+        {
+          "name": "Salih Özcan",
+          "nation": "Turkey",
+          "caps": 29
+        },
+        {
+          "name": "Kenan Yıldız",
+          "nation": "Turkey",
+          "caps": 28
+        },
+        {
+          "name": "Can Uzun",
+          "nation": "Turkey",
+          "caps": 5
+        },
+        {
+          "name": "Sead Kolašinac",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 64
+        },
+        {
+          "name": "Ermedin Demirović",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 39
+        },
+        {
+          "name": "Dženis Burnić",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 19
+        },
+        {
+          "name": "Kerim Alajbegović",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 9
+        },
+        {
+          "name": "Mario Pašalić",
+          "nation": "Croatia",
+          "caps": 84
+        },
+        {
+          "name": "Josip Stanišić",
+          "nation": "Croatia",
+          "caps": 30
+        },
+        {
+          "name": "Marin Pongračić",
+          "nation": "Croatia",
+          "caps": 19
+        },
+        {
+          "name": "Igor Matanović",
+          "nation": "Croatia",
+          "caps": 8
+        },
+        {
+          "name": "Merchas Doski",
+          "nation": "Iraq",
+          "caps": 30
+        },
+        {
+          "name": "Youssef Amyn",
+          "nation": "Iraq",
+          "caps": 25
+        },
+        {
+          "name": "Elias Saad",
+          "nation": "Tunisia",
+          "caps": 15
+        },
+        {
+          "name": "Rani Khedira",
+          "nation": "Tunisia",
+          "caps": 3
+        },
+        {
+          "name": "Ibrahim Maza",
+          "nation": "Algeria",
+          "caps": 15
+        },
+        {
+          "name": "John Yeboah",
+          "nation": "Ecuador",
+          "caps": 22
+        },
+        {
+          "name": "Dennis Eckert",
+          "nation": "Iran",
+          "caps": 0
+        },
+        {
+          "name": "Ali Azaizeh",
+          "nation": "Jordan",
+          "caps": 3
+        },
+        {
+          "name": "Ismail Jakobs",
+          "nation": "Senegal",
+          "caps": 29
+        },
+        {
+          "name": "Jens Castrop",
+          "nation": "South Korea",
+          "caps": 6
+        },
+        {
+          "name": "Malik Tillman",
+          "nation": "United States",
+          "caps": 29
+        }
+      ]
     },
     {
       "country": "United Kingdom",
@@ -236,7 +740,119 @@
           1
         ]
       ],
-      "id": 826
+      "id": 826,
+      "players": [
+        {
+          "name": "Tommy Smith",
+          "nation": "New Zealand",
+          "caps": 56
+        },
+        {
+          "name": "Matthew Garbett",
+          "nation": "New Zealand",
+          "caps": 36
+        },
+        {
+          "name": "Joe Bell",
+          "nation": "New Zealand",
+          "caps": 31
+        },
+        {
+          "name": "Callan Elliot",
+          "nation": "New Zealand",
+          "caps": 10
+        },
+        {
+          "name": "Luc de Fougerolles",
+          "nation": "Canada",
+          "caps": 12
+        },
+        {
+          "name": "Alfie Jones",
+          "nation": "Canada",
+          "caps": 2
+        },
+        {
+          "name": "Owen Goodman",
+          "nation": "Canada",
+          "caps": 0
+        },
+        {
+          "name": "Antoine Semenyo",
+          "nation": "Ghana",
+          "caps": 34
+        },
+        {
+          "name": "Jerome Opoku",
+          "nation": "Ghana",
+          "caps": 11
+        },
+        {
+          "name": "Brandon Thomas-Asante",
+          "nation": "Ghana",
+          "caps": 8
+        },
+        {
+          "name": "Antonee Robinson",
+          "nation": "United States",
+          "caps": 53
+        },
+        {
+          "name": "Giovanni Reyna",
+          "nation": "United States",
+          "caps": 37
+        },
+        {
+          "name": "Sebastian Berhalter",
+          "nation": "United States",
+          "caps": 12
+        },
+        {
+          "name": "Harry Souttar",
+          "nation": "Australia",
+          "caps": 37
+        },
+        {
+          "name": "Cameron Burgess",
+          "nation": "Australia",
+          "caps": 26
+        },
+        {
+          "name": "Aaron Tshibola",
+          "nation": "DR Congo",
+          "caps": 16
+        },
+        {
+          "name": "Aaron Wan-Bissaka",
+          "nation": "DR Congo",
+          "caps": 10
+        },
+        {
+          "name": "Erling Haaland",
+          "nation": "Norway",
+          "caps": 49
+        },
+        {
+          "name": "Thelo Aasgaard",
+          "nation": "Norway",
+          "caps": 7
+        },
+        {
+          "name": "Michael Olise",
+          "nation": "France",
+          "caps": 15
+        },
+        {
+          "name": "Zidane Iqbal",
+          "nation": "Iraq",
+          "caps": 23
+        },
+        {
+          "name": "Marvin Keller",
+          "nation": "Switzerland",
+          "caps": 1
+        }
+      ]
     },
     {
       "country": "Netherlands",
@@ -306,7 +922,214 @@
           1
         ]
       ],
-      "id": 528
+      "id": 528,
+      "players": [
+        {
+          "name": "Eloy Room",
+          "nation": "Curaçao",
+          "caps": 71
+        },
+        {
+          "name": "Leandro Bacuna",
+          "nation": "Curaçao",
+          "caps": 71
+        },
+        {
+          "name": "Juriën Gaari",
+          "nation": "Curaçao",
+          "caps": 59
+        },
+        {
+          "name": "Juninho Bacuna",
+          "nation": "Curaçao",
+          "caps": 48
+        },
+        {
+          "name": "Kenji Gorré",
+          "nation": "Curaçao",
+          "caps": 37
+        },
+        {
+          "name": "Brandley Kuwas",
+          "nation": "Curaçao",
+          "caps": 34
+        },
+        {
+          "name": "Gervane Kastaneer",
+          "nation": "Curaçao",
+          "caps": 28
+        },
+        {
+          "name": "Roshon van Eijma",
+          "nation": "Curaçao",
+          "caps": 27
+        },
+        {
+          "name": "Sherel Floranus",
+          "nation": "Curaçao",
+          "caps": 27
+        },
+        {
+          "name": "Godfried Roemeratoe",
+          "nation": "Curaçao",
+          "caps": 27
+        },
+        {
+          "name": "Jeremy Antonisse",
+          "nation": "Curaçao",
+          "caps": 26
+        },
+        {
+          "name": "Jearl Margaritha",
+          "nation": "Curaçao",
+          "caps": 21
+        },
+        {
+          "name": "Livano Comenencia",
+          "nation": "Curaçao",
+          "caps": 19
+        },
+        {
+          "name": "Kevin Felida",
+          "nation": "Curaçao",
+          "caps": 19
+        },
+        {
+          "name": "Joshua Brenet",
+          "nation": "Curaçao",
+          "caps": 17
+        },
+        {
+          "name": "Jürgen Locadia",
+          "nation": "Curaçao",
+          "caps": 13
+        },
+        {
+          "name": "Ar'jany Martha",
+          "nation": "Curaçao",
+          "caps": 8
+        },
+        {
+          "name": "Shurandy Sambo",
+          "nation": "Curaçao",
+          "caps": 7
+        },
+        {
+          "name": "Trevor Doornbusch",
+          "nation": "Curaçao",
+          "caps": 7
+        },
+        {
+          "name": "Tyrese Noslin",
+          "nation": "Curaçao",
+          "caps": 6
+        },
+        {
+          "name": "Sontje Hansen",
+          "nation": "Curaçao",
+          "caps": 5
+        },
+        {
+          "name": "Armando Obispo",
+          "nation": "Curaçao",
+          "caps": 5
+        },
+        {
+          "name": "Riechedly Bazoer",
+          "nation": "Curaçao",
+          "caps": 4
+        },
+        {
+          "name": "Deveron Fonville",
+          "nation": "Curaçao",
+          "caps": 1
+        },
+        {
+          "name": "Garry Rodrigues",
+          "nation": "Cape Verde",
+          "caps": 59
+        },
+        {
+          "name": "Jamiro Monteiro",
+          "nation": "Cape Verde",
+          "caps": 54
+        },
+        {
+          "name": "Deroy Duarte",
+          "nation": "Cape Verde",
+          "caps": 30
+        },
+        {
+          "name": "Dailon Livramento",
+          "nation": "Cape Verde",
+          "caps": 21
+        },
+        {
+          "name": "Laros Duarte",
+          "nation": "Cape Verde",
+          "caps": 13
+        },
+        {
+          "name": "Sidny Lopes Cabral",
+          "nation": "Cape Verde",
+          "caps": 9
+        },
+        {
+          "name": "Sofyan Amrabat",
+          "nation": "Morocco",
+          "caps": 74
+        },
+        {
+          "name": "Noussair Mazraoui",
+          "nation": "Morocco",
+          "caps": 44
+        },
+        {
+          "name": "Anass Salah-Eddine",
+          "nation": "Morocco",
+          "caps": 9
+        },
+        {
+          "name": "Orkun Kökçü",
+          "nation": "Turkey",
+          "caps": 49
+        },
+        {
+          "name": "Ferdi Kadıoğlu",
+          "nation": "Turkey",
+          "caps": 30
+        },
+        {
+          "name": "Oğuz Aydın",
+          "nation": "Turkey",
+          "caps": 10
+        },
+        {
+          "name": "Ramiz Zerrouki",
+          "nation": "Algeria",
+          "caps": 51
+        },
+        {
+          "name": "Derrick Luckassen",
+          "nation": "Ghana",
+          "caps": 1
+        },
+        {
+          "name": "Nando Pijnaker",
+          "nation": "New Zealand",
+          "caps": 24
+        },
+        {
+          "name": "Omar Rekik",
+          "nation": "Tunisia",
+          "caps": 5
+        },
+        {
+          "name": "Sergiño Dest",
+          "nation": "United States",
+          "caps": 38
+        }
+      ]
     },
     {
       "country": "Belgium",
@@ -360,7 +1183,64 @@
           1
         ]
       ],
-      "id": 56
+      "id": 56,
+      "players": [
+        {
+          "name": "Théo Bongonda",
+          "nation": "DR Congo",
+          "caps": 37
+        },
+        {
+          "name": "Joris Kayembe",
+          "nation": "DR Congo",
+          "caps": 24
+        },
+        {
+          "name": "Noah Sadiki",
+          "nation": "DR Congo",
+          "caps": 18
+        },
+        {
+          "name": "Ngal'ayel Mukau",
+          "nation": "DR Congo",
+          "caps": 12
+        },
+        {
+          "name": "Matthieu Epolo",
+          "nation": "DR Congo",
+          "caps": 1
+        },
+        {
+          "name": "Bilal El Khannouss",
+          "nation": "Morocco",
+          "caps": 36
+        },
+        {
+          "name": "Chemsdine Talbi",
+          "nation": "Morocco",
+          "caps": 5
+        },
+        {
+          "name": "Zakaria El Ouahdi",
+          "nation": "Morocco",
+          "caps": 2
+        },
+        {
+          "name": "Rafik Belghali",
+          "nation": "Algeria",
+          "caps": 11
+        },
+        {
+          "name": "Paul Okon-Engstler",
+          "nation": "Australia",
+          "caps": 5
+        },
+        {
+          "name": "Edmilson Junior",
+          "nation": "Qatar",
+          "caps": 15
+        }
+      ]
     },
     {
       "country": "Spain",
@@ -418,7 +1298,64 @@
           1
         ]
       ],
-      "id": 724
+      "id": 724,
+      "players": [
+        {
+          "name": "Achraf Hakimi",
+          "nation": "Morocco",
+          "caps": 95
+        },
+        {
+          "name": "Munir Mohamedi",
+          "nation": "Morocco",
+          "caps": 53
+        },
+        {
+          "name": "Ismael Saibari",
+          "nation": "Morocco",
+          "caps": 30
+        },
+        {
+          "name": "Brahim Díaz",
+          "nation": "Morocco",
+          "caps": 25
+        },
+        {
+          "name": "Chadi Riad",
+          "nation": "Morocco",
+          "caps": 5
+        },
+        {
+          "name": "Ayoube Amaimouni",
+          "nation": "Morocco",
+          "caps": 1
+        },
+        {
+          "name": "Nico Paz",
+          "nation": "Argentina",
+          "caps": 8
+        },
+        {
+          "name": "Jeremy Arévalo",
+          "nation": "Ecuador",
+          "caps": 3
+        },
+        {
+          "name": "Iñaki Williams",
+          "nation": "Ghana",
+          "caps": 26
+        },
+        {
+          "name": "Álvaro Fidalgo",
+          "nation": "Mexico",
+          "caps": 3
+        },
+        {
+          "name": "Rodrigo Zalazar",
+          "nation": "Uruguay",
+          "caps": 8
+        }
+      ]
     },
     {
       "country": "United States",
@@ -484,7 +1421,54 @@
           1
         ]
       ],
-      "id": 840
+      "id": 840,
+      "players": [
+        {
+          "name": "Derrick Etienne Jr.",
+          "nation": "Haiti",
+          "caps": 47
+        },
+        {
+          "name": "Duke Lacroix",
+          "nation": "Haiti",
+          "caps": 15
+        },
+        {
+          "name": "Esmir Bajraktarević",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 15
+        },
+        {
+          "name": "Jonathan David",
+          "nation": "Canada",
+          "caps": 76
+        },
+        {
+          "name": "CJ dos Santos",
+          "nation": "Cape Verde",
+          "caps": 1
+        },
+        {
+          "name": "Zion Suzuki",
+          "nation": "Japan",
+          "caps": 24
+        },
+        {
+          "name": "Mo Abualnadi",
+          "nation": "Jordan",
+          "caps": 17
+        },
+        {
+          "name": "Obed Vargas",
+          "nation": "Mexico",
+          "caps": 6
+        },
+        {
+          "name": "Juan Manuel Sanabria",
+          "nation": "Uruguay",
+          "caps": 5
+        }
+      ]
     },
     {
       "country": "Sweden",
@@ -534,7 +1518,49 @@
           1
         ]
       ],
-      "id": 752
+      "id": 752,
+      "players": [
+        {
+          "name": "Dennis Hadžikadunić",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 31
+        },
+        {
+          "name": "Benjamin Tahirović",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 27
+        },
+        {
+          "name": "Armin Gigović",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 19
+        },
+        {
+          "name": "Amir Al-Ammari",
+          "nation": "Iraq",
+          "caps": 49
+        },
+        {
+          "name": "Hussein Ali",
+          "nation": "Iraq",
+          "caps": 25
+        },
+        {
+          "name": "Kevin Yakob",
+          "nation": "Iraq",
+          "caps": 7
+        },
+        {
+          "name": "Moutaz Neffati",
+          "nation": "Tunisia",
+          "caps": 5
+        },
+        {
+          "name": "Deniz Gül",
+          "nation": "Turkey",
+          "caps": 7
+        }
+      ]
     },
     {
       "country": "Argentina",
@@ -584,7 +1610,39 @@
           1
         ]
       ],
-      "id": 32
+      "id": 32,
+      "players": [
+        {
+          "name": "Andrés Cubas",
+          "nation": "Paraguay",
+          "caps": 32
+        },
+        {
+          "name": "Kaku",
+          "nation": "Paraguay",
+          "caps": 32
+        },
+        {
+          "name": "Juan José Cáceres",
+          "nation": "Paraguay",
+          "caps": 16
+        },
+        {
+          "name": "Hernán Galíndez",
+          "nation": "Ecuador",
+          "caps": 34
+        },
+        {
+          "name": "Santiago Giménez",
+          "nation": "Mexico",
+          "caps": 47
+        },
+        {
+          "name": "Fernando Muslera",
+          "nation": "Uruguay",
+          "caps": 134
+        }
+      ]
     },
     {
       "country": "Austria",
@@ -630,7 +1688,34 @@
           1
         ]
       ],
-      "id": 40
+      "id": 40,
+      "players": [
+        {
+          "name": "Amar Dedić",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 27
+        },
+        {
+          "name": "Ermin Mahmić",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 1
+        },
+        {
+          "name": "Mateo Kovačić",
+          "nation": "Croatia",
+          "caps": 112
+        },
+        {
+          "name": "Luka Sučić",
+          "nation": "Croatia",
+          "caps": 20
+        },
+        {
+          "name": "Mert Müldür",
+          "nation": "Turkey",
+          "caps": 44
+        }
+      ]
     },
     {
       "country": "Switzerland",
@@ -680,7 +1765,34 @@
           1
         ]
       ],
-      "id": 756
+      "id": 756,
+      "players": [
+        {
+          "name": "Charles Pickel",
+          "nation": "DR Congo",
+          "caps": 33
+        },
+        {
+          "name": "Timothy Fayulu",
+          "nation": "DR Congo",
+          "caps": 3
+        },
+        {
+          "name": "Haris Tabaković",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 10
+        },
+        {
+          "name": "Keeto Thermoncy",
+          "nation": "Haiti",
+          "caps": 1
+        },
+        {
+          "name": "Diogo Costa",
+          "nation": "Portugal",
+          "caps": 42
+        }
+      ]
     },
     {
       "country": "Portugal",
@@ -717,7 +1829,29 @@
           1
         ]
       ],
-      "id": 620
+      "id": 620,
+      "players": [
+        {
+          "name": "Hélio Varela",
+          "nation": "Cape Verde",
+          "caps": 20
+        },
+        {
+          "name": "Telmo Arcanjo",
+          "nation": "Cape Verde",
+          "caps": 15
+        },
+        {
+          "name": "Wagner Pina",
+          "nation": "Cape Verde",
+          "caps": 13
+        },
+        {
+          "name": "Pedro Miguel",
+          "nation": "Qatar",
+          "caps": 98
+        }
+      ]
     },
     {
       "country": "Bosnia and Herzegovina",
@@ -745,7 +1879,24 @@
           3
         ]
       ],
-      "id": 70
+      "id": 70,
+      "players": [
+        {
+          "name": "Ante Budimir",
+          "nation": "Croatia",
+          "caps": 37
+        },
+        {
+          "name": "Josip Šutalo",
+          "nation": "Croatia",
+          "caps": 32
+        },
+        {
+          "name": "Petar Sučić",
+          "nation": "Croatia",
+          "caps": 16
+        }
+      ]
     },
     {
       "country": "Brazil",
@@ -781,7 +1932,24 @@
           1
         ]
       ],
-      "id": 76
+      "id": 76,
+      "players": [
+        {
+          "name": "Maurício",
+          "nation": "Paraguay",
+          "caps": 2
+        },
+        {
+          "name": "Matheus Nunes",
+          "nation": "Portugal",
+          "caps": 19
+        },
+        {
+          "name": "Lucas Mendes",
+          "nation": "Qatar",
+          "caps": 25
+        }
+      ]
     },
     {
       "country": "Canada",
@@ -817,7 +1985,24 @@
           1
         ]
       ],
-      "id": 124
+      "id": 124,
+      "players": [
+        {
+          "name": "Josué Duverger",
+          "nation": "Haiti",
+          "caps": 6
+        },
+        {
+          "name": "Yassine Bounou",
+          "nation": "Morocco",
+          "caps": 89
+        },
+        {
+          "name": "Rayan Elloumi",
+          "nation": "Tunisia",
+          "caps": 3
+        }
+      ]
     },
     {
       "country": "Denmark",
@@ -853,7 +2038,24 @@
           1
         ]
       ],
-      "id": 208
+      "id": 208,
+      "players": [
+        {
+          "name": "Amir Hadžiahmetović",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 35
+        },
+        {
+          "name": "Frans Putros",
+          "nation": "Iraq",
+          "caps": 26
+        },
+        {
+          "name": "Anis Ben Slimane",
+          "nation": "Tunisia",
+          "caps": 40
+        }
+      ]
     },
     {
       "country": "Italy",
@@ -889,7 +2091,24 @@
           1
         ]
       ],
-      "id": 380
+      "id": 380,
+      "players": [
+        {
+          "name": "Giuliano Simeone",
+          "nation": "Argentina",
+          "caps": 11
+        },
+        {
+          "name": "Alessandro Circati",
+          "nation": "Australia",
+          "caps": 12
+        },
+        {
+          "name": "Marcus Thuram",
+          "nation": "France",
+          "caps": 33
+        }
+      ]
     },
     {
       "country": "Australia",
@@ -916,7 +2135,19 @@
           1
         ]
       ],
-      "id": 36
+      "id": 36,
+      "players": [
+        {
+          "name": "Lyndon Dykes",
+          "nation": "England / Scotland",
+          "caps": 51
+        },
+        {
+          "name": "Lachlan Bayliss",
+          "nation": "New Zealand",
+          "caps": 3
+        }
+      ]
     },
     {
       "country": "Cameroon",
@@ -939,7 +2170,19 @@
           2
         ]
       ],
-      "id": 120
+      "id": 120,
+      "players": [
+        {
+          "name": "Breel Embolo",
+          "nation": "Switzerland",
+          "caps": 86
+        },
+        {
+          "name": "Yvon Mvogo",
+          "nation": "Switzerland",
+          "caps": 13
+        }
+      ]
     },
     {
       "country": "Ivory Coast",
@@ -966,7 +2209,19 @@
           1
         ]
       ],
-      "id": 384
+      "id": 384,
+      "players": [
+        {
+          "name": "Ismaël Koné",
+          "nation": "Canada",
+          "caps": 39
+        },
+        {
+          "name": "Marc Guéhi",
+          "nation": "England / Scotland",
+          "caps": 27
+        }
+      ]
     },
     {
       "country": "Norway",
@@ -993,7 +2248,19 @@
           1
         ]
       ],
-      "id": 578
+      "id": 578,
+      "players": [
+        {
+          "name": "Marko Farji",
+          "nation": "Iraq",
+          "caps": 10
+        },
+        {
+          "name": "Sebastian Tounekti",
+          "nation": "Tunisia",
+          "caps": 11
+        }
+      ]
     },
     {
       "country": "Senegal",
@@ -1020,7 +2287,19 @@
           1
         ]
       ],
-      "id": 686
+      "id": 686,
+      "players": [
+        {
+          "name": "Amadou Onana",
+          "nation": "Belgium",
+          "caps": 28
+        },
+        {
+          "name": "Issa Laye",
+          "nation": "Qatar",
+          "caps": 3
+        }
+      ]
     },
     {
       "country": "Algeria",
@@ -1038,7 +2317,14 @@
           1
         ]
       ],
-      "id": 12
+      "id": 12,
+      "players": [
+        {
+          "name": "Boualem Khoukhi",
+          "nation": "Qatar",
+          "caps": 115
+        }
+      ]
     },
     {
       "country": "Burkina Faso",
@@ -1056,7 +2342,14 @@
           1
         ]
       ],
-      "id": 854
+      "id": 854,
+      "players": [
+        {
+          "name": "Alban Lafont",
+          "nation": "Ivory Coast",
+          "caps": 4
+        }
+      ]
     },
     {
       "country": "Colombia",
@@ -1074,7 +2367,14 @@
           1
         ]
       ],
-      "id": 170
+      "id": 170,
+      "players": [
+        {
+          "name": "Julián Quiñones",
+          "nation": "Mexico",
+          "caps": 21
+        }
+      ]
     },
     {
       "country": "Croatia",
@@ -1092,7 +2392,14 @@
           1
         ]
       ],
-      "id": 191
+      "id": 191,
+      "players": [
+        {
+          "name": "Ivan Bašić",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 16
+        }
+      ]
     },
     {
       "country": "Egypt",
@@ -1110,7 +2417,14 @@
           1
         ]
       ],
-      "id": 818
+      "id": 818,
+      "players": [
+        {
+          "name": "Ahmed Alaaeldin",
+          "nation": "Qatar",
+          "caps": 67
+        }
+      ]
     },
     {
       "country": "Ghana",
@@ -1128,7 +2442,14 @@
           1
         ]
       ],
-      "id": 288
+      "id": 288,
+      "players": [
+        {
+          "name": "Mohammed Muntari",
+          "nation": "Qatar",
+          "caps": 67
+        }
+      ]
     },
     {
       "country": "Guinea",
@@ -1146,7 +2467,14 @@
           1
         ]
       ],
-      "id": 324
+      "id": 324,
+      "players": [
+        {
+          "name": "Mohamed Touré",
+          "nation": "Australia",
+          "caps": 9
+        }
+      ]
     },
     {
       "country": "Ireland",
@@ -1164,7 +2492,14 @@
           1
         ]
       ],
-      "id": 372
+      "id": 372,
+      "players": [
+        {
+          "name": "Roberto Lopes",
+          "nation": "Cape Verde",
+          "caps": 45
+        }
+      ]
     },
     {
       "country": "Kazakhstan",
@@ -1182,7 +2517,14 @@
           1
         ]
       ],
-      "id": 398
+      "id": 398,
+      "players": [
+        {
+          "name": "Utkir Yusupov",
+          "nation": "Uzbekistan",
+          "caps": 39
+        }
+      ]
     },
     {
       "country": "Kenya",
@@ -1200,7 +2542,14 @@
           1
         ]
       ],
-      "id": 404
+      "id": 404,
+      "players": [
+        {
+          "name": "Awer Mabil",
+          "nation": "Australia",
+          "caps": 38
+        }
+      ]
     },
     {
       "country": "Mexico",
@@ -1218,7 +2567,14 @@
           1
         ]
       ],
-      "id": 484
+      "id": 484,
+      "players": [
+        {
+          "name": "Alejandro Zendejas",
+          "nation": "United States",
+          "caps": 14
+        }
+      ]
     },
     {
       "country": "Nigeria",
@@ -1236,7 +2592,14 @@
           1
         ]
       ],
-      "id": 566
+      "id": 566,
+      "players": [
+        {
+          "name": "Tani Oluwaseyi",
+          "nation": "Canada",
+          "caps": 23
+        }
+      ]
     },
     {
       "country": "Republic of the Congo",
@@ -1254,7 +2617,14 @@
           1
         ]
       ],
-      "id": 178
+      "id": 178,
+      "players": [
+        {
+          "name": "Brice Samba",
+          "nation": "France",
+          "caps": 4
+        }
+      ]
     },
     {
       "country": "Saudi Arabia",
@@ -1272,7 +2642,14 @@
           1
         ]
       ],
-      "id": 682
+      "id": 682,
+      "players": [
+        {
+          "name": "Adem Arous",
+          "nation": "Tunisia",
+          "caps": 1
+        }
+      ]
     },
     {
       "country": "Serbia",
@@ -1290,7 +2667,14 @@
           1
         ]
       ],
-      "id": 688
+      "id": 688,
+      "players": [
+        {
+          "name": "Samed Baždar",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 12
+        }
+      ]
     },
     {
       "country": "Slovenia",
@@ -1308,7 +2692,14 @@
           1
         ]
       ],
-      "id": 705
+      "id": 705,
+      "players": [
+        {
+          "name": "Tarik Muharemović",
+          "nation": "Bosnia and Herzegovina",
+          "caps": 13
+        }
+      ]
     },
     {
       "country": "Sudan",
@@ -1326,7 +2717,14 @@
           1
         ]
       ],
-      "id": 729
+      "id": 729,
+      "players": [
+        {
+          "name": "Almoez Ali",
+          "nation": "Qatar",
+          "caps": 115
+        }
+      ]
     },
     {
       "country": "Tanzania",
@@ -1344,7 +2742,14 @@
           1
         ]
       ],
-      "id": 834
+      "id": 834,
+      "players": [
+        {
+          "name": "Nestory Irankunda",
+          "nation": "Australia",
+          "caps": 14
+        }
+      ]
     },
     {
       "country": "Uruguay",
@@ -1362,7 +2767,14 @@
           1
         ]
       ],
-      "id": 858
+      "id": 858,
+      "players": [
+        {
+          "name": "Gastón Olveira",
+          "nation": "Paraguay",
+          "caps": 1
+        }
+      ]
     },
     {
       "country": "Uzbekistan",
@@ -1380,7 +2792,14 @@
           1
         ]
       ],
-      "id": 860
+      "id": 860,
+      "players": [
+        {
+          "name": "Waldemar Anton",
+          "nation": "Germany",
+          "caps": 12
+        }
+      ]
     },
     {
       "country": "Zambia",
@@ -1398,7 +2817,14 @@
           1
         ]
       ],
-      "id": 894
+      "id": 894,
+      "players": [
+        {
+          "name": "Guus Til",
+          "nation": "Netherlands",
+          "caps": 6
+        }
+      ]
     }
   ],
   "pop": {
