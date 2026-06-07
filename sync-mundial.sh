@@ -17,9 +17,12 @@ echo "$BEHIND"
 git pull origin main
 
 cd "$REPO_ROOT"
-SUMMARY=$(cd mundial && git log --oneline -1)
+COUNT=$(echo "$BEHIND" | wc -l | tr -d ' ')
+SUMMARY=$(cd mundial && git log --oneline -1 | sed 's/^[0-9a-f]* //')
 git add mundial
-git commit -m "mundial: update submodule — ${SUMMARY}
+git commit -m "mundial: update submodule ($COUNT commit(s)) — $SUMMARY
+
+$BEHIND
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
 git push origin master
