@@ -20,11 +20,18 @@ cd "$REPO_ROOT"
 COUNT=$(echo "$BEHIND" | wc -l | tr -d ' ')
 SUMMARY=$(echo "$BEHIND" | claude -p "Summarize these $COUNT git commit(s) in one concise sentence (no bullet points, no preamble):")
 git add mundial
-git commit -m "mundial: update submodule ($COUNT commit(s))
+
+TMPFILE=$(mktemp)
+cat > "$TMPFILE" << EOF
+mundial: update submodule ($COUNT commit(s))
 
 $SUMMARY
 
 $BEHIND
 
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+EOF
+git commit -F "$TMPFILE"
+rm "$TMPFILE"
+
 git push origin master
