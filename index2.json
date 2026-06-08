@@ -47,7 +47,7 @@
      ,{ "name":"WordPress"            , "url": "https://cthiebaud.wordpress.com/"                                                   , "src": "Wordpress-Logo.svg"                    }
      ,{ "name":"YouTube"              , "url": "https://studio.youtube.com/channel/UCxt1pFJkKS3LlhmSsHCrZkg"                        , "src": "YouTube_full-color_icon_(2017).svg"    }
 
-     ,{ "name":"Mundial 2026"          , "url": "/mundial/"                                                            , "src": "wc2026.svg"                                         }
+     ,{ "name":"Mundial 2026"          , "url": "https://mundial.cthiebaud.com/"                                       , "src": "wc2026.svg"                                         }
 
      ,{ "name":"banks"                , "url": "http://localhost:8081/sto.html"                                        , "src": "euro-hand-drawn-currency-symbol-svgrepo-com.svg"    }
      
