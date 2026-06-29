@@ -53,6 +53,10 @@
 
 <body class="min-vh-100">
 
+  <div id="offline-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,#0057b7 50%,#ffd700 50%);justify-content:center;align-items:center;">
+    <img src="images/flash-off-svgrepo-com.svg" alt="No internet connection" style="width:min(60vw,60vh);height:min(60vw,60vh);filter:invert(35%);">
+  </div>
+
   <!-- Page Content -->
   <main id="gridContainer" class="container-lg my-center">
     <div id="gridContainerRow" class="row">
@@ -81,6 +85,18 @@
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
 
 <script type="text/javascript" src="index2.js"></script>
+
+<script type="text/javascript">
+  (function () {
+    var overlay = document.getElementById('offline-overlay');
+    function updateConnectivity() {
+      overlay.style.display = navigator.onLine ? 'none' : 'flex';
+    }
+    window.addEventListener('offline', updateConnectivity);
+    window.addEventListener('online', updateConnectivity);
+    updateConnectivity();
+  })();
+</script>
 
 <script type="text/javascript">
   String.prototype.startsWith = String.prototype.startsWith || function (prefix) {
