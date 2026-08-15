@@ -2,10 +2,8 @@ const gridSelector = "#grid";
 const itemSelector = ".grid-brick";
 const snitchSelector = "#mouchard";
 const handlebarsTemplateSelector = "#brick-template";
+const DEBUG = false;
 
-/*
-let inTheOffice        = false;
-*/
 const handlebarsSource = $(handlebarsTemplateSelector)[0].innerHTML;
 const handlebarsTemplate = Handlebars.compile(handlebarsSource);
 
@@ -35,20 +33,6 @@ const randomNormals = (rng) => {
     const R = Math.sqrt(-2.0 * Math.log(u1));
     const Θ = 2.0 * Math.PI * u2;
     return [R * Math.cos(Θ), R * Math.sin(Θ)];
-};
-
-// (Unused now) skew-normal generator
-//  ξ: location (mean), ω: scale (standard deviation), α: shape (skewness)
-const randomSkewNormal = (rng, ξ, ω, α = 0) => {
-    α = -α;
-    const [u0, v] = randomNormals(rng);
-    if (α === 0) {
-        return ξ + ω * u0;
-    }
-    const 𝛿 = α / Math.sqrt(1 + α * α);
-    const u1 = 𝛿 * u0 + Math.sqrt(1 - 𝛿 * 𝛿) * v;
-    const z = u0 >= 0 ? u1 : -u1;
-    return ξ + ω * z;
 };
 
 // ---- New functions for lognormal distribution ----
@@ -148,24 +132,15 @@ function setRandomSurface(image) {
     if (Number.isFinite(width) && Number.isFinite(height)) {
         image.style = `width: ${width}px; height: auto;`;
         image.width = width;
-        image.height = "auto";
-    } else {
-        // console.log(image.src)
     }
     // Save the computed surface, the "pick" value, and the width.
-    if (typeof surfaces !== 'undefined') {
-        surfaces.push({ surface: width * height, pick: pick, width: width });
-    }
-
-    // console.log(image.width, image.height, image.width * image.height, surface)
+    surfaces.push({ surface: width * height, pick: pick, width: width });
 }
 
 $(document).ready(function () {
     const $m = $(gridSelector);
 
-    if (typeof surfaces !== 'undefined') {
-        surfaces.length = 0;
-    }
+    surfaces.length = 0;
 
     $("html, body, #grid").bind("click", function (event) {
         if (event.target.nodeName == "HTML" ||
@@ -216,9 +191,8 @@ $(document).ready(function () {
                         {
                             var script = document.createElement('script');
                             script.onload = function () {
-                                // console.log("SCRIPT LOADED!")
                                 let s = ima.src.split(':')[1].split('.')[0];
-                                console.log(eval(s)(ima.url, ima.file, ima.name));
+                                console.log(window[s](ima.url, ima.file, ima.name));
                             };
                             script.src = ima.src.split(':')[1];
                             document.head.appendChild(script);
@@ -259,7 +233,7 @@ $(document).ready(function () {
                     $("#gridContainer").css("visibility", "visible");
 
                     // Log surfaces to check the distribution:
-                    if (typeof surfaces !== 'undefined' && surfaces.length) {
+                    if (DEBUG && surfaces.length) {
                         surfaces.sort(function (a, b) {
                             return a.surface - b.surface;
                         });
@@ -288,7 +262,7 @@ $(document).ready(function () {
                     }
                 });
             } catch (err) {
-                alert(err);
+                console.error(err);
             }
         }); // always
     } // function loadData
