@@ -89,12 +89,24 @@
 <script type="text/javascript">
   (function () {
     var overlay = document.getElementById('offline-overlay');
-    function updateConnectivity() {
-      overlay.style.display = navigator.onLine ? 'none' : 'flex';
+
+    function setOverlay(isOnline) {
+      overlay.style.display = isOnline ? 'none' : 'flex';
     }
-    window.addEventListener('offline', updateConnectivity);
-    window.addEventListener('online', updateConnectivity);
-    updateConnectivity();
+
+    function checkConnectivity() {
+      // navigator.onLine is unreliable (notably in Chrome, which can report
+      // false while every request still succeeds), so verify with a real
+      // same-origin request instead of trusting it.
+      fetch('favicon.ico?_=' + Date.now(), { method: 'HEAD', cache: 'no-store' })
+        .then(function (res) { setOverlay(res.ok); })
+        .catch(function () { setOverlay(false); });
+    }
+
+    window.addEventListener('offline', checkConnectivity);
+    window.addEventListener('online', checkConnectivity);
+    checkConnectivity();
+    setInterval(checkConnectivity, 10000);
   })();
 </script>
 
