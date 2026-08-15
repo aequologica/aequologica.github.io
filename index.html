@@ -76,7 +76,6 @@
 
 </html>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@latest/lodash.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/imagesloaded@latest/imagesloaded.pkgd.min.js"></script>
@@ -115,7 +114,7 @@
     return this.indexOf(prefix) === 0;
   };
 
-  $(function () {
+  document.addEventListener('DOMContentLoaded', function () {
 
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

@@ -4,7 +4,7 @@ const snitchSelector = "#mouchard";
 const handlebarsTemplateSelector = "#brick-template";
 const DEBUG = false;
 
-const handlebarsSource = $(handlebarsTemplateSelector)[0].innerHTML;
+const handlebarsSource = document.querySelector(handlebarsTemplateSelector).innerHTML;
 const handlebarsTemplate = Handlebars.compile(handlebarsSource);
 
 // http://stackoverflow.com/questions/20789373/shuffle-array-in-ng-repeat-angular
@@ -137,45 +137,39 @@ function setRandomSurface(image) {
     surfaces.push({ surface: width * height, pick: pick, width: width });
 }
 
-$(document).ready(function () {
-    const $m = $(gridSelector);
+const gridEl = document.querySelector(gridSelector);
+let iso;
 
-    surfaces.length = 0;
+surfaces.length = 0;
 
-    $("html, body, #grid").bind("click", function (event) {
-        if (event.target.nodeName == "HTML" ||
-            event.target.nodeName == "BODY" ||
-            event.target.id.indexOf("grid") != -1) {
+document.addEventListener("click", function (event) {
+    if (event.target.nodeName == "HTML" ||
+        event.target.nodeName == "BODY" ||
+        event.target.id.indexOf("grid") != -1) {
 
-            var gridItems = document.querySelectorAll(itemSelector);
-            gridItems.forEach(function (item) {
-                var img = item.querySelector('img');
-                setRandomSurface(img);
-            });
-            $m.isotope('layout');
-            $m.isotope('shuffle');
-            event.preventDefault();
-            event.stopPropagation();
+        var gridItems = document.querySelectorAll(itemSelector);
+        gridItems.forEach(function (item) {
+            var img = item.querySelector('img');
+            setRandomSurface(img);
+        });
+        if (iso) {
+            iso.layout();
+            iso.shuffle();
         }
-    });
+        event.preventDefault();
+        event.stopPropagation();
+    }
+});
 
-    function loadData() {
-        let configuration;
-
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            cache: false,
-            url: "index2.json",
-        }).done(function (data, textStatus, jqXHR) {
-            configuration = data;
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            configuration = {}
-        }).always(function (data_jqXHR, textStatus, jqXHR_errorThrown) {
+function loadData() {
+    fetch("index2.json", { cache: "no-store" })
+        .then(function (res) { return res.json(); })
+        .catch(function () { return {}; })
+        .then(function (configuration) {
             try {
                 const bricks = [];
 
-                $m.isotope({
+                iso = new Isotope(gridEl, {
                     layoutMode: 'packery',
                     itemSelector: itemSelector,
                     packery: {
@@ -212,25 +206,29 @@ $(document).ready(function () {
                 }
 
                 const shuffledBricks = shuffleArray(bricks);
-                const $bricksContainer = $("<div>");
+                const bricksContainer = document.createElement("div");
 
                 _.forEach(shuffledBricks, function (brick) {
-                    $bricksContainer.append($(handlebarsTemplate(brick)));
+                    bricksContainer.insertAdjacentHTML("beforeend", handlebarsTemplate(brick));
                 });
 
-                const $bricks = $bricksContainer.children();
-                $m.empty().append($bricks).isotope('appended', $bricks);
+                const newBricks = Array.from(bricksContainer.children);
+                gridEl.innerHTML = "";
+                newBricks.forEach(function (brick) { gridEl.appendChild(brick); });
+                iso.appended(newBricks);
 
                 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
                 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-                $m.imagesLoaded().progress(function (instance, image) {
+                const imgLoad = imagesLoaded(gridEl);
+                imgLoad.on("progress", function (instance, image) {
                     if (image.isLoaded) {
                         setRandomSurface(image.img);
                     }
-                }).always(function () {
-                    $m.isotope('layout');
-                    $("#gridContainer").css("visibility", "visible");
+                });
+                imgLoad.on("always", function () {
+                    iso.layout();
+                    document.querySelector("#gridContainer").style.visibility = "visible";
 
                     // Log surfaces to check the distribution:
                     if (DEBUG && surfaces.length) {
@@ -264,10 +262,9 @@ $(document).ready(function () {
             } catch (err) {
                 console.error(err);
             }
-        }); // always
-    } // function loadData
+        });
+} // function loadData
 
-    $(snitchSelector).imagesLoaded().always(function (instance) {
-        loadData();
-    });
-}); // document ready
+imagesLoaded(snitchSelector).on("always", function () {
+    loadData();
+});
