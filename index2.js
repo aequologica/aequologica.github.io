@@ -182,15 +182,9 @@ function loadData() {
                         ima.ima = ima.src;
                     } else if (ima.src.startsWith("script:")) {
                         ima.ima = "images/asd.svg";
-                        {
-                            var script = document.createElement('script');
-                            script.onload = function () {
-                                let s = ima.src.split(':')[1].split('.')[0];
-                                console.log(window[s](ima.url, ima.file, ima.name));
-                            };
-                            script.src = ima.src.split(':')[1];
-                            document.head.appendChild(script);
-                        }
+                        import("./" + ima.src.split(':')[1]).then(function (mod) {
+                            console.log(mod.default(ima.url, ima.file, ima.name));
+                        });
                     } else {
                         ima.ima = "images/" + ima.src;
                     }

@@ -1,5 +1,5 @@
 // console.log("IN DA SCRIPT!")
-function bookshelves(url, json, id) {
+export default function bookshelves(url, json, id) {
     fetch(url + json, { cache: "no-store" })
         .then(function (res) { return res.json(); })
         .then(function (data) {
