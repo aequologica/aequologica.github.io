@@ -39,6 +39,7 @@
      ,{ "name":"Sacem"                , "url": "https://createurs-editeurs.sacem.fr/secured/mon-espace-membre"                      , "src": "SACEM_HD_trans_2.svg"                  }
      ,{ "name":"SoFoot"               , "url": "http://www.sofoot.com/"                                                             , "src": "Logo_So_Foot.svg"                      }
      ,{ "name":"SoundCloud"           , "url": "https://soundcloud.com/christophe-thiebaud"                                         , "src": "soundcloud.svg"                        }
+     ,{ "name":"Suno"                 , "url": "https://suno.com/me"                                                                , "src": "suno.svg"                              }
      ,{ "name":"Süddeutsche Zeitung"  , "url": "http://www.sueddeutsche.de/"                                                        , "src": "Süddeutsche-Zeitung-Ligatur.svg"       }
      ,{ "name":"Telegram"             , "url": "https://web.telegram.org/"                                                          , "src": "Telegram_logo.svg"                     }
      ,{ "name":"Tuner"                , "url": "https://tuner-online.com"                                                           , "src": "tuning-svgrepo-com.svg"                }
