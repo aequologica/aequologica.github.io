@@ -6,7 +6,7 @@
         "file": "images.json", 
         "ID": "bookshelves" 
      } 
-     ,{ "name":"Après « Les filles du botaniste »", "url": "/botanist.html"                                                         , "src": "lam.jpg"                               }
+     ,{ "name":"Après « Les filles du botaniste »", "url": "https://klam.cthiebaud.com"                                              , "src": "lam.jpg"                               }
      ,{ "name":"cthiebaud.com"        , "url": "https://cthiebaud.com"                                                              , "src": "8c9426e8ff0fc7a0a7cd18d6b3c865d4.png"  }
      ,{ "name":"Openmozart"           , "url": "http://openmozart.cthiebaud.com/"                                                   , "src": "openmozart.jpg"                        }
  
